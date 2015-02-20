@@ -1,0 +1,4 @@
+= title_is
+%h1= t('.title')
+= render partial: 'form', locals: { action: :create }
+= link_to t('.back'), admin_users_path, class: "btn"

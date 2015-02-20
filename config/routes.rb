@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'web/welcome#index'
 
-  scope :web do
+  scope module: :web do
     namespace :admin do
       resources :users
     end
