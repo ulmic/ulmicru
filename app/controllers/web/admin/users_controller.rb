@@ -4,11 +4,11 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = UserForm.new User.new
   end
 
   def edit
-    @user = User.find params[:id]
+    @user = UserForm.new User.find params[:id]
   end
 
   def create
