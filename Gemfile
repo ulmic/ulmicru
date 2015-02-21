@@ -28,6 +28,8 @@ gem 'haml-rails'
 gem 'enumerize'
 gem 'authority'
 gem 'bcrypt', '~> 3.1.7'
+gem 'actionform'
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

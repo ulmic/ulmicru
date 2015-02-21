@@ -1,25 +1,5 @@
-.row
-  .col-md-4.col-md-offset-2
-    = simple_form_for @user, url: { controller: 'web/admin/users', action: action }, html: { class: 'form-horizontal' } do |f|
-      = f.hint t('hints.users.new.require_fields')
-      = f.input :email, placeholder: t('placeholders.user.email')
-      - if @user.email.nil?
-        = f.input :password
-      = f.input :role
-      = f.input :first_name
-      = f.input :patronymic, as: :string
-      = f.input :last_name
-      = f.input :birth_date, as: :date_picker
-      = f.input :municipality
-      = f.input :locality, as: :string, placeholder: t('placeholders.user.locality')
-      = f.input :school, as: :string, placeholder: t('placeholders.user.school')
-      = f.input :group, as: :string
-      = f.input :home_phone, as: :string, placeholder: t('placeholders.user.home_phone')
-      = f.input :mobile_phone, as: :string, placeholder: t('placeholders.user.mobile_phone')
-      = f.input :avatar, as: :image_preview, input_html: { preview_version: :medium }
-      = f.input :creative_work, as: :file
-      = f.input :url_creative_work, as: :string, placeholder: t('placeholders.user.url_creative_work')
-      = f.input :average
-      = f.input :state_event, as: :state_event
-      = f.input :reserve_order_number
-      = f.button :submit
+= simple_form_for @user, url: { controller: 'web/admin/users', action: action } do |f|
+  = f.input :email
+  = f.input :password
+  = f.input :role
+  = f.button :submit

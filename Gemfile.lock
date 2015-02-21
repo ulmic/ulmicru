@@ -11,6 +11,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    actionform (0.0.0)
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
       actionview (= 4.2.0)
@@ -180,6 +181,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.4.5)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     simplecov (0.9.2)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -218,6 +222,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionform
   authority
   bcrypt (~> 3.1.7)
   byebug
@@ -234,6 +239,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form
   simplecov
   spring
   sqlite3
