@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   scope module: :web do
     namespace :admin do
+      root to: 'welcome#index'
       resources :users
     end
   end
