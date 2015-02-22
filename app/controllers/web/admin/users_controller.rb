@@ -4,16 +4,20 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
   end
 
   def new
-    @user = UserForm.new User.new
+    @user = User.new
+    @user_form = UserForm.new(@user)
   end
 
   def edit
-    @user = UserForm.new User.find params[:id]
+    @user = User.find params[:id]
+    @user_form = UserForm.new(@user)
   end
 
   def create
-    @user = User.new params[:user]
-    if @user.save
+    @user = User.new
+    @user_form = UserForm.new(@user)
+    @user_form.submit(params[:user])
+    if @user_form.save
       redirect_to admin_users_path
     else
       render action: :new
@@ -22,7 +26,9 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
 
   def update
     @user = User.find params[:id]
-    if @user.update_attributes params[:user]
+    @user_form = UserForm.new(@user)
+    @user_form.submit(params[:user])
+    if @user_form.save
       redirect_to admin_users_path
     else
       render action: :edit

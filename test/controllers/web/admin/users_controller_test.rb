@@ -3,6 +3,7 @@ require 'test_helper'
 class Web::Admin::UsersControllerTest < ActionController::TestCase
   setup do
     @user = create :user
+    @user_form = UserForm.new(@user)
     @admin = create :admin
     sign_in @admin
   end

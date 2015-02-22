@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/rails/actionform.git
+  revision: 41ec958375ce6eb0df45a7623541dcd72aea773e
+  ref: 41ec958
+  specs:
+    active_form (0.0.1)
+      rails (~> 4.1)
+
+GIT
   remote: git://github.com/ulmic/tconsole.git
   revision: 73d91f7089f421a12193cc23d5d93c6cf51ab00b
   branch: rails4
@@ -11,7 +19,6 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionform (0.0.0)
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
       actionview (= 4.2.0)
@@ -222,7 +229,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionform
+  active_form!
   authority
   bcrypt (~> 3.1.7)
   byebug

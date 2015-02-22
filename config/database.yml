@@ -9,7 +9,7 @@ development:
   username: develop
   database: ulmic_development
 test:
-  adapter: postgresql
+  adapter: sqlite3
   database: ulmic_test
   pool: 5
   timeout: 5000
