@@ -25,11 +25,11 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_response :redirect
 
     user = User.last
-    assert_equal attributes[:first_name], user.first_name
+    assert_equal attributes[:email], user.email
   end
 
   test "should not create user" do
-    attributes = { first_name: @user.first_name }
+    attributes = { email: '' }
 
     post :create, user: attributes
     assert_response :success
@@ -46,12 +46,12 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_response :redirect
 
     @user.reload
-    assert_equal attributes[:first_name], @user.first_name
+    assert_equal attributes[:email], @user.email
   end
 
   test "should not update user with render edit" do
     attributes = attributes_for :user
-    attributes[:first_name] = nil
+    attributes[:email] = nil
     put :update, id: @user, user: attributes
 
     assert_response :success
