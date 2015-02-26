@@ -3,67 +3,54 @@ require 'test_helper'
 class Web::Admin::UsersControllerTest < ActionController::TestCase
   setup do
     @user = create :user
-    @user_form = UserForm.new(@user)
-    @admin = create :admin
-    sign_in @admin
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
-
-  test "should get new" do
+  test 'should get new' do
     get :new
-    assert_response :success
+    assert_response :success, @response.body
   end
 
-  test "should create user" do
+  test 'should create user' do
     attributes = attributes_for :user
-
     post :create, user: attributes
-    assert_response :redirect
-
-    user = User.last
-    assert_equal attributes[:email], user.email
+    assert_response :redirect, @response.body
+    assert_redirected_to admin_users_path
+    assert_equal attributes[:email], User.last.email
   end
 
-  test "should not create user" do
-    attributes = { email: '' }
-
+  test 'should not create user' do
+    attributes = attributes_for :user
+    attributes[:email] = nil
     post :create, user: attributes
     assert_response :success
   end
 
-  test "should get edit by admin" do
+  test 'should get edit' do
     get :edit, id: @user
-    assert_response :success
+    assert_response :success, @response.body
   end
 
-  test "should update user by admin" do
+  test 'should patch update' do
     attributes = attributes_for :user
-    put :update, id: @user, user: attributes
-    assert_response :redirect
-
+    patch :update, user: attributes, id: @user
+    assert_response :redirect, @response.body
+    assert_redirected_to admin_users_path
     @user.reload
     assert_equal attributes[:email], @user.email
   end
 
-  test "should not update user with render edit" do
+  test 'should not patch update' do
     attributes = attributes_for :user
     attributes[:email] = nil
-    put :update, id: @user, user: attributes
-
+    patch :update, user: attributes, id: @user
     assert_response :success
-
-    assert_template :edit
+    @user.reload
+    assert_not_equal attributes[:email], @user.email
   end
 
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
-      delete :destroy, id: @user
-    end
-
-    assert_redirected_to admin_users_path
+  test 'should delete destroy' do
+    count = User.count
+    delete :destroy, id: @user
+    assert_equal count - 1, User.count
   end
 end
