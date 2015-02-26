@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: 'web/welcome#index'
 
   scope module: :web do
+    resource :session, only: [:new, :create, :destroy]
+    resources :users, only: [ :new, :create ]
     namespace :admin do
       root to: 'welcome#index'
       resources :users

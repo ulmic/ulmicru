@@ -10,7 +10,7 @@ module Concerns
     end
 
     def signed_in?
-      !current_user.guest?
+      current_user
     end
 
     def signed_as_admin?
@@ -26,7 +26,7 @@ module Concerns
     end
 
     def current_user
-      @_current_user ||= User.find_by(id: session[:user_id]) || Guest.new
+      @_current_user ||= User.find_by(id: session[:user_id])
     end
 
     def required_basic_auth!
