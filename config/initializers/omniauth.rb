@@ -7,7 +7,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     scope: "email, profile, plus.me",
     provider_ignores_state: true,
     prompt: "select_account",
-    image_aspect_ratio: "square",
-    image_size: 50
   }
+  provider :vkontakte, OAUTH_KEYS[:vk_client_id], OAUTH_KEYS[:vk_client_secret]
 end

@@ -32,6 +32,7 @@ gem 'active_form', github: 'rails/actionform', ref: '41ec958'
 gem 'simple_form'
 
 gem 'omniauth-google-oauth2'
+gem 'omniauth-vkontakte'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
