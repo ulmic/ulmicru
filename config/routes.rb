@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'web/welcome#index'
 
+  get '/auth/google/callback' => 'web/omniauth#google'
+
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
     resources :users, only: [ :new, :create ]
