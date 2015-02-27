@@ -1,16 +1,15 @@
 class Web::SessionsController < Web::ApplicationController
   # FIXME forbid access if the user is signed in
   def new
-    @user = User.new
-    @session = UserForm.new @user
+    user = User.new
+    @user = UserForm.new user
   end
 
   def create
     @user = User.find_by_email params[:user][:email]
-    @session = UserSignInForm.new @user
-    if @session
-      if @session.password == params[:user][:password]
-        sign_in @session.model
+    if @user
+      if @user.authenticate params[:user][:password]
+        sign_in @user
         redirect_to admin_root_path
       else
         render :new
@@ -22,6 +21,6 @@ class Web::SessionsController < Web::ApplicationController
 
   def destroy
     sign_out
-    root_path
+    redirect_to root_path
   end
 end
