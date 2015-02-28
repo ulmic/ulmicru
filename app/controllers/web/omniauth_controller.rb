@@ -4,15 +4,23 @@ class Web::OmniauthController < Web::ApplicationController
     provider = omniauth_hash['provider']
     email = omniauth_hash['info']['email']
     uid = omniauth_hash['uid']
-    first_name = omniauth_hash['info']['first_name']
-    last_name = omniauth_hash['info']['last_name']
+    if provider != 'twitter'
+      first_name = omniauth_hash['info']['first_name']
+      last_name = omniauth_hash['info']['last_name']
+    else
+      first_name = omniauth_hash['info']['name']
+      last_name = ''
+    end
 
     authentication = Authentication.where(provider: provider, uid: uid).first
     if authentication.present?
       sign_in authentication.user
     else
       unless signed_in?
-        user = User.create email: email, first_name: first_name, last_name: last_name
+        user = User.find_by_email email if email
+        unless user
+          user = User.create email: email, first_name: first_name, last_name: last_name
+        end
         sign_in user
       end
       Authentication.create user_id: current_user.id, provider: provider, uid: uid
@@ -22,4 +30,5 @@ class Web::OmniauthController < Web::ApplicationController
 
   alias :google :callback
   alias :vkontakte :callback
+  alias :twitter :callback
 end

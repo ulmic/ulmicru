@@ -9,4 +9,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     prompt: "select_account",
   }
   provider :vkontakte, OAUTH_KEYS[:vk_client_id], OAUTH_KEYS[:vk_client_secret]
+  provider :twitter, OAUTH_KEYS[:twitter_client_id], OAUTH_KEYS[:twitter_client_secret]
 end
