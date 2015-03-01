@@ -9,6 +9,7 @@ ru:
       actions: Действия
       edit: Изменить
       destroy: Удалить
+      restore: Восстановить
       new: Добавить
       save: Сохранить
       back: Назад
@@ -16,3 +17,7 @@ ru:
     users:
       new:
         register: Регистрация
+    trash:
+      name: Имя
+      title: Корзина
+      deleted: Удалённые

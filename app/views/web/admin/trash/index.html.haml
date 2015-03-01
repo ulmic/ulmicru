@@ -1,6 +1,6 @@
 - model_class = Object.const_get(@type)
 .page-header
-  %h1= model_class.model_name.human.pluralize(:ru)
+  %h1= trash_page_title(model_class)
 %table.table.table-condensed.table-hover
   %thead
     %tr
