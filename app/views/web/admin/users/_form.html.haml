@@ -1,6 +1,6 @@
 .row
   .col-lg-6
-    = simple_form_for @user, url: { controller: 'web/admin/users', action: action }, html: { class: 'form-horizontal' } do |f|
+    = simple_form_for @user, url: { controller: 'web/admin/users', action: action }, input_html: { class: 'form-horizontal' } do |f|
       = f.input :first_name, as: :string
       = f.input :last_name, as: :string
       = f.input :email, as: :string
