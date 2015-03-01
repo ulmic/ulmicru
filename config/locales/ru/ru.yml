@@ -2,8 +2,12 @@ ru:
   application:
     name: Сайт МИЦ
   helpers:
-    new:
-      enter: Войти
+    actions: Действия
+    enter: Войти
+    links:
+      edit: Изменить
+      destroy: Удалить
+      new: Добавить
   web:
     users:
       new:

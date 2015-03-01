@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
 
   extend Enumerize
   enumerize :role, in: [ :user, :admin ], default: :user
+
+  scope :admins, -> { where role: :admin }
 end
