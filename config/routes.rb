@@ -9,6 +9,15 @@ Rails.application.routes.draw do
     namespace :admin do
       root to: 'welcome#index'
       resources :users
+      resources :trash, only: [] do
+        collection do
+          get 'index/:type' => 'trash#index'
+        end
+        member do
+          patch 'restore' => 'trash#restore'
+          delete 'destroy' => 'trash#destroy'
+        end
+      end
     end
   end
 

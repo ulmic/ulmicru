@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { where role: :admin }
 
+  scope :removed, -> { where state: :removed }
+
   state_machine :state, initial: :not_confirmed do
     state :not_confirmed
     state :confirmed
@@ -24,6 +26,9 @@ class User < ActiveRecord::Base
     end
     event :remove do
       transition all => :removed
+    end
+    event :restore do
+      transition :removed => :not_confirmed
     end
   end
 end
