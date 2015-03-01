@@ -10,6 +10,8 @@ ru:
       edit: Изменить
       destroy: Удалить
       new: Добавить
+      save: Сохранить
+      back: Назад
   web:
     users:
       new:
