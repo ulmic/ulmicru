@@ -5,4 +5,5 @@
 # locales as you wish. All of these examples are active by default:
 ActiveSupport::Inflector.inflections(:ru) do |inflect|
   inflect.plural /ль$/i, 'ли'
+  inflect.plural /н /i, 'ны '
 end

@@ -10,6 +10,8 @@
     %ul.nav.navbar-nav
       = menu_item admin_users_path do
         = User.model_name.human.pluralize(:ru)
+      = menu_item admin_members_path do
+        = Member.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item '/admin/trash/index/user' do
         %span.glyphicon.glyphicon-trash
