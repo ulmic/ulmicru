@@ -2,8 +2,6 @@ ru:
   activerecord:
     models:
       user: Пользователь
-      plural:
-        user: Пользователи
     attributes:
       user:
         first_name: Имя

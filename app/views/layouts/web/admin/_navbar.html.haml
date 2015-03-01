@@ -9,4 +9,4 @@
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
       %li
-        = link_to t('activerecord.models.plural.user'), admin_users_path
+        = link_to User.model_name.human.pluralize(:ru), admin_users_path
