@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { where role: :admin }
 
-  state_machine initilize: :not_confirmed do
+  state_machine initial: :not_confirmed do
     state :not_confirmed
     state :confirmed
     state :declined
