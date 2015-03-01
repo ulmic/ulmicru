@@ -1,4 +1,6 @@
 ru:
+  application:
+    name: Сайт МИЦ
   helpers:
     new:
       enter: Войти
