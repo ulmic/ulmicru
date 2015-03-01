@@ -2,6 +2,7 @@ ru:
   activerecord:
     models:
       user: Пользователь
+      member: Член организации
     attributes:
       user:
         first_name: Имя

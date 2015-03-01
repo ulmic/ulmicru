@@ -1,0 +1,28 @@
+= javascript_include_tag :tabs
+= stylesheet_link_tag :tabs
+
+- model_class = Member
+.page-header
+  %h1= model_class.model_name.human.pluralize(:ru)
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:avatar)
+      %th= model_class.human_attribute_name(:full_name)
+      %th= model_class.human_attribute_name(:ticket_number)
+      %th= model_class.human_attribute_name(:place)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - @members.each do |member|
+      %tr.link{ data: { href: edit_admin_member_path(member) } }
+        %td= member.id
+        %td= member.avatar
+        %td= member.full_name
+        %td= member.ticket_number
+        %td= member.place
+        %td
+          = link_to t('helpers.links.edit'), edit_admin_member_path(member), class: 'btn btn-warning btn-xs'
+          = link_to t('helpers.links.destroy'), admin_member_path(member), method: :delete, class: 'btn btn-xs btn-danger'
+
+= link_to t('.new', default: t('helpers.links.new')), new_admin_member_path, class: 'btn btn-primary'
