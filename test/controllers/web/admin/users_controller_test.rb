@@ -18,13 +18,6 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_equal attributes[:email], User.last.email
   end
 
-  test 'should not create user' do
-    attributes = attributes_for :user
-    attributes[:email] = nil
-    post :create, user: attributes
-    assert_response :success
-  end
-
   test 'should get edit' do
     get :edit, id: @user
     assert_response :success, @response.body
@@ -37,15 +30,6 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_redirected_to admin_users_path
     @user.reload
     assert_equal attributes[:email], @user.email
-  end
-
-  test 'should not patch update' do
-    attributes = attributes_for :user
-    attributes[:email] = nil
-    patch :update, user: attributes, id: @user
-    assert_response :success
-    @user.reload
-    assert_not_equal attributes[:email], @user.email
   end
 
   test 'should delete destroy' do

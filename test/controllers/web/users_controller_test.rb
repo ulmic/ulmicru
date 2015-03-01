@@ -17,11 +17,4 @@ class Web::UsersControllerTest < ActionController::TestCase
     assert_redirected_to admin_users_path
     assert_equal attributes[:email], User.last.email
   end
-
-  test 'should not create user' do
-    attributes = attributes_for :user
-    attributes[:email] = nil
-    post :create, user: attributes
-    assert_response :success
-  end
 end
