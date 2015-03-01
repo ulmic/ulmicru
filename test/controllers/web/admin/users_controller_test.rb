@@ -35,6 +35,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
   test 'should delete destroy' do
     count = User.count
     delete :destroy, id: @user
-    assert_equal count - 1, User.count
+    @user.reload
+    assert @user.removed?
   end
 end

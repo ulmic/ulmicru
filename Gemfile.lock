@@ -98,6 +98,11 @@ GEM
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     docile (1.1.5)
+    draper (1.4.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     enumerize (0.9.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
@@ -220,6 +225,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    request_store (1.1.0)
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -284,6 +290,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   coveralls
+  draper
   enumerize
   factory_girl_rails
   haml-rails
