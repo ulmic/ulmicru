@@ -8,5 +8,5 @@
       = t('application.name')
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
-      %li
-        = link_to User.model_name.human.pluralize(:ru), admin_users_path
+      = menu_item admin_users_path do
+        = User.model_name.human.pluralize(:ru)
