@@ -1,0 +1,18 @@
+ru:
+  application:
+    name: Сайт МИЦ
+  helpers:
+    enter: Войти
+    actions:
+      update: Редактировать
+    links:
+      actions: Действия
+      edit: Изменить
+      destroy: Удалить
+      new: Добавить
+      save: Сохранить
+      back: Назад
+  web:
+    users:
+      new:
+        register: Регистрация
