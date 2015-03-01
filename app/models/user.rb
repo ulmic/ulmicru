@@ -10,11 +10,11 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { where role: :admin }
 
-  state_machine initial: :not_confirmed do
+  state_machine :state, initial: :not_confirmed do
     state :not_confirmed
     state :confirmed
     state :declined
-    state :deleted
+    state :removed
 
     event :confirm do
       transition all => :confirmed
@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
     event :decline do
       transition all => :declined
     end
-    event :delete do
-      transition all => :delete
+    event :remove do
+      transition all => :removed
     end
   end
 end
