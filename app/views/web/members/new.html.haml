@@ -1,0 +1,15 @@
+= simple_form_for @member, url: { controller: 'web/members', action: :create } do |f|
+  - f.simple_fields_for :user do |ff|
+    = ff.input :first_name, as: :string
+    = ff.input :last_name, as: :string
+  = f.input :patronymic, as: :string
+  = f.input :motto, as: :string
+  = f.input :ticket_number, as: :string
+  = f.input :mobile_phone, as: :string
+  = f.input :birth_date, as: :string
+  = f.input :home_adress, as: :string
+  = f.input :municipality, as: :string
+  = f.input :locality, as: :string
+  = f.input :avatar, as: :string
+  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+  = f.button :submit, t('.register')

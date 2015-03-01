@@ -1,0 +1,19 @@
+class Web::MembersController < Web::ApplicationController
+  before_filter :authenticate_user!, only: [ :new, :create ]
+
+  def new
+    @member = Member.new
+    @member_form = MemberForm.new @member
+  end
+
+  def create
+    @member = Member.new
+    @member_form = MemberForm.new @member
+    @member_form.submit params[:member]
+    if @member_form.save
+      redirect_to root_path
+    else
+      render action: :new
+    end
+  end
+end

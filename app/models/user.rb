@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   has_many :authentications
 
   validates :email, uniqueness: true
+  validates :first_name, human_name: true,
+                         allow_blank: true
+  validates :last_name, human_name: true,
+                         allow_blank: true
 
   extend Enumerize
   enumerize :role, in: [ :user, :admin ], default: :user

@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Ulmicru
   class Application < Rails::Application
+    config.autoload_paths += Dir[
+      "#{config.root}/lib/**/"
+    ]
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.available_locales = :ru

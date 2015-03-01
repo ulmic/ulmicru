@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Concerns::AuthManagment
+
   def menu_item(name = nil, path = '#', *args, &block)
     path = name || path if block_given?
     options = args.extract_options!
