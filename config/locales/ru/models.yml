@@ -10,3 +10,4 @@ ru:
         role: Роль на сайте
         email: E-mail
         password: Пароль
+        password_confirmation: Подтверждение пароля

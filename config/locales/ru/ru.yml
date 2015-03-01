@@ -1,0 +1,8 @@
+ru:
+  helpers:
+    new:
+      enter: Войти
+  web:
+    users:
+      new:
+        register: Регистрация
