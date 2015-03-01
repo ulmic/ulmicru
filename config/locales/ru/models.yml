@@ -12,3 +12,16 @@ ru:
         email: E-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
+      member:
+        avatar: Аватар
+        full_name: Ф.И.О.
+        ticket_number: Номер членского билета
+        place: Место проживания
+        patronymic: Отчество
+        motto: Девиз по жизни
+        mobile_phone: Мобильный телефон
+        birth_date: Дата рождения
+        home_adress: Домашний адрес
+        municipality: Муниципальное образование
+        locality: Населённый пункт
+        user: Прикреплённый Пользователь

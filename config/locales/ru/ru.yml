@@ -5,6 +5,7 @@ ru:
     enter: Войти
     actions:
       update: Редактировать
+      create: Создать
     links:
       actions: Действия
       edit: Изменить

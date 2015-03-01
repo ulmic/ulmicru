@@ -16,5 +16,5 @@
       = f.input :locality, as: :string
       = f.input :avatar, as: :string
       = f.association :user, label_value: lambda { |user| "#{user.id} | #{user.first_name} #{user.last_name}" }, value_method: :id
-      = f.button :submit, t('.register')
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'
