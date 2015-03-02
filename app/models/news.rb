@@ -6,8 +6,6 @@ class News < ActiveRecord::Base
   validates :photo,         presence: true
   validates :author_id,     presence: true
 
-  include NewsRepository
-
   def is_published?
     published_at <= DateTime.now
   end
