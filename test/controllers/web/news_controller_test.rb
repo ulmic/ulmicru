@@ -1,7 +1,17 @@
 require 'test_helper'
 
 class Web::NewsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @news = create :news
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success, @response.body
+  end
+
+  test "should get show" do
+    get :show, id: @news
+    assert_response :success, @response.body
+  end
 end
