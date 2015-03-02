@@ -1,6 +1,6 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
   def index
-    @members = ::MemberDecorator.decorate_collection Member.all
+    @members = ::MemberDecorator.decorate_collection Member.presented
   end
 
   def new

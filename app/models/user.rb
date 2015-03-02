@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { where role: :admin }
 
+  scope :presented, -> { where.not(state: :removed) }
   scope :removed, -> { where state: :removed }
 
   state_machine :state, initial: :not_confirmed do

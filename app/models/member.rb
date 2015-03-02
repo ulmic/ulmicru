@@ -17,6 +17,9 @@ class Member < ActiveRecord::Base
   validates :locality, presence: true
   validates :avatar, presence: true
 
+  scope :presented, -> { where.not(state: :removed) }
+  scope :removed, -> { where state: :removed }
+
   state_machine :state, initial: :not_confirmed do
     state :not_confirmed
     state :confirmed
@@ -39,6 +42,9 @@ class Member < ActiveRecord::Base
   attr_accessor :first_name, :last_name
 
   def update_user_name
-    User.update user_id, first_name: first_name, last_name: last_name if user_id
+    if user_id
+      User.update user_id, first_name: first_name if first_name.present?
+      User.update user_id, last_name: last_name if last_name.present?
+    end
   end
 end

@@ -13,6 +13,10 @@ class MemberDecorator < Draper::Decorator
     "#{first_name} #{patronymic} #{last_name}"
   end
 
+  def name
+    full_name
+  end
+
   def short_name
     "#{first_name} #{last_name}"
   end
