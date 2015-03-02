@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  after_save :update_user_name
+
   belongs_to :user
   belongs_to :parent, class_name: 'Member'
 
@@ -33,5 +35,10 @@ class Member < ActiveRecord::Base
     event :restore do
       transition removed: :not_confirmed
     end
+  end
+  attr_accessor :first_name, :last_name
+
+  def update_user_name
+    User.update user_id, first_name: first_name, last_name: last_name if user_id
   end
 end

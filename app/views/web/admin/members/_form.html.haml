@@ -3,10 +3,15 @@
 .row
   .col-lg-6
     = simple_form_for @member, url: { controller: 'web/admin/members', action: action }, input_html: { class: 'form-horizontal' } do |f|
-      - f.simple_fields_for :user do |ff|
-        = ff.input :first_name, as: :string
-        = ff.input :last_name, as: :string
+      - if @member.user.present?
+        = f.input :first_name, as: :string, required: true, input_html: { value: @member.user.first_name }
+      - else
+        = f.input :first_name, as: :string, required: true
       = f.input :patronymic, as: :string
+      - if @member.user.present?
+        = f.input :last_name, as: :string, required: true, input_html: { value: @member.user.last_name }
+      - else
+        = f.input :last_name, as: :string, required: true
       = f.input :motto, as: :string
       = f.input :ticket_number, as: :string
       = f.input :mobile_phone, as: :string
@@ -14,7 +19,7 @@
       = f.input :home_adress, as: :string
       = f.input :municipality, as: :string
       = f.input :locality, as: :string
-      = f.input :avatar, as: :string
-      = f.association :user, label_value: lambda { |user| "#{user.id} | #{user.first_name} #{user.last_name}" }, value_method: :id
+      = f.input :avatar, as: :file
+      = f.association :user, label_method: lambda { |user| "#{user.id} | #{user.first_name} #{user.last_name}" }, value_method: :id, required: true
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

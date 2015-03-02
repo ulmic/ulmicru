@@ -13,11 +13,13 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
       member:
+        first_name: Имя
+        patronymic: Отчество
+        last_name: Фамилия
         avatar: Аватар
         full_name: Ф.И.О.
         ticket_number: Номер членского билета
         place: Место проживания
-        patronymic: Отчество
         motto: Девиз по жизни
         mobile_phone: Мобильный телефон
         birth_date: Дата рождения
