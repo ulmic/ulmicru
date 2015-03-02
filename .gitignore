@@ -16,5 +16,6 @@
 !/log/.keep
 /tmp
 config/secrets.yml
+config/database.yml
 config/oauth.yml
 ulmic_test

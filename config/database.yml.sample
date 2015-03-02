@@ -9,10 +9,9 @@ development:
   username: develop
   database: ulmic_development
 test:
-  adapter: sqlite3
+  <<: *default
+  username: develop
   database: ulmic_test
-  pool: 5
-  timeout: 5000
 
 staging:
   <<: *default
