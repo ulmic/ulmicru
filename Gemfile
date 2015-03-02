@@ -34,6 +34,7 @@ gem 'bootstrap-sass'
 gem 'state_machine', git: 'https://github.com/seuros/state_machine.git'
 gem 'draper'
 gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
