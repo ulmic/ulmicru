@@ -1,20 +1,24 @@
 class Web::Admin::TrashController < Web::Admin::ApplicationController
   def index
-    @type = params[:type].capitalize
-    @items = "#{@type}Decorator".constantize.decorate_collection @type.constantize.removed
+    @type = resource_type
+    @items = resource_type.removed.decorate
   end
 
   def restore
-    type = params[:type]
-    item = type.capitalize.constantize.find params[:id]
+    item = resource_type.find params[:id]
     item.restore
-    redirect_to "/admin/trash/index/#{type}"
+    redirect_to  type_admin_trash_index_path(resource_type)
   end
 
   def destroy
-    type = params[:type]
-    item = type.capitalize.constantize.find params[:id]
+    item = resource_type.find params[:id]
     item.destroy
-    redirect_to "/admin/trash/index/#{type}"
+    redirect_to  type_admin_trash_index_path(resource_type)
+  end
+
+  private
+
+  def resource_type
+    @_type ||= params[:type].capitalize.constantize
   end
 end

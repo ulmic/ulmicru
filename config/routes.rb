@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Rails.application.routes.draw do
   root to: 'web/welcome#index'
 
@@ -11,11 +12,11 @@ Rails.application.routes.draw do
       resources :users
       resources :trash, only: [] do
         collection do
-          get 'index/:type' => 'trash#index'
+          get 'index/:type' => 'trash#index', as: :type
         end
         member do
-          patch 'restore' => 'trash#restore'
-          delete 'destroy' => 'trash#destroy'
+          patch 'restore'
+          delete 'destroy'
         end
       end
     end
