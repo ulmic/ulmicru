@@ -1,4 +1,4 @@
-class Web::NewsController < ApplicationController
+class Web::NewsController < Web::ApplicationController
   def index
     
   end
