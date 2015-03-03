@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20150301213120) do
     t.text     "municipality"
     t.text     "locality"
     t.text     "avatar"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.text     "state"
   end
 

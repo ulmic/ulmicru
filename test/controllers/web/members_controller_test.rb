@@ -24,4 +24,9 @@ class Web::MembersControllerTest < ActionController::TestCase
     assert_redirected_to root_path
     assert_equal attributes[:patronymic], Member.last.patronymic
   end
+
+  test 'should get show' do
+    get :show, ticket: @member.ticket
+    assert_response :success, @response.body
+  end
 end
