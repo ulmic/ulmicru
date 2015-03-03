@@ -1,5 +1,5 @@
 class AddAuthorIdToNews < ActiveRecord::Migration
   def change
-    add_column :news, :author_id, :number
+    add_column :news, :author_id, :integer
   end
 end
