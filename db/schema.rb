@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150301213120) do
     t.text     "patronymic"
     t.integer  "user_id"
     t.text     "motto"
-    t.integer  "ticket_number"
+    t.integer  "ticket"
     t.integer  "parent_id"
     t.text     "mobile_phone"
     t.datetime "birth_date"

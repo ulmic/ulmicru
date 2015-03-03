@@ -7,7 +7,7 @@ class Member < ActiveRecord::Base
   validates :patronymic, presence: true,
                          human_name: true
   validates :motto, presence: true
-  validates :ticket_number, presence: true,
+  validates :ticket, presence: true,
                             uniqueness: true
   validates :mobile_phone, presence: true,
                            phone: true

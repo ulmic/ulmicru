@@ -4,7 +4,7 @@ class CreateMembers < ActiveRecord::Migration
       t.text :patronymic
       t.integer :user_id
       t.text :motto
-      t.integer :ticket_number
+      t.integer :ticket
       t.integer :parent_id
       t.text :mobile_phone
       t.datetime :birth_date
