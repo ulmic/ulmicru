@@ -40,12 +40,16 @@ class Member < ActiveRecord::Base
       transition removed: :not_confirmed
     end
   end
-  attr_accessor :first_name, :last_name
+  attr_accessor :first_name, :last_name, :email
 
   def update_user_name
     if user_id
       User.update user_id, first_name: first_name if first_name.present?
       User.update user_id, last_name: last_name if last_name.present?
+      User.update user_id, email: email if email.present?
+    else
+      user = User.create(first_name: first_name, last_name: last_name, email: email)
+      update user_id: User.last.id
     end
   end
 end

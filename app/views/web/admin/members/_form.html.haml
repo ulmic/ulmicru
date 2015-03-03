@@ -10,8 +10,10 @@
       = f.input :patronymic, as: :string
       - if @member.user.present?
         = f.input :last_name, as: :string, required: true, input_html: { value: @member.user.last_name }
+        = f.input :email, as: :string, required: true, input_html: { value: @member.user.email }
       - else
         = f.input :last_name, as: :string, required: true
+        = f.input :email, as: :string, required: true
       = f.input :motto, as: :string
       = f.input :ticket, as: :string
       = f.input :mobile_phone, as: :string
@@ -19,7 +21,7 @@
       = f.input :home_adress, as: :string
       = f.input :municipality, as: :string
       = f.input :locality, as: :string
-      = f.input :avatar, as: :file
+      = f.input :avatar, as: :string
       = f.association :user, label_method: lambda { |user| "#{user.id} | #{user.first_name} #{user.last_name}" }, value_method: :id, required: true
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

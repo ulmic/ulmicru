@@ -18,7 +18,7 @@ ru:
         last_name: Фамилия
         avatar: Аватар
         full_name: Ф.И.О.
-        ticket_number: Номер членского билета
+        ticket: Номер членского билета
         place: Место проживания
         motto: Девиз по жизни
         mobile_phone: Мобильный телефон
