@@ -1,6 +1,6 @@
 - model_class = Member
 .page-header
-  %h1= model_class.model_name.human.pluralize(:ru)
+  %h3= model_class.model_name.human.pluralize(:ru)
 %table.table.table-condensed.table-hover
   %thead
     %tr
@@ -19,7 +19,5 @@
         %td= member.ticket
         %td= member.place
         %td
-          = link_to t('helpers.links.edit'), edit_admin_member_path(member), class: 'btn btn-warning btn-xs'
-          = link_to t('helpers.links.destroy'), admin_member_path(member), method: :delete, class: 'btn btn-xs btn-danger'
-
-= link_to t('.new', default: t('helpers.links.new')), new_admin_member_path, class: 'btn btn-primary'
+          = link_to t('helpers.links.approve'), admin_member_path(member, member: { state: :confirmed }), method: :patch, class: 'btn btn-primary btn-xs'
+          = link_to t('helpers.links.decline'), admin_member_path(member, member: { state: :declined }), method: :patch, class: 'btn btn-xs btn-danger'
