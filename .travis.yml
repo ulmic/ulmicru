@@ -6,6 +6,7 @@ env:
 script:
   - gem install tilt -v '1.4.1'
   - gem install byebug -v '3.5.1'
+  - gem install sdoc -v '0.4.1'
   - cp config/secrets.yml.sample config/secrets.yml
   - RAILS_ENV=test bundle exec rake db:create db:migrate test
 services:
