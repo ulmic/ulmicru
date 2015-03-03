@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/ulmic/ulmicru/badges/gpa.svg)](https://codeclimate.com/github/ulmic/ulmicru)
 ```shell
 git clone git@github.com:ulmic/ulmicru.git
 cd ulmicru
