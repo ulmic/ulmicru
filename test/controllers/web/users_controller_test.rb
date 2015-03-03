@@ -14,7 +14,7 @@ class Web::UsersControllerTest < ActionController::TestCase
     attributes = attributes_for :user
     post :create, user: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to root_path
+    assert_redirected_to new_member_path
     assert_equal attributes[:email], User.last.email
   end
 end
