@@ -12,7 +12,7 @@
       %th= t 'helpers.links.actions'
   %tbody
     - @members.each do |member|
-      %tr.link{ data: { href: edit_admin_member_path(member) } }
+      %tr.link{ class: state_color(member), data: { href: edit_admin_member_path(member) } }
         %td= member.id
         %td= member.avatar
         %td= member.full_name
