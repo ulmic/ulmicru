@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ulmic/ulmicru.svg?branch=develop)](https://travis-ci.org/ulmic/ulmicru) [![Code Climate](https://codeclimate.com/github/ulmic/ulmicru/badges/gpa.svg)](https://codeclimate.com/github/ulmic/ulmicru)
+[![Build Status](https://travis-ci.org/ulmic/ulmicru.svg?branch=develop)](https://travis-ci.org/ulmic/ulmicru) [![Coverage Status](https://coveralls.io/repos/ulmic/ulmicru/badge.svg)](https://coveralls.io/r/ulmic/ulmicru) [![Code Climate](https://codeclimate.com/github/ulmic/ulmicru/badges/gpa.svg)](https://codeclimate.com/github/ulmic/ulmicru)
 ```shell
 git clone git@github.com:ulmic/ulmicru.git
 cd ulmicru
