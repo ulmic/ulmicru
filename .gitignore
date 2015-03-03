@@ -19,4 +19,4 @@ config/secrets.yml
 config/oauth.yml
 ulmic_test
 Gemfile.lock
-public/uploads
+/public
