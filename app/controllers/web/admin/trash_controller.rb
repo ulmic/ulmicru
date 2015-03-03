@@ -17,7 +17,6 @@ class Web::Admin::TrashController < Web::Admin::ApplicationController
   end
 
   private
-
   def resource_type
     @_type ||= params[:type].capitalize.constantize
   end

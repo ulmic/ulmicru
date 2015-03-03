@@ -13,6 +13,10 @@
       = menu_item admin_members_path do
         = Member.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
+      %li
+        %a{ href: '#' }
+          %span.glyphicon.glyphicon-info-sign
+          = notification_count
       %li.dropdown
         %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
           %span.glyphicon.glyphicon-trash

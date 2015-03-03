@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       root to: 'welcome#index'
       resources :users
       resources :members
+      resources :unviewed, only: :index
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type
