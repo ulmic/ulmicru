@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
+    resources :news, only: [:index, :show]
     resources :users, only: [ :new, :create ]
     namespace :admin do
       root to: 'welcome#index'
