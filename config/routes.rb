@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     namespace :admin do
       root to: 'welcome#index'
       resources :users
+      resources :news
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index'
