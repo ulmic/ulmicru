@@ -9,9 +9,5 @@
   .date
     = @news.publish_date_time
   .body
-    - if mobile_device?
-      = image_tag @news.photo.mobile_thumb, class: 'main_photo'
-    - else
-      = image_tag @news.photo, class: 'main_photo'
-
+    = image_tag @news.photo, class: 'main_photo'
     != @news.body
