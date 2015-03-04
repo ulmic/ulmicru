@@ -1,0 +1,17 @@
+- content_for :meta do
+  %meta{ property: 'og:description', content: "#{@news.description_lead} #ЯЛидер" }
+  %meta{ property:'og:image', content: @news.photo }
+  %meta{ name:'description', content: "#{@news.description_lead} #ЯЛидер" }
+  %link{ rel: 'image_src', href: @news.photo  }
+.show
+  .title
+    = @news.title
+  .date
+    = @news.publish_date_time
+  .body
+    - if mobile_device?
+      = image_tag @news.photo.mobile_thumb, class: 'main_photo'
+    - else
+      = image_tag @news.photo, class: 'main_photo'
+
+    != @news.body
