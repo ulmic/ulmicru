@@ -1,4 +1,4 @@
-class Web::NewsController < Web::ApplicationController
+class Web::Admin::NewsController < Web::Admin::ApplicationController
   def index
     @published_news = Web::NewsDecorator.decorate_collection News.published.order('created_at DESC')
     @unpublished_news = Web::NewsDecorator.decorate_collection News.published.order('created_at DESC')
