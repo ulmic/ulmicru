@@ -4,7 +4,7 @@ class Web::NewsController < Web::ApplicationController
   end
 
   def show
-    @news = News.find(params[:id]).decorate #FIXME I'm don't know how to include decorate there into code
+    @news = Web::NewsDecorator.decorate News.find params[:id] #FIXME I'm don't know how to include decorate there into code
     if !@news.is_published?
       #FIXME there 404 error path
     end
