@@ -14,10 +14,10 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
   def create
     @news = News.new
     @news_form = NewsForm.new @news
-    @news_form.submit params[:user]
+    @news_form.submit params[:news]
     if @news_form.save
-      redirect_to admin_news_path
-    else 
+      redirect_to admin_news_index_path
+    else
       redirect_to action: :new
     end
   end
@@ -36,7 +36,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news_form = NewsForm.new(@news)
     @news_form.submit params[:user]
     if @news_form.save
-      redirect_to admin_news_path
+      redirect_to admin_news_index_path
     else 
       redirect_to action: :edit
     end
@@ -45,6 +45,6 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
   def destroy
     @news = News.find params[:id]
     @news.remove
-    redirect_to admin_news_path
+    redirect_to admin_news_index_path
   end
 end
