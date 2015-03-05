@@ -1,0 +1,15 @@
+= javascript_include_tag :tabs
+= stylesheet_link_tag :tabs
+
+.page-header
+  %h1=t '.title'
+#tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    %li
+      = link_to t('.published'), '#published'
+    %li
+      = link_to t('.unpublished'), '#unpublished'#{@unpublished_news.count}", '#unpublished'
+  #published
+    = render 'news_list', news: @published_news
+  #unpublished
+    = render 'news_list', news: @unpublished_news
