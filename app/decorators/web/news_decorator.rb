@@ -1,6 +1,10 @@
 class Web::NewsDecorator < Draper::Decorator
   delegate_all
 
+  def short_lead
+    "#{model.body.first(50)}..."
+  end
+
   def lead 
     "#{model.body.first(250)}..."
   end
