@@ -22,7 +22,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
 
   test 'should create news' do
     attributes = attributes_for :news
-    post :create, user: attributes
+    post :create, news: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_news_index_path
     assert_equal attributes[:body], News.last.body
