@@ -35,12 +35,12 @@ gem 'state_machine', git: 'https://github.com/seuros/state_machine.git'
 gem 'draper'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-
+gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
