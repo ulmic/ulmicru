@@ -3,12 +3,12 @@ class Member < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :parent, class_name: 'Member'
+  has_one :questionary
 
   validates :patronymic, presence: true,
                          human_name: true
   validates :motto, presence: true
-  validates :ticket, presence: true,
-                            uniqueness: true
+  validates :ticket, uniqueness: true
   validates :mobile_phone, presence: true,
                            phone: true
   validates :birth_date, presence: true
@@ -20,6 +20,7 @@ class Member < ActiveRecord::Base
   scope :presented, -> { where.not(state: :removed) }
   scope :removed, -> { where state: :removed }
   scope :not_confirmed, -> { where state: :not_confirmed }
+  scope :questionaries, -> { where state: :wants_to_join }
 
   state_machine :state, initial: :not_confirmed do
     state :not_confirmed
@@ -48,6 +49,8 @@ class Member < ActiveRecord::Base
     end
   end
   attr_accessor :first_name, :last_name, :email
+
+  private
 
   def update_user_name
     if user_id

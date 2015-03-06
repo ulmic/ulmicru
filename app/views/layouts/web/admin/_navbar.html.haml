@@ -12,6 +12,8 @@
         = User.model_name.human.pluralize(:ru)
       = menu_item admin_members_path do
         = Member.model_name.human.pluralize(:ru)
+      = menu_item admin_join_index_path do
+        = t('activerecord.models.questionary').pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item admin_unviewed_index_path do
         %span.glyphicon.glyphicon-info-sign

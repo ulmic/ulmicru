@@ -3,6 +3,7 @@ ru:
     models:
       user: Пользователь
       member: Член организации
+      questionary: Анкета на вступление
     attributes:
       user:
         first_name: Имя

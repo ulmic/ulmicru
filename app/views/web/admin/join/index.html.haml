@@ -1,25 +1,23 @@
 - model_class = Member
 .page-header
-  %h1= model_class.model_name.human.pluralize(:ru)
+  %h1= t('activerecord.models.questionary').pluralize(:ru)
 %table.table.table-condensed.table-hover
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:avatar)
       %th= model_class.human_attribute_name(:full_name)
-      %th= model_class.human_attribute_name(:ticket)
       %th= model_class.human_attribute_name(:place)
       %th= t 'helpers.links.actions'
   %tbody
-    - @members.each do |member|
-      %tr.link{ class: state_color(member), data: { href: edit_admin_member_path(member) } }
-        %td= member.id
-        %td= member.avatar
-        %td= member.full_name
-        %td= member.ticket
-        %td= member.place
+    - @questionaries.each do |questionary|
+      %tr.link{ class: state_color(questionary), data: { href: edit_admin_join_path(questionary) } }
+        %td= questionary.id
+        %td= questionary.avatar
+        %td= questionary.full_name
+        %td= questionary.place
         %td
-          = link_to t('helpers.links.edit'), edit_admin_member_path(member), class: 'btn btn-warning btn-xs'
-          = link_to t('helpers.links.destroy'), admin_member_path(member), method: :delete, class: 'btn btn-xs btn-danger'
+          = link_to t('helpers.links.edit'), edit_admin_join_path(questionary), class: 'btn btn-warning btn-xs'
+          = link_to t('helpers.links.destroy'), admin_join_path(questionary), method: :delete, class: 'btn btn-xs btn-danger'
 
-= link_to t('.new', default: t('helpers.links.new')), new_admin_member_path, class: 'btn btn-primary'
+= link_to t('.new', default: t('helpers.links.new')), new_admin_join_path, class: 'btn btn-primary'
