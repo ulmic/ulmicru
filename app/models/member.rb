@@ -26,7 +26,10 @@ class Member < ActiveRecord::Base
     state :confirmed
     state :declined
     state :removed
+
+    #Wants to join people states
     state :wants_to_join
+    state :on_the_trial
 
     event :confirm do
       transition all => :confirmed
@@ -39,6 +42,9 @@ class Member < ActiveRecord::Base
     end
     event :restore do
       transition removed: :not_confirmed
+    end
+    event :put_on_the_trial do
+      transition wants_to_join: :on_the_trial
     end
   end
   attr_accessor :first_name, :last_name, :email
