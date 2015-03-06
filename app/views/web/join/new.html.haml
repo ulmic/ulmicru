@@ -1,0 +1,15 @@
+= simple_form_for @member, url: { controller: 'web/join', action: :create } do |f|
+  = f.input :first_name, as: :string, required: true, input_html: { value: current_user.first_name }
+  = f.input :patronymic, as: :string
+  = f.input :last_name, as: :string, required: true, input_html: { value: current_user.last_name }
+  = f.input :motto, as: :string
+  = f.input :ticket, as: :string
+  = f.input :mobile_phone, as: :string
+  = f.input :birth_date, as: :string
+  = f.input :home_adress, as: :string
+  = f.input :municipality, as: :string
+  = f.input :locality, as: :string
+  = f.input :avatar, as: :string
+  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+  = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+  = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get '/:ticket' => 'members#show'
       end
     end
+    resources :join, only: [ :new, :create ]
     namespace :admin do
       root to: 'welcome#index'
       resources :users

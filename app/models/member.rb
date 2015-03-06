@@ -26,6 +26,7 @@ class Member < ActiveRecord::Base
     state :confirmed
     state :declined
     state :removed
+    state :wants_to_join
 
     event :confirm do
       transition all => :confirmed
