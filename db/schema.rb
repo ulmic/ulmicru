@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20150320010632) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "activity_lines", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "found_date"
+    t.string   "type"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -39,6 +49,15 @@ ActiveRecord::Schema.define(version: 20150320010632) do
     t.text     "provider"
     t.text     "uid"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "banners", force: :cascade do |t|
+    t.string   "photo"
+    t.string   "link"
+    t.datetime "begin_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,6 +87,26 @@ ActiveRecord::Schema.define(version: 20150320010632) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "event_registrations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.string   "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "main_photo"
+    t.integer  "user_id"
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.string   "type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -84,9 +123,9 @@ ActiveRecord::Schema.define(version: 20150320010632) do
     t.text     "title"
     t.integer  "member_id"
     t.datetime "begin_date"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "end_date",   default: "for_now"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|
