@@ -27,6 +27,7 @@ Rails.application.routes.draw do
           delete 'destroy'
         end
       end
+      resources :join
     end
   end
 

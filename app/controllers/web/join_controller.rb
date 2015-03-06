@@ -2,15 +2,15 @@ class Web::JoinController < Web::ApplicationController
   before_filter :authenticate_user!, only: [ :new, :create ]
 
   def new
-    @member = Member.new
-    @member_form = MemberForm.new @member
+    @questionary = Member.new
+    @questionary_form = MemberForm.new @questionary
   end
 
   def create
-    @member = Member.new
-    @member_form = MemberForm.new @member
-    @member_form.submit params[:member]
-    if @member_form.save
+    @questionary = Member.new
+    @questionary_form = MemberForm.new @questionary
+    @questionary_form.submit params[:questionary]
+    if @questionary_form.save
       redirect_to root_path
     else
       render action: :new

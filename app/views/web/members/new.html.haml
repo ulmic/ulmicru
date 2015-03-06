@@ -12,4 +12,4 @@
   = f.input :avatar, as: :string
   = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   = f.button :submit, t('helpers.links.save'), class: 'btn-success'
-  = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'
+  = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'

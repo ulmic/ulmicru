@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Web::JoinControllerTest < ActionController::TestCase
   setup do
-    @member = create :member
-    sign_in @member.user
+    @questionary = create :questionary
+    sign_in @questionary.user
   end
 
   test 'should get new' do
@@ -12,8 +12,8 @@ class Web::JoinControllerTest < ActionController::TestCase
   end
 
   test 'should post create' do
-    attributes = attributes_for :member
-    post :create, member: attributes
+    attributes = attributes_for :questionary
+    post :create, questionary: attributes
     assert_response :redirect, @response.body
     assert_redirected_to root_path
     assert_equal attributes[:patronymic], Member.last.patronymic
