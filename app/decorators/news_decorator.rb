@@ -18,7 +18,8 @@ class NewsDecorator < Draper::Decorator
   end
 
   def publish_date_time
-    l(object.published_at)[0..22]
+    #l(object.published_at, format: '%d %b %Y %H:%m')
+     object.published_at.strftime('%d %b %Y %H:%m')
   end
 
 end
