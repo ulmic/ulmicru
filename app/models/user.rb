@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password validations: false
 
   has_many :authentications
+  has_one :member
 
   validates :email, uniqueness: true,
                     allow_nil: true

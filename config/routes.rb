@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       end
     end
     resources :join, only: [ :new, :create ]
+    resources :account, only: :index
     namespace :admin do
       root to: 'welcome#index'
       resources :users
