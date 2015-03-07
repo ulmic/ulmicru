@@ -28,3 +28,18 @@ ru:
         municipality: Муниципальное образование
         locality: Населённый пункт
         user: Прикреплённый Пользователь
+      questionary:
+        first_name: Имя
+        patronymic: Отчество
+        last_name: Фамилия
+        avatar: Аватар
+        full_name: Ф.И.О.
+        place: Место проживания
+        motto: Девиз по жизни
+        mobile_phone: Мобильный телефон
+        birth_date: Дата рождения
+        home_adress: Домашний адрес
+        municipality: Муниципальное образование
+        want_to_do: "Чем хочешь заниматься в МИЦ?"
+        experience: Опыт и навыки
+        locality: Населённый пункт
