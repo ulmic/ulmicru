@@ -23,5 +23,7 @@
             = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_join_path(questionary, questionary: { state: :put_on_the_trial }), method: :put, class: 'btn btn-success btn-xs'
           = link_to t('helpers.links.edit'), edit_admin_join_path(questionary), class: 'btn btn-warning btn-xs'
           = link_to t('helpers.links.destroy'), admin_join_path(questionary), method: :delete, class: 'btn btn-xs btn-danger'
+          - unless questionary.declined?
+            = link_to t('helpers.links.decline'), admin_join_path(questionary, questionary: { state: :declined }), method: :patch, class: 'btn btn-xs btn-danger'
 
 = link_to t('.new', default: t('helpers.links.new')), new_admin_join_path, class: 'btn btn-primary'
