@@ -34,7 +34,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
   def update
     @news = News.find params[:id]
     @news_form = NewsForm.new(@news)
-    @news_form.submit params[:user]
+    @news_form.submit params[:news]
     if @news_form.save
       redirect_to admin_news_index_path
     else 
