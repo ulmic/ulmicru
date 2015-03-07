@@ -1,4 +1,4 @@
-class Web::NewsDecorator < Draper::Decorator
+class NewsDecorator < Draper::Decorator
   delegate_all
 
   def short_lead
