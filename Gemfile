@@ -40,6 +40,7 @@ gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails'
+gem 'awesome_print' 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
