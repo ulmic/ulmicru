@@ -8,7 +8,7 @@ module LocalsHelper
   end
 
   def trash_page_title(model_class)
-    t('web.trash.deleted') + ' ' + model_class.model_name.human.pluralize(:ru).mb_chars.downcase.to_s
+    t('web.admin.trash.deleted') + ' ' + model_class.model_name.human.pluralize(:ru).mb_chars.downcase.to_s
   end
 
 end

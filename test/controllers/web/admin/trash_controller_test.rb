@@ -6,11 +6,15 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
     @user.remove
     @member = create :member
     @member.remove
+    @questionary = create :questionary
+    @questionary.remove
   end
   test 'should get index' do
     get :index, type: :user
     assert_response :success, @response.body
     get :index, type: :member
+    assert_response :success, @response.body
+    get :index, type: :questionary
     assert_response :success, @response.body
   end
 
