@@ -6,11 +6,9 @@ default: &default
 
 development:
   <<: *default
-  username: develop
   database: ulmic_development
 test:
   <<: *default
-  username: develop
   database: ulmic_test
 
 staging:
