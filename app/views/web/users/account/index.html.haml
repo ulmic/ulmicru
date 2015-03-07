@@ -24,6 +24,13 @@
   - unless @user.member.present?
     = t('.you_are_member_mic')
     = link_to t('.enter_datas_mic_member'), new_member_path
-    %br
     = t('.you_are_not_member_mic')
     = link_to t('organization.send_request'), new_join_path
+
+- @authentications.each do |auth|
+  = social_network_localize auth.provider
+  = link_to t('helpers.links.destroy'), users_authentication_path(auth), method: :delete, class: 'btn btn-danger btn-xs'
+
+- not_linked_social_networks(@authentications).each do |network|
+  = social_network_localize network
+  = link_to t('helpers.links.auth'), auth_path(network), class: 'btn btn-success btn-xs'

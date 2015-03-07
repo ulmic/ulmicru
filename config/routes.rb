@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     end
     resources :join, only: [ :new, :create ]
     namespace :users do
-      resources :account, only: [ :update ]
+      resources :account, only: :update
+      resources :authentications, only: :destroy
     end
     namespace :admin do
       resources :users
