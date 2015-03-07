@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
     resources :join, only: [ :new, :create ]
     namespace :users do
+      resources :account, only: [ :update ]
     end
     namespace :admin do
       root to: 'welcome#index'

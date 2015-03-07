@@ -2,12 +2,30 @@ require 'test_helper'
 
 class Web::Users::AccountControllerTest < ActionController::TestCase
   setup do
-    @user = create :user
-    sign_in @user
+    @member = create :member
+    sign_in @member.user
   end
 
   test 'should get index' do
     get :index
     assert_response :success, @response.body
+  end
+
+  test 'should patch update with user' do
+    attributes = attributes_for :user
+    patch :update, user: attributes, id: @member.user
+    assert_response :redirect, @response.body
+    assert_redirected_to account_path
+    @member.user.reload
+    assert_equal attributes[:first_name], @member.user.first_name
+  end
+
+  test 'should patch update with member' do
+    attributes = attributes_for :member
+    patch :update, member: attributes, id: @member
+    assert_response :redirect, @response.body
+    assert_redirected_to account_path
+    @member.reload
+    assert_equal attributes[:patronymic], @member.patronymic
   end
 end
