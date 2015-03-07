@@ -3,12 +3,11 @@
 
 .page-header
   %h1=t '.title'
-#tabs
   %ul.nav.nav-tabs{ role: :tablist }
     %li
       = link_to t('.published'), '#published'
     %li
-      = link_to t('.unpublished'), '#unpublished'#{@unpublished_news.count}", '#unpublished'
+      = link_to t('.unpublished'), '#unpublished'
   #published
     = render 'news_list', news: @published_news
   #unpublished
