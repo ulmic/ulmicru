@@ -3,5 +3,6 @@ FactoryGirl.define do
     member_id { Member.last ? Member.last.id : 1 }
     experience { generate :string }
     want_to_do { generate :string }
+    state 'unviewed'
   end
 end

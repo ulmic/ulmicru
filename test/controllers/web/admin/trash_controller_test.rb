@@ -17,7 +17,7 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
   test 'should patch restore' do
     patch :restore, type: :user, id: @user
     @user.reload
-    assert @user.not_confirmed?
+    assert @user.unviewed?
     assert_response :redirect, @response.body
   end
 

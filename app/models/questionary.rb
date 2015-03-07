@@ -5,19 +5,40 @@ class Questionary < ActiveRecord::Base
   validates :experience, presence: true
   validates :want_to_do, presence: true
 
-  state_machine initial: :new do
-    state :new
+  state_machine :state, initial: :unviewed do
+    state :unviewed
     state :confirmed
     state :declined
     state :on_the_trial
+    state :removed
+
+    event :confirm do
+      transition all => :confirmed
+    end
+    event :decline do
+      transition all => :declined
+    end
+    event :put_on_the_trial do
+      transition all => :on_the_trial
+    end
+    event :remove do
+      transition all => :removed
+    end
+    event :restore do
+      transition removed: :unviewed
+    end
   end
 
-  attr_accessor :first_name, :last_name, :email, :patronymic, :motto, :mobile_phone, :birth_date, :home_adress, :municipality, :locality, :avatar, :state, :user_id
+  def user
+    member.user if member
+  end
+
+  attr_accessor :first_name, :last_name, :email, :patronymic, :motto, :mobile_phone, :birth_date, :home_adress, :municipality, :locality, :avatar, :user_id, :ticket
 
   private
 
   def update_member
-    params = { patronymic: patronymic, motto: motto, mobile_phone: mobile_phone, birth_date: birth_date, home_adress: home_adress, municipality: municipality, locality: locality, avatar: avatar, state: state, user_id: user_id }
+    params = { patronymic: patronymic, motto: motto, mobile_phone: mobile_phone, birth_date: birth_date, home_adress: home_adress, municipality: municipality, locality: locality, avatar: avatar, state: state, user_id: user_id, ticket: ticket }
     params.keys.each do |key|
       params[key] = nil unless params[key].present?
     end

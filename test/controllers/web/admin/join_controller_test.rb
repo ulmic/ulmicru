@@ -21,7 +21,7 @@ class Web::Admin::JoinControllerTest < ActionController::TestCase
     post :create, questionary: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_join_index_path
-    assert_equal attributes[:patronymic], Member.last.patronymic
+    assert_equal attributes[:patronymic], Questionary.last.patronymic
   end
 
   test 'should get edit' do
@@ -39,7 +39,7 @@ class Web::Admin::JoinControllerTest < ActionController::TestCase
   end
 
   test 'should delete destroy' do
-    count = Member.count
+    count = Questionary.count
     delete :destroy, id: @questionary
     @questionary.reload
     assert @questionary.removed?

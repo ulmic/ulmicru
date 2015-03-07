@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   scope :presented, -> { where.not(state: :removed) }
   scope :removed, -> { where state: :removed }
 
-  state_machine :state, initial: :not_confirmed do
-    state :not_confirmed
+  state_machine :state, initial: :unviewed do
+    state :unviewed
     state :confirmed
     state :declined
     state :removed
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
       transition all => :removed
     end
     event :restore do
-      transition :removed => :not_confirmed
+      transition :removed => :unviewed
     end
   end
 end

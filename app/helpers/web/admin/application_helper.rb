@@ -1,8 +1,8 @@
 module Web::Admin::ApplicationHelper
   def notification_count
-    Member.not_confirmed.count
+    Member.unviewed.count
   end
   def state_color(item)
-    :success if item.not_confirmed?
+    :success if item.unviewed?
   end
 end

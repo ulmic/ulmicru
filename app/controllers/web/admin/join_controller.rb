@@ -1,6 +1,6 @@
 class Web::Admin::JoinController < Web::Admin::ApplicationController
   def index
-    @questionaries = Questionary.all
+    @questionaries = Questionary.all.decorate
   end
 
   def new

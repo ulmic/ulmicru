@@ -19,11 +19,10 @@ class Member < ActiveRecord::Base
 
   scope :presented, -> { where.not(state: :removed) }
   scope :removed, -> { where state: :removed }
-  scope :not_confirmed, -> { where state: :not_confirmed }
-  scope :questionaries, -> { where state: :wants_to_join }
+  scope :unviewed, -> { where state: :unviewed }
 
-  state_machine :state, initial: :not_confirmed do
-    state :not_confirmed
+  state_machine :state, initial: :unviewed do
+    state :unviewed
     state :confirmed
     state :declined
     state :removed
@@ -38,7 +37,7 @@ class Member < ActiveRecord::Base
       transition all => :removed
     end
     event :restore do
-      transition removed: :not_confirmed
+      transition removed: :unviewed
     end
   end
   attr_accessor :first_name, :last_name, :email
