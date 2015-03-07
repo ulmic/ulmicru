@@ -13,7 +13,7 @@ class News < ActiveRecord::Base
 
   extend Enumerize
 
-  scope :published, -> { where "published_at <= ?", DateTime.now}
-  scope :unpublished, -> { where "published_at > ?", DateTime.now}
+  scope :published, -> { where 'published_at <= ?', DateTime.now}
+  scope :unpublished, -> { where 'published_at > ?', DateTime.now}
 
 end
