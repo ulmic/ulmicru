@@ -16,6 +16,11 @@ ru:
       back: Назад
       approve: Подтвердить
       decline: Отклонить
+  social_networks:
+    vkontakte: ВКонтакте
+    facebook: Facebook
+    twitter: Twitter
+    google: Google
   web:
     users:
       new:

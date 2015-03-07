@@ -2,4 +2,9 @@
   = f.input :email, label: t('activerecord.attributes.user.email')
   = f.input :password, label: t('activerecord.attributes.user.password')
   = f.button :submit, t('helpers.new.enter')
+
+= link_to t('social_networks.vkontakte'), auth_path(:vkontakte)
+= link_to t('social_networks.twitter'), auth_path(:twitter)
+= link_to t('social_networks.facebook'), auth_path(:facebook)
+= link_to t('social_networks.google'), auth_path(:google)
 = link_to t('.register'), new_user_path

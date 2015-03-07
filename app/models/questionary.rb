@@ -5,6 +5,13 @@ class Questionary < ActiveRecord::Base
   validates :experience, presence: true
   validates :want_to_do, presence: true
 
+  state_machine initial: :new do
+    state :new
+    state :confirmed
+    state :declined
+    state :on_the_trial
+  end
+
   attr_accessor :first_name, :last_name, :email, :patronymic, :motto, :mobile_phone, :birth_date, :home_adress, :municipality, :locality, :avatar, :state, :user_id
 
   private

@@ -34,4 +34,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def auth_path(provider)
+    "/auth/#{provider}"
+  end
 end

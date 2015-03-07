@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :authentications
 
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true,
+                    allow_nil: true
   validates :first_name, human_name: true,
                          allow_blank: true
   validates :last_name, human_name: true,
