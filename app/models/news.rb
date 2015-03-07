@@ -4,7 +4,7 @@ class News < ActiveRecord::Base
   validates :body,          presence: true
   validates :published_at,  presence: true
   validates :photo,         presence: false 
-  validates :author_id,     presence: true
+  validates :user_id,       presence: true
 
   def is_published?
     published_at <= DateTime.now
