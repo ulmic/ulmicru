@@ -19,6 +19,8 @@
         %td= member.ticket
         %td= member.place
         %td
+          - unless member.confirmed?
+            = link_to t('helpers.links.approve'), admin_member_path(member, member: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs'
           = link_to t('helpers.links.edit'), edit_admin_member_path(member), class: 'btn btn-warning btn-xs'
           = link_to t('helpers.links.destroy'), admin_member_path(member), method: :delete, class: 'btn btn-xs btn-danger'
 

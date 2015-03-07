@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'web/omniauth#callback'
   get 'account' => 'web/users/account#index'
+  get '/admin' => 'web/admin/welcome#index'
   get '/:ticket' => 'web/members#show'
 
   scope module: :web do
@@ -15,10 +16,10 @@ Rails.application.routes.draw do
     end
     resources :join, only: [ :new, :create ]
     namespace :users do
-      resources :account, only: [ :update ]
+      resources :account, only: :update
+      resources :authentications, only: :destroy
     end
     namespace :admin do
-      root to: 'welcome#index'
       resources :users
       resources :members
       resources :unviewed, only: :index
