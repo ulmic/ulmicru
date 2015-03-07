@@ -26,6 +26,7 @@ ru:
       state:
         events:
           put_on_the_trial: Поставить на испытательный срок
+          confirm: Принять в организацию
   web:
     users:
       new:
