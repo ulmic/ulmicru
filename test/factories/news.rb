@@ -4,6 +4,6 @@ FactoryGirl.define do
     body         { generate :string } 
     published_at { DateTime.now }
     photo        { generate :file }
-    author_id    { generate :integer }
+    user_id    { generate :integer }
   end
 end
