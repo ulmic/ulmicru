@@ -20,4 +20,8 @@ class QuestionaryDecorator < Draper::Decorator
   def place
     "#{member.municipality}, #{member.locality}"
   end
+
+  def name
+    full_name
+  end
 end

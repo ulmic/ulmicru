@@ -5,6 +5,10 @@ class Questionary < ActiveRecord::Base
   validates :experience, presence: true
   validates :want_to_do, presence: true
 
+  scope :unviewed, -> { where state: :unviewed }
+  scope :presented, -> { where.not(state: :removed) }
+  scope :removed, -> { where state: :removed }
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed

@@ -21,11 +21,18 @@ ru:
     facebook: Facebook
     twitter: Twitter
     google: Google
+  state_machines:
+    questionary:
+      state:
+        events:
+          put_on_the_trial: Поставить на испытательный срок
+          confirm: Принять в организацию
   web:
     users:
       new:
         register: Регистрация
-    trash:
-      name: Имя
-      title: Корзина
-      deleted: Удалённые
+    admin:
+      trash:
+        name: Имя
+        title: Корзина
+        deleted: Удалённые

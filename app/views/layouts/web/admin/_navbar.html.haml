@@ -13,7 +13,7 @@
       = menu_item admin_members_path do
         = Member.model_name.human.pluralize(:ru)
       = menu_item admin_join_index_path do
-        = t('activerecord.models.questionary').pluralize(:ru)
+        = Questionary.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item admin_unviewed_index_path do
         %span.glyphicon.glyphicon-info-sign
@@ -21,10 +21,11 @@
       %li.dropdown
         %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
           %span.glyphicon.glyphicon-trash
-          = t('web.trash.title')
+          = t('web.admin.trash.title')
         %ul.dropdown-menu
           = menu_item type_admin_trash_index_path('user') do
             = User.model_name.human.pluralize(:ru)
           = menu_item type_admin_trash_index_path('member') do
             = Member.model_name.human.pluralize(:ru)
-
+          = menu_item type_admin_trash_index_path('questionary') do
+            = Questionary.model_name.human.pluralize(:ru)
