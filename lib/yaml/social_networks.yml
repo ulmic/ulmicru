@@ -1,5 +1,5 @@
 social_networks:
-  vkontakte: ВКонтакте
-  twitter: Твиттер
-  facebook: Facebook
-  google: Google
+  - vkontakte
+  - twitter
+  - facebook
+  - google
