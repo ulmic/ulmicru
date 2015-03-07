@@ -10,7 +10,7 @@ class Web::SessionsController < Web::ApplicationController
     if @user
       if @user.authenticate params[:user][:password]
         sign_in @user
-        redirect_to root_path
+        redirect_to account_index_path
       else
         render :new
       end
