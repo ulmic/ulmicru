@@ -29,7 +29,7 @@ class Web::Admin::JoinController < Web::Admin::ApplicationController
     @questionary_form = QuestionaryForm.new @questionary
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
-      @questionary_form.member.confirm if @questionary_form.confirmed?
+      @questionary_form.member.confirm if @questionary_form.model.confirmed?
       redirect_to admin_join_index_path
     else
       render action: :edit
