@@ -28,7 +28,4 @@ FactoryGirl.define do
   sequence :human_name do
     "Leopold"
   end
-  sequence :number do 
-    Random.rand(2)
-  end
 end
