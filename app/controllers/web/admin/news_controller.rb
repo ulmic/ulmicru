@@ -1,7 +1,7 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
   def index
-    @published_news = Web::NewsDecorator.decorate_collection News.published.order('created_at DESC') #FIXME using another decorator in that file
-    @unpublished_news = Web::NewsDecorator.decorate_collection News.unpublished.order('created_at DESC')
+    @published_news = Web::NewsDecorator.decorate_collection News.published.order('published_at DESC') #FIXME using another decorator in that file
+    @unpublished_news = Web::NewsDecorator.decorate_collection News.unpublished.order('published_at DESC')
   end
 
   def show

@@ -1,6 +1,6 @@
 class Web::NewsController < Web::ApplicationController
   def index
-    @news = Web::NewsDecorator.decorate_collection News.published.order('created_at DESC')
+    @news = Web::NewsDecorator.decorate_collection News.published.order('published_at DESC')
   end
 
   def show
