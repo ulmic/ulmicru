@@ -14,6 +14,15 @@ class Web::Users::AccountController < Web::Users::ApplicationController
       else
         redirect_to account_path
       end
+    elsif params[:member]
+      @member = Member.find params[:id]
+      @member_form = MemberForm.new @member
+      @member_form.submit params[:member]
+      if @member_form.save
+        redirect_to account_path
+      else
+        redirect_to account_path
+      end
     end
   end
 end
