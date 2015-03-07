@@ -1,5 +1,19 @@
-- if @member.present?
-  = simple_form_for
+- if @user.has_confirmed_member?
+  = simple_form_for @user.member, url: { controller: 'web/users/account', action: :update, id: @user.member.id } do |f|
+    = f.input :first_name, as: :string, required: true, input_html: { value: current_user.first_name }
+    = f.input :patronymic, as: :string
+    = f.input :last_name, as: :string, required: true, input_html: { value: current_user.last_name }
+    = f.input :motto, as: :string
+    = f.input :ticket, as: :string, required: true
+    = f.input :mobile_phone, as: :string
+    = f.input :birth_date, as: :string
+    = f.input :home_adress, as: :string
+    = f.input :municipality, as: :string
+    = f.input :locality, as: :string
+    = f.input :avatar, as: :string
+    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+    = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+    = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
 - else
   = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
     = f.input :first_name, as: :string
@@ -7,3 +21,9 @@
     = f.input :email, as: :string
     = f.input :password, as: :string
     = f.button :submit, t('helpers.links.save')
+  - unless @user.member.present?
+    = t('.you_are_member_mic')
+    = link_to t('.enter_datas_mic_member'), new_member_path
+    %br
+    = t('.you_are_not_member_mic')
+    = link_to t('organization.send_request'), new_join_path

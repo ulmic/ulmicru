@@ -5,4 +5,8 @@ class UserDecorator < Draper::Decorator
     "#{first_name} #{last_name}"
   end
 
+  def has_confirmed_member?
+    member.confirmed? if member.present?
+  end
+
 end

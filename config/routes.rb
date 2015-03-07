@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'web/omniauth#callback'
   get 'account' => 'web/users/account#index'
+  get '/:ticket' => 'web/members#show'
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
     resources :users, only: [ :new, :create ]
     resources :members, only: [ :new, :create ] do
       collection do
-        get '/:ticket' => 'members#show'
       end
     end
     resources :join, only: [ :new, :create ]
