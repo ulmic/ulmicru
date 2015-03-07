@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'web/welcome#index'
 
   get '/auth/:provider/callback' => 'web/omniauth#callback'
+  get 'account' => 'web/users/account#index'
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
@@ -13,7 +14,8 @@ Rails.application.routes.draw do
       end
     end
     resources :join, only: [ :new, :create ]
-    resources :account, only: :index
+    namespace :users do
+    end
     namespace :admin do
       root to: 'welcome#index'
       resources :users
