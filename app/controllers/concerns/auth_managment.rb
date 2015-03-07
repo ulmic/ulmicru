@@ -25,6 +25,16 @@ module Concerns
       redirect_to new_session_path unless signed_in?
     end
 
+    def authenticate_member!
+      if signed_in?
+        unless current_user.member.present?
+          redirect_to new_session_path
+        end
+      else
+        redirect_to new_session_path
+      end
+    end
+
     def current_user
       @_current_user ||= User.find_by(id: session[:user_id])
     end

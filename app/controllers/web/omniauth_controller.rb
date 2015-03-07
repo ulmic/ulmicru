@@ -25,7 +25,7 @@ class Web::OmniauthController < Web::ApplicationController
       end
       Authentication.create user_id: current_user.id, provider: provider, uid: uid
     end
-    redirect_to root_path
+    redirect_to account_index_path
   end
 
   alias :google :callback

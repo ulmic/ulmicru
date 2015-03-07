@@ -11,7 +11,7 @@ class Web::MembersController < Web::ApplicationController
     @member_form = MemberForm.new @member
     @member_form.submit params[:member]
     if @member_form.save
-      redirect_to root_path
+      redirect_to account_path
     else
       render action: :new
     end
