@@ -16,7 +16,7 @@ class Web::JoinControllerTest < ActionController::TestCase
     attributes = attributes_for :questionary
     post :create, questionary: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to root_path
+    assert_redirected_to account_path
     assert_equal attributes[:patronymic], Questionary.last.patronymic
   end
 
