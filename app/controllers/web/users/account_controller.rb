@@ -1,7 +1,6 @@
 class Web::Users::AccountController < Web::Users::ApplicationController
   def index
-    @user = User.find current_user.id
-    @member = @user.member
+    @user = User.find(current_user.id).decorate
     @authentications = current_user.authentications
   end
 
@@ -11,6 +10,15 @@ class Web::Users::AccountController < Web::Users::ApplicationController
       @user_form = UserForm.new @user
       @user_form.submit params[:user]
       if @user_form.save
+        redirect_to account_path
+      else
+        redirect_to account_path
+      end
+    elsif params[:member]
+      @member = Member.find params[:id]
+      @member_form = MemberForm.new @member
+      @member_form.submit params[:member]
+      if @member_form.save
         redirect_to account_path
       else
         redirect_to account_path

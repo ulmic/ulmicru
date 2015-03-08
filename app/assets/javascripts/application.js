@@ -16,4 +16,6 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require js-routes
+//= require i18n_setup
 //= require_tree .

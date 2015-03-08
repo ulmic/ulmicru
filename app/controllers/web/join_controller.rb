@@ -11,7 +11,7 @@ class Web::JoinController < Web::ApplicationController
     @questionary_form = QuestionaryForm.new @questionary
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
-      redirect_to root_path
+      redirect_to account_path
     else
       render action: :new
     end

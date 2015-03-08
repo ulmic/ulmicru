@@ -4,6 +4,7 @@ class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :parent, class_name: 'Member'
   has_one :questionary
+  has_many :attribute_accesses
 
   validates :patronymic, presence: true,
                          human_name: true
@@ -17,7 +18,7 @@ class Member < ActiveRecord::Base
   validates :locality, presence: true
   validates :avatar, presence: true
 
-  scope :presented, -> { where.not(state: :removed) }
+  scope :presented, -> { where('state != \'removed\' AND state != \'not_member\'') }
   scope :removed, -> { where state: :removed }
   scope :unviewed, -> { where state: :unviewed }
 
@@ -26,6 +27,7 @@ class Member < ActiveRecord::Base
     state :confirmed
     state :declined
     state :removed
+    state :not_member
 
     event :confirm do
       transition all => :confirmed
