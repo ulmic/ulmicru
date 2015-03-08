@@ -4,6 +4,7 @@
 #= require moment
 #= require moment/ru
 #= require bootstrap-datetimepicker
+#= require moment/ru
 #= require pickers
 
 $ ->
