@@ -1,4 +1,6 @@
-social_networks:
+attributes:
+  - mobile_phone
+  - birth_date
   - vkontakte
   - twitter
   - facebook

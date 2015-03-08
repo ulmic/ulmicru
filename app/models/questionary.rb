@@ -42,7 +42,7 @@ class Questionary < ActiveRecord::Base
   private
 
   def update_member
-    params = { patronymic: patronymic, motto: motto, mobile_phone: mobile_phone, birth_date: birth_date, home_adress: home_adress, municipality: municipality, locality: locality, avatar: avatar, state: state, user_id: user_id, ticket: ticket }
+    params = { patronymic: patronymic, motto: motto, mobile_phone: mobile_phone, birth_date: birth_date, home_adress: home_adress, municipality: municipality, locality: locality, avatar: avatar, state: :not_member, user_id: user_id, ticket: ticket }
     params.keys.each do |key|
       params[key] = nil unless params[key].present?
     end

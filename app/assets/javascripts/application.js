@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require js-routes
+//= require i18n_setup
 //= require_tree .

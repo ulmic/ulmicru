@@ -9,4 +9,7 @@ class UserDecorator < Draper::Decorator
     member.confirmed? if member.present?
   end
 
+  def has_member?
+    not member.removed? if member.present?
+  end
 end

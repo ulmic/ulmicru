@@ -14,6 +14,8 @@
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'
     = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
+  - attributes_need_access.each do |attribute|
+    = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.member.id  }
 - else
   = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
     = f.input :first_name, as: :string
@@ -21,7 +23,7 @@
     = f.input :email, as: :string
     = f.input :password, as: :string
     = f.button :submit, t('helpers.links.save')
-  - unless @user.member.present?
+  - unless @user.has_member?
     = t('.you_are_member_mic')
     = link_to t('.enter_datas_mic_member'), new_member_path
     = t('.you_are_not_member_mic')

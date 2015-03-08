@@ -42,7 +42,7 @@ module ApplicationHelper
   include SocialNetworks
 
   def social_network_localize(provider)
-    SocialNetworks.localize provider
+    I18n.t("social_networks.#{provider}")
   end
 
   def not_linked_social_networks(authentications)

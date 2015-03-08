@@ -32,6 +32,8 @@ gem 'bootstrap-sass'
 gem 'state_machine', git: 'https://github.com/seuros/state_machine.git'
 gem 'draper'
 gem 'russian'
+gem 'js-routes'
+gem 'i18n-js', git: 'https://github.com/fnando/i18n-js'
 
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
