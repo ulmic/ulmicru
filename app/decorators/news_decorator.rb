@@ -22,4 +22,8 @@ class NewsDecorator < Draper::Decorator
      object.published_at.strftime('%d %b %Y %H:%m')
   end
 
+  def name 
+    "#{model.title.first(30)}"
+  end
+
 end

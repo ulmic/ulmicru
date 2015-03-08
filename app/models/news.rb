@@ -11,9 +11,29 @@ class News < ActiveRecord::Base
   end
 
 
-  extend Enumerize
 
-  scope :published, -> { where 'published_at <= ?', DateTime.now}
-  scope :unpublished, -> { where 'published_at > ?', DateTime.now}
+  scope :published, ->   { where('published_at <= ?', DateTime.now).where.not(state: :removed)}
+  scope :unpublished, -> { where('published_at > ?',  DateTime.now).where.not(state: :removed)}
 
+  scope :removed, -> { where state: :removed }
+
+  state_machine :state, initial: :unviewed do
+    state :unviewed
+    state :confirmed
+    state :declined
+    state :removed
+
+    event :confirm do
+      transition all => :confirmed
+    end
+    event :decline do
+      transition all => :declined
+    end
+    event :remove do
+      transition all => :removed
+    end
+    event :restore do
+      transition :removed => :unviewed
+    end
+  end
 end

@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require bootstrap-sprockets
 #= require moment
+#= require moment/ru
 #= require bootstrap-datetimepicker
 #= require pickers
 

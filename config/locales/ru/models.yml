@@ -4,6 +4,7 @@ ru:
       user: Пользователь
       member: Член организации
       questionary: Анкета на вступление
+      news: Новости
     attributes:
       user:
         first_name: Имя
@@ -44,3 +45,11 @@ ru:
         experience: Опыт и навыки
         locality: Населённый пункт
         created_at: Дата подачи
+      news:
+        title: Заголовок
+        body: Контекст
+        published_at: Дата публикации
+        created_at: Дата создания
+        user_id: Прикреплённый пользователь
+        photo: Фотография
+

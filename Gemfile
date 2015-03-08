@@ -40,7 +40,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails'
+gem 'momentjs-rails', '>= 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'awesome_print' 
 gem 'turbolinks'
 # Use ActiveModel has_secure_password

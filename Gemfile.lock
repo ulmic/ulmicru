@@ -344,7 +344,7 @@ DEPENDENCIES
   jquery-rails
   js-routes
   mini_magick
-  momentjs-rails (>= 2.8.1)!
+  momentjs-rails (>= 2.9)!
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
