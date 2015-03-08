@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20150306010850) do
     t.text     "state"
   end
 
+  create_table "news", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "published_at"
+    t.text     "photo"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "questionaries", force: :cascade do |t|
     t.text     "experience"
     t.text     "want_to_do"

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
+    resources :news, only: [:index, :show]
     resources :users, only: [ :new, :create ]
     resources :members, only: [ :new, :create ] do
       collection do
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
       resources :users
       resources :members
       resources :unviewed, only: :index
+      resources :news
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

@@ -23,7 +23,7 @@ FactoryGirl.define do
     Date.today + n.day
   end
   sequence :file do |n|
-    fixture_file_upload('app/assets/images/winners/0.png', 'image/png')
+    fixture_file_upload('app/assets/images/apps/logo-mic-square.png', 'image/png') 
   end
   sequence :human_name do
     "Leopold"
