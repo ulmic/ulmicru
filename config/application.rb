@@ -14,6 +14,7 @@ module Ulmicru
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.available_locales = [:en, :ru]
+    config.i18n.default_locale = :ru
     config.assets.initialize_on_precompile = true
     config.generators do |g|
       g.template_engine :haml
