@@ -17,12 +17,10 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
 
   test "should create news" do
     attributes = attributes_for :news
-
     post :create, news: attributes
-    assert_response :redirect
-
-    news = News.last
-    assert_equal attributes[:title], news.title
+    assert_response :redirect, @response.body
+    assert_redirected_to admin_news_index_path
+    assert_equal attributes[:title], News.last.title
   end
 
   test "should not create news" do
