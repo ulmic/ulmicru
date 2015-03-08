@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
+      resources :attribute_accesses, only: :create
     end
     namespace :admin do
       resources :users

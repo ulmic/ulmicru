@@ -14,8 +14,8 @@
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'
     = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
-  - @user.member.attribute_accesses.each do |attr_access|
-    = check_box :attr_access
+  - attributes_need_access.each do |attribute|
+    = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.member.id  }
 - else
   = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
     = f.input :first_name, as: :string

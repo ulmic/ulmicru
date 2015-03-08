@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20150307215230) do
 
   create_table "attribute_accesses", force: :cascade do |t|
     t.integer  "member_id"
-    t.text     "attribute"
+    t.text     "member_attribute"
     t.text     "access"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "authentications", force: :cascade do |t|
