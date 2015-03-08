@@ -44,7 +44,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
 
   def destroy
     @news = News.find params[:id]
-    @news.destroy
+    @news.remove
     redirect_to admin_news_index_path
   end
 end

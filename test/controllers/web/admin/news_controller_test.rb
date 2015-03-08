@@ -3,8 +3,6 @@ require 'test_helper'
 class Web::Admin::NewsControllerTest < ActionController::TestCase
   setup do
     @news = create :news
-    @admin = create :admin
-    sign_in @admin
   end
 
   test "should get index" do
@@ -19,12 +17,10 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
 
   test "should create news" do
     attributes = attributes_for :news
-
     post :create, news: attributes
-    assert_response :redirect
-
-    news = News.last
-    assert_equal attributes[:title], news.title
+    assert_response :redirect, @response.body
+    assert_redirected_to admin_news_index_path
+    assert_equal attributes[:title], News.last.title
   end
 
   test "should not create news" do
@@ -57,10 +53,9 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
   end
 
   test "should destroy news" do
-    assert_difference('News.count', -1) do
-      delete :destroy, id: @news
-    end
-
-    assert_redirected_to admin_news_index_path
+    count = News.count
+    delete :destroy, id: @news
+    @news.reload
+    assert @news.removed?
   end
 end
