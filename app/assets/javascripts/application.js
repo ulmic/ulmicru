@@ -18,4 +18,6 @@
 //= require pickers
 //= require js-routes
 //= require i18n_setup
+//= require froala_editor.min.js
+//= require langs/ru.js
 //= require_tree .

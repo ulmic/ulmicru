@@ -43,6 +43,9 @@ gem 'omniauth-facebook'
 gem 'momentjs-rails', '>= 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'awesome_print' 
 gem 'turbolinks'
+gem 'wysiwyg-rails'
+gem 'font-awesome-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
