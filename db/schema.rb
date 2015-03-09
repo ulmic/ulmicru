@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150309174901) do
     t.text     "state"
     t.text     "experience"
     t.text     "want_to_do"
+    t.string   "type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

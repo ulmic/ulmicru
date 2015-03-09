@@ -20,6 +20,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :state
       t.text :experience
       t.text :want_to_do
+      t.string :type
 
       t.timestamps null: false
     end
