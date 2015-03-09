@@ -1,8 +1,6 @@
 FactoryGirl.define do
   factory :member do
     patronymic { generate :human_name }
-    association :user
-    user_id { User.last ? User.last.id : 1 }
     motto { generate :string }
     ticket { generate :integer }
     parent_id 1

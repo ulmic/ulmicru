@@ -1,9 +1,5 @@
-class Member < ActiveRecord::Base
-  after_save :update_user_name
-
-  belongs_to :user
+class Member < User
   belongs_to :parent, class_name: 'Member'
-  has_one :questionary
   has_many :attribute_accesses
 
   validates :patronymic, presence: true,
@@ -40,20 +36,6 @@ class Member < ActiveRecord::Base
     end
     event :restore do
       transition removed: :unviewed
-    end
-  end
-  attr_accessor :first_name, :last_name, :email
-
-  private
-
-  def update_user_name
-    if user_id
-      User.update user_id, first_name: first_name if first_name.present?
-      User.update user_id, last_name: last_name if last_name.present?
-      User.update user_id, email: email if email.present?
-    else
-      user = User.create(first_name: first_name, last_name: last_name, email: email)
-      update user_id: User.last.id
     end
   end
 end

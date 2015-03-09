@@ -32,23 +32,6 @@ ActiveRecord::Schema.define(version: 20150308075000) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "members", force: :cascade do |t|
-    t.text     "patronymic"
-    t.integer  "user_id"
-    t.text     "motto"
-    t.integer  "ticket"
-    t.integer  "parent_id"
-    t.text     "mobile_phone"
-    t.datetime "birth_date"
-    t.text     "home_adress"
-    t.text     "municipality"
-    t.text     "locality"
-    t.text     "avatar"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.text     "state"
-  end
-
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -60,24 +43,28 @@ ActiveRecord::Schema.define(version: 20150308075000) do
     t.text     "state"
   end
 
-  create_table "questionaries", force: :cascade do |t|
-    t.text     "experience"
-    t.text     "want_to_do"
-    t.text     "state"
-    t.integer  "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.text     "email"
     t.text     "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.text     "role"
     t.text     "first_name"
     t.text     "last_name"
+    t.text     "patronymic"
+    t.integer  "user_id"
+    t.text     "motto"
+    t.integer  "ticket"
+    t.integer  "parent_id"
+    t.text     "mobile_phone"
+    t.datetime "birth_date"
+    t.text     "home_adress"
+    t.text     "municipality"
+    t.text     "locality"
+    t.text     "avatar"
+    t.text     "role"
     t.text     "state"
+    t.text     "experience"
+    t.text     "want_to_do"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
