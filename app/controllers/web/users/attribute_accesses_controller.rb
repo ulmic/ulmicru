@@ -1,9 +1,10 @@
 class Web::Users::AttributeAccessesController < Web::Users::ApplicationController
   def create
-    @access = AttributeAccess.where(member_attribute: params[:attribute_access][:member_attribute], member_id: params[:attribute_access][:member_id]).first
+    @access = AttributeAccess.find member_attribute: params[:attribute_access][:member_attribute], member_id: params[:attribute_access][:member_id]
     unless @access
       @access = AttributeAccess.new
     end
+    access = AttributeAccess.find_or_initialize_by(params[:attribute_access])
     @access_form = AttributeAccessForm.new @access
     @access_form.submit params[:attribute_access]
     if @access_form.save

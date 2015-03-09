@@ -17,5 +17,6 @@
 //= require bootstrap-datetimepicker
 //= require pickers
 //= require js-routes
+//= require active_form
 //= require i18n_setup
 //= require_tree .
