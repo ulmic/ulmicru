@@ -7,6 +7,8 @@ class Member < ActiveRecord::Base
   has_many :attribute_accesses
   has_many :positions
 
+  accepts_nested_attributes_for :positions
+
   validates :patronymic, presence: true,
                          human_name: true
   validates :motto, presence: true

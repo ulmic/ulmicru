@@ -4,6 +4,7 @@ class Web::Users::AttributeAccessesController < Web::Users::ApplicationControlle
     unless @access
       @access = AttributeAccess.new
     end
+    access = AttributeAccess.find_or_initialize_by(params[:attribute_access])
     @access_form = AttributeAccessForm.new @access
     @access_form.submit params[:attribute_access]
     if @access_form.save

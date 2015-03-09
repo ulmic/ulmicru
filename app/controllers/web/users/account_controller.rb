@@ -1,6 +1,7 @@
 class Web::Users::AccountController < Web::Users::ApplicationController
   def index
-    @user = User.find(current_user.id).decorate
+    @user = current_user.decorate
+    @user.member.positions.build if @user.member.present?
     @authentications = current_user.authentications
   end
 
