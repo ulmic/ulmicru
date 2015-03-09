@@ -3,7 +3,7 @@ require 'test_helper'
 class Web::MembersControllerTest < ActionController::TestCase
   setup do
     @member = create :member
-    sign_in @member.user
+    sign_in @member
   end
 
   test 'should not get new unsigned' do

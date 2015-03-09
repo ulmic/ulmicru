@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Web::JoinControllerTest < ActionController::TestCase
   setup do
-    create :member
+    user = create :user
+    sign_in user
     @questionary = create :questionary
-    sign_in @questionary.user
   end
 
   test 'should get new' do

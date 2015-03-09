@@ -3,17 +3,10 @@
 .row
   .col-lg-6
     = simple_form_for @questionary, url: { controller: 'web/admin/join', action: action }, input_html: { class: 'form-horizontal' } do |f|
-      - if @questionary.user.present?
-        = f.input :first_name, as: :string, required: true, input_html: { value: @questionary.user.first_name }
-      - else
-        = f.input :first_name, as: :string, required: true
+      = f.input :first_name, as: :string, required: true
       = f.input :patronymic, as: :string
-      - if @questionary.user.present?
-        = f.input :last_name, as: :string, required: true, input_html: { value: @questionary.user.last_name }
-        = f.input :email, as: :string, required: true, input_html: { value: @questionary.user.email }
-      - else
-        = f.input :last_name, as: :string, required: true
-        = f.input :email, as: :string, required: true
+      = f.input :last_name, as: :string, required: true
+      = f.input :email, as: :string, required: true
       = f.input :motto, as: :string
       = f.input :mobile_phone, as: :string
       = f.input :birth_date, as: :string
@@ -21,6 +14,5 @@
       = f.input :municipality, as: :string
       = f.input :locality, as: :string
       = f.input :avatar, as: :string
-      = f.association :member, label_method: lambda { |member| "#{member.id} | #{member.user.first_name} #{member.user.last_name}" }, value_method: :id, required: true
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_join_index_path, class: 'btn btn-default'

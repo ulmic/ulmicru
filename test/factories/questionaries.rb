@@ -1,6 +1,15 @@
 FactoryGirl.define do
   factory :questionary do
-    member_id { Member.last ? Member.last.id : 1 }
+    patronymic { generate :human_name }
+    motto { generate :string }
+    ticket { generate :integer }
+    parent_id 1
+    mobile_phone { generate :phone }
+    birth_date { generate :date }
+    home_adress { generate :string }
+    municipality { generate :string }
+    locality { generate :string }
+    avatar { generate :string }
     experience { generate :string }
     want_to_do { generate :string }
     state 'unviewed'

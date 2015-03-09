@@ -3,7 +3,7 @@ require 'test_helper'
 class Web::Users::AttributeAccessesControllerTest < ActionController::TestCase
   setup do
     member = create :member
-    sign_in member.user
+    sign_in member
     @attribute_access = create :attribute_access
   end
 
