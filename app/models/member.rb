@@ -5,6 +5,7 @@ class Member < ActiveRecord::Base
   belongs_to :parent, class_name: 'Member'
   has_one :questionary
   has_many :attribute_accesses
+  has_many :positions
 
   validates :patronymic, presence: true,
                          human_name: true
