@@ -11,11 +11,8 @@ class News < ActiveRecord::Base
     published_at <= DateTime.now
   end
 
-
-
   scope :published, ->   { where('published_at <= ?', DateTime.now).where.not(state: :removed)}
   scope :unpublished, -> { where('published_at > ?',  DateTime.now).where.not(state: :removed)}
-
   scope :removed, -> { where state: :removed }
 
   state_machine :state, initial: :unviewed do
