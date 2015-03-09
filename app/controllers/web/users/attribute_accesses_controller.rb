@@ -1,6 +1,6 @@
 class Web::Users::AttributeAccessesController < Web::Users::ApplicationController
   def create
-    @access = AttributeAccess.where(member_attribute: params[:attribute_access][:member_attribute], member_id: params[:attribute_access][:member_id]).first
+    @access = AttributeAccess.find member_attribute: params[:attribute_access][:member_attribute], member_id: params[:attribute_access][:member_id]
     unless @access
       @access = AttributeAccess.new
     end
