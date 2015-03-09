@@ -1,9 +1,7 @@
 ru:
   time:
     formats:
-      default: "%Y/%m/%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
+      default: "%a, %d %b %Y, %H:%M"
   datepicker:
     dformat: '%d/%m/%Y'             # display format of the date (this is the default, can be ommited)
     pformat: 'DD/MM/YYYY'           # picking format of the date (this is the default, can be ommited)
@@ -32,6 +30,8 @@ ru:
       back: Назад
       approve: Подтвердить
       decline: Отклонить
+      published: Опубликованные новости
+      unpublished: Неопубликованные новости
   social_networks:
     vkontakte: ВКонтакте
     facebook: Facebook
