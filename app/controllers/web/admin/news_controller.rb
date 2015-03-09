@@ -14,10 +14,12 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
   def create
     @news = News.new
     @news_form = NewsForm.new @news
+    params[:news][:user_id] = current_user
     @news_form.submit params[:news]
     if @news_form.save
       redirect_to admin_news_index_path
     else
+      flash[:errors] = @news_form.errors.messages 
       redirect_to action: :new
     end
   end
