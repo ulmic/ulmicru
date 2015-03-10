@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
                          allow_blank: true
   validates :last_name, human_name: true,
                          allow_blank: true
+  validates :ticket, uniqueness: true
 
   extend Enumerize
   enumerize :role, in: [ :user, :admin ], default: :user
@@ -37,5 +38,9 @@ class User < ActiveRecord::Base
     event :restore do
       transition :removed => :unviewed
     end
+  end
+
+  def is_member?
+    model_name == 'Member'
   end
 end

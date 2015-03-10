@@ -1,5 +1,6 @@
-- if @user.has_confirmed_member?
-  = simple_form_for @user.member, url: { controller: 'web/users/account', action: :update, id: @user.member.id } do |f|
+- if @user.is_member?
+  - active_form_class_name = 'active_form_class'
+  = simple_form_for @member_form, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
     = f.input :first_name, as: :string, required: true, input_html: { value: current_user.first_name }
     = f.input :patronymic, as: :string
     = f.input :last_name, as: :string, required: true, input_html: { value: current_user.last_name }
@@ -11,20 +12,15 @@
     = f.input :municipality, as: :string
     = f.input :locality, as: :string
     = f.input :avatar, as: :string
-    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
     = f.hint t('.my_position_in_mic')
     = f.simple_fields_for :positions do |ff|
-      = ff.input :title, as: :string
-      = ff.input :begin_date, as: :date_picker
-      = ff.input :end_date, as: :date_picker
-      = ff.input :member_id, as: :hidden
-      = link_to_remove_association t('.remove_position'), ff
-    = link_to_add_association t('.add_position'), f, :positions
+      = render 'position_fields', f: ff
+    = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-position' => '0', 'association-insertion-node' => 'this' }
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'
     = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
   %br
   - attributes_need_access.each do |attribute|
-    = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.member.id  }
+    = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.id  }
 - else
   = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
     = f.input :first_name, as: :string
