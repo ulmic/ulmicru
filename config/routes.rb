@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'web/omniauth#callback'
   get 'account' => 'web/users/account#index'
   get '/admin' => 'web/admin/welcome#index'
-  get '/:ticket' => 'web/members#show'
+  #get '/:ticket' => 'web/members#show'
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
