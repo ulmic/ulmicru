@@ -12,6 +12,8 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
 
   test 'should create member' do
     attributes = attributes_for :member
+    attributes[:positions_attributes] ||= {}
+    attributes[:positions_attributes]['0'] = attributes_for :position
     post :create, member: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_members_path
@@ -25,6 +27,8 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
 
   test 'should patch update' do
     attributes = attributes_for :member
+    attributes[:positions_attributes] ||= {}
+    attributes[:positions_attributes]['0'] = attributes_for :position
     patch :update, member: attributes, id: @member
     assert_response :redirect, @response.body
     assert_redirected_to admin_members_path

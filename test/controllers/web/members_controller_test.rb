@@ -19,7 +19,7 @@ class Web::MembersControllerTest < ActionController::TestCase
 
   test 'should create member' do
     attributes = attributes_for :member
-    post :create, member: attributes
+    post :create, user: attributes
     assert_response :redirect, @response.body
     assert_redirected_to account_path
     assert_equal attributes[:patronymic], Member.last.patronymic

@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
                          allow_blank: true
   validates :last_name, human_name: true,
                          allow_blank: true
-  validates :ticket, uniqueness: true
 
   extend Enumerize
   enumerize :role, in: [ :user, :admin ], default: :user
