@@ -5,7 +5,7 @@ class NewsDecorator < Draper::Decorator
     "#{model.body.first(50)}..."
   end
 
-  def lead 
+  def generate_lead 
     @sentences = ActionController::Base.helpers.strip_tags(model.body).split('.')
     @finally_sen = "#{@sentences[0]}."
     (1..2).each { |i| @finally_sen += "#{@sentences[i]}." }
