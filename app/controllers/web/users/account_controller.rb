@@ -2,14 +2,13 @@ class Web::Users::AccountController < Web::Users::ApplicationController
   def index
     @user = current_user
     if @user.is_member?
-      @member_form = MemberForm.new @user
-      @user.positions.build
+      @member = Member.find current_user.id
+      @member_form = MemberForm.new @member
     end
     @authentications = current_user.authentications
   end
 
   def update
-    raise
     if params[:user]
       @user = User.find params[:id]
       @user_form = UserForm.new @user

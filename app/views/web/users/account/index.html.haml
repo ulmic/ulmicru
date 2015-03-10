@@ -1,11 +1,10 @@
 - if @user.is_member?
-  - active_form_class_name = 'active_form_class'
   = simple_form_for @member_form, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
-    = f.input :first_name, as: :string, required: true, input_html: { value: current_user.first_name }
+    = f.input :first_name, as: :string
     = f.input :patronymic, as: :string
-    = f.input :last_name, as: :string, required: true, input_html: { value: current_user.last_name }
+    = f.input :last_name, as: :string
     = f.input :motto, as: :string
-    = f.input :ticket, as: :string, required: true
+    = f.input :ticket, as: :string
     = f.input :mobile_phone, as: :string
     = f.input :birth_date, as: :string
     = f.input :home_adress, as: :string
