@@ -15,7 +15,7 @@
     = f.hint t('.my_position_in_mic')
     = f.simple_fields_for :positions do |ff|
       = render 'position_fields', f: ff
-    = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-position' => '0', 'association-insertion-node' => 'this' }
+    = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'
     = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
   %br
