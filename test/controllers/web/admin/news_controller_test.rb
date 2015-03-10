@@ -3,8 +3,8 @@ require 'test_helper'
 class Web::Admin::NewsControllerTest < ActionController::TestCase
   setup do
     @news = create :news
-    @admin = create :admin
-    sign_in @admin
+    @user = create :user
+    sign_in @user
   end
 
   test "should get index" do
@@ -20,10 +20,6 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
   test "should create news" do
     attributes = attributes_for :news
     post :create, news: attributes
-    puts attributes
-    flash.each do |name, msg|
-      puts "#{name} : #{msg}"
-    end
     assert_response :redirect, @response.body
     assert_redirected_to admin_news_index_path
     assert_equal attributes[:title], News.last.title
