@@ -6,6 +6,7 @@
 #= require bootstrap-datetimepicker
 #= require moment/ru
 #= require pickers
+#= require active_form
 
 $ ->
   $('.link').click ->
