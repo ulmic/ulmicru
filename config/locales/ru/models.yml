@@ -51,5 +51,6 @@ ru:
         published_at: Дата публикации
         created_at: Создано
         user_id: Автор
+        lead: Краткое содержание
         photo: Фотография
 
