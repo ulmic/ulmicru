@@ -5,6 +5,7 @@ class News < ActiveRecord::Base
   validates :published_at,  presence: true
   validates :photo,         presence: false 
   validates :user_id,       presence: true
+  validates :lead,          presence: true
   belongs_to :user
 
   def is_published?
@@ -13,7 +14,7 @@ class News < ActiveRecord::Base
 
   scope :published, ->   { where('published_at <= ?', DateTime.now).where.not(state: :removed)}
   scope :unpublished, -> { where('published_at > ?',  DateTime.now).where.not(state: :removed)}
-  scope :removed, -> { where state: :removed }
+  scope :removed, ->     { where state: :removed }
 
   state_machine :state, initial: :unviewed do
     state :unviewed
