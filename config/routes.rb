@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'web/omniauth#callback'
   get 'account' => 'web/users/account#index'
   get '/admin' => 'web/admin/welcome#index'
-  #get '/:ticket' => 'web/members#show'
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
       resources :join
     end
   end
+  get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
