@@ -4,8 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 gem 'pg'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,7 +39,7 @@ gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'momentjs-rails', '>= 2.9',  :github => 'derekprior/momentjs-rails'
-gem 'awesome_print' 
+gem 'awesome_print'
 gem 'turbolinks'
 gem 'wysiwyg-rails'
 gem 'font-awesome-rails'
