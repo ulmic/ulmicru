@@ -3,7 +3,7 @@ class News < ActiveRecord::Base
   validates :title,         presence: true
   validates :body,          presence: true
   validates :published_at,  presence: true
-  validates :photo,         presence: false 
+  validates :photo,         presence: true
   validates :user_id,       presence: true
   validates :lead,          presence: true
   belongs_to :user
