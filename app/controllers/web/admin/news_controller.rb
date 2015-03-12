@@ -14,23 +14,27 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
   def create
     @news = News.new
     @news_form = NewsForm.new @news
-    params[:news][:user_id] = current_user.id
+
+    #fix because sessions work wrong
+    params[:news][:user_id] = current_user.id if current_user.present?
+
     @news_form.submit params[:news]
     if @news_form.save
       redirect_to admin_news_index_path
     else
       flash[:errors] = @news_form.errors
-      flash[:model_name_class] = "News" 
+      flash[:model_name_class] = 'News'
       redirect_to action: :new, :news => params[:news] 
     end
   end
+
   def new
     @news = News.new
     @news_form = NewsForm.new @news
     if params[:news].present?
       @news_form.submit params[:news]
     end
-      @news_form = NewsForm.new @news
+    @news_form = NewsForm.new @news
   end
 
   def edit
@@ -44,7 +48,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news_form.submit params[:news]
     if @news_form.save
       redirect_to admin_news_index_path
-    else 
+    else
       redirect_to action: :edit
     end
   end
