@@ -20,6 +20,8 @@ ru:
       back: Назад
       approve: Подтвердить
       decline: Отклонить
+      published: Опубликованные новости
+      unpublished: Неопубликованные новости
   social_networks:
     vkontakte: ВКонтакте
     facebook: Facebook

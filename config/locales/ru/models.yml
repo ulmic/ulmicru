@@ -4,7 +4,7 @@ ru:
       user: Пользователь
       member: Член организации
       questionary: Анкета на вступление
-      news: Новости
+      news: Новость
     attributes:
       user:
         first_name: Имя
@@ -49,7 +49,8 @@ ru:
         title: Заголовок
         body: Контекст
         published_at: Дата публикации
-        created_at: Дата создания
-        user_id: Прикреплённый пользователь
+        created_at: Создано
+        user_id: Автор
+        lead: Краткое содержание
         photo: Фотография
 

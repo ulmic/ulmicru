@@ -3,12 +3,12 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:author_id)
+      %th= model_class.human_attribute_name(:user_id)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:body)
-      %th= model_class.human_attribute_name(:published)
-      %th= model_class.human_attribute_name(:created)
-      %th=t '.actions', default: t('helpers.actions')
+      %th= model_class.human_attribute_name(:published_at)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t 'helpers.links.actions'
   %tbody
     - news.each do |news|
       %tr

@@ -17,7 +17,7 @@ class TimePickerInput < SimpleForm::Inputs::StringInput
       input = super(wrapper_options) # leave StringInput do the real rendering
       input += template.content_tag :span, class: 'input-group-btn' do
         template.content_tag :button, class: 'btn btn-default', type: 'button' do
-          template.content_tag :span, '', class: 'glyphicon glyphicon-time'
+          template.content_tag :span, '', class: 'fa fa-clock-o'
         end
       end
       input
