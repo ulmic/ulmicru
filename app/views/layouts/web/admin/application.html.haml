@@ -8,6 +8,4 @@
 %body
   = render 'layouts/web/admin/navbar'
   .container
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: "alert alert-dismissible alert-danger" 
     = yield
