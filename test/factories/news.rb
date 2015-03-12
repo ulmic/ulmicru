@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :news do
-    title        { generate :string } 
-    body         { generate :string } 
+    title        { generate :string }
+    body         { generate :string }
     published_at { DateTime.now }
     photo        { generate :file }
-    user_id    { generate :integer }
+    lead         {generate :string}
+    user_id      { generate :integer }
   end
 end
