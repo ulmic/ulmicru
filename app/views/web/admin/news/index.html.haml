@@ -1,0 +1,15 @@
+- model_class = News
+.page-header
+  %h1=t model_class.model_name.human.pluralize(:ru) 
+  %ul.nav.nav-tabs{ role: :tablist }
+    %li
+      = link_to t('helpers.links.published'), '#published'
+    %li
+      = link_to t('helpers.links.unpublished'), '#unpublished'
+  #published
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'
+    = render 'news_list', news: @published_news
+  #unpublished
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'
+    = render 'news_list', news: @unpublished_news
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'

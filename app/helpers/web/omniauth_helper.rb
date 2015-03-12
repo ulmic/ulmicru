@@ -1,0 +1,2 @@
+module Web::OmniauthHelper
+end

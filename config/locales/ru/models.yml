@@ -1,0 +1,56 @@
+ru:
+  activerecord:
+    models:
+      user: Пользователь
+      member: Член организации
+      questionary: Анкета на вступление
+      news: Новость
+    attributes:
+      user:
+        first_name: Имя
+        patronymic: Отчество
+        last_name: Фамилия
+        role: Роль на сайте
+        email: E-mail
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+      member:
+        first_name: Имя
+        patronymic: Отчество
+        last_name: Фамилия
+        avatar: Аватар
+        full_name: Ф.И.О.
+        ticket: Номер членского билета
+        place: Место проживания
+        motto: Девиз по жизни
+        mobile_phone: Мобильный телефон
+        birth_date: Дата рождения
+        home_adress: Домашний адрес
+        municipality: Муниципальное образование
+        locality: Населённый пункт
+        user: Прикреплённый Пользователь
+      questionary:
+        first_name: Имя
+        patronymic: Отчество
+        last_name: Фамилия
+        avatar: Аватар
+        full_name: Ф.И.О.
+        place: Место проживания
+        motto: Девиз по жизни
+        mobile_phone: Мобильный телефон
+        birth_date: Дата рождения
+        home_adress: Домашний адрес
+        municipality: Муниципальное образование
+        want_to_do: "Чем хочешь заниматься в МИЦ?"
+        experience: Опыт и навыки
+        locality: Населённый пункт
+        created_at: Дата подачи
+      news:
+        title: Заголовок
+        body: Контекст
+        published_at: Дата публикации
+        created_at: Создано
+        user_id: Автор
+        lead: Краткое содержание
+        photo: Фотография
+

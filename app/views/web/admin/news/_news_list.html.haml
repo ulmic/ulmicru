@@ -1,0 +1,29 @@
+- model_class = News
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:body)
+      %th= model_class.human_attribute_name(:published_at)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - news.each do |news|
+      %tr
+        %td= link_to news.id, edit_admin_news_path(news)
+        %td= news.user_id
+        %td= link_to news.title, edit_admin_news_path(news)
+        %td= news.lead
+        %td=l news.published_at
+        %td=l news.created_at
+        %td
+          = link_to t('.edit', default: t('helpers.links.edit')), 
+            edit_admin_news_path(news), 
+              class: 'btn btn-warning btn-xs'
+          = button_to t('.destroy', default: t('helpers.links.destroy')), 
+            admin_news_path(news), method: :delete, 
+              data: { confirm: 'Are you sure?' },
+                class: 'btn btn-xs btn-danger' 
+/fixme wrong localize 

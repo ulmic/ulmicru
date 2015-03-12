@@ -1,0 +1,11 @@
+%html
+%head
+  %title
+    Админка
+  = stylesheet_link_tag 'web/admin/application'
+  = javascript_include_tag 'web/admin/application'
+  = csrf_meta_tags
+%body
+  = render 'layouts/web/admin/navbar'
+  .container
+    = yield

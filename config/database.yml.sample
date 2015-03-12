@@ -1,0 +1,22 @@
+default: &default
+  username: postgres
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: ulmic_development
+test:
+  <<: *default
+  database: ulmic_test
+
+staging:
+  <<: *default
+  username: mic
+  database: ulmic_staging
+
+production:
+  <<: *default
+  username: mic
+  database: ulmic_production
