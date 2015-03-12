@@ -3,7 +3,7 @@ FactoryGirl.define do
     title        { generate :string }
     body         { generate :string }
     published_at { DateTime.now }
-    photo        { generate :string }
+    photo        { generate :file }
     lead         { generate :string }
     user_id      { generate :integer }
   end
