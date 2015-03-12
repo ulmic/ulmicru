@@ -8,7 +8,7 @@
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:published_at)
       %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', default: t('helpers.actions')
+      %th=t 'helpers.links.actions'
   %tbody
     - news.each do |news|
       %tr
