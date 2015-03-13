@@ -4,7 +4,7 @@ lock '3.2.1'
 set :application, 'ulmicru'
 set :repo_url, 'git@github.com:ulmic/ulmicru.git'
 
-set :rvm_type, :user
+set :rvm_type, :system
 set :rvm_ruby_version, 'ruby-2.1.1'
 set :use_sudo, false
 #set :sidekiq_service_name, "sidekiq"
