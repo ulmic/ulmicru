@@ -51,7 +51,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     attributes[:title] = nil
     put :update, id: @news, news: attributes
 
-    assert_response :redirect
+    assert_response :success
   end
 
   test "should destroy news" do
