@@ -76,6 +76,7 @@ group :development, :test do
   gem 'capistrano-sidekiq'
   gem 'capistrano-rvm'
   gem 'rvm-capistrano'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
   gem 'colorize', '0.6.0'
   gem 'quiet_assets'
 end
