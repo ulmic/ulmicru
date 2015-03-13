@@ -69,6 +69,14 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'capistrano', '3.2.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano-rvm'
+  gem 'colorize', '0.6.0'
+  gem 'quiet_assets'
 end
 
 group :test do
