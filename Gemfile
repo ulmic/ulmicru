@@ -75,6 +75,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'capistrano-sidekiq'
   gem 'capistrano-rvm'
+  gem 'rvm-capistrano'
   gem 'colorize', '0.6.0'
   gem 'quiet_assets'
 end
