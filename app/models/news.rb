@@ -18,16 +18,8 @@ class News < ActiveRecord::Base
 
   state_machine :state, initial: :unviewed do
     state :unviewed
-    state :confirmed
-    state :declined
     state :removed
 
-    event :confirm do
-      transition all => :confirmed
-    end
-    event :decline do
-      transition all => :declined
-    end
     event :remove do
       transition all => :removed
     end
