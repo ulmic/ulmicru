@@ -21,7 +21,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     if @news_form.save
       redirect_to admin_news_index_path
     else
-      render action: :new, :news_form => params[:news] 
+      render action: :new
     end
   end
 
@@ -39,7 +39,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     if @news_form.save
       redirect_to admin_news_index_path
     else
-      render action: :edit, :news_form => @news_form
+      render action: :edit
     end
   end
 
