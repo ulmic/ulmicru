@@ -21,23 +21,16 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     if @news_form.save
       redirect_to admin_news_index_path
     else
-      render action: :new, :news => params[:news] 
+      render action: :new, :news_form => params[:news] 
     end
   end
 
   def new
     @news_form = NewsForm.new_with_model
-    if params[:news].present?
-      @news_form.submit params[:news]
-    end
   end
 
   def edit
-    if params[:news].present?
-      @news_form = NewsForm.new_with_model params[:news]
-    else
-      @news_form = NewsForm.find_with_model params[:id]
-    end
+    @news_form = NewsForm.find_with_model params[:id]
   end
 
   def update
@@ -46,7 +39,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     if @news_form.save
       redirect_to admin_news_index_path
     else
-      redirect_to action: :edit
+      render action: :edit, :news_form => @news_form
     end
   end
 
