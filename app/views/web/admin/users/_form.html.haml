@@ -2,7 +2,7 @@
   %h1= page_title(action, User.model_name.human)
 .row
   .col-lg-6
-    = simple_form_for @user_form, url: { controller: 'web/admin/users', action: action }, input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for [:admin, @user_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :first_name, as: :string
       = f.input :last_name, as: :string
       = f.input :email, as: :string

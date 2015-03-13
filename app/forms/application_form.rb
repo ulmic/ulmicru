@@ -1,5 +1,7 @@
 class ApplicationForm < ActiveForm::Base
+
   class << self
+    delegate :human_attribute_name, to: :obj_class
 
     def find_with_model *args
       obj = obj_class.find(*args)
