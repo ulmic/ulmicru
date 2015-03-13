@@ -44,17 +44,6 @@ module ApplicationHelper
   def social_network_localize(provider)
     I18n.t("social_networks.#{provider}")
   end
-  
-  def flash_show_errors
-    tags = ""
-    if flash[:errors].present?
-      flash[:errors].each do |attr, val|
-        translate_path = "#{flash[:model_name_class]}.human_attribute_name(:#{attr})"
-        tags += content_tag :div, "Поле \"#{eval(translate_path)}\" #{val.to_s[2..-3]}" , class: "alert alert-dismissible alert-danger" 
-      end
-    end
-    tags
-  end
 
   def not_linked_social_networks(authentications)
     list = SocialNetworks.list
