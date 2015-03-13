@@ -29,7 +29,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     attributes = { body: @news.body }
 
     post :create, news: attributes
-    assert_response :redirect
+    assert_response :success
   end
 
   test "should get edit by admin" do

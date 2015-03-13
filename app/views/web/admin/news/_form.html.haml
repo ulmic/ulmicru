@@ -4,7 +4,7 @@
   = flash_show_errors.html_safe
 .row
   .col-lg-8.col-lg-offset-2
-    = simple_form_for @news, url: { controller: 'web/admin/news', action: action }, input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for @news_form, url: { controller: 'web/admin/news', action: action }, input_html: { class: 'form-horizontal' } do |f|
       = f.input :title, as: :string
       = f.input :lead, as: :string
       = f.input :body
