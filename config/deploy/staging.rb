@@ -1,4 +1,4 @@
-server 'staging.ulmic.ru', user: 'ulmic', roles: %w{web app db}
+server 'ulmic.ru', user: 'ulmicru', roles: %w{web app db}
 
 set :application, 'ulmic_stg'
 set :deploy_to, '/srv/ulmic_stg'
