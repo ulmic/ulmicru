@@ -3,12 +3,11 @@
   %h1=t model_class.model_name.human
 .row
   .col-lg-8.col-lg-offset-2
-    = simple_form_for @news_form, url: { controller: 'web/admin/news', action: action }, input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for @news_form.model, url: { controller: 'web/admin/news', action: action }, input_html: { class: 'form-horizontal' } do |f|
       = f.input :title, as: :string
       = f.input :lead, as: :string
       = f.input :body
       = f.input :published_at, as: :datetime_picker
-      /= f.input :user_id, as: :string
       = f.input :photo, as: :file 
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
 
