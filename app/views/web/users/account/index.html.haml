@@ -27,7 +27,7 @@
     = f.input :email, as: :string
     = f.input :password, as: :string
     = f.button :submit, t('helpers.links.save')
-  - unless @user.has_member?
+  - unless @user.is_member?
     = t('.you_are_member_mic')
     = link_to t('.enter_datas_mic_member'), new_member_path
     = t('.you_are_not_member_mic')
