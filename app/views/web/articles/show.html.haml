@@ -1,0 +1,8 @@
+- if @article.view.present?
+  = render "#{@article.view}"
+- else
+  .show
+    .title
+      = @article.title
+    .body
+      = @article.body
