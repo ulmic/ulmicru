@@ -14,10 +14,7 @@ class User < ActiveRecord::Base
   extend Enumerize
   enumerize :role, in: [ :user, :admin ], default: :user
 
-  scope :admins, -> { where role: :admin }
-
-  scope :presented, -> { where.not(state: :removed) }
-  scope :removed, -> { where state: :removed }
+  include UserScopes
 
   state_machine :state, initial: :unviewed do
     state :unviewed

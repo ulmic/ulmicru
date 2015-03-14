@@ -3,19 +3,14 @@ class News < ActiveRecord::Base
   validates :title,         presence: true
   validates :body,          presence: true
   validates :published_at,  presence: true
-  validates :photo,         presence: false 
+  validates :photo,         presence: false
   validates :user_id,       presence: true
 
   def is_published?
     published_at <= DateTime.now
   end
 
-
-
-  scope :published, ->   { where('published_at <= ?', DateTime.now).where.not(state: :removed)}
-  scope :unpublished, -> { where('published_at > ?',  DateTime.now).where.not(state: :removed)}
-
-  scope :removed, -> { where state: :removed }
+  include NewsScopes
 
   state_machine :state, initial: :unviewed do
     state :unviewed

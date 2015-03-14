@@ -15,9 +15,7 @@ class Member < User
   validates :locality, presence: true
   validates :avatar, presence: true
 
-  scope :presented, -> { where('state != \'removed\' AND state != \'not_member\'') }
-  scope :removed, -> { where state: :removed }
-  scope :unviewed, -> { where state: :unviewed }
+  include MemberScopes
 
   state_machine :state, initial: :unviewed do
     state :unviewed

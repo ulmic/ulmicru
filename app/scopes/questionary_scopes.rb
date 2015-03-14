@@ -1,9 +1,9 @@
-module UserScopes
+module QuestionaryScopes
   extend ActiveSupport::Concern
   include ApplicationScopes
 
   included do
-    scope :admins, -> { where role: :admin }
+    scope :unviewed, -> { where state: :unviewed }
     scope :presented, -> { where.not(state: :removed) }
     scope :removed, -> { where state: :removed }
   end
