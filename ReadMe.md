@@ -11,3 +11,10 @@ cp config/secrets.yml.sample config/secrets.yml
 cp config/oauth.yml.sample config/oauth.yml
 rails s
 ```
+
+access admin panel in dev
+```ruby
+u = User.first
+u.role = :admin
+u.save
+```
