@@ -35,5 +35,8 @@ module Ulmicru
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    ActionDispatch::Reloader.to_prepare do
+      load Rails.root.join('lib/configus.rb')
+    end
   end
 end

@@ -43,6 +43,7 @@ gem 'awesome_print'
 gem 'turbolinks'
 gem 'wysiwyg-rails'
 gem 'font-awesome-rails'
+gem 'configus'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
