@@ -1,7 +1,7 @@
 class Member < User
   belongs_to :parent, class_name: 'Member'
-  has_many :attribute_accesses
-  has_many :positions
+  has_many :attribute_accesses, dependent: :destroy
+  has_many :positions, dependent: :destroy
 
   validates :patronymic, presence: true,
                          human_name: true

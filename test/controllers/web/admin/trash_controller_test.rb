@@ -2,6 +2,8 @@ require 'test_helper'
 
 class Web::Admin::TrashControllerTest < ActionController::TestCase
   setup do
+    admin = create :admin
+    sign_in admin
     @user = create :user
     @user.remove
     @member = create :member

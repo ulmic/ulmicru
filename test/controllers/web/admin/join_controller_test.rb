@@ -2,6 +2,8 @@ require 'test_helper'
 
 class Web::Admin::JoinControllerTest < ActionController::TestCase
   setup do
+    admin = create :admin
+    sign_in admin
     create :member
     @questionary = create :questionary
   end
