@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Web::JoinControllerTest < ActionController::TestCase
+class Web::Users::JoinControllerTest < ActionController::TestCase
   setup do
     user = create :user
     sign_in user

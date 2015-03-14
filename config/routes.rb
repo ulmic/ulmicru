@@ -10,16 +10,15 @@ Rails.application.routes.draw do
     resource :session, only: [:new, :create, :destroy]
     resources :news, only: [:index, :show]
     resources :users, only: [ :new, :create ]
-    resources :members, only: [ :new, :create ] do
-      collection do
-      end
-    end
-    resources :join, only: [ :new, :create ]
+    resources :members, only: [ :new, :create ]
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
       resources :attribute_accesses, only: :create
       resources :positions, only: [ :create, :update, :destroy ]
+    end
+    scope module: :users do
+      resources :join, only: [ :new, :create ]
     end
     namespace :admin do
       resources :users

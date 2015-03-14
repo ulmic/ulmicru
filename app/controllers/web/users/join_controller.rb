@@ -1,6 +1,4 @@
-class Web::JoinController < Web::ApplicationController
-  before_filter :authenticate_user!, only: [ :new, :create ]
-
+class Web::Users::JoinController < Web::Users::ApplicationController
   def new
     @questionary = Questionary.new
     @questionary_form = QuestionaryForm.new @questionary

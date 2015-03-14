@@ -1,4 +1,4 @@
-= simple_form_for @questionary, url: { controller: 'web/join', action: :create } do |f|
+= simple_form_for @questionary, url: { controller: 'web/users/join', action: :create } do |f|
   = f.input :first_name, as: :string, required: true, input_html: { value: current_user.first_name }
   = f.input :patronymic, as: :string, required: true
   = f.input :last_name, as: :string, required: true, input_html: { value: current_user.last_name }
