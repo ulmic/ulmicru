@@ -1,4 +1,4 @@
-= simple_form_for @member, url: members_path, method: :post do |f|
+= simple_form_for @member_form, url: members_path, method: :post do |f|
   - f.with_options required: true do |f|
     = f.input :first_name, as: :string
     = f.input :patronymic, as: :string
