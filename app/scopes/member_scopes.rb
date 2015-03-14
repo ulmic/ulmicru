@@ -1,6 +1,6 @@
 module MemberScopes
   extend ActiveSupport::Concern
-  include ApplicationScopes
+  include Concerns::StateMachine
 
   included do
     scope :presented, -> { where('state != \'removed\' AND state != \'not_member\'') }

@@ -1,6 +1,6 @@
 module QuestionaryScopes
   extend ActiveSupport::Concern
-  include ApplicationScopes
+  include Concerns::StateMachine
 
   included do
     scope :unviewed, -> { where state: :unviewed }

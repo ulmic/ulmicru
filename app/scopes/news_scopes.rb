@@ -1,6 +1,6 @@
 module NewsScopes
   extend ActiveSupport::Concern
-  include ApplicationScopes
+  include Concerns::StateMachine
 
   included do
     scope :published, ->   { where('published_at <= ?', DateTime.now).where.not(state: :removed)}

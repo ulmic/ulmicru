@@ -1,6 +1,6 @@
 module UserScopes
   extend ActiveSupport::Concern
-  include ApplicationScopes
+  include Concerns::StateMachine
 
   included do
     scope :admins, -> { where role: :admin }
