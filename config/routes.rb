@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
-    resources :news, only: [:index, :show]
+    resources :news, only: [ :index, :show ]
     resources :users, only: [ :new, :create ]
     resources :members, only: [ :new, :create ]
+    resources :articles, only: [ :index, :show ]
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
