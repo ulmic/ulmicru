@@ -1,7 +1,8 @@
 class ApplicationForm < ActiveForm::Base
 
   class << self
-    delegate :human_attribute_name, to: :obj_class
+    delegate :human_attribute_name, to: :obj_class # for locales
+    delegate :enumerized_attributes, to: :obj_class # for enumerize simple form integration
 
     def find_with_model *args
       obj = obj_class.find(*args)
