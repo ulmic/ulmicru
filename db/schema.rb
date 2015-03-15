@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150315214045) do
     t.integer  "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "is_last"
   end
 
   create_table "news", force: :cascade do |t|
