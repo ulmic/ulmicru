@@ -1,9 +1,13 @@
+# -*- coding: utf-8 -*-
 class ApplicationForm < ActiveForm::Base
+  extend FormDelegator
+
+  def self.inherited(base)
+    delegate_all_class(base)
+    straightforward_delegates(base)
+  end
 
   class << self
-    delegate :human_attribute_name, to: :obj_class # for locales
-    delegate :enumerized_attributes, to: :obj_class # for enumerize simple form integration
-
     def find_with_model *args
       obj = obj_class.find(*args)
       self.new obj
@@ -18,8 +22,6 @@ class ApplicationForm < ActiveForm::Base
       obj = obj_class.new(*args)
       self.new obj
     end
-
-    private
 
     def obj_class
       Object.const_get(self.main_model.capitalize)
