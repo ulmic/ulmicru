@@ -1,3 +1,6 @@
 class ArticleForm < ActiveForm::Base
-  attributes :title, :body, :user_id, :view
+  self.main_model = :article
+
+  attributes :title, :body, required: true
+  attributes :view
 end
