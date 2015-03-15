@@ -1,6 +1,4 @@
 # config valid only for Capistrano 3.2.1
-lock '3.2.1'
-
 set :application, 'ulmicru'
 set :repo_url, 'git@github.com:ulmic/ulmicru.git'
 

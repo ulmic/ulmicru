@@ -42,4 +42,5 @@ pickle-email-*.html
 .project
 config/initializers/secret_token.rb
 config/database.yml
-Gemfile.lock 
+Gemfile.lock
+.capistrano/
