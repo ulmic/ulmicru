@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Web::Admin::JoinControllerTest < ActionController::TestCase
+class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
@@ -22,7 +22,7 @@ class Web::Admin::JoinControllerTest < ActionController::TestCase
     attributes = attributes_for :questionary
     post :create, questionary: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to admin_join_index_path
+    assert_redirected_to admin_questionaries_path
     assert_equal attributes[:patronymic], Questionary.last.patronymic
   end
 
@@ -35,7 +35,7 @@ class Web::Admin::JoinControllerTest < ActionController::TestCase
     attributes = attributes_for :questionary
     patch :update, questionary: attributes, id: @questionary
     assert_response :redirect, @response.body
-    assert_redirected_to admin_join_index_path
+    assert_redirected_to admin_questionaries_path
     @questionary.reload
     assert_equal attributes[:patronymic], @questionary.patronymic
   end

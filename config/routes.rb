@@ -34,7 +34,7 @@ Rails.application.routes.draw do
           delete 'destroy'
         end
       end
-      resources :join
+      resources :questionaries
     end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }
