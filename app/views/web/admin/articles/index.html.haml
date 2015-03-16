@@ -1,0 +1,24 @@
+- model_class = Article
+%ul#sample_category_tree
+  = categories_tree
+.page-header
+  %h1=t model_class.model_name.human.pluralize(:ru) 
+  %ul.nav.nav-tabs{ role: :tablist }
+    - @last_childs.each do |child|
+      %li
+        = link_to "#{child.name}", "\##{child.name.hash}"
+    %br
+    = link_to t('helpers.links.new'), 
+      new_admin_article_path,
+      class: 'col-md-4 btn btn-primary'
+
+    %br
+    - @last_childs.each do |child|
+      %br
+      .row{id: child.name.hash}
+        %h4=child.name
+        = render 'articles_list', articles: @articles.where(category_id: child.id)
+        = link_to t('helpers.links.new'), 
+          new_admin_article_path(:params => {:selected_category => child.id}),
+          class: 'col-md-4 btn btn-primary'
+      %br

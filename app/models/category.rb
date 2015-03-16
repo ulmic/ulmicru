@@ -1,9 +1,9 @@
 class Category < ActiveRecord::Base
-  after_initialize :init
+  after_initialize :initial_load
   before_save :set_parent_to_no_last
 
   belongs_to :parent,     class_name: 'Category'
-  has_many   :categorys,   class_name: 'category'
+  has_many   :articles
 
   validates :name,      presence: true
   validates :parent_id, presence: false
@@ -11,6 +11,17 @@ class Category < ActiveRecord::Base
 
   include CategoryScopes
 
+  state_machine initial: :unviewed do
+    state :unviewed
+    state :removed
+
+    event :remove do
+      transition all => :removed
+    end
+    event :restore do
+      transition :remove => :unviewed
+    end
+  end
   def self.get_by_parent_id(category_id)
     Category.where(parent_id: category_id)
   end
@@ -18,15 +29,19 @@ class Category < ActiveRecord::Base
   def self.get_tree_by_category(category)
     if(category.present? && category.is_last)
       return {
-        category.name.to_s => nil
+        childs: nil,
+        category_name: category.name,
+        id: category.id
       }
     else
       category_hash = Hash.new
       Category.get_by_parent_id(category.id).map do |c|
-        if category_hash[category.name].present?
-          category_hash[category.name] << get_tree_by_category(c)
+        category_hash[:category_name] = category.name
+        category_hash[:id] = category.id
+        if category_hash[:childs].present?
+          category_hash[:childs] << get_tree_by_category(c)
         else
-          category_hash[category.name] = [get_tree_by_category(c)]
+          category_hash[:childs] = [get_tree_by_category(c)]
         end
       end
       category_hash
@@ -40,7 +55,7 @@ class Category < ActiveRecord::Base
   end
 
   private
-  def init
+  def initial_load
     self.is_last = true if  self.is_last == nil
   end
 

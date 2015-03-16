@@ -1,0 +1,11 @@
+- model_class = Category
+.page-header
+  %h1=t model_class.model_name.human
+.row
+  .col-lg-6
+    = simple_form_for [:admin, @category_form], input_html: { class: 'form-horizontal' } do |f|
+      = f.input :name, as: :string
+      = f.association :parent, collection: Category.all, prompt: t('helpers.links.select')
+      = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
+
+      = link_to t('helpers.links.back'), admin_categories_path, class: 'btn btn-default'

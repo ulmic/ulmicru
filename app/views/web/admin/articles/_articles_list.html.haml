@@ -1,0 +1,26 @@
+- model_class = Article
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:body)
+      %th= model_class.human_attribute_name(:category_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - articles.each do |article|
+      %tr
+        %td= link_to article.id, edit_admin_article_path(article)
+        %td= link_to article.title, edit_admin_article_path(article)
+        %td= article.body
+        %td= article.category.name
+        %td=l article.created_at
+        %td
+          = link_to t('.edit', default: t('helpers.links.edit')),
+            edit_admin_article_path(article),
+              class: 'btn btn-warning btn-xs'
+          = button_to t('.destroy', default: t('helpers.links.destroy')),
+            admin_article_path(article), method: :delete,
+              class: 'btn btn-xs btn-danger'
+/fixme wrong localize

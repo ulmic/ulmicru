@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :members
       resources :unviewed, only: :index
       resources :news
+      resources :articles
+      resources :categories
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

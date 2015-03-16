@@ -10,6 +10,31 @@ module ApplicationHelper
     end
   end
 
+  def categories_tree
+    (content_tag(:ul, class: '') do
+      @categories_tree.each do |root|
+        concat(content_tag(:li, class: '') do
+          concat(category_tree(root))
+        end)
+      end 
+    end)
+  end
+
+  def category_tree(category)
+    if category[:childs].present?
+      concat(link_to(category[:category_name], "#", class: '', :data => { :toggle =>'' }))
+      (content_tag(:ul, class: '') do
+        category[:childs].each do |child|
+          concat(content_tag(:li, class: '') do 
+            concat(category_tree(child))
+          end)
+        end
+      end)
+    else
+      link_to category[:category_name], '#'
+    end
+  end
+
   def is_active?(path, options = {})
     'active' if uri_state(path, options).in? [:active, :chosen]
   end
@@ -18,10 +43,10 @@ module ApplicationHelper
     root_url = request.host_with_port + '/'
     root = uri == '/' || uri == root_url
     request_uri = if uri.start_with? root_url
-      request.url
-    else
-      request.path
-    end
+                    request.url
+                  else
+                    request.path
+                  end
     if !options[:method].nil? || !options["data-method"].nil?
       :inactive
     elsif uri == request_uri || (options[:root] && (request_uri == '/') || (request_uri == root_url))

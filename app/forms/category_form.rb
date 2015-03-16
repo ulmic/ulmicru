@@ -1,4 +1,4 @@
-class CategoryForm < ActiveForm::Base
+class CategoryForm < ApplicationForm
   self.main_model = :category
 
   attributes :name, required: true

@@ -4,5 +4,6 @@ module CategoryScopes
 
   included do
     scope :roots, -> { where parent_id: nil }
+    scope :last_childs, -> { where is_last: true }
   end
 end
