@@ -37,7 +37,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update news by admin" do
+  test "should update category by admin" do
     attributes = attributes_for :article
     put :update, id: @article, article: attributes
     assert_response :redirect
@@ -54,7 +54,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should destroy news" do
+  test "should destroy category" do
     count =  Article.count
     delete :destroy, id: @article 
     @article.reload
