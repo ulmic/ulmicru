@@ -1,6 +1,6 @@
 class Web::Admin::ArticlesController < Web::Admin::ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.all.where.not(state: :removed)
   end
 
   def new

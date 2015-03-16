@@ -1,6 +1,6 @@
 class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.all.where.not(state: :removed)
   end
 
   def new
