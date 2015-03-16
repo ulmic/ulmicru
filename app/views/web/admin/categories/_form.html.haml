@@ -9,3 +9,6 @@
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
 
       = link_to t('helpers.links.back'), admin_categories_path, class: 'btn btn-default'
+  .col-lg-4
+    %ul#sample_category_tree
+      = categories_tree
