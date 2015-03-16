@@ -56,6 +56,8 @@ ru:
         name: Имя
         title: Корзина
         deleted: Удалённые
+      article:
+        push_into: Добавить в категорию '%{category}'
   time:
     formats:
       default: "%Y/%m/%d"

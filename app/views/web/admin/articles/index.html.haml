@@ -10,7 +10,7 @@
     %br
     = link_to t('helpers.links.new'), 
       new_admin_article_path,
-      class: 'col-md-4 btn btn-primary'
+      class: '  btn btn-primary'
 
     %br
     - @last_childs.each do |child|
@@ -18,7 +18,7 @@
       .row{id: child.name.hash}
         %h4=child.name
         = render 'articles_list', articles: @articles.where(category_id: child.id)
-        = link_to t('helpers.links.new'), 
+        = link_to "#{t 'web.admin.article.push_into', category: child.name}", 
           new_admin_article_path(:params => {:selected_category => child.id}),
-          class: 'col-md-4 btn btn-primary'
+          class: '  btn btn-primary'
       %br

@@ -5,7 +5,9 @@
   .col-lg-6
     = simple_form_for [:admin, @category_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :name, as: :string
-      = f.association :parent, collection: Category.all, prompt: t('helpers.links.select')
+      = f.association :parent, collection: Category.all,
+        prompt: t('helpers.links.select'),
+        label: t(model_class.human_attribute_name :parent)
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
 
       = link_to t('helpers.links.back'), admin_categories_path, class: 'btn btn-default'

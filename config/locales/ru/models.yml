@@ -5,6 +5,8 @@ ru:
       member: Член организации
       questionary: Анкета на вступление
       news: Новость
+      article: Статья
+      category: Категория
     attributes:
       user:
         first_name: Имя
@@ -53,4 +55,12 @@ ru:
         user_id: Автор
         lead: Краткое содержание
         photo: Фотография
-
+      article:
+        title: Заголовок
+        body: Контекст
+        view: Шаблон
+        category_id: Категория
+        created_at: Создано
+      category:
+        name: Название 
+        parent: Родитель
