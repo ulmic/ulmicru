@@ -10,6 +10,8 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
 
   def create
     @article_form = ArticleForm.new_with_model
+
+    params[:article][:user_id] = current_user.id if current_user.present?
     @article_form.submit params[:article]
     if @article_form.save
       redirect_to admin_articles_path

@@ -1,10 +1,14 @@
 class Article < ActiveRecord::Base
   belongs_to :category
-  validates_with ArticleValidator
+  belongs_to :user
+
   validates :title,       presence: true
   validates :body,        presence: true
   validates :view,        presence: false
   validates :category_id, presence: true
+  validates :user_id,     presence: true
+
+  validates_with ArticleValidator
 
   include ArticleScopes
 
