@@ -1,11 +1,9 @@
 #= require jquery
 #= require bootstrap-sprockets
 #= require jquery_ujs
-#= require turbolinks
 #= require moment
 #= require moment/ru
 #= require bootstrap-datetimepicker
-#= require moment/ru
 #= require pickers
 #= require active_form
 #= require js-routes
@@ -22,8 +20,6 @@ $ ->
 $ ->
   $('#article_body').editable
     inlineMode: false
-$ -> 
-  $('#news_published_at').datetimepicker()
 
 $.fn.extend treed: (o) ->
   openedClass = 'glyphicon-minus-sign'
@@ -73,3 +69,6 @@ $.fn.extend treed: (o) ->
 
 $ ->
   $("#sample_category_tree").treed()
+
+$ ->
+  $("input.datetime_picker").datetimepicker()
