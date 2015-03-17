@@ -53,4 +53,9 @@ ru:
         user_id: Автор
         lead: Краткое содержание
         photo: Фотография
+  enumerize:
+    user:
+      role:
+        admin: Администратор
+        user: Пользователь
 
