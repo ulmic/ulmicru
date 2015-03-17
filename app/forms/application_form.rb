@@ -24,7 +24,10 @@ class ApplicationForm < ActiveForm::Base
     end
 
     def obj_class
-      Object.const_get(self.main_model.capitalize)
+      main_model_name = self.main_model
+      unless main_model[0].to_s.match /[A-Z]/
+        Object.const_get(self.main_model.capitalize)
+      end
     end
   end
 end

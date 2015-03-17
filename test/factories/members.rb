@@ -10,5 +10,7 @@ FactoryGirl.define do
     municipality { generate :string }
     locality { generate :string }
     avatar { generate :string }
+    password { generate :string }
+    password_confirmation { password }
   end
 end

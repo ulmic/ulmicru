@@ -13,5 +13,7 @@ FactoryGirl.define do
     experience { generate :string }
     want_to_do { generate :string }
     state 'unviewed'
+    password { generate :string }
+    password_confirmation { password }
   end
 end
