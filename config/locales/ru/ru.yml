@@ -40,6 +40,11 @@ ru:
         events:
           put_on_the_trial: Поставить на испытательный срок
           confirm: Принять в организацию
+  hints:
+    admin:
+      user:
+        role:
+          Администратор сайта имеет доступ к Админке сайта МИЦ.
   web:
     users:
       account:
