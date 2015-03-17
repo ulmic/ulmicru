@@ -1,0 +1,23 @@
+@import "foundation/functions";
+
+.afterslider-navbar-container {
+  $topbar-height: rem-calc(47);
+
+  $topbar-bg-color: black;
+  $topbar-bg: $topbar-bg-color;
+
+  $topbar-dropdown-bg: $topbar-bg-color;
+
+  $topbar-link-color: white;
+  $topbar-link-color-hover: #f1790f;
+  $topbar-link-font-size: rem-calc(15);
+  $topbar-link-bg-hover: $topbar-bg-color;
+  $topbar-link-font-family: 'mic-bold';
+  $topbar-link-padding: rem-calc(8.5);
+
+  @import "foundation/components/top-bar";
+
+  ul.left {
+    margin-left: 29px;
+  }
+}

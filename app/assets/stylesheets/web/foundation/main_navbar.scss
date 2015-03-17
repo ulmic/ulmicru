@@ -1,0 +1,39 @@
+@import "foundation/functions";
+
+.main-navbar-container {
+  $topbar-height: rem-calc(97);
+  $topbar-bg-color: white;
+  $topbar-bg: $topbar-bg-color;
+
+  $topbar-dropdown-bg: $topbar-bg-color;
+
+  $topbar-link-color: black;
+  $topbar-link-color-hover: #f1790f;
+  $topbar-link-font-size: rem-calc(15);
+  $topbar-link-bg-hover: $topbar-bg-color;
+  $topbar-link-font-family: 'mic-bold';
+  $topbar-link-padding: rem-calc(0);
+
+  @import "foundation/components/top-bar";
+
+  ul.left li {
+    margin-left: rem-calc(36);
+  }
+
+  ul.right li {
+    padding: 0 rem-calc(5);
+  }
+
+  a>.inner {
+    font-family: 'mic-bold';
+    text-decoration: none;
+    box-sizing: border-box;
+    height: $topbar-height;
+    border-top: rem-calc(3) solid #fff;
+    transition: border-color 0.2s ease,color 0.2s ease;
+  }
+  a:hover>.inner {
+    color: #f1790f;
+    border-top: rem-calc(3) solid #f1790f;
+  }
+}
