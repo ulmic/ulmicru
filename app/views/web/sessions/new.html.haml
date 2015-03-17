@@ -1,7 +1,7 @@
 = simple_form_for @user, url: { controller: 'web/sessions', action: :create } do |f|
-  = f.input :email, label: t('activerecord.attributes.user.email')
-  = f.input :password, label: t('activerecord.attributes.user.password')
-  = f.button :submit, t('helpers.new.enter')
+  = f.input :email, as: :string
+  = f.input :password
+  = f.button :submit
 
 = link_to t('social_networks.vkontakte'), auth_path(:vkontakte)
 = link_to t('social_networks.twitter'), auth_path(:twitter)
