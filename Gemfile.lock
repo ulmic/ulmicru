@@ -462,6 +462,7 @@ DEPENDENCIES
   quiet_assets
   rack-livereload
   rails (= 4.2.0)
+  rb-fsevent
   russian
   rvm-capistrano
   sass-rails (~> 5.0)
