@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require moment
 //= require moment/ru
@@ -24,3 +25,5 @@
 //= require froala_editor.min.js
 //= require langs/ru.js
 //= require_tree .
+
+$(function(){ $(document).foundation(); });
