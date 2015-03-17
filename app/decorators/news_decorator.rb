@@ -5,7 +5,7 @@ class NewsDecorator < Draper::Decorator
     "#{model.body.first(50)}..."
   end
 
-  def generate_lead 
+  def generate_lead
     @sentences = ActionController::Base.helpers.strip_tags(model.body).split('.')
     @finally_sen = "#{@sentences[0]}."
     (1..2).each { |i| @finally_sen += "#{@sentences[i]}." }
@@ -24,8 +24,12 @@ class NewsDecorator < Draper::Decorator
      object.published_at.strftime('%d %b %Y %H:%m')
   end
 
-  def name 
+  def name
     "#{model.title.first(30)}"
+  end
+
+  def author_name
+    user.decorate.short_name
   end
 
 end

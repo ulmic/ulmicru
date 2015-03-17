@@ -51,7 +51,7 @@ ru:
         published_at: Дата публикации
         created_at: Создано
         user_id: Автор
-        lead: Краткое содержание
+        lead: Лид
         photo: Фотография
   enumerize:
     user:

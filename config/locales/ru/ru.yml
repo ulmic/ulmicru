@@ -35,6 +35,11 @@ ru:
             changed: Доступ к этому аттрибуту успешно изменён
             not_changed: Доступ к этому аттрибуту не изменён
   state_machines:
+    news:
+      state:
+        states:
+          published: Опубликованное
+          unpublished: Неопубликованное
     questionary:
       state:
         events:
