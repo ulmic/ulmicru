@@ -3,3 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // =require web/foundation/application
+// =require web/foundation/foundation_and_overrides
+
+@font-face {
+  font-family: 'mic-bold';
+  src: font-url('PFSquareSansPro-Medium.ttf');
+}
+
+@font-face {
+  font-family: mic;
+  src: font-url('PFBeauSansPro-Light.ttf');
+}

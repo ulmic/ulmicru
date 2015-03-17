@@ -1,2 +1,31 @@
-.main-navbar {
+/* вставить потом @import "foundation_and_overrides"; а то медленно*/
+@import "foundation/functions";
+
+/* переменные будут браться из foundation_and_overrides */
+$topbar-height: rem-calc(97);
+/* end переменные из foundation_and_overrides */
+
+body {
+    opacity: 0.9;
+}
+
+nav.main-navbar ul.left li {
+    margin-left: rem-calc(36);
+}
+
+nav.main-navbar ul.right li {
+    padding: 0 rem-calc(5);
+}
+
+nav.main-navbar a>.inner {
+	font-family: 'mic-bold';
+	text-decoration: none;
+	box-sizing: border-box;
+  height: $topbar-height;
+	border-top: rem-calc(3) solid #fff;
+	transition: border-color 0.2s ease,color 0.2s ease;
+}
+body nav a:hover>.inner {
+	color: #f1790f;
+	border-top: rem-calc(3) solid #f1790f;
 }
