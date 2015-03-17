@@ -19,10 +19,5 @@
         %td=l news.published_at
         %td=l news.created_at
         %td
-          = link_to t('.edit', default: t('helpers.links.edit')),
-            edit_admin_news_path(news),
-              class: 'btn btn-warning btn-xs'
-          = button_to t('.destroy', default: t('helpers.links.destroy')),
-            admin_news_path(news), method: :delete,
-              class: 'btn btn-xs btn-danger'
-/fixme wrong localize
+          = link_to t('.edit', default: t('helpers.links.edit')), edit_admin_news_path(news), class: 'btn btn-warning btn-xs'
+          = button_to t('.destroy', default: t('helpers.links.destroy')), admin_news_path(news), method: :delete, class: 'btn btn-xs btn-danger'
