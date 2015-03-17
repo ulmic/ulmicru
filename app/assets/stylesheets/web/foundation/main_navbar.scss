@@ -12,17 +12,9 @@
   $topbar-link-font-size: rem-calc(15);
   $topbar-link-bg-hover: $topbar-bg-color;
   $topbar-link-font-family: 'mic-bold';
-  $topbar-link-padding: rem-calc(0);
+  $topbar-link-padding: rem-calc(10);
 
   @import "foundation/components/top-bar";
-
-  ul.left li {
-    margin-left: rem-calc(36);
-  }
-
-  ul.right li {
-    padding: 0 rem-calc(5);
-  }
 
   a>.inner {
     font-family: 'mic-bold';
