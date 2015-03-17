@@ -12,6 +12,7 @@
 #= require i18n_setup
 #= require froala_editor.min.js
 #= require langs/ru.js
+#= require tabs
 
 $ ->
   $('.link').click ->
@@ -20,5 +21,5 @@ $ ->
   $('#news_body').editable
     inlineMode: false
 
-$ -> 
+$ ->
   $('#news_published_at').datetimepicker()
