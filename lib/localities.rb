@@ -1,6 +1,6 @@
 module Localities
   def self.list
-    localities = YAML.load_file("#{Rails.root}/lib/yaml/localities.yml")
+    localities = YAML.load_file("#{Rails.root}/lib/yaml/localities.yml")['localities']
     list = []
     localities.each do |municipality|
       list += municipality[1]
@@ -8,7 +8,8 @@ module Localities
     list
   end
 
-  def self.hash
-    YAML.load_file("#{Rails.root}/lib/yaml/localities.yml").to_a
+  def self.list_hash
+    hash = YAML.load_file("#{Rails.root}/lib/yaml/localities.yml")['localities']
+    hash.to_a
   end
 end

@@ -13,7 +13,7 @@
       = f.input :birth_date, as: :string, as: :date_picker
       = f.input :home_adress, as: :string
       = f.input :municipality
-      = f.input :locality, as: :grouped_select, collection: Localities.hash, group_method: :last
+      = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :avatar, as: :string
       = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
