@@ -5,6 +5,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
 
   def new
     @category_form = CategoryForm.new_with_model
+    @category_form.parent_id = params[:id]
   end
 
   def create

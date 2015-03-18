@@ -22,7 +22,8 @@ module ApplicationHelper
 
   def category_tree(category)
     if category[:childs].present?
-      concat(link_to(category[:category_name], "#", class: '', :data => { :toggle =>'' }))
+      concat link_to(category[:category_name], "#")
+      concat content_tags_for_edit_category(category[:id])
       (content_tag(:ul, class: '') do
         category[:childs].each do |child|
           concat(content_tag(:li, class: '') do 
@@ -31,8 +32,25 @@ module ApplicationHelper
         end
       end)
     else
-      link_to category[:category_name], '#'
+      concat link_to(category[:category_name], '#')
+      content_tags_for_edit_category(category[:id])
     end
+  end
+
+  def content_tags_for_edit_category(href)
+    tags = (link_to(new_admin_category_path(:id => href.to_s))do
+      content_tag(:span, "", :class => "glyphicon glyphicon-ok")
+    end)
+    tags += (link_to(edit_admin_category_path(:id => href.to_s))do
+      content_tag(:span, "", :class => "glyphicon glyphicon-pencil")
+    end)
+    tags += (link_to(href.to_s)do
+      content_tag(:span, "", :class => "glyphicon glyphicon-remove")
+    end)
+    tags += button_to t('.destroy', default: t('helpers.links.destroy')),
+            admin_category_path(Category.find(href.to_s)), method: :delete,
+              class: 'btn btn-xs btn-danger'
+    return tags
   end
 
   def is_active?(path, options = {})
