@@ -19,6 +19,9 @@ class Member < User
   include Municipalities
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
 
+  include Localities
+  enumerize :locality, in: Localities.list, default: Localities.list.first
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
