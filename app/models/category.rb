@@ -9,8 +9,6 @@ class Category < ActiveRecord::Base
   validates :parent_id, presence: false
   validates :is_last,   presence: false
 
-  validates_with CategoryValidator
-
   include CategoryScopes
 
   state_machine initial: :unviewed do

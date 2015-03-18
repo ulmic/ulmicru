@@ -8,8 +8,6 @@ class Article < ActiveRecord::Base
   validates :category_id, presence: true
   validates :user_id,     presence: true
 
-  validates_with ArticleValidator
-
   include ArticleScopes
 
   state_machine :state, initial: :unviewed do
