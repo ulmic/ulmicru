@@ -13,7 +13,7 @@
       %tr
         %td= link_to article.id, edit_admin_article_path(article)
         %td= link_to article.title, edit_admin_article_path(article)
-        %td= article.body
+        %td= article.short_body
         %td= article.category.name
         %td=l article.created_at
         %td
