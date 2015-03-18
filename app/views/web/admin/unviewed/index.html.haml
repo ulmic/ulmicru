@@ -3,8 +3,10 @@
   %ul.nav.nav-tabs{ role: :tablist }
     - tabs.each do |tab|
       %li
-        = link_to t("activerecord.models.#{tab}").pluralize(:ru), "##{tab}"
-  - tabs.each do |tab|
-    %div{ id: tab }
-      - pluralize_tab = tab.pluralize(:en)
-      = render "#{pluralize_tab}_list", pluralize_tab => instance_variable_get("@#{pluralize_tab}")
+        = link_to t("activerecord.models.#{tab}").pluralize(:ru), "##{tab.to_s.pluralize(:en)}"
+  #members
+    = render 'web/admin/members/members_list', members: @members
+  #users
+    = render 'web/admin/users/users_list', users: @users
+  #questionaries
+    = render 'web/admin/questionaries/questionaries_list', questionaries: @questionaries
