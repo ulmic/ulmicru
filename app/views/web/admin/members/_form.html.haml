@@ -12,11 +12,9 @@
       = f.input :mobile_phone, as: :string
       = f.input :birth_date, as: :string, as: :date_picker
       = f.input :home_adress, as: :string
-      = f.input :municipality, as: :string
+      = f.input :municipality
       = f.input :locality, as: :string
       = f.input :avatar, as: :string
-      = f.simple_fields_for :positions do |ff|
-        = render 'position_fields', f: ff
       = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'
