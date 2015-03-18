@@ -9,9 +9,10 @@
     = f.input :mobile_phone, as: :string
     = f.input :birth_date, as: :string
     = f.input :home_adress, as: :string
-    = f.input :municipality, as: :string
-    = f.input :locality, as: :string
+    = f.input :municipality
+    = f.input :locality
     = f.input :type, as: :hidden, input_html: { value: 'Member' }
-    = f.input :avatar, as: :string
+    = f.association :parent, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}"  }, value_method: :id
+    = f.input :avatar, as: :file
   = f.button :submit, t('helpers.links.save'), class: 'btn-success'
   = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'

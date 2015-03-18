@@ -12,7 +12,7 @@
     - members.each do |member|
       %tr.link{ class: state_color(member), data: { href: edit_admin_member_path(member) } }
         %td= member.id
-        %td= member.avatar
+        %td= image_tag member.avatar.small
         %td= member.full_name
         %td= member.ticket
         %td= member.place

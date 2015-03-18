@@ -30,7 +30,7 @@ ru:
         home_adress: Домашний адрес
         municipality: Муниципальное образование
         locality: Населённый пункт
-        user: Прикреплённый Пользователь
+        parent: Крёстный
       questionary:
         first_name: Имя
         patronymic: Отчество
