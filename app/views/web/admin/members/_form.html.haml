@@ -14,7 +14,7 @@
       = f.input :home_adress, as: :string
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
-      = f.input :avatar, as: :string
+      = f.input :avatar, as: :file
       = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

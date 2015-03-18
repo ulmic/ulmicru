@@ -4,6 +4,8 @@ class Questionary < Member
 
   include QuestionaryScopes
 
+  mount_uploader :avatar, AvatarUploader
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed

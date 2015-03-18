@@ -19,6 +19,8 @@ class Member < User
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
   enumerize :locality, in: Localities.list, default: Localities.list.first
 
+  mount_uploader :avatar, AvatarUploader
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
