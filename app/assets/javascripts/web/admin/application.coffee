@@ -12,6 +12,7 @@
 #= require froala_editor.min.js
 #= require langs/ru.js
 #= require tabs
+#= require localities
 
 $ ->
   $('.link').click ->

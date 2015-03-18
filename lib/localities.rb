@@ -9,6 +9,6 @@ module Localities
   end
 
   def self.hash
-    YAML.load_file("#{Rails.root}/lib/yaml/localities.yml")
+    YAML.load_file("#{Rails.root}/lib/yaml/localities.yml").to_a
   end
 end
