@@ -1,7 +1,5 @@
 - model_class = Article
-%ul#sample_category_tree
-  = categories_tree
 .page-header
   %h1=t model_class.model_name.human.pluralize(:ru) 
   = render 'articles_list', articles: @articles
-  = link_to "#{t 'helpers.links.new'}", new_admin_category_path, class: 'btn btn-primary'
+  = link_to "#{t 'helpers.links.new'}", new_admin_article_path, class: 'btn btn-primary'
