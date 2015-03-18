@@ -56,7 +56,7 @@ class Category < ActiveRecord::Base
       transition all => :removed
     end
     event :restore do
-      transition :remove => :unviewed
+      transition :removed => :unviewed
     end
   end
 
