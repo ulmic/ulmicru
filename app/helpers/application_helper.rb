@@ -38,15 +38,15 @@ module ApplicationHelper
   end
 
   def content_tags_for_edit_category(href)
-    tags = (link_to(new_admin_category_path(:id => href.to_s))do
+    tags = (link_to(new_admin_category_path(:id => href.to_s), class: 'btn btn-xs btn-success')do
       content_tag(:span, "", :class => "glyphicon glyphicon-ok")
     end)
-    tags += (link_to(edit_admin_category_path(:id => href.to_s))do
+    tags += (link_to(edit_admin_category_path(:id => href.to_s), class: 'btn btn-xs btn-warning')do
       content_tag(:span, "", :class => "glyphicon glyphicon-pencil")
     end)
-    tags += button_to t('.destroy', default: t('helpers.links.destroy')),
-            admin_category_path(Category.find(href.to_s)), method: :delete,
-              class: 'btn btn-xs btn-danger'
+    tags += (link_to(admin_category_path(Category.find(href.to_s)), method: :delete, class: 'btn btn-xs btn-danger') do 
+      content_tag(:span, "", :class => "glyphicon glyphicon-remove")
+    end)
     return tags
   end
 
