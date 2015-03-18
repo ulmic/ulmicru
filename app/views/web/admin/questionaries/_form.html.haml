@@ -3,16 +3,18 @@
 .row
   .col-lg-6
     = simple_form_for [:admin, @questionary_form], input_html: { class: 'form-horizontal' } do |f|
-      = f.input :first_name, as: :string, required: true
+      = f.input :first_name, as: :string
       = f.input :patronymic, as: :string
-      = f.input :last_name, as: :string, required: true
-      = f.input :email, as: :string, required: true
+      = f.input :last_name, as: :string
+      = f.input :email, as: :string
       = f.input :motto, as: :string
       = f.input :mobile_phone, as: :string
-      = f.input :birth_date, as: :string
+      = f.input :birth_date, as: :string, as: :date_picker
       = f.input :home_adress, as: :string
-      = f.input :municipality, as: :string
+      = f.input :municipality
       = f.input :locality, as: :string
       = f.input :avatar, as: :string
+      = f.input :want_to_do
+      = f.input :experience
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_questionaries_path, class: 'btn btn-default'

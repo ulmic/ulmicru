@@ -1,6 +1,8 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
   def index
-    @members = ::MemberDecorator.decorate_collection Member.presented
+    @unviewed_members = ::MemberDecorator.decorate_collection Member.unviewed
+    @confirmed_members = ::MemberDecorator.decorate_collection Member.confirmed
+    @declined_members = ::MemberDecorator.decorate_collection Member.declined
   end
 
   def new

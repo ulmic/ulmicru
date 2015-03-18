@@ -35,6 +35,12 @@ ru:
             changed: Доступ к этому аттрибуту успешно изменён
             not_changed: Доступ к этому аттрибуту не изменён
   state_machines:
+    member:
+      state:
+        states:
+          unviewed: Новые
+          confirmed: Подтверждённые
+          declined: Отклонённые
     news:
       state:
         states:
@@ -42,6 +48,10 @@ ru:
           unpublished: Неопубликованное
     questionary:
       state:
+        states:
+          on_the_trial: Испытательный срок
+          unviewed: Новые
+          declined: Отклонённые
         events:
           put_on_the_trial: Поставить на испытательный срок
           confirm: Принять в организацию

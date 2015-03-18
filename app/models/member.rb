@@ -24,7 +24,6 @@ class Member < User
     state :confirmed
     state :declined
     state :removed
-    state :not_member
 
     event :confirm do
       transition all => :confirmed

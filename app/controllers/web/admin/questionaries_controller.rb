@@ -1,6 +1,8 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
   def index
-    @questionaries = Questionary.presented.decorate
+    @unviewed_questionaries = Questionary.unviewed.decorate
+    @on_the_trial_questionaries = Questionary.on_the_trial.decorate
+    @declined_questionaries = Questionary.declined.decorate
   end
 
   def new

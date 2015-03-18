@@ -1,31 +1,17 @@
 - model_class = Questionary
+- tabs = [ :on_the_trial, :unviewed, :declined ]
 .page-header
-  %h1= t('activerecord.models.questionary').pluralize(:ru)
-%table.table.table-condensed.table-hover
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:avatar)
-      %th= model_class.human_attribute_name(:full_name)
-      %th= model_class.human_attribute_name(:place)
-      %th= model_class.human_attribute_name(:created_at)
-      %th= t 'helpers.links.actions'
-  %tbody
-    - @questionaries.each do |questionary|
-      %tr.link{ class: state_color(questionary), data: { href: edit_admin_questionary_path(questionary) } }
-        %td= questionary.id
-        %td= questionary.avatar
-        %td= questionary.full_name
-        %td= questionary.place
-        %td=l questionary.created_at
-        %td
-          - if questionary.unviewed?
-            = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(questionary, questionary: { state: :put_on_the_trial }), method: :put, class: 'btn btn-success btn-xs'
-          - unless questionary.confirmed?
-            = link_to t('state_machines.questionary.state.events.confirm'), admin_questionary_path(questionary, questionary: { state: :put_on_the_trial }), method: :put, class: 'btn btn-success btn-xs'
-          = link_to t('helpers.links.edit'), edit_admin_questionary_path(questionary), class: 'btn btn-warning btn-xs'
-          = link_to t('helpers.links.destroy'), admin_questionary_path(questionary), method: :delete, class: 'btn btn-xs btn-danger'
-          - unless questionary.declined?
-            = link_to t('helpers.links.decline'), admin_questionary_path(questionary, questionary: { state: :declined }), method: :patch, class: 'btn btn-xs btn-danger'
-
-= link_to t('.new', default: t('helpers.links.new')), new_admin_questionary_path, class: 'btn btn-primary'
+  %h1
+    = model_class.model_name.human.pluralize(:ru)
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_member_path, class: 'btn btn-primary'
+#tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    - tabs.each do |tab|
+      %li
+        = link_to t("state_machines.#{model_class.model_name.to_s.downcase}.state.states.#{tab}").pluralize(:ru), "##{tab}"
+  #on_the_trial
+    = render 'questionaries_list', questionaries: @on_the_trial_questionaries
+  #unviewed
+    = render 'questionaries_list', questionaries: @unviewed_questionaries
+  #declined
+    = render 'questionaries_list', questionaries: @declined_questionaries

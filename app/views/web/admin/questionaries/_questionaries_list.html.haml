@@ -1,0 +1,46 @@
+- model_class = Questionary
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:avatar)
+      %th= model_class.human_attribute_name(:full_name)
+      %th= model_class.human_attribute_name(:place)
+      %th= model_class.human_attribute_name(:created_at)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - questionaries.each do |questionary|
+      %tr.link{ class: state_color(questionary), data: { href: edit_admin_questionary_path(questionary) } }
+        %td= questionary.id
+        %td= questionary.avatar
+        %td= questionary.full_name
+        %td= questionary.place
+        %td=l questionary.created_at
+        %td
+          .btn-group
+            = link_to '#', class: 'btn btn-xs btn-success' do
+              %span.glyphicon.glyphicon-ok
+            = link_to '#', class: 'btn btn-xs btn-success dropdown-toggle', data: { toggle: :dropdown }, aria: { expanded: false } do
+              %span.glyphicon.glyphicon-triangle-bottom
+            %ul.dropdown-menu
+              - if questionary.unviewed?
+                %li
+                  = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(questionary, questionary: { state: :put_on_the_trial }), method: :put
+              - unless questionary.confirmed?
+                %li
+                  = link_to t('state_machines.questionary.state.events.confirm'), admin_questionary_path(questionary, questionary: { state: :put_on_the_trial }), method: :put
+          = link_to edit_admin_questionary_path(questionary), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          .btn-group
+            = link_to '#', class: 'btn btn-xs btn-danger' do
+              %span.glyphicon.glyphicon-remove
+            = link_to '#', class: 'btn btn-xs btn-danger dropdown-toggle', data: { toggle: :dropdown }, aria: { expanded: false } do
+              %span.glyphicon.glyphicon-triangle-bottom
+            %ul.dropdown-menu
+              %li
+                = link_to t('helpers.links.destroy'), admin_questionary_path(questionary), method: :delete
+              - unless questionary.declined?
+                %li
+                  = link_to t('helpers.links.decline'), admin_questionary_path(questionary, questionary: { state: :declined }), method: :patch
+
+= link_to t('.new', default: t('helpers.links.new')), new_admin_questionary_path, class: 'btn btn-primary'

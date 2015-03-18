@@ -1,7 +1,9 @@
 - model_class = News
 - tabs = [ :published, :unpublished ]
 .page-header
-  %h1=t model_class.model_name.human.pluralize(:ru)
+  %h1
+    = t model_class.model_name.human.pluralize(:ru)
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'
 #tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - tabs.each do |tab|
@@ -9,7 +11,5 @@
         = link_to t("state_machines.news.state.states.#{tab}").pluralize(:ru), "##{tab}"
   #published
     = render 'news_list', news: @published_news
-    = link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'
   #unpublished
     = render 'news_list', news: @unpublished_news
-    = link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'
