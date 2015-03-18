@@ -3,3 +3,4 @@
   %h1
     = model_class.model_name.human.pluralize(:ru)
     = link_to t('.new', default: t('helpers.links.new')), new_admin_user_path, class: 'btn btn-primary'
+= render 'users_list', users: @users
