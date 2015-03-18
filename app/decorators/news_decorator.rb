@@ -29,7 +29,7 @@ class NewsDecorator < Draper::Decorator
   end
 
   def author_name
-    user.decorate.short_name
+    user.present? ? user.decorate.short_name : I18n.t('helpers.no_author')
   end
 
 end

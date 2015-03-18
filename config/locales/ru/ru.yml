@@ -7,6 +7,7 @@ ru:
     send_request: Подать заявку на вступление в МИЦ
   helpers:
     enter: Войти
+    no_author: Нет автора
     actions:
       update: Редактировать
       create: Создать
