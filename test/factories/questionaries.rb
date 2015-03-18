@@ -9,7 +9,6 @@ FactoryGirl.define do
     mobile_phone { generate :phone }
     birth_date { generate :date }
     home_adress { generate :string }
-    locality { generate :string }
     avatar { generate :string }
     experience { generate :string }
     want_to_do { generate :string }
