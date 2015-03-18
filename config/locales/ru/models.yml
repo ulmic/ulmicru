@@ -64,3 +64,4 @@ ru:
       category:
         name: Название 
         parent: Родитель
+        parent_id: Связь с родителем
