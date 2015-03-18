@@ -26,9 +26,17 @@
     padding-right: 10px;
   }
   .title {
+    display: inline-block;
     margin-top: 0;
     padding-top: rem-calc(14);
     font-size: rem-calc(20);
+  }
+  .right {
+    line-height: rem-calc(47);
+    .text {
+      font-family: mic;
+      font-size: rem-calc(11);
+    }
   }
   .date {
     font-family: mic;

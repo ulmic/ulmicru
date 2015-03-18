@@ -36,6 +36,8 @@ $(function(){
 	$('.news-slider').slick({
 	  infinite: true,
 	  slidesToShow: 5,
-	  slidesToScroll: 5
+	  slidesToScroll: 5,
+    prevArrow: $('.news .slider-arrows>.left-arrow'),
+    nextArrow: $('.news .slider-arrows>.right-arrow')
 	});
 });

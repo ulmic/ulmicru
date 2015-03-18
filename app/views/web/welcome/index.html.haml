@@ -23,12 +23,19 @@
                 = item
 .news
   .container-big
-    %h4.title Новости
+    .top
+      %h4.title Новости
+      .right
+        %span.text ВСЕ НОВОСТИ
+        %span.slider-arrows
+          %a.left-arrow <-
+          %a.right-arrow ->
     .news-slider
-      - 5.times do
+      - 50.times do |i|
         %a.new-slider-item
           %p.date
-            18 ноября 14
+            18 ноября 201
+            = i
           %p.content
             Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того
 .events
