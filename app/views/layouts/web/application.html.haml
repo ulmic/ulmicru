@@ -9,10 +9,9 @@
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body{style: "height: 2491px;background-image: url(/assets/main.png);background-repeat: no-repeat;"}
-
-    .div{ style: "width: 90%" }
-      = render 'layouts/web/shared/navbar'
+  %body
+    %div
+    = render 'layouts/web/shared/navbar'
 
     = yield
 

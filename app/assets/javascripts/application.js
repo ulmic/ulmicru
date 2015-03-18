@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require slick
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require foundation
@@ -25,5 +26,16 @@
 //= require froala_editor.min.js
 //= require langs/ru.js
 //= require_tree .
-
-$(function(){ $(document).foundation(); });
+$(function(){
+	$(document).foundation();
+	$('.main-slider').slick({
+	  centerMode: true,
+	  centerPadding: '300px',
+	  slidesToShow: 1
+	});
+	$('.news-slider').slick({
+	  infinite: true,
+	  slidesToShow: 5,
+	  slidesToScroll: 5
+	});
+});

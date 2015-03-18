@@ -7,25 +7,29 @@
 
   $topbar-dropdown-bg: $topbar-bg-color;
 
-  $topbar-link-color: black;
-  $topbar-link-color-hover: #f1790f;
+  $topbar-link-color: #333333;
+  $topbar-link-color-hover: #f45c10;
   $topbar-link-font-size: rem-calc(15);
   $topbar-link-bg-hover: $topbar-bg-color;
   $topbar-link-font-family: 'mic-bold';
   $topbar-link-padding: rem-calc(10);
 
   @import "foundation/components/top-bar";
-
-  a>.inner {
+  .site-logo {
+    text-transform: uppercase;
+  }
+  a {
     font-family: 'mic-bold';
-    text-decoration: none;
+    color: #333333
+  }
+  a>.inner {
     box-sizing: border-box;
     height: $topbar-height;
-    border-top: rem-calc(3) solid #fff;
+    border-top: 3px solid #fff;
     transition: border-color 0.2s ease,color 0.2s ease;
   }
   a:hover>.inner {
-    color: #f1790f;
-    border-top: rem-calc(3) solid #f1790f;
+    color: #f45c10;
+    border-top: rem-calc(3) solid #f45c10;
   }
 }

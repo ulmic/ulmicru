@@ -1,3 +1,51 @@
-// Place all the styles related to the web/welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.main-slider {
+	.main-slider-item {
+		height: 342px;
+		overflow: hidden;
+		.slider-item-info {
+			display: none;
+		}
+	}
+	.slick-center {
+		.slider-item-info {
+			display: block;
+			position: relative;
+			background-color: rgba(0,0,0,0.5);
+			color: #fff;
+			top: 40px;
+		}
+	}
+}
+.news {
+	background-color: #ececec;
+	min-height: 190px;
+}
+.events{
+	.rotate {
+		position: relative;
+		top: 12rem;
+		transform: rotate(270deg);
+		transform-origin: 0% 0%;
+	}
+	.event {
+		float: left;
+		width: 25%;
+		padding-right: 1rem;
+		img {
+			width: 100%;
+		}
+		section {
+			margin: 10px 0px;
+		}
+		.category {
+			position: relative;
+			padding-top: 10px;
+			color: #f45c10;
+			border-top: 4px solid #f45c10;
+			text-transform: uppercase;
+		}
+		.date {
+			margin-left: 15px;
+		}
+	}
+}

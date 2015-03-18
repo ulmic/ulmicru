@@ -1,6 +1,10 @@
 // =require web/foundation/main_navbar
-// =require web/foundation/after_slider_navbar
+// =require web/foundation/category-navbar
 
-body {
-    opacity: 0.9;
+a {
+    font-family: 'mic';
+    color: #333333;
+}
+a:hover {
+	color: #f45c10;
 }

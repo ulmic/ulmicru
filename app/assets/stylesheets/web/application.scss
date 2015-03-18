@@ -4,13 +4,43 @@
 
 // =require foundation
 // =require web/foundation/application
+// =require web/welcome
+$font-orange: #﻿f45c10;
 
 @font-face {
   font-family: 'mic-bold';
   src: font-url('PFSquareSansPro-Medium.ttf');
 }
-
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'mic-bold';
+}
+h3,h4,h5 {
+  text-transform: uppercase;
+  color: #f45c10;
+  margin: 0.5rem 0;
+}
 @font-face {
-  font-family: mic;
+  font-family: 'mic';
   src: font-url('PFBeauSansPro-Light.ttf');
+}
+body {
+  font-family: 'mic';
+  color: #333333;
+}
+.container-big {
+  width: 95%;
+  margin: 0 auto;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+.clear-fix:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    height: 0;
+
+    content: '';
 }

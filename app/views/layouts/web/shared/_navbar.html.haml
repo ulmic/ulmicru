@@ -1,23 +1,20 @@
 .main-navbar-container
   %nav.top-bar{"data-topbar" => ""}
     %section.top-bar-section
-      %ul.right
-        %li
-          %a{:href => "#"}
-            .inner
-              Контакты
-        %li
-          %a{:href => "#"}
-      %ul.left
-        %li
-          %a{:href => "#"}
-            .inner
-              Новости и события
-        %li
-          %a{:href => "#"}
-            .inner
-              МИЦ - это ...
-        %li
-          %a{:href => "#"}
-            .inner
-              Партнёры
+      .container-big
+        %ul.right
+          %li
+            %a{:href => "#"}
+              .inner
+                Контакты
+          %li
+            %a{:href => "#"}
+        %a{class:"site-logo",:href => "#"}
+          Молодёжный
+          Инициативный Центр
+        %ul.left
+          - ["Новости и события", "Миц - это ...", "Партнёры"].each do |item|
+            %li
+              %a{:href => "#"}
+                .inner
+                  = item
