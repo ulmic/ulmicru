@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
 
   private 
   def get_categories
-    @last_childs = Category.last_childs
     @categories_tree = Category.get_tree
   end
 end
