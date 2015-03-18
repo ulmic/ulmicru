@@ -52,7 +52,7 @@ $.fn.extend treed: (o) ->
       return
     return
   #fire event to open branch if the li contains an anchor instead of text
-  tree.find('.branch>a').each ->
+  tree.find('.branch>a').first.each ->
     $(this).on 'click', (e) ->
       $(this).closest('li').click()
       e.preventDefault()
