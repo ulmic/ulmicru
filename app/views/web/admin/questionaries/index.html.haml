@@ -3,7 +3,7 @@
 .page-header
   %h1
     = model_class.model_name.human.pluralize(:ru)
-    = link_to t('.new', default: t('helpers.links.new')), new_admin_member_path, class: 'btn btn-primary'
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_questionary_path, class: 'btn btn-primary'
 #tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - tabs.each do |tab|
