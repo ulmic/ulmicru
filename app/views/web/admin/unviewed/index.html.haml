@@ -1,23 +1,10 @@
-- model_class = Member
-.page-header
-  %h3= model_class.model_name.human.pluralize(:ru)
-%table.table.table-condensed.table-hover
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:avatar)
-      %th= model_class.human_attribute_name(:full_name)
-      %th= model_class.human_attribute_name(:ticket)
-      %th= model_class.human_attribute_name(:place)
-      %th= t 'helpers.links.actions'
-  %tbody
-    - @members.each do |member|
-      %tr.link{ data: { href: edit_admin_member_path(member) } }
-        %td= member.id
-        %td= member.avatar
-        %td= member.full_name
-        %td= member.ticket
-        %td= member.place
-        %td
-          = link_to t('helpers.links.approve'), admin_member_path(member, member: { state: :confirmed }), method: :patch, class: 'btn btn-primary btn-xs'
-          = link_to t('helpers.links.decline'), admin_member_path(member, member: { state: :declined }), method: :patch, class: 'btn btn-xs btn-danger'
+- tabs = [ :member, :user, :questionary ]
+#tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    - tabs.each do |tab|
+      %li
+        = link_to t("activerecord.models.#{tab}").pluralize(:ru), "##{tab}"
+  - tabs.each do |tab|
+    %div{ id: tab }
+      - pluralize_tab = tab.pluralize(:en)
+      = render "#{pluralize_tab}_list", pluralize_tab => instance_variable_get("@#{pluralize_tab}")
