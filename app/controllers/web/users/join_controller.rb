@@ -5,8 +5,7 @@ class Web::Users::JoinController < Web::Users::ApplicationController
   end
 
   def create
-    @questionary = Questionary.new
-    @questionary_form = QuestionaryForm.new @questionary
+    @questionary_form = QuestionaryForm.new_with_model
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
       redirect_to account_path
