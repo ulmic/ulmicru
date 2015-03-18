@@ -23,27 +23,28 @@
                 = item
 .news
   .container-big
-    %h4 Новости
+    %h4.title Новости
     .news-slider
-      -for i in 0..5
+      - 5.times do
         %a.new-slider-item
           %p.date
             18 ноября 14
-          %p
+          %p.content
             Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того
 .events
   .container-big
     %h4.rotate Мероприятия
-    .container.clear-fix
-      -for i in 0..7
-        %article.event
-          %a
-            %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
-          %section
-            %span.category
-              InФормат
-            %span.date
-              4-5 декабря
-          %p
+    .container-big
+      %ul.small-block-grid-4
+        - 7.times do
+          %li.event
             %a
-              Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того
+              %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
+            %section
+              %span.category
+                InФормат
+              %span.date
+                4-5 декабря
+            %p
+              %a
+                Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того

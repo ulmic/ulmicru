@@ -1,3 +1,5 @@
+@import "foundation/functions";
+
 .main-slider {
 	.main-slider-item {
 		height: 342px;
@@ -16,21 +18,43 @@
 		}
 	}
 }
+
 .news {
 	background-color: #ececec;
-	min-height: 190px;
+	min-height: rem-calc(190);
+  .new-slider-item {
+    padding-right: 10px;
+  }
+  .title {
+    margin-top: 0;
+    padding-top: rem-calc(14);
+    font-size: rem-calc(20);
+  }
+  .date {
+    font-family: mic;
+    font-size: rem-calc(11);
+    margin-bottom: rem-calc(4);
+  }
+  .content {
+    font-family: mic;
+    font-size: rem-calc(15);
+    font-weight: bold;
+  }
 }
+
 .events{
+  position: relative;
+  margin-top: rem-calc(20);
+  h4.rotate {
+    font-size: 20px;
+  }
 	.rotate {
-		position: relative;
-		top: 12rem;
+		position: absolute;
+		top: rem-calc(125);
 		transform: rotate(270deg);
 		transform-origin: 0% 0%;
 	}
 	.event {
-		float: left;
-		width: 25%;
-		padding-right: 1rem;
 		img {
 			width: 100%;
 		}
