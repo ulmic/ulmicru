@@ -10,6 +10,19 @@
   filter: gray; /* IE 6-9 */
 }
 
+.left-arrow {
+  display: inline-block !important;
+  background-image: url("/assets/arrow.png");
+  background-size: cover;
+  transform: rotate(90deg);
+}
+.right-arrow {
+  display: inline-block !important;
+  background-image: url("/assets/arrow.png");
+  background-size: cover;
+  transform: rotate(270deg);
+}
+
 .main-slider {
 	.main-slider-item {
 		height: 342px;
@@ -47,6 +60,11 @@
       font-family: mic;
       font-size: rem-calc(11);
     }
+    .arrow {
+      width: rem-calc(25);
+      height: rem-calc(25);
+      vertical-align: middle;
+    }
   }
   .date {
     font-family: mic;
@@ -75,6 +93,7 @@
 	.event {
 		img {
 			width: 100%;
+      height: rem-calc(195);
 		}
 		section {
 			margin: 10px 0px;
@@ -93,9 +112,18 @@
 }
 
 .humans {
+
   $block-grid-default-spacing: rem-calc(0);
 
   @import "foundation/components/block-grid";
+
+  &:after {
+    content: ".";
+    display: block;
+    width: 100%;
+    height: rem-calc(12);
+    background-color: black;
+  }
 
   li.human {
     height: rem-calc(290);
@@ -132,4 +160,8 @@
       margin-top: rem-calc(14);
     }
   }
+}
+.last-tweets {
+  height: 300px;
+  background: orange;
 }
