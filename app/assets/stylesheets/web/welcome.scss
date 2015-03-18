@@ -1,5 +1,15 @@
 @import "foundation/functions";
 
+@mixin grayscale() {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  /* filter: url(grayscale.svg#greyscale); Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}
+
 .main-slider {
 	.main-slider-item {
 		height: 342px;
@@ -80,4 +90,46 @@
 			margin-left: 15px;
 		}
 	}
+}
+
+.humans {
+  $block-grid-default-spacing: rem-calc(0);
+
+  @import "foundation/components/block-grid";
+
+  li.human {
+    height: rem-calc(290);
+    text-align: center;
+    display: table;
+    position: relative;
+    .bg-foto, .info {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    .bg-foto {
+      background-size: cover;
+      @include grayscale;
+    }
+    .info {
+      font-family: mic-bold;
+      display: none;
+    }
+    &:hover .info {
+      background-color: orange;
+      background-color: rgba(187, 28, 0, 0.6);
+      color: white;
+      display: table;
+      .vertical-center {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .name {
+      font-size: rem-calc(20);
+    }
+    .post, .credo {
+      margin-top: rem-calc(14);
+    }
+  }
 }

@@ -55,3 +55,17 @@
             %p
               %a
                 Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того
+.humans
+  %ul.small-block-grid-7
+    - 14.times do
+      - foto_src = "http://www.allfaler.ru/images/stories/Matirials/RF/Statis/kalashnikov1.jpg"
+      %li.human
+        .bg-foto{ style: "background-image: url('#{foto_src}')" }
+        %a.info{ href: "#" }
+          .vertical-center
+            .name
+              Елена ТИТОВА
+            .post
+              Заместитель Председателя МИЦ
+            .credo
+              "Не останавливайся на достигнутом"
