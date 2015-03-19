@@ -20,6 +20,4 @@
 //= require js-routes
 //= require active_form
 //= require i18n_setup
-//= require froala_editor.min.js
-//= require langs/ru.js
 //= require_tree .
