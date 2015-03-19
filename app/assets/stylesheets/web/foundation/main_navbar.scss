@@ -18,6 +18,31 @@
   $topbar-dropdown-link-bg-hover: $topbar-bg-color;
 
   @import "foundation/components/top-bar";
+  .banner-container {
+    position: relative;
+    .banner {
+      $el-width: rem-calc(94);
+      width: $el-width;
+      left: -($el-width + rem-calc(10));
+      background-image: url('/assets/svg-navbar-fallback.png');
+      background-image: url('/assets/svg-navbar.svg');
+      position: absolute;
+      height: rem-calc(120);
+      z-index: 5;
+      text-align: center;
+      text-transform: uppercase;
+      color: white;
+      font-family: mic-bold;
+      padding: 0 rem-calc(10);
+      line-height: rem-calc(16);
+      display: table;
+      .text {
+        display: table-cell;
+        vertical-align: middle;
+        padding-bottom: rem-calc(15);
+      }
+    }
+  }
   .site-logo {
     $el-width: rem-calc(255);
 
