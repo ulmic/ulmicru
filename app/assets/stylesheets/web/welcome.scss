@@ -10,19 +10,6 @@
   filter: gray; /* IE 6-9 */
 }
 
-.left-arrow {
-  display: inline-block !important;
-  background-image: url("/assets/arrow-small.png");
-  background-size: cover;
-  transform: rotate(90deg);
-}
-.right-arrow {
-  display: inline-block !important;
-  background-image: url("/assets/arrow-small.png");
-  background-size: cover;
-  transform: rotate(270deg);
-}
-
 .main-slider {
 	.main-slider-item {
 		height: 342px;
@@ -59,11 +46,22 @@
     .text {
       font-family: mic;
       font-size: rem-calc(11);
+      font-weight: bold;
+    }
+    .left-arrow, .right-arrow {
+      display: inline-block !important;
+      background-image: url("/assets/arrow-small.png");
+      background-size: cover;
+    }
+    .right-arrow {
+      transform: rotate(180deg);
+    }
+    .slider-arrows {
+      margin-left: rem-calc(10);
     }
     .arrow {
-      margin-left: 4px;
-      width: rem-calc(20);
-      height: rem-calc(20);
+      width: rem-calc(25);
+      height: rem-calc(25);
       vertical-align: middle;
     }
   }

@@ -16,7 +16,15 @@
 
   @import "foundation/components/top-bar";
   .site-logo {
-    text-transform: uppercase;
+    $el-width: rem-calc(255);
+
+    background: url('/assets/topbar-logo.png') no-repeat;
+    height: rem-calc(80);
+    width: $el-width;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -$el-width/2;
   }
   a {
     font-family: 'mic-bold';
