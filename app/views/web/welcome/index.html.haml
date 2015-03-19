@@ -1,17 +1,13 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css"/>
 .main-slider
-  .main-slider-item
-    %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
-    .slider-item-info
-      я какойцываыва фы вавфотавылф фуышафвыа
-  .main-slider-item
-    %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
-    .slider-item-info
-      я какойцываыва фы вавфотавылф фуышафвыа
-  .main-slider-item
-    %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
-    .slider-item-info
-      я какойцываыва фы вавфотавылф фуышафвыа
+  %a.left-arrow
+  %a.right-arrow
+  .slider-items
+    - 5.times do
+      .main-slider-item
+        %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
+        .slider-item-info
+          Члены миц уверены, что дедлайны пиздец
 .category-navbar-container.clear-fix
   %nav.top-bar{"data-topbar" => ""}
     %section.top-bar-section

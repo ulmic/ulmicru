@@ -28,10 +28,20 @@
 //= require_tree .
 $(function(){
 	$(document).foundation();
-	$('.main-slider').slick({
+	$('.main-slider .slider-items').slick({
 	  centerMode: true,
-	  centerPadding: '300px',
-	  slidesToShow: 1
+	  centerPadding: '22%',
+	  slidesToShow: 1,
+    responsive: [
+      {
+        breakpoint: 1100,
+        settings: {
+          centerPadding: '20%',
+        }
+      }
+    ],
+    prevArrow: $('.main-slider .left-arrow'),
+    nextArrow: $('.main-slider .right-arrow')
 	});
 	$('.news-slider').slick({
 	  infinite: true,
