@@ -1,6 +1,11 @@
 module ApplicationHelper
   include Concerns::AuthManagment
 
+  def title(page_title = t('.title'))
+    page_title == :app_name ? title_text = t('application.name') : title_text = "#{page_title} | #{t('application.name')}"
+    content_for(:title) { title_text }
+  end
+
   def menu_item(name = nil, path = '#', *args, &block)
     path = name || path if block_given?
     options = args.extract_options!
