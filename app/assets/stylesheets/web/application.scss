@@ -6,11 +6,13 @@
 // =require web/foundation/application
 // =require web/welcome
 
-$font-orange: #﻿f45c10;
-
 @font-face {
   font-family: 'mic-bold';
   src: font-url('PFSquareSansPro-Medium.ttf');
+}
+@font-face {
+  font-family: 'mic-thin';
+  src: font-url('PFSquareSansPro-Thin.ttf');
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'mic-bold';
