@@ -116,6 +116,9 @@ body {
     }
     .contacts {
       margin-top: rem-calc(20);
+      &>span {
+        white-space: no-wrap;
+      }
       .mail {
         padding-right: 15%;
       }

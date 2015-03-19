@@ -19,6 +19,43 @@
 
   @import "foundation/components/top-bar";
 
+  .dropdown-category-menu {
+    position: relative;
+  }
+  .dropdown-category-menu:hover {
+    & .category-menu, & ul {
+      display: block;
+    }
+  }
+  .category-menu {
+    position: absolute;
+    display: block !important;
+    z-index: 5;
+    top: -10px;
+    width: 720px;
+    background: $topbar-bg-color;
+    padding: 0 rem-calc(30) rem-calc(30);
+    .menu-title {
+      font-size: 20px;
+      padding-bottom: rem-calc(10);
+    }
+    .category-column {
+      width: 220px;
+      float: left;
+      padding-left: rem-calc(20);
+      &:hover {
+        .menu-title {
+          color: #f45c10;
+        }
+      }
+      &>a {
+        padding: 2px !important;
+        line-height: 20px !important;
+        display: block;
+      }
+    }
+  }
+
   @mixin social-icon() {
     width: 27px;
     height: 28px;
