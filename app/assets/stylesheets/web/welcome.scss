@@ -193,7 +193,7 @@
   }
 }
 .last-tweets {
-  height: 300px;
+  height: 340px;
   background: url('/assets/tweet.png') no-repeat;
 	background-size: cover;
 	text-align: center;
@@ -241,6 +241,13 @@
           border-right: 1px solid #fff;
           padding-right: 6px;
           margin-right: 6px;
+          .first-letter {
+            font-size: 20px;
+            position: relative;
+            top: 2px;
+            left: 4px;
+            color: #ffa911;
+          }
         }
         .date {
           font-style: italic;
