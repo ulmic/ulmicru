@@ -18,12 +18,50 @@
   $topbar-dropdown-link-bg-hover: $topbar-bg-color;
 
   @import "foundation/components/top-bar";
+  background: url(/assets/footer-icons.png);
+  @mixin social-icon() {
+    width: 27px;
+    height: 28px;
+    display: inline-block;
+    background: url(/assets/header-icons.png);
+  }
+  .icons-container {
+    display: table;
+    margin-top: $topbar-height/2.2;
+    margin-right: 5%;
+    .icons {
+      display: table-cell;
+      vertical-align: middle;
+      width: rem-calc(120);
+      &>a {
+        padding: 0 !important;
+        line-height: 0 !important;
+      }
+    }
+    .icon-vk {
+      @include social-icon();
+    }
+    .icon-facebook {
+      @include social-icon();
+      background-position: 54px;
+    }
+    .icon-twitter {
+      @include social-icon();
+      background-position: 86px;
+    }
+    .icon-door {
+      @include social-icon();
+      background-position: 22px;
+      width: 22px;
+    }
+  }
   .banner-container {
+    $el-width: rem-calc(94);
+    height: rem-calc(20);
+    width: $el-width;
     position: relative;
     .banner {
-      $el-width: rem-calc(94);
       width: $el-width;
-      left: -($el-width + rem-calc(10));
       background-image: url('/assets/svg-navbar-fallback.png');
       background-image: url('/assets/svg-navbar.svg');
       position: absolute;
