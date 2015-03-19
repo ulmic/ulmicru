@@ -58,15 +58,3 @@ ru:
         deleted: Удалённые
       article:
         push_into: Добавить в категорию '%{category}'
-  time:
-    formats:
-      default: "%Y/%m/%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
-  datepicker:
-    dformat: '%d/%m/%Y'             # display format of the date (this is the default, can be ommited)
-    pformat: 'DD/MM/YYYY'           # picking format of the date (this is the default, can be ommited)
-  timepicker:
-    dformat: '%R'                   # display format of the time (this is the default, can be ommited)
-    pformat: 'HH:mm'                # picking format of the time (this is the default, can be ommited)
-  dayViewHeaderFormat: 'MMMM YYYY'
