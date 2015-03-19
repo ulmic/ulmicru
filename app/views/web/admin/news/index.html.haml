@@ -1,5 +1,6 @@
 - model_class = News
 - tabs = [ :published, :unpublished ]
+- title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
   %h1
     = t model_class.model_name.human.pluralize(:ru)

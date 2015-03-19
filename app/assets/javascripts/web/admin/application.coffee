@@ -26,8 +26,9 @@ $ ->
       pencil: 'edit',
       remove: 'destroy',
       ok: 'approve',
-      'triangle-bottom': 'actoins',
-      'plus': 'add'
+      plus: 'add',
+      open: 'restore',
+      'triangle-bottom': 'actions'
     }
     action = glyphicon_titles[klass.replace('glyphicon-', '')]
     $(this).closest('a.btn-xs').prop('title', I18n.t("helpers.links.#{action}"))

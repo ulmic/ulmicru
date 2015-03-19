@@ -1,0 +1,21 @@
+ru:
+  admin: Админка
+  web:
+    admin:
+      welcome:
+        index:
+          title: Админка
+      unviewed:
+        index:
+          title: Непросмотренные
+      trash:
+        name: Имя
+        title: Корзина
+        deleted: Удалённые
+      article:
+        push_into: Добавить в категорию '%{category}'
+  hints:
+    admin:
+      user:
+        role:
+          Администратор сайта имеет доступ к Админке сайта МИЦ

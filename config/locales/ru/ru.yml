@@ -58,11 +58,6 @@ ru:
         events:
           put_on_the_trial: Поставить на испытательный срок
           confirm: Принять в организацию
-  hints:
-    admin:
-      user:
-        role:
-          Администратор сайта имеет доступ к Админке сайта МИЦ
   web:
     users:
       account:
@@ -73,13 +68,6 @@ ru:
           my_position_in_mic: История моих должностей в МИЦ
       new:
         register: Регистрация
-    admin:
-      trash:
-        name: Имя
-        title: Корзина
-        deleted: Удалённые
-      article:
-        push_into: Добавить в категорию '%{category}'
   time:
     formats:
       default: "%a, %d %b %Y, %H:%M"
