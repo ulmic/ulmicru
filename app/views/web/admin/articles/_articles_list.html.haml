@@ -14,7 +14,7 @@
         %td= link_to article.id, edit_admin_article_path(article)
         %td= link_to article.title, edit_admin_article_path(article)
         %td= article.short_body
-        %td= article.category.name
+        %td= (article.category.present? ? article.category.name : "")
         %td=l article.created_at
         %td
           = link_to t('.edit', default: t('helpers.links.edit')),

@@ -23,6 +23,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
 
   def edit
     @article_form = ArticleForm.find_with_model params[:id]
+    @categories = Category.all.where.not(state: :removed)
   end
 
   def update

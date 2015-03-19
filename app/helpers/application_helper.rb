@@ -11,6 +11,7 @@ module ApplicationHelper
   end
 
   def categories_tree
+    return if @categories_tree == [{}]
     (content_tag(:ul, class: '') do
       @categories_tree.each do |root|
         concat(content_tag(:li, class: '') do

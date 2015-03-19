@@ -77,7 +77,7 @@ class Category < ActiveRecord::Base
   def set_parent_to_nil
     Category.get_by_parent_id(self.id).each do |child|
        child.parent_id = nil
-       parent.save
+       child.save
      end
   end
 end
