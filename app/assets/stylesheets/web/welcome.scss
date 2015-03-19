@@ -194,5 +194,57 @@
 }
 .last-tweets {
   height: 300px;
-  background: orange;
+  background: url('/assets/tweet.png') no-repeat;
+	background-size: cover;
+	text-align: center;
+	overflow: auto;
+		.icon {
+			overflow: auto;
+			margin: 30px auto 0px auto;
+			width: 61px;
+			height: 61px;
+			background: url('/assets/tweet-icon.png') no-repeat;
+		}
+		h2 {
+			color: #ffffff;
+			font-family: 'mic-thin';
+			margin-top: 41px;
+		}
+		blockquote {
+			width: 727px;
+			margin: 0 auto;
+			border: 0;
+			position: relative;
+			color: #ffffff;
+			&:before {
+        display: inline-block;
+				line-height: 0;
+				height: 0;
+				content: open-quote;
+				position: absolute;
+				left: -15px;
+        top: 20px;
+				font-size: 50px;
+				font-family: 'mic-bold';
+			}
+			&:after {
+				content: close-quote;
+				@extend blockquote:before;
+        left: 100%;
+        top: 100%;
+			}
+      section {
+        margin-top: 20px;
+        float: right;
+        .author {
+          font-family: 'mic-bold';
+          border-right: 1px solid #fff;
+          padding-right: 6px;
+          margin-right: 6px;
+        }
+        .date {
+          font-style: italic;
+        }
+      }
+		}
 }
