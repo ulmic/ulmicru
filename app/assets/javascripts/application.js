@@ -22,7 +22,6 @@
 //= require js-routes
 //= require active_form
 //= require i18n_setup
-//= require_tree .
 $(function(){
 	$(document).foundation();
 	$('.main-slider .slider-items').slick({
