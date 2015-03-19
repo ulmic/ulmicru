@@ -16,6 +16,10 @@
         = Questionary.model_name.human.pluralize(:ru)
       = menu_item admin_news_index_path do
         = News.model_name.human.pluralize(:ru)
+      = menu_item admin_articles_path do
+        = Article.model_name.human.pluralize(:ru)
+      = menu_item admin_categories_path do
+        = Category.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item admin_unviewed_index_path do
         %span.glyphicon.glyphicon-info-sign
@@ -33,3 +37,7 @@
             = Questionary.model_name.human.pluralize(:ru)
           = menu_item type_admin_trash_index_path('news') do
             = News.model_name.human.pluralize(:ru)
+          = menu_item type_admin_trash_index_path('article') do
+            = Article.model_name.human.pluralize(:ru)
+          = menu_item type_admin_trash_index_path('category') do
+            = Category.model_name.human.pluralize(:ru)

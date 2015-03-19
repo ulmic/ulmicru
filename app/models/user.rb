@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, dependent: :destroy
   has_many :news
+  has_many :article
 
   validates :email, uniqueness: true,
                     allow_nil: true
