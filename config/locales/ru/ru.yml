@@ -58,3 +58,12 @@ ru:
         deleted: Удалённые
       article:
         push_into: Добавить в категорию '%{category}'
+  time:
+    formats:
+      default: "%a, %d %b %Y, %H:%M"
+      time: "%H:%M"
+      short: "%d %b, %H:%M"
+      long: "%d %B %Y, %H:%M"
+      date: "%Y-%m-%d"
+      md: "%m-%d"
+      descr: "%d %b %Y"
