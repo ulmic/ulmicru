@@ -30,6 +30,9 @@ $(function(){
 	$(document).foundation();
 	$('.main-slider .slider-items').slick({
 	  centerMode: true,
+    autoplay: true,
+    autoplaySpeed: 6000,
+    speed: 800,
 	  centerPadding: '22%',
 	  slidesToShow: 1,
     responsive: [
