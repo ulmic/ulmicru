@@ -5,6 +5,7 @@
 // =require foundation
 // =require web/foundation/application
 // =require web/welcome
+@import "foundation/functions";
 
 @font-face {
   font-family: 'mic-bold';
@@ -46,4 +47,85 @@ body {
     height: 0;
 
     content: '';
+}
+
+
+.footer {
+  background: url(/assets/footer-icons.png);
+  background: url(/app/assets/images/footer-icons2.png);
+
+  border-top: 3px solid #ffa911;
+  height: rem-calc(230);
+  background: black;
+  font-family: mic;
+  a {
+    color: white;
+  }
+  a:hover {
+    color: #f45c10;
+  }
+  color: white;
+  .menu, .social {
+    margin-top: rem-calc(40);
+  }
+  .menu {
+    width: 50%;
+    margin-left: 4%;
+    .menu-item {
+      display: inline-block;
+      margin-left: 5%;
+    }
+  }
+  .social {
+    margin-right: 8%;
+    .icons {
+      &>a {
+        display: inline-block;
+        margin-right: 3%;
+      }
+    }
+    .icon {
+      width: 27px;
+      height: 28px;
+      display: inline-block;
+      background: url(/assets/footer-icons.png);
+      background-size: 205px;
+    }
+    .icon-facebook {
+      background-position: 115px 80px;
+      background-size: 196px;
+    }
+    .icon-twitter {
+      background-position: 160px 81px;
+      background-size: 200px;
+    }
+    .icon-google {
+      background: url(/assets/footer-icons2.png);
+    }
+    .icon-instagram {
+      background: url(/assets/footer-icons2.png);
+      background-position: 29px;
+      width: 29px;
+      height: 27px;
+    }
+    .icon-mail {
+      background-position: 0px 27px;
+    }
+    .icon-phone {
+      background-position: 27px 27px;
+    }
+    .contacts {
+      margin-top: rem-calc(20);
+      .mail {
+        padding-right: 15%;
+      }
+      .phone {
+        min-height: 173px;
+      }
+      .icon {
+        vertical-align: middle;
+      }
+    }
+  }
+
 }
