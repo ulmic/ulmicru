@@ -43,8 +43,6 @@ ActiveRecord::Schema.define(version: 20150316175022) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
@@ -54,7 +52,6 @@ ActiveRecord::Schema.define(version: 20150316175022) do
     t.text     "state"
   end
 
->>>>>>> feature/articles
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"

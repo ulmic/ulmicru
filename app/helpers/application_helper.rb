@@ -17,7 +17,7 @@ module ApplicationHelper
         concat(content_tag(:li, class: '') do
           concat(category_tree(root))
         end)
-      end 
+      end
     end)
   end
 
@@ -27,7 +27,7 @@ module ApplicationHelper
       concat content_tags_for_edit_category(category[:id])
       (content_tag(:ul, class: '') do
         category[:childs].each do |child|
-          concat(content_tag(:li, class: '') do 
+          concat(content_tag(:li, class: '') do
             concat(category_tree(child))
           end)
         end
@@ -40,12 +40,12 @@ module ApplicationHelper
 
   def content_tags_for_edit_category(href)
     tags = (link_to(new_admin_category_path(:id => href.to_s), class: 'btn btn-xs btn-success')do
-      content_tag(:span, "", :class => "glyphicon glyphicon-ok")
+      content_tag(:span, "", :class => "glyphicon glyphicon-plus")
     end)
     tags += (link_to(edit_admin_category_path(:id => href.to_s), class: 'btn btn-xs btn-warning')do
       content_tag(:span, "", :class => "glyphicon glyphicon-pencil")
     end)
-    tags += (link_to(admin_category_path(Category.find(href.to_s)), method: :delete, class: 'btn btn-xs btn-danger') do 
+    tags += (link_to(admin_category_path(Category.find(href.to_s)), method: :delete, class: 'btn btn-xs btn-danger') do
       content_tag(:span, "", :class => "glyphicon glyphicon-remove")
     end)
     return tags
