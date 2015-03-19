@@ -11,8 +11,19 @@
             %a{:href => "#"}
         %a{class:"site-logo",:href => "#"}
         %ul.left
-          - ["Новости и события", "Миц - это ...", "Партнёры"].each do |item|
-            %li
-              %a{:href => "#"}
-                .inner
-                  = item
+          %li
+            %a{:href => "#"}
+              .inner
+                Новости и события
+          %li.has-dropdown
+            %a{:href => "#"}
+              .inner
+                Миц - это ...
+            %ul.dropdown
+              %li
+                %a{:href => "#"}
+                  HUI
+          %li
+            %a{:href => "#"}
+              .inner
+                Партнёры
