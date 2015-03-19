@@ -16,6 +16,7 @@ module Ulmicru
     config.i18n.available_locales = [:en, :ru]
     config.i18n.default_locale = :ru
     config.assets.initialize_on_precompile = true
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.generators do |g|
       g.template_engine :haml
       g.stylesheets false

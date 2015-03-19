@@ -41,8 +41,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'momentjs-rails', '>= 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'awesome_print'
-gem 'wysiwyg-rails'
-gem 'font-awesome-rails'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'configus'
 
 # Use ActiveModel has_secure_password

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root to: 'web/welcome#index'
 
   get '/auth/:provider/callback' => 'web/omniauth#callback'

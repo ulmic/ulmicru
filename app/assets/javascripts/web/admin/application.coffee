@@ -8,17 +8,13 @@
 #= require active_form
 #= require js-routes
 #= require i18n_setup
-#= require froala_editor.min.js
-#= require langs/ru.js
 #= require tabs
 #= require localities
+#= require ckeditor/init
 
 $ ->
   $('.link').click ->
     location.href = $(this).attr('data-href')
-
-  $('#news_body').editable
-    inlineMode: false
 
   $('a.btn-xs span.glyphicon').each ->
     klass = $(this).attr('class').split(' ')[1]
@@ -34,9 +30,6 @@ $ ->
     $(this).closest('a.btn-xs').prop('title', I18n.t("helpers.links.#{action}"))
     return
   return
-$ ->
-  $('#article_body').editable
-    inlineMode: false
 
 $.fn.extend treed: (o) ->
   openedClass = 'glyphicon-minus-sign'
