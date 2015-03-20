@@ -16,9 +16,18 @@ class MemberDecorator < Draper::Decorator
     "#{municipality}, #{locality}"
   end
 
-  def main_post
-    for_now_posts = posts.for_now
-    return for_now_posts.first.title if for_now_posts.any?
-    posts.last_held_post.decorate.post
+  def position_duration
+    positions.last_held_position.duration
+  end
+
+  def main_position_title
+    for_now_positions = positions.for_now
+    return for_now_positions.first.title if for_now_positions.any?
+    last_held_position = positions.last_held_position
+    last_held_position.title if last_held_position
+  end
+
+  def ticket_number
+    "№ #{ticket}"
   end
 end

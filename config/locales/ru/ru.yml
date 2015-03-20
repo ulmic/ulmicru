@@ -8,6 +8,11 @@ ru:
   helpers:
     enter: Войти
     no_author: Нет автора
+    in: в
+    from: c
+    until: по
+    year: 'г.'
+    years: 'гг.'
     actions:
       update: Редактировать
       create: Создать

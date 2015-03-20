@@ -64,9 +64,15 @@
             .name
               = member.short_name
             .post
-              -#= member.main_post
+              = member.main_position_title
+            - if member.position_duration
+              .duration
+                = member.position_duration
             .credo
               = member.motto
+            .ticket
+              %span.glyphicon.glyphicon-credit-card
+              = member.ticket_number
 .last-tweets
   .icon
   %h2
