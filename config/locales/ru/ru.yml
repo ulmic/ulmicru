@@ -59,6 +59,10 @@ ru:
           put_on_the_trial: Поставить на испытательный срок
           confirm: Принять в организацию
   web:
+    welcome:
+      index:
+        news: Новости
+        all_news: Все новости
     users:
       account:
         index:

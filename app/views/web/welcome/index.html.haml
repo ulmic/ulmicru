@@ -1,40 +1,41 @@
 - title :app_name
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css"/>
+%link{ rel: :stylesheet, type: 'text/css', href: "//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css" }
 .main-slider
   %a.left-arrow
   %a.right-arrow
   .slider-items
-    - 5.times do
+    - @news.each do |news|
       .main-slider-item
-        %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
+        = image_tag news.photo, class: 'slider-img'
         .slider-item-info
-          Члены миц уверены, что дедлайны пиздец
+          = news.title
 .category-navbar-container.clear-fix
-  %nav.top-bar{"data-topbar" => ""}
+  %nav.top-bar{ data: { topbar:  '' } }
     %section.top-bar-section
       .container-big
         %ul.left
           - ["Лидерство", "Журналистика", "IT", "Право", "Толерантность", "Волонтёрство", "НКО"].each do |item|
             %li
-              %a{:href => "#"}
+              %a{href: "#"}
                 = item
 .news
   .container-big
     .top
-      %h4.title Новости
+      %h4.title
+        = t('.news')
       .right
-        %span.text ВСЕ НОВОСТИ
+        %span.text
+          = t('.all_news')
         %span.slider-arrows
           %a.arrow.left-arrow
           %a.arrow.right-arrow
     .news-slider
-      - 50.times do |i|
+      - @text_news.each do |news|
         %a.new-slider-item
           %p.date
-            18 ноября 201
-            = i
+            = news.publish_date_time
           %p.content
-            Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того
+            = news.short_lead
 .events
   .container-big
     %h4.rotate Мероприятия

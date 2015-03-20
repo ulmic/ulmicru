@@ -21,11 +21,15 @@ class NewsDecorator < Draper::Decorator
   end
 
   def publish_date_time
-     object.published_at.strftime('%d %b %Y %H:%m')
+    I18n.l published_at, format: '%d %b %Y'
   end
 
   def name
     "#{model.title.first(30)}"
+  end
+
+  def short_lead
+    "#{model.lead.first(140)}..."
   end
 
   def author_name
