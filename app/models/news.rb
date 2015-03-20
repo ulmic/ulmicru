@@ -6,10 +6,11 @@ class News < ActiveRecord::Base
   validates :photo,         presence: true
   validates :user_id,       presence: true
   validates :lead,          presence: true
+  validates :state,         presence: true
   belongs_to :user
 
   def is_published?
-    published_at <= DateTime.now
+    published_at <= DateTime.now && state != 'removed'
   end
 
   include NewsScopes
