@@ -5,13 +5,13 @@
         %ul.right
           %li.icons-container
             .icons
-              %a{ href: "#" }
+              %a{ href: auth_path(:vkontakte) }
                 .icon-vk
-              %a{ href: "#" }
+              %a{ href: auth_path(:twitter) }
                 .icon-twitter
-              %a{ href: "#" }
+              %a{ href: auth_path(:facebook) }
                 .icon-facebook
-              %a{ href: "#" }
+              %a{ href: new_session_path }
                 .icon-door
 
           %li.banner-container
@@ -21,76 +21,76 @@
                 %br
                 в стиле миц
           %li
-            %a{:href => "#"}
+            = link_to article_path(:contacts) do
               .inner
                 Контакты
           %li
-            %a{:href => "#"}
-        %a{class:"site-logo",:href => "#"}
+            %a{href: "#"}
+        %a.site-logo{ href: root_path }
         %ul.left
-          %li
-            %a{:href => "#"}
-              .inner
-                Новости и события
           %li.has-dropdown.dropdown-category-menu
-            %a{:href => "#"}
+            %a{href: "#"}
               .inner
                 Миц - это ...
             %ul.dropdown
               #category_menu.category-menu
                 .category-column
                   .menu-title Кто мы такие
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Миц это - ...
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     История Миц
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Устав
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Символика
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Традиции нашей команды
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Сми о нас
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Реквизиты
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Отчёты
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Нас поддерживают
                 .category-column
                   .menu-title Отделения
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     г.Ульяновск
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     г.Димитровград
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     г. Новоульяновск
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Радищевский район
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Базарносызганский район
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Новосспаский район
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Создать своё
                 .category-column
                   .menu-title Библиотека
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Юнкор
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Лидер
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Правовое просвещение
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Толерантность
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Статьи
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Игры
-                  %a{:href => "#"}
+                  %a{href: "#"}
                     Тренинги
           %li
-            %a{:href => "#"}
+            %a{href: "#"}
+              .inner
+                Новости и события
+          %li
+            %a{href: "#"}
               .inner
                 Партнёры
