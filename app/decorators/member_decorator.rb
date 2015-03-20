@@ -15,4 +15,10 @@ class MemberDecorator < Draper::Decorator
   def place
     "#{municipality}, #{locality}"
   end
+
+  def main_post
+    for_now_posts = posts.for_now
+    return for_now_posts.first.title if for_now_posts.any?
+    posts.last_held_post.decorate.post
+  end
 end

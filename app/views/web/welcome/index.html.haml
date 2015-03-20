@@ -44,7 +44,7 @@
         - 8.times do
           %li.event
             %a
-              %img{class:"slider-img",src:"http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"}
+              %img.slider-img{ src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg" }
             %section
               %span.category
                 InФормат
@@ -55,18 +55,18 @@
                 Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того
 .humans
   %ul.small-block-grid-7
-    - 14.times do
-      - foto_src = "http://www.allfaler.ru/images/stories/Matirials/RF/Statis/kalashnikov1.jpg"
+    - @members.each do |member|
+      - foto_src = member.avatar.url
       %li.human
         .bg-foto{ style: "background-image: url('#{foto_src}')" }
         %a.info{ href: "#" }
           .vertical-center
             .name
-              Елена ТИТОВА
+              = member.short_name
             .post
-              Заместитель Председателя МИЦ
+              -#= member.main_post
             .credo
-              "Не останавливайся на достигнутом"
+              = member.motto
 .last-tweets
   .icon
   %h2
