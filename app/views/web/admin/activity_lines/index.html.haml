@@ -1,0 +1,27 @@
+- model_class = ActivityLine
+.page-header
+  %h1= model_class.model_name.human.pluralize(:ru)
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:type)
+      %th= model_class.human_attribute_name(:found_date)
+      %th= model_class.human_attribute_name(:creator)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - @activity_lines.each do |activity_line|
+      %tr.link{ class: state_color(activity_line), data: { href: edit_admin_activity_line_path(activity_line) } }
+        %td= activity_line.id
+        %td= activity_line.title
+        %td= activity_line.description
+        %td= activity_line.type
+        %td= activity_line.found_date
+        %td= activity_line.creator
+        %td
+          = link_to t('helpers.links.edit'), edit_admin_activity_line_path(activity_line), class: 'btn btn-warning btn-xs'
+          = link_to t('helpers.links.destroy'), admin_activity_line_path(activity_line), method: :delete, class: 'btn btn-xs btn-danger'
+
+= link_to t('.new', default: t('helpers.links.new')), new_admin_activity_line_path, class: 'btn btn-primary'

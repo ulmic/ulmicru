@@ -1,0 +1,2 @@
+module Web::EventsHelper
+end

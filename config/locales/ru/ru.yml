@@ -5,6 +5,12 @@ ru:
     full_name: "Ульяновская областная молодёжная общественная организация «Молодёжный инициативный центр»"
     short_name: "УОМОО «МИЦ»"
     send_request: Подать заявку на вступление в МИЦ
+    name: Сайт МИЦ
+  date:
+    order:
+      - :day
+      - :month
+      - :year
   helpers:
     enter: Войти
     no_author: Нет автора
@@ -16,6 +22,10 @@ ru:
     actions:
       update: Редактировать
       create: Создать
+      destroy: Удалить
+      show: Показать
+      index: Все
+      edit: Редактировать
     links:
       actions: Действия
       edit: Изменить

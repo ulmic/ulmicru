@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150320010632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+=======
+ActiveRecord::Schema.define(version: 20150321230139) do
+>>>>>>> 3:09 AM
 
   create_table "activity_lines", force: :cascade do |t|
     t.string   "title"
     t.datetime "found_date"
-    t.string   "type"
+    t.string   "activity_type"
     t.string   "description"
+<<<<<<< HEAD
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -43,6 +48,12 @@ ActiveRecord::Schema.define(version: 20150320010632) do
     t.text     "access"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+=======
+    t.integer  "creator_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "state"
+>>>>>>> 3:09 AM
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -60,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150320010632) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "state"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -99,10 +111,10 @@ ActiveRecord::Schema.define(version: 20150320010632) do
     t.string   "title"
     t.string   "description"
     t.string   "main_photo"
-    t.integer  "user_id"
+    t.integer  "creator_id"
     t.datetime "begin_date"
     t.datetime "end_date"
-    t.string   "type"
+    t.string   "event_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -146,9 +158,25 @@ ActiveRecord::Schema.define(version: 20150320010632) do
     t.text     "avatar"
     t.text     "role"
     t.text     "state"
+<<<<<<< HEAD
     t.text     "experience"
     t.text     "want_to_do"
     t.string   "type"
+=======
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text     "email"
+    t.text     "password_digest"
+>>>>>>> 3:09 AM
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

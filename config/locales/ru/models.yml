@@ -8,6 +8,9 @@ ru:
       article: Статья
       category: Категория
       position: Должность
+      banner: Баннер
+      activity_line: Направление деятельности
+      event: Мероприятие
     attributes:
       user:
         first_name: Имя

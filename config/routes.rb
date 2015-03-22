@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+
   root to: 'web/welcome#index'
 
   get '/auth/:provider/callback' => 'web/omniauth#callback'
@@ -12,15 +13,14 @@ Rails.application.routes.draw do
     resources :news, only: [ :index, :show ]
     resources :users, only: [ :new, :create ]
     resources :members, only: [ :new, :create ]
+    resources :events, only: [ :show, :index ]
+    resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
       resources :attribute_accesses, only: :create
       resources :positions, only: [ :create, :update, :destroy ]
-    end
-    scope module: :users do
-      resources :join, only: [ :new, :create ]
     end
     namespace :admin do
       resources :users
@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       resources :news
       resources :articles
       resources :categories
+      resources :activity_lines, except: [:show]
+      resources :banners, except: [:show]
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

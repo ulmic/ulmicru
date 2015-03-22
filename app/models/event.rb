@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   extend Enumerize
-  has_one :user, as: :creator
+  belongs_to :creator, class_name: User
 
-  enumerize :type, in: [:big, :standart]
+  enumerize :event_type, in: [:big, :standart]
 end

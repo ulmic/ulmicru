@@ -1,0 +1,25 @@
+- model_class = Banner
+.page-header
+  %h1= model_class.model_name.human.pluralize(:ru)
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:photo)
+      %th= model_class.human_attribute_name(:link)
+      %th= model_class.human_attribute_name(:begin_date)
+      %th= model_class.human_attribute_name(:end_date)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - @banners.each do |banners|
+      %tr.link{ class: state_color(banners), data: { href: edit_admin_banners_path(banner) } }
+        %td= banner.id
+        %td= banner.photo
+        %td= banner.link
+        %td= banner.begin_date
+        %td= banner.end_date
+        %td
+          = link_to t('helpers.links.edit'), edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs'
+          = link_to t('helpers.links.destroy'), admin_banner_path(banner), method: :delete, class: 'btn btn-xs btn-danger'
+
+= link_to t('.new', default: t('helpers.links.new')), new_admin_banner_path, class: 'btn btn-primary'
