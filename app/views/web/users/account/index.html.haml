@@ -3,6 +3,8 @@
     = f.input :first_name, as: :string
     = f.input :patronymic, as: :string
     = f.input :last_name, as: :string
+    = f.input :email, as: :string
+    = f.input :password, as: :string
     = f.input :motto, as: :string
     = f.input :ticket, as: :string
     = f.input :mobile_phone, as: :string
@@ -40,3 +42,6 @@
 - not_linked_social_networks(@authentications).each do |network|
   = social_network_localize network
   = link_to t('helpers.links.auth'), auth_path(network), class: 'btn btn-success btn-xs'
+%br
+- if @user.role.admin?
+  = link_to t('.admin_panel'), admin_path
