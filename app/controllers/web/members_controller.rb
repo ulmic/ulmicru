@@ -8,6 +8,7 @@ class Web::MembersController < Web::ApplicationController
 
   def create
     member = current_user.becomes! Member
+    User.find(member.id).update(type: 'Member')
     @member_form = MemberForm.new member
     @member_form.submit params[:member]
     if @member_form.save

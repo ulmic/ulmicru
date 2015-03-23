@@ -3,6 +3,10 @@ class Member < User
   has_many :attribute_accesses, dependent: :destroy
   has_many :positions, dependent: :destroy
 
+  validates :first_name, presence: true,
+                         human_name: true
+  validates :last_name, presence: true,
+                         human_name: true
   validates :patronymic, presence: true,
                          human_name: true
   validates :motto, presence: true
