@@ -22,6 +22,7 @@
 //= require js-routes
 //= require active_form
 //= require i18n_setup
+//= require placeholders
 $(function(){
 	$(document).foundation();
 	$('.main-slider .slider-items').slick({

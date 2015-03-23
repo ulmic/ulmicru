@@ -77,6 +77,12 @@ ru:
           my_position_in_mic: История моих должностей в МИЦ
       new:
         register: Регистрация
+  forms:
+    placeholders:
+      web:
+        member:
+          default:
+            mobile_phone: Формат номера телефона с +7
   time:
     formats:
       default: "%a, %d %b %Y, %H:%M"
