@@ -5,7 +5,7 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:avatar)
       %th= model_class.human_attribute_name(:full_name)
-      %th= model_class.human_attribute_name(:ticket)
+      %th= model_class.human_attribute_name(:main_position)
       %th= model_class.human_attribute_name(:place)
       %th= t 'helpers.links.actions'
   %tbody
@@ -14,7 +14,7 @@
         %td= member.id
         %td= image_tag member.avatar.small
         %td= member.full_name
-        %td= member.ticket
+        %td= member.main_position_title
         %td= member.place
         %td
           - unless member.confirmed?

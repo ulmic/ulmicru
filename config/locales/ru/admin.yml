@@ -14,6 +14,11 @@ ru:
         deleted: Удалённые
       article:
         push_into: Добавить в категорию '%{category}'
+      members:
+        form:
+          add_position: Добавить должность
+        position_fields:
+          remove_position: Убрать должность
   hints:
     admin:
       user:

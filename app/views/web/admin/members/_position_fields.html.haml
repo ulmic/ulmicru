@@ -1,5 +1,6 @@
-= f.input :title, as: :string
-= f.input :begin_date
-= f.input :end_date
-= f.input :member_id, as: :hidden
-= link_to_remove_association t('.remove_position'), f
+.position_fields
+  = f.input :title, as: :string
+  = f.input :begin_date, as: :date_picker
+  = f.input :end_date, as: :date_picker
+  = f.input :member_id, as: :hidden
+  = link_to_remove_association t('.remove_position'), f, class: 'btn btn-danger'

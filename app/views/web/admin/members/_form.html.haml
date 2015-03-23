@@ -1,5 +1,7 @@
+- current_title = page_title(action, Member.model_name.human)
+- title current_title, :admin
 .page-header
-  %h1= page_title(action, Member.model_name.human)
+  %h1= current_title
 .row
   .col-lg-6
     = simple_form_for @member_form, url: { controller: 'web/admin/members', action: action }, input_html: { class: 'form-horizontal' } do |f|
@@ -16,6 +18,12 @@
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :avatar, as: :file
       = f.association :parent, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}"  }, value_method: :id
-      = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
-      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
-      = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'
+      = f.simple_fields_for :positions do |position_form|
+        = position_form.input :title, as: :string
+        = position_form.input :begin_date, as: :date_picker
+        = position_form.input :end_date, as: :date_picker
+        = position_form.input :member_id, as: :hidden
+      = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning'
+      .actions
+        = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+        = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

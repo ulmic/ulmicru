@@ -80,5 +80,12 @@ $.fn.extend treed: (o) ->
 $ ->
   $("#sample_category_tree").treed()
 
-$ ->
-  $("input.datetime_picker").datetimepicker()
+  init_datetimepickers = ->
+    $("input.datetime_picker").datetimepicker()
+    $("input.date_picker").datetimepicker()
+
+  init_datetimepickers()
+  $('a.add_fields').mouseover ->
+    setTimeout init_datetimepickers, 500
+    return
+  return

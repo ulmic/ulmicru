@@ -24,7 +24,9 @@ class MemberDecorator < Draper::Decorator
     for_now_positions = positions.for_now
     return for_now_positions.first.title if for_now_positions.any?
     last_held_position = positions.last_held_position
-    last_held_position.title if last_held_position
+    unless last_held_position == []
+      last_held_position.title if last_held_position
+    end
   end
 
   def ticket_number

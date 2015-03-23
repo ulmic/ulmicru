@@ -7,6 +7,7 @@ ru:
       news: Новость
       article: Статья
       category: Категория
+      position: Должность
     attributes:
       user:
         first_name: Имя
@@ -62,9 +63,13 @@ ru:
         category_id: Категория
         created_at: Создано
       category:
-        name: Название 
+        name: Название
         parent: Родитель
         parent_id: Связь с родителем
+      position:
+        title: Название
+        begin_date: Дата вступления в должность
+        end_date: Дата ухода с должности
   enumerize:
     user:
       role:
