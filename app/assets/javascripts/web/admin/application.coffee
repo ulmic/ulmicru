@@ -31,8 +31,6 @@ $ ->
     return
   return
 
-
-$ ->
   init_datetimepickers = ->
     $("input.datetime_picker").datetimepicker()
     $("input.date_picker").datetimepicker()
