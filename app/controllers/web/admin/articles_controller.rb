@@ -6,7 +6,6 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
 
   def new
     @article_form = ArticleForm.new_with_model
-    @article_form.category_id = params[:selected_category]
     @categories = Category.where.not(state: :removed).decorate
   end
 
