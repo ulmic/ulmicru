@@ -4,7 +4,7 @@ FactoryGirl.define do
     body        { generate :string  }
     view        nil
     category_id { Category.first.id } 
-    user_id     { generate :integer }
+    user_id     { User.last ? User.last.id : 1 }
   end
 
 end
