@@ -1,11 +1,11 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
   def index
-    @published_news = NewsDecorator.decorate_collection News.published.order('published_at DESC')
-    @unpublished_news = NewsDecorator.decorate_collection News.unpublished.order('published_at DESC')
+    @published_news = News.published.decorate
+    @unpublished_news = News.unpublished.decorate
   end
 
   def show
-    @news = NewsDecorator.decorate News.find params[:id]
+    @news = News.find(params[:id]).decorate
     if !@news.is_published?
       #FIXME there 404 error path
     end
