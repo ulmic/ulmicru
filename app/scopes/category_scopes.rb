@@ -3,8 +3,9 @@ module CategoryScopes
   include Concerns::StateMachine
 
   included do
-    scope :roots, -> { where(parent_id: nil).where.not(state: :removed)}
+    scope :roots, -> { presented.where(parent_id: nil)}
     scope :last_childs, -> { where is_last: true }
+    scope :presented, -> { where.not state: :removed}
     scope :removed, -> { where state: :removed}
   end
 end

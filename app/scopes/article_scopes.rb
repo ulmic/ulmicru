@@ -4,5 +4,6 @@ module ArticleScopes
 
   included do
     scope :removed, -> { where state: :removed }
+    scope :presented, -> { where.not state: :removed}
   end
 end
