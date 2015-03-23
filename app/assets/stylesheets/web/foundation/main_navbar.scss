@@ -100,8 +100,8 @@
     position: relative;
     .banner {
       width: $el-width;
-      background-image: url('/assets/svg-navbar-fallback.png');
-      background-image: url('/assets/svg-navbar.svg');
+      background-image: image-url('svg-navbar-fallback.png');
+      background-image: image-url('svg-navbar.svg');
       position: absolute;
       height: rem-calc(120);
       z-index: 5;
@@ -122,7 +122,7 @@
   .site-logo {
     $el-width: rem-calc(255);
 
-    background: url('/assets/topbar-logo.png') no-repeat;
+    background: image-url('topbar-logo.png') no-repeat;
     height: rem-calc(80);
     width: $el-width;
     display: inline-block;

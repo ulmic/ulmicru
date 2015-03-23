@@ -51,8 +51,8 @@ body {
 
 
 .footer {
-  background: url(/assets/footer-icons.png);
-  background: url(/app/assets/images/footer-icons2.png);
+  background: image-url('footer-icons.png');
+  background: image-url('footer-icons2.png');
 
   border-top: 3px solid #ffa911;
   height: rem-calc(230);
@@ -88,7 +88,7 @@ body {
       width: 27px;
       height: 28px;
       display: inline-block;
-      background: url(/assets/footer-icons.png);
+      background: image-url('footer-icons.png');
       background-size: 205px;
     }
     .icon-facebook {
@@ -100,10 +100,10 @@ body {
       background-size: 200px;
     }
     .icon-google {
-      background: url(/assets/footer-icons2.png);
+      background: image-url('footer-icons2.png');
     }
     .icon-instagram {
-      background: url(/assets/footer-icons2.png);
+      background: image-url('footer-icons2.png');
       background-position: 29px;
       width: 29px;
       height: 27px;

@@ -23,7 +23,7 @@
     width: $arrow-height;
     height: $arrow-height;
     display: inline-block !important;
-    background-image: url("/assets/arrow.png");
+    background-image: image-url('arrow.png');
     background-size: cover;
   }
   .right-arrow {
@@ -83,7 +83,7 @@
     }
     .left-arrow, .right-arrow {
       display: inline-block !important;
-      background-image: url("/assets/arrow-small.png");
+      background-image: image-url('arrow-small.png');
       background-size: cover;
     }
     .right-arrow {
@@ -195,7 +195,7 @@
 }
 .last-tweets {
   height: 340px;
-  background: url('/assets/tweet.png') no-repeat;
+  background: image-url('tweet.png') no-repeat;
 	background-size: cover;
 	text-align: center;
 	overflow: auto;
@@ -204,7 +204,7 @@
 			margin: 30px auto 0px auto;
 			width: 61px;
 			height: 61px;
-			background: url('/assets/tweet-icon.png') no-repeat;
+			background: image-url('tweet-icon.png') no-repeat;
 		}
 		h2 {
 			color: #ffffff;
