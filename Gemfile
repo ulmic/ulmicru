@@ -85,6 +85,7 @@ group :development, :test do
   gem 'capistrano-ssh-doctor', '~> 1.0'
   gem 'colorize', '0.6.0'
   gem 'quiet_assets'
+  gem 'better_errors'
 end
 
 group :test do
