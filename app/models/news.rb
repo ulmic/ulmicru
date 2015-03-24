@@ -1,4 +1,6 @@
 class News < ActiveRecord::Base
+  before_save :set_initial_state
+
   mount_uploader :photo,    PhotoUploader
   validates :title,         presence: true
   validates :body,          presence: true
@@ -25,5 +27,10 @@ class News < ActiveRecord::Base
     event :restore do
       transition :removed => :unviewed
     end
+  end
+
+  private
+  def set_initial_state
+    state = "unviewed" unless state.present?
   end
 end
