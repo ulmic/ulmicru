@@ -5,4 +5,4 @@
     =t model_class.model_name.human.pluralize(:ru)
     = link_to t('helpers.links.new'), new_admin_category_path, class: '  btn btn-primary'
 %ul#sample_category_tree
-  = categories_tree
+  = get_categories_tree

@@ -3,8 +3,16 @@ module NewsScopes
   include Concerns::StateMachine
 
   included do
-    scope :published, ->   { where('published_at <= ?', DateTime.now).where.not(state: :removed)}
-    scope :unpublished, -> { where('published_at > ?',  DateTime.now).where.not(state: :removed)}
+    scope :published, -> {
+      where('published_at <= ?', DateTime.now).
+      where.not(state: :removed).
+      order('published_at DESC')
+    }
+    scope :unpublished, -> {
+      where('published_at > ?',  DateTime.now).
+      where.not(state: :removed).
+      order('published_at DESC')
+    }
     scope :removed, -> { where state: :removed }
   end
 end

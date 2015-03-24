@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20150320010632) do
     t.text     "title"
     t.integer  "member_id"
     t.datetime "begin_date"
-    t.text     "end_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

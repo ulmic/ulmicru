@@ -1,8 +1,8 @@
 %html
 %head
   = render 'layouts/web/shared/head'
-  = stylesheet_link_tag 'web/admin/application'
-  = javascript_include_tag 'web/admin/application'
+  = stylesheet_link_tag 'web/admin/application', "web/admin/#{controller_name}"
+  = javascript_include_tag 'web/admin/application', "web/admin/#{controller_name}"
 %body
   = render 'layouts/web/admin/navbar'
   .container

@@ -33,11 +33,12 @@ GIT
 
 GIT
   remote: git://github.com/zpaulovics/datetimepicker-rails.git
-  revision: e41ba7f805d1eca19153ff91b27423a4aff5e4b6
+  revision: c5405f3486b57a52416caf93b79fc09d56930a82
   branch: master
   submodules: true
   specs:
-    datetimepicker-rails (4.3.5)
+    datetimepicker-rails (4.7.15)
+      momentjs-rails (>= 2.9.0)
 
 GIT
   remote: https://github.com/fnando/i18n-js
@@ -125,7 +126,7 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano-sidekiq (0.5.1)
+    capistrano-sidekiq (0.5.2)
       capistrano
       sidekiq
     capistrano-ssh-doctor (1.0.0)
@@ -224,7 +225,7 @@ GEM
       ruby_parser (~> 3.5)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
-    jbuilder (2.2.11)
+    jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.3)
@@ -250,7 +251,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (4.1.1)
+    mini_magick (4.2.0)
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.11.0)
@@ -344,7 +345,6 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
-      json (~> 1.4)
     redis (3.2.1)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)

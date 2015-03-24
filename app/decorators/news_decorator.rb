@@ -25,7 +25,7 @@ class NewsDecorator < Draper::Decorator
   end
 
   def name
-    "#{model.title.first(30)}"
+    model.title.first 30
   end
 
   def short_lead

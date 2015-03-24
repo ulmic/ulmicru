@@ -1,12 +1,12 @@
 class Web::Admin::ArticlesController < Web::Admin::ApplicationController
   def index
-    @articles = ArticleDecorator.decorate_collection Article.all.where.not(state: :removed)
+    @articles = Article.presented.decorate
+
   end
 
   def new
     @article_form = ArticleForm.new_with_model
-    @article_form.category_id = params[:selected_category]
-    @categories = Category.all.where.not(state: :removed)
+    @categories = Category.presented.decorate
   end
 
   def create
@@ -23,7 +23,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
 
   def edit
     @article_form = ArticleForm.find_with_model params[:id]
-    @categories = Category.all.where.not(state: :removed)
+    @categories = Category.presented.decorate
   end
 
   def update

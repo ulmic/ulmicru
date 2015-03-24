@@ -1,10 +1,10 @@
 class Web::NewsController < Web::ApplicationController
   def index
-    @news = NewsDecorator.decorate_collection News.published.order('published_at DESC')
+    @news = News.published.decorate
   end
 
   def show
-    @news = NewsDecorator.decorate News.find params[:id] #FIXME I'm don't know how to include decorate there into code
+    @news = News.find(params[:id]).decorate
     if !@news.is_published?
       #FIXME there 404 error path
     end
