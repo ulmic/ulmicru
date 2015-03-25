@@ -2,7 +2,7 @@
   %h1= page_title(action, Event.model_name.human)
 .row
   .col-lg-6
-    = simple_form_for @event, url: { controller: 'web/events', action: action }, input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for [:admin, @event_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :title, as: :string
       = f.input :description, as: :text
       = f.input :main_photo, as: :file

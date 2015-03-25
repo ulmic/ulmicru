@@ -13,19 +13,7 @@ class Web::EventsControllerTest < ActionController::TestCase
   end
 
   test 'should get show' do
-    get :show
+    get :show, id: @event
     assert_response :success, @response.body
-  end
-
-  test 'should get new' do
-    get :new
-    assert_response :success, @response.body
-  end
-
-  test 'should create member' do
-    attributes = attributes_for :event
-    post :create, event: attributes
-    assert_redirected_to root_path
-    assert_equal attributes[:title], Event.last.title
   end
 end

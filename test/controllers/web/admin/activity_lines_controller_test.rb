@@ -3,6 +3,8 @@ require 'test_helper'
 class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
   setup do
     @activity_line = create :activity_line
+    admin = create :admin
+    sign_in admin
   end
 
   test 'should get new' do

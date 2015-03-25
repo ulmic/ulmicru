@@ -3,6 +3,8 @@ require 'test_helper'
 class Web::Admin::BannersControllerTest < ActionController::TestCase
   setup do
     @banner = create :banner
+    admin = create :admin
+    sign_in admin
   end
 
   test 'should get new' do

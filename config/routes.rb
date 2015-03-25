@@ -31,6 +31,8 @@ Rails.application.routes.draw do
       resources :categories
       resources :activity_lines, except: [:show]
       resources :banners, except: [:show]
+      resources :events
+      resources :questionaries
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type
@@ -40,10 +42,26 @@ Rails.application.routes.draw do
           delete 'destroy'
         end
       end
-      resources :questionaries
+    end
+    namespace :users do
+      resources :account, only: :update
+      resources :authentications, only: :destroy
+      resources :attribute_accesses, only: :create
+      resources :positions, only: [ :create, :update, :destroy ]
+    end
+    scope module: :users do
+      resources :join, only: [ :new, :create ]
+      resources :events, only: [ :show, :new, :create, :index ]
+      resources :activity_lines, only: [:show]
     end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }
+  namespace :api do
+    namespace :events do
+      resources :registrations, only: [ :create, :destroy ]
+    end
+  end
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -99,4 +117,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

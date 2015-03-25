@@ -11,24 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150320010632) do
+ActiveRecord::Schema.define(version: 20150323185410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-=======
-ActiveRecord::Schema.define(version: 20150321230139) do
->>>>>>> 3:09 AM
 
   create_table "activity_lines", force: :cascade do |t|
     t.string   "title"
     t.datetime "found_date"
     t.string   "activity_type"
     t.string   "description"
-<<<<<<< HEAD
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "creator_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "state"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -48,12 +44,6 @@ ActiveRecord::Schema.define(version: 20150321230139) do
     t.text     "access"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-=======
-    t.integer  "creator_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "state"
->>>>>>> 3:09 AM
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -117,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150321230139) do
     t.string   "event_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "state"
   end
 
   create_table "news", force: :cascade do |t|
@@ -140,6 +131,14 @@ ActiveRecord::Schema.define(version: 20150321230139) do
     t.datetime "updated_at",                     null: false
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.text     "email"
     t.text     "password_digest"
@@ -158,25 +157,9 @@ ActiveRecord::Schema.define(version: 20150321230139) do
     t.text     "avatar"
     t.text     "role"
     t.text     "state"
-<<<<<<< HEAD
     t.text     "experience"
     t.text     "want_to_do"
     t.string   "type"
-=======
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "user_id"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.text     "email"
-    t.text     "password_digest"
->>>>>>> 3:09 AM
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
