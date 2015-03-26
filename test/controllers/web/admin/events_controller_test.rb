@@ -7,6 +7,11 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
     @event = create :event
   end
 
+  test 'should get index' do
+    get :index
+    assert_response :success, @response.body
+  end
+
   test 'should get new' do
     get :new
     assert_response :success, @response.body

@@ -1,6 +1,11 @@
-class Web::Admin::EventsController < Web::ApplicationController
+class Web::Admin::EventsController < Web::Admin::ApplicationController
   def index
-    @events = Event.presented
+    events = ::Event.presented
+    @future_events = events.future
+    @current_events = events.current
+    @past_events = events.past
+    @unviewed_events = ::Event.unviewed
+    @declined_events = ::Event.declined
   end
 
   def new

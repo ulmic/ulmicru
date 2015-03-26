@@ -1,0 +1,22 @@
+- model_class = Event
+- tabs = [ :future, :current, :past, :unviewed, :declined ]
+- title model_class.model_name.human.pluralize(:ru), :admin
+.page-header
+  %h1
+    = model_class.model_name.human.pluralize(:ru)
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_event_path, class: 'btn btn-primary'
+#tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    - tabs.each do |tab|
+      %li
+        = link_to t("state_machines.event.state.states.#{tab}").pluralize(:ru), "##{tab}"
+  #future
+    = render 'events_list', events: @future_events
+  #current
+    = render 'events_list', events: @current_events
+  #past
+    = render 'events_list', events: @past_events
+  #unviewed
+    = render 'events_list', events: @unviewed_events
+  #declined
+    = render 'events_list', events: @declined_events

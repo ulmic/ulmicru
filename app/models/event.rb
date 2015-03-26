@@ -4,8 +4,14 @@ class Event < ActiveRecord::Base
 
   enumerize :event_type, in: [ :big, :standart ]
 
+  mount_uploader :main_photo, PhotoUploader
+
+  include EventScopes
+  include Concerns::DurationManagment
+
   state_machine :state, initial: :unviewed do
     state :unviewed
+    state :declined
     state :confirmed
     state :removed
 

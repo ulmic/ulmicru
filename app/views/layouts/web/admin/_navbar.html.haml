@@ -20,6 +20,8 @@
         = Article.model_name.human.pluralize(:ru)
       = menu_item admin_categories_path do
         = Category.model_name.human.pluralize(:ru)
+      = menu_item admin_events_path do
+        = Event.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item admin_unviewed_index_path do
         %span.glyphicon.glyphicon-info-sign
