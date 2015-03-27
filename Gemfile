@@ -44,6 +44,7 @@ gem 'awesome_print'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'configus'
 gem 'foundation-rails'
+gem 'foursquare2', github: 'mattmueller/foursquare2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

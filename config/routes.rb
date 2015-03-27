@@ -60,6 +60,13 @@ Rails.application.routes.draw do
     namespace :events do
       resources :registrations, only: [ :create, :destroy ]
     end
+    namespace :admin do
+      resources :places, only: [] do
+        collection do
+          get ':place' => 'places#index', as: :index
+        end
+    end
+    end
   end
 end
 

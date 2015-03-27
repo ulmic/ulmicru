@@ -11,6 +11,7 @@
 #= require tabs
 #= require localities
 #= require ckeditor/init
+#= require spin.min
 
 $ ->
   $('.link').click ->
