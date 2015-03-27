@@ -1,0 +1,87 @@
+@import "foundation/functions";
+
+@mixin grayscale($percent: 100%) {
+  -webkit-filter: grayscale($percent);
+  -moz-filter: grayscale($percent);
+  -ms-filter: grayscale($percent);
+  -o-filter: grayscale($percent);
+  filter: grayscale($percent);
+  /* filter: url(grayscale.svg#greyscale); Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}
+
+
+@mixin mic-event() {
+		text-align: justify;
+		img {
+				width: 100%;
+				height: rem-calc(195);
+		}
+		section {
+				margin: 10px 0px;
+		}
+		.event-category {
+				font-size: rem-calc(16);
+				position: relative;
+				padding-top: 10px;
+				color: #f45c10;
+				border-top: 4px solid #f45c10;
+				text-transform: uppercase;
+		}
+		.event-date {
+				font-size: rem-calc(16);
+				margin-left: 15px;
+		}
+}
+
+@mixin mic-programm() {
+		text-align: justify;
+		img {
+				width: 100%;
+				height: rem-calc(195);
+		}
+		section {
+				margin: 10px 0px;
+				text-align: center;
+		}
+		.programm-name {
+				font-size: rem-calc(16);
+				q {
+						margin-left: rem-calc(5);
+						font-family: mic-beau-reg;
+						quotes: "«" "»";
+						color: #f45c10;
+						text-transform: uppercase;
+						white-space: nowrap;
+				}
+		}
+}
+
+@mixin mic-one-news() {
+		text-align: justify;
+		img {
+				width: 100%;
+				height: rem-calc(195);
+		}
+		section {
+				margin: 10px 0px;
+				text-align: center;
+		}
+		.news-date {
+				float: left;
+				font-family: mic;
+				font-size: rem-calc(11);
+		}
+		.news-title {
+				font-size: rem-calc(16);
+				clear: both;
+				text-align: justify;
+		}
+}
+
+@mixin social-icon() {
+    width: 27px;
+    height: 28px;
+    display: inline-block;
+    background: image-url('header-icons.png');
+}

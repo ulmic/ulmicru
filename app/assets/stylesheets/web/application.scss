@@ -5,11 +5,16 @@
 // =require foundation
 // =require web/foundation/application
 // =require web/welcome
+// =require web/news
 @import "foundation/functions";
 
 @font-face {
   font-family: 'mic-bold';
   src: font-url('PFSquareSansPro-Medium.ttf');
+}
+@font-face {
+  font-family: 'mic-beau-reg';
+  src: font-url('PFBeauSansPro-Reg.ttf');
 }
 @font-face {
   font-family: 'mic-thin';
@@ -19,8 +24,6 @@ h1,h2,h3,h4,h5,h6 {
   font-family: 'mic-bold';
 }
 h3,h4,h5 {
-  text-transform: uppercase;
-  color: #f45c10;
   margin: 0.5rem 0;
 }
 @font-face {
@@ -116,14 +119,14 @@ body {
     }
     .contacts {
       margin-top: rem-calc(20);
-      &>span {
-        white-space: no-wrap;
-      }
       .mail {
         padding-right: 15%;
       }
       .phone {
         min-height: 173px;
+				&>span {
+						white-space: nowrap;
+				}
       }
       .icon {
         vertical-align: middle;
@@ -131,4 +134,8 @@ body {
     }
   }
 
+}
+
+ul {
+		list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJElEQVQYV2NkIBIwIqv73MLwH10fbw0DWM2QU4gvAFA8Q1+FAM9iDwueLssPAAAAAElFTkSuQmCC");
 }

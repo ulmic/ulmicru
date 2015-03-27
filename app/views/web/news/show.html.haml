@@ -3,11 +3,115 @@
   %meta{ property:'og:image', content: @news.photo }
   %meta{ name:'description', content: "#{@news.description_lead} #МИЦ" }
   %link{ rel: 'image_src', href: @news.photo  }
-.show
-  .title
+
+.news#news-show.container-big
+  %h3.title
     = @news.title
-  .date
-    = @news.publish_date_time
-  .body
-    = image_tag @news.photo, class: 'main_photo'
-    = @news.body
+  .date-author
+    .date
+      .icon-calendar
+      .date-text
+        18 ноября 2014 года 16:32
+      =# @news.publish_date_time
+    .author
+      Автор:
+      = image_tag @news.photo, class: 'human-photo'
+      Пресс-Служба МИЦ
+  .news-content
+    .main-photo
+      = image_tag @news.photo
+    .container-big
+      .news-lead
+        Привет прекрасный новый мир! В этот чудесный день я готов с тобой разделять
+        снова и снова все радости и печали, подвиги и прегрешения, но избавь меня ты от
+        бессонных ночей, проведенных над чудной светящейся машиной, в нетерпении долгожданного отдыха, но
+        не в силах получить его, ибо грешен.
+        %br
+        Веришь или нет, но текст ниже - пророка заповедь, и да будет всё по ней!
+      .row.news-row-content.large-collapse.medium-collapse
+        .small-3.small-push-9.columns.side-content
+          .title
+            В тему:
+          .programm-or-event
+            - if false
+              .event
+                = render_element "mic_event", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
+                                              category: "INФОРМАТ", |
+                                              link: "#", |
+                                              date: "5-6 Декабря", |
+                                              text: 'Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того'
+            - else
+              .programm
+                = render_element "mic_programm", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
+                                                 link: "#", |
+                                                 name: "Программа \"Добро\"" #name: "Проект \"Информационные технологии\""
+            .news
+              - 2.times do
+                %hr
+                .one-news
+                  = render_element "mic_one_news", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
+                                                   link: "#", |
+                                                   title: "Поразительные приключения бомжа васи", |
+                                                   date: "12 февр. 2015г"
+        -# small-push-4 - для удобства, чтобы @news.body было в конце файла
+        .small-8.small-pull-4.columns
+          = raw(@news.body)
+          .news-addition
+            .icon-addition
+            .addition-content
+              .addition-title
+                Приложение
+              .addition-text
+                Список участников, прошедших на "Ярмарку идей"
+              .addition-download
+                %a{ href: "#"}
+                  .icon-download
+                  .download-link
+                    СКАЧАТЬ
+    %hr
+    .stats-container.container-big.row.large-collapse.medium-collapse
+      %ul.stats.small-10.columns
+        %li.views
+          .icon-eye
+          %span.counter
+            2000
+        %li.tags
+          .icon-tags
+          %a{href: "#"}
+            я лидер
+          ,
+          %a{href: "#"}
+            документы
+        %li.humans
+          .icon-human
+          - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
+          - 4.times do
+            %a.human-link{href: "#"}
+              .human-photo{style: "background-image: url(#{img_src})"}
+          %span.view-all
+            %a{href: "#"}
+              посмотреть всех
+            %span.count
+              (10)
+        %li.social-icons
+          %a{href: "#"}
+            .icon-vk
+          %a{href: "#"}
+            .icon-twitter
+          %a{href: "#"}
+            .icon-facebook
+      .small-10.small-pull-2.columns
+        #disqus_thread
+:javascript
+  /* * * CONFIGURATION VARIABLES * * */
+  var disqus_shortname = 'ulmicru';
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+%noscript
+  Please enable JavaScript to view the
+  %a{:href => "https://disqus.com/?ref_noscript", :rel => "nofollow"} comments powered by Disqus.
