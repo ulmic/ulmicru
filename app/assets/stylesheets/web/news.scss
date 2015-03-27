@@ -1,3 +1,254 @@
-// Place all the styles related to the web/news controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins";
+
+// сделать файл icons
+.icon-calendar {
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+    background: image-url("calendar-icon.png");
+}
+
+.icon-addition {
+    background: image-url("addon.png");
+		width: 64px;
+		height: 60px;
+}
+
+.icon-download {
+    background: image-url("download-icon.png");
+		width: 14px;
+		height: 16px;
+}
+
+.icon-eye {
+    background: image-url("eye-icon.png");
+		width: 29px;
+		height: 19px;
+}
+
+.icon-tags {
+    background: image-url("tag-icon.png");
+		width: 27px;
+		height: 20px;
+}
+
+.icon-human {
+    background: image-url("human-icon.png");
+		width: 17px;
+		height: 23px;
+}
+
+#news-show {
+		margin-top: 50px;
+		h3.title {
+				text-align: center;
+				font-family: 'mic';
+				font-size: rem-calc(43);
+		}
+		.human-photo {
+				width: 30px;
+				height: 30px;
+		}
+		.date-author {
+				float: right;
+				margin-bottom: 24px;
+				.author, .date {
+						display: inline-block;
+				}
+				.date {
+						vertical-align: middle;
+						font-size: 15px;
+						.date-text {
+								display: inline-block;
+								margin-left: rem-calc(4);
+						}
+				}
+				.author {
+						font-family: mic-bold;
+						margin-left: rem-calc(20);
+						color: #999;
+						.human-photo {
+								margin-left: rem-calc(5);
+						}
+				}
+				.icon-calendar {
+						vertical-align: top;
+				}
+		}
+
+		.news-content {
+				.main-photo {
+						width: 100%;
+						height: 475px;
+						overflow: hidden;
+				}
+				.news-lead {
+						margin-top: 28px;
+						margin-bottom: 10px;
+						text-align: justify;
+						color: black;
+						font-family: mic-beau-reg;
+						font-size: rem-calc(20);
+				}
+				.news-row-content {
+						max-width: 80rem;
+						text-align: justify;
+				}
+				.side-content {
+						margin-top: 30px;
+						.title {
+								font-family: mic-beau-reg;
+								text-align: center;
+								font-size: rem-calc(22);
+								margin-bottom: rem-calc(16);
+						}
+						.event {
+								@include mic-event();
+						}
+						.programm {
+								@include mic-programm();
+						}
+						.news>hr {
+								margin: 0;
+						}
+						.one-news {
+								@include mic-one-news();
+								margin-top: rem-calc(22);
+						}
+				}
+
+        .news-addition {
+						background-color: #E5E0E0;
+						font-family: mic-beau-reg;
+						font-size: rem-calc(16);
+						display: inline-block;
+						padding-right: 38px;
+						position: relative;
+						&:before {
+								content:"";
+								position:absolute;
+								top:0;
+								right:0;
+								border-width:0 16px 15px 0;
+								border-style:solid;
+								border-color:#C19A9A #fff;
+						}
+
+						.icon-addition {
+								margin: rem-calc(23);
+								float: left;
+						}
+						.addition-content {
+								margin-left: 2px;
+								float: left;
+						}
+						.addition-title {
+								margin-top: 10px;
+						}
+						.addition-text {
+								margin-top: 11px;
+						}
+						.addition-download {
+								margin-top: 10px;
+								.icon-download {
+										display: inline-block;
+								}
+								.download-link {
+										display: inline-block;
+										font-family: mic-beau-reg;
+										font-size: 15px;
+										vertical-align: top;
+										padding-left: 6px;
+										color: #f38400;
+								}
+								.download-link:hover {
+										text-decoration: underline;
+								}
+						}
+						&:after {
+								clear: both;
+								display: block;
+								content: "";
+						}
+        }
+
+				.stats-container {
+						max-width: 80rem;
+				}
+				.stats {
+						text-align: justify;
+						list-style: none;
+						&>li {
+								display: inline-block;
+								text-align: left;
+						}
+						&:after {
+								width: 100%;
+								height: 0px;
+								visibility: hidden;
+								overflow: hidden;
+								content: '';
+								display: inline-block;
+						}
+						.views, .tags, .humans, .icon-eye, .icon-human, .icon-tags, .human-photo, .social-icons {
+								display: inline-block;
+						}
+						.tags, .views {
+								color: #555;
+						}
+						.views {
+								.counter {
+										vertical-align: top;
+								}
+								.icon-eye {
+										margin-right: 7px;
+								}
+						}
+						.tags>a {
+								color: #555;
+								vertical-align: top;
+								&:hover {
+										color: #f45c10;
+								}
+						}
+						.human-link:hover .human-photo{
+								border: 1px solid #f45c10;
+						}
+						.human-photo {
+								border: 1px solid #fff;
+								background-size: cover;
+								margin-left: 3px;
+						}
+						.view-all {
+								margin-left: 3px;
+								vertical-align: super;
+								&>a {
+										font-family: mic-beau-reg;
+										color: #F39021;
+								}
+								&>a:hover {
+										text-decoration: underline;
+								}
+								.count {
+										color: #555;
+								}
+						}
+
+						.social-icons>a {
+								margin-left: 3px;
+						}
+						.icon-vk {
+								@include social-icon();
+						}
+						.icon-facebook {
+								@include social-icon();
+								background-position: 54px;
+						}
+						.icon-twitter {
+								@include social-icon();
+								background-position: 86px;
+						}
+
+				}
+		}
+}

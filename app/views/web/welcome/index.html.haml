@@ -1,89 +1,85 @@
 - title :app_name
 %link{ rel: :stylesheet, type: 'text/css', href: "//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css" }
-.main-slider
-  %a.left-arrow
-  %a.right-arrow
-  .slider-items
-    - @news.each do |news|
-      .main-slider-item
-        = image_tag news.photo, class: 'slider-img'
-        .slider-item-info
-          = news.title
-.category-navbar-container.clear-fix
-  %nav.top-bar{ data: { topbar:  '' } }
-    %section.top-bar-section
-      .container-big
-        %ul.left
-          - ["Лидерство", "Журналистика", "IT", "Право", "Толерантность", "Волонтёрство", "НКО"].each do |item|
-            %li
-              %a{href: "#"}
-                = item
-.news
-  .container-big
-    .top
-      %h4.title
-        = t('.news')
-      .right
-        %span.text
-          = t('.all_news')
-        %span.slider-arrows
-          %a.arrow.left-arrow
-          %a.arrow.right-arrow
-    .news-slider
-      - @text_news.each do |news|
-        %a.new-slider-item
-          %p.date
-            = news.publish_date_time
-          %p.content
-            = news.short_lead
-.events
-  .container-big
-    %h4.rotate Мероприятия
+.welcome
+  .main-slider
+    %a.left-arrow
+    %a.right-arrow
+    .slider-items
+      - @news.each do |news|
+        .main-slider-item
+          = image_tag news.photo, class: 'slider-img'
+          .slider-item-info
+            = news.title
+  .category-navbar-container.clear-fix
+    %nav.top-bar{ data: { topbar:  '' } }
+      %section.top-bar-section
+        .container-big
+          %ul.left
+            - ["Лидерство", "Журналистика", "IT", "Право", "Толерантность", "Волонтёрство", "НКО"].each do |item|
+              %li
+                %a{href: "#"}
+                  = item
+  .news
     .container-big
-      %ul.small-block-grid-4
-        - 8.times do
-          %li.event
-            %a
-              %img.slider-img{ src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg" }
-            %section
-              %span.category
-                InФормат
-              %span.date
-                4-5 декабря
-            %p
-              %a
-                Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того
-.humans
-  %ul.small-block-grid-7
-    - @members.each do |member|
-      - foto_src = member.avatar.url
-      %li.human
-        .bg-foto{ style: "background-image: url('#{foto_src}')" }
-        %a.info{ href: "#" }
-          .vertical-center
-            .name
-              = member.short_name
-            .post
-              = member.main_position_title
-            - if member.position_duration
-              .duration
-                = member.position_duration
-            .credo
-              = member.motto
-            .ticket
-              %span.glyphicon.glyphicon-credit-card
-              = member.ticket_number
-.last-tweets
-  .icon
-  %h2
-    Последние твиты
-  %blockquote
-    Сегодня последний день, что бы подтвердить свою поездку на профильную смену "Ярмарка идей". 			Подтверждения принимаем на ul-lider.ru
-    %span.clear-fix
-    %section
-      %span.author
-        %span.first-letter
-          @
-        ulmic.ru
-      %span.date
-        13 Февраля 2015
+      .top
+        %h4.title
+          = t('.news')
+        .right
+          %span.text
+            = t('.all_news')
+          %span.slider-arrows
+            %a.arrow.left-arrow
+            %a.arrow.right-arrow
+      .news-slider
+        - @text_news.each do |news|
+          %a.new-slider-item
+            %p.date
+              = news.publish_date_time
+            %p.content
+              = news.short_lead
+  .events
+    .container-big
+      %h4.rotate Мероприятия
+      .container-big
+        %ul.small-block-grid-4
+          - 8.times do
+            %li.event
+              = render_element "mic_event", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
+                                            link: "#", |
+                                            category: "INФОРМАТ", |
+                                            date: "5-6 Декабря", |
+                                            text: 'Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того'
+  .humans
+    %ul.small-block-grid-7
+      - @members.each do |member|
+        - foto_src = member.avatar.url
+        %li.human
+          .bg-foto{ style: "background-image: url('#{foto_src}')" }
+          %a.info{ href: "#" }
+            .vertical-center
+              .name
+                = member.short_name
+              .post
+                = member.main_position_title
+              - if member.position_duration
+                .duration
+                  = member.position_duration
+              .credo
+                = member.motto
+              .ticket
+                %span.glyphicon.glyphicon-credit-card
+                = member.ticket_number
+  .last-tweets
+    .icon
+    %h2
+      Последние твиты
+    %blockquote
+      Сегодня последний день, что бы подтвердить свою поездку на профильную смену "Ярмарка идей". 			Подтверждения принимаем на ul-lider.ru
+      %span.clear-fix
+      %section
+        %span.author
+          %span.first-letter
+            @
+          ulmic.ru
+        %span.date
+          13 Февраля 2015
