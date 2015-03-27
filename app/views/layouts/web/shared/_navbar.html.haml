@@ -25,7 +25,7 @@
               .inner
                 Контакты
           %li
-            %a{href: "#"}
+            %a{ href: "#" }
         %a.site-logo{ href: root_path }
         %ul.left
           %li.has-dropdown.dropdown-category-menu
@@ -35,7 +35,10 @@
             %ul.dropdown
               #category_menu.category-menu
                 .category-column
-                  .menu-title Кто мы такие
+                  .menu-title
+                    = @first_category.name
+                  - @first_category.articles.each do |article|
+                    = link_to article.title, article_path(article)
                   %a{href: "#"}
                     МИЦ как организация
                   %a{href: "#"}
