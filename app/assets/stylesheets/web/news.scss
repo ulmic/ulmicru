@@ -1,43 +1,6 @@
 @import "mixins";
 @import "elements";
-
-// сделать файл icons
-.icon-calendar {
-		width: 18px;
-		height: 18px;
-		display: inline-block;
-    background: image-url("calendar-icon.png");
-}
-
-.icon-addition {
-    background: image-url("addon.png");
-		width: 64px;
-		height: 60px;
-}
-
-.icon-download {
-    background: image-url("download-icon.png");
-		width: 14px;
-		height: 16px;
-}
-
-.icon-eye {
-    background: image-url("eye-icon.png");
-		width: 29px;
-		height: 19px;
-}
-
-.icon-tags {
-    background: image-url("tag-icon.png");
-		width: 27px;
-		height: 20px;
-}
-
-.icon-human {
-    background: image-url("human-icon.png");
-		width: 17px;
-		height: 23px;
-}
+@import "icons";
 
 #news-show {
 		margin-top: 50px;

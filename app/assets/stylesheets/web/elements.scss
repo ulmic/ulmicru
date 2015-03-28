@@ -1,3 +1,47 @@
+$button-bg-color: #FC9727;
+$button-bg-hover: #FC9727;
+$button-font-family: 'mic-beau-reg';
+
+@import "foundation/components/buttons";
+
+// h1,h2,h3,h4,h5,h6 надо тоже сюда вытащить
+.mic-label-black {
+		background-color: #FC9727;
+		color: #333;
+		display: inline-block;
+		padding: 3px 20px 0 18px;
+		font-family: 'mic-square-reg';
+}
+
+
+// это плейсфолдер, класс такой не генерится
+%mic-button {
+		@extend .button;
+		padding: rem-calc(13) rem-calc(26);
+		font-size: rem-calc(18);
+}
+.mic-flat-button {
+		@extend %mic-button;
+		&:active {
+				background-color: #D4611B;
+		}
+}
+
+.mic-press-button {
+		@extend %mic-button;
+		$press-height: 7px;
+		border: none;
+		box-shadow: 0 $press-height #D4611B;
+		&:focus {
+				outline: none
+		}
+		&:active {
+				box-shadow: 0 0px #D4611B;
+				transform: translateY($press-height);
+				-ms-transform: translateY($press-height);
+		}
+}
+
 .mic-event {
 		text-align: justify;
 		img {
