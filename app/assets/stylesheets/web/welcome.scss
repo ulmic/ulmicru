@@ -117,9 +117,6 @@
 						transform: rotate(270deg);
 						transform-origin: 0% 0%;
 				}
-				.event {
-						@include mic-event();
-				}
 		}
 
 		.humans {

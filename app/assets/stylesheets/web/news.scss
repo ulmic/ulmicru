@@ -1,4 +1,5 @@
 @import "mixins";
+@import "elements";
 
 // сделать файл icons
 .icon-calendar {
@@ -102,17 +103,10 @@
 								font-size: rem-calc(22);
 								margin-bottom: rem-calc(16);
 						}
-						.event {
-								@include mic-event();
-						}
-						.programm {
-								@include mic-programm();
-						}
 						.news>hr {
 								margin: 0;
 						}
-						.one-news {
-								@include mic-one-news();
+						.mic-one-news {
 								margin-top: rem-calc(22);
 						}
 				}
