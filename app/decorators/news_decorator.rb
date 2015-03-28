@@ -20,8 +20,12 @@ class NewsDecorator < Draper::Decorator
     "#{model.body.first(600)}..."
   end
 
-  def publish_date_time
+  def publish_date
     I18n.l published_at, format: '%d %b %Y'
+  end
+
+  def publish_date_time
+    I18n.l published_at, format: "%d %b %Y #{I18n.t('helpers.year')} %H:%m"
   end
 
   def name

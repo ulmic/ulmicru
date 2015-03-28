@@ -32,7 +32,7 @@
             %a.arrow.right-arrow
       .news-slider
         - @text_news.each do |news|
-          %a.new-slider-item
+          %a.new-slider-item{ href: news_path(news) }
             %p.date
               = news.publish_date_time
             %p.content

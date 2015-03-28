@@ -11,29 +11,27 @@
     .date
       .icon-calendar
       .date-text
-        18 ноября 2014 года 16:32
-      =# @news.publish_date_time
+        = @news.publish_date_time
     .author
-      Автор:
-      = image_tag @news.photo, class: 'human-photo'
-      Пресс-Служба МИЦ
+      = "#{t('activerecord.attributes.news.user_id')}:"
+      - if @news.user.present?
+        = image_tag @news.user.avatar, class: 'human-photo'
+        = @news.user.decorate.short_name
+      - else
+        = image_tag '', class: 'human-photo'
+        Пресс-служба МИЦ
   .news-content
     .main-photo
       = image_tag @news.photo
     .container-big
       .news-lead
-        Привет прекрасный новый мир! В этот чудесный день я готов с тобой разделять
-        снова и снова все радости и печали, подвиги и прегрешения, но избавь меня ты от
-        бессонных ночей, проведенных над чудной светящейся машиной, в нетерпении долгожданного отдыха, но
-        не в силах получить его, ибо грешен.
-        %br
-        Веришь или нет, но текст ниже - пророка заповедь, и да будет всё по ней!
+        = @news.lead
       .row.news-row-content.large-collapse.medium-collapse
         .small-3.small-push-9.columns.side-content
           .title
-            В тему:
+            = t('.same_themes')
           .programm-or-event
-            - if false
+            - if true
               .event
                 = render_element "mic_event", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
                                               category: "INФОРМАТ", |

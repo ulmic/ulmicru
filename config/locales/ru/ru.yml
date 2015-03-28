@@ -17,8 +17,9 @@ ru:
     in: в
     from: c
     until: по
-    year: 'г.'
-    years: 'гг.'
+    year: 'года'
+    short_year: 'г.'
+    short_years: 'гг.'
     actions:
       update: Редактировать
       create: Создать
@@ -88,6 +89,9 @@ ru:
           admin_panel: Панель администратора
       new:
         register: Регистрация
+    news:
+      show:
+        same_themes: В тему
   forms:
     placeholders:
       web:
