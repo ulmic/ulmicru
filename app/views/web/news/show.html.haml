@@ -31,22 +31,22 @@
           .title
             = t('.same_themes')
           .programm-or-event
-            - if true
-              .event
+            - if false
+              .mic-event
                 = render_element "mic_event", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
                                               category: "INФОРМАТ", |
                                               link: "#", |
                                               date: "5-6 Декабря", |
                                               text: 'Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того'
             - else
-              .programm
+              .mic-programm
                 = render_element "mic_programm", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
                                                  link: "#", |
                                                  name: "Программа \"Добро\"" #name: "Проект \"Информационные технологии\""
             .news
               - 2.times do
                 %hr
-                .one-news
+                .mic-one-news
                   = render_element "mic_one_news", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
                                                    link: "#", |
                                                    title: "Поразительные приключения бомжа васи", |

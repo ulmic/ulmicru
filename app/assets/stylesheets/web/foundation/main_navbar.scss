@@ -1,7 +1,7 @@
 @import "../mixins";
 
 .main-navbar-container {
-  $topbar-height: rem-calc(97);
+  $topbar-height: rem-calc(86);
   $topbar-bg-color: white;
   $topbar-bg: $topbar-bg-color;
 
@@ -95,6 +95,7 @@
     height: rem-calc(20);
     width: $el-width;
     position: relative;
+		margin-right: 20px;
     .banner {
       width: $el-width;
       background-image: image-url('svg-navbar-fallback.png');
@@ -117,15 +118,17 @@
     }
   }
   .site-logo {
-    $el-width: rem-calc(255);
+    $el-min-width: rem-calc(255);
+    $el-width: 20%;
 
     background: image-url('topbar-logo.png') no-repeat;
     height: rem-calc(80);
-    width: $el-width;
+    min-width: $el-min-width;
+		width: $el-width;
     display: inline-block;
     position: absolute;
-    left: 50%;
-    margin-left: -$el-width/2;
+    left: 50% - $el-width/2;
+		margin-top: 5px;
   }
   a {
     font-family: 'mic-bold';

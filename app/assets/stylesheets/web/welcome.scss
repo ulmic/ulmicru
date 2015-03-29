@@ -1,4 +1,5 @@
 @import "mixins";
+@import "icons";
 
 .welcome {
 		h3,h4,h5 {
@@ -11,7 +12,7 @@
 				height: $slider-height;
 				position: relative;
 				.left-arrow, .right-arrow {
-						$arrow-height: rem-calc(70);
+						$arrow-height: rem-calc(75);
 						position: absolute;
 						z-index: 1;
 						top: $slider-height/2 - $arrow-height/2;
@@ -116,9 +117,6 @@
 						top: rem-calc(125);
 						transform: rotate(270deg);
 						transform-origin: 0% 0%;
-				}
-				.event {
-						@include mic-event();
 				}
 		}
 
