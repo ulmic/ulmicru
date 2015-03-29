@@ -45,7 +45,7 @@ $button-font-family: 'mic-beau-reg';
 		}
 }
 
-.mic-event {
+%mic-element {
 		text-align: justify;
 		img {
 				width: 100%;
@@ -53,6 +53,13 @@ $button-font-family: 'mic-beau-reg';
 		}
 		section {
 				margin: 10px 0px;
+				text-align: center;
+		}
+}
+.mic-event {
+		@extend %mic-element;
+		section {
+				text-align: inherit;
 		}
 		.event-category {
 				font-size: rem-calc(16);
@@ -69,15 +76,7 @@ $button-font-family: 'mic-beau-reg';
 }
 
 .mic-programm {
-		text-align: justify;
-		img {
-				width: 100%;
-				height: rem-calc(195);
-		}
-		section {
-				margin: 10px 0px;
-				text-align: center;
-		}
+		@extend %mic-element;
 		.programm-name {
 				font-size: rem-calc(16);
 				q {
@@ -92,31 +91,14 @@ $button-font-family: 'mic-beau-reg';
 }
 
 .mic-member {
-		text-align: justify;
-		img {
-				width: 100%;
-				height: rem-calc(195);
-		}
-		section {
-				margin: 10px 0px;
-				text-align: center;
-		}
+		@extend %mic-element;
 		.role {
 				color: #f45c10;
 		}
 }
 
-
 .mic-one-news {
-		text-align: justify;
-		img {
-				width: 100%;
-				height: rem-calc(195);
-		}
-		section {
-				margin: 10px 0px;
-				text-align: center;
-		}
+		@extend %mic-element;
 		.news-date {
 				float: left;
 				font-family: mic;
