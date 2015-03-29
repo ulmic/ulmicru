@@ -20,6 +20,9 @@ $button-font-family: 'mic-beau-reg';
 		padding: rem-calc(13) rem-calc(26);
 		font-size: rem-calc(18);
 }
+.mic-button-small {
+		padding: rem-calc(9) rem-calc(20);
+}
 .mic-flat-button {
 		@extend %mic-button;
 		&:active {
@@ -87,6 +90,22 @@ $button-font-family: 'mic-beau-reg';
 				}
 		}
 }
+
+.mic-member {
+		text-align: justify;
+		img {
+				width: 100%;
+				height: rem-calc(195);
+		}
+		section {
+				margin: 10px 0px;
+				text-align: center;
+		}
+		.role {
+				color: #f45c10;
+		}
+}
+
 
 .mic-one-news {
 		text-align: justify;

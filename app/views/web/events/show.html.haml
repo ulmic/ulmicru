@@ -30,6 +30,9 @@
           А то нынешней молодежы всё нипочем, тащат туда, про что приличные
           люди и говорить порой стесняются, и окромя явы поганой не туда ничего не кладут,
           да и то мерзко.
+        .event-more-info
+          %a.more-info{ href:"#" }
+            Подробнее
       .small-3.columns{ "data-equalizer-watch" => "" }
         .organizers
           .organizers-title
@@ -42,3 +45,37 @@
           -#%a.join-button.mic-press-button{ href: "#" }
           %button.join-button.mic-press-button
             Учавствовать
+.event-content.container
+  .row.large-collapse{style: "display: none"}
+    .more-lead-info.small-8.columns
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+      text text text text text text text
+  .participans-container
+    %h3.title
+      Участники
+      (150)
+    %ul.small-block-grid-5.participants
+      - 2.times do
+        %li.participant.mic-member
+          = render_element "mic_member", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
+                                         link: "#", |
+                                         name: "Калашников Павел", |
+                                         role: "Организатор"
+      - 8.times do
+        %li.participant.mic-member
+          = render_element "mic_member", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
+                                         link: "#", |
+                                         name: "Калашников Павел"
+    .get-more-participants
+      %button.mic-press-button.mic-button-small
+        увидеть больше

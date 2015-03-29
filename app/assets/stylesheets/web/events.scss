@@ -3,23 +3,24 @@
 @import "icons";
 
 $left-header-margin: 10px;
+$event-lead-margin: 2rem;
+$slopy-height: 140px;
 .event-container {
 		padding-top: 24px;
-		padding-bottom: 160px;
+		padding-bottom: $slopy-height;
     font-family: 'mic-square-reg';
 		background-size: cover;
 		background-repeat: no-repeat;
 		position: relative;
 		overflow: hidden;
 		&:after {
-				height: 140px;
+				height: $slopy-height;
 				content: "";
 				position: absolute;
 				bottom: 0;
 				background-color:#fff;
 				padding-bottom:10%;
 				width:101%;
-
 
 				-webkit-transform: rotate(5.7deg) skewX(6deg);
 				-ms-transform: rotate(5.7deg) skewX(6deg);
@@ -28,7 +29,16 @@ $left-header-margin: 10px;
 				-webkit-transform-origin:0 0;
 				-ms-transform-origin:0 0;
 				transform-origin:0 0;
-
+		}
+}
+.event-container.more-info-viewed {
+		padding-bottom: 40px;
+		&:after {
+				transform: rotate(0deg) skewX(0deg);
+				-ms-transform: rotate(0deg) skewX(0deg);
+				-webkit-transform: rotate(0deg) skewX(0deg);
+				padding-bottom: 0%;
+				height: 0;
 		}
 }
 
@@ -43,7 +53,6 @@ $left-header-margin: 10px;
 }
 .event-header {
 		color: white;
-		max-width: 80rem;
 		position: relative;
 		.title {
 				margin-left: $left-header-margin/2;
@@ -56,6 +65,7 @@ $left-header-margin: 10px;
 				margin-top: 11px;
 				.mic-label-black {
 						font-size: rem-calc(30);
+						line-height: 40px;
 						width: 100%;
 				}
 				.labels, .texts {
@@ -74,20 +84,31 @@ $left-header-margin: 10px;
 		.event-lead {
 				margin-top: 60px;
 				margin-left: $left-header-margin;
+				margin-left: $event-lead-margin;
+				margin-right: - $event-lead-margin;
 				font-family: mic;
 				font-size: rem-calc(20);
 				text-align: justify;
 		}
+		.event-more-info {
+				text-align: center;
+				.more-info {
+						font-family: 'mic-square-light-italic';
+						color: white;
+						text-decoration: underline;
+						font-size: rem-calc(20);
+				}
+		}
 		.organizers {
 				font-family: mic;
 				margin-top: 48px;
-				margin-left: 2rem;
+				margin-left: 1rem;
 				.organizers-title {
 						font-size: rem-calc(28);
 				}
 				.organizers-names {
 						margin-top: 1rem;
-						margin-left: 2rem;
+						margin-left: 1rem;
 				}
 				.organizer {
 						font-size: rem-calc(24);
@@ -96,6 +117,32 @@ $left-header-margin: 10px;
 		}
 		.join-button {
 				position: absolute;
-				bottom: -25px;
+				bottom: -2rem;
+				left: 2rem;
+		}
+}
+.event-content.container {
+		margin-bottom: 100px;
+}
+.event-content {
+		.more-lead-info {
+				margin-left: $event-lead-margin;
+		}
+		.participans-container {
+				.title {
+						font-family: mic-square-reg;
+						font-size: rem-calc(36);
+						color: #F45C10;
+						//color: #333; // может черный лучше?
+				}
+				.participants {
+						margin-top: 24px;
+				}
+				.get-more-participants {
+						text-align: center;
+						.mic-press-button {
+								background-color: #F77838;
+						}
+				}
 		}
 }
