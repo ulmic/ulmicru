@@ -5,11 +5,46 @@
 $left-header-margin: 10px;
 .event-container {
 		padding-top: 24px;
+		padding-bottom: 160px;
     font-family: 'mic-square-reg';
+		background-size: cover;
+		background-repeat: no-repeat;
+		position: relative;
+		overflow: hidden;
+		&:after {
+				height: 140px;
+				content: "";
+				position: absolute;
+				bottom: 0;
+				background-color:#fff;
+				padding-bottom:10%;
+				width:101%;
+
+
+				-webkit-transform: rotate(5.7deg) skewX(6deg);
+				-ms-transform: rotate(5.7deg) skewX(6deg);
+				transform: rotate(5.7deg) skewX(6deg);
+
+				-webkit-transform-origin:0 0;
+				-ms-transform-origin:0 0;
+				transform-origin:0 0;
+
+		}
+}
+
+.event-header-overlay {
+		height: 100%;
+		width: 100%;
+		background-color: #000;
+		left: 0;
+		top: 0;
+		position: absolute;
+		opacity: 0.35;
 }
 .event-header {
 		color: white;
 		max-width: 80rem;
+		position: relative;
 		.title {
 				margin-left: $left-header-margin/2;
 				color: #ffffff;
@@ -61,6 +96,6 @@ $left-header-margin: 10px;
 		}
 		.join-button {
 				position: absolute;
-				bottom: 0;
+				bottom: -25px;
 		}
 }
