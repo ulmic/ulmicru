@@ -7,25 +7,27 @@
 .news#news-show.container-big
   %h3.title
     = @news.title
-  .date-author
-    .date
-      .icon-calendar
-      .date-text
-        = @news.publish_date_time
-    .author
-      = "#{t('activerecord.attributes.news.user_id')}:"
-      - if @news.user.present?
-        = image_tag @news.user.avatar, class: 'human-photo'
-        = @news.user.decorate.short_name
-      - else
-        = image_tag '', class: 'human-photo'
-        Пресс-служба МИЦ
   .news-content
+    .date-author
+      .date
+        .icon-calendar
+        .date-text
+          = @news.publish_date_time
+      .author
+        = "#{t('activerecord.attributes.news.user_id')}:"
+        - if @news.user.present?
+          = image_tag @news.user.avatar, class: 'human-photo'
+          = @news.user.decorate.short_name
+        - else
+          = image_tag '', class: 'human-photo'
+          Пресс-служба МИЦ
     .main-photo
+      =#small# image_tag "http://assets3.parliament.uk/iv/main-large//ImageVault/Images/id_7382/scope_0/ImageVaultHandler.aspx.jpg"#@news.photo
+      =#big# image_tag "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg"
       = image_tag @news.photo
+    .container-big.news-lead
+      = @news.lead
     .container-big
-      .news-lead
-        = @news.lead
       .row.news-row-content.large-collapse.medium-collapse
         .small-3.small-push-9.columns.side-content
           .title

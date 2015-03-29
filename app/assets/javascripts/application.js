@@ -25,6 +25,7 @@
 //= require placeholders
 //= require localities
 //= require events
+//= require news
 
 $(function(){
 	$(document).foundation();
