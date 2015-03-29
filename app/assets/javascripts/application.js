@@ -24,6 +24,8 @@
 //= require i18n_setup
 //= require placeholders
 //= require localities
+//= require events
+
 $(function(){
 	$(document).foundation();
 	$('.main-slider .slider-items').slick({

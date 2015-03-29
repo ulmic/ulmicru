@@ -14,31 +14,27 @@ $slopy-height: 140px;
 		position: relative;
 		overflow: hidden;
 		&:after {
+				// TODO подчистить, чтобы не лагало
 				height: $slopy-height;
 				content: "";
 				position: absolute;
 				bottom: 0;
 				background-color:#fff;
-				padding-bottom:10%;
 				width:101%;
 
-				-webkit-transform: rotate(5.7deg) skewX(6deg);
-				-ms-transform: rotate(5.7deg) skewX(6deg);
+				transition: transform 0.5s ease-out, height 0.5s ease-out;
+
 				transform: rotate(5.7deg) skewX(6deg);
 
-				-webkit-transform-origin:0 0;
-				-ms-transform-origin:0 0;
 				transform-origin:0 0;
 		}
 }
 .event-container.more-info-viewed {
-		padding-bottom: 40px;
 		&:after {
-				transform: rotate(0deg) skewX(0deg);
-				-ms-transform: rotate(0deg) skewX(0deg);
 				-webkit-transform: rotate(0deg) skewX(0deg);
-				padding-bottom: 0%;
-				height: 0;
+				-ms-transform: rotate(0deg) skewX(0deg);
+				transform: rotate(0deg) skewX(0deg);
+				height: 85px;
 		}
 }
 
@@ -51,6 +47,13 @@ $slopy-height: 140px;
 		position: absolute;
 		opacity: 0.40;
 }
+.event-lead, .more-lead-info-content {
+		margin-left: $event-lead-margin;
+		margin-right: - $event-lead-margin;
+		font-family: mic;
+		text-align: justify;
+}
+
 .event-header {
 		color: white;
 		position: relative;
@@ -83,12 +86,7 @@ $slopy-height: 140px;
 		}
 		.event-lead {
 				margin-top: 60px;
-				margin-left: $left-header-margin;
-				margin-left: $event-lead-margin;
-				margin-right: - $event-lead-margin;
-				font-family: mic;
 				font-size: rem-calc(20);
-				text-align: justify;
 		}
 		.event-more-info {
 				text-align: center;
@@ -124,10 +122,24 @@ $slopy-height: 140px;
 .event-content.container {
 		margin-bottom: 100px;
 }
+.more-lead-info {
+		z-index: 1;
+		margin-left: $event-lead-margin;
+		background-color: #fff;
+
+		// TODO need autoprefixer
+		transition: transform 0.5s;
+		transform: translateY( -118px ) rotateX( -90deg ) rotateY(-5.6deg);
+}
+.more-lead-info.viewed {
+		transform: translateY( -60px ) rotateX( 0deg ) rotateY(0deg);
+}
+.more-lead-info-content {
+		margin-top: 20px;
+		font-size: rem-calc(18);
+		color: #333;
+}
 .event-content {
-		.more-lead-info {
-				margin-left: $event-lead-margin;
-		}
 		.participans-container {
 				.title {
 						font-family: mic-square-reg;

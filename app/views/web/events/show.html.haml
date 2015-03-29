@@ -31,8 +31,11 @@
           люди и говорить порой стесняются, и окромя явы поганой не туда ничего не кладут,
           да и то мерзко.
         .event-more-info
-          %a.more-info{ href:"#" }
-            Подробнее
+          %a.more-info#event-lead-more-info{ href:"#" }
+            .show-all
+              Подробнее
+            .hide-all.hide
+              Скрыть
       .small-3.columns{ "data-equalizer-watch" => "" }
         .organizers
           .organizers-title
@@ -45,21 +48,27 @@
           -#%a.join-button.mic-press-button{ href: "#" }
           %button.join-button.mic-press-button
             Учавствовать
+.more-lead-info.container
+  .row.large-collapse
+    .small-8.columns
+      .more-lead-info-content
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
 .event-content.container
-  .row.large-collapse{style: "display: none"}
-    .more-lead-info.small-8.columns
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
-      text text text text text text text
   .participans-container
     %h3.title
       Участники
