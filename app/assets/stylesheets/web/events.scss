@@ -22,7 +22,7 @@ $slopy-height: 140px;
 				background-color:#fff;
 				width:101%;
 
-				transition: transform 0.5s ease-out, height 0.5s ease-out;
+				transition: transform 0.3s ease, height 0.3s ease;
 
 				transform: rotate(5.7deg) skewX(6deg);
 
@@ -31,8 +31,6 @@ $slopy-height: 140px;
 }
 .event-container.more-info-viewed {
 		&:after {
-				-webkit-transform: rotate(0deg) skewX(0deg);
-				-ms-transform: rotate(0deg) skewX(0deg);
 				transform: rotate(0deg) skewX(0deg);
 				height: 85px;
 		}
@@ -65,7 +63,7 @@ $slopy-height: 140px;
 		}
 		.when-and-where {
 				margin-left: - $left-header-margin;
-				margin-top: 11px;
+				margin-top: 20px;
 				.mic-label-black {
 						font-size: rem-calc(30);
 						line-height: 40px;
@@ -122,23 +120,30 @@ $slopy-height: 140px;
 .event-content.container {
 		margin-bottom: 100px;
 }
+
 .more-lead-info {
-		z-index: 1;
 		margin-left: $event-lead-margin;
 		background-color: #fff;
 
 		// TODO need autoprefixer
-		transition: transform 0.5s;
+		transition: transform 0.3s ease-out;
+		transform-origin: 0 0;
 		transform: translateY( -118px ) rotateX( -90deg ) rotateY(-5.6deg);
 }
-.more-lead-info.viewed {
-		transform: translateY( -60px ) rotateX( 0deg ) rotateY(0deg);
-}
 .more-lead-info-content {
+		max-height: 0px;
+		transition: max-height 0.3s ease-out;
 		margin-top: 20px;
 		font-size: rem-calc(18);
 		color: #333;
 }
+.more-lead-info.viewed {
+		transform: translateY( -60px ) rotateX( 0deg ) rotateY(0deg);
+		.more-lead-info-content {
+				max-height: 3000px;
+		}
+}
+
 .event-content {
 		.participans-container {
 				.title {

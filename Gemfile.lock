@@ -429,6 +429,7 @@ PLATFORMS
 DEPENDENCIES
   active_form!
   authority
+  autoprefixer-rails
   awesome_print
   bcrypt (~> 3.1.7)
   better_errors
