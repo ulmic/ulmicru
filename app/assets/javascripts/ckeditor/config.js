@@ -3,5 +3,5 @@ CKEDITOR.editorConfig = function (config) {
     ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript"],
   ];
   config.toolbar = "simple";
-  config.extraPlugins = 'youtube';
+  config.extraPlugins = 'youtube,oembed';
 }

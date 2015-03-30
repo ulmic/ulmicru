@@ -17,6 +17,9 @@
         %td= (article.category.present? ? article.category.name : "")
         %td=l article.created_at
         %td
+          - if article.unviewed?
+            = link_to admin_article_path(article, article: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do
+              %span.glyphicon.glyphicon-ok
           = link_to edit_admin_article_path(article), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_article_path(article), method: :delete, class: 'btn btn-xs btn-danger' do

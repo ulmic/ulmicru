@@ -12,10 +12,14 @@ class Article < ActiveRecord::Base
 
   state_machine :state, initial: :unviewed do
     state :unviewed
+    state :confirmed
     state :removed
 
     event :remove do
       transition all => :removed
+    end
+    event :confirm do
+      transition all => :confirmed
     end
     event :restore do
       transition :removed => :unviewed

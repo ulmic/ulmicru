@@ -70,7 +70,7 @@
                   - if @korporative_category.present?
                     .category-column
                       .menu-title Корпоративные проекты
-                      - @korporative_category.articles.each do |article|
+                      - @korporative_category.articles.presented.each do |article|
                         = link_to article.title, article_path(article)
                   .category-column
                     .menu-title Библиотека
