@@ -10,7 +10,7 @@
       %th=t 'helpers.links.actions'
   %tbody
     - articles.each do |article|
-      %tr
+      %tr.link{ class: state_color(article), data: { href: edit_admin_article_path(article) } }
         %td= link_to article.id, edit_admin_article_path(article)
         %td= link_to article.title, edit_admin_article_path(article)
         %td= article.short_body
