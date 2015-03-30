@@ -6,8 +6,9 @@ module EventScopes
     scope :presented, -> { where.not(state: :removed) }
     scope :declined, -> { where(state: :declined)  }
     scope :unviewed, -> { where(state: :unviewed)  }
-    scope :future, -> { where('begin_date >= ?', DateTime.now) }
-    scope :current, -> { where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now) }
-    scope :past, -> { where('end_date <= ?', DateTime.now) }
+    scope :future, -> { where('begin_date >= ?', DateTime.now).where.not(state: :removed) }
+    scope :current, -> { where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now).where.not(state: :removed) }
+    scope :active, -> { where('end_date > ?', DateTime.now).where.not(state: :removed)  }
+    scope :past, -> { where('end_date <= ?', DateTime.now).where.not(state: :removed) }
   end
 end
