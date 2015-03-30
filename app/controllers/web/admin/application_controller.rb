@@ -1,4 +1,4 @@
 class Web::Admin::ApplicationController < Web::ApplicationController
-  before_filter :authenticate_admin!
+  #before_filter :authenticate_admin!
   layout 'web/admin/application'
 end
