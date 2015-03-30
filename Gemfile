@@ -32,6 +32,7 @@ gem 'draper'
 gem 'russian'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'rmagick'
 gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
 gem 'js-routes'
 gem 'i18n-js', git: 'https://github.com/fnando/i18n-js'

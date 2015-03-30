@@ -363,6 +363,7 @@ GEM
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rmagick (2.13.4)
     ruby_parser (3.6.5)
       sexp_processor (~> 4.1)
     russian (0.6.0)
@@ -485,6 +486,7 @@ DEPENDENCIES
   quiet_assets
   rack-livereload
   rails (= 4.2.0)
+  rmagick
   russian
   rvm-capistrano
   sass-rails (~> 5.0)
