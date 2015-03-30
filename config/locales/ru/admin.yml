@@ -19,6 +19,12 @@ ru:
           add_position: Добавить должность
         position_fields:
           remove_position: Убрать должность
+  layouts:
+    web:
+      admin:
+        shared:
+          errors:
+            some_errors_was_found: Найдены ошибки при сохранении
   hints:
     admin:
       user:

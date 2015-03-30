@@ -1,9 +1,15 @@
+- current_title = page_title(action, User.model_name.human)
+- title current_title, :admin
 .page-header
-  %h1= page_title(action, User.model_name.human)
+  %h1= current_title
 .row
-  .col-lg-6
+  .col-lg-12
+    = render 'layouts/web/admin/shared/errors', object: @user_form
+.row
+  .col-lg-12
     = simple_form_for [:admin, @user_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :first_name, as: :string
+      = f.input :patronymic, as: :string
       = f.input :last_name, as: :string
       = f.input :email, as: :string
       = f.input :password, as: :string
