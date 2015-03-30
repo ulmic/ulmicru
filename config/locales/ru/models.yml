@@ -73,8 +73,24 @@ ru:
         title: Название
         begin_date: Дата вступления в должность
         end_date: Дата ухода с должности
+      event:
+        title: Название
+        description: Описание
+        main_photo: Главное фото
+        begin_date: Дата и время начала
+        end_date: Дата и время окончания
+        place: Место проведения
+        creator: Создатель
+        duration: Время проведения
   enumerize:
     user:
       role:
         admin: Администратор
         user: Пользователь
+  scopes:
+    event:
+      future: Грядущие
+      current: Текущие
+      past: Прошедшие
+      unviewed: Не подтверждённые
+      declined: Отклонённые

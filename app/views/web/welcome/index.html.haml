@@ -39,16 +39,17 @@
               = news.short_lead
   .events
     .container-big
-      %h4.rotate Мероприятия
+      %h4.rotate
+        = t('.events')
       .container-big
         %ul.small-block-grid-4
-          - 8.times do
+          - @events.each do |event|
             %li.mic-event
-              = render_element "mic_event", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
-                                            link: "#", |
+              = render_element "mic_event", img_src: event.main_photo, |
+                                            link: event_path(event), |
                                             category: "INФОРМАТ", |
-                                            date: "5-6 Декабря", |
-                                            text: 'Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того'
+                                            date: event.full_date_duration, |
+                                            text: strip_tags(event.lead)
   .humans
     %ul.small-block-grid-7
       - @members.each do |member|

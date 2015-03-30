@@ -79,6 +79,7 @@ ru:
       index:
         news: Новости
         all_news: Все новости
+        events: Мероприятия
     users:
       account:
         index:

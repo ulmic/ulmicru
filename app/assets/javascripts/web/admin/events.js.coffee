@@ -30,7 +30,7 @@ $ ->
           $event_place_select.focus()
           return false
         error: (response) ->
-          $('.loading').hide()
-          $('.row').append 'Error'
+          $('.loading').append('Error')
+          $('.loading').fadeOut(5000)
           return false
       }
