@@ -30,11 +30,11 @@ $ ->
     action = glyphicon_titles[klass.replace('glyphicon-', '')]
     $(this).closest('a.btn-xs').prop('title', I18n.t("helpers.links.#{action}"))
     return
-  return
 
   init_datetimepickers = ->
     $("input.datetime_picker").datetimepicker()
     $("input.date_picker").datetimepicker()
+    return
 
   init_datetimepickers()
   $('a.add_fields').mouseover ->

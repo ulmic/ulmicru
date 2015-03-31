@@ -1,6 +1,6 @@
 class Web::WelcomeController < Web::ApplicationController
   def index
-    @news = News.published.last 5
+    @news = News.published.first 5
     @text_news = NewsDecorator.decorate_collection News.published.last 20
     @members = MemberDecorator.decorate_collection Member.confirmed.shuffle.first 14
     @events = ::EventDecorator.decorate_collection ::Event.active.first 8
