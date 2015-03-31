@@ -40,18 +40,6 @@
                       = @first_category.name
                     - @first_category.articles.each do |article|
                       = link_to article.title, article_path(article)
-                    %a{href: "#"}
-                      МИЦ как организация
-                    %a{href: "#"}
-                      История создания
-                    %a{href: "#"}
-                      Устав
-                    %a{href: "#"}
-                      Наша миссия и цели
-                    %a{href: "#"}
-                      Гордость
-                    %a{href: "#"}
-                      СМИ о нас
                 - if signed_in?
                   .category-column
                     .menu-title Программы и проекты
