@@ -55,3 +55,9 @@ $(function(){
     nextArrow: $('.news .slider-arrows>.right-arrow')
 	});
 });
+
+$(document).ready(function() {
+  $('.link').click(function() {
+    location.href = $(this).attr('data-href');
+  });
+});
