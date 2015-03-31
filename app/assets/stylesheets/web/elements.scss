@@ -115,3 +115,12 @@ $button-font-family: 'mic-beau-reg';
 				text-align: justify;
 		}
 }
+
+.mic-article {
+		@extend %mic-element;
+		.article-title {
+				font-size: rem-calc(16);
+				clear: both;
+				text-align: justify;
+		}
+}

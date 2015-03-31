@@ -93,6 +93,10 @@ ru:
     news:
       show:
         same_themes: В тему
+    articles:
+      shared:
+        default_show:
+          same_themes: "Смотри также:"
   forms:
     placeholders:
       web:
