@@ -17,6 +17,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
     if @article_form.save
       redirect_to admin_articles_path
     else
+      @categories = Category.presented.decorate
       render action: :new
     end
   end
