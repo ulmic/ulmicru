@@ -47,22 +47,6 @@
 						max-height: 475px;
 						overflow: hidden;
 				}
-				&.floated-main-photo {
-						margin-top: 2rem;
-				}
-				&.floated-main-photo > .main-photo {
-						float: left;
-						margin-left: 2.5%;
-						margin-right: 3rem;
-						margin-bottom: 1rem;
-						margin-top: -30px;
-				}
-				&.floated-main-photo > .date-author {
-						// see news.js to another info
-						text-align: inherit;
-						padding-left: 3rem;
-						box-sizing: content-box;
-				}
 				.news-lead {
 						margin-top: 28px;
 						margin-bottom: 10px;
