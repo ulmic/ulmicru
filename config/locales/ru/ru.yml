@@ -92,7 +92,7 @@ ru:
         register: Регистрация
     news:
       show:
-        same_themes: В тему
+        same_themes: "Материалы в тему:"
     articles:
       shared:
         default_show:
