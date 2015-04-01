@@ -13,12 +13,16 @@
       = f.input :main_photo, as: :file
       = f.input :begin_date, as: :datetime_picker
       = f.input :end_date, as: :datetime_picker
+      = f.hint t('hints.admin.event.place')
       = f.label :place
       .form-group.text.required
         = text_field :place, '', class: 'text required form-control'
       = link_to '#', id: 'update_list', class: 'btn btn-default' do
         %span.glyphicon.glyphicon-search
-      = f.input :place, as: :select, collection: [], label: false
+      -#= f.input :place, as: :select, collection: [], label: false
+      .text-danger
+        Сервис FourSquare не позволяет использовать себя на запароленных серверах, коим является этот стейджинг. Поэтому по умолчанию место высталено Дворец молодёжи. На основном сервере всё будет работать в штатном режиме.
+      = f.input :place, input_html: { value: '4e3faf5ac65b4ec275ff0a3b' }
       = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), events_path, class: 'btn btn-default'
