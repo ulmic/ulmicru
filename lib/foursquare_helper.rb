@@ -17,6 +17,10 @@ module FoursquareHelper
       @client.search_venues ll: localities[localities.keys.first], query: query
     end
 
+    def venue_by_id(id)
+      @client.venue id
+    end
+
     private
 
     def important_localities

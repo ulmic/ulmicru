@@ -1,73 +1,50 @@
-.event-container{style: "background-image: url(https://cdn.photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-6.jpg);"}
+- title @event.title
+.event-container{ style: "background-image: url(#{@event.main_photo});" }
   .event-header-overlay
   .container
-    .event-header.row.large-collapse{ "data-equalizer" => "" }
-      %h2.title Молодёжная Лесная Школа
-      .small-8.columns{ "data-equalizer-watch" => "" }
+    .event-header.row.large-collapse{ data: { equalizer: '' } }
+      %h2.title
+        = @event.title
+      .small-8.columns{ data: { equalizer: { watch:  '' } } }
         .when-and-where
           .labels
             .when
               .mic-label-black
-                Когда:
+                = "#{t('.when')}:"
             .where
               .mic-label-black
-                Где:
+                = "#{t('.where')}:"
           .texts
             .when
               .event-label-text
-                22-26 августа 2015г.
+                = @event.duration
             .where
               .event-label-text
-                Санаторий "Чайка"
+                = @event.place_link_to_4sq
         .event-lead
-          Последней, но крайней неожиданной новостью для нашей общины оказалась
-          полнейшая неготовность к приходу белой лихорадки. Уж казалось бы,
-          кризис пережили как жеребята, а тут такой конфуз!
-          %br
-          Мы с Палычем как полагали - от недостатка это моральных ценностей
-          и попрания всего святого. На жаваскрипте кодить не стоило, вот что!
-          %br
-          А то нынешней молодежы всё нипочем, тащат туда, про что приличные
-          люди и говорить порой стесняются, и окромя явы поганой не туда ничего не кладут,
-          да и то мерзко.
+          != strip_tags @event.lead
         .event-more-info
           %a.more-info#event-lead-more-info{ href:"#" }
             .show-all
-              Подробнее
+              = t('helpers.more_info')
             .hide-all.hide
-              Скрыть
-      .small-3.columns{ "data-equalizer-watch" => "" }
+              = t('helpers.hide')
+      .small-3.columns{ data: { equalizer: { watch:  ''} } }
         .organizers
           .organizers-title
-            Организаторы:
+            = "#{t('.organizator')}:"
           .organizers-names
-            - 3.times do
-              .organizer
-                Павел Калашников
+            .organizer
+              = @event.creator.decorate.short_name
         .join
           -#%a.join-button.mic-press-button{ href: "#" }
           %button.join-button.mic-press-button
-            Учавствовать
+            = t('.attend')
 .more-lead-info.container
   .row.large-collapse
     .small-8.columns
       .more-lead-info-content
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
-        text text text text text text text text text text text text text text text text text text text text text
+        != @event.description
 .event-content.container
   .participans-container
     %h3.title

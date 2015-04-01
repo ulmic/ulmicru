@@ -20,6 +20,8 @@ ru:
     year: 'года'
     short_year: 'г.'
     short_years: 'гг.'
+    more_info: 'Подробнее'
+    hide: 'Скрыть'
     actions:
       update: Редактировать
       create: Создать
@@ -97,6 +99,12 @@ ru:
       shared:
         default_show:
           same_themes: "Смотри также:"
+    events:
+      show:
+        where: 'Где'
+        when: 'Когда'
+        organizator: 'Организатор'
+        attend: Участвовать
   forms:
     placeholders:
       web:

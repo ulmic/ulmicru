@@ -81,6 +81,12 @@ $slopy-height: 140px;
 				font-size: rem-calc(30);
 				margin-left: 35px;
 				vertical-align: baseline;
+                a {
+                  color: white;
+                  &:hover {
+                    color: #fc9727;
+                  }
+                }
 		}
 		.event-lead {
 				margin-top: 60px;

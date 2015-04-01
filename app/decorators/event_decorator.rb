@@ -20,4 +20,15 @@ class EventDecorator < Draper::Decorator
   def lead
     "#{object.description.first(150)}..."
   end
+
+  include FoursquareHelper
+
+  def place_link_to_4sq
+    @client ||= FoursquareHelper::FoursquareClient.new
+    venue = @client.venue_by_id object.place
+    h.content_tag :a, href: venue[:canonicalUrl],
+                      target: '_blank' do
+      venue[:name]
+    end
+  end
 end
