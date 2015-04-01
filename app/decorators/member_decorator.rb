@@ -17,7 +17,8 @@ class MemberDecorator < Draper::Decorator
   end
 
   def position_duration
-    positions.last_held_position.duration
+    last_held_position = positions.last_held_position
+    positions.last_held_position.duration if last_held_position.present?
   end
 
   def main_position_title
