@@ -16,6 +16,7 @@
       = f.input :home_adress, as: :string
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
+      = f.input :state, as: :hidden, input_html: { value: :confirmed }
       = f.input :avatar, as: :file
       = f.input :want_to_do
       = f.input :experience

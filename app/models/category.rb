@@ -42,12 +42,13 @@ class Category < ActiveRecord::Base
     arr = []
     Category.roots.map do |c|
       arr = arr + [Category.get_tree_by_category(c)]
-    end 
+    end
     arr
   end
 
   state_machine initial: :unviewed do
     state :unviewed
+    state :active
     state :removed
 
     event :remove do

@@ -15,6 +15,7 @@
       = f.input :password, as: :string
       -#FIXME f.hint :role
       = f.input :role
+      = f.input :state, as: :hidden, input_html: { value: :confirmed }
       = f.hint t('hints.admin.user.role')
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_users_path, class: 'btn btn-default'

@@ -13,6 +13,7 @@
       = f.input :main_photo, as: :file
       = f.input :begin_date, as: :datetime_picker
       = f.input :end_date, as: :datetime_picker
+      = f.input :state, as: :hidden, input_html: { value: :confirmed }
       = f.hint t('hints.admin.event.place')
       = f.label :place
       .form-group.text.required
