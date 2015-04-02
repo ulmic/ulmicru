@@ -10,17 +10,15 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:photo)
       %th= model_class.human_attribute_name(:link)
-      %th= model_class.human_attribute_name(:begin_date)
-      %th= model_class.human_attribute_name(:end_date)
+      %th= model_class.human_attribute_name(:duration)
       %th= t 'helpers.links.actions'
   %tbody
     - @banners.each do |banner|
       %tr.link{ class: state_color(banner), data: { href: edit_admin_banner_path(banner) } }
         %td= banner.id
         %td= image_tag banner.photo.small
-        %td= banner.link
-        %td= banner.begin_date
-        %td= banner.end_date
+        %td= link_to banner.link, banner.link
+        %td= "#{l(banner.begin_date)} - #{l(banner.end_date)}"
         %td.actions
           = link_to edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

@@ -93,6 +93,7 @@ ru:
         link: Ссылка
         begin_date: Дата установки
         end_date: Дата снятия
+        duration: Период видимости
   enumerize:
     user:
       role:
