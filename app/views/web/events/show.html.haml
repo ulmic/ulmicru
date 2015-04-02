@@ -38,8 +38,12 @@
               = @event.creator.decorate.short_name
         .join
           -#%a.join-button.mic-press-button{ href: "#" }
-          %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
-            = t('.attend')
+          - if current_user_have_attended?(@registrations + @other_registrations)
+            %button.join-button.mic-press-button{ value: 'out', data: { event_id: @event.id, user_id: current_user.id } }
+              = t('.i_attend')
+          - else
+            %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
+              = t('.attend')
 .more-lead-info.container
   .row.large-collapse
     .small-8.columns

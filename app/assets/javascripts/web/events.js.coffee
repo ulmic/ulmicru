@@ -14,7 +14,7 @@ $ ->
         }
         success: ->
           $join_event_button.val('out')
-          $join_event_button.html('Я участвую')
+          $join_event_button.html I18n.t('web.events.show.i_attend')
           return
         error: ->
           #FIXME адекватный алерт
@@ -31,7 +31,7 @@ $ ->
         }
         success: ->
           $join_event_button.val('join')
-          $join_event_button.html('Участвовать')
+          $join_event_button.html I18n.t('web.events.show.attend')
           return
         error: ->
           #FIXME адекватный алерт

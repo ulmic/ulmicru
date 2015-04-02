@@ -105,6 +105,7 @@ ru:
         when: 'Когда'
         organizator: 'Организатор'
         attend: Участвовать
+        i_attend: Я участвую
         attenders: Участники
         hide: Скрыть
         see_more: Увидеть больше
