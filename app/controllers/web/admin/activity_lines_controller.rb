@@ -1,6 +1,6 @@
 class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
   def index
-    @activity_lines = ActivityLine.all
+    @activity_lines = ActivityLine.all.decorate
   end
 
   def new

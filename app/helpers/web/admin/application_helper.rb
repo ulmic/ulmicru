@@ -4,6 +4,8 @@ module Web::Admin::ApplicationHelper
     Member.unviewed.count + Questionary.unviewed.count
   end
   def state_color(item)
-    :success if item.unviewed?
+    if item.methods.include? :unviewed?
+      :success if item.unviewed?
+    end
   end
 end

@@ -22,6 +22,8 @@
         = Category.model_name.human.pluralize(:ru)
       = menu_item admin_events_path do
         = Event.model_name.human.pluralize(:ru)
+      = menu_item admin_activity_lines_path do
+        = ActivityLine.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item admin_unviewed_index_path do
         %span.glyphicon.glyphicon-info-sign
@@ -43,3 +45,5 @@
             = Article.model_name.human.pluralize(:ru)
           = menu_item type_admin_trash_index_path('category') do
             = Category.model_name.human.pluralize(:ru)
+          = menu_item type_admin_trash_index_path('activity_line') do
+            = ActivityLine.model_name.human.pluralize(:ru)

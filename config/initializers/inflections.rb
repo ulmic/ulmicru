@@ -7,6 +7,7 @@ ActiveSupport::Inflector.inflections(:ru) do |inflect|
   inflect.plural /ль$/i, 'ли'
   inflect.plural /н /i, 'ны '
   inflect.plural /та /i, 'ты '
+  inflect.plural /ие /i, 'ия '
   inflect.plural /ть$/i, 'ти'
   inflect.plural /ое$/i, 'ые'
   inflect.plural /ый$/i, 'ые'

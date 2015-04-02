@@ -82,11 +82,21 @@ ru:
         place: Место проведения
         creator: Создатель
         duration: Время проведения
+      activity_line:
+        title: Название
+        description: Описание
+        activity_type: Тип
+        found_date: Дата основания
+        creator: Создатель
   enumerize:
     user:
       role:
         admin: Администратор
         user: Пользователь
+    activity_line:
+      activity_type:
+        central_program: Центральная программа
+        local_project: Областной проект
   scopes:
     event:
       future: Грядущие
