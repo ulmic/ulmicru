@@ -3,7 +3,7 @@ module MemberScopes
   include Concerns::StateMachine
 
   included do
-    scope :presented, -> { where('state != \'removed\' AND state != \'not_member\'') }
+    scope :presented, -> { where('state != \'removed\' AND state != \'not_member\'').order('ticket ASC') }
     scope :confirmed, -> { where state: :confirmed }
     scope :declined, -> { where state: :declined }
     scope :removed, -> { where state: :removed }

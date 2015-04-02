@@ -1,7 +1,7 @@
 class Api::Events::RegistrationsController < Api::Events::ApplicationController
   def create
-    @event_form = EventForm.new_with_model
-    @event_form.submit params[:event]
+    @event_form = Event::RegistrationForm.new_with_model
+    @event_form.submit params[:event_registration]
     if @event_form.save
       head :ok
     else
@@ -10,8 +10,8 @@ class Api::Events::RegistrationsController < Api::Events::ApplicationController
   end
 
   def destroy
-    @event = Event.find params[:id]
-    @event.remove
+    @event_registration = Event::Registration.where(event_id: params[:event_id], user_id: params[:user_id]).first
+    @event_registration.destroy
     head :ok
   end
 end
