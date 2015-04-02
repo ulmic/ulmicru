@@ -87,7 +87,7 @@ ru:
         description: Описание
         activity_type: Тип
         found_date: Дата основания
-        creator: Создатель
+        head: Руководитель
       banner:
         photo: Изображение
         link: Ссылка

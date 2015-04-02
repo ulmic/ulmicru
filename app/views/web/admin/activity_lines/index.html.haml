@@ -10,7 +10,7 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:found_date)
-      %th= model_class.human_attribute_name(:creator)
+      %th= model_class.human_attribute_name(:head)
       %th= t 'helpers.links.actions'
   %tbody
     - @activity_lines.each do |activity_line|
@@ -18,7 +18,7 @@
         %td= activity_line.full_title
         %td= activity_line.short_body
         %td=l activity_line.found_date, format: '%d %b %Y'
-        %td= activity_line.creator.decorate.short_name
+        %td= activity_line.member.decorate.short_name
         %td.actions
           = link_to edit_admin_activity_line_path(activity_line), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

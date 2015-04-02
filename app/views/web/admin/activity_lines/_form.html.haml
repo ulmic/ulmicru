@@ -11,6 +11,6 @@
       = f.input :found_date, as: :date_picker
       = f.input :activity_type
       = f.input :state, input_html: { value: :active }, as: :hidden
-      = f.association :creator, label_method: lambda { |user| "#{user.id} | #{user.first_name} #{user.last_name}" }, value_method: :id, required: true
+      = f.association :member, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, value_method: :id, required: true
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_activity_lines_path, class: 'btn btn-default'

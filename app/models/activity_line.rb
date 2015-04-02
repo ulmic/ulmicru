@@ -1,6 +1,7 @@
 class ActivityLine < ActiveRecord::Base
   extend Enumerize
-  belongs_to :creator, class_name: User
+  belongs_to :member
+  has_many :events
 
   enumerize :activity_type, in: [ :central_program, :local_project ]
 
