@@ -1,7 +1,7 @@
 module Concerns
   module DurationManagment
     def duration
-      unless end_date == :for_now
+      unless end_date.nil? || end_date == :for_now
         if begin_date.year == end_date.to_datetime.year
           duration = "#{I18n.t('helpers.in')} #{begin_date.year} #{I18n.t('helpers.year')}"
         else
