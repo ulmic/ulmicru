@@ -47,7 +47,7 @@
             %li.mic-event
               = render_element "mic_event", img_src: event.main_photo, |
                                             link: event_path(event), |
-                                            category: "INФОРМАТ", |
+                                            category: event.activity_line.title, |
                                             date: event.full_date_duration, |
                                             title: event.title, |
                                             text: strip_tags(event.lead)

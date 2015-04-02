@@ -82,6 +82,7 @@ ru:
         place: Место проведения
         creator: Создатель
         duration: Время проведения
+        activity_line: Направление деятельности
       activity_line:
         title: Название
         description: Описание
