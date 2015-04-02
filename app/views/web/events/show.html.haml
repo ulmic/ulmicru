@@ -48,20 +48,22 @@
 .event-content.container
   .participans-container
     %h3.title
-      Участники
-      (150)
+      = t('.attenders')
+      = "(#{@registrations.count})"
     %ul.small-block-grid-5.participants
-      - 2.times do
+      - @registrations.each do |registration|
         %li.participant.mic-member
-          = render_element "mic_member", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
-                                         link: "#", |
-                                         name: "Калашников Павел", |
-                                         role: "Организатор"
-      - 8.times do
-        %li.participant.mic-member
-          = render_element "mic_member", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
-                                         link: "#", |
-                                         name: "Калашников Павел"
+          = render_element 'mic_member', img_src: registration.user.avatar.medium, |
+                                         link: '#', |
+                                         name: registration.user.decorate.short_name, |
+                                         role: registration.role
     .get-more-participants
-      %button.mic-press-button.mic-button-small
-        увидеть больше
+      %button.mic-press-button.mic-button-small#show_other_participants
+        = t('.see_more')
+    %ul.small-block-grid-5.participants.other
+      - @other_registrations.each do |registration|
+        %li.participant.mic-member
+          = render_element 'mic_member', img_src: registration.user.avatar.medium, |
+                                         link: '#', |
+                                         name: registration.user.decorate.short_name, |
+                                         role: registration.role
