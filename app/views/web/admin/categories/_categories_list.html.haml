@@ -10,7 +10,7 @@
       %tr
         %td= link_to category.id, edit_admin_category_path(category)
         %td= link_to category.name, edit_admin_category_path(category)
-        %td
+        %td.actions
           = link_to t('.edit', default: t('helpers.links.edit')),
             edit_admin_category_path(category),
               class: 'btn btn-warning btn-xs'

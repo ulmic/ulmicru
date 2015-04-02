@@ -13,7 +13,7 @@
         %tr
           %td= item.id
           %td= item.name
-          %td
+          %td.actions
             = link_to restore_admin_trash_path(item, type: @type), method: :patch, class: 'btn btn-primary btn-xs' do
               %span.glyphicon.glyphicon-open
             = link_to admin_trash_path(item, type: @type), method: :delete, class: 'btn btn-xs btn-danger' do

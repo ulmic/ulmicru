@@ -1,6 +1,6 @@
 class Web::Admin::BannersController < Web::Admin::ApplicationController
   def index
-    @banners = Banner.all
+    @banners = Banner.presented
   end
 
   def new

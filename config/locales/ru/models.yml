@@ -88,6 +88,11 @@ ru:
         activity_type: Тип
         found_date: Дата основания
         creator: Создатель
+      banner:
+        photo: Изображение
+        link: Ссылка
+        begin_date: Дата установки
+        end_date: Дата снятия
   enumerize:
     user:
       role:

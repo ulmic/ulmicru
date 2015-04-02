@@ -18,7 +18,7 @@
         %td= news.lead
         %td=l news.published_at
         %td=l news.created_at
-        %td
+        %td.actions
           = link_to edit_admin_news_path(news), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_news_path(news), method: :delete, class: 'btn btn-xs btn-danger' do

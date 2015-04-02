@@ -1,6 +1,9 @@
 - model_class = Banner
+- title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
-  %h1= model_class.model_name.human.pluralize(:ru)
+  %h1
+    = model_class.model_name.human.pluralize(:ru)
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_banner_path, class: 'btn btn-primary'
 %table.table.table-condensed.table-hover
   %thead
     %tr
@@ -11,15 +14,17 @@
       %th= model_class.human_attribute_name(:end_date)
       %th= t 'helpers.links.actions'
   %tbody
-    - @banners.each do |banners|
-      %tr.link{ class: state_color(banners), data: { href: edit_admin_banners_path(banner) } }
+    - @banners.each do |banner|
+      %tr.link{ class: state_color(banner), data: { href: edit_admin_banner_path(banner) } }
         %td= banner.id
-        %td= banner.photo
+        %td= image_tag banner.photo.small
         %td= banner.link
         %td= banner.begin_date
         %td= banner.end_date
-        %td
-          = link_to t('helpers.links.edit'), edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs'
-          = link_to t('helpers.links.destroy'), admin_banner_path(banner), method: :delete, class: 'btn btn-xs btn-danger'
+        %td.actions
+          = link_to edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_banner_path(banner), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
 
 = link_to t('.new', default: t('helpers.links.new')), new_admin_banner_path, class: 'btn btn-primary'

@@ -1,4 +1,8 @@
 class Banner < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
+
+  include BannerScopes
+
   state_machine :state, initial: :showed do
     state :showed
     state :hidden

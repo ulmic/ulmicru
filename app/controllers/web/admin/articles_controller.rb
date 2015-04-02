@@ -1,7 +1,6 @@
 class Web::Admin::ArticlesController < Web::Admin::ApplicationController
   def index
     @articles = Article.presented.decorate
-
   end
 
   def new

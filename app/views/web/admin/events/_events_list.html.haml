@@ -16,7 +16,7 @@
         %td= event.title
         %td= event.full_duration
         %td= event.place
-        %td
+        %td.actions
           - unless event.confirmed?
             = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
               %span.glyphicon.glyphicon-ok

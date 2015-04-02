@@ -19,7 +19,7 @@
         %td= activity_line.short_body
         %td=l activity_line.found_date, format: '%d %b %Y'
         %td= activity_line.creator.decorate.short_name
-        %td
+        %td.actions
           = link_to edit_admin_activity_line_path(activity_line), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_activity_line_path(activity_line), method: :delete, class: 'btn btn-xs btn-danger' do
