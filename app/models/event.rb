@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  belongs_to :creator, class_name: User
+  belongs_to :creator, class_name: Member
   belongs_to :activity_line
 
   mount_uploader :main_photo, PhotoUploader

@@ -26,6 +26,7 @@ class ApplicationForm < ActiveForm::Base
     def obj_class
       main_model_name = self.main_model.to_s
       main_model_name.capitalize! unless main_model_name[0].match /[A-Z]/
+      main_model_name = main_model_name.camelize if main_model_name.include? '_'
       Object.const_get main_model_name
     end
   end

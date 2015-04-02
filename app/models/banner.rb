@@ -1,8 +1,12 @@
 class Banner < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
+  validates :link, url: true
+  validate :begin_before_end_date
+
   include BannerScopes
   include Concerns::DurationManagment
+
 
   state_machine :state, initial: :showed do
     state :showed

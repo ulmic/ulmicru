@@ -45,6 +45,7 @@ gem 'awesome_print'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'configus'
 gem 'foursquare2', github: 'mattmueller/foursquare2'
+gem 'validates'
 
 gem 'foundation-rails'
 gem "autoprefixer-rails"

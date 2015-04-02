@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :banner do
-    photo "MyString"
-link "MyString"
-begin_date "2015-03-06 14:21:27"
-end_date "2015-03-06 14:21:27"
+    photo { generate :file }
+    link { generate :url }
+    begin_date { DateTime.now }
+    end_date { DateTime.now + 1.day }
   end
-
 end

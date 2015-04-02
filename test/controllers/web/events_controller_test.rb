@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Web::EventsControllerTest < ActionController::TestCase
   setup do
-    @user = create :user
-    @event = create :event, creator: @user
-    sign_in @user
+    @member = create :member
+    @event = create :event, creator: @member
+    sign_in @member
   end
 
   test 'should get index' do

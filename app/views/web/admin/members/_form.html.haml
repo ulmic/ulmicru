@@ -7,7 +7,7 @@
     = render 'layouts/web/admin/shared/errors', object: @member_form
 .row
   .col-lg-6
-    = simple_form_for @member_form, url: { controller: 'web/admin/members', action: action }, input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for [:admin, @member_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :first_name, as: :string, required: true
       = f.input :patronymic, as: :string, required: true
       = f.input :last_name, as: :string, required: true

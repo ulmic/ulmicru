@@ -1,10 +1,9 @@
 FactoryGirl.define do
   factory :activity_line do
-    title "MyString"
-    found_date "2015-03-06 14:19:24"
+    title { generate :string }
+    found_date { DateTime.now }
     activity_type :central_program
-    description "MyString"
-    creator_id 1
+    description { generate :string }
+    member_id { Member.last ? Member.last.id : 1  }
   end
-
 end

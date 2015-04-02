@@ -4,18 +4,15 @@ class Web::Admin::BannersController < Web::Admin::ApplicationController
   end
 
   def new
-    @banner = Banner.new
-    @banner_form = BannerForm.new(@banner)
+    @banner_form = BannerForm.new_with_model
   end
 
   def edit
-    @banner = Banner.find params[:id]
-    @banner_form = BannerForm.new(@banner)
+    @banner_form = BannerForm.find_with_model params[:id]
   end
 
   def create
-    @banner = Banner.new
-    @banner_form = BannerForm.new(@banner)
+    @banner_form = BannerForm.new_with_model
     @banner_form.submit(params[:banner])
     if @banner_form.save
       redirect_to admin_banners_path
@@ -25,8 +22,7 @@ class Web::Admin::BannersController < Web::Admin::ApplicationController
   end
 
   def update
-    @banner = Banner.find params[:id]
-    @banner_form = BannerForm.new(@banner)
+    @banner_form = BannerForm.find_with_model params[:id]
     @banner_form.submit(params[:banner])
     if @banner_form.save
       redirect_to admin_banners_path

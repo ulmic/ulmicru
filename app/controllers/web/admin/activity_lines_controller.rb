@@ -4,18 +4,15 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
   end
 
   def new
-    @activity_line = ActivityLine.new
-    @activity_line_form = ActivityLineForm.new(@activity_line)
+    @activity_line_form = ActivityLineForm.new_with_model
   end
 
   def edit
-    @activity_line = ActivityLine.find params[:id]
-    @activity_line_form = ActivityLineForm.new(@activity_line)
+    @activity_line_form = ActivityLineForm.find_with_model params[:id]
   end
 
   def create
-    @activity_line = ActivityLine.new
-    @activity_line_form = ActivityLineForm.new(@activity_line)
+    @activity_line_form = ActivityLineForm.new_with_model
     @activity_line_form.submit(params[:activity_line])
     if @activity_line_form.save
       redirect_to admin_activity_lines_path
@@ -25,8 +22,7 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
   end
 
   def update
-    @activity_line = ActivityLine.find params[:id]
-    @activity_line_form = ActivityLineForm.new(@activity_line)
+    @activity_line_form = ActivityLineForm.find_with_model params[:id]
     @activity_line_form.submit(params[:activity_line])
     if @activity_line_form.save
       redirect_to admin_activity_lines_path
