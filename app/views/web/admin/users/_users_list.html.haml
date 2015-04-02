@@ -15,6 +15,9 @@
         %td= user.last_name
         %td= user.email
         %td.actions
+          - unless user.is_member?
+            = link_to new_admin_member_path(id: user.id), class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-plus
           = link_to edit_admin_user_path(user), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_user_path(user), method: :delete, class: 'btn btn-xs btn-danger' do

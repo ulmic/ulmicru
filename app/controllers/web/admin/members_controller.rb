@@ -6,7 +6,13 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def new
-    @member = Member.new
+    if params[:id]
+      user = User.find params[:id]
+      user.update(type: 'Member')
+      @member = user.becomes! Member
+    else
+      @member = Member.new
+    end
     @member_form = MemberForm.new(@member)
   end
 

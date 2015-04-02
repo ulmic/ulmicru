@@ -12,8 +12,4 @@ class UserDecorator < Draper::Decorator
   def short_name
     "#{first_name} #{last_name}"
   end
-
-  def has_member?
-    not member.removed? if member.present?
-  end
 end
