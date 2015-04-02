@@ -21,9 +21,10 @@
                 %br
                 в стиле миц
           %li
-            = link_to article_path(:contacts) do
-              .inner
-                Контакты
+            - if @contact_article.present?
+              = link_to article_path(@contact_article) do
+                .inner
+                  Контакты
           %li
             %a{ href: "#" }
         %a.site-logo{ href: root_path }
