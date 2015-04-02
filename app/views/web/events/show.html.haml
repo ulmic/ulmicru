@@ -56,7 +56,7 @@
           = render_element 'mic_member', img_src: registration.user.avatar.medium, |
                                          link: '#', |
                                          name: registration.user.decorate.short_name, |
-                                         role: registration.role
+                                         role: registration.decorate.localize_role
     .get-more-participants
       %button.mic-press-button.mic-button-small#show_other_participants
         = t('.see_more')
@@ -66,4 +66,4 @@
           = render_element 'mic_member', img_src: registration.user.avatar.medium, |
                                          link: '#', |
                                          name: registration.user.decorate.short_name, |
-                                         role: registration.role
+                                         role: registration.decorate.localize_role

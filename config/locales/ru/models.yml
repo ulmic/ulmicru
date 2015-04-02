@@ -104,6 +104,11 @@ ru:
       activity_type:
         central_program: Центральная программа
         local_project: Областной проект
+    event:
+      registration:
+        role:
+          participant: Участник
+          organizer: Организатор
   scopes:
     event:
       future: Грядущие
