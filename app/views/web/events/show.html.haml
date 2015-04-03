@@ -17,7 +17,7 @@
           .texts
             .when
               .event-label-text
-                = @event.duration
+                = @event.full_date_duration
             .where
               .event-label-text
                 = @event.place_link_to_4sq
@@ -61,13 +61,14 @@
                                          link: '#', |
                                          name: registration.user.decorate.short_name, |
                                          role: registration.decorate.localize_role
-    .get-more-participants
-      %button.mic-press-button.mic-button-small#show_other_participants
-        = t('.see_more')
-    %ul.small-block-grid-5.participants.other
-      - @other_registrations.each do |registration|
-        %li.participant.mic-member
-          = render_element 'mic_member', img_src: registration.user.avatar.medium, |
-                                         link: '#', |
-                                         name: registration.user.decorate.short_name, |
-                                         role: registration.decorate.localize_role
+    - if @other_registrations.any?
+      .get-more-participants
+        %button.mic-press-button.mic-button-small#show_other_participants
+          = t('.see_more')
+      %ul.small-block-grid-5.participants.other
+        - @other_registrations.each do |registration|
+          %li.participant.mic-member
+            = render_element 'mic_member', img_src: registration.user.avatar.medium, |
+                                           link: '#', |
+                                           name: registration.user.decorate.short_name, |
+                                           role: registration.decorate.localize_role
