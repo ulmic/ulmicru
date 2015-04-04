@@ -4,8 +4,8 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:body)
-      %th= model_class.human_attribute_name(:category_id)
+      %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:member)
       %th= model_class.human_attribute_name(:created_at)
       %th=t 'helpers.links.actions'
   %tbody
@@ -13,8 +13,8 @@
       %tr.link{ class: state_color(team), data: { href: edit_admin_team_path(team) } }
         %td= link_to team.id, edit_admin_team_path(team)
         %td= link_to team.title, edit_admin_team_path(team)
-        %td= team.short_body
-        %td= (team.category.present? ? team.category.name : "")
+        %td= team.short_description
+        %td= team.member.decorate.short_name
         %td=l team.created_at
         %td.actions
           - if team.unviewed?
@@ -24,4 +24,3 @@
             %span.glyphicon.glyphicon-pencil
           = link_to admin_team_path(team), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-/fixme wrong localize

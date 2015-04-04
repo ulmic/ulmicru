@@ -1,6 +1,6 @@
 class Web::Admin::TeamsController < Web::Admin::ApplicationController
   def index
-    @teams = Team.active
+    @teams = Team.active.decorate
   end
 
   def new

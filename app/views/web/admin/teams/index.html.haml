@@ -1,8 +1,8 @@
-- model_class = Article
+- model_class = Team
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
   %h1
     =t model_class.model_name.human.pluralize(:ru)
-    = link_to "#{t 'helpers.links.new'}", new_admin_article_path, class: 'btn btn-primary'
+    = link_to "#{t 'helpers.links.new'}", new_admin_team_path, class: 'btn btn-primary'
   = render 'teams_list', teams: @teams
-  = link_to "#{t 'helpers.links.new'}", new_admin_article_path, class: 'btn btn-primary'
+  = link_to "#{t 'helpers.links.new'}", new_admin_team_path, class: 'btn btn-primary'

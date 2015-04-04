@@ -26,6 +26,8 @@
         = ActivityLine.model_name.human.pluralize(:ru)
       = menu_item admin_banners_path do
         = Banner.model_name.human.pluralize(:ru)
+      = menu_item admin_teams_path do
+        = Team.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item admin_unviewed_index_path do
         %span.glyphicon.glyphicon-info-sign
@@ -51,3 +53,5 @@
             = ActivityLine.model_name.human.pluralize(:ru)
           = menu_item type_admin_trash_index_path('banner') do
             = Banner.model_name.human.pluralize(:ru)
+          = menu_item type_admin_trash_index_path('team') do
+            = Team.model_name.human.pluralize(:ru)

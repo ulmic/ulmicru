@@ -96,6 +96,10 @@ ru:
         begin_date: Дата установки
         end_date: Дата снятия
         duration: Период видимости
+      team:
+        title: Название
+        description: Описание
+        member: Руководитель
   enumerize:
     user:
       role:
