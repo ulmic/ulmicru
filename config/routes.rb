@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :banners, except: [:show]
       resources :events
       resources :questionaries
+      resources :teams, except: :show
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type
