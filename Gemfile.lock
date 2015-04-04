@@ -14,9 +14,9 @@ GIT
       orm_adapter (~> 0.5.0)
 
 GIT
-  remote: git://github.com/mattmueller/foursquare2.git
-  revision: 3f769441005d35d6c376883c19d33e0e05045b9e
-  branch: master
+  remote: git://github.com/nitinstp23/foursquare2.git
+  revision: 2cf6d21edf37e64eea9505b3d57ecb664af4fbf2
+  branch: gemspec_fix
   specs:
     foursquare2 (2.0.1)
       faraday (~> 0.8)
