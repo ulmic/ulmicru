@@ -1,6 +1,6 @@
 class Web::Admin::TeamsController < Web::Admin::ApplicationController
   def index
-    @teams = Team.presented.decorate
+    @teams = Team.active
   end
 
   def new
@@ -10,8 +10,6 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   def create
     @team_form = TeamForm.new_with_model
-
-    params[:team][:user_id] = current_user.id if current_user.present?
     @team_form.submit params[:team]
     if @team_form.save
       redirect_to admin_teams_path

@@ -11,6 +11,7 @@ ru:
       banner: Баннер
       activity_line: Направление деятельности
       event: Мероприятие
+      team: Команда
     attributes:
       user:
         first_name: Имя

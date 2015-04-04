@@ -1,0 +1,27 @@
+- model_class = Team
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:body)
+      %th= model_class.human_attribute_name(:category_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - teams.each do |team|
+      %tr.link{ class: state_color(team), data: { href: edit_admin_team_path(team) } }
+        %td= link_to team.id, edit_admin_team_path(team)
+        %td= link_to team.title, edit_admin_team_path(team)
+        %td= team.short_body
+        %td= (team.category.present? ? team.category.name : "")
+        %td=l team.created_at
+        %td.actions
+          - if team.unviewed?
+            = link_to admin_team_path(team, team: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do
+              %span.glyphicon.glyphicon-ok
+          = link_to edit_admin_team_path(team), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_team_path(team), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+/fixme wrong localize

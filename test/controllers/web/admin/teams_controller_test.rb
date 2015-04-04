@@ -22,11 +22,11 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     post :create, team: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_teams_path
-    assert_equal attributes[:body], Team.last.body
+    assert_equal attributes[:description], Team.last.description
   end
 
   test "should not create team" do
-    attributes = { body: @team.body }
+    attributes = { description: @team.description }
     post :create, team: attributes
     assert_response :success
   end
