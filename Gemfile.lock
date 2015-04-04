@@ -16,6 +16,7 @@ GIT
 GIT
   remote: git://github.com/mattmueller/foursquare2.git
   revision: 3f769441005d35d6c376883c19d33e0e05045b9e
+  branch: master
   specs:
     foursquare2 (2.0.1)
       faraday (~> 0.8)

@@ -58,12 +58,6 @@ namespace :deploy do
   after :publishing, :restart
 end
 
-namespace :bundle do
-  task :update do
-    run "cd #{deploy_to} && bundle update"
-  end
-end
-
 #namespace :unicorn do
 #  namespace :monit do
 #    desc "start unicorn"

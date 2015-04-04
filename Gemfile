@@ -44,7 +44,7 @@ gem 'momentjs-rails', '>= 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'awesome_print'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'configus'
-gem 'foursquare2', github: 'mattmueller/foursquare2'
+gem 'foursquare2', github: 'mattmueller/foursquare2', branch: :master
 gem 'validates'
 
 gem 'foundation-rails'
