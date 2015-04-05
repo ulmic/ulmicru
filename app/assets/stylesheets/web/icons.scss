@@ -1,9 +1,81 @@
 // нужно сюда ещё иконки из хедера и футера
+@import "pictonic";
+@import "font-awesome";
+
+.big-icon {
+    font-size: 46px;
+    color: white;
+    vertical-align: middle;
+}
+a.big-icon {
+    &:hover {
+	      color: #FFA911;
+    }
+}
+@mixin fa-rounded-icon($name) {
+    @extend .fa;
+    @extend #{$name};
+    overflow: hidden;
+    border-radius: 19%;
+    font-size: 52px;
+}
+.icon-vk {
+    transform: translate(0, 0);
+    display: inline-block;
+    @extend .icon-rus-vk-01;
+}
+.icon-facebook {
+    @include fa-rounded-icon(".fa-facebook-official");
+}
+.icon-twitter {
+    @include fa-rounded-icon(".fa-twitter-square");
+}
+.icon-google {
+    @include fa-rounded-icon(".fa-google-plus-square");
+}
+
+.min-icon {
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    &.icon-vk {
+        width: 28px;
+        height: 32px;
+        font-size: 28px;
+        line-height: 32px;
+    }
+    &.icon-facebook, &.icon-twitter, &.icon-google {
+        width: 28px;
+        height: 32px;
+        font-size: 32px;
+        line-height: 32px;
+    }
+}
+
+
 .icon-calendar {
 		width: 18px;
 		height: 18px;
 		display: inline-block;
     background: image-url("calendar-icon.png") no-repeat;
+}
+
+.icon-learn {
+    vertical-align: middle;
+    background: image-url("learn-icon.png") no-repeat;
+		display: inline-block;
+    background-size: 31px;
+    width: 31px;
+    height: 22px;
+}
+
+.icon-pointer {
+    vertical-align: middle;
+    background: image-url("pointer-icon.png") no-repeat;
+		display: inline-block;
+    background-size: 17px;
+    width: 17px;
+    height: 26px;
 }
 
 .icon-addition {

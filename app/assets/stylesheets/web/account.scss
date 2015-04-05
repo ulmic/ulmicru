@@ -1,0 +1,189 @@
+.account.container {
+    font-family: mic-square-reg;
+    margin-top: 48px;
+    .user-photo {
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+        overflow: hidden;
+        img.photo {
+            //height: 90vh;
+            min-height: 600px;
+            max-height: 626px;
+            width: 100%;
+        }
+        .overlay, .user-info {
+            height: 252px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+        }
+        .overlay {
+            opacity: 0.4;
+            background-color: #000;
+        }
+        .user-info {
+            z-index: 1;
+            color: #fff;
+            .info {
+                padding: 30px 32px 0px;
+            }
+            .icon-container {
+                display: inline-block;
+                text-align: center;
+                width: 25px;
+            }
+            .icon-learn {
+                background-size: 25px;
+                width: 25px;
+            }
+            .icon-pointer {
+                background-size: 14px;
+                width: 14px;
+            }
+            .learn, .live {
+                font-family: mic;
+                font-size: 18px;
+                height: 48px;
+                span {
+                    font-size: 17px;
+                }
+            }
+            .member-ticket {
+                position: absolute;
+                left: 18px;
+                bottom: 10px;
+                height: 100px;
+                width: 150px;
+                background: #FFA911;
+                text-transform: uppercase;
+                text-align: center;
+                padding: 12px;
+                font-size: 23px;
+                line-height: 28px;
+                .number {
+                    .font-size23 {
+                        font-size: 23px;
+                    }
+                    font-size: 28px;
+                    line-height: 28px;
+                }
+            }
+            .social {
+                position: absolute;
+                width: 53%;
+                right: 12px;
+                bottom: 24px;
+                .big-icon {
+                    margin-left: 3%;
+                }
+            }
+        }
+    }
+    .user-title-role {
+        padding-left: 20px;
+    }
+    .user-title {
+        margin-top: 10px;
+        font-size: 48px;
+    }
+    .user-role {
+        margin-left: 5px;
+        font-size: 14px;
+        font-family: mic-bold;
+        font-weight: bold;
+    }
+		blockquote.user-motto {
+        margin-top: 48px;
+        color: #333;
+        font-size: 21px;
+        text-align: center;
+        padding-right: 0;
+				&:before {
+            font-size: 72px;
+            color: #FFC415;
+				}
+				&:after {
+						@extend blockquote:before;
+				}
+    }
+    hr.orange {
+        margin-top: 12px;
+    }
+    .user-team {
+        font-family: mic;
+        padding-left: 25px;
+        margin-top: 48px;
+        .team-label {
+            display: inline-block;
+            font-size: 22px;
+            color: #F1790F;
+        }
+        .user-team-name {
+            margin-left: 10px;
+            display: inline-block;
+            font-size: 20px;
+        }
+    }
+    .god-fathers-childs {
+        border: 1px solid #eee;
+        font-family: mic;
+        background-color: #F5F5F5;
+        margin-top: 52px;
+        height: 250px;
+        text-align: center;
+        .godfather, .godchilds {
+            margin-top: 12px;
+        }
+        .title {
+            font-size: 24px;
+        }
+        .name {
+            font-size: 16px;
+            height: 48px;
+            display: table;
+            margin: 0 auto;
+            .text {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+        .view-all {
+            height: 36px;
+            text-align: right;
+            padding-right: 12px;
+            .text {
+                color: #EF5404;
+                display: inline-block;
+                font-size: 13px;
+                height: 13px;
+                vertical-align: bottom;
+            }
+        }
+        .photo {
+            margin: 0 auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 50%;
+            height: 130px;
+            width: 130px;
+            background-size: cover;
+        }
+    }
+
+    .user-content {
+        margin-top: 60px;
+        .title {
+            font-family: mic;
+            font-size: 24px;
+            margin-left: 36px;
+        }
+        .stage {
+            .title {
+                font-family: mic-square-reg;
+            }
+        }
+    }
+
+}

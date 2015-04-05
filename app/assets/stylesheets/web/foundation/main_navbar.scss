@@ -71,18 +71,8 @@
         padding: 0 !important;
         padding-left: 4px !important;
         line-height: 0 !important;
+        vertical-align: middle;
       }
-    }
-    .icon-vk {
-      @include social-icon();
-    }
-    .icon-facebook {
-      @include social-icon();
-      background-position: 54px;
-    }
-    .icon-twitter {
-      @include social-icon();
-      background-position: 86px;
     }
     .icon-door {
       @include social-icon();

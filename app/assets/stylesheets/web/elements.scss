@@ -45,6 +45,37 @@ $button-font-family: 'mic-beau-reg';
 		}
 }
 
+blockquote {
+		margin: 0 auto;
+		border: 0;
+		position: relative;
+		&:before {
+				display: inline-block;
+				line-height: 0;
+				height: 0;
+				content: open-quote;
+				position: absolute;
+				left: -15px;
+				top: 20px;
+				font-size: 50px;
+				font-family: 'mic-bold'; // шрифт на самом деле Swiss721BT
+		}
+		&:after {
+				content: close-quote;
+				@extend blockquote:before;
+				left: 100%;
+				top: 100%;
+		}
+}
+
+hr {
+    margin: 0 auto;
+    width: 50%;
+}
+hr.orange {
+    border: 2px solid #FFC415;
+}
+
 %mic-element {
 		text-align: justify;
 		img {
