@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
+  has_many :tags, as: :record
 
   validates :title,       presence: true
   validates :body,        presence: true
