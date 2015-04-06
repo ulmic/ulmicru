@@ -49,7 +49,7 @@ gem 'foursquare2', github: 'nitinstp23/foursquare2', branch: :gemspec_fix
 gem 'validates'
 gem "font-awesome-rails"
 
-gem 'foundation-rails'
+gem 'foundation-rails', github: "zurb/foundation-rails"
 gem "autoprefixer-rails"
 
 # Use ActiveModel has_secure_password
@@ -90,8 +90,8 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'rvm-capistrano'
   gem 'capistrano-ssh-doctor', '~> 1.0'
-  gem 'colorize', '0.6.0'
   gem 'quiet_assets'
+  gem 'colorize', '0.6.0'
   gem 'better_errors'
 end
 

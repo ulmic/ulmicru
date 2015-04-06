@@ -51,6 +51,14 @@ GIT
       momentjs-rails (>= 2.9.0)
 
 GIT
+  remote: git://github.com/zurb/foundation-rails.git
+  revision: 6ebd996d1965202bd85bb0aaff4449852f2bc2dd
+  specs:
+    foundation-rails (5.5.1.1)
+      railties (>= 3.1.0)
+      sass (>= 3.3.0, < 3.5)
+
+GIT
   remote: https://github.com/fnando/i18n-js
   revision: cdeed142f070989c7282dfa0d3669ca71e6eb1e1
   specs:
@@ -205,9 +213,6 @@ GEM
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
-    foundation-rails (5.5.1.1)
-      railties (>= 3.1.0)
-      sass (>= 3.3.0, < 3.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     guard (2.12.5)
@@ -486,7 +491,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   foreman
-  foundation-rails
+  foundation-rails!
   foursquare2!
   guard-livereload (~> 2.4)
   haml-rails

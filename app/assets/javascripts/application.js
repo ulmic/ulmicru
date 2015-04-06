@@ -14,7 +14,6 @@
 //= require slick
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require foundation
 //= require moment
 //= require moment/ru
 //= require bootstrap-datetimepicker
@@ -27,9 +26,10 @@
 //= require events
 //= require web/events
 //= require news
+//= require foundation
 
+$(document).foundation();
 $(function(){
-	$(document).foundation();
 	$('.main-slider .slider-items').slick({
 	  centerMode: true,
     autoplay: true,

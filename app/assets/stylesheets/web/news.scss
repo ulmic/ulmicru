@@ -201,17 +201,6 @@
 						.social-icons>a {
 								margin-left: 3px;
 						}
-						.icon-vk {
-								@include social-icon();
-						}
-						.icon-facebook {
-								@include social-icon();
-								background-position: 54px;
-						}
-						.icon-twitter {
-								@include social-icon();
-								background-position: 86px;
-						}
 
 				}
 		}
