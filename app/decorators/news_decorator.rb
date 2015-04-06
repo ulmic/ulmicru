@@ -1,10 +1,6 @@
 class NewsDecorator < Draper::Decorator
   delegate_all
 
-  def short_lead
-    "#{model.body.first(50)}..."
-  end
-
   def generate_lead
     @sentences = ActionController::Base.helpers.strip_tags(model.body).split('.')
     @finally_sen = "#{@sentences[0]}."
@@ -33,7 +29,7 @@ class NewsDecorator < Draper::Decorator
   end
 
   def short_lead
-    "#{model.lead.first(140)}..."
+    "#{model.lead.first(100)}..."
   end
 
   def author_name

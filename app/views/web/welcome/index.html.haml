@@ -35,7 +35,9 @@
           %a.new-slider-item{ href: news_path(news) }
             %p.date
               = news.publish_date_time
-            %p.content
+            %p.content.title
+              = news.title
+            %p.content.text
               = news.short_lead
   .events
     .container-big
