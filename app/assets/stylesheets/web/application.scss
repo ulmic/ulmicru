@@ -10,6 +10,7 @@
 // =require web/news
 // =require web/articles
 // =require web/account
+// =require web/sessions
 @import "foundation/functions";
 
 @font-face {
@@ -128,18 +129,19 @@ body {
     }
     .contacts {
       margin-top: rem-calc(20);
+      .mail, .phone {
+          display: inline-block;
+          min-width: 175px;
+				  &>span {
+						  white-space: nowrap;
+				  }
+      }
       .mail {
-        padding-right: 15%;
+        padding-right: 13%;
       }
-      .phone {
-        min-height: 173px;
-				&>span {
-						white-space: nowrap;
-				}
-      }
-      .icon {
+    }
+    .icon {
         vertical-align: middle;
-      }
     }
   }
 
