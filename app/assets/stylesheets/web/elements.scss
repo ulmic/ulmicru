@@ -13,6 +13,10 @@ $button-font-family: 'mic-beau-reg';
 		font-family: 'mic-square-reg';
 }
 
+.mic-form-container.container {
+    margin-top: 56px;
+    margin-bottom: 56px;
+}
 
 // это плейсфолдер, класс такой не генерится
 %mic-button {

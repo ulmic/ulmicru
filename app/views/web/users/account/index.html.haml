@@ -1,47 +1,48 @@
-- if @user.is_member?
-  = simple_form_for @member_form, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
-    = f.input :first_name, as: :string
-    = f.input :patronymic, as: :string
-    = f.input :last_name, as: :string
-    = f.input :email, as: :string
-    = f.input :password, as: :string
-    = f.input :motto, as: :string
-    = f.input :ticket, as: :string
-    = f.input :mobile_phone, as: :string
-    = f.input :birth_date, as: :string
-    = f.input :home_adress, as: :string
-    = f.input :municipality, as: :string
-    = f.input :locality, as: :string
-    = f.input :avatar, as: :string
-    = f.hint t('.my_position_in_mic')
-    = f.simple_fields_for :positions do |ff|
-      = render 'position_fields', f: ff
-    = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
-    = f.button :submit, t('helpers.links.save'), class: 'btn-success'
-    = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
+.container.mic-form-container
+  - if @user.is_member?
+    = simple_form_for @member_form, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
+      = f.input :first_name, as: :string
+      = f.input :patronymic, as: :string
+      = f.input :last_name, as: :string
+      = f.input :email, as: :string
+      = f.input :password, as: :string
+      = f.input :motto, as: :string
+      = f.input :ticket, as: :string
+      = f.input :mobile_phone, as: :string
+      = f.input :birth_date, as: :string
+      = f.input :home_adress, as: :string
+      = f.input :municipality, as: :string
+      = f.input :locality, as: :string
+      = f.input :avatar, as: :string
+      = f.hint t('.my_position_in_mic')
+      = f.simple_fields_for :positions do |ff|
+        = render 'position_fields', f: ff
+      = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
+    %br
+    - attributes_need_access.each do |attribute|
+      = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.id  }
+  - else
+    = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
+      = f.input :first_name, as: :string
+      = f.input :last_name, as: :string
+      = f.input :email, as: :string
+      = f.input :password, as: :string
+      = f.button :submit, t('helpers.links.save')
+    - unless @user.is_member?
+      = t('.you_are_member_mic')
+      = link_to t('.enter_datas_mic_member'), new_member_path
+      = t('.you_are_not_member_mic')
+      = link_to t('organization.send_request'), new_join_path
   %br
-  - attributes_need_access.each do |attribute|
-    = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.id  }
-- else
-  = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
-    = f.input :first_name, as: :string
-    = f.input :last_name, as: :string
-    = f.input :email, as: :string
-    = f.input :password, as: :string
-    = f.button :submit, t('helpers.links.save')
-  - unless @user.is_member?
-    = t('.you_are_member_mic')
-    = link_to t('.enter_datas_mic_member'), new_member_path
-    = t('.you_are_not_member_mic')
-    = link_to t('organization.send_request'), new_join_path
-%br
-- @authentications.each do |auth|
-  = social_network_localize auth.provider
-  = link_to t('helpers.links.destroy'), users_authentication_path(auth), method: :delete, class: 'btn btn-danger btn-xs'
+  - @authentications.each do |auth|
+    = social_network_localize auth.provider
+    = link_to t('helpers.links.destroy'), users_authentication_path(auth), method: :delete, class: 'btn btn-danger btn-xs'
 
-- not_linked_social_networks(@authentications).each do |network|
-  = social_network_localize network
-  = link_to t('helpers.links.auth'), auth_path(network), class: 'btn btn-success btn-xs'
-%br
-- if @user.role.admin?
-  = link_to t('.admin_panel'), admin_path
+  - not_linked_social_networks(@authentications).each do |network|
+    = social_network_localize network
+    = link_to t('helpers.links.auth'), auth_path(network), class: 'btn btn-success btn-xs'
+  %br
+  - if @user.role.admin?
+    = link_to t('.admin_panel'), admin_path
