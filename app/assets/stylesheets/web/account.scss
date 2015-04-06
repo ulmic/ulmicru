@@ -173,7 +173,7 @@
     }
 
     .user-content {
-        margin-top: 60px;
+        margin-top: 100px;
         .title {
             font-family: mic;
             font-size: 24px;
@@ -205,10 +205,56 @@
                 }
             }
         }
+        .stages hr {
+            width: 90%;
+            margin-left: 11%;
+        }
         .stage {
-            .title {
-                font-family: mic-square-reg;
+            font-family: mic;
+            margin-left: 1%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            .stage-text {
+                .title {
+                    font-family: mic-bold;
+                    font-size: 46px;
+                    line-height: 46px;
+                }
+                .content {
+                    margin-left: 54px;
+                }
+                .role {
+                    font-size: 24px;
+                    margin-top: 16px;
+                }
+                .view-all {
+                    display: inline-block;
+                    margin-top: 20px;
+                    color: #FFA911;
+                    font-size: 20px;
+                }
             }
+            .stage-date {
+                text-align: center;
+                font-family: mic-beau-sebold;
+                .day {
+                    font-size: 46px;
+                    line-height: 46px;
+                    font-weight: bold;
+                    color: #EF5404;
+                }
+                .month {
+                    text-transform: uppercase;
+                }
+                .year, .month {
+                    font-size: 15px;
+                    line-height: 15px;
+                }
+            }
+        }
+        .news {
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
     }
 

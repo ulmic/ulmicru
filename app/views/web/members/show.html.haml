@@ -87,14 +87,31 @@
         %a{:href => "#users-news", :tabindex => "0"}
           Новости
     .tabs-content
-      #stages-of-grow.content.active
-        .title Этажи роста
-        .stages
-          - 10.times do
-            .row
-              .stage.columns.small-11.push-1
+      #stages-of-grow.content.active.stages
+        - 10.times do
+          .row.stage
+            .small-1.small-push-1.columns
+              .stage-date
+                .icon-bigcalendar
+                .day 10
+                .month Ноября
+                .year 2014
+
+            .columns.small-10
+              .stage-text
                 .title "Сломай стереотип"
-                .role
-                  Статус: Организатор
+                .content
+                  .role
+                    Статус:
+                    Организатор
+                  %a.view-all{href: "#"}
+                    подробнее
+          %hr
       #users-news.content
-        .title Новости
+        %ul.news.small-block-grid-4
+          - 16.times do
+            %li.mic-one-news
+              = render_element "mic_one_news", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
+                                               link: "#", |
+                                               title: "Поразительные приключения бомжа васи", |
+                                               date: "12 февр. 2015г"
