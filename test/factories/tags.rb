@@ -4,8 +4,8 @@ FactoryGirl.define do
 tag_type "MyText"
 record_id 1
 record_type "MyText"
-tag_target_id 1
-tag_target_type 1
+target_id 1
+target_type "MyText"
   end
 
 end

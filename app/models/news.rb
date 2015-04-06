@@ -1,5 +1,6 @@
 class News < ActiveRecord::Base
   before_save :set_initial_state
+  has_many :tags, as: :record
 
   mount_uploader :photo,    PhotoUploader
   validates :title,         presence: true

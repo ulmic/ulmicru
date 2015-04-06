@@ -2,7 +2,7 @@ class ActivityLine < ActiveRecord::Base
   extend Enumerize
   belongs_to :member
   has_many :events
-  has_many :tags, as: :record
+  has_many :tag, as: :target
 
   enumerize :activity_type, in: [ :central_program, :local_project ]
 

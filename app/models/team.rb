@@ -1,7 +1,8 @@
 class Team < ActiveRecord::Base
-  validates :title, presence: true
-
   belongs_to :member
+  has_many :tag, as: :target
+
+  validates :title, presence: true
 
   include TeamScopes
 

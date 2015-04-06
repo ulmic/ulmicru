@@ -4,6 +4,7 @@ class Member < User
                       foreign_key: :parent_id
   has_many :attribute_accesses, dependent: :destroy
   has_many :positions, dependent: :destroy
+  has_many :tag, as: :target
 
   validates :first_name, presence: true,
                          human_name: true
