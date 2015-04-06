@@ -36,6 +36,7 @@ ru:
         municipality: Муниципальное образование
         locality: Населённый пункт
         parent: Крёстный
+        children: Крестники
       questionary:
         first_name: Имя
         patronymic: Отчество

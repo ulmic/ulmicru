@@ -1,5 +1,7 @@
 class Member < User
   belongs_to :parent, class_name: 'Member'
+  has_many :children, class_name: 'Member',
+                      foreign_key: :parent_id
   has_many :attribute_accesses, dependent: :destroy
   has_many :positions, dependent: :destroy
 

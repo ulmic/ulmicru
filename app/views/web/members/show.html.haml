@@ -1,3 +1,4 @@
+- title @member.short_name
 .container.account
   .row
     .small-5.columns
@@ -25,49 +26,57 @@
               %span.font-size23> №
               = @member.ticket
           .social
-            - if @member.has_auth_provider?(:google)
-              = link_to .icon-google.big-icon
-            %a.icon-facebook.big-icon
-            %a.icon-twitter.big-icon
-            %a.icon-vk.big-icon
+            - if auth = @member.has_auth_provider?(:google)
+              = link_to profile(auth), class: 'icon-google big-icon'
+            - if auth = @member.has_auth_provider?(:facebook)
+              = link_to profile(auth), class: 'icon-facebook big-icon'
+            - if auth = @member.has_auth_provider?(:twitter)
+              = link_to profile(auth), class: 'icon-twitter big-icon'
+            - if auth = @member.has_auth_provider?(:vkontakte)
+              = link_to profile(auth), class: 'icon-vk big-icon'
     .small-7.columns
       .row
         .small-11.push-1
           .user-title-role
             .user-title
-              Дима Давыдов
-            .user-role
+              = @member.short_name
+            -#.user-role
               Ленивая жопа в МБОУ УФХ ЦЧЧ ЖЗ УК "Норма"
           %blockquote.user-motto
-            У вас должна быть мечта, чтобы вы могли вставать по утрам, потому что
-            мечты, это то, что придаёт жизни смысл
+            = @member.motto
           %hr.orange
           .user-team
-            .team-label Команда:
+            .team-label
+              = "#{t('activerecord.models.team')}:"
             .user-team-name
               отделение в г.Ульяновске
           .row.god-fathers-childs
             - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
-            .godfather.small-4.columns
-              .title Крёстный:
-              .photo{ style: "background-image: url(#{img_src})" }
-              .name
-                %span.text Константинблабла Калашников
-            .godchilds.small-8.columns
-              .row
-                .small-6.columns
-                  .title Мои крестники:
-                  .photo{ style: "background-image: url(#{img_src})" }
-                  .name
-                    %span.text Константинблабла Калашников
-                .small-6.columns
-                  .view-all
-                    %a.text{ href: "#" }
-                      Посмотреть всех
-                      (3)
-                  .photo{ style: "background-image: url(#{img_src})" }
-                  .name
-                    %span.text Константин
+            - if @member.parent.present?
+              .godfather.small-4.columns
+                .title
+                  = "#{t('activerecord.attributes.member.parent')}:"
+                .photo{ style: "background-image: url(#{@member.parent_avatar})" }
+                .name
+                  %span.text
+                    = @member.parent.decorate.short_name
+            - if @member.children.any?
+              .godchilds.small-8.columns
+                .row
+                  .small-6.columns
+                    .title
+                      = "#{t('activerecord.attributes.member.children')}:"
+                    .photo{ style: "background-image: url(#{img_src})" }
+                    .name
+                      %span.text Константинблабла Калашников
+                  .small-6.columns
+                    .view-all
+                      %a.text{ href: "#" }
+                        Посмотреть всех
+                        (3)
+                    .photo{ style: "background-image: url(#{img_src})" }
+                    .name
+                      %span.text Константин
   -#.row.user-content
     .title Этажи роста
     .stages

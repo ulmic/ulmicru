@@ -37,4 +37,8 @@ class MemberDecorator < Draper::Decorator
   def ticket_number
     "№ #{ticket}"
   end
+
+  def parent_avatar
+    parent.avatar.medium if parent.present?
+  end
 end
