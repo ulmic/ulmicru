@@ -75,9 +75,14 @@
       }
     }
     .icon-door {
-      @include social-icon();
-      background-position: 22px;
-      width: 22px;
+        display: inline-block;
+        background: image-url('door-icon.png');
+        background-position: -20px;
+        height: 28px;
+        width: 22px;
+        &:hover {
+            background-position: 1px;
+        }
     }
   }
   .banner-container {
