@@ -44,4 +44,11 @@ class Member < User
       transition removed: :unviewed
     end
   end
+
+  def has_auth_provider?(provider)
+    authentications.map do |authentication|
+      return authentication if authentication.provider == provider
+    end
+    nil
+  end
 end

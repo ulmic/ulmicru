@@ -13,7 +13,11 @@ class MemberDecorator < Draper::Decorator
   end
 
   def place
-    "#{municipality}, #{locality}"
+    if municipality.include? 'г.'
+      locality
+    else
+      "#{municipality}, #{locality}"
+    end
   end
 
   def position_duration
