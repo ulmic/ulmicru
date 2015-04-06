@@ -9,7 +9,7 @@
         img.photo {
             //height: 90vh;
             min-height: 600px;
-            max-height: 626px;
+            max-height: 600px;
             width: 100%;
         }
         .overlay, .user-info {
@@ -130,7 +130,7 @@
         border: 1px solid #eee;
         font-family: mic;
         background-color: #F5F5F5;
-        margin-top: 52px;
+        margin-top: 80px;
         height: 250px;
         text-align: center;
         .godfather, .godchilds {
@@ -178,6 +178,32 @@
             font-family: mic;
             font-size: 24px;
             margin-left: 36px;
+        }
+        .tab-title {
+            border: solid #ddd;
+            border-width: 1px 1px 0 1px;
+            border-radius: 5px 5px 0 0;
+            margin-right: 3px;
+            & a {
+                color: #555;
+                font-size: 18px;
+                font-family: mic;
+            }
+            &.active {
+                & a {
+                    color: black;
+                }
+                &:before {
+                    border-radius: 21px 21px 0 0;
+                    content: " ";
+                    position: absolute;
+                    height: 2px;
+                    top: -3px;
+                    width: 100%;
+                    border: solid #FFA911;
+                    border-width: 2px 3px 3px 3px;
+                }
+            }
         }
         .stage {
             .title {

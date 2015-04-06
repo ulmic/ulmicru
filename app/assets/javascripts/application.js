@@ -30,6 +30,7 @@
 
 $(document).foundation();
 $(function(){
+  $(document).foundation('tab', 'reflow');
 	$('.main-slider .slider-items').slick({
 	  centerMode: true,
     autoplay: true,

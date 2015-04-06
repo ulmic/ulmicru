@@ -77,12 +77,23 @@
                     .photo{ style: "background-image: url(#{img_src})" }
                     .name
                       %span.text Константин
-  -#.row.user-content
-    .title Этажи роста
-    .stages
-      - 10.times do
-        .row
-          .stage.columns.small-11.push-1
-            .title "Сломай стереотип"
-            .role
-              Статус: Организатор
+  .row.user-content
+    %ul.tabs{"data-tab" => ""}
+      %li.tab-title.active
+        %a{:href => "#stages-of-grow", :tabindex => "0"}
+          Этажи роста
+      %li.tab-title
+        %a{:href => "#users-news", :tabindex => "0"}
+          Новости
+    .tabs-content
+      #stages-of-grow.content.active
+        .title Этажи роста
+        .stages
+          - 10.times do
+            .row
+              .stage.columns.small-11.push-1
+                .title "Сломай стереотип"
+                .role
+                  Статус: Организатор
+      #users-news.content
+        .title Новости
