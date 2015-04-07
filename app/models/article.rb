@@ -26,10 +26,4 @@ class Article < ActiveRecord::Base
       transition :removed => :unviewed
     end
   end
-
-  #FIXME
-
-  def tags
-    Tag.where(record_id: id, record_type: 'article')
-  end
 end

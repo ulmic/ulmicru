@@ -7,7 +7,7 @@ class Tag < ActiveRecord::Base
   validates :tag_type, presence: true
 
   extend Enumerize
-  enumerize :record_type, in: [ :article, :news ]
-  enumerize :target_type, in: [ :activity_line, :event, :member, :team ]
+  enumerize :record_type, in: [ 'Article', 'News' ]
+  enumerize :target_type, in: [ 'ActivityLine', 'Event', 'Member', 'Team' ]
   enumerize :tag_type, in: [ :string, :link ]
 end

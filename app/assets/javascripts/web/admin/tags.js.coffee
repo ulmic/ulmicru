@@ -34,7 +34,7 @@ $ ->
         $select_input.append("<option value = #{this.id}>#{this.ticket} | #{this.first_name} #{this.last_name}</option>")
 
   prepare_select_input = (targetType) ->
-    if targetType == 'member'
+    if targetType == 'Member'
       $('.loading').show()
       $.ajax {
         url: Routes.api_admin_members_path()
@@ -80,9 +80,20 @@ $ ->
             prepare_select_input targetType
 
   $('#new_tag').on('ajax:success', (e, data, status, xhr) ->
-    alert xhr
+    $(this).closest('td').children('ul.list-group').append("<li class = 'list-group-item'>#{data[0].ticket} | #{data[0].first_name} #{data[0].last_name}<a class = 'badge tag_destroy' data-remote = 'true' rel = 'nofollow' data-method = 'delete' href = '/api/admin/tags/#{data[1]}'><span сlass = 'glyphicon glyphicon-remove'>X</span></a></li>")
+    tag_destroy_ajax()
     return
   ).on 'ajax:error', (e, xhr, status, error) ->
     alert 'error'
     return
-  return
+
+  tag_destroy_ajax = ->
+    $('.tag_destroy').on('ajax:success', (e, data, status, xhr) ->
+      $(this).closest('li').remove()
+      return
+    ).on 'ajax:error', (e, xhr, status, error) ->
+      alert 'error'
+      return
+    return
+
+  tag_destroy_ajax()

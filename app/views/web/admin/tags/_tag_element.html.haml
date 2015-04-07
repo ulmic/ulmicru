@@ -1,5 +1,5 @@
 - if tag.tag_type.string?
   = tag.text
 - elsif tag.tag_type.link?
-  - if tag.target_type.member?
-    = "#{tag.target.ticket} | #{tag.target.decorate.short_name}"
+  - if tag.target_type == 'Member'
+    = "#{tag.target.ticket} | #{tag.target.first_name} #{tag.target.last_name}"
