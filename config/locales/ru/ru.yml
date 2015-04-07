@@ -85,6 +85,7 @@ ru:
     users:
       account:
         index:
+          title: Настройка профиля
           you_are_member_mic: Вы являетесь членом МИЦ
           you_are_not_member_mic: Вы не являетесь членом МИЦ
           enter_datas_mic_member: Заполните профиль члена МИЦ
@@ -114,6 +115,9 @@ ru:
         learn_or_work: 'Учусь/Работаю'
         live: 'Живу'
         ticket: 'Членский билет'
+    sessions:
+      new:
+        title: Авторизация
   forms:
     placeholders:
       web:

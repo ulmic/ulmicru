@@ -7,15 +7,30 @@
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:category_id)
       %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody
     - articles.each do |article|
-      %tr.link{ class: state_color(article), data: { href: edit_admin_article_path(article) } }
+      %tr{ class: state_color(article) }
         %td= link_to article.id, edit_admin_article_path(article)
         %td= link_to article.title, edit_admin_article_path(article)
         %td= article.short_body
         %td= (article.category.present? ? article.category.name : "")
         %td=l article.created_at
+        %td{ style: 'width: 150px' }
+          .btn-toolbar
+            .btn-group.tag-buttons
+              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :string } do
+                %span.glyphicon.glyphicon-font
+              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: :member } do
+                %span.glyphicon.glyphicon-user
+              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: :event }do
+                %span.glyphicon.glyphicon-calendar
+              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: :activity_line } do
+                %span.glyphicon.glyphicon-flag
+              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: :team } do
+                %span.glyphicon.glyphicon-bullhorn
+          = render 'web/admin/tags/form', record_type: :article, record_id: article.id
         %td.actions
           - if article.unviewed?
             = link_to admin_article_path(article, article: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do

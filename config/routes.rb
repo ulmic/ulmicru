@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       resources :events
       resources :questionaries
       resources :teams, except: :show
+      resources :tags, only: :create
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

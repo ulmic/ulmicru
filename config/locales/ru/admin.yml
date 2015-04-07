@@ -25,6 +25,8 @@ ru:
         shared:
           errors:
             some_errors_was_found: Найдены ошибки при сохранении
+        navbar:
+          people: Люди
   hints:
     admin:
       user:
