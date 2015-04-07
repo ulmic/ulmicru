@@ -12,17 +12,21 @@ $ ->
           $form_input.removeClass('hidden')
           $form_input.children().removeClass('hidden')
           $form_input.children('input').prop('type', 'text')
+          $form_input.parents('form').children('input[type=submit]').show()
         else
           $form_input.addClass('hidden')
           $form_input.children().addClass('hidden')
           $form_input.children('input').prop('type', 'hidden')
+          $form_input.parents('form').children('input[type=submit]').hide()
       else
         $form_input = $(this).parents('td').first().children('form').first().children('.form-group.tag_target')
         if $form_input.hasClass 'hidden'
           $form_input.removeClass('hidden')
           $form_input.children().removeClass('hidden')
           $form_input.children('input').prop('type', 'text')
+          $form_input.parents('form').children('input[type=submit]').show()
         else
           $form_input.addClass('hidden')
           $form_input.children().addClass('hidden')
           $form_input.children('input').prop('type', 'hidden')
+          $form_input.parents('form').children('input[type=submit]').hide()
