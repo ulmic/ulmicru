@@ -136,12 +136,15 @@ ActiveRecord::Schema.define(version: 20150406172158) do
     t.text     "text"
     t.text     "tag_type"
     t.integer  "record_id"
-    t.text     "record_type"
+    t.string   "record_type"
     t.integer  "target_id"
-    t.text     "target_type"
+    t.string   "target_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "tags", ["record_type", "record_id"], name: "index_tags_on_record_type_and_record_id", using: :btree
+  add_index "tags", ["target_type", "target_id"], name: "index_tags_on_target_type_and_target_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
     t.string   "title"

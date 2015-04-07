@@ -4,6 +4,7 @@ class Tag < ActiveRecord::Base
 
   validates :record_id, presence: true
   validates :record_type, presence: true
+  validates :tag_type, presence: true
 
   extend Enumerize
   enumerize :record_type, in: [ :article, :news ]

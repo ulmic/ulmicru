@@ -1,8 +1,8 @@
-= simple_form_for @tag, url: { controller: 'web/admin/tags', action: :create } do |f|
+= simple_form_for @tag, url: { controller: 'api/admin/tags', action: :create }, remote: true do |f|
   = f.input :tag_type, as: :hidden
   = f.input :record_type, as: :hidden, input_html: { value: record_type }
   = f.input :record_id, as: :hidden, input_html: { value: record_id }
   = f.input :target_type, as: :hidden
-  = f.input :target, as: :select
+  = f.input :target_id, as: :select, label: false
   = f.input :text, as: :hidden
   = f.button :submit, t('.add_tag'), style: 'display: none', class: 'btn btn-xs btn-success'

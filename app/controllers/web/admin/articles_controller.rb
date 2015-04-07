@@ -1,7 +1,7 @@
 class Web::Admin::ArticlesController < Web::Admin::ApplicationController
   def index
     @articles = Article.presented.decorate
-    @tag= Tag.new
+    @tag = Tag.new
   end
 
   def new

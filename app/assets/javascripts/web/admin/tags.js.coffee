@@ -1,6 +1,6 @@
 #FIXME refactoring
 $ ->
-  $('.tag_target').hide()
+  $('.tag_target_id').hide()
 
   show_form = ($form_input) ->
     if $form_input.hasClass 'select'
@@ -23,6 +23,16 @@ $ ->
       $form_input.children('input').prop('type', 'hidden')
     $form_input.parents('form').children('input[type=submit]').hide()
 
+  is_list_of_members = (list) ->
+    list[0].ticket != undefined
+
+  push_list_to_select_input = (list) ->
+    $select_input = $('select#tag_target_id')
+    $select_input.empty()
+    if is_list_of_members list
+      $(list).each ->
+        $select_input.append("<option value = #{this.id}>#{this.ticket} | #{this.first_name} #{this.last_name}</option>")
+
   prepare_select_input = (targetType) ->
     if targetType == 'member'
       $('.loading').show()
@@ -32,23 +42,24 @@ $ ->
         method: 'GET'
         success: (response) ->
           $('.loading').hide()
-          #list_to_select_input response
+          push_list_to_select_input response
           return false
         error: ->
           $('.loading').append('Error')
           $('.loading').fadeOut(5000)
           return false
       }
+      return
 
   $('.tag-buttons').children('a.btn.btn-xs').each ->
     $(this).click (e) ->
       e.preventDefault()
       tagType = $(this).data('tagType')
       targetType = $(this).data('targetType')
-      $('select#tag_tag_type').val tagType
-      $('select#tag_target_type').val targetType
+      $('input#tag_tag_type').val tagType
+      $('input#tag_target_type').val targetType
       $tag_text_form_input = $(this).parents('td').first().children('form').first().children('.form-group.tag_text')
-      $target_form_input = $(this).parents('td').first().children('form').first().children('.form-group.tag_target')
+      $target_form_input = $(this).parents('td').first().children('form').first().children('.form-group.tag_target_id')
       if tagType == 'string'
         if $tag_text_form_input.hasClass 'hidden'
           hide_form $target_form_input
@@ -67,3 +78,11 @@ $ ->
           else
             $target_type_select_input.val targetType
             prepare_select_input targetType
+
+  $('#new_tag').on('ajax:success', (e, data, status, xhr) ->
+    alert xhr
+    return
+  ).on 'ajax:error', (e, xhr, status, error) ->
+    alert 'error'
+    return
+  return
