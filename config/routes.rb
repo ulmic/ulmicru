@@ -67,7 +67,8 @@ Rails.application.routes.draw do
         collection do
           get ':place' => 'places#index', as: :index
         end
-    end
+      end
+      resources :members, only: :index
     end
   end
 end

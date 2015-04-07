@@ -523,7 +523,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   simple_form
   simplecov
-  spring
+  spring (= 1.3.3)
   state_machine!
   tconsole!
   therubyracer

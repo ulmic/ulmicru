@@ -67,6 +67,7 @@ ru:
         view: Шаблон
         category_id: Категория
         created_at: Создано
+        tags: Теги
       category:
         name: Название
         parent: Родитель

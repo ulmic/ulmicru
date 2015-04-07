@@ -19,6 +19,9 @@ ru:
           add_position: Добавить должность
         position_fields:
           remove_position: Убрать должность
+      tags:
+        form:
+          add_tag: Добавить тег
   layouts:
     web:
       admin:
