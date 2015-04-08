@@ -5,6 +5,7 @@ module EventScopes
   included do
     scope :presented, -> { where.not(state: :removed) }
     scope :declined, -> { where(state: :declined)  }
+    scope :confirmed, -> { where(state: :confirmed).order('id DESC') }
     scope :unviewed, -> { where(state: :unviewed)  }
     scope :future, -> { where('begin_date >= ?', DateTime.now).where.not(state: :removed) }
     scope :current, -> { where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now).where.not(state: :removed) }

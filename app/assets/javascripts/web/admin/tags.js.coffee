@@ -23,15 +23,16 @@ $ ->
       $form_input.children('input').prop('type', 'hidden')
     $form_input.parents('form').children('input[type=submit]').hide()
 
-  is_list_of_members = (list) ->
-    list[0].ticket != undefined
-
   push_list_to_select_input = (list) ->
     $select_input = $('select#tag_target_id')
     $select_input.empty()
-    if is_list_of_members list
-      $(list).each ->
+    $list = $(JSON.parse(list.list))
+    if list.model == 'Member'
+      $list.each ->
         $select_input.append("<option value = #{this.id}>#{this.ticket} | #{this.first_name} #{this.last_name}</option>")
+    else if list.model == 'Event' or list.model == 'ActivityLine' or list.model == 'Team'
+      $list.each ->
+        $select_input.append("<option value = #{this.id}>#{this.title}</option>")
 
   prepare_select_input = (targetType) ->
     if targetType == 'Member'
@@ -49,7 +50,52 @@ $ ->
           $('.loading').fadeOut(5000)
           return false
       }
-      return
+    else if targetType == 'Event'
+      $('.loading').show()
+      $.ajax {
+        url: Routes.api_admin_events_path()
+        dataType: 'JSON'
+        method: 'GET'
+        success: (response) ->
+          $('.loading').hide()
+          push_list_to_select_input response
+          return false
+        error: ->
+          $('.loading').append('Error')
+          $('.loading').fadeOut(5000)
+          return false
+      }
+    else if targetType == 'ActivityLine'
+      $('.loading').show()
+      $.ajax {
+        url: Routes.api_admin_activity_lines_path()
+        dataType: 'JSON'
+        method: 'GET'
+        success: (response) ->
+          $('.loading').hide()
+          push_list_to_select_input response
+          return false
+        error: ->
+          $('.loading').append('Error')
+          $('.loading').fadeOut(5000)
+          return false
+      }
+    else if targetType == 'Team'
+      $('.loading').show()
+      $.ajax {
+        url: Routes.api_admin_teams_path()
+        dataType: 'JSON'
+        method: 'GET'
+        success: (response) ->
+          $('.loading').hide()
+          push_list_to_select_input response
+          return false
+        error: ->
+          $('.loading').append('Error')
+          $('.loading').fadeOut(5000)
+          return false
+      }
+    return
 
   $('.tag-buttons').children('a.btn.btn-xs').each ->
     $(this).click (e) ->
@@ -79,8 +125,16 @@ $ ->
             $target_type_select_input.val targetType
             prepare_select_input targetType
 
+  create_li = (title, tag_id) ->
+    "<li class = 'list-group-item'>#{title}<a class = 'badge tag_destroy' data-remote = 'true' rel = 'nofollow' data-method = 'delete' href = '/api/admin/tags/#{tag_id}'><span сlass = 'glyphicon glyphicon-remove'>X</span></a></li>"
+
   $('#new_tag').on('ajax:success', (e, data, status, xhr) ->
-    $(this).closest('td').children('ul.list-group').append("<li class = 'list-group-item'>#{data[0].ticket} | #{data[0].first_name} #{data[0].last_name}<a class = 'badge tag_destroy' data-remote = 'true' rel = 'nofollow' data-method = 'delete' href = '/api/admin/tags/#{data[1]}'><span сlass = 'glyphicon glyphicon-remove'>X</span></a></li>")
+    li = ''
+    if data.target_type == 'Member'
+      li = create_li "#{data.target.ticket} | #{data.target.first_name} #{data.target.last_name}", data.tag_id
+    else if data.target_type == 'Event' or data.target_type == 'ActivityLine' or data.target_type == 'Team'
+      li = create_li data.target.title, data.tag_id
+    $(this).closest('td').children('ul.list-group').append(li)
     tag_destroy_ajax()
     return
   ).on 'ajax:error', (e, xhr, status, error) ->

@@ -1,5 +1,5 @@
 module SocialNetworksUrlHelper
-  def profile(auth)
+  def profile_url(auth)
     social_networks = { vkontakte: 'vk.com',
                         facebook: 'facebook.com',
                         twitter: 'twitter.com',

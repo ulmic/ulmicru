@@ -11,7 +11,7 @@
     = simple_form_for [:admin, @team_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :title, as: :string
       = f.input :description, as: :ckeditor
-      = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      = f.input :state, as: :hidden, input_html: { value: :active }
       = f.association :member, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, value_method: :id
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_teams_path, class: 'btn btn-default'
