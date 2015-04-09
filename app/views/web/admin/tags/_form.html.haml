@@ -1,4 +1,4 @@
-= simple_form_for @tag, url: { controller: 'api/admin/tags', action: :create }, remote: true do |f|
+= simple_form_for @tag, url: { controller: 'api/admin/tags', action: :create }, remote: true, html: { class: :tag_form } do |f|
   = f.input :tag_type, as: :hidden
   = f.input :record_type, as: :hidden, input_html: { value: record_type }
   = f.input :record_id, as: :hidden, input_html: { value: record_id }

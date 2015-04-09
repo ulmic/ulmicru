@@ -173,7 +173,7 @@ $ ->
   create_li = (title, tag_id) ->
     "<li class = 'list-group-item'>#{title}<a class = 'badge tag_destroy' data-remote = 'true' rel = 'nofollow' data-method = 'delete' href = '/api/admin/tags/#{tag_id}'><span сlass = 'glyphicon glyphicon-remove'>X</span></a></li>"
 
-  $('#new_tag').on('ajax:success', (e, data, status, xhr) ->
+  $('.tag_form').on('ajax:success', (e, data, status, xhr) ->
     li = ''
     if data.target_type == 'Member'
       li = create_li "#{data.target.ticket} | #{data.target.first_name} #{data.target.last_name}", data.tag_id

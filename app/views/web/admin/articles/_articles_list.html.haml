@@ -37,7 +37,7 @@
                 = link_to api_admin_tag_path(tag), method: :delete, remote: true, class: 'badge tag_destroy' do
                   X
 
-          = render 'web/admin/tags/form', record_type: 'Article', record_id: article.id
+          = render 'web/admin/tags/form', record_type: 'Article', record_id: article.id, index: article.id
         %td.actions
           - if article.unviewed?
             = link_to admin_article_path(article, article: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do
