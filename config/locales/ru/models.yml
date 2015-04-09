@@ -92,7 +92,8 @@ ru:
         description: Описание
         activity_type: Тип
         found_date: Дата основания
-        head: Руководитель
+        member: Руководитель
+        logo: Логотип
       banner:
         photo: Изображение
         link: Ссылка

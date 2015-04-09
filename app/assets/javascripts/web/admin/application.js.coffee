@@ -14,6 +14,11 @@
 #= require web/admin/tags
 
 $ ->
+  $('.input').addClass('form-group')
+  $('select').addClass('form-control')
+  $('input[type=hidden]').addClass('form-control')
+  $('input[type=text]').addClass('form-control')
+  $('input[type=submit]').addClass('btn')
   $('.link').click ->
     location.href = $(this).attr('data-href')
 

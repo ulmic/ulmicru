@@ -2,9 +2,6 @@
 $ ->
   $('.tag_target_id').hide()
   $('.select.tag_text').hide()
-  $('.input').addClass('form-group')
-  $('select').addClass('form-control')
-  $('input[type=hidden]').addClass('form-control')
   $('.form-group.tag_text input').change ->
     $('.form-group.tag_text select').val $(this).val()
 
