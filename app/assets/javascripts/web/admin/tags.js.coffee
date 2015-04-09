@@ -22,81 +22,26 @@ $ ->
         $string_tags_select_input.append("<option value = #{this.text}>#{this.text}</option>")
 
   prepare_select_input = (targetType) ->
-    if targetType == 'Member'
-      $('.loading').show()
-      $.ajax {
-        url: Routes.api_admin_members_path()
-        dataType: 'JSON'
-        method: 'GET'
-        success: (response) ->
-          $('.loading').hide()
-          push_list_to_select_input response
-          return false
-        error: ->
-          $('.loading').append('Error')
-          $('.loading').fadeOut(5000)
-          return false
-      }
-    else if targetType == 'Event'
-      $('.loading').show()
-      $.ajax {
-        url: Routes.api_admin_events_path()
-        dataType: 'JSON'
-        method: 'GET'
-        success: (response) ->
-          $('.loading').hide()
-          push_list_to_select_input response
-          return false
-        error: ->
-          $('.loading').append('Error')
-          $('.loading').fadeOut(5000)
-          return false
-      }
-    else if targetType == 'ActivityLine'
-      $('.loading').show()
-      $.ajax {
-        url: Routes.api_admin_activity_lines_path()
-        dataType: 'JSON'
-        method: 'GET'
-        success: (response) ->
-          $('.loading').hide()
-          push_list_to_select_input response
-          return false
-        error: ->
-          $('.loading').append('Error')
-          $('.loading').fadeOut(5000)
-          return false
-      }
-    else if targetType == 'Team'
-      $('.loading').show()
-      $.ajax {
-        url: Routes.api_admin_teams_path()
-        dataType: 'JSON'
-        method: 'GET'
-        success: (response) ->
-          $('.loading').hide()
-          push_list_to_select_input response
-          return false
-        error: ->
-          $('.loading').append('Error')
-          $('.loading').fadeOut(5000)
-          return false
-      }
-    else if targetType == 'Tag'
-      $('.loading').show()
-      $.ajax {
-        url: Routes.api_admin_tags_path()
-        dataType: 'JSON'
-        method: 'GET'
-        success: (response) ->
-          $('.loading').hide()
-          push_list_to_select_input response
-          return false
-        error: ->
-          $('.loading').append('Error')
-          $('.loading').fadeOut(5000)
-          return false
-      }
+    url = ''
+    url = Routes.api_admin_members_path() if targetType == 'Member'
+    url = Routes.api_admin_activity_lines_path() if targetType == 'ActivityLine'
+    url = Routes.api_admin_teams_path() if targetType == 'Team'
+    url = Routes.api_admin_events_path() if targetType == 'Event'
+    url = Routes.api_admin_tags_path() if targetType == 'Tag'
+    $('.loading').show()
+    $.ajax {
+      url: url
+      dataType: 'JSON'
+      method: 'GET'
+      success: (response) ->
+        $('.loading').hide()
+        push_list_to_select_input response
+        return false
+      error: ->
+        $('.loading').append('Error')
+        $('.loading').fadeOut(5000)
+        return false
+    }
     return
 
   show_form = ($form_input) ->
