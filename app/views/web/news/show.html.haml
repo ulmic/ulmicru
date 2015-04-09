@@ -48,24 +48,25 @@
             .icon-eye
             %span.counter
               2000
-          %li.tags
-            .icon-tags
-            %a{href: "#"}
-              я лидер
-            ,
-            %a{href: "#"}
-              документы
+          - if @strings.any?
+            %li.tags
+              .icon-tags
+              - @strings.each_with_index do |tag, index|
+                = link_to tag.text, tag_path(tag)
+                - unless index == @strings.count - 1
+                  ,
           %li.humans
             .icon-human
             - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
-            - 4.times do
-              %a.human-link{href: "#"}
-                .human-photo{style: "background-image: url(#{img_src})"}
-            %span.view-all
-              %a{href: "#"}
-                посмотреть всех
-              %span.count
-                (10)
+            - @members.first(4).each do |member|
+              = link_to member_path(member.ticket), class: 'human-link' do
+                .human-photo{ style: "background-image: url(#{member.avatar.small})" }
+            - if @members.count > 4
+              %span.view-all
+                %a{href: "#"}
+                  = t('.view_all')
+                %span.count
+                  = "(#{@members.count})"
           %li.social-icons
             %a{href: "#"}
               .icon-vk.min-icon

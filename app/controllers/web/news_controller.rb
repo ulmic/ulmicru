@@ -5,6 +5,9 @@ class Web::NewsController < Web::ApplicationController
 
   def show
     @news = News.find(params[:id]).decorate
+    unless @news.is_published?
+      #FIXME there 404 error path
+    end
     activity_line_tag = @news.tags.activity_lines.first
     @activity_line = ActivityLineDecorator.decorate activity_line_tag.target if activity_line_tag
     event_tag = @news.tags.events.first
@@ -15,8 +18,7 @@ class Web::NewsController < Web::ApplicationController
       news_tag = Tag.where(target_type: tag.target_type, record_type: 'News').where("record_id != #{@news.id}").last
       @topic_news << NewsDecorator.decorate(news_tag.record) if news_tag
     end
-    unless @news.is_published?
-      #FIXME there 404 error path
-    end
+    @members = @news.tags.members.map &:target
+    @strings = @news.tags.string
   end
 end

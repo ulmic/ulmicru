@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :events, only: [ :show, :index ]
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
+    resources :tags, only: [ :index, :show ]
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
@@ -57,7 +58,7 @@ Rails.application.routes.draw do
       resources :activity_lines, only: [:show]
     end
   end
-  get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }
+  get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
   namespace :api do
     namespace :events do
       resources :registrations, only: [ :create, :destroy ]

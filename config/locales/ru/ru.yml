@@ -97,6 +97,7 @@ ru:
     news:
       show:
         same_themes: "Материалы в тему:"
+        view_all: посмотреть всех
     articles:
       shared:
         default_show:
