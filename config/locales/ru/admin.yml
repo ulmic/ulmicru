@@ -22,6 +22,7 @@ ru:
       tags:
         form:
           add_tag: Добавить тег
+          add_new_string_tag: Создать новый
   layouts:
     web:
       admin:

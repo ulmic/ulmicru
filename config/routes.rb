@@ -72,7 +72,7 @@ Rails.application.routes.draw do
       resources :events, only: :index
       resources :activity_lines, only: :index
       resources :teams, only: :index
-      resources :tags, only: [ :create, :destroy ]
+      resources :tags, only: [ :create, :destroy, :index ]
     end
   end
 end

@@ -10,4 +10,6 @@ class Tag < ActiveRecord::Base
   enumerize :record_type, in: [ 'Article', 'News' ]
   enumerize :target_type, in: [ 'ActivityLine', 'Event', 'Member', 'Team' ]
   enumerize :tag_type, in: [ :string, :link ]
+
+  include TagScopes
 end

@@ -5,4 +5,6 @@
   = f.input :target_type, as: :hidden
   = f.input :target_id, as: :select, label: false
   = f.input :text, as: :hidden
+  = f.input :text, as: :select, label: false
   = f.button :submit, t('.add_tag'), style: 'display: none', class: 'btn btn-xs btn-success'
+  = link_to t('.add_new_string_tag'), '#', style: 'display: none', class: 'btn btn-xs btn-warning', id: 'add_new_string_tag'
