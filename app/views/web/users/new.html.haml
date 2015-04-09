@@ -1,7 +1,9 @@
-= simple_form_for @user, url: { controller: 'web/users', action: :create } do |f|
-  = f.input :first_name, as: :string
-  = f.input :last_name, as: :string
-  = f.input :email, as: :string
-  = f.input :password, as: :password
-  = f.input :password_confirmation, as: :password
+- title
+= render 'layouts/web/shared/errors', object: @user_form
+= simple_form_for @user_form, url: { controller: 'web/users', action: :create } do |f|
+  = f.input :first_name, as: :string, required: true
+  = f.input :last_name, as: :string, required: true
+  = f.input :email, as: :string, required: true
+  = f.input :password, as: :password, required: true
+  = f.input :password_confirmation, as: :password, required: true
   = f.button :submit, t('.register')

@@ -1,10 +1,11 @@
+- title
 .container.mic-form-container
   .row
     .medium-6.small-12.columns.medium-push-3
       = simple_form_for @user, url: { controller: 'web/sessions', action: :create } do |f|
         = f.input :email, as: :string
-        = f.input :password
-        = f.button :submit, class: "mic-flat-button"
+        = f.input :password, required: true
+        = f.button :submit, t('helpers.enter'), class: "mic-flat-button"
       .row
         .small-3.columns
           = link_to auth_path(:vkontakte) do

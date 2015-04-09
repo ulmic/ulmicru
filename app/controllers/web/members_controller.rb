@@ -19,6 +19,7 @@ class Web::MembersController < Web::ApplicationController
   end
 
   def show
-    @member = Member.find_by_ticket(params[:ticket]).decorate
+    member = Member.find_by_ticket(params[:ticket])
+    @member = member.decorate if member.confirmed?
   end
 end

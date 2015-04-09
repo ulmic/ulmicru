@@ -1,3 +1,4 @@
+- title
 .container.mic-form-container
   - if @user.is_member?
     = simple_form_for @member_form, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|

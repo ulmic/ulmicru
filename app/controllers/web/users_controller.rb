@@ -1,16 +1,14 @@
 class Web::UsersController < Web::ApplicationController
   def new
-    @user = User.new
-    @user_form = UserForm.new(@user)
+    @user_form = UserForm.new_with_model
   end
 
   def create
-    @user = User.new
-    @user_form = UserForm.new(@user)
-    @user_form.submit(params[:user])
+    @user_form = UserForm.new_with_model
+    @user_form.submit params[:user]
     if @user_form.save
-      sign_in @user
-      redirect_to new_member_path
+      sign_in @user_form.model
+      redirect_to account_path
     else
       render action: :new
     end

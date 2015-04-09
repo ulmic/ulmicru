@@ -44,6 +44,11 @@ ru:
       published: Опубликованные новости
       unpublished: Неопубликованные новости
       add: Добавить
+  layouts:
+    web:
+      shared:
+        errors:
+          some_errors_was_found: Найдены ошибки при сохранении
   social_networks:
     vkontakte: ВКонтакте
     facebook: Facebook
@@ -94,6 +99,7 @@ ru:
           admin_panel: Панель администратора
       new:
         register: Регистрация
+        title: Регистрация на сайте
     news:
       show:
         same_themes: "Материалы в тему:"
@@ -120,6 +126,7 @@ ru:
     sessions:
       new:
         title: Авторизация
+        register: Зарегистрироваться
   forms:
     placeholders:
       web:
