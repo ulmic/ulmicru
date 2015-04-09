@@ -1,6 +1,7 @@
 class Web::NewsController < Web::ApplicationController
   def index
     @news = News.published.decorate
+    @activity_line = ActivityLineDecorator.decorate @news.tags.activity_lines.first.target
   end
 
   def show

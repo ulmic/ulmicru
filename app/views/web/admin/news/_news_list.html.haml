@@ -7,7 +7,7 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:published_at)
-      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody
     - news.each do |news|
@@ -17,7 +17,10 @@
         %td= link_to news.title, edit_admin_news_path(news)
         %td= news.lead
         %td=l news.published_at
-        %td=l news.created_at
+        %td{ style: 'width: 200px' }
+          = render 'web/admin/tags/buttons'
+          = render 'web/admin/tags/list', record: news
+          = render 'web/admin/tags/form', record_type: 'News', record_id: news.id, index: news.id
         %td.actions
           = link_to edit_admin_news_path(news), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

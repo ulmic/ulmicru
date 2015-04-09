@@ -4,6 +4,8 @@ class ActivityLine < ActiveRecord::Base
   has_many :events
   has_many :tag, as: :target
 
+  mount_uploader :logo, PhotoUploader
+
   enumerize :activity_type, in: [ :central_program, :local_project ]
 
   state_machine :state, initial: :active do

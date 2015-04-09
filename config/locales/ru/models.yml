@@ -61,6 +61,7 @@ ru:
         user_id: Автор
         lead: Лид
         photo: Фотография
+        tags: Тэги
       article:
         title: Заголовок
         body: Контекст

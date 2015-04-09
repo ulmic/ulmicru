@@ -86,9 +86,9 @@
                                           text: 'Победитель конкурса "Я - лидер 2013" Иван Карпов решил провести дистанционный мастер-класс для того'
         - else
           .mic-programm
-            = render_element "mic_programm", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
-                                             link: "#", |
-                                             name: "Программа \"Добро\"" #name: "Проект \"Информационные технологии\""
+            = render_element "mic_programm", img_src: @activity_line.logo.medium, |
+                                             link: activity_line_path(@activity_line), |
+                                             name: @activity_line.title
         .news
           - 2.times do
             %hr

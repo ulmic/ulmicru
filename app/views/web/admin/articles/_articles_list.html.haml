@@ -18,25 +18,8 @@
         %td= (article.category.present? ? article.category.name : "")
         %td=l article.created_at
         %td{ style: 'width: 200px' }
-          .btn-toolbar
-            .btn-group.tag-buttons
-              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :string } do
-                %span.glyphicon.glyphicon-font
-              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'Member' } do
-                %span.glyphicon.glyphicon-user
-              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'Event' } do
-                %span.glyphicon.glyphicon-calendar
-              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'ActivityLine' } do
-                %span.glyphicon.glyphicon-flag
-              = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'Team' } do
-                %span.glyphicon.glyphicon-bullhorn
-          %ul.list-group
-            - article.tags.each do |tag|
-              %li.list-group-item
-                = render 'web/admin/tags/tag_element', tag: tag
-                = link_to api_admin_tag_path(tag), method: :delete, remote: true, class: 'badge tag_destroy' do
-                  X
-
+          = render 'web/admin/tags/buttons'
+          = render 'web/admin/tags/list', record: article
           = render 'web/admin/tags/form', record_type: 'Article', record_id: article.id, index: article.id
         %td.actions
           - if article.unviewed?
