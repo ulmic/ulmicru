@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410142356) do
+ActiveRecord::Schema.define(version: 20150410180302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,22 +147,31 @@ ActiveRecord::Schema.define(version: 20150410142356) do
   add_index "tags", ["record_type", "record_id"], name: "index_tags_on_record_type_and_record_id", using: :btree
   add_index "tags", ["target_type", "target_id"], name: "index_tags_on_target_type_and_target_id", using: :btree
 
+  create_table "team_administrations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_departaments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_subdivisions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "title"
     t.integer  "member_id"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.text     "state"
+    t.text     "municipality"
+    t.text     "type"
   end
-
-  create_table "teams_members", id: false, force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "member_id"
-  end
-
-  add_index "teams_members", ["member_id"], name: "index_teams_members_on_member_id", using: :btree
-  add_index "teams_members", ["team_id"], name: "index_teams_members_on_team_id", using: :btree
 
   create_table "teams_users", id: false, force: :cascade do |t|
     t.integer "team_id"

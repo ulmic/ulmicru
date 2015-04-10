@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
+    resources :teams, only: [ :index, :show ]
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy

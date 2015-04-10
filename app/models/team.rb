@@ -24,4 +24,16 @@ class Team < ActiveRecord::Base
   end
   #FIXME tags association
   include Concerns::TagsHelper
+
+  def is_departament?
+    model_name == 'Team::Departament'
+  end
+
+  def is_administration?
+    model_name == 'Team::Administration'
+  end
+
+  def is_subdivision?
+    model_name == 'Team::Subdivision'
+  end
 end

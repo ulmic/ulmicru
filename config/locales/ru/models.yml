@@ -104,6 +104,12 @@ ru:
         title: Название
         description: Описание
         member: Руководитель
+        type: Тип команды
+        municipality: Муниципальное образование
+        types:
+          departament: Местное отделение
+          subdivision: Структурное подразделение
+          administration: Административные органы
       event:
         registration:
           role: Роль

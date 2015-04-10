@@ -2,20 +2,20 @@
 %table.table.table-striped.table-condensed
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:member)
-      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:type)
+      %th= model_class.human_attribute_name(:municipality)
       %th=t 'helpers.links.actions'
   %tbody
     - teams.each do |team|
       %tr.link{ class: state_color(team), data: { href: edit_admin_team_path(team) } }
-        %td= link_to team.id, edit_admin_team_path(team)
-        %td= link_to team.title, edit_admin_team_path(team)
+        %td= link_to team.full_title, edit_admin_team_path(team)
         %td= team.short_description
         %td= team.member.decorate.short_name
-        %td=l team.created_at
+        %td= team_types_name team.type
+        %td= team.municipality
         %td.actions
           - if team.unviewed?
             = link_to admin_team_path(team, team: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do

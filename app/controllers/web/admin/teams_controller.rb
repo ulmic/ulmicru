@@ -25,6 +25,13 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
   end
 
   def update
+    #FIXME refactoring
+    [:team_departament, :team_subdivision, :team_administration].each do |type|
+      if params[type]
+        params[:team] = params[type]
+        break
+      end
+    end
     @team_form = TeamForm.find_with_model params[:id]
     @team_form.submit params[:team]
     if @team_form.save

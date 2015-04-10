@@ -15,7 +15,7 @@
       = f.input :municipality, as: :string
       = f.input :locality, as: :string
       = f.input :avatar, as: :string
-      -#= f.association :teams
+      = f.association :teams
       -#= f.hint t('.my_position_in_mic')
       -#= f.simple_fields_for :positions do |ff|
         = render 'position_fields', f: ff
