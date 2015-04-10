@@ -104,6 +104,9 @@ ru:
         title: Название
         description: Описание
         member: Руководитель
+      event:
+        registration:
+          role: Роль
   enumerize:
     user:
       role:

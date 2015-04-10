@@ -6,6 +6,7 @@ ru:
     short_name: "УОМОО «МИЦ»"
     send_request: Подать заявку на вступление в МИЦ
     name: Сайт МИЦ
+    floors_growth: Этажи роста
   date:
     order:
       - :day
@@ -23,6 +24,7 @@ ru:
     more_info: 'Подробнее'
     hide: 'Скрыть'
     cancel: Отмена
+    view_all: посмотреть всех
     actions:
       update: Редактировать
       create: Создать
@@ -103,7 +105,6 @@ ru:
     news:
       show:
         same_themes: "Материалы в тему:"
-        view_all: посмотреть всех
     articles:
       shared:
         default_show:

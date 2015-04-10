@@ -2,7 +2,7 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
+      %th №
       %th= model_class.human_attribute_name(:avatar)
       %th= model_class.human_attribute_name(:full_name)
       %th= model_class.human_attribute_name(:main_position)
@@ -11,7 +11,7 @@
   %tbody
     - members.each do |member|
       %tr.link{ class: state_color(member), data: { href: edit_admin_member_path(member) } }
-        %td= member.id
+        %td= member.ticket
         %td= image_tag member.avatar.small
         %td= member.full_name
         %td= member.main_position_title

@@ -20,6 +20,10 @@ class Web::MembersController < Web::ApplicationController
 
   def show
     member = Member.find_by_ticket(params[:ticket])
-    @member = member.decorate if member.confirmed?
+    if member.confirmed?
+      @member = member.decorate
+      @children = MemberDecorator.decorate_collection member.children.shuffle
+      @registrations = member.registrations
+    end
   end
 end

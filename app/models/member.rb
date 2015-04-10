@@ -54,4 +54,9 @@ class Member < User
     end
     nil
   end
+
+  #FIXME добавить ассоциацию от модуля event
+  def registrations
+    Event::Registration.where(user_id: id)
+  end
 end
