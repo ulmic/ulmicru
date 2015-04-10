@@ -3,7 +3,7 @@
   .row
     .small-5.columns
       .user-photo
-        = image_tag @member.avatar, class: :photo
+        = image_tag @member.avatar.profile, class: :photo
         .overlay
           .text
         .user-info
@@ -45,7 +45,7 @@
           %blockquote.user-motto
             = @member.motto
           %hr.orange
-          .user-team
+          -#.user-team
             .team-label
               = "#{t('activerecord.models.team')}:"
             .user-team-name

@@ -17,4 +17,8 @@ class AvatarUploader < ApplicationUploader
   version :small do
     process :resize_to_fill => [100, 100, 'North']
   end
+
+  version :profile do
+    process :resize_to_fill => [440, 600, 'Center']
+  end
 end

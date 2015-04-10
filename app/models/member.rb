@@ -6,6 +6,7 @@ class Member < User
   has_many :positions, dependent: :destroy
   has_many :tags, as: :target,
                   foreign_key: :target_id
+  has_and_belongs_to_many :teams
 
   validates :first_name, presence: true,
                          human_name: true

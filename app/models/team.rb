@@ -1,6 +1,7 @@
 class Team < ActiveRecord::Base
   belongs_to :member
   has_many :tags, as: :target
+  has_and_belongs_to_many :members
 
   validates :title, presence: true
 
