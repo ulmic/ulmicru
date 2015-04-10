@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   belongs_to :member
-  has_many :tag, as: :target
+  has_many :tags, as: :target
 
   validates :title, presence: true
 
@@ -21,4 +21,6 @@ class Team < ActiveRecord::Base
       transition all => :unviewed
     end
   end
+  #FIXME tags association
+  include Concerns::TagsHelper
 end

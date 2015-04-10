@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :creator, class_name: Member
   belongs_to :activity_line
   has_many :registrations, class_name: 'Event::Registration'
-  has_many :tag, as: :target
+  has_many :tags, as: :target
 
   mount_uploader :main_photo, PhotoUploader
 
@@ -27,4 +27,6 @@ class Event < ActiveRecord::Base
       transition all => :unviewed
     end
   end
+  #FIXME tags association
+  include Concerns::TagsHelper
 end

@@ -4,7 +4,8 @@ class Member < User
                       foreign_key: :parent_id
   has_many :attribute_accesses, dependent: :destroy
   has_many :positions, dependent: :destroy
-  has_many :tag, as: :target
+  has_many :tags, as: :target,
+                  foreign_key: :target_id
 
   validates :first_name, presence: true,
                          human_name: true
@@ -59,4 +60,7 @@ class Member < User
   def registrations
     Event::Registration.where(user_id: id)
   end
+
+  #FIXME tags association
+  include Concerns::TagsHelper
 end

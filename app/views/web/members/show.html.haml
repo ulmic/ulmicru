@@ -81,42 +81,50 @@
                             = "(#{@children.count})"
   .row.user-content
     %ul.tabs{'data-tab' => ''}
-      %li.tab-title.active
-        %a{href: "#stages-of-grow", tabindex: "0"}
-          %span.icon-stage.min-icon
-          = t('organization.floors_growth')
-      %li.tab-title
-        %a{href: "#users-news", tabindex: "0"}
-          = t('activerecord.models.news').pluralize(:ru)
+      - if @registrations.any?
+        %li.tab-title.active
+          %a{href: "#stages-of-grow", tabindex: "0"}
+            %span.icon-stage.min-icon
+            = t('organization.floors_growth')
+      - if @articles.any? || @news.any?
+        %li.tab-title
+          %a{href: "#users-news", tabindex: "0"}
+            = t('activerecord.models.news').pluralize(:ru)
     .tabs-content
-      #stages-of-grow.content.active.stages
-        - @registrations.each do |registration|
-          .row.stage
-            .small-1.small-push-1.columns
-              .stage-date
-                .icon-bigcalendar
-                .day
-                  = registration.event.begin_date.day
-                .month
-                  =l registration.event.begin_date, format: ('%b')
-                .year
-                  = registration.event.begin_date.year
-            .columns.small-10
-              .stage-text
-                .title
-                  = registration.event.title
-                .content
-                  .role
-                    = "#{t('activerecord.attributes.event.registration.role')}:"
-                    = registration.role
-                  %a.view-all{href: "#"}
-                    подробнее
-          %hr
-      #users-news.content
-        %ul.news.small-block-grid-4
-          - 16.times do
-            %li.mic-one-news
-              = render_element "mic_one_news", img_src: "http://cs14107.vk.me/c540101/v540101890/31512/YTONkYds8Y8.jpg", |
-                                               link: "#", |
-                                               title: "Поразительные приключения бомжа васи", |
-                                               date: "12 февр. 2015г"
+      - if @registrations.any?
+        #stages-of-grow.content.active.stages
+          - @registrations.each do |registration|
+            .row.stage
+              .small-1.small-push-1.columns
+                .stage-date
+                  .icon-bigcalendar
+                  .day
+                    = registration.event.begin_date.day
+                  .month
+                    =l registration.event.begin_date, format: ('%b')
+                  .year
+                    = registration.event.begin_date.year
+              .columns.small-10
+                .stage-text
+                  .title
+                    = registration.event.title
+                  .content
+                    .role
+                      = "#{t('activerecord.attributes.event.registration.role')}:"
+                      = registration.localize_role
+                    %a.view-all{href: "#"}
+                      подробнее
+            %hr
+      - if @articles.any? || @news.any?
+        #users-news.content
+          %ul.news.small-block-grid-4
+            - @articles.each do |article|
+              %li.mic-one-news
+                = render_element 'mic_article',  link: article_path(article), |
+                                                 title: article.title
+            - @news.each do |news|
+              %li.mic-one-news
+                = render_element 'mic_one_news', img_src: news.photo, |
+                                                 link: news_path(news), |
+                                                 title: news.title, |
+                                                 date: news.publish_date

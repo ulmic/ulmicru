@@ -2,7 +2,7 @@ class ActivityLine < ActiveRecord::Base
   extend Enumerize
   belongs_to :member
   has_many :events
-  has_many :tag, as: :target
+  has_many :tags, as: :target
 
   mount_uploader :logo, PhotoUploader
 
@@ -20,4 +20,6 @@ class ActivityLine < ActiveRecord::Base
       transition removed: :active
     end
   end
+  #FIXME tags association
+  include Concerns::TagsHelper
 end

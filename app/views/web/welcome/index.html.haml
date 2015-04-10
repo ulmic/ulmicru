@@ -57,9 +57,9 @@
     %ul.small-block-grid-7
       - @members.each do |member|
         - foto_src = member.avatar.url
-        %li.human
+        %li.human.link{ data: { href: member_path(member.ticket) } }
           .bg-foto{ style: "background-image: url('#{foto_src}')" }
-          %a.info{ href: "#" }
+          %a.info
             .vertical-center
               .name
                 = member.short_name
