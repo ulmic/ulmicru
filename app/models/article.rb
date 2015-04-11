@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   has_many :tags, as: :record
+  has_and_belongs_to_many :attachments, class_name: 'Document'
 
   validates :title,       presence: true
   validates :body,        presence: true

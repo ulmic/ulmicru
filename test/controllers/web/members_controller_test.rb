@@ -29,6 +29,7 @@ class Web::MembersControllerTest < ActionController::TestCase
 
   test 'should get show' do
     member = create :member
+    member.confirm
     get :show, ticket: member.ticket
     assert_response :success, @response.body
   end

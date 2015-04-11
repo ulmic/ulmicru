@@ -6,7 +6,9 @@ class Member < User
   has_many :positions, dependent: :destroy
   has_many :tags, as: :target,
                   foreign_key: :target_id
-  has_and_belongs_to_many :teams
+  has_and_belongs_to_many :teams, foreign_key: :user_id
+  has_many :registrations, class_name: 'Event::Registration',
+                           foreign_key: :user_id
 
   validates :first_name, presence: true,
                          human_name: true
@@ -55,11 +57,6 @@ class Member < User
       return authentication if authentication.provider == provider
     end
     nil
-  end
-
-  #FIXME добавить ассоциацию от модуля event
-  def registrations
-    Event::Registration.where(user_id: id)
   end
 
   #FIXME tags association

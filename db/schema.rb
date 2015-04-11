@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410142356) do
+ActiveRecord::Schema.define(version: 20150410235442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20150410142356) do
     t.integer  "category_id"
     t.integer  "user_id"
   end
+
+  create_table "articles_documents", id: false, force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "document_id"
+  end
+
+  add_index "articles_documents", ["article_id"], name: "index_articles_documents_on_article_id", using: :btree
+  add_index "articles_documents", ["document_id"], name: "index_articles_documents_on_document_id", using: :btree
 
   create_table "attribute_accesses", force: :cascade do |t|
     t.integer  "member_id"
@@ -89,6 +97,22 @@ ActiveRecord::Schema.define(version: 20150410142356) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "documents", force: :cascade do |t|
+    t.text     "file"
+    t.text     "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "state"
+  end
+
+  create_table "documents_news", id: false, force: :cascade do |t|
+    t.integer "news_id"
+    t.integer "document_id"
+  end
+
+  add_index "documents_news", ["document_id"], name: "index_documents_news_on_document_id", using: :btree
+  add_index "documents_news", ["news_id"], name: "index_documents_news_on_news_id", using: :btree
 
   create_table "event_registrations", force: :cascade do |t|
     t.integer  "user_id"
@@ -147,22 +171,31 @@ ActiveRecord::Schema.define(version: 20150410142356) do
   add_index "tags", ["record_type", "record_id"], name: "index_tags_on_record_type_and_record_id", using: :btree
   add_index "tags", ["target_type", "target_id"], name: "index_tags_on_target_type_and_target_id", using: :btree
 
+  create_table "team_administrations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_departaments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_subdivisions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "title"
     t.integer  "member_id"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.text     "state"
+    t.text     "municipality"
+    t.text     "type"
   end
-
-  create_table "teams_members", id: false, force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "member_id"
-  end
-
-  add_index "teams_members", ["member_id"], name: "index_teams_members_on_member_id", using: :btree
-  add_index "teams_members", ["team_id"], name: "index_teams_members_on_team_id", using: :btree
 
   create_table "teams_users", id: false, force: :cascade do |t|
     t.integer "team_id"

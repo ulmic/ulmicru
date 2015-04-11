@@ -51,6 +51,10 @@ ru:
       shared:
         errors:
           some_errors_was_found: Найдены ошибки при сохранении
+      elements:
+        mic_document:
+          attachment: Приложение
+          download: Скачать
   social_networks:
     vkontakte: ВКонтакте
     facebook: Facebook

@@ -45,11 +45,13 @@
           %blockquote.user-motto
             = @member.motto
           %hr.orange
-          -#.user-team
+          .user-team
             .team-label
               = "#{t('activerecord.models.team')}:"
             .user-team-name
-              отделение в г.Ульяновске
+              - @member.teams.each do |team|
+                = link_to team.decorate.full_title, team_path(team)
+                %br
           .row.god-fathers-childs
             - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
             - if @member.parent.present?

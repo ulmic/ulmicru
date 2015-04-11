@@ -13,6 +13,6 @@
       = f.input :body, as: :ckeditor
       = f.input :state, as: :hidden, input_html: { value: :confirmed }
       = f.association :category, collection: @categories, prompt: t('helpers.links.select'), label: t(model_class.human_attribute_name :category_id)
+      = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
-
       = link_to t('helpers.links.back'), admin_articles_path, class: 'btn btn-default'

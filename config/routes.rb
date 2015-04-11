@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
+    resources :teams, only: [ :index, :show ]
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
       resources :questionaries
       resources :teams, except: :show
       resources :tags, only: :create
+      resources :documents, except: :show
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

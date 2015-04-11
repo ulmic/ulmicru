@@ -12,6 +12,7 @@ ru:
       activity_line: Направление деятельности
       event: Мероприятие
       team: Команда
+      document: Документ
     attributes:
       user:
         first_name: Имя
@@ -69,6 +70,7 @@ ru:
         category_id: Категория
         created_at: Создано
         tags: Теги
+        attachments: Приложения
       category:
         name: Название
         parent: Родитель
@@ -104,9 +106,18 @@ ru:
         title: Название
         description: Описание
         member: Руководитель
+        type: Тип команды
+        municipality: Муниципальное образование
+        types:
+          departament: Местное отделение
+          subdivision: Структурное подразделение
+          administration: Административные органы
       event:
         registration:
           role: Роль
+      document:
+        file: Файл
+        title: Название
   enumerize:
     user:
       role:
