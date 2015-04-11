@@ -136,14 +136,6 @@ ActiveRecord::Schema.define(version: 20150410235442) do
     t.integer  "activity_line_id"
   end
 
-  create_table "file_attachments", force: :cascade do |t|
-    t.integer  "record_id"
-    t.text     "record_type"
-    t.integer  "attachment_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
