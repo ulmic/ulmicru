@@ -92,6 +92,7 @@ group :development, :test do
   gem 'rvm-capistrano'
   gem 'capistrano-ssh-doctor', '~> 1.0'
   gem 'capistrano-rails-console'
+  gem 'capistrano-rails-tail-log'
   gem 'quiet_assets'
   gem 'colorize', '0.6.0'
   gem 'better_errors'
