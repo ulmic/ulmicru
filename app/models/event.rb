@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :creator, class_name: Member
   belongs_to :activity_line
   has_many :registrations, class_name: 'Event::Registration'
-  has_many :tags, as: :target
+  has_many :tags, as: :target, dependent: :destroy
 
   mount_uploader :main_photo, PhotoUploader
 

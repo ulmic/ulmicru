@@ -5,7 +5,8 @@ class Member < User
   has_many :attribute_accesses, dependent: :destroy
   has_many :positions, dependent: :destroy
   has_many :tags, as: :target,
-                  foreign_key: :target_id
+                  foreign_key: :target_id,
+                  dependent: :destroy
   has_and_belongs_to_many :teams, foreign_key: :user_id
   has_many :registrations, class_name: 'Event::Registration',
                            foreign_key: :user_id

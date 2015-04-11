@@ -2,7 +2,7 @@ class ActivityLine < ActiveRecord::Base
   extend Enumerize
   belongs_to :member
   has_many :events
-  has_many :tags, as: :target
+  has_many :tags, as: :target, dependent: :destroy
 
   mount_uploader :logo, PhotoUploader
 
