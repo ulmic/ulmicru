@@ -15,6 +15,7 @@
       = f.input :published_at, as: :datetime_picker
       = f.input :photo, as: :file
       = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
 
       = link_to t('helpers.links.back'), admin_news_index_path, class: 'btn btn-default'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410180302) do
+ActiveRecord::Schema.define(version: 20150410235442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20150410180302) do
     t.integer  "category_id"
     t.integer  "user_id"
   end
+
+  create_table "articles_documents", id: false, force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "document_id"
+  end
+
+  add_index "articles_documents", ["article_id"], name: "index_articles_documents_on_article_id", using: :btree
+  add_index "articles_documents", ["document_id"], name: "index_articles_documents_on_document_id", using: :btree
 
   create_table "attribute_accesses", force: :cascade do |t|
     t.integer  "member_id"
@@ -90,6 +98,22 @@ ActiveRecord::Schema.define(version: 20150410180302) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "documents", force: :cascade do |t|
+    t.text     "file"
+    t.text     "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "state"
+  end
+
+  create_table "documents_news", id: false, force: :cascade do |t|
+    t.integer "news_id"
+    t.integer "document_id"
+  end
+
+  add_index "documents_news", ["document_id"], name: "index_documents_news_on_document_id", using: :btree
+  add_index "documents_news", ["news_id"], name: "index_documents_news_on_news_id", using: :btree
+
   create_table "event_registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
@@ -110,6 +134,14 @@ ActiveRecord::Schema.define(version: 20150410180302) do
     t.text     "state"
     t.text     "place"
     t.integer  "activity_line_id"
+  end
+
+  create_table "file_attachments", force: :cascade do |t|
+    t.integer  "record_id"
+    t.text     "record_type"
+    t.integer  "attachment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "news", force: :cascade do |t|

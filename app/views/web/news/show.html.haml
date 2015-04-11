@@ -29,18 +29,8 @@
         = @news.lead
       .news-row-content
         = raw(@news.body)
-        .news-addition
-          .icon-addition
-          .addition-content
-            .addition-title
-              Приложение
-            .addition-text
-              Список участников, прошедших на "Ярмарку идей"
-            .addition-download
-              %a{ href: "#"}
-                .icon-download
-                .download-link
-                  СКАЧАТЬ
+        - @news.attachments.each do |document|
+          = render_element 'mic_document', document: document
       %hr
       .stats-container.container-big.row.large-collapse.medium-collapse
         %ul.stats.small-10.columns

@@ -32,6 +32,8 @@
         = Banner.model_name.human.pluralize(:ru)
       = menu_item admin_teams_path do
         = Team.model_name.human.pluralize(:ru)
+      = menu_item admin_documents_path do
+        = Document.model_name.human.pluralize(:ru)
     %ul.nav.navbar-nav.navbar-right
       = menu_item admin_unviewed_index_path do
         %span.glyphicon.glyphicon-info-sign
@@ -59,3 +61,5 @@
             = Banner.model_name.human.pluralize(:ru)
           = menu_item type_admin_trash_index_path('team') do
             = Team.model_name.human.pluralize(:ru)
+          = menu_item type_admin_trash_index_path('document') do
+            = Document.model_name.human.pluralize(:ru)

@@ -9,6 +9,8 @@
         -# small-push-4 - для удобства, чтобы @article.body было в конце файла
         .small-12.columns
           = raw(@article.body)
+          - @article.attachments.each do |document|
+            = render_element 'mic_document', document: document
     %hr
     -# это типо яндекс.директ
     .same-themes.row
