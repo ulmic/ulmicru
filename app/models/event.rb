@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :creator, class_name: Member
   belongs_to :activity_line
+  belongs_to :organizer, polymorphic: true
   has_many :registrations, class_name: 'Event::Registration'
   has_many :tags, as: :target, dependent: :destroy
 
@@ -8,6 +9,9 @@ class Event < ActiveRecord::Base
 
   include EventScopes
   include Concerns::DurationManagment
+
+  extend Enumerize
+  enumerize :organizer_type, in: [ 'Member', 'Team' ]
 
   state_machine :state, initial: :unviewed do
     state :unviewed

@@ -41,4 +41,8 @@ class MemberDecorator < Draper::Decorator
   def parent_avatar
     parent.avatar.medium if parent.present?
   end
+
+  def select_presentation
+    "#{ticket} | #{first_name} #{last_name}"
+  end
 end

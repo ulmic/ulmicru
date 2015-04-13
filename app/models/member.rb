@@ -10,6 +10,8 @@ class Member < User
   has_and_belongs_to_many :teams, foreign_key: :user_id
   has_many :registrations, class_name: 'Event::Registration',
                            foreign_key: :user_id
+  has_many :events, as: :organizer,
+                    foreign_key: :organizer_id
 
   validates :first_name, presence: true,
                          human_name: true
