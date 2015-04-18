@@ -1,4 +1,4 @@
-class TeamDecorator < Draper::Decorator
+class TeamDecorator < ApplicationDecorator
   delegate_all
 
   def short_description

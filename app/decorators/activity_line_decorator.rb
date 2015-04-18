@@ -1,4 +1,4 @@
-class ActivityLineDecorator < Draper::Decorator
+class ActivityLineDecorator < ApplicationDecorator
   delegate_all
 
   def short_body

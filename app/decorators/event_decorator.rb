@@ -1,4 +1,4 @@
-class EventDecorator < Draper::Decorator
+class EventDecorator < ApplicationDecorator
   delegate_all
 
   def full_duration
@@ -29,6 +29,18 @@ class EventDecorator < Draper::Decorator
     h.content_tag :a, href: venue[:canonicalUrl],
                       target: '_blank' do
       venue[:name]
+    end
+  end
+
+  def organizer_link
+    if object.organizer_type == 'Member'
+      h.content_tag :a, href: member_path(object.organizer.ticket) do
+        object.organizer.decorate.short_name
+      end
+    elsif object.organizer_type == 'Team'
+      h.content_tag :a, href: team_path(object.organizer_id) do
+        object.organizer.title
+      end
     end
   end
 end

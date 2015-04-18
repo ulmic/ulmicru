@@ -1,4 +1,4 @@
-class MemberDecorator < Draper::Decorator
+class MemberDecorator < ApplicationDecorator
   delegate_all
   def full_name
     "#{first_name} #{patronymic} #{last_name}"

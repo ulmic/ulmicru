@@ -1,7 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :creator, class_name: Member
   belongs_to :activity_line
-  belongs_to :organizer, polymorphic: true
+  belongs_to :organizer, polymorphic: true,
+                         foreign_key: :organizer_id
   has_many :registrations, class_name: 'Event::Registration'
   has_many :tags, as: :target, dependent: :destroy
 

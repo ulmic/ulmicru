@@ -35,7 +35,7 @@
             = "#{t('.organizator')}:"
           .organizers-names
             .organizer
-              = @event.creator.decorate.short_name
+              = @event.organizer_link
         .join
           -#%a.join-button.mic-press-button{ href: "#" }
           - if current_user_have_attended?(@registrations + @other_registrations)

@@ -26,7 +26,7 @@
       = f.input :place, input_html: { value: '4e3faf5ac65b4ec275ff0a3b' }
       = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
       = f.input :organizer_type, collection: organizer_types
-      = f.input :organizer, as: :grouped_select, collection: teams_and_members_hash(@teams, @members), group_method: :last
+      = f.input :organizer_id, as: :grouped_select, collection: teams_and_members_hash(@teams, @members), group_method: :last
       = f.association :activity_line, label_method: lambda { |activity_line| "#{I18n.t("enumerize.activity_line.activity_type.#{activity_line.activity_type}")} «#{activity_line.title}»" }, value_method: :id
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), events_path, class: 'btn btn-default'

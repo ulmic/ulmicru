@@ -1,4 +1,4 @@
-class NewsDecorator < Draper::Decorator
+class NewsDecorator < ApplicationDecorator
   delegate_all
 
   def generate_lead
