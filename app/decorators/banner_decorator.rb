@@ -1,3 +1,3 @@
-class BannerDecorator < Draper::Decorator
+class BannerDecorator < ApplicationDecorator
   delegate_all
 end

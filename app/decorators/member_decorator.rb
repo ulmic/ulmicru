@@ -1,4 +1,4 @@
-class MemberDecorator < Draper::Decorator
+class MemberDecorator < ApplicationDecorator
   delegate_all
   def full_name
     "#{first_name} #{patronymic} #{last_name}"
@@ -40,5 +40,9 @@ class MemberDecorator < Draper::Decorator
 
   def parent_avatar
     parent.avatar.medium if parent.present?
+  end
+
+  def select_presentation
+    "#{ticket} | #{first_name} #{last_name}"
   end
 end

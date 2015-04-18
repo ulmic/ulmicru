@@ -1,4 +1,4 @@
-class ArticleDecorator < Draper::Decorator
+class ArticleDecorator < ApplicationDecorator
   delegate_all
 
   def short_body

@@ -10,10 +10,14 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
 
   def new
     @event_form = EventForm.new_with_model
+    @members = Member.presented.decorate
+    @teams = Team.active.decorate
   end
 
   def edit
     @event_form = EventForm.find_with_model(params[:id])
+    @members = Member.presented.decorate
+    @teams = Team.active.decorate
   end
 
   def create
