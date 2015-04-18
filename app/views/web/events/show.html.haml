@@ -53,10 +53,11 @@
   .participans-container
     %h3.title
       = t('.attenders')
-      = "(#{@registrations.count})"
+      %span#participants_count
+        = "(#{@registrations.count})"
     %ul.small-block-grid-5.participants
       - @registrations.each do |registration|
-        %li.participant.mic-member
+        %li.participant.mic-member{ id: "participant_#{registration.user.id}" }
           = render_element 'mic_member', img_src: registration.user.avatar.medium, |
                                          link: '#', |
                                          name: registration.user.decorate.short_name, |
