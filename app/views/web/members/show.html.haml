@@ -60,7 +60,7 @@
                   = "#{t('activerecord.attributes.member.parent')}:"
                 .photo{ style: "background-image: url(#{@member.parent_avatar})" }
                 .name
-                  %span.text
+                  %a.text{href: ""}
                     = @member.parent.decorate.short_name
             - if @children.any?
               - @member.parent.present? ? count = 2 : count = 3
