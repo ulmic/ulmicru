@@ -78,9 +78,9 @@ $slopy-height: 140px;
 		}
 		.event-label-text {
 				display: inline-block;
-				font-size: rem-calc(30);
+				font-size: rem-calc(22);
 				margin-left: 35px;
-				vertical-align: baseline;
+				vertical-align: bottom;
                 a {
                   color: white;
                   &:hover {
@@ -118,7 +118,7 @@ $slopy-height: 140px;
 				}
 		}
 		.join-button {
-				position: absolute;
+				//position: absolute;
 				bottom: -2rem;
 				left: 2rem;
 		}
