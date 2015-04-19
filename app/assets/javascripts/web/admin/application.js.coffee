@@ -12,6 +12,7 @@
 #= require localities
 #= require ckeditor/init
 #= require web/admin/tags
+#= require select2
 
 $ ->
   $('.input').addClass('form-group')
@@ -19,6 +20,7 @@ $ ->
   $('input[type=hidden]').addClass('form-control')
   $('input[type=text]').addClass('form-control')
   $('input[type=submit]').addClass('btn')
+  $('select.select2').select2()
   $('.link').click ->
     location.href = $(this).attr('data-href')
 

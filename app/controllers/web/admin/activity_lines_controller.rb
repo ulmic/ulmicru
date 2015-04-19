@@ -1,4 +1,6 @@
 class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
+  before_filter :choose_members, only: [ :new, :edit ]
+
   def index
     @activity_lines = ActivityLine.all.decorate
   end
@@ -17,6 +19,7 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
     if @activity_line_form.save
       redirect_to admin_activity_lines_path
     else
+      choose_members
       render action: :new
     end
   end
@@ -27,6 +30,7 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
     if @activity_line_form.save
       redirect_to admin_activity_lines_path
     else
+      choose_members
       render action: :edit
     end
   end
