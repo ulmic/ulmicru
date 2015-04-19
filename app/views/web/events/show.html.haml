@@ -42,8 +42,12 @@
             %button.join-button.mic-press-button{ value: 'out', data: { event_id: @event.id, user_id: current_user.id } }
               = t('.i_attend')
           - else
-            %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
-              = t('.attend')
+            - if signed_in?
+              %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
+                = t('.attend')
+            - else
+              %a.join-button.mic-press-button{ href: new_session_path }
+                = t('.attend')
 .more-lead-info.container
   .row.large-collapse
     .small-8.columns

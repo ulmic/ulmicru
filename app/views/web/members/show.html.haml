@@ -55,7 +55,7 @@
           .row.god-fathers-childs
             - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
             - if @member.parent.present?
-              .godfather.small-4.columns.link{ data: { href: member_path(@member.parent.ticket) } }
+              .godfather.small-4.columns{ class: present_link_class(@member.parent), data: { href: present_member_path(@member.parent) } }
                 .title
                   = "#{t('activerecord.attributes.member.parent')}:"
                 .photo{ style: "background-image: url(#{@member.parent_avatar})" }
@@ -67,7 +67,7 @@
               .godchilds.small-8.columns
                 .row
                   - @children.first(count).each_with_index do |child, index|
-                    .small-6.columns.link{ data: { href: member_path(child.ticket) } }
+                    .small-6.columns{ class: present_link_class(child), data: { href: present_member_path(child) } }
                       - if index == 0
                         .title
                           = "#{t('activerecord.attributes.member.children')}:"

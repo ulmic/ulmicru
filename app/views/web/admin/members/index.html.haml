@@ -1,5 +1,5 @@
 - model_class = Member
-- tabs = [ :confirmed, :unviewed, :declined ]
+- tabs = [ :confirmed, :unviewed, :declined, :unavailable ]
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
   %h1
@@ -16,3 +16,5 @@
     = render 'members_list', members: @confirmed_members
   #declined
     = render 'members_list', members: @declined_members
+  #unavailable
+    = render 'members_list', members: @unavailable_members

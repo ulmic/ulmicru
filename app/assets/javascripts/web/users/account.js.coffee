@@ -1,4 +1,5 @@
 $ ->
+  $('select#member_parent_id').select2()
   $('.attribute_access').change ->
     value = 'hidden'
     if $(this).prop('checked') == true

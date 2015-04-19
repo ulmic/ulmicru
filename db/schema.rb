@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411011006) do
+ActiveRecord::Schema.define(version: 20150419174718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,6 +146,26 @@ ActiveRecord::Schema.define(version: 20150411011006) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "filling_points", force: :cascade do |t|
+    t.text     "title"
+    t.text     "point_type"
+    t.integer  "filling_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fillings", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "implemention_id"
+    t.string   "implemention_type"
+    t.integer  "creator_id"
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.text     "state"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -238,6 +258,7 @@ ActiveRecord::Schema.define(version: 20150411011006) do
     t.string   "type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.datetime "join_date"
   end
 
 end

@@ -8,5 +8,6 @@ module MemberScopes
     scope :declined, -> { where state: :declined }
     scope :removed, -> { where state: :removed }
     scope :unviewed, -> { where state: :unviewed }
+    scope :unavailable, -> { where state: :unavailable }
   end
 end

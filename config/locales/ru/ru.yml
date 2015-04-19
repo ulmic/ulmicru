@@ -74,6 +74,7 @@ ru:
           unviewed: Новые
           confirmed: Подтверждённые
           declined: Отклонённые
+          unavailable: Отсутствуют на сайте
     news:
       state:
         states:
