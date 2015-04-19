@@ -16,5 +16,29 @@ module Data::ImportMembers
         Member.create(hash) unless member
       end
     end
+    hash = {}
+    parents = []
+    csv.each_with_index do |row, index|
+      if index >= 5
+        names = row[13].split(' ') if row[13] && row[13] != ''
+        if names
+          if names.count == 2
+            names.each_with_index do |name, index|
+              members = Member.where(first_name: name)
+              if members.any?
+                members.each do |m|
+                  if m.last_name == names[index * (-1) - 1]
+                    parents << names
+                    m = Member.find_by_ticket row[7].to_i
+                    m.update parent_id: m.id
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+    parents
   end
 end
