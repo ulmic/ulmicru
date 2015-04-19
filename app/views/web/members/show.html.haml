@@ -48,10 +48,10 @@
           .user-team
             .team-label
               = "#{t('activerecord.models.team')}:"
-            .user-team-name
-              - @member.teams.each do |team|
-                = link_to team.decorate.full_title, team_path(team)
-                %br
+            - @member.teams.each_with_index do |team, index|
+              .user-team-name
+                = link_to team.decorate.full_title, team_path(team), class: "#{'more' if index > 0}"
+              %br
           .row.god-fathers-childs
             - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
             - if @member.parent.present?

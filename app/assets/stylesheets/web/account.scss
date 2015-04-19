@@ -124,6 +124,9 @@
             margin-left: 10px;
             display: inline-block;
             font-size: 20px;
+            &.more {
+                margin-left: 110px;
+            }
         }
     }
     .god-fathers-childs {
