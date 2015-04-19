@@ -55,7 +55,7 @@
           .row.god-fathers-childs
             - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
             - if @member.parent.present?
-              .godfather.small-4.columns.link{ data: { href: member_path(@member.parent.ticket) } }
+              .godfather.small-4.columns{ class: present_link_class(@member.parent), data: { href: present_member_path(@member.parent) } }
                 .title
                   = "#{t('activerecord.attributes.member.parent')}:"
                 .photo{ style: "background-image: url(#{@member.parent_avatar})" }

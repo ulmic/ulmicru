@@ -27,6 +27,8 @@
 //= require web/events
 //= require news
 //= require foundation
+//= require select2
+//= require web/users/account
 
 $(document).foundation();
 $(function(){

@@ -11,6 +11,8 @@
 // =require web/articles
 // =require web/account
 // =require web/sessions
+//= require select2
+
 @import "foundation/functions";
 
 @font-face {
@@ -149,4 +151,8 @@ body {
 
 ul {
 		list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJElEQVQYV2NkIBIwIqv73MLwH10fbw0DWM2QU4gvAFA8Q1+FAM9iDwueLssPAAAAAElFTkSuQmCC");
+}
+
+.select2-container {
+  width: 100%;
 }

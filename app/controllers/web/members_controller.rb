@@ -4,6 +4,7 @@ class Web::MembersController < Web::ApplicationController
   def new
     member = current_user.becomes! Member
     @member_form = MemberForm.new member
+    @active_members = Member.where.not(state: :removed).where.not(state: :declined).order('ticket ASC').decorate
   end
 
   def create
@@ -25,6 +26,7 @@ class Web::MembersController < Web::ApplicationController
     if @member_form.save
       redirect_to account_path
     else
+      @active_members = Member.where.not(state: :removed).where.not(state: :declined).order('ticket ASC').decorate
       render action: :new
     end
   end
