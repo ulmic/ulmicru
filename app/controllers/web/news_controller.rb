@@ -20,5 +20,6 @@ class Web::NewsController < Web::ApplicationController
     end
     @members = @news.tags.members.map &:target
     @strings = @news.tags.string
+    @news.increase_views
   end
 end

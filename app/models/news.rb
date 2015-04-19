@@ -40,6 +40,10 @@ class News < ActiveRecord::Base
     end
   end
 
+  def increase_views
+    update views: (views + 1)
+  end
+
   private
   def set_initial_state
     state = "unviewed" unless state.present?
