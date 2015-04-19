@@ -9,6 +9,7 @@ module Data::ImportMembers
       if index >= 5
         hash[:first_name] = row[1].split(' ')[1] if row[1]
         hash[:last_name] = row[1].split(' ')[0] if row[1]
+        hash[:patronymic] = row[1].split(' ')[2] if row[1]
         hash[:ticket] = row[7].to_i
         hash[:join_date] = row[6].to_date if row[6] && row[6] != '' && row[6] != '?'
         hash[:state] = :unavailable
@@ -17,28 +18,44 @@ module Data::ImportMembers
       end
     end
     hash = {}
-    parents = []
+    parents_count = 0
+    exists_parents_count = 0
+    exceptions = []
     csv.each_with_index do |row, index|
       if index >= 5
-        names = row[13].split(' ') if row[13] && row[13] != ''
+        names = row[13].split(' ') if row[13] && row[13] != '' && row[13] != ' '
         if names
+          parents_count += 1
+          change = exists_parents_count
           if names.count == 2
-            names.each_with_index do |name, index|
-              members = Member.where(first_name: name)
-              if members.any?
-                members.each do |m|
-                  if m.last_name == names[index * (-1) - 1]
-                    parents << names
-                    m = Member.find_by_ticket row[7].to_i
-                    m.update parent_id: m.id
-                  end
-                end
+            Member.all.each do |member|
+              name = "#{member.first_name} #{member.last_name}"
+              reverse_name = "#{member.last_name} #{member.first_name}"
+              if name == row[13] || reverse_name == row[13]
+                child = Member.find_by_ticket row[7]
+                child.update parent_id: member.id
+                exists_parents_count += 1
+                break
               end
             end
+          elsif names.count == 3
+            Member.all.each do |member|
+              name = "#{member.first_name} #{member.patronymic} #{member.last_name}"
+              reverse_name = "#{member.last_name} #{member.first_name} #{member.patronymic}"
+              if name == row[13] || reverse_name == row[13]
+                child = Member.find_by_ticket row[7]
+                child.update parent_id: member.id
+                exists_parents_count += 1
+                break
+              end
+            end
+          end
+          if exists_parents_count == change
+            exceptions << row[13]
           end
         end
       end
     end
-    parents
+    [parents_count, exists_parents_count, exceptions]
   end
 end

@@ -35,7 +35,8 @@
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :type, as: :hidden, input_html: { value: 'Member' }
       = f.input :state, as: :hidden, input_html: { value: :unviewed }
-      = f.input :parent_id, as: :select, collection: members_hash(@active_members)
+      - unless @member_form.model.parent_id.present?
+        = f.input :parent_id, as: :select, collection: members_hash(@active_members)
       = f.input :avatar, as: :file
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'
     = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
