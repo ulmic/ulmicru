@@ -6,7 +6,7 @@
     %a.right-arrow
     .slider-items
       - @news.each do |news|
-        .main-slider-item.link{ data: { href: news_path(news) } }
+        .main-slider-item.slider-link{ data: { href: news_path(news) } }
           = image_tag news.photo, class: 'slider-img'
           .slider-item-info
             = news.title

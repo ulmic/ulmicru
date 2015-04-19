@@ -61,7 +61,14 @@ $(function(){
 });
 
 $(document).ready(function() {
+    // почему не тэг <a> вместо?
   $('.link').click(function() {
     location.href = $(this).attr('data-href');
+  });
+
+  $('.slider-link').click(function() {
+      if ($(this).hasClass("slick-active")) {
+          location.href = $(this).attr('data-href');
+      }
   });
 });
