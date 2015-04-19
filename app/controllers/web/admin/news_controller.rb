@@ -2,6 +2,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
   def index
     @published_news = News.published.decorate
     @unpublished_news = News.unpublished.decorate
+    @main_news = News.main.decorate
     @tag = Tag.new
   end
 

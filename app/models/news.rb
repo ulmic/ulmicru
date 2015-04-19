@@ -23,6 +23,7 @@ class News < ActiveRecord::Base
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
+    state :main
     state :removed
 
     event :confirm do
@@ -30,6 +31,9 @@ class News < ActiveRecord::Base
     end
     event :remove do
       transition all => :removed
+    end
+    event :to_main do
+      transition all => :main
     end
     event :restore do
       transition :removed => :unviewed

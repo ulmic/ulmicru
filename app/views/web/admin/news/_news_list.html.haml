@@ -22,6 +22,12 @@
           = render 'web/admin/tags/list', record: news
           = render 'web/admin/tags/form', record_type: 'News', record_id: news.id, index: news.id
         %td.actions
+          - if news.main?
+            = link_to admin_news_path(news, news: { state: :confirmed }), method: :patch, class: 'btn btn-danger btn-xs' do
+              %span.glyphicon.glyphicon-pushpin
+          - else
+            = link_to admin_news_path(news, news: { state: :main }), method: :patch, class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-pushpin
           = link_to edit_admin_news_path(news), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_news_path(news), method: :delete, class: 'btn btn-xs btn-danger' do

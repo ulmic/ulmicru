@@ -80,6 +80,7 @@ ru:
         states:
           published: Опубликованное
           unpublished: Неопубликованное
+          main: Главные новости
     questionary:
       state:
         states:
