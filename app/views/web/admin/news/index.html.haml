@@ -1,5 +1,5 @@
 - model_class = News
-- tabs = [ :published, :unpublished ]
+- tabs = [ :published, :unpublished, :main ]
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
   %h1
@@ -12,5 +12,7 @@
         = link_to t("state_machines.news.state.states.#{tab}").pluralize(:ru), "##{tab}"
   #published
     = render 'news_list', news: @published_news
+  #main
+    = render 'news_list', news: @main_news
   #unpublished
     = render 'news_list', news: @unpublished_news

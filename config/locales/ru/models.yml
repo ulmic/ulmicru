@@ -64,6 +64,8 @@ ru:
         lead: Лид
         photo: Фотография
         tags: Тэги
+        state: Статус
+        attachments: Приложения
       article:
         title: Заголовок
         body: Контекст

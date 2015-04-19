@@ -14,5 +14,6 @@ module NewsScopes
       order('published_at DESC')
     }
     scope :removed, -> { where state: :removed }
+    scope :main, -> { where state: :main }
   end
 end
