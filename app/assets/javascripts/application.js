@@ -52,7 +52,7 @@ $(function(){
     nextArrow: $('.main-slider .right-arrow')
 	});
 	$('.news-slider').slick({
-	  infinite: true,
+	  infinite: false,
 	  slidesToShow: 5,
 	  slidesToScroll: 5,
     prevArrow: $('.news .slider-arrows>.left-arrow'),
