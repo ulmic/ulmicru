@@ -7,8 +7,19 @@ class Web::MembersController < Web::ApplicationController
   end
 
   def create
-    member = current_user.becomes! Member
-    User.find(member.id).update(type: 'Member')
+    exists_member = Member.find_by_ticket params[:member][:ticket]
+    if exists_member
+      if exists_member.unavailable?
+        current_user.destroy
+        sign_in exists_member
+        member = exists_member
+      else
+        redirect_to account_path
+      end
+    else
+      member = current_user.becomes! Member
+      User.find(member.id).update type: 'Member'
+    end
     @member_form = MemberForm.new member
     @member_form.submit params[:member]
     if @member_form.save

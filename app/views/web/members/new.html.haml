@@ -34,6 +34,7 @@
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :type, as: :hidden, input_html: { value: 'Member' }
+      = f.input :state, as: :hidden, input_html: { value: :unviewed }
       = f.association :parent, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}"  }, value_method: :id, required: false
       = f.input :avatar, as: :file
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'

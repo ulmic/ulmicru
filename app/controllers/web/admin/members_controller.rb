@@ -3,6 +3,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @unviewed_members = ::MemberDecorator.decorate_collection Member.unviewed
     @confirmed_members = ::MemberDecorator.decorate_collection Member.confirmed
     @declined_members = ::MemberDecorator.decorate_collection Member.declined
+    @unavailable_members = ::MemberDecorator.decorate_collection Member.unavailable
   end
 
   def new
@@ -22,7 +23,16 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def create
-    @member_form = MemberForm.new_with_model
+    member = Member.find_by_ticket params[:member][:ticket]
+    if member
+      if member.unavailable?
+        @member_form = MemberForm.find_with_model member.id
+      else
+        redirect_to admin_members_path
+      end
+    else
+      @member_form = MemberForm.new_with_model
+    end
     @member_form.submit params[:member]
     if @member_form.save
       redirect_to admin_members_path
