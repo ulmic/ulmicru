@@ -92,6 +92,9 @@ ru:
         creator: Создатель
         duration: Время проведения
         activity_line: Направление деятельности
+        organizer_type: Тип организатора
+        organizer_id: Организатор
+        activity_line: Направление деятельности
       activity_line:
         title: Название
         description: Описание
