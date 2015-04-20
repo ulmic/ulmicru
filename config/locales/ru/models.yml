@@ -110,6 +110,7 @@ ru:
         title: Название
         description: Описание
         member: Руководитель
+        member_id: Руководитель
         type: Тип команды
         municipality: Муниципальное образование
         types:

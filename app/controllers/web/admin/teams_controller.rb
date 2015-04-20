@@ -1,4 +1,5 @@
 class Web::Admin::TeamsController < Web::Admin::ApplicationController
+  before_filter :choose_members, only: [ :new, :edit ]
   def index
     @teams = Team.active.decorate
   end
@@ -14,6 +15,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     if @team_form.save
       redirect_to admin_teams_path
     else
+      choose_members
       @categories = Category.presented.decorate
       render action: :new
     end
@@ -37,6 +39,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     if @team_form.save
       redirect_to admin_teams_path
     else
+      choose_members
       render action: :edit
     end
   end

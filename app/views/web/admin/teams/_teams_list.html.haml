@@ -13,7 +13,7 @@
       %tr.link{ class: state_color(team), data: { href: edit_admin_team_path(team) } }
         %td= link_to team.full_title, edit_admin_team_path(team)
         %td= team.short_description
-        %td= team.member.decorate.short_name
+        %td= team.head_name
         %td= team_types_name team.type
         %td= team.municipality
         %td.actions

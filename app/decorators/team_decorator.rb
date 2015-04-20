@@ -12,4 +12,8 @@ class TeamDecorator < ApplicationDecorator
       title
     end
   end
+
+  def head_name
+    member.decorate.short_name if member
+  end
 end

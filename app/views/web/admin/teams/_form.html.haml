@@ -15,6 +15,6 @@
       = f.input :type, as: :select, collection: team_types
       .municipality_input
         = f.input :municipality, as: :select, collection: Municipalities.list
-      = f.association :member, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, value_method: :id
+      = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_teams_path, class: 'btn btn-default'
