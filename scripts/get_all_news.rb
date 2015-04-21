@@ -11,7 +11,7 @@ require 'open-uri'
 
 include ActionView::Helpers::SanitizeHelper
 
-show_all_news_body_content = 0 
+show_all_news_body_content = 1 
 
 PAGE_URL = "http://ulmic.ru" unless defined? PAGE_URL
 
@@ -20,11 +20,12 @@ puts 'Initialized...'
 #---------each of all pages------
 $page_iterator = 0
 while ($page_iterator <= 1730) do
-  
-  current_paginator_url = PAGE_URL + '/index.php?start=' + $page_iterator.to_s 
-  puts 'Opening page => ' + current_paginator_url
+  puts'--------------------------'
+  current_paginator_url = PAGE_URL + '/index.php?start=' + $page_iterator.to_s
+  puts '| Opening page => ' + current_paginator_url
   page = Nokogiri::HTML(open(current_paginator_url))
-  puts 'Done...'
+  puts '| Done...'
+  puts'--------------------------'
   #-------each of all links-----
   page
     .css('.blog_articletext, .contentpagetitle, .blog_articletext_noimage')
@@ -54,6 +55,14 @@ while ($page_iterator <= 1730) do
     puts 'Deleting all finding tags...'
     news_body.css('.tag').remove
     puts 'Deleted...'
+    
+    news_first_photo_text = 'http://www.ulmic.ru' + news_body.css('img')[0]['src']
+    puts 'Found photo of news: ' + news_first_photo_text
+    news_photo = PhotoUploader.new 
+    news_photo.store! (news_first_photo_text)
+    news_body.css('img')[0].remove
+    puts 'Removed from body\'s context'
+
     news_body_text = news_body.to_s.strip
     if show_all_news_body_content == 1 
       puts
@@ -64,11 +73,6 @@ while ($page_iterator <= 1730) do
       puts '---------------------------------------------------------------------------';
       puts
     end 
-
-    news_first_photo_text = 'http://www.ulmic.ru' + news_body.css('img')[0]['src']
-    puts 'Found photo of news: ' + news_first_photo_text
-    news_photo = PhotoUploader.new 
-    news_photo.store! (news_first_photo_text)
 
 
     puts 'Saving...'
