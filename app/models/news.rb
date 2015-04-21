@@ -4,14 +4,14 @@ class News < ActiveRecord::Base
                   dependent: :destroy
   has_and_belongs_to_many :attachments, class_name: 'Document'
 
-  mount_uploader :photo,    PhotoUploader
-  validates :title,         presence: true
-  validates :body,          presence: true
-  validates :published_at,  presence: true
-  validates :photo,         presence: true
-  validates :user_id,       presence: true
-  validates :lead,          presence: true
-  validates :state,         presence: true
+  mount_uploader :photo,       PhotoUploader
+  validates :title,            presence: true
+  validates :body,             presence: true
+  validates :published_at,     presence: true
+  validates :photo,            presence: true
+  validates :user_id,          presence: false
+  validates :lead,             presence: true
+  validates :state,            presence: true
   belongs_to :user
 
   def is_published?
