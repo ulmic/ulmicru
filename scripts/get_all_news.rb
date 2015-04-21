@@ -18,7 +18,7 @@ PAGE_URL = "http://ulmic.ru" unless defined? PAGE_URL
 puts 'Initialized...'
 #---------End Initialization------
 #---------each of all pages------
-$page_iterator = 1730
+$page_iterator = 0
 while ($page_iterator <= 1730) do
   
   current_paginator_url = PAGE_URL + '/index.php?start=' + $page_iterator.to_s 
