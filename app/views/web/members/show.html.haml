@@ -58,7 +58,7 @@
               .godfather.small-4.columns{ class: present_link_class(@member.parent), data: { href: present_member_path(@member.parent) } }
                 .title
                   = "#{t('activerecord.attributes.member.parent')}:"
-                .photo{ style: "background-image: url(#{@member.parent_avatar})" }
+                .mic-userpic-circle{ style: "background-image: url(#{@member.parent_avatar})" }
                 .name
                   %a.text{href: ""}
                     = @member.parent.decorate.short_name
@@ -71,7 +71,7 @@
                       - if index == 0
                         .title
                           = "#{t('activerecord.attributes.member.children')}:"
-                      .photo{ style: "background-image: url(#{child.avatar})" }
+                      .mic-userpic-circle{ style: "background-image: url(#{child.avatar})" }
                       .name
                         %span.text
                           = child.short_name

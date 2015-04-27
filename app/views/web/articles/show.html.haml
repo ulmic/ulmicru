@@ -1,5 +1,7 @@
 - title @article.title
 - if @article.view.present?
-  = render "shared/#{@article.view}"
+  = stylesheet_link_tag "web/articles/#{@article.view}"
+  = javascript_include_tag "web/articles/#{@article.view}"
+  = render "web/articles/shared/#{@article.view}"
 - else
   = render "web/articles/shared/default_show"

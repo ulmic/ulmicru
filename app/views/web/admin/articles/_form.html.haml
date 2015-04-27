@@ -12,6 +12,7 @@
       = f.input :title, as: :string
       = f.input :body, as: :ckeditor
       = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      = f.input :view
       = f.association :category, collection: @categories, prompt: t('helpers.links.select'), label: t(model_class.human_attribute_name :category_id)
       = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
