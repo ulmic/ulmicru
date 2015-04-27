@@ -1,20 +1,24 @@
 @import "mixins";
 
 .articles {
-		.same-themes {
-				margin-top: 24px;
-				.yadirect {
-						margin-top: 16px;
-				}
-		}
+  &.container-big {
+    margin-bottom: 50px;
+  }
 
-		.yadirect-row {
-				margin-bottom: 36px;
-		}
+  .same-themes {
+    margin-top: 24px;
+    .yadirect {
+      margin-top: 16px;
+    }
+  }
 
-		.same-themes-title {
-				font-family: mic-beau-reg;
-				font-size: rem-calc(24);
-				margin-bottom: rem-calc(10);
-		}
+  .yadirect-row {
+    margin-bottom: 36px;
+  }
+
+  .same-themes-title {
+    font-family: mic-beau-reg;
+    font-size: rem-calc(24);
+    margin-bottom: rem-calc(10);
+  }
 }
