@@ -1,7 +1,7 @@
 - iliin = Member.find_by_ticket(1).decorate
 - titova = Member.find_by_ticket(2).decorate
 - domashevskaya = Member.find_by_ticket(451).decorate
-- lapteva = domashevskaya
+- lapteva = 'Татьяна Лаптева'
 - informat = domashevskaya
 .news.articles.container-big
   %h3.title
@@ -20,13 +20,12 @@
           = link_to article_member_path(domashevskaya) do
             .mic-userpic-circle.history-mic-userpic-circle{ style: "background-image: url(#{domashevskaya.avatar.profile})" }
         .small-6.columns
-          = link_to article_member_path(lapteva) do
-            .mic-userpic-circle.history-mic-userpic-circle{ style: "background-image: url(#{lapteva.avatar.profile})" }
+          .mic-userpic-circle.history-mic-userpic-circle{ style: "background-image: url(#{domashevskaya.avatar.profile})" }
     .small-9.columns
       %p
         Об идее многофункционального методического центра вспомнили вновь четыре ульяновца. Это педагог дополнительного образования Областного Дворца детского творчества, руководитель Школы будущего журналиста
         %b
-          = link_to_article_member_path(lapteva)
+          = lapteva
         , специалист Комитета по молодёжной политике Ульяновской области
         %b
           = link_to_article_member_path(titova, 'Алёна Асеева')
@@ -40,7 +39,7 @@
       %p
         = link_to_article_member_path(iliin)
         по выходным преподавал в Центре детского творчества №6  и его  районном пресс-центре «Норд-вест», руководил работой Ассоциации начинающих журналистов Ульяновской области «Inформат»,
-        = link_to_article_member_path(lapteva)
+        = lapteva
         также работала с молодыми журналистами и была вице-президентом
         = '«Inформата»'
         = link_to_article_member_path(titova, 'Елена Асеева')
