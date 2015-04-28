@@ -1,22 +1,26 @@
 module Web::ArticlesHelper
-  def article_member_path(member, short_name = nil)
-    if member.confirmed?
+  def link_to_article_member_path(member, short_name = nil)
+    if article_member_path member
       if short_name
-        content_tag(link_to, short_name, member_path(member.ticket))
+        content_tag :a, short_name, href: article_member_path(member)
       else
-        content_tag(link_to, member.short_name, member_path(member.ticket))
+        content_tag :a, member.short_name, href: article_member_path(member)
       end
     else
       short_name ? short_name : member.short_name
     end
   end
 
+  def article_member_path(member)
+    member.confirmed? ? member_path(member.ticket) : nil
+  end
+
   def article_team_path(team, link_title = nil)
     if team.active?
       if link_title
-        content_tag link_to, link_title, team_path(team)
+        content_tag :a, link_title, href: team_path(team)
       else
-        content_tag link_to, team.full_title, team_path(team)
+        content_tag :a, team.full_title, href: team_path(team)
       end
     else
     end
