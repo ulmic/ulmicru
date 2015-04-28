@@ -2,11 +2,15 @@ $ ->
   $circles = $('.event-circle')
 
   select_circle = ($circle)  ->
-    $circle.animate({ width: '100px', height: '100px', marginTop: '0px' }, 200)
+    $circle.addClass 'active'
+    $circle.css 'width', '100px'
+    $circle.css 'height', '100px'
+    $circle.css 'margin-top', '0px'
     $circle.css 'background-color', '#ffa911'
     return
 
   unselect_circle = ($circle) ->
+    $circle.removeClass 'active'
     $circle.css 'width', '20px'
     $circle.css 'height', '20px'
     $circle.css 'margin-top', '40px'
@@ -17,9 +21,14 @@ $ ->
     $circle.after("
       <div class = 'event-year'>
         #{$circle.data('year')}
-      </div>")
+      </div>
+      <div class = 'event-title'>
+        #{$circle.data('title')}
+      </div>
+        ")
     offset = $circle.offset()
     $('.event-year').offset left: offset.left + 15, top: offset.top + 30
+    $('.event-title').offset left: offset.left - 100, top: offset.top + 105
 
   hide_all_info = ->
     $('.event-year').remove()

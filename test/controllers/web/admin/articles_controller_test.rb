@@ -25,7 +25,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     assert_redirected_to admin_articles_path
     assert_equal attributes[:body], Article.last.body
   end
-  
+
   test "should not create article" do
     attributes = { body: @article.body }
     post :create, article: attributes
@@ -56,7 +56,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
 
   test "should destroy category" do
     count =  Article.count
-    delete :destroy, id: @article 
+    delete :destroy, id: @article
     @article.reload
     assert @article.removed?
   end
