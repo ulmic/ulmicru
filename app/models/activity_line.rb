@@ -6,7 +6,9 @@ class ActivityLine < ActiveRecord::Base
 
   mount_uploader :logo, PhotoUploader
 
-  enumerize :activity_type, in: [ :central_program, :local_project ]
+  enumerize :activity_type, in: [ :central_program, :local_project, :corporative ]
+
+  include ActivityLineScopes
 
   state_machine :state, initial: :active do
     state :active
