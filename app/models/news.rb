@@ -19,6 +19,7 @@ class News < ActiveRecord::Base
   end
 
   include NewsScopes
+  include Concerns::ViewsManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed
@@ -38,10 +39,6 @@ class News < ActiveRecord::Base
     event :restore do
       transition :removed => :unviewed
     end
-  end
-
-  def increase_views
-    update views: (views + 1)
   end
 
   private

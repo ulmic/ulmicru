@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
   validates :user_id,     presence: true
 
   include ArticleScopes
+  include Concerns::ViewsManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed
