@@ -15,6 +15,10 @@ module Web::ArticlesHelper
     member.confirmed? ? member_path(member.ticket) : nil
   end
 
+  def active_member_class(member)
+    'active' if member.confirmed?
+  end
+
   def article_team_path(team, link_title = nil)
     if team.active?
       if link_title

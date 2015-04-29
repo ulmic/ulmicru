@@ -10,14 +10,14 @@
     .small-3.columns
       .row.history-user-pic-row
         .small-6.columns
-          = link_to article_member_path(iliin) do
+          = link_to article_member_path(iliin), class: active_member_class(iliin) do
             .mic-userpic-circle.history-mic-userpic-circle{ style: "background-image: url(#{iliin.avatar.profile})" }
         .small-6.columns
-          = link_to article_member_path(titova) do
+          = link_to article_member_path(titova), class: active_member_class(titova) do
             .mic-userpic-circle.history-mic-userpic-circle{ style: "background-image: url(#{titova.avatar.profile})" }
       .row.history-user-pic-row
         .small-6.columns
-          = link_to article_member_path(domashevskaya) do
+          = link_to article_member_path(domashevskaya), class: active_member_class(domashevskaya) do
             .mic-userpic-circle.history-mic-userpic-circle{ style: "background-image: url(#{domashevskaya.avatar.profile})" }
         .small-6.columns
           .mic-userpic-circle.history-mic-userpic-circle{ style: "background-image: url(#{lapteva[:avatar]})" }
