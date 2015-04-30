@@ -116,6 +116,7 @@ ru:
         member_id: Руководитель
         type: Тип команды
         municipality: Муниципальное образование
+        members: Члены команды
         types:
           departament: Местное отделение
           subdivision: Структурное подразделение
