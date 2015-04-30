@@ -1,29 +1,102 @@
-$corp_color: #ffa911
-
-.row.history-user-pic-row
-  width: 300px
-  margin-bottom: 40px
-.mic-userpic-circle.history-mic-userpic-circle
-  z-index: 10
-  &.lapteva
-    background-image: image-url('people/lapteva.png')
-.mic-userpic-circle.history-mic-userpic-circle:before
-  content: ''
-  display: block
-  position: absolute
-  z-index: -1
-  top: -6px
-  left: 9px
-  right: 0px
-  bottom: -5px
-  border: 3px solid $corp_color
-  border-radius: 50%
-a
-  color: $corp_color
-a.active:hover
-  div
-    opacity: 0.5
-
-.history-text
-  text-align: justify
-  padding-left: 30px
+$orange-ui: #ffa531
+.history-banner 
+  width: 100%
+  height: 610px
+  background-image: url('http://cs624720.vk.me/v624720255/1d388/MsZfgK5UBWA.jpg')
+  background-size: cover
+  text-align: center
+  h1.title
+    display: inline-block
+    margin-top: 133px
+    color: #fff
+    text-transform: uppercase
+    padding: 9px 16px
+    background-color: $orange-ui
+    font: 100 48px 'mic-square-thin'
+  span.history-years
+    display: inline-block
+    font: 500 24.04px 'mic-bold'
+    background-color: rgba(256,256,256,0.6)
+    padding: 9px 19px
+    margin-top: 12px
+.history-big-block
+  width: 66.5%
+  margin: -200px auto 0px auto
+  background-color: #fff
+  border: 1px solid #e2e2e2
+  min-height: 500px
+  padding: 2%
+  .history-user-pic-row
+    width: 605px
+    margin: -50px auto 50px auto
+  .mic-userpic-circle
+    z-index: 10
+    border: 6px solid rgba(255, 255, 255, 1)
+    &.lapteva
+      background-image: image-url('people/lapteva.png')
+    &:hover &:before 
+      content: ''
+      display: block
+.history-big-block, .history-block
+  a
+    color: #ffa531
+.history-timeline
+  position: relative
+  min-height: 600px
+  overflow: visible
+  .history-line
+    left: 50%
+    margin-left: -4px
+    height: 100%
+    width: 4px
+    position: absolute
+    background-color: $orange-ui
+  .history-block
+    padding: 80px 0px 80px 0px
+    .history-date
+      position: absolute
+      left: 50%
+      margin-left: -80px
+      text-align: center
+      padding: 10px 0px 10px 0px
+      box-sizing: border-box
+      color: #fff
+      background-color: $orange-ui
+      display: inline-block
+      min-width: 160px
+      min-height: 74px
+      .history-date-year
+        font: 200 30px 'mic-square-reg'
+  .history-content
+    position: relative
+    display: inline-block
+    width: 40%
+    background-color: #fff
+    border: 1px solid #e2e2e2
+    padding: 15px
+    &:before,&:after
+      position: absolute
+      display: block
+      right: -4%
+      top: 0%
+      margin-top: 14px
+      margin-left: -14px
+      content: ''
+      width: 0
+      height: 0
+      border-style: solid
+      border-width: 10px 0 10px 20px
+      border-color: transparent transparent transparent #e2e2e2
+    &:after
+      right: -17px
+      top: 0%
+      border-color: transparent transparent transparent #fff
+    &.right
+      &:before,&:after
+        border-width: 10px 20px 10px 0px
+        left: -7px
+      &:before
+        border-color: transparent #e2e2e2 transparent transparent
+      &:after
+        left: -5px
+        border-color: transparent #fff transparent transparent
