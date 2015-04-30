@@ -53,6 +53,9 @@ body {
   font-family: 'mic';
   color: #333333;
 }
+body#noresponsive {
+    min-width: 1100px;
+}
 .container-big {
   width: 95%;
   margin: 0 auto;

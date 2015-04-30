@@ -139,34 +139,6 @@ ActiveRecord::Schema.define(version: 20150429122525) do
     t.text     "organizer_type"
   end
 
-  create_table "file_attachments", force: :cascade do |t|
-    t.integer  "record_id"
-    t.text     "record_type"
-    t.integer  "attachment_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  create_table "filling_points", force: :cascade do |t|
-    t.text     "title"
-    t.text     "point_type"
-    t.integer  "filling_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fillings", force: :cascade do |t|
-    t.text     "title"
-    t.integer  "implemention_id"
-    t.string   "implemention_type"
-    t.integer  "creator_id"
-    t.datetime "begin_date"
-    t.datetime "end_date"
-    t.text     "state"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
