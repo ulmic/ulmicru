@@ -14,6 +14,7 @@ ru:
       - :year
   helpers:
     enter: Войти
+    sign_out: Выйти
     no_author: Нет автора
     in: в
     from: c
@@ -51,6 +52,9 @@ ru:
       shared:
         errors:
           some_errors_was_found: Найдены ошибки при сохранении
+        navbar:
+          account: Настройки профиля
+          member_profile: Профиль члена МИЦ
       elements:
         mic_document:
           attachment: Приложение
