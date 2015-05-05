@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   include UserScopes
   include Concerns::AvatarManagment
+  include Concerns::SexManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed

@@ -16,11 +16,23 @@
                   .icon-door.min-icon
 
           %li.banner-container
-            .banner
-              .text
-                Жизнь
-                %br
-                в стиле миц
+            - if signed_in?
+              .banner.signed-in
+                .user-name
+                  = current_user.decorate.short_name
+                .icons-container
+                  - if current_user.is_man?
+                    .icon-man.min-icon
+                  - else
+                    .icon-woman.min-icon
+                  .icon-cogwheel.min-icon
+                  .icon-log-out.min-icon
+            - else
+              .banner
+                .text
+                  Жизнь
+                  %br
+                  в стиле миц
           %li
             - if @contact_article.present?
               = link_to article_path(@contact_article) do

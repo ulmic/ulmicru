@@ -19,8 +19,8 @@
 
   @import "foundation/components/top-bar";
 
-	border-bottom: 1px solid #ddd;
-	box-shadow: 0 0 4px rgba(0,0,0,0.5);
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 0 4px rgba(0,0,0,0.5);
 
   .dropdown-category-menu {
     position: relative;
@@ -75,14 +75,33 @@
       }
     }
     .icon-door {
-        display: inline-block;
-        background: image-url('door-icon.png');
-        background-position: -20px;
-        height: 28px;
-        width: 22px;
-        &:hover {
-            background-position: 1px;
-        }
+      display: inline-block;
+      background: image-url('door-icon.png');
+      background-position: -20px;
+      height: 28px;
+      width: 22px;
+      &:hover {
+        background-position: 1px;
+      }
+    }
+    .icon-cogwheel, .icon-log-out, .icon-woman, .icon-man {
+      height: 24px;
+      width: 24px;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    .icon-cogwheel {
+      background: asset-url('cogwheel-icon.png');
+    }
+    .icon-log-out {
+      background: asset-url('log-out-icon.png');
+    }
+    .icon-woman {
+      background: asset-url('woman-icon.png');
+    }
+    .icon-man {
+      background: asset-url('man-icon.png');
     }
   }
   .banner-container {
@@ -90,7 +109,7 @@
     height: rem-calc(20);
     width: $el-width;
     position: relative;
-		margin-right: 20px;
+    margin-right: 20px;
     .banner {
       width: $el-width;
       background-image: image-url('svg-navbar-fallback.png');
@@ -105,6 +124,24 @@
       padding: 0 rem-calc(10);
       line-height: rem-calc(16);
       display: table;
+      &.signed-in {
+        width: rem-calc(150);
+      }
+      .user-name {
+        font-size: 10px;
+        float: left;
+        margin-top: rem-calc(10);
+        margin-bottom: rem-calc(15);
+        width: rem-calc(75);
+      }
+      .icons-container {
+        margin-top: 0;
+        width: 100%;
+        .min-icon {
+          float: left;
+          margin-right: 3px;
+        }
+      }
       .text {
         display: table-cell;
         vertical-align: middle;
@@ -119,11 +156,11 @@
     background: image-url('topbar-logo.png') no-repeat;
     height: rem-calc(80);
     min-width: $el-min-width;
-		width: $el-width;
+    width: $el-width;
     display: inline-block;
     position: absolute;
     left: 50% - $el-width/2;
-		margin-top: 5px;
+    margin-top: 5px;
   }
   a {
     font-family: 'mic-bold';
