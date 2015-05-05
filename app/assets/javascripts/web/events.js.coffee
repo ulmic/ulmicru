@@ -2,7 +2,7 @@ $ ->
   $participants_count_span = $('span#participants_count')
   $participants_list = $('ul.participants')
 
-  participant_template = (participant, role) ->
+  participant_member_template = (participant, role) ->
     "<li class='participant mic-member' id = 'participant_#{participant.id}'>
        <a href='#{Routes.member_path(participant.ticket)}'>
          <img src='#{participant.avatar.url}'>
@@ -16,6 +16,19 @@ $ ->
              #{I18n.t("enumerize.event.registration.role.#{role}")}
            </div>
          </a>
+       </section>
+     </li>"
+
+  participant_user_template = (participant, role) ->
+    "<li class='participant mic-member' id = 'participant_#{participant.id}'>
+       <img src='/default-man-icon.png'>
+       <section>
+         <div class='name'>
+           #{participant.first_name} #{participant.last_name}
+         </div>
+         <div class='role'>
+           #{I18n.t("enumerize.event.registration.role.#{role}")}
+         </div>
        </section>
      </li>"
 
@@ -33,7 +46,10 @@ $ ->
   add_event_participant = (response) ->
     participant = JSON.parse response.participant
     role = response.role
-    $participants_list.prepend participant_template participant, role
+    if participant.ticket == null
+      $participants_list.prepend participant_user_template participant, role
+    else
+      $participants_list.prepend participant_member_template participant, role
     increase_participant_count()
 
   remove_event_participant = (response) ->

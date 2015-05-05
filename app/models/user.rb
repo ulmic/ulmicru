@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   enumerize :role, in: [ :user, :admin ], default: :user
 
   include UserScopes
+  include Concerns::AvatarManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed

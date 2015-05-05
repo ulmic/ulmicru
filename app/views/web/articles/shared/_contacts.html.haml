@@ -25,7 +25,7 @@
     - presidium.users.each do |user|
       .small-2.columns
         = link_to member_path(user) do
-          .mic-userpic-circle{ style: "background-image: url(#{user.avatar.profile})" }
+          .mic-userpic-circle{ style: "background-image: url(#{user.avatar.profile.default_url(user.first_name)})" }
         .contacts-data
           = user.decorate.short_name
           %br

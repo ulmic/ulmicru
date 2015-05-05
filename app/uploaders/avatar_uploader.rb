@@ -4,7 +4,7 @@ class AvatarUploader < ApplicationUploader
 
   include ImageDefaults
 
-  def default_url(email = "default@email.com")
+  def default_url(email = "default@email.com", name = nil)
     #ActionController::Base.helpers.asset_path("images/default_avatar.png")
     hash = Digest::SHA256.hexdigest email
     url  = "http://www.gravatar.com/avatar/#{hash}.png"

@@ -12,4 +12,8 @@ class UserDecorator < ApplicationDecorator
   def short_name
     "#{first_name} #{last_name}"
   end
+
+  def profile_avatar
+    default_avatar
+  end
 end

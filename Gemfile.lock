@@ -391,6 +391,8 @@ GEM
       sexp_processor (~> 4.1)
     russian (0.6.0)
       i18n (>= 0.5.0)
+    russian_sex (0.0.1)
+      unicode_utils (>= 1.4.0)
     rvm-capistrano (1.5.0)
       capistrano (>= 2.15.4)
     sass (3.4.13)
@@ -453,6 +455,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.6)
+    unicode_utils (1.4.0)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -527,6 +530,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rmagick
   russian
+  russian_sex
   rvm-capistrano
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -42,6 +42,10 @@ class MemberDecorator < ApplicationDecorator
     parent.avatar.medium if parent.present?
   end
 
+  def profile_avatar
+    avatar.profile if avatar
+  end
+
   def select_presentation
     "#{ticket} | #{first_name} #{last_name}"
   end
