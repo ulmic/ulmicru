@@ -1,4 +1,5 @@
 - presidium = Team.find(1)
+- locale_headers = Team.find(3)
 .news.articles.container-big
   %h3.title
     = @article.title
@@ -14,6 +15,13 @@
     .small-6.columns
       %h4
         Президиум МИЦ
+      = link_to member_path(presidium.member) do
+        .mic-userpic-circle{ style: "background-image: url(#{presidium.member.avatar.profile})" }
       - presidium.members.each do |member|
         = link_to member_path(member) do
           .mic-userpic-circle{ style: "background-image: url(#{member.avatar.profile})" }
+        = link_to member.email, "mailto:#{member.email}"
+      - locale_headers.members.each do |member|
+        = link_to member_path(member) do
+          .mic-userpic-circle{ style: "background-image: url(#{member.avatar.profile})" }
+        = link_to member.email, "mailto:#{member.email}"
