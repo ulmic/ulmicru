@@ -98,6 +98,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'colorize', '0.6.0'
   gem 'better_errors'
+  gem 'railroady'
 end
 
 group :test do
