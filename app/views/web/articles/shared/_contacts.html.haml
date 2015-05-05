@@ -11,17 +11,33 @@
         %b
           Адрес Президиума МИЦ
         Россия, г. Ульяновск, ул. Минаева, д.50 (вход со стороны учебного корпуса с вывеской "Открыты для открытий"), 1 этаж, каб. на цокольном этаже здания (как заходите в блок с баннером "Открыты для открытий" спускаетесь на один этаж вниз).
-  .row
-    .small-6.columns
-      %h4
-        Президиум МИЦ
+  .row.contacts-people
+    %h4
+      Председатель МИЦ
+    .small-2.columns
       = link_to member_path(presidium.member) do
         .mic-userpic-circle{ style: "background-image: url(#{presidium.member.avatar.profile})" }
-      - presidium.members.each do |member|
-        = link_to member_path(member) do
-          .mic-userpic-circle{ style: "background-image: url(#{member.avatar.profile})" }
-        = link_to member.email, "mailto:#{member.email}"
-      - locale_headers.members.each do |member|
-        = link_to member_path(member) do
-          .mic-userpic-circle{ style: "background-image: url(#{member.avatar.profile})" }
-        = link_to member.email, "mailto:#{member.email}"
+      .contacts-data
+        = presidium.member.decorate.short_name
+  .row.contacts-people
+    %h4
+      Президиум МИЦ
+    - presidium.users.each do |user|
+      .small-2.columns
+        = link_to member_path(user) do
+          .mic-userpic-circle{ style: "background-image: url(#{user.avatar.profile})" }
+        .contacts-data
+          = user.decorate.short_name
+          %br
+          = link_to user.email, "mailto:#{user.email}"
+  .row.contacts-people
+    %h4
+      Областные руководители
+    - locale_headers.users.each do |user|
+      .small-2.columns
+        = link_to member_path(user) do
+          .mic-userpic-circle{ style: "background-image: url(#{user.avatar.profile})" }
+        .contacts-data
+          = user.decorate.short_name
+          %br
+          = link_to user.email, "mailto:#{user.email}"
