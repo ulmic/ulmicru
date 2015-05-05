@@ -23,7 +23,7 @@
                 .icons-container
                   .icons
                     - if current_user.is_member?
-                      = link_to member_path(current_user), title: t('layouts.web.shared.navbar.member_profile') do
+                      = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
                         - if current_user.is_man?
                           .icon-man.min-icon
                         - else

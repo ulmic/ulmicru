@@ -65,6 +65,7 @@ $(document).ready(function() {
   $('.link').click(function() {
     location.href = $(this).attr('data-href');
   });
+  $('select.select2').select2();
 
   $('.slider-link').click(function() {
       if ($(this).hasClass("slick-active")) {

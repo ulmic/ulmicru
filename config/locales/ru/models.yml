@@ -39,6 +39,7 @@ ru:
         parent: Крёстный
         children: Крестники
         state: Статус на сайте
+        teams: Мои команды
       questionary:
         first_name: Имя
         patronymic: Отчество
