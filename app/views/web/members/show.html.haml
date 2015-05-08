@@ -76,11 +76,22 @@
                         %span.text
                           = child.short_name
                     .small-6.columns
-                      - if @children.count > count
+                      - if @children.count > count && index == 0
                         .view-all
-                          %a.text{ href: '#' }
+                          %a.text{ href: '#', id: 'view_all' }
                             = t('helpers.view_all')
                             = "(#{@children.count})"
+                          %a.text{ style: 'display: none', href: '#', id: 'hide_all' }
+                            = t('helpers.hide')
+              - @children.drop(count).each_slice(3) do |childs|
+                .godchilds.small-12.columns.added.hidden
+                  .row
+                    - childs.each do |child|
+                      .small-4.columns
+                        .mic-userpic-circle{ style: "background-image: url(#{child.avatar})" }
+                        .name
+                          %span.text
+                            = child.short_name
   .row.user-content
     %ul.tabs{'data-tab' => ''}
       - if @registrations.any?

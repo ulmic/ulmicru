@@ -24,6 +24,7 @@
 //= require placeholders
 //= require localities
 //= require events
+//= require web/members
 //= require web/events
 //= require news
 //= require foundation
