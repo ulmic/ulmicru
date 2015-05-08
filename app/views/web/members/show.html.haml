@@ -2,7 +2,7 @@
 .container.account
   .row
     .small-5.columns
-      .user-photo
+      .user-photo{}
         = image_tag @member.avatar.profile, class: :photo
         .overlay
           .text
@@ -47,10 +47,14 @@
           %hr.orange
           .user-team
             .team-label
-              = "#{t('activerecord.models.team')}:"
+              - if @member.teams.count == 1
+                = "#{t('activerecord.models.team')}:"
+              - else
+                = "#{t('activerecord.models.team').pluralize(:ru)}:"
             - @member.teams.each_with_index do |team, index|
               .user-team-name
-                = link_to team.decorate.full_title, team_path(team), class: "#{'more' if index > 0}"
+                %span{ class: "#{'more' if index > 0}" }
+                  = team.decorate.full_title
               %br
           .row.god-fathers-childs
             - if @parent.present?
