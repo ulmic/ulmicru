@@ -53,15 +53,11 @@
                 = link_to team.decorate.full_title, team_path(team), class: "#{'more' if index > 0}"
               %br
           .row.god-fathers-childs
-            - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
-            - if @member.parent.present?
-              .godfather.small-4.columns{ class: present_link_class(@member.parent), data: { href: present_member_path(@member.parent) } }
+            - if @parent.present?
+              .godfather.small-4.columns{ class: present_link_class(@parent), data: { href: present_member_path(@parent) } }
                 .title
                   = "#{t('activerecord.attributes.member.parent')}:"
-                .mic-userpic-circle{ style: "background-image: url(#{@member.parent_avatar})" }
-                .name
-                  %a.text{href: ""}
-                    = @member.parent.decorate.short_name
+                = render 'web/members/shared/mic_userpic_circle', member: @parent
             - if @children.any?
               - @member.parent.present? ? count = 2 : count = 3
               .godchilds.small-8.columns
@@ -71,10 +67,7 @@
                       - if index == 0
                         .title
                           = "#{t('activerecord.attributes.member.children')}:"
-                      .mic-userpic-circle{ style: "background-image: url(#{child.avatar})" }
-                      .name
-                        %span.text
-                          = child.short_name
+                      = render 'web/members/shared/mic_userpic_circle', member: child
                     .small-6.columns
                       - if @children.count > count && index == 0
                         .view-all
@@ -88,10 +81,7 @@
                   .row
                     - childs.each do |child|
                       .small-4.columns
-                        .mic-userpic-circle{ style: "background-image: url(#{child.avatar})" }
-                        .name
-                          %span.text
-                            = child.short_name
+                        = render 'web/members/shared/mic_userpic_circle', member: child
   .row.user-content
     %ul.tabs{'data-tab' => ''}
       - if @registrations.any?

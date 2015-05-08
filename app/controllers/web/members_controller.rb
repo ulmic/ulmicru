@@ -36,6 +36,7 @@ class Web::MembersController < Web::ApplicationController
     if member.confirmed?
       @member = member.decorate
       @children = MemberDecorator.decorate_collection member.children.shuffle
+      @parent = MemberDecorator.decorate member.parent
       @registrations = member.registrations.decorate
       @news = NewsDecorator.decorate_collection member.tags.news.map &:record
       @articles = member.tags.articles.map &:record
