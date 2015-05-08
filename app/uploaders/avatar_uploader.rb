@@ -18,6 +18,10 @@ class AvatarUploader < ApplicationUploader
     process :resize_to_fill => [100, 100, 'North']
   end
 
+  version :element do
+    process :resize_to_fill => [200, 200, 'Center']
+  end
+
   version :profile do
     process :resize_to_fill => [500, 680, 'Center']
   end

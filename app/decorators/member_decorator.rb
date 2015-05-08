@@ -46,6 +46,10 @@ class MemberDecorator < ApplicationDecorator
     avatar.profile if avatar
   end
 
+  def element_avatar
+    avatar.element if avatar
+  end
+
   def select_presentation
     "#{ticket} | #{first_name} #{last_name}"
   end

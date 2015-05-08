@@ -16,4 +16,6 @@ class UserDecorator < ApplicationDecorator
   def profile_avatar
     default_avatar
   end
+
+  alias element_avatar profile_avatar
 end
