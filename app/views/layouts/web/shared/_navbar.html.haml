@@ -23,11 +23,12 @@
                 .icons-container
                   .icons
                     - if current_user.is_member?
-                      = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
-                        - if current_user.is_man?
-                          .icon-man.min-icon
-                        - else
-                          .icon-woman.min-icon
+                      - if current_user.confirmed?
+                        = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
+                          - if current_user.is_man?
+                            .icon-man.min-icon
+                          - else
+                            .icon-woman.min-icon
                     .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
                     = link_to session_path, method: :delete, title: t('helpers.sign_out') do
                       .icon-log-out.min-icon.link
