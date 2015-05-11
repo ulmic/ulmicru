@@ -142,6 +142,7 @@ ru:
       role:
         admin: Администратор
         user: Пользователь
+        author: Автор
     activity_line:
       activity_type:
         central_program: Центральная программа

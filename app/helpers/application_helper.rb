@@ -9,7 +9,7 @@ module ApplicationHelper
     else
       title_text = "#{page_title} | #{t('application.name')}"
     end
-      content_for(:title) { title_text }
+    content_for(:title) { title_text }
   end
 
   def menu_item(name = nil, path = '#', *args, &block)
