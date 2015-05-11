@@ -42,14 +42,6 @@ GIT
       term-ansicolor (~> 1.0.7)
 
 GIT
-  remote: git://github.com/zpaulovics/datetimepicker-rails.git
-  revision: c5405f3486b57a52416caf93b79fc09d56930a82
-  submodules: true
-  specs:
-    datetimepicker-rails (4.7.15)
-      momentjs-rails (>= 2.9.0)
-
-GIT
   remote: git://github.com/zurb/foundation-rails.git
   revision: a709f2e60f8428c979397cbaedc19077be1a8cf5
   specs:
@@ -494,7 +486,6 @@ DEPENDENCIES
   colorize (= 0.6.0)
   configus
   coveralls
-  datetimepicker-rails!
   draper
   enumerize
   factory_girl_rails
