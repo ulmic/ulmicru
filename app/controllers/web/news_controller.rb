@@ -8,10 +8,9 @@ class Web::NewsController < Web::ApplicationController
     unless @news.is_published?
       #FIXME there 404 error path
     end
-    activity_line_tag = @news.tags.activity_lines.first
-    @activity_line = ActivityLineDecorator.decorate activity_line_tag.target if activity_line_tag
-    event_tag = @news.tags.events.first
-    @event = EventDecorator.decorate event_tag.target if event_tag
+    @activity_lines = @news.tags.activity_lines
+    @events = @news.tags.events
+    @teams = @news.tags.teams
     topic_news_tags = @news.tags.last 2
     @topic_news = []
     topic_news_tags.each do |tag|

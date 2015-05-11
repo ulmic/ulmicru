@@ -36,7 +36,7 @@ gem 'russian_sex'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'rmagick'
-gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', submodules: true
 gem 'js-routes'
 gem 'i18n-js', git: 'https://github.com/fnando/i18n-js'
 gem 'omniauth-google-oauth2'

@@ -44,11 +44,13 @@
               - @strings.each do |tag|
                 = link_to tag.text, tag_path(tag), class: 'text-tag string-tag'
               - @activity_lines.each do |activity_line|
-                = link_to tag.text, tag_path(tag), class: 'text-tag activity-line-tag'
+                %span{ class: 'text-tag activity-line-tag' }
+                  = activity_line.target.decorate.full_title
               - @teams.each do |team|
-                = link_to tag.text, tag_path(tag), class: 'text-tag team-tag'
-              - @events.each do |events|
-                = link_to tag.text, tag_path(tag), class: 'text-tag team-tag'
+                %span{ class: 'text-tag activity-line-tag' }
+                  = team.target.decorate.full_title
+              - @events.each do |event|
+                = link_to event.target.title, tag_path(event), class: 'text-tag team-tag'
           - if @members.any?
             %li.humans
               .icon-human
