@@ -1,0 +1,18 @@
+@import "foundation/functions";
+
+@mixin grayscale($percent: 100%) {
+  -webkit-filter: grayscale($percent);
+  -moz-filter: grayscale($percent);
+  -ms-filter: grayscale($percent);
+  -o-filter: grayscale($percent);
+  filter: grayscale($percent);
+  /* filter: url(grayscale.svg#greyscale); Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}
+
+@mixin social-icon() {
+    width: 27px;
+    height: 28px;
+    display: inline-block;
+    background: image-url('header-icons.png');
+}

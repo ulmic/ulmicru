@@ -1,10 +1,19 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
   def index
-    @members = ::MemberDecorator.decorate_collection Member.presented
+    @unviewed_members = ::MemberDecorator.decorate_collection Member.unviewed
+    @confirmed_members = ::MemberDecorator.decorate_collection Member.confirmed
+    @declined_members = ::MemberDecorator.decorate_collection Member.declined
+    @unavailable_members = ::MemberDecorator.decorate_collection Member.unavailable
   end
 
   def new
-    @member = Member.new
+    if params[:id]
+      user = User.find params[:id]
+      user.update(type: 'Member')
+      @member = user.becomes! Member
+    else
+      @member = Member.new
+    end
     @member_form = MemberForm.new(@member)
   end
 
@@ -14,9 +23,17 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def create
-    @member = Member.new
-    @member_form = MemberForm.new(@member)
-    @member_form.submit(params[:member])
+    member = Member.find_by_ticket params[:member][:ticket]
+    if member
+      if member.unavailable?
+        @member_form = MemberForm.find_with_model member.id
+      else
+        redirect_to admin_members_path
+      end
+    else
+      @member_form = MemberForm.new_with_model
+    end
+    @member_form.submit params[:member]
     if @member_form.save
       redirect_to admin_members_path
     else

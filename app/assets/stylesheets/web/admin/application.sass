@@ -1,14 +1,63 @@
 /*
-
- *= require font-awesome
- *= require froala_editor.min.css
- *= require froala_style.min.css
+ *= require tabs
+ *= require select2
+ *= require select2-bootstrap
+ *= require_tree .
  */
 
 @import 'bootstrap-sprockets'
 @import 'bootstrap'
 @import 'bootstrap-datetimepicker'
-@import 'font-awesome'
 
 .link
   cursor: pointer
+
+a.btn-xs
+  padding: 5px 6px
+  margin-right: 5px
+  &:last-child
+    margin-right: 0px
+a.btn.dropdown-toggle
+  display: inline
+.btn-toolbar
+  .btn-group
+    a
+      margin-right: 0px
+
+.indicator
+  margin-right: 5px
+
+form
+  .actions
+    margin-top: 10px
+    border-top: 1px solid lightgray
+    padding-top: 10px
+
+td.actions
+  width: 100px
+
+.loading
+  width: 100%
+  height: 35px
+  opacity: 0.5
+  background-color: black
+  position: fixed
+  bottom: 0px
+  text-align: center
+  display: none
+  img
+    margin-top: 2px
+    height: 33px
+    width: 33px
+
+.alert
+  ul
+    list-style: none
+
+/* hide font toolbar
+
+span#cke_81.cke_toolbar
+  display: none !important
+.select2-container
+  width: 100%
+

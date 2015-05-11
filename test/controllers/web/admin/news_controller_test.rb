@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Web::Admin::NewsControllerTest < ActionController::TestCase
   setup do
+    admin = create :admin
+    sign_in admin
     @news = create :news
-    @user = create :user
-    sign_in @user
   end
 
   test "should get index" do
@@ -29,7 +29,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     attributes = { body: @news.body }
 
     post :create, news: attributes
-    assert_response :redirect
+    assert_response :success
   end
 
   test "should get edit by admin" do
@@ -51,7 +51,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     attributes[:title] = nil
     put :update, id: @news, news: attributes
 
-    assert_response :redirect
+    assert_response :success
   end
 
   test "should destroy news" do

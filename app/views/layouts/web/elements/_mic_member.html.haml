@@ -1,0 +1,12 @@
+%a{ href: "#{link}" }
+  %img{ src: "#{img_src}" }
+%section
+  %a{ href: "#{link}" }
+    .name
+      = "#{name}"
+    .role
+      = (role ||= "")
+
+-#%p
+  %a
+    = "#{text}"

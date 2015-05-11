@@ -1,0 +1,25 @@
+- model_class = User
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:first_name)
+      %th= model_class.human_attribute_name(:last_name)
+      %th= model_class.human_attribute_name(:email)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - @users.each do |user|
+      %tr.link{ data: { href: edit_admin_user_path(user) } }
+        %td= user.id
+        %td= user.first_name
+        %td= user.last_name
+        %td= user.email
+        %td.actions
+          - unless user.is_member?
+            = link_to new_admin_member_path(id: user.id), class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-plus
+          = link_to edit_admin_user_path(user), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_user_path(user), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+= link_to t('.new', default: t('helpers.links.new')), new_admin_user_path, class: 'btn btn-primary'

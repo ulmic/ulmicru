@@ -1,12 +1,21 @@
+- current_title = page_title(action, User.model_name.human)
+- title current_title, :admin
 .page-header
-  %h1= page_title(action, User.model_name.human)
+  %h1= current_title
 .row
-  .col-lg-6
-    = simple_form_for @user_form, url: { controller: 'web/admin/users', action: action }, input_html: { class: 'form-horizontal' } do |f|
+  .col-lg-12
+    = render 'layouts/web/admin/shared/errors', object: @user_form
+.row
+  .col-lg-12
+    = simple_form_for [:admin, @user_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :first_name, as: :string
+      = f.input :patronymic, as: :string
       = f.input :last_name, as: :string
       = f.input :email, as: :string
       = f.input :password, as: :string
+      -#FIXME f.hint :role
       = f.input :role
+      = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      = f.hint t('hints.admin.user.role')
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_users_path, class: 'btn btn-default'

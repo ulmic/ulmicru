@@ -1,0 +1,43 @@
+- presidium = Team.find(1)
+- locale_headers = Team.find(3)
+.news.articles.container-big
+  %h3.title
+    = @article.title
+  .row
+    .small-6.columns
+      %iframe{frameborder: '0', height: '450', src: 'https://www.google.com/maps/embed/v1/place?q=%D1%83%D0%BB%D1%8C%D1%8F%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%20%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D0%B2%D0%B0%2050&key=AIzaSyDC054dWb7cQ_mULJk3d1UBK6pN8msCx1g&language=ru', style: 'border:0', width: '100%'}
+    .small-6.columns
+      %p
+        %b
+          Адрес Президиума МИЦ
+        Россия, г. Ульяновск, ул. Минаева, д.50 (вход со стороны учебного корпуса с вывеской "Открыты для открытий"), 1 этаж, каб. на цокольном этаже здания (как заходите в блок с баннером "Открыты для открытий" спускаетесь на один этаж вниз).
+  .row.contacts-people
+    %h4
+      Председатель МИЦ
+    .small-2.columns
+      = link_to member_path(presidium.member) do
+        .mic-userpic-circle{ style: "background-image: url(#{presidium.member.avatar.profile})" }
+      .contacts-data
+        = presidium.member.decorate.short_name
+  .row.contacts-people
+    %h4
+      Президиум МИЦ
+    - presidium.users.each do |user|
+      .small-2.columns
+        = link_to member_path(user) do
+          .mic-userpic-circle{ style: "background-image: url(#{user.avatar.profile.default_url(user.first_name)})" }
+        .contacts-data
+          = user.decorate.short_name
+          %br
+          = link_to user.email, "mailto:#{user.email}"
+  .row.contacts-people
+    %h4
+      Областные руководители
+    - locale_headers.users.each do |user|
+      .small-2.columns
+        = link_to member_path(user) do
+          .mic-userpic-circle{ style: "background-image: url(#{user.avatar.profile})" }
+        .contacts-data
+          = user.decorate.short_name
+          %br
+          = link_to user.email, "mailto:#{user.email}"

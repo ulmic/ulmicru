@@ -1,5 +1,5 @@
 class QuestionaryForm < ApplicationForm
   self.main_model = :questionary
 
-  attributes :first_name, :last_name, :patronymic, :email, :user_id, :motto, :ticket, :parent_id, :mobile_phone, :birth_date, :home_adress, :municipality, :locality, :avatar, :state, :experience, :member_id, :want_to_do
+  attributes :first_name, :last_name, :patronymic, :email, :motto, :mobile_phone, :birth_date, :home_adress, :municipality, :locality, :avatar, :state, :experience, :want_to_do, required: true
 end

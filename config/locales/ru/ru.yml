@@ -1,15 +1,38 @@
 ru:
   application:
-    name: Сайт МИЦ
+    name: МИЦ
   organization:
     full_name: "Ульяновская областная молодёжная общественная организация «Молодёжный инициативный центр»"
     short_name: "УОМОО «МИЦ»"
     send_request: Подать заявку на вступление в МИЦ
+    name: Сайт МИЦ
+    floors_growth: Этажи роста
+  date:
+    order:
+      - :day
+      - :month
+      - :year
   helpers:
     enter: Войти
+    sign_out: Выйти
+    no_author: Нет автора
+    in: в
+    from: c
+    until: по
+    year: 'года'
+    short_year: 'г.'
+    short_years: 'гг.'
+    more_info: 'Подробнее'
+    hide: 'Скрыть'
+    cancel: Отмена
+    view_all: посмотреть всех
     actions:
       update: Редактировать
       create: Создать
+      destroy: Удалить
+      show: Показать
+      index: Все
+      edit: Редактировать
     links:
       actions: Действия
       edit: Изменить
@@ -18,10 +41,24 @@ ru:
       new: Добавить
       save: Сохранить
       back: Назад
+      select: Выбрать
       approve: Подтвердить
       decline: Отклонить
       published: Опубликованные новости
       unpublished: Неопубликованные новости
+      add: Добавить
+  layouts:
+    web:
+      shared:
+        errors:
+          some_errors_was_found: Найдены ошибки при сохранении
+        navbar:
+          account: Настройки профиля
+          member_profile: Профиль члена МИЦ
+      elements:
+        mic_document:
+          attachment: Приложение
+          download: Скачать
   social_networks:
     vkontakte: ВКонтакте
     facebook: Facebook
@@ -35,35 +72,86 @@ ru:
             changed: Доступ к этому аттрибуту успешно изменён
             not_changed: Доступ к этому аттрибуту не изменён
   state_machines:
+    member:
+      state:
+        states:
+          unviewed: Новые
+          confirmed: Подтверждённые
+          declined: Отклонённые
+          unavailable: Отсутствуют на сайте
+    news:
+      state:
+        states:
+          published: Опубликованное
+          unpublished: Неопубликованное
+          main: Главные новости
     questionary:
       state:
+        states:
+          on_the_trial: Испытательный срок
+          unviewed: Новые
+          declined: Отклонённые
         events:
           put_on_the_trial: Поставить на испытательный срок
           confirm: Принять в организацию
   web:
+    welcome:
+      index:
+        news: Новости
+        all_news: Все новости
+        events: Мероприятия
     users:
       account:
         index:
+          title: Настройка профиля
           you_are_member_mic: Вы являетесь членом МИЦ
           you_are_not_member_mic: Вы не являетесь членом МИЦ
           enter_datas_mic_member: Заполните профиль члена МИЦ
           my_position_in_mic: История моих должностей в МИЦ
+          admin_panel: Панель администратора
       new:
         register: Регистрация
-    admin:
-      trash:
-        name: Имя
-        title: Корзина
-        deleted: Удалённые
+        title: Регистрация на сайте
+    news:
+      show:
+        same_themes: "Материалы в тему:"
+    articles:
+      shared:
+        default_show:
+          same_themes: "Смотри также:"
+    events:
+      show:
+        where: 'Где'
+        when: 'Когда'
+        organizator: 'Организатор'
+        attend: Участвовать
+        i_attend: Я участвую
+        attenders: Участники
+        hide: Скрыть
+        see_more: Увидеть больше
+    members:
+      new:
+        title: Анкета-заявка на вступление в Молодёжный инициативный центр
+      show:
+        learn_or_work: 'Учусь/Работаю'
+        live: 'Живу'
+        ticket: 'Членский билет'
+    sessions:
+      new:
+        title: Авторизация
+        register: Зарегистрироваться
+  forms:
+    placeholders:
+      web:
+        member:
+          default:
+            mobile_phone: Формат номера телефона с +7
   time:
     formats:
-      default: "%Y/%m/%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
-  datepicker:
-    dformat: '%d/%m/%Y'             # display format of the date (this is the default, can be ommited)
-    pformat: 'DD/MM/YYYY'           # picking format of the date (this is the default, can be ommited)
-  timepicker:
-    dformat: '%R'                   # display format of the time (this is the default, can be ommited)
-    pformat: 'HH:mm'                # picking format of the time (this is the default, can be ommited)
-  dayViewHeaderFormat: 'MMMM YYYY'
+      default: "%a, %d %b %Y, %H:%M"
+      time: "%H:%M"
+      short: "%d %b, %H:%M"
+      long: "%d %B %Y, %H:%M"
+      date: "%Y-%m-%d"
+      md: "%m-%d"
+      descr: "%d %b %Y"

@@ -14,10 +14,14 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
+/tmp
+*.sw*
+*.sqlite3
 config/secrets.yml
 config/database.yml
 config/oauth.yml
 ulmic_test
+<<<<<<< HEAD
 /.bundle/db/*.sqlite3
 /log/*.log
 /tmp
@@ -42,4 +46,11 @@ pickle-email-*.html
 .project
 config/initializers/secret_token.rb
 config/database.yml
-Gemfile.lock 
+Gemfile.lock
+.capistrano/
+
+
+\#*\#
+.\#*
+
+*~

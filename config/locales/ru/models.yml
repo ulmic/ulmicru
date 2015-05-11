@@ -5,6 +5,14 @@ ru:
       member: Член организации
       questionary: Анкета на вступление
       news: Новость
+      article: Статья
+      category: Категория
+      position: Должность
+      banner: Баннер
+      activity_line: Направление деятельности
+      event: Мероприятие
+      team: Команда
+      document: Документ
     attributes:
       user:
         first_name: Имя
@@ -28,7 +36,10 @@ ru:
         home_adress: Домашний адрес
         municipality: Муниципальное образование
         locality: Населённый пункт
-        user: Прикреплённый Пользователь
+        parent: Крёстный
+        children: Крестники
+        state: Статус на сайте
+        teams: Мои команды
       questionary:
         first_name: Имя
         patronymic: Отчество
@@ -51,6 +62,99 @@ ru:
         published_at: Дата публикации
         created_at: Создано
         user_id: Автор
-        lead: Краткое содержание
+        lead: Лид
         photo: Фотография
-
+        tags: Тэги
+        state: Статус
+        attachments: Приложения
+      article:
+        title: Заголовок
+        body: Контекст
+        view: Шаблон
+        category_id: Категория
+        created_at: Создано
+        tags: Теги
+        attachments: Приложения
+      category:
+        name: Название
+        parent: Родитель
+        parent_id: Связь с родителем
+      position:
+        title: Название
+        begin_date: Дата вступления в должность
+        end_date: Дата ухода с должности
+      event:
+        title: Название
+        description: Описание
+        main_photo: Главное фото
+        begin_date: Дата и время начала
+        end_date: Дата и время окончания
+        place: Место проведения
+        creator: Создатель
+        duration: Время проведения
+        activity_line: Направление деятельности
+        organizer_type: Тип организатора
+        organizer_id: Организатор
+        activity_line: Направление деятельности
+      activity_line:
+        title: Название
+        description: Описание
+        activity_type: Тип
+        found_date: Дата основания
+        member: Руководитель
+        logo: Логотип
+        member_id: Руководитель
+      banner:
+        photo: Изображение
+        link: Ссылка
+        begin_date: Дата установки
+        end_date: Дата снятия
+        duration: Период видимости
+      team:
+        title: Название
+        description: Описание
+        member: Руководитель
+        member_id: Руководитель
+        type: Тип команды
+        municipality: Муниципальное образование
+        members: Члены команды
+        types:
+          departament: Местное отделение
+          subdivision: Структурное подразделение
+          administration: Административные органы
+      event:
+        registration:
+          role: Роль
+      document:
+        file: Файл
+        title: Название
+    state_machines:
+      member:
+        state:
+          states:
+            unviewed: Непросмотренный
+            confirmed: Подтверждённый
+            declined: Отклонённый
+            removed: Удалённый
+            unavailable: Недоступный
+  enumerize:
+    user:
+      role:
+        admin: Администратор
+        user: Пользователь
+    activity_line:
+      activity_type:
+        central_program: Центральная программа
+        local_project: Областной проект
+    event:
+      registration:
+        role:
+          participant: Участник
+          organizer: Организатор
+  scopes:
+    event:
+      future: Грядущие
+      current: Текущие
+      past: Прошедшие
+      unviewed: Не подтверждённые
+      declined: Отклонённые

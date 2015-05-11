@@ -1,0 +1,18 @@
+- model_class = Questionary
+- tabs = [ :on_the_trial, :unviewed, :declined ]
+- title model_class.model_name.human.pluralize(:ru), :admin
+.page-header
+  %h1
+    = model_class.model_name.human.pluralize(:ru)
+    = link_to t('.new', default: t('helpers.links.new')), new_admin_questionary_path, class: 'btn btn-primary'
+#tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    - tabs.each do |tab|
+      %li
+        = link_to t("state_machines.#{model_class.model_name.to_s.downcase}.state.states.#{tab}").pluralize(:ru), "##{tab}"
+  #on_the_trial
+    = render 'questionaries_list', questionaries: @on_the_trial_questionaries
+  #unviewed
+    = render 'questionaries_list', questionaries: @unviewed_questionaries
+  #declined
+    = render 'questionaries_list', questionaries: @declined_questionaries

@@ -1,0 +1,181 @@
+@import "mixins";
+@import "elements";
+@import "icons";
+
+$left-header-margin: 10px;
+$event-lead-margin: 2rem;
+$slopy-height: 140px;
+.event-container {
+		padding-top: 24px;
+		padding-bottom: $slopy-height;
+    font-family: 'mic-square-reg';
+		background-size: cover;
+		background-repeat: no-repeat;
+		position: relative;
+		overflow: hidden;
+		&:after {
+				// TODO подчистить, чтобы не лагало
+				height: $slopy-height;
+				content: "";
+				position: absolute;
+				bottom: 0;
+				background-color:#fff;
+				width:101%;
+
+				transition: transform 0.3s ease, height 0.3s ease;
+
+				transform: rotate(5.7deg) skewX(6deg);
+
+				transform-origin:0 0;
+		}
+}
+.event-container.more-info-viewed {
+		&:after {
+				transform: rotate(0deg) skewX(0deg);
+				height: 85px;
+		}
+}
+
+.event-header-overlay {
+		height: 100%;
+		width: 100%;
+		background-color: #000;
+		left: 0;
+		top: 0;
+		position: absolute;
+		opacity: 0.40;
+}
+.event-lead, .more-lead-info-content {
+		margin-left: $event-lead-margin;
+		margin-right: - $event-lead-margin;
+		font-family: mic;
+		text-align: justify;
+}
+
+.event-header {
+		color: white;
+		position: relative;
+		.title {
+				margin-left: $left-header-margin/2;
+				color: #ffffff;
+				font-size: 56px;
+				font-family: 'mic-square-reg';
+		}
+		.when-and-where {
+				margin-left: - $left-header-margin;
+				margin-top: 20px;
+				.mic-label-black {
+						font-size: rem-calc(30);
+						line-height: 40px;
+						width: 100%;
+				}
+				.labels, .texts {
+						display: inline-block;
+				}
+				.where {
+						margin-top: 12px;
+				}
+		}
+		.event-label-text {
+				display: inline-block;
+				font-size: rem-calc(22);
+				margin-left: 35px;
+				vertical-align: bottom;
+                a {
+                  color: white;
+                  &:hover {
+                    color: #fc9727;
+                  }
+                }
+		}
+		.event-lead {
+				margin-top: 60px;
+				font-size: rem-calc(20);
+		}
+		.event-more-info {
+				text-align: center;
+				.more-info {
+						font-family: 'mic-square-light-italic';
+						color: white;
+						text-decoration: underline;
+						font-size: rem-calc(20);
+				}
+		}
+		.organizers {
+				font-family: mic;
+				margin-top: 48px;
+				margin-left: 1rem;
+				.organizers-title {
+						font-size: rem-calc(28);
+				}
+				.organizers-names {
+						margin-top: 1rem;
+						margin-left: 1rem;
+				}
+				.organizer {
+						font-size: rem-calc(24);
+						line-height: rem-calc(24);
+				}
+		}
+		.join-button {
+				//position: absolute;
+				bottom: -2rem;
+				left: 2rem;
+		}
+}
+.event-content.container {
+		margin-bottom: 100px;
+        ul.other {
+          display: none;
+        }
+}
+
+.more-lead-info {
+		margin-left: $event-lead-margin;
+		background-color: #fff;
+
+		// TODO need autoprefixer
+		transition: transform 0.3s ease-out;
+		transform-origin: 0 0;
+		transform: translateY( -118px ) rotateX( -90deg ) rotateY(-5.6deg);
+}
+.more-lead-info-content {
+		max-height: 0px;
+		transition: max-height 0.3s ease-out;
+		margin-top: 20px;
+		font-size: rem-calc(18);
+		color: #333;
+}
+.more-lead-info.viewed {
+		transform: translateY( -60px ) rotateX( 0deg ) rotateY(0deg);
+		.more-lead-info-content {
+				max-height: 3000px;
+		}
+}
+
+.event-content {
+		.participans-container {
+				.title {
+						font-family: mic-square-reg;
+						font-size: rem-calc(36);
+						color: #F45C10;
+						//color: #333; // может черный лучше?
+				}
+				.participants {
+						margin-top: 24px;
+				}
+				.get-more-participants {
+						text-align: center;
+						.mic-press-button {
+								background-color: #F77838;
+						}
+				}
+		}
+}
+
+.mic-userpic-circle {
+  height: 130px;
+  width: 130px;
+  background-size: cover;
+  border-radius: 50%;
+}

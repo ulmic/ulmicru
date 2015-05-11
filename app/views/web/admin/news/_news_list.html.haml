@@ -7,23 +7,29 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:published_at)
-      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody
     - news.each do |news|
       %tr
         %td= link_to news.id, edit_admin_news_path(news)
-        %td= news.user_id
+        %td= news.author_name
         %td= link_to news.title, edit_admin_news_path(news)
         %td= news.lead
         %td=l news.published_at
-        %td=l news.created_at
-        %td
-          = link_to t('.edit', default: t('helpers.links.edit')), 
-            edit_admin_news_path(news), 
-              class: 'btn btn-warning btn-xs'
-          = button_to t('.destroy', default: t('helpers.links.destroy')), 
-            admin_news_path(news), method: :delete, 
-              data: { confirm: 'Are you sure?' },
-                class: 'btn btn-xs btn-danger' 
-/fixme wrong localize 
+        %td{ style: 'width: 200px' }
+          = render 'web/admin/tags/buttons'
+          = render 'web/admin/tags/list', record: news
+          = render 'web/admin/tags/form', record_type: 'News', record_id: news.id, index: news.id
+        %td.actions
+          - if news.main?
+            = link_to admin_news_path(news, news: { state: :confirmed }), method: :patch, class: 'btn btn-danger btn-xs' do
+              %span.glyphicon.glyphicon-pushpin
+          - else
+            = link_to admin_news_path(news, news: { state: :main }), method: :patch, class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-pushpin
+          = link_to edit_admin_news_path(news), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_news_path(news), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+= link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'

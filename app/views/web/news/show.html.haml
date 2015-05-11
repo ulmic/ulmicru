@@ -1,13 +1,98 @@
+- title @news.title
 - content_for :meta do
   %meta{ property: 'og:description', content: "#{@news.description_lead} #МИЦ" }
   %meta{ property:'og:image', content: @news.photo }
   %meta{ name:'description', content: "#{@news.description_lead} #МИЦ" }
   %link{ rel: 'image_src', href: @news.photo  }
-.show
-  .title
+
+.news#news-show.container-big
+  %h3.title
     = @news.title
-  .date
-    = @news.publish_date_time
-  .body
-    = image_tag @news.photo, class: 'main_photo'
-    = @news.body
+  .news-content.container-big.row
+    .small-9.columns
+      .date-author
+        .date
+          .icon-calendar
+          .date-text
+            = @news.publish_date_time
+        .author
+          = "#{t('activerecord.attributes.news.user_id')}:"
+          - if @news.user.present?
+            = image_tag @news.user.avatar, class: 'human-photo'
+            = @news.user.decorate.short_name
+          - else
+            = image_tag '', class: 'human-photo'
+            Пресс-служба МИЦ
+      .main-photo
+        = image_tag @news.photo
+      .news-lead
+        = @news.lead
+      .news-row-content
+        = raw(@news.body)
+        - @news.attachments.each do |document|
+          = render_element 'mic_document', document: document
+      %hr
+      .stats-container.container-big.row.large-collapse.medium-collapse
+        %ul.stats.small-10.columns
+          %li.views
+            .icon-eye
+            %span.counter
+              = @news.views
+          - if @strings.any?
+            %li.tags
+              .icon-tags
+              - @strings.each do |tag|
+                = link_to tag.text, tag_path(tag), class: 'text-tag string-tag'
+              - @activity_lines.each do |activity_line|
+                %span{ class: 'text-tag activity-line-tag' }
+                  = activity_line.target.decorate.full_title
+              - @teams.each do |team|
+                %span{ class: 'text-tag activity-line-tag' }
+                  = team.target.decorate.full_title
+              - @events.each do |event|
+                = link_to event.target.title, tag_path(event), class: 'text-tag team-tag'
+          - if @members.any?
+            %li.humans
+              .icon-human
+              - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
+              - @members.first(4).each do |member|
+                = link_to member_path(member.ticket), class: 'human-link' do
+                  .human-photo{ style: "background-image: url(#{member.avatar.small})" }
+              - if @members.count > 4
+                %span.view-all
+                  %a{href: "#"}
+                    = t('.view_all')
+                  %span.count
+                    = "(#{@members.count})"
+          %li.social-icons
+            %a{href: "#"}
+              .icon-vk.min-icon
+            %a{href: "#"}
+              .icon-twitter.min-icon
+            %a{href: "#"}
+              .icon-facebook.min-icon
+    .small-3.columns.side-content
+      .title
+        = t('.same_themes')
+      .programm-or-event
+        - if @event.present?
+          .mic-event
+            = render_element 'mic_event', img_src: @event.main_photo, |
+                                          category: @event.activity_line.title, |
+                                          link: event_path(@event), |
+                                          date: @event.full_date_duration, |
+                                          text: @event.lead
+        - if @activity_line.present?
+          .mic-programm
+            = render_element 'mic_programm', img_src: @activity_line.logo, |
+                                             link: activity_line_path(@activity_line), |
+                                             name: @activity_line.full_title
+        .news
+          - @topic_news.each do |news|
+            - if news.present?
+              %hr
+              .mic-one-news
+                = render_element 'mic_one_news', img_src: news.photo, |
+                                                 link: news_path(news), |
+                                                 title: news.title, |
+                                                 date: news.publish_date

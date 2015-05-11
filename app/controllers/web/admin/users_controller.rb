@@ -1,6 +1,6 @@
 class Web::Admin::UsersController < Web::Admin::ApplicationController
   def index
-    @users = User.presented
+    @users = User.presented.order('id DESC')
   end
 
   def new

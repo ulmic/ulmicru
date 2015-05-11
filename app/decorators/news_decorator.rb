@@ -1,11 +1,7 @@
-class NewsDecorator < Draper::Decorator
+class NewsDecorator < ApplicationDecorator
   delegate_all
 
-  def short_lead
-    "#{model.body.first(50)}..."
-  end
-
-  def generate_lead 
+  def generate_lead
     @sentences = ActionController::Base.helpers.strip_tags(model.body).split('.')
     @finally_sen = "#{@sentences[0]}."
     (1..2).each { |i| @finally_sen += "#{@sentences[i]}." }
@@ -20,12 +16,24 @@ class NewsDecorator < Draper::Decorator
     "#{model.body.first(600)}..."
   end
 
-  def publish_date_time
-     object.published_at.strftime('%d %b %Y %H:%m')
+  def publish_date
+    I18n.l published_at, format: '%d %b %Y'
   end
 
-  def name 
-    "#{model.title.first(30)}"
+  def publish_date_time
+    I18n.l published_at, format: "%d %b %Y #{I18n.t('helpers.year')} %H:%m"
+  end
+
+  def name
+    model.title.first 30
+  end
+
+  def short_lead
+    "#{model.lead.first(100)}..."
+  end
+
+  def author_name
+    user.present? ? user.decorate.short_name : I18n.t('helpers.no_author')
   end
 
 end

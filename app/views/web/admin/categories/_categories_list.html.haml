@@ -1,0 +1,19 @@
+- model_class = Category
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:name)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - categories.each do |category|
+      %tr
+        %td= link_to category.id, edit_admin_category_path(category)
+        %td= link_to category.name, edit_admin_category_path(category)
+        %td.actions
+          = link_to t('.edit', default: t('helpers.links.edit')),
+            edit_admin_category_path(category),
+              class: 'btn btn-warning btn-xs'
+          = button_to t('.destroy', default: t('helpers.links.destroy')),
+            admin_category_path(category), method: :delete,
+              class: 'btn btn-xs btn-danger'

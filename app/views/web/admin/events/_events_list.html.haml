@@ -1,0 +1,28 @@
+- model_class = Event
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:main_photo)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:duration)
+      %th= model_class.human_attribute_name(:place)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - events.each do |event|
+      %tr.link{ class: state_color(event), data: { href: edit_admin_event_path(event) } }
+        %td= event.id
+        %td= image_tag event.main_photo.small
+        %td= event.title
+        %td= event.full_duration
+        %td= event.place
+        %td.actions
+          - unless event.confirmed?
+            = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-ok
+          = link_to edit_admin_event_path(event), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_event_path(event), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+
+= link_to t('.new', default: t('helpers.links.new')), new_admin_event_path, class: 'btn btn-primary'

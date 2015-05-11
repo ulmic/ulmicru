@@ -1,3 +1,208 @@
-// Place all the styles related to the web/news controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins";
+@import "elements";
+@import "icons";
+
+.news.container-big {
+		margin-top: 50px;
+		h3.title {
+				text-align: center;
+				font-family: 'mic';
+				font-size: rem-calc(43);
+		}
+		.human-photo {
+				width: 30px;
+				height: 30px;
+		}
+		.date-author {
+				text-align: right;
+				.author, .date {
+						display: inline-block;
+				}
+				.date {
+						vertical-align: middle;
+						font-size: 15px;
+						.date-text {
+								display: inline-block;
+								margin-left: rem-calc(4);
+						}
+				}
+				.author {
+						font-family: mic-bold;
+						margin-left: rem-calc(20);
+						color: #999;
+						.human-photo {
+								margin-left: rem-calc(5);
+						}
+				}
+				.icon-calendar {
+						vertical-align: top;
+				}
+		}
+
+		.news-content {
+				.main-photo {
+						margin-top: 24px;
+						text-align: center;
+						max-width: 100%;
+						height: 500px;
+						overflow: hidden;
+						img {
+								height: 500px;
+						}
+				}
+				.news-lead {
+						margin-top: 28px;
+						margin-bottom: 10px;
+						text-align: justify;
+						color: black;
+						font-family: mic-beau-reg;
+						font-size: rem-calc(20);
+				}
+				.news-row-content {
+						text-align: justify;
+				}
+				.side-content {
+						margin-top: 52px;
+						.title {
+								font-family: mic-beau-reg;
+								text-align: center;
+								font-size: rem-calc(22);
+								margin-bottom: 0.5rem;
+								margin-top: 0.5rem;
+						}
+						.news>hr {
+								margin: 0;
+						}
+						.mic-programm {
+								margin-bottom: rem-calc(0);
+						}
+						.mic-one-news {
+								margin-top: rem-calc(18);
+						}
+				}
+
+        .news-addition {
+						background-color: #E5E0E0;
+						font-family: mic-beau-reg;
+						font-size: rem-calc(16);
+						display: inline-block;
+						padding-right: 38px;
+						position: relative;
+						&:before {
+								content:"";
+								position:absolute;
+								top:0;
+								right:0;
+								border-width:0 16px 15px 0;
+								border-style:solid;
+								border-color:#C19A9A #fff;
+						}
+
+						.icon-addition {
+								margin: rem-calc(23);
+								float: left;
+						}
+						.addition-content {
+								margin-left: 2px;
+								float: left;
+						}
+						.addition-title {
+								margin-top: 10px;
+						}
+						.addition-text {
+								margin-top: 11px;
+						}
+						.addition-download {
+								margin-top: 10px;
+								.icon-download {
+										display: inline-block;
+								}
+								.download-link {
+										display: inline-block;
+										font-family: mic-beau-reg;
+										font-size: 15px;
+										vertical-align: top;
+										padding-left: 6px;
+										color: #f38400;
+								}
+								.download-link:hover {
+										text-decoration: underline;
+								}
+						}
+						&:after {
+								clear: both;
+								display: block;
+								content: "";
+						}
+        }
+
+				.stats-container {
+            margin-top: 20px;
+						max-width: 80rem;
+				}
+				.stats {
+						text-align: justify;
+						list-style: none;
+						&>li {
+								display: inline-block;
+								text-align: left;
+						}
+						&:after {
+								width: 100%;
+								height: 0px;
+								visibility: hidden;
+								overflow: hidden;
+								content: '';
+								display: inline-block;
+						}
+						.views, .tags, .humans, .icon-eye, .icon-human, .icon-tags, .human-photo, .social-icons {
+								display: inline-block;
+						}
+						.tags, .views {
+								color: #555;
+						}
+						.views {
+								.counter {
+										vertical-align: top;
+								}
+								.icon-eye {
+										margin-right: 7px;
+								}
+						}
+						.tags>a {
+								color: #555;
+								vertical-align: top;
+								&:hover {
+										color: #f45c10;
+								}
+						}
+						.human-link:hover .human-photo{
+								border: 1px solid #f45c10;
+						}
+						.human-photo {
+								border: 1px solid #fff;
+								background-size: cover;
+								margin-left: 3px;
+						}
+						.view-all {
+								margin-left: 3px;
+								vertical-align: super;
+								&>a {
+										font-family: mic-beau-reg;
+										color: #F39021;
+								}
+								&>a:hover {
+										text-decoration: underline;
+								}
+								.count {
+										color: #555;
+								}
+						}
+
+						.social-icons>a {
+								margin-left: 3px;
+						}
+
+				}
+		}
+}

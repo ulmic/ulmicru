@@ -15,7 +15,12 @@ module Ulmicru
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.available_locales = [:en, :ru]
     config.i18n.default_locale = :ru
+    config.assets.enabled = true
     config.assets.initialize_on_precompile = true
+    config.assets.version = '1.0'
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "*.ico")
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.generators do |g|
       g.template_engine :haml
       g.stylesheets false
@@ -35,5 +40,8 @@ module Ulmicru
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    ActionDispatch::Reloader.to_prepare do
+      load Rails.root.join('lib/configus.rb')
+    end
   end
 end

@@ -1,5 +1,6 @@
-class NewsForm < ApplicationForm 
+class NewsForm < ApplicationForm
   self.main_model = :news
 
-  attributes :title, :body, :published_at, :photo, :user_id, :lead
+  attributes :title, :body, :published_at, :photo, :lead, required: true
+  attributes :user_id
 end

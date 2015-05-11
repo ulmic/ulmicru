@@ -1,0 +1,164 @@
+$button-bg-color: #FC9727;
+$button-bg-hover: #FC9727;
+$button-font-family: 'mic-beau-reg';
+
+@import "foundation/components/buttons";
+
+// h1,h2,h3,h4,h5,h6 надо тоже сюда вытащить
+.mic-label-black {
+  background-color: #FC9727;
+  color: #333;
+  display: inline-block;
+  padding: 3px 20px 0 18px;
+  font-family: 'mic-square-reg';
+}
+
+.mic-form-container.container {
+  margin-top: 56px;
+  margin-bottom: 56px;
+}
+
+// это плейсфолдер, класс такой не генерится
+%mic-button {
+  @extend .button;
+  padding: rem-calc(13) rem-calc(26);
+  font-size: rem-calc(18);
+}
+.mic-button-small {
+  padding: rem-calc(9) rem-calc(20);
+}
+.mic-flat-button {
+  @extend %mic-button;
+  &:active {
+    background-color: #D4611B;
+  }
+}
+
+.mic-press-button {
+  @extend %mic-button;
+  $press-height: 7px;
+  border: none;
+  box-shadow: 0 $press-height #D4611B;
+  &:focus {
+    outline: none
+  }
+  &:active {
+    box-shadow: 0 0px #D4611B;
+    transform: translateY($press-height);
+    -ms-transform: translateY($press-height);
+  }
+}
+
+blockquote {
+  margin: 0 auto;
+  border: 0;
+  position: relative;
+  &:before {
+    display: inline-block;
+    line-height: 0;
+    height: 0;
+    content: open-quote;
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    font-size: 50px;
+    font-family: 'mic-bold'; // шрифт на самом деле Swiss721BT
+  }
+  &:after {
+    content: close-quote;
+    @extend blockquote:before;
+    left: 100%;
+    top: 100%;
+  }
+}
+
+hr {
+  margin: 0 auto;
+}
+hr.orange {
+  border: 2px solid #FFC415;
+}
+
+%mic-element {
+  text-align: justify;
+  img {
+    width: 100%;
+    height: rem-calc(195);
+  }
+  section {
+    margin: 10px 0px;
+    text-align: center;
+  }
+}
+.mic-event {
+  @extend %mic-element;
+  section {
+    text-align: inherit;
+  }
+  .event-category {
+    font-size: rem-calc(16);
+    position: relative;
+    padding-top: 10px;
+    color: #f45c10;
+    border-top: 4px solid #f45c10;
+    text-transform: uppercase;
+  }
+  .event-date {
+    font-size: rem-calc(16);
+    margin-left: 15px;
+  }
+}
+
+.mic-programm {
+  @extend %mic-element;
+  .programm-name {
+    font-size: rem-calc(16);
+    q {
+      margin-left: rem-calc(5);
+      font-family: mic-beau-reg;
+      quotes: "«" "»";
+      color: #f45c10;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  }
+}
+
+.mic-member {
+  @extend %mic-element;
+  img {
+    width: 100vw;
+    height: 15vw;
+  }
+  .role {
+    color: #f45c10;
+  }
+}
+
+.mic-one-news {
+  @extend %mic-element;
+  .news-date {
+    float: left;
+    font-family: mic;
+    font-size: rem-calc(12);
+    color: #f45c10;
+    .icon-calendar {
+      vertical-align: text-bottom;
+      margin-right: 4px;
+    }
+  }
+  .news-title {
+    font-size: rem-calc(16);
+    clear: both;
+    text-align: justify;
+  }
+}
+
+.mic-article {
+  @extend %mic-element;
+  .article-title {
+    font-size: rem-calc(16);
+    clear: both;
+    text-align: justify;
+  }
+}

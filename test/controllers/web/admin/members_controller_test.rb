@@ -2,6 +2,8 @@ require 'test_helper'
 
 class Web::Admin::MembersControllerTest < ActionController::TestCase
   setup do
+    admin = create :admin
+    sign_in admin
     @member = create :member
   end
 
@@ -15,7 +17,6 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     attributes[:positions_attributes] ||= {}
     attributes[:positions_attributes]['0'] = attributes_for :position
     post :create, member: attributes
-    assert_response :redirect, @response.body
     assert_redirected_to admin_members_path
     assert_equal attributes[:patronymic], Member.last.patronymic
   end
@@ -30,14 +31,12 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     attributes[:positions_attributes] ||= {}
     attributes[:positions_attributes]['0'] = attributes_for :position
     patch :update, member: attributes, id: @member
-    assert_response :redirect, @response.body
     assert_redirected_to admin_members_path
     @member.reload
     assert_equal attributes[:patronymic], @member.patronymic
   end
 
   test 'should delete destroy' do
-    count = Member.count
     delete :destroy, id: @member
     @member.reload
     assert @member.removed?

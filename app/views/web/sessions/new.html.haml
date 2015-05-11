@@ -1,10 +1,26 @@
-= simple_form_for @user, url: { controller: 'web/sessions', action: :create } do |f|
-  = f.input :email, label: t('activerecord.attributes.user.email')
-  = f.input :password, label: t('activerecord.attributes.user.password')
-  = f.button :submit, t('helpers.new.enter')
-
-= link_to t('social_networks.vkontakte'), auth_path(:vkontakte)
-= link_to t('social_networks.twitter'), auth_path(:twitter)
-= link_to t('social_networks.facebook'), auth_path(:facebook)
-= link_to t('social_networks.google'), auth_path(:google)
-= link_to t('.register'), new_user_path
+- title
+.container.mic-form-container
+  .row
+    .medium-6.small-12.columns.medium-push-3
+      = simple_form_for @user, url: { controller: 'web/sessions', action: :create } do |f|
+        = f.input :email, as: :string
+        = f.input :password, required: true
+        = f.button :submit, t('helpers.enter'), class: "mic-flat-button"
+      .row
+        .small-3.columns
+          = link_to auth_path(:vkontakte) do
+            = t('social_networks.vkontakte')
+            %span.icon-vk.min-icon
+        .small-3.columns
+          = link_to auth_path(:facebook) do
+            = t('social_networks.facebook')
+            %span.icon-facebook.min-icon
+        .small-3.columns
+          = link_to auth_path(:twitter) do
+            = t('social_networks.twitter')
+            %span.icon-twitter.min-icon
+        .small-3.columns
+          = link_to auth_path(:google) do
+            = t('social_networks.google')
+            %span.icon-google.min-icon
+      = link_to t('.register'), new_user_path

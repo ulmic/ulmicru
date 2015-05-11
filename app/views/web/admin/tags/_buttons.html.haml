@@ -1,0 +1,12 @@
+.btn-toolbar
+  .btn-group.tag-buttons
+    = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :string } do
+      %span.glyphicon.glyphicon-font
+    = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'Member' } do
+      %span.glyphicon.glyphicon-user
+    = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'Event' } do
+      %span.glyphicon.glyphicon-calendar
+    = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'ActivityLine' } do
+      %span.glyphicon.glyphicon-flag
+    = link_to '#', class: 'btn btn-xs btn-success', data: { tag_type: :link, target_type: 'Team' } do
+      %span.glyphicon.glyphicon-bullhorn

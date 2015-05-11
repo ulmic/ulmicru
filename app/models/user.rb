@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password validations: false
 
-  has_many :authentications
+  has_many :authentications, dependent: :destroy
   has_many :news
-  has_one :member
+  has_many :article
 
   validates :email, uniqueness: true,
                     allow_nil: true
@@ -15,10 +15,9 @@ class User < ActiveRecord::Base
   extend Enumerize
   enumerize :role, in: [ :user, :admin ], default: :user
 
-  scope :admins, -> { where role: :admin }
-
-  scope :presented, -> { where.not(state: :removed) }
-  scope :removed, -> { where state: :removed }
+  include UserScopes
+  include Concerns::AvatarManagment
+  include Concerns::SexManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed

@@ -1,4 +1,5 @@
 - model_class = @type
+- title trash_page_title(model_class), :admin
 .page-header
   %h1= trash_page_title(model_class)
 %table.table.table-condensed.table-hover
@@ -12,6 +13,8 @@
         %tr
           %td= item.id
           %td= item.name
-          %td
-            = link_to t('helpers.links.restore'), restore_admin_trash_path(item, type: @type), method: :patch, class: 'btn btn-primary btn-xs'
-            = link_to t('helpers.links.destroy'), admin_trash_path(item, type: @type), method: :delete, class: 'btn btn-xs btn-danger'
+          %td.actions
+            = link_to restore_admin_trash_path(item, type: @type), method: :patch, class: 'btn btn-primary btn-xs' do
+              %span.glyphicon.glyphicon-open
+            = link_to admin_trash_path(item, type: @type), method: :delete, class: 'btn btn-xs btn-danger' do
+              %span.glyphicon.glyphicon-remove

@@ -4,7 +4,7 @@ class CreatePositions < ActiveRecord::Migration
       t.text :title
       t.integer :member_id
       t.datetime :begin_date
-      t.datetime :end_date
+      t.text :end_date, default: 'for_now'
 
       t.timestamps null: false
     end

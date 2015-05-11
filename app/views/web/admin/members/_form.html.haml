@@ -1,21 +1,33 @@
+- current_title = page_title(action, Member.model_name.human)
+- title current_title, :admin
 .page-header
-  %h1= page_title(action, Member.model_name.human)
+  %h1= current_title
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/errors', object: @member_form
 .row
   .col-lg-6
-    = simple_form_for @member_form, url: { controller: 'web/admin/members', action: action }, input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for [:admin, @member_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :first_name, as: :string, required: true
+      = f.input :patronymic, as: :string, required: true
       = f.input :last_name, as: :string, required: true
       = f.input :email, as: :string, required: true
       = f.input :motto, as: :string
       = f.input :ticket, as: :string, required: true
       = f.input :mobile_phone, as: :string
-      = f.input :birth_date, as: :string
+      = f.input :birth_date, as: :string, as: :date_picker
       = f.input :home_adress, as: :string
-      = f.input :municipality, as: :string
-      = f.input :locality, as: :string
-      = f.input :avatar, as: :string
-      = f.simple_fields_for :positions do |ff|
-        = render 'position_fields', f: ff
-      = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }
-      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
-      = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'
+      = f.input :municipality
+      = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
+      = f.input :avatar, as: :file
+      = f.input :state
+      = f.association :parent, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}"  }, value_method: :id
+      -#= f.simple_fields_for :positions do |position_form|
+        = position_form.input :title, as: :string
+        = position_form.input :begin_date, as: :date_picker
+        = position_form.input :end_date, as: :date_picker
+        = position_form.input :member_id, as: :hidden
+      -#= link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning'
+      .actions
+        = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+        = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

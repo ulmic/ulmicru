@@ -1,0 +1,79 @@
+- title @event.title
+.event-container{ style: "background-image: url(#{@event.main_photo});" }
+  .event-header-overlay
+  .container
+    .event-header.row.large-collapse{ data: { equalizer: '' } }
+      %h2.title
+        = @event.title
+      .small-8.columns{ data: { equalizer: { watch:  '' } } }
+        .when-and-where
+          .labels
+            .when
+              .mic-label-black
+                = "#{t('.when')}:"
+            .where
+              .mic-label-black
+                = "#{t('.where')}:"
+          .texts
+            .when
+              .event-label-text
+                = @event.full_date_duration
+            .where
+              .event-label-text
+                = @event.place_link_to_4sq
+        .event-lead
+          != strip_tags @event.lead
+        .event-more-info
+          %a.more-info#event-lead-more-info{ href:"#" }
+            .show-all
+              = t('helpers.more_info')
+            .hide-all.hide
+              = t('helpers.hide')
+      .small-3.columns{ data: { equalizer: { watch:  ''} } }
+        .organizers
+          .organizers-title
+            = "#{t('.organizator')}:"
+          .organizers-names
+            .organizer
+              = @event.organizer_link
+        .join
+          -#%a.join-button.mic-press-button{ href: "#" }
+          - if current_user_have_attended?(@registrations + @other_registrations)
+            %button.join-button.mic-press-button{ value: 'out', data: { event_id: @event.id, user_id: current_user.id } }
+              = t('.i_attend')
+          - else
+            - if signed_in?
+              %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
+                = t('.attend')
+            - else
+              %a.join-button.mic-press-button{ href: new_session_path }
+                = t('.attend')
+.more-lead-info.container
+  .row.large-collapse
+    .small-8.columns
+      .more-lead-info-content
+        != @event.description
+.event-content.container
+  .participans-container
+    %h3.title
+      = t('.attenders')
+      %span#participants_count
+        = "(#{@registrations.count})"
+    %ul.small-block-grid-5.participants
+      - @registrations.each do |registration|
+        %li.participant.mic-member{ id: "participant_#{registration.user.id}" }
+          = render_element 'mic_member', img_src: registration.user.decorate.element_avatar, |
+                                         link: '#', |
+                                         name: registration.user.decorate.short_name, |
+                                         role: registration.decorate.localize_role
+    - if @other_registrations.any?
+      .get-more-participants
+        %button.mic-press-button.mic-button-small#show_other_participants
+          = t('.see_more')
+      %ul.small-block-grid-5.participants.other
+        - @other_registrations.each do |registration|
+          %li.participant.mic-member
+            = render_element 'mic_member', img_src: registration.user.avatar.medium, |
+                                           link: '#', |
+                                           name: registration.user.decorate.short_name, |
+                                           role: registration.decorate.localize_role

@@ -1,11 +1,12 @@
 %html
-%head
-  %title
-    Админка
-  = stylesheet_link_tag 'web/admin/application'
-  = javascript_include_tag 'web/admin/application'
-  = csrf_meta_tags
-%body
-  = render 'layouts/web/admin/navbar'
-  .container
-    = yield
+  %head
+    = favicon_link_tag 'favicon.ico'
+    = render 'layouts/web/shared/head'
+    = stylesheet_link_tag 'web/admin/application', "web/admin/#{controller_name}"
+    = javascript_include_tag 'web/admin/application', "web/admin/#{controller_name}"
+  %body
+    = render 'layouts/web/admin/navbar'
+    .container
+      = yield
+    .loading
+      = image_tag 'spinner.gif'

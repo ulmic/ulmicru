@@ -1,4 +1,4 @@
-class QuestionaryDecorator < Draper::Decorator
+class QuestionaryDecorator < ApplicationDecorator
   delegate_all
 
   def full_name

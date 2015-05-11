@@ -1,0 +1,24 @@
+@import "mixins";
+
+.articles {
+  &.container-big {
+    margin-bottom: 50px;
+  }
+
+  .same-themes {
+    margin-top: 24px;
+    .yadirect {
+      margin-top: 16px;
+    }
+  }
+
+  .yadirect-row {
+    margin-bottom: 36px;
+  }
+
+  .same-themes-title {
+    font-family: mic-beau-reg;
+    font-size: rem-calc(24);
+    margin-bottom: rem-calc(10);
+  }
+}

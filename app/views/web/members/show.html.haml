@@ -1,0 +1,137 @@
+- title @member.short_name
+.container.account
+  .row
+    .small-5.columns
+      .user-photo{}
+        = image_tag @member.avatar.profile, class: :photo
+        .overlay
+          .text
+        .user-info
+          .info
+            -#.learn
+              .icon-container
+                .icon-learn
+              = t('.learn_or_work')
+              %span
+                МБОУ Гимназия №79
+            .live
+              .icon-container
+                .icon-pointer
+              = "#{t('.live')}:"
+              %span
+                = @member.place
+          .member-ticket
+            = t('.ticket')
+            .number<
+              %span.font-size23> №
+              = @member.ticket
+          .social
+            - if auth = @member.has_auth_provider?(:google)
+              = link_to '', profile_url(auth), class: 'icon-google big-icon'
+            - if auth = @member.has_auth_provider?(:facebook)
+              = link_to '', profile_url(auth), class: 'icon-facebook big-icon'
+            - if auth = @member.has_auth_provider?(:twitter)
+              = link_to '', profile_url(auth), class: 'icon-twitter big-icon'
+            - if auth = @member.has_auth_provider?(:vkontakte)
+              = link_to '', profile_url(auth), class: 'icon-vk big-icon'
+    .small-7.columns
+      .row
+        .small-11.push-1
+          .user-title-role
+            .user-title
+              = @member.short_name
+            -#.user-role
+              Ленивая жопа в МБОУ УФХ ЦЧЧ ЖЗ УК "Норма"
+          %blockquote.user-motto
+            = @member.motto
+          %hr.orange
+          .user-team
+            .team-label
+              - if @member.teams.count == 1
+                = "#{t('activerecord.models.team')}:"
+              - else
+                = "#{t('activerecord.models.team').pluralize(:ru)}:"
+            - @member.teams.each_with_index do |team, index|
+              .user-team-name
+                %span{ class: "#{'more' if index > 0}" }
+                  = team.decorate.full_title
+              %br
+          .row.god-fathers-childs
+            - if @parent.present?
+              .godfather.small-4.columns{ class: present_link_class(@parent), data: { href: present_member_path(@parent) } }
+                .title
+                  = "#{t('activerecord.attributes.member.parent')}:"
+                = render 'web/members/shared/mic_userpic_circle', member: @parent
+            - if @children.any?
+              - @member.parent.present? ? count = 2 : count = 3
+              .godchilds.small-8.columns
+                .row
+                  - @children.first(count).each_with_index do |child, index|
+                    .small-6.columns{ class: present_link_class(child), data: { href: present_member_path(child) } }
+                      - if index == 0
+                        .title
+                          = "#{t('activerecord.attributes.member.children')}:"
+                      = render 'web/members/shared/mic_userpic_circle', member: child
+                    .small-6.columns
+                      - if @children.count > count && index == 0
+                        .view-all
+                          %a.text{ href: '#', id: 'view_all' }
+                            = t('helpers.view_all')
+                            = "(#{@children.count})"
+                          %a.text{ style: 'display: none', href: '#', id: 'hide_all' }
+                            = t('helpers.hide')
+              - @children.drop(count).each_slice(3) do |childs|
+                .godchilds.small-12.columns.added.hidden
+                  .row
+                    - childs.each do |child|
+                      .small-4.columns
+                        = render 'web/members/shared/mic_userpic_circle', member: child
+  .row.user-content
+    %ul.tabs{'data-tab' => ''}
+      - if @registrations.any?
+        %li.tab-title.active
+          %a{href: "#stages-of-grow", tabindex: "0"}
+            %span.icon-stage.min-icon
+            = t('organization.floors_growth')
+      - if @articles.any? || @news.any?
+        %li.tab-title
+          %a{href: "#users-news", tabindex: "0"}
+            = t('activerecord.models.news').pluralize(:ru)
+    .tabs-content
+      - if @registrations.any?
+        #stages-of-grow.content.active.stages
+          - @registrations.each do |registration|
+            .row.stage
+              .small-1.small-push-1.columns
+                .stage-date
+                  .icon-bigcalendar
+                  .day
+                    = registration.event.begin_date.day
+                  .month
+                    =l registration.event.begin_date, format: ('%b')
+                  .year
+                    = registration.event.begin_date.year
+              .columns.small-10
+                .stage-text
+                  .title
+                    = registration.event.title
+                  .content
+                    .role
+                      = "#{t('activerecord.attributes.event.registration.role')}:"
+                      = registration.localize_role
+                    %a.view-all{href: "#"}
+                      подробнее
+            %hr
+      - if @articles.any? || @news.any?
+        #users-news.content
+          %ul.news.small-block-grid-4
+            - @articles.each do |article|
+              %li.mic-one-news
+                = render_element 'mic_article',  link: article_path(article), |
+                                                 title: article.title
+            - @news.each do |news|
+              %li.mic-one-news
+                = render_element 'mic_one_news', img_src: news.photo, |
+                                                 link: news_path(news), |
+                                                 title: news.title, |
+                                                 date: news.publish_date

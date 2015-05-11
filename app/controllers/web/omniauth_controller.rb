@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class Web::OmniauthController < Web::ApplicationController
   def callback
     omniauth_hash = request.env['omniauth.auth']
@@ -19,7 +21,8 @@ class Web::OmniauthController < Web::ApplicationController
       unless signed_in?
         user = User.find_by_email email if email
         unless user
-          user = User.create email: email, first_name: first_name, last_name: last_name
+          password = SecureRandom.hex 8
+          user = User.create email: email, first_name: first_name, last_name: last_name, password: password, password_confirmation: password
         end
         sign_in user
       end

@@ -2,12 +2,19 @@ require 'test_helper'
 
 class Web::Admin::TrashControllerTest < ActionController::TestCase
   setup do
+    admin = create :admin
+    sign_in admin
     @user = create :user
     @user.remove
     @member = create :member
     @member.remove
     @questionary = create :questionary
     @questionary.remove
+    @news = create :news
+    @news.remove
+    @category = create :category
+    @article = create :article
+    @article.remove
   end
   test 'should get index' do
     get :index, type: :user
@@ -15,6 +22,10 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
     get :index, type: :member
     assert_response :success, @response.body
     get :index, type: :questionary
+    assert_response :success, @response.body
+    get :index, type: :news
+    assert_response :success, @response.body
+    get :index, type: :article
     assert_response :success, @response.body
   end
 

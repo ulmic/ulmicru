@@ -1,4 +1,4 @@
-class UserDecorator < Draper::Decorator
+class UserDecorator < ApplicationDecorator
   delegate_all
 
   def name
@@ -9,7 +9,13 @@ class UserDecorator < Draper::Decorator
     member.confirmed? if member.present?
   end
 
-  def has_member?
-    not member.removed? if member.present?
+  def short_name
+    "#{first_name} #{last_name}"
   end
+
+  def profile_avatar
+    default_avatar
+  end
+
+  alias element_avatar profile_avatar
 end

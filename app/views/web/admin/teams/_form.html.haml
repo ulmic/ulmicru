@@ -1,0 +1,21 @@
+- model_class = Team
+- current_title = page_title(action, model_class.model_name.human)
+- title current_title, :admin
+.page-header
+  %h1=t current_title
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/errors', object: @team_form
+.row
+  .col-lg-12
+    = simple_form_for @team_form, url: { controller: 'web/admin/teams', action: action }, input_html: { class: 'form-horizontal' } do |f|
+      = f.input :title, as: :string
+      = f.input :description, as: :ckeditor
+      = f.input :state, as: :hidden, input_html: { value: :active }
+      = f.input :type, as: :select, collection: team_types
+      .municipality_input
+        = f.input :municipality, as: :select, collection: Municipalities.list
+      = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
+      = f.association :members, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, input_html: { class: :select2 }
+      = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
+      = link_to t('helpers.links.back'), admin_teams_path, class: 'btn btn-default'

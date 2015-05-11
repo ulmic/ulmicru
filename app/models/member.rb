@@ -1,30 +1,40 @@
 class Member < User
   belongs_to :parent, class_name: 'Member'
-  has_many :attribute_accesses
-  has_many :positions
+  has_many :children, class_name: 'Member',
+                      foreign_key: :parent_id
+  has_many :attribute_accesses, dependent: :destroy
+  has_many :positions, dependent: :destroy
+  has_many :tags, as: :target,
+                  foreign_key: :target_id,
+                  dependent: :destroy
+  has_and_belongs_to_many :teams, foreign_key: :user_id
+  has_many :registrations, class_name: 'Event::Registration',
+                           foreign_key: :user_id
+  has_many :events, as: :organizer,
+                    foreign_key: :organizer_id
 
-  validates :patronymic, presence: true,
+  validates :first_name, presence: true,
                          human_name: true
-  validates :motto, presence: true
+  validates :last_name, presence: true,
+                         human_name: true
+  validates :patronymic, human_name: true,
+                         allow_blank: true
   validates :ticket, uniqueness: true
-  validates :mobile_phone, presence: true,
-                           phone: true
-  validates :birth_date, presence: true
-  validates :home_adress, presence: true
-  validates :municipality, presence: true
-  validates :locality, presence: true
-  validates :avatar, presence: true
+  validates :mobile_phone, phone: true,
+                           allow_blank: true
 
-  scope :presented, -> { where('state != \'removed\' AND state != \'not_member\'') }
-  scope :removed, -> { where state: :removed }
-  scope :unviewed, -> { where state: :unviewed }
+  include MemberScopes
+  enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
+  enumerize :locality, in: Localities.list, default: Localities.list.first
+
+  mount_uploader :avatar, AvatarUploader
 
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
     state :declined
     state :removed
-    state :not_member
+    state :unavailable
 
     event :confirm do
       transition all => :confirmed
@@ -35,8 +45,21 @@ class Member < User
     event :remove do
       transition all => :removed
     end
+    event :avail do
+      transition all => :unviewed
+    end
     event :restore do
       transition removed: :unviewed
     end
   end
+
+  def has_auth_provider?(provider)
+    authentications.map do |authentication|
+      return authentication if authentication.provider == provider
+    end
+    nil
+  end
+
+  #FIXME tags association
+  include Concerns::TagsHelper
 end

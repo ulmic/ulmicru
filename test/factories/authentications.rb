@@ -1,8 +1,6 @@
 FactoryGirl.define do
   factory :authentication do
-    provider "MyText"
-uid "MyText"
-user_id 1
+    uid { generate :string }
+    user_id { User.last ? User.last.id : 1 }
   end
-
 end

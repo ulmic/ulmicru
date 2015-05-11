@@ -2,6 +2,8 @@ require 'test_helper'
 
 class Web::Admin::UsersControllerTest < ActionController::TestCase
   setup do
+    admin = create :admin
+    sign_in admin
     @user = create :user
   end
 

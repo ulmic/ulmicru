@@ -1,6 +1,13 @@
+# -*- coding: utf-8 -*-
 class ApplicationForm < ActiveForm::Base
-  class << self
+  extend FormDelegator
 
+  def self.inherited(base)
+    delegate_all_class(base)
+    straightforward_delegates(base)
+  end
+
+  class << self
     def find_with_model *args
       obj = obj_class.find(*args)
       self.new obj
@@ -16,10 +23,15 @@ class ApplicationForm < ActiveForm::Base
       self.new obj
     end
 
-    private
-
     def obj_class
-      Object.const_get(self.main_model.capitalize)
+      main_model_name = self.main_model.to_s
+      main_model_name = main_model_name.camelize if main_model_name.include? '_'
+      if main_model_name.include? '/'
+        names = main_model_name.split '/'
+        main_model_name = names.collect { |name| name.capitalize! }.join('::')
+      end
+      main_model_name.capitalize! unless main_model_name[0].match /[A-Z]/
+      Object.const_get main_model_name
     end
   end
 end

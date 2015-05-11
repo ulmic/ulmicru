@@ -1,0 +1,29 @@
+$corp_color: #ffa911
+
+.row.history-user-pic-row
+  width: 300px
+  margin-bottom: 40px
+.mic-userpic-circle.history-mic-userpic-circle
+  z-index: 10
+  &.lapteva
+    background-image: image-url('people/lapteva.png')
+.mic-userpic-circle.history-mic-userpic-circle:before
+  content: ''
+  display: block
+  position: absolute
+  z-index: -1
+  top: -6px
+  left: 9px
+  right: 0px
+  bottom: -5px
+  border: 3px solid $corp_color
+  border-radius: 50%
+a
+  color: $corp_color
+a.active:hover
+  div
+    opacity: 0.5
+
+.history-text
+  text-align: justify
+  padding-left: 30px

@@ -1,0 +1,19 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{content: "width=1100", name: "viewport"}
+    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag    "web/application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.ico'
+  %body#noresponsive
+    %div
+    = render 'layouts/web/shared/navbar'
+
+    = yield
+
+    = render 'layouts/web/shared/footer'
