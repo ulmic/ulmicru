@@ -85,6 +85,7 @@ ru:
           published: Опубликованное
           unpublished: Неопубликованное
           main: Главные новости
+          unviewed: Неподтверждённые новости
     questionary:
       state:
         states:

@@ -11,3 +11,7 @@
     = render 'web/admin/users/users_list', users: @users
   #questionaries
     = render 'web/admin/questionaries/questionaries_list', questionaries: @questionaries
+  #news
+    = render 'web/admin/news/news_list', news: @news, without_tags_form: true
+  #events
+    = render 'web/admin/events/events_list', events: @events

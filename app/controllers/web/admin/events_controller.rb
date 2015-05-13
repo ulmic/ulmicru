@@ -1,4 +1,6 @@
 class Web::Admin::EventsController < Web::Admin::ApplicationController
+  before_filter :choose_teams, only: [ :new, :edit ]
+  before_filter :choose_members, only: [ :new, :edit ]
   def index
     events = ::Event.presented
     @future_events = events.future.decorate
@@ -10,14 +12,10 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
 
   def new
     @event_form = EventForm.new_with_model
-    @members = Member.presented.decorate
-    @teams = Team.active.decorate
   end
 
   def edit
     @event_form = EventForm.find_with_model(params[:id])
-    @members = Member.presented.decorate
-    @teams = Team.active.decorate
   end
 
   def create
@@ -26,6 +24,8 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     if @event_form.save
       redirect_to admin_events_path
     else
+      choose_teams
+      choose_members
       render action: :new
     end
   end
@@ -36,6 +36,8 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     if @event_form.save
       redirect_to admin_events_path
     else
+      choose_teams
+      choose_members
       render action: :edit
     end
   end
