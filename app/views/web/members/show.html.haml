@@ -26,13 +26,17 @@
               %span.font-size23> №
               = @member.ticket
           .social
-            - if auth = @member.has_auth_provider?(:google)
+            - auth = @member.has_auth_provider?(:google)
+            - if auth
               = link_to '', profile_url(auth), class: 'icon-google big-icon'
-            - if auth = @member.has_auth_provider?(:facebook)
+            - auth = @member.has_auth_provider?(:facebook)
+            - if auth
               = link_to '', profile_url(auth), class: 'icon-facebook big-icon'
-            - if auth = @member.has_auth_provider?(:twitter)
+            - auth = @member.has_auth_provider?(:twitter)
+            - if auth
               = link_to '', profile_url(auth), class: 'icon-twitter big-icon'
-            - if auth = @member.has_auth_provider?(:vkontakte)
+            - auth = @member.has_auth_provider?(:vkontakte)
+            - if auth
               = link_to '', profile_url(auth), class: 'icon-vk big-icon'
     .small-7.columns
       .row
