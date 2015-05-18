@@ -1,18 +1,18 @@
 .main-navbar-container
-  %nav.top-bar{"data-topbar" => ""}
+  %nav.top-bar{ data: { toolbar: '' } }
     %section.top-bar-section
       .container-big
         %ul.right
           - unless signed_in?
             %li.icons-container
               .icons
-                %a{ href: auth_path(:vkontakte) }
+                = link_to auth_path(:vkontakte) do
                   .icon-vk.min-icon
-                %a{ href: auth_path(:twitter) }
+                = link_to auth_path(:twitter) do
                   .icon-twitter.min-icon
-                %a{ href: auth_path(:facebook) }
+                = link_to auth_path(:facebook) do
                   .icon-facebook.min-icon
-                %a{ href: new_session_path }
+                = link_to new_session_path do
                   .icon-door.min-icon
 
           %li.banner-container
@@ -42,103 +42,7 @@
             - if @contact_article.present?
               = link_to article_path(@contact_article) do
                 .inner
-                  Контакты
+                  = t('helpers.contacts')
           %li
             %a{ href: "#" }
         %a.site-logo{ href: root_path }
-        %ul.left
-          -#%li.has-dropdown.dropdown-category-menu
-            %a{href: "#"}
-              .inner
-                Миц - это ...
-            %ul.dropdown
-              #category_menu.category-menu
-                - if @first_category.present?
-                  .category-column
-                    .menu-title
-                      = @first_category.name
-                    - @first_category.articles.each do |article|
-                      = link_to article.title, article_path(article)
-                - if signed_in?
-                  .category-column
-                    .menu-title Программы и проекты
-                    %a{href: "#"}
-                      Программа «Лидер»
-                    %a{href: "#"}
-                      Программа «Inформация»
-                    %a{href: "#"}
-                      Программа «Добро»
-                    %a{href: "#"}
-                      Программа «Право»
-                    %a{href: "#"}
-                      Проект «Информационные технологии»
-                    %a{href: "#"}
-                      Проект «Диалог культур»
-                  - if @korporative_category.present?
-                    .category-column
-                      .menu-title Корпоративные проекты
-                      - @korporative_category.articles.presented.each do |article|
-                        = link_to article.title, article_path(article)
-                  .category-column
-                    .menu-title Библиотека
-                    %a{href: "#"}
-                      «Активаторы»
-                    %a{href: "#"}
-                      Газета «Этажи»
-                    %a{href: "#"}
-                      Методические разработки
-                - else
-                  .category-column
-                    .menu-title Деятельность
-                    %a{href: "#"}
-                      Профильные смены
-                    %a{href: "#"}
-                      Конкурс актива учащейся молодёжи «Я-лидер!»
-                    %a{href: "#"}
-                      Конкурс начинающих журналистов «Новый взгляд»
-                    %a{href: "#"}
-                      Марафон молодёжных инициатив
-                    %a{href: "#"}
-                      ALLMOL
-                    %a{href: "#"}
-                      Гражданиада
-                    %a{href: "#"}
-                      Уроки интернет-безопасности
-                    %a{href: "#"}
-                      «На старт!»
-                  .category-column
-                    .menu-title Программы и проекты
-                    %a{href: "#"}
-                      Программа «Лидер»
-                    %a{href: "#"}
-                      Программа «Inформация»
-                    %a{href: "#"}
-                      Программа «Добро»
-                    %a{href: "#"}
-                      Программа «Право»
-                    %a{href: "#"}
-                      Проект «Информационные технологии»
-                    %a{href: "#"}
-                      Проект «Диалог культур»
-                    %a{href: "#"}
-                      Корпоративная проекты
-                  .category-column
-                    .menu-title Команды МИЦ
-                    %a{href: "#"}
-                      г.Ульяновск
-                    %a{href: "#"}
-                      г.Димитровград
-                    %a{href: "#"}
-                      г. Новоульяновск
-                    %a{href: "#"}
-                      Радищевский район
-                    %a{href: "#"}
-                      Базарносызганский район
-                    %a{href: "#"}
-                      Новосспаский район
-                    %a{href: "#"}
-                      Создать своё
-          -#%li
-            %a{href: "#"}
-              .inner
-                Партнёры

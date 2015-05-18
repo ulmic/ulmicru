@@ -105,7 +105,7 @@
       - if @registrations.any?
         #stages-of-grow.content.active.stages
           - @registrations.each do |registration|
-            .row.stage
+            .row.stage.link{ data: { href: event_path(registration.event) } }
               .small-1.small-push-1.columns
                 .stage-date
                   .icon-bigcalendar
@@ -123,8 +123,6 @@
                     .role
                       = "#{t('activerecord.attributes.event.registration.role')}:"
                       = registration.localize_role
-                    %a.view-all{href: "#"}
-                      подробнее
             %hr
       - if @articles.any? || @news.any?
         #users-news.content

@@ -7,8 +7,7 @@
       %a{ href: "#" }
         Партнёры
     .menu-item
-      %a{ href: "#" }
-        Контакты
+      = link_to t('helpers.contacts'), article_path(@contact_article)
 
   .right.social
     .icons
@@ -21,7 +20,7 @@
       %a.blank{ href: configus.social_networks_pages.google_plus }
         .min-icon.icon-google
     .contacts.row
-      .small-6.columns
+      .small-6.columns.email
         %a.mail{ href: "#" }
           %span.icon.icon-mail
           %span activ@ulmic.ru
