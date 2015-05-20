@@ -8,58 +8,62 @@
       = t('application.name')
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
-      %li.dropdown
-        %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
-          = t('.people')
-        %ul.dropdown-menu
-          = menu_item admin_users_path do
-            = User.model_name.human.pluralize(:ru)
-          = menu_item admin_members_path do
-            = Member.model_name.human.pluralize(:ru)
-          = menu_item admin_questionaries_path do
-            = Questionary.model_name.human.pluralize(:ru)
+      - if current_user.role.admin?
+        %li.dropdown
+          %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
+            = t('.people')
+          %ul.dropdown-menu
+            = menu_item admin_users_path do
+              = User.model_name.human.pluralize(:ru)
+            = menu_item admin_members_path do
+              = Member.model_name.human.pluralize(:ru)
+            = menu_item admin_questionaries_path do
+              = Questionary.model_name.human.pluralize(:ru)
       = menu_item admin_news_index_path do
         = News.model_name.human.pluralize(:ru)
-      = menu_item admin_articles_path do
-        = Article.model_name.human.pluralize(:ru)
-      = menu_item admin_categories_path do
-        = Category.model_name.human.pluralize(:ru)
+      - if current_user.role.admin?
+        = menu_item admin_articles_path do
+          = Article.model_name.human.pluralize(:ru)
+        = menu_item admin_categories_path do
+          = Category.model_name.human.pluralize(:ru)
       = menu_item admin_events_path do
         = Event.model_name.human.pluralize(:ru)
-      = menu_item admin_activity_lines_path do
-        = ActivityLine.model_name.human.pluralize(:ru)
-      = menu_item admin_banners_path do
-        = Banner.model_name.human.pluralize(:ru)
-      = menu_item admin_teams_path do
-        = Team.model_name.human.pluralize(:ru)
-      = menu_item admin_documents_path do
-        = Document.model_name.human.pluralize(:ru)
-    %ul.nav.navbar-nav.navbar-right
-      = menu_item admin_unviewed_index_path do
-        %span.glyphicon.glyphicon-info-sign
-        = notification_count
-      %li.dropdown
-        %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
-          %span.glyphicon.glyphicon-trash
-          = t('web.admin.trash.title')
-        %ul.dropdown-menu
-          = menu_item type_admin_trash_index_path('user') do
-            = User.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('member') do
-            = Member.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('questionary') do
-            = Questionary.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('news') do
-            = News.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('article') do
-            = Article.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('category') do
-            = Category.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('activity_line') do
-            = ActivityLine.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('banner') do
-            = Banner.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('team') do
-            = Team.model_name.human.pluralize(:ru)
-          = menu_item type_admin_trash_index_path('document') do
-            = Document.model_name.human.pluralize(:ru)
+      - if current_user.role.admin?
+        = menu_item admin_activity_lines_path do
+          = ActivityLine.model_name.human.pluralize(:ru)
+        = menu_item admin_banners_path do
+          = Banner.model_name.human.pluralize(:ru)
+        = menu_item admin_teams_path do
+          = Team.model_name.human.pluralize(:ru)
+        = menu_item admin_documents_path do
+          = Document.model_name.human.pluralize(:ru)
+    - if current_user.role.admin?
+      %ul.nav.navbar-nav.navbar-right
+        = menu_item admin_unviewed_index_path do
+          %span.glyphicon.glyphicon-info-sign
+          = notification_count
+        %li.dropdown
+          %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
+            %span.glyphicon.glyphicon-trash
+            = t('web.admin.trash.title')
+          %ul.dropdown-menu
+            = menu_item type_admin_trash_index_path('user') do
+              = User.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('member') do
+              = Member.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('questionary') do
+              = Questionary.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('news') do
+              = News.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('article') do
+              = Article.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('category') do
+              = Category.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('activity_line') do
+              = ActivityLine.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('banner') do
+              = Banner.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('team') do
+              = Team.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path('document') do
+              = Document.model_name.human.pluralize(:ru)

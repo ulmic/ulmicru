@@ -18,8 +18,12 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def edit
-    @member = Member.find params[:id]
-    @member_form = MemberForm.new(@member)
+    member = Member.find params[:id]
+    if member.unavailable?
+      @member_form = ::Admin::Member::UnavailableMemberForm.new member
+    else
+      @member_form = MemberForm.new @member
+    end
   end
 
   def create

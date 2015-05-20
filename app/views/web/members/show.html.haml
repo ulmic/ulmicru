@@ -26,14 +26,18 @@
               %span.font-size23> №
               = @member.ticket
           .social
-            - if auth = @member.has_auth_provider?(:google)
-              = link_to '', profile_url(auth), class: 'icon-google big-icon'
-            - if auth = @member.has_auth_provider?(:facebook)
-              = link_to '', profile_url(auth), class: 'icon-facebook big-icon'
-            - if auth = @member.has_auth_provider?(:twitter)
-              = link_to '', profile_url(auth), class: 'icon-twitter big-icon'
-            - if auth = @member.has_auth_provider?(:vkontakte)
-              = link_to '', profile_url(auth), class: 'icon-vk big-icon'
+            - auth = @member.has_auth_provider?(:google)
+            - if auth
+              = link_to '', profile_url(auth), class: 'icon-google big-icon blank'
+            - auth = @member.has_auth_provider?(:facebook)
+            - if auth
+              = link_to '', profile_url(auth), class: 'icon-facebook big-icon blank'
+            - auth = @member.has_auth_provider?(:twitter)
+            - if auth
+              = link_to '', profile_url(auth), class: 'icon-twitter big-icon blank'
+            - auth = @member.has_auth_provider?(:vkontakte)
+            - if auth
+              = link_to '', profile_url(auth), class: 'icon-vk big-icon blank'
     .small-7.columns
       .row
         .small-11.push-1
@@ -101,7 +105,7 @@
       - if @registrations.any?
         #stages-of-grow.content.active.stages
           - @registrations.each do |registration|
-            .row.stage
+            .row.stage.link{ data: { href: event_path(registration.event) } }
               .small-1.small-push-1.columns
                 .stage-date
                   .icon-bigcalendar
@@ -119,8 +123,6 @@
                     .role
                       = "#{t('activerecord.attributes.event.registration.role')}:"
                       = registration.localize_role
-                    %a.view-all{href: "#"}
-                      подробнее
             %hr
       - if @articles.any? || @news.any?
         #users-news.content

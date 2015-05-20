@@ -73,4 +73,5 @@ $(document).ready(function() {
           location.href = $(this).attr('data-href');
       }
   });
+  $('.blank').prop('target', '_blank');
 });

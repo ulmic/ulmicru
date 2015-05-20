@@ -7,21 +7,20 @@
       %a{ href: "#" }
         Партнёры
     .menu-item
-      %a{ href: "#" }
-        Контакты
+      = link_to t('helpers.contacts'), article_path(@contact_article)
 
   .right.social
     .icons
-      %a{ href: configus.social_networks_pages.vkontakte, target: '_blank' }
+      %a.blank{ href: configus.social_networks_pages.vkontakte }
         .min-icon.icon-vk
-      %a{ href: configus.social_networks_pages.twitter, target: '_blank' }
+      %a.blank{ href: configus.social_networks_pages.twitter }
         .min-icon.icon-twitter
-      %a{ href: configus.social_networks_pages.facebook, target: '_blank' }
+      %a.blank{ href: configus.social_networks_pages.facebook }
         .min-icon.icon-facebook
-      %a{ href: configus.social_networks_pages.google_plus, target: '_blank' }
+      %a.blank{ href: configus.social_networks_pages.google_plus }
         .min-icon.icon-google
     .contacts.row
-      .small-6.columns
+      .small-6.columns.email
         %a.mail{ href: "#" }
           %span.icon.icon-mail
           %span activ@ulmic.ru

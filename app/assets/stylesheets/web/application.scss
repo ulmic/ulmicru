@@ -159,3 +159,9 @@ ul {
 .select2-container {
   width: 100%;
 }
+
+.columns {
+  &.email {
+    padding-left: 0;
+  }
+}

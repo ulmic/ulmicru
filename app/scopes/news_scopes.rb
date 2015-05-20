@@ -15,5 +15,7 @@ module NewsScopes
     }
     scope :removed, -> { where state: :removed }
     scope :main, -> { where state: :main }
+    scope :confirmed, -> { where state: :confirmed }
+    scope :unviewed, -> { where state: :unviewed }
   end
 end

@@ -1,263 +1,265 @@
 .account.container {
-    font-family: mic-square-reg;
+  font-family: mic-square-reg;
+  margin-top: 48px;
+  .user-photo {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    img.photo {
+      //height: 90vh;
+      min-height: 600px;
+      width: 100%;
+    }
+    .overlay, .user-info {
+      height: 252px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+    }
+    .overlay {
+      opacity: 0.4;
+      background-color: #000;
+    }
+    .user-info {
+      z-index: 1;
+      color: #fff;
+      .info {
+        padding: 30px 32px 0px;
+      }
+      .icon-container {
+        display: inline-block;
+        text-align: center;
+        width: 25px;
+      }
+      .icon-learn {
+        background-size: 25px;
+        width: 25px;
+      }
+      .icon-pointer {
+        background-size: 14px;
+        width: 14px;
+      }
+      .learn, .live {
+        font-family: mic;
+        font-size: 18px;
+        height: 48px;
+        span {
+          font-size: 17px;
+        }
+      }
+      .member-ticket {
+        position: absolute;
+        left: 18px;
+        bottom: 10px;
+        height: 100px;
+        width: 150px;
+        background: #FFA911;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 12px;
+        font-size: 23px;
+        line-height: 28px;
+        .number {
+          .font-size23 {
+            font-size: 23px;
+          }
+          font-size: 28px;
+          line-height: 28px;
+        }
+      }
+      .social {
+        position: absolute;
+        width: 53%;
+        right: 12px;
+        bottom: 24px;
+        .big-icon {
+          margin-left: 3%;
+        }
+      }
+    }
+  }
+  .user-title-role {
+    padding-left: 20px;
+  }
+  .user-title {
+    margin-top: 10px;
+    font-size: 48px;
+  }
+  .user-role {
+    margin-left: 5px;
+    font-size: 14px;
+    font-family: mic-bold;
+    font-weight: bold;
+  }
+  blockquote.user-motto {
     margin-top: 48px;
-    .user-photo {
-        width: 100%;
-        position: relative;
-        box-sizing: border-box;
-        overflow: hidden;
-        img.photo {
-            //height: 90vh;
-            min-height: 600px;
-            width: 100%;
-        }
-        .overlay, .user-info {
-            height: 252px;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            position: absolute;
-        }
-        .overlay {
-            opacity: 0.4;
-            background-color: #000;
-        }
-        .user-info {
-            z-index: 1;
-            color: #fff;
-            .info {
-                padding: 30px 32px 0px;
-            }
-            .icon-container {
-                display: inline-block;
-                text-align: center;
-                width: 25px;
-            }
-            .icon-learn {
-                background-size: 25px;
-                width: 25px;
-            }
-            .icon-pointer {
-                background-size: 14px;
-                width: 14px;
-            }
-            .learn, .live {
-                font-family: mic;
-                font-size: 18px;
-                height: 48px;
-                span {
-                    font-size: 17px;
-                }
-            }
-            .member-ticket {
-                position: absolute;
-                left: 18px;
-                bottom: 10px;
-                height: 100px;
-                width: 150px;
-                background: #FFA911;
-                text-transform: uppercase;
-                text-align: center;
-                padding: 12px;
-                font-size: 23px;
-                line-height: 28px;
-                .number {
-                    .font-size23 {
-                        font-size: 23px;
-                    }
-                    font-size: 28px;
-                    line-height: 28px;
-                }
-            }
-            .social {
-                position: absolute;
-                width: 53%;
-                right: 12px;
-                bottom: 24px;
-                .big-icon {
-                    margin-left: 3%;
-                }
-            }
-        }
+    color: #333;
+    font-size: 21px;
+    text-align: center;
+    padding-right: 0;
+    &:before {
+      font-size: 72px;
+      color: #FFC415;
     }
-    .user-title-role {
-        padding-left: 20px;
+    &:after {
+      @extend blockquote:before;
     }
-    .user-title {
-        margin-top: 10px;
-        font-size: 48px;
+  }
+  hr.orange {
+    margin-top: 12px;
+  }
+  .user-team {
+    font-family: mic;
+    padding-left: 25px;
+    margin-top: 48px;
+    .team-label {
+      display: inline-block;
+      font-size: 22px;
+      color: #F1790F;
     }
-    .user-role {
-        margin-left: 5px;
-        font-size: 14px;
-        font-family: mic-bold;
-        font-weight: bold;
+    .user-team-name {
+      margin-left: 10px;
+      display: inline-block;
+      font-size: 20px;
+      &.more {
+        margin-left: 110px;
+      }
     }
-		blockquote.user-motto {
-        margin-top: 48px;
-        color: #333;
-        font-size: 21px;
-        text-align: center;
-        padding-right: 0;
-				&:before {
-            font-size: 72px;
-            color: #FFC415;
-				}
-				&:after {
-						@extend blockquote:before;
-				}
+  }
+  .god-fathers-childs {
+    border: 1px solid #eee;
+    font-family: mic;
+    background-color: #F5F5F5;
+    margin-top: 80px;
+    height: 250px;
+    text-align: center;
+    .godfather, .godchilds {
+      margin-top: 12px;
     }
-    hr.orange {
-        margin-top: 12px;
+    .title {
+      font-size: 24px;
     }
-    .user-team {
+    .name {
+      font-size: 16px;
+      height: 48px;
+      display: table;
+      margin: 0 auto;
+      .text {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .view-all {
+      height: 36px;
+      text-align: right;
+      padding-right: 12px;
+      .text {
+        color: #EF5404;
+        display: inline-block;
+        font-size: 13px;
+        height: 13px;
+        vertical-align: bottom;
+      }
+    }
+    .photo {
+      margin: 0 auto;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      border-radius: 50%;
+      height: 130px;
+      width: 130px;
+      background-size: cover;
+    }
+  }
+
+  .user-content {
+    margin-top: 100px;
+    .title {
+      font-family: mic;
+      font-size: 24px;
+      margin-left: 36px;
+    }
+    .tab-title {
+      border: solid #ddd;
+      border-width: 1px 1px 0 1px;
+      border-radius: 5px 5px 0 0;
+      margin-right: 3px;
+      & a {
+        color: #555;
+        font-size: 18px;
         font-family: mic;
-        padding-left: 25px;
-        margin-top: 48px;
-        .team-label {
-            display: inline-block;
-            font-size: 22px;
-            color: #F1790F;
+      }
+      &.active {
+        & a {
+          color: black;
         }
-        .user-team-name {
-            margin-left: 10px;
-            display: inline-block;
-            font-size: 20px;
-            &.more {
-                margin-left: 110px;
-            }
+        &:before {
+          border-radius: 21px 21px 0 0;
+          content: " ";
+          position: absolute;
+          height: 2px;
+          top: -3px;
+          width: 100%;
+          border: solid #FFA911;
+          border-width: 2px 3px 3px 3px;
         }
+      }
     }
-    .god-fathers-childs {
-        border: 1px solid #eee;
-        font-family: mic;
-        background-color: #F5F5F5;
-        margin-top: 80px;
-        height: 250px;
-        text-align: center;
-        .godfather, .godchilds {
-            margin-top: 12px;
-        }
+    .stages hr {
+      width: 90%;
+      margin-left: 11%;
+    }
+    .stage {
+      font-family: mic;
+      margin-left: 1%;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      .stage-text {
         .title {
-            font-size: 24px;
+          font-family: mic-bold;
+          font-size: 46px;
+          line-height: 46px;
         }
-        .name {
-            font-size: 16px;
-            height: 48px;
-            display: table;
-            margin: 0 auto;
-            .text {
-                display: table-cell;
-                vertical-align: middle;
-            }
+        .content {
+          margin-left: 54px;
+        }
+        .role {
+          font-size: 24px;
+          margin-top: 16px;
         }
         .view-all {
-            height: 36px;
-            text-align: right;
-            padding-right: 12px;
-            .text {
-                color: #EF5404;
-                display: inline-block;
-                font-size: 13px;
-                height: 13px;
-                vertical-align: bottom;
-            }
+          display: inline-block;
+          margin-top: 20px;
+          color: #FFA911;
+          font-size: 20px;
         }
-        .photo {
-            margin: 0 auto;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            border-radius: 50%;
-            height: 130px;
-            width: 130px;
-            background-size: cover;
+      }
+      .stage-date {
+        text-align: center;
+        font-family: mic-beau-sebold;
+        .day {
+          font-size: 46px;
+          line-height: 46px;
+          font-weight: bold;
+          color: #EF5404;
         }
+        .month {
+          text-transform: uppercase;
+        }
+        .year, .month {
+          font-size: 15px;
+          line-height: 15px;
+        }
+      }
     }
-
-    .user-content {
-        margin-top: 100px;
-        .title {
-            font-family: mic;
-            font-size: 24px;
-            margin-left: 36px;
-        }
-        .tab-title {
-            border: solid #ddd;
-            border-width: 1px 1px 0 1px;
-            border-radius: 5px 5px 0 0;
-            margin-right: 3px;
-            & a {
-                color: #555;
-                font-size: 18px;
-                font-family: mic;
-            }
-            &.active {
-                & a {
-                    color: black;
-                }
-                &:before {
-                    border-radius: 21px 21px 0 0;
-                    content: " ";
-                    position: absolute;
-                    height: 2px;
-                    top: -3px;
-                    width: 100%;
-                    border: solid #FFA911;
-                    border-width: 2px 3px 3px 3px;
-                }
-            }
-        }
-        .stages hr {
-            width: 90%;
-            margin-left: 11%;
-        }
-        .stage {
-            font-family: mic;
-            margin-left: 1%;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            .stage-text {
-                .title {
-                    font-family: mic-bold;
-                    font-size: 46px;
-                    line-height: 46px;
-                }
-                .content {
-                    margin-left: 54px;
-                }
-                .role {
-                    font-size: 24px;
-                    margin-top: 16px;
-                }
-                .view-all {
-                    display: inline-block;
-                    margin-top: 20px;
-                    color: #FFA911;
-                    font-size: 20px;
-                }
-            }
-            .stage-date {
-                text-align: center;
-                font-family: mic-beau-sebold;
-                .day {
-                    font-size: 46px;
-                    line-height: 46px;
-                    font-weight: bold;
-                    color: #EF5404;
-                }
-                .month {
-                    text-transform: uppercase;
-                }
-                .year, .month {
-                    font-size: 15px;
-                    line-height: 15px;
-                }
-            }
-        }
-        .news {
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
+    .news {
+      margin-top: 50px;
+      margin-bottom: 50px;
     }
+  }
 
 }

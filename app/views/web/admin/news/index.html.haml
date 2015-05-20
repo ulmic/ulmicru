@@ -1,5 +1,5 @@
 - model_class = News
-- tabs = [ :published, :unpublished, :main ]
+- tabs = [ :published, :unpublished, :main, :unviewed ]
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
   %h1
@@ -16,3 +16,5 @@
     = render 'news_list', news: @main_news
   #unpublished
     = render 'news_list', news: @unpublished_news
+  #unviewed
+    = render 'news_list', news: @unviewed_news

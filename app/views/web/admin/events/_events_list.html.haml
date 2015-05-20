@@ -17,9 +17,10 @@
         %td= event.full_duration
         %td= event.place
         %td.actions
-          - unless event.confirmed?
-            = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
-              %span.glyphicon.glyphicon-ok
+          - if current_user.role.admin?
+            - unless event.confirmed?
+              = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
+                %span.glyphicon.glyphicon-ok
           = link_to edit_admin_event_path(event), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_event_path(event), method: :delete, class: 'btn btn-xs btn-danger' do

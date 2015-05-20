@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                          allow_blank: true
 
   extend Enumerize
-  enumerize :role, in: [ :user, :admin ], default: :user
+  enumerize :role, in: [ :user, :admin, :author ], default: :user
 
   include UserScopes
   include Concerns::AvatarManagment
