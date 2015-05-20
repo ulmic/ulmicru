@@ -16,7 +16,7 @@ module Ulmicru
     config.i18n.available_locales = [:en, :ru]
     config.i18n.default_locale = :ru
     config.assets.enabled = true
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
     config.assets.version = '1.0'
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join("app", "assets", "*.ico")
