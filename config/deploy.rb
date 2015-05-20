@@ -1,3 +1,26 @@
+Rake::Task["deploy:compile_assets"].clear
+
+desc "Precompile assets locally and then rsync to web servers"
+task :compile_assets do
+  # compile assets locally
+  run_locally do
+    with rails_env: fetch(:stage) do
+      execute :bundle, "exec rake assets:precompile"
+    end
+  end
+
+  # rsync to each server
+  local_dir = "./public/assets/"
+  on roles(:web) do
+    # this needs to be done outside run_locally in order for host to exist
+    remote_dir = "#{host.user}@#{host.hostname}:#{shared_path}/public/assets/"
+
+    run_locally { execute "rsync -av --delete #{local_dir} #{remote_dir}" }
+  end
+
+  # clean up
+  run_locally { execute "rm -rf #{local_dir}" }
+end
 # config valid only for Capistrano 3.2.1
 set :application, 'ulmicru'
 set :repo_url, 'git@github.com:ulmic/ulmicru.git'
