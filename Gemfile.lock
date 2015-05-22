@@ -473,7 +473,7 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
-  capistrano-rails
+  capistrano-rails (= 1.1.3)
   capistrano-rails-console
   capistrano-rails-tail-log
   capistrano-rvm

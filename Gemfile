@@ -87,7 +87,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'capistrano'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails'
+  gem 'capistrano-rails', '1.1.3'
   gem 'capistrano3-unicorn'
   gem 'capistrano-sidekiq'
   gem 'capistrano-rvm'
