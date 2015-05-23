@@ -12,41 +12,6 @@ ru:
       - :day
       - :month
       - :year
-  helpers:
-    enter: Войти
-    sign_out: Выйти
-    no_author: Нет автора
-    in: в
-    from: c
-    until: по
-    year: 'года'
-    short_year: 'г.'
-    short_years: 'гг.'
-    more_info: 'Подробнее'
-    hide: 'Скрыть'
-    cancel: Отмена
-    view_all: посмотреть всех
-    actions:
-      update: Редактировать
-      create: Создать
-      destroy: Удалить
-      show: Показать
-      index: Все
-      edit: Редактировать
-    links:
-      actions: Действия
-      edit: Изменить
-      destroy: Удалить
-      restore: Восстановить
-      new: Добавить
-      save: Сохранить
-      back: Назад
-      select: Выбрать
-      approve: Подтвердить
-      decline: Отклонить
-      published: Опубликованные новости
-      unpublished: Неопубликованные новости
-      add: Добавить
   layouts:
     web:
       shared:
@@ -145,6 +110,16 @@ ru:
       new:
         title: Авторизация
         register: Зарегистрироваться
+    pages:
+      shared:
+        not_found:
+          not_found_page: Страница не найдена
+        mr_and_mrs:
+          this_is_404_error_page: 'Ошибка 404. Запрашиваемая вами страница не существует.'
+          this_is_mr_and_mrs_mic_2012: 'А это Иван Карпов и Ксения Фомина. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2012"'
+          this_is_mr_and_mrs_mic_2013: 'А это Сергей Белаклоков и Елена Скворцова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2013"'
+          this_is_mr_and_mrs_mic_2014: 'А это Андрей Каляев и Ксения Парфёнова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2014"'
+          this_is_mr_and_mrs_mic_2015: 'А это Алим Бахтияров и Юлия Крашенинникова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2015"'
   forms:
     placeholders:
       web:

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/admin' => 'web/admin/welcome#index'
 
   scope module: :web do
+    get '/:slug' => 'pages#show', as: :page
     resource :session, only: [:new, :create, :destroy]
     resources :news, only: [ :index, :show ]
     resources :users, only: [ :new, :create ]

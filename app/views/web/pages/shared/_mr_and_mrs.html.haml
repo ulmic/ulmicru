@@ -1,0 +1,9 @@
+.row.mr_mrs{ id: "view_#{i}" }
+  .small-6.columns.text
+    %h3
+      = t('.this_is_404_error_page')
+      %br
+      %br
+      = t(".this_is_mr_and_mrs_mic_#{2011 + i}")
+  .small-6.columns.image
+    = image_tag "pages/not_found/#{2011 + i}.jpg", class: "img_#{2011 + i}"
