@@ -21,7 +21,6 @@ Rails.application.routes.draw do
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
-      resources :attribute_accesses, only: :create
       resources :positions, only: [ :create, :update, :destroy ]
     end
     namespace :admin do
@@ -62,6 +61,11 @@ Rails.application.routes.draw do
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
   namespace :api do
+    namespace :users do
+      namespace :account do
+        resources :attribute_accesses, only: :create
+      end
+    end
     namespace :events do
       resources :registrations, only: [ :create, :destroy ]
     end

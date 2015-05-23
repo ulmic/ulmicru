@@ -14,4 +14,9 @@ module Web::MembersHelper
   def present_link_class(member)
     member.confirmed? ? :link : ''
   end
+
+  def attribute_visible?(accesses, attribute)
+    attr_access = accesses.find_by_member_attribute attribute
+    attr_access.access.visible? if attr_access
+  end
 end

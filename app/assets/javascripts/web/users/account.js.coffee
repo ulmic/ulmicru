@@ -12,9 +12,10 @@ $ ->
           access: value
           member_id: $(this).data().id
           member_attribute: $(this).attr('name')
-      url: Routes.users_attribute_accesses_path()
+      url: Routes.api_users_account_attribute_accesses_path()
       method: 'POST'
-      success: -> alert(I18n.t('notices.web.users.account.attribute_accesses.changed'))
-      error: -> alert(I18n.t('notices.web.users.account.attribute_accesses.not_changed'))
+      #TODO нормальные алерты
+      #success: -> alert(I18n.t('notices.web.users.account.attribute_accesses.changed'))
+      #error: -> alert(I18n.t('notices.web.users.account.attribute_accesses.not_changed'))
     return
   return

@@ -4,5 +4,5 @@ class Position < ActiveRecord::Base
   validate :begin_before_end_date
 
   include PositionScopes
-  include Concerns::DurationManagment
+  #include Concerns::DurationManagment
 end

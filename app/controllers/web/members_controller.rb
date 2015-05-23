@@ -40,6 +40,7 @@ class Web::MembersController < Web::ApplicationController
       @registrations = member.registrations.decorate
       @news = NewsDecorator.decorate_collection member.tags.news.map &:record
       @articles = member.tags.articles.map &:record
+      @attribute_accesses = member.attribute_accesses
     end
   end
 end

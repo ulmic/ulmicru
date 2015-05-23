@@ -1,4 +1,4 @@
-class Web::Users::AttributeAccessesController < Web::Users::ApplicationController
+class Api::Users::Account::AttributeAccessesController < Api::Users::ApplicationController
   def create
     @access = AttributeAccess.where(member_attribute: params[:attribute_access][:member_attribute], member_id: params[:attribute_access][:member_id]).first
     unless @access

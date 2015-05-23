@@ -2,9 +2,17 @@
 // =require web/foundation/category-navbar
 
 a {
-    font-family: 'mic';
-    color: #333333;
+  font-family: 'mic';
+  color: #333333;
 }
 a:hover {
-	color: #f45c10;
+  color: #f45c10;
+}
+
+span {
+  &.label {
+    font-family: 'mic';
+    font-size: 12pt;
+    margin-bottom: 10px;
+  }
 }
