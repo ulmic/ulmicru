@@ -261,5 +261,22 @@
       margin-bottom: 50px;
     }
   }
-
+}
+.account-form {
+  .actions {
+    text-align: justify;
+    .row {
+      padding-bottom: 15px;
+    }
+  }
+  .row {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .table {
+    margin-top: 15px;
+  }
 }

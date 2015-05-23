@@ -1,16 +1,37 @@
-= simple_form_for @questionary_form, url: { controller: 'web/users/join', action: :create } do |f|
-  = f.input :first_name, as: :string, required: true, input_html: { value: current_user.first_name }
-  = f.input :patronymic, as: :string, required: true
-  = f.input :last_name, as: :string, required: true, input_html: { value: current_user.last_name }
-  = f.input :motto, as: :string, required: true
-  = f.input :mobile_phone, as: :string, required: true
-  = f.input :birth_date, as: :string, required: true
-  = f.input :home_adress, as: :string, required: true
-  = f.input :municipality, as: :string, required: true
-  = f.input :locality, as: :string, required: true
-  = f.input :avatar, as: :string, required: true
-  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
-  = f.input :want_to_do
-  = f.input :experience
-  = f.button :submit, t('helpers.links.save'), class: 'btn-success'
-  = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
+.container
+  %h3.title
+    = t('.title')
+  %p
+    %b
+      Привет!
+  %p
+    Если ты оказался на этой странице, значит хочешь официально присоединиться к команде Молодёжного инициативного центра.
+  %p
+    Оформляя эту заявку ты должен осознавать, МИЦ - это общественная организация. Вступая в неё каждый берёт на себя ответственность за её развитие: он должен участвовать в Областных Конференциях, выполнять обязанности, возложенные на него Уставом, в т.ч. заботиться об авторитете МИЦ, состоять на учёте в одном из местных отделений или структурных подразделений организации.
+  %p
+    Чтобы деятельность МИЦ была максимально прозрачной, мы прописали все принципы и основы деятельности в Уставе. Не забудь прочитать его ЗДЕСЬ, а ЗДЕСЬ узнать традиции нашей команды.
+  %p
+    Каждый наш активист может принимать участие в мероприятиях всех направлений: в центральных программах «Лидер», «Inформация», «Право», «Добро» и областных проекта «Информационные технологии» и «Диалог культур».
+  %p
+    Для поддержки самых активных представителей нашей команды, в МИЦ работает эффективная корпоративная политика. Ежегодно мы вручаем премию "Признание", проводим конкурс «Мистер и Мисс МИЦ», конкурс «Лучшая команда», выпускаем корпоративные тетради и мн.др.
+  %p
+    Если в периоде заполнения анкеты у тебя возникнут какие-то проблемы, то оперативно звони руководителю корпоративных проектов Марии Кирпичниковой по телефону 8-905-349-37-76, komanda@ulmic.ru. В течение недели после заполнения анкеты она  свяжется с тобой и ответит на все возникающие вопросы. Если этого не произошло, набери её сам. Телефон выше.
+  %p
+    Желаем удачи!
+.container.mic-form-container
+  = simple_form_for @questionary_form, url: { controller: 'web/users/join', action: :create } do |f|
+    = f.input :first_name, as: :string, required: true, input_html: { value: current_user.first_name }
+    = f.input :patronymic, as: :string, required: true
+    = f.input :last_name, as: :string, required: true, input_html: { value: current_user.last_name }
+    = f.input :motto, as: :string, required: true
+    = f.input :mobile_phone, as: :string, required: true
+    = f.input :birth_date, as: :string, required: true
+    = f.input :home_adress, as: :string, required: true
+    = f.input :municipality, as: :string, required: true
+    = f.input :locality, as: :string, required: true
+    = f.input :avatar, as: :string, required: true
+    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+    = f.input :want_to_do
+    = f.input :experience
+    = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+    = link_to t('helpers.links.back'), root_path, class: 'btn btn-default'
