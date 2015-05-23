@@ -3,10 +3,18 @@ module Concerns
     def default_avatar
       @detector = RussianSex::Detector.new
       sex = @detector.detect first_name
-      if sex == 'M'
-        ActionController::Base.helpers.asset_path 'default-man-icon.png'
+      if type == 'Member'
+        if sex == 'M'
+          ActionController::Base.helpers.asset_path 'default-mic-man-icon.png'
+        else
+          ActionController::Base.helpers.asset_path 'default-mic-woman-icon.png'
+        end
       else
-        ActionController::Base.helpers.asset_path '/images/default-woman-icon.png'
+        if sex == 'M'
+          ActionController::Base.helpers.asset_path 'default-man-icon.png'
+        else
+          ActionController::Base.helpers.asset_path 'default-woman-icon.png'
+        end
       end
     end
   end

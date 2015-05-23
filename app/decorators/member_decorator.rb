@@ -47,7 +47,11 @@ class MemberDecorator < ApplicationDecorator
   end
 
   def element_avatar
-    avatar.element if avatar
+    if avatar.present? && confirmed?
+      avatar.element
+    else
+      default_avatar
+    end
   end
 
   def select_presentation
