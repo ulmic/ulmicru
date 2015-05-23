@@ -11,6 +11,7 @@ $ ->
       $(this).removeClass 'hidden'
     $(this).hide()
     $hide_button.show()
+    align_mic_userpics()
 
   $hide_button.click (e) ->
     e.preventDefault()
@@ -20,3 +21,15 @@ $ ->
     $god_fathers_childs.height('250px')
     $(this).hide()
     $view_button.show()
+
+  align_mic_userpics = ->
+    $('.mic-userpic-circle').each ->
+      parent_width = $(this).parents().first().width()
+      $(this).css('margin-left', (parent_width - $(this).width()) / 2)
+      return
+    return
+
+  align_mic_userpics()
+  $(window).resize ->
+    align_mic_userpics()
+  return
