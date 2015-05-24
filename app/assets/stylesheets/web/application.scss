@@ -2,16 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// =require foundation
-// =require web/foundation/application
-// =require pictonic
-// =require web/welcome
-// =require web/events
-// =require web/news
-// =require web/articles
-// =require web/account
-// =require web/sessions
+//= require foundation
+//= require web/foundation/application
+//= require pictonic
+//= require web/welcome
+//= require web/events
+//= require web/news
+//= require web/articles
+//= require web/account
+//= require web/sessions
 //= require select2
+//= require jasny-bootstrap
 
 @import "foundation/functions";
 
@@ -159,6 +160,37 @@ ul {
 .select2-container {
   width: 100%;
   margin-bottom: 10px;
+  &.select2-container-active {
+    .select2-choices {
+      border-color: #aaa;
+    }
+  }
+  .select2-choices {
+    li.select2-search-choice {
+      border-radius: 0;
+      line-height: 1.6;
+      div {
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+.select2-container-multi {
+  .select2-search-choice-close {
+    left: 4px;
+    top: 9px;
+  }
+}
+
+.select2-drop.select2-drop-multi.select2-display-none.select2-drop-active {
+  border-radius: 0;
+  border-color: #aaa;
+  .select2-results {
+    .select2-highlighted {
+      background-color: #fc9727;
+    }
+  }
 }
 
 .columns {
@@ -170,4 +202,11 @@ ul {
 input[type=checkbox] {
   width: 39px;
   height: 39px;
+}
+
+.preview {
+  img {
+    max-width: 50%;
+    width: auto;
+  }
 }

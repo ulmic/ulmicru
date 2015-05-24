@@ -1,0 +1,7 @@
+- title @page.title
+- if @page.view.present?
+  = stylesheet_link_tag "web/pages/#{@page.view}"
+  = javascript_include_tag "web/pages/#{@page.view}"
+  = render "web/pages/shared/#{@page.view}"
+- else
+  = render "web/pages/shared/default_show"

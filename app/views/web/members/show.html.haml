@@ -53,17 +53,18 @@
           %blockquote.user-motto
             = @member.motto
           %hr.orange
-          .user-team
-            .team-label
-              - if @member.teams.count == 1
-                = "#{t('activerecord.models.team')}:"
-              - else
-                = "#{t('activerecord.models.team').pluralize(:ru)}:"
-            - @member.teams.each_with_index do |team, index|
-              .user-team-name
-                %span{ class: "#{'more' if index > 0}" }
-                  = team.decorate.full_title
-              %br
+          - if @member.teams.any?
+            .user-team
+              .team-label
+                - if @member.teams.count == 1
+                  = "#{t('activerecord.models.team')}:"
+                - else
+                  = "#{t('activerecord.models.team').pluralize(:ru)}:"
+              - @member.teams.each_with_index do |team, index|
+                .user-team-name
+                  %span{ class: "#{'more' if index > 0}" }
+                    = team.decorate.full_title
+                %br
           .row.god-fathers-childs
             - if @parent.present?
               .godfather.small-4.columns{ class: present_link_class(@parent), data: { href: present_member_path(@parent) } }

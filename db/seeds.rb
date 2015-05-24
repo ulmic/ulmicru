@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+page = Page.find_by slug: :not_found
+Page.create slug: :not_found, view: :not_found, title: '404' unless page

@@ -19,7 +19,10 @@
       = f.input :home_adress, as: :string
       = f.input :municipality, as: :string
       = f.input :locality, as: :string
-      = f.input :avatar, as: :string
+      .preview
+        = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
+      = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :avatar, label: false, as: :jasny_file_preview_upload_foundation
       = f.association :teams, input_html: { class: :select2 }
       -#= f.hint t('.my_position_in_mic')
       -#= f.simple_fields_for :positions do |ff|
@@ -73,6 +76,15 @@
             %span{ class: social_network_icon(network, :big, :colored) }
           .small-2.columns.end
             = link_to t('helpers.links.auth'), auth_path(network), class: 'button'
-  %br
-  - if @user.role.admin?
-    = link_to t('.admin_panel'), admin_path
+  - unless @user.role.user?
+    .row-fluid
+      %h3
+        = t('.admin_panel')
+      %br
+      .row
+        .small-4.columns
+          = t('.your_role_is', role: @user.role.text)
+          %br
+          = t('.you_have_access_to_admin_panel')
+        .small-4.small-offset-1.columns.end
+          = link_to t('.admin_panel'), admin_path, class: 'button'

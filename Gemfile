@@ -49,11 +49,12 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'configus'
 gem 'foursquare2', github: 'nitinstp23/foursquare2', branch: :gemspec_fix
 gem 'validates'
-gem "font-awesome-rails"
-
-gem 'foundation-rails', github: "zurb/foundation-rails"
+gem 'font-awesome-rails'
+gem 'sidekiq'
+gem 'foundation-rails', github: 'zurb/foundation-rails'
 gem "autoprefixer-rails"
 gem 'select2-rails'
+gem 'jasny_bootstrap_extension_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -95,6 +96,7 @@ group :development, :test do
   gem 'capistrano-ssh-doctor', '~> 1.0'
   gem 'capistrano-rails-console'
   gem 'capistrano-rails-tail-log'
+  gem 'capistrano-faster-assets', '~> 1.0'
   gem 'quiet_assets'
   gem 'colorize', '0.6.0'
   gem 'better_errors'

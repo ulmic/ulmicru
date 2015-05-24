@@ -13,6 +13,8 @@
 #= require ckeditor/init
 #= require web/admin/tags
 #= require select2
+#= require jasny-bootstrap
+#= require jasny_file_uploader
 
 $ ->
   $('.input').addClass('form-group')
