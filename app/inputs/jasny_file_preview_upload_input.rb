@@ -1,12 +1,18 @@
 class JasnyFilePreviewUploadInput < SimpleForm::Inputs::FileInput
   #FIXME fix using this input
+  def initialize(*args)
+    @button ||= 'btn'
+    @default_button ||= 'btn-default'
+    super *args
+  end
+
   def input(wrapper_options)
     model_name = object.model.model_name.name.downcase
     template.content_tag :div, class: 'fileinput fileinput-new', data: { provides: :fileinput } do
       input = template.content_tag :div, class: 'fileinput-preview thumbnail', data: { trigger: :fileinput }, style: 'width: 200px; height: 150px' do
       end
       input += template.content_tag :div do
-        span = template.content_tag :span, class: 'btn btn-default btn-file' do
+        span = template.content_tag :span, class: "#{@button} #{@default_button} btn-file" do
           inside_span = template.content_tag :span, class: 'fileinput-new' do
             I18n.t('helpers.links.select_image')
           end
@@ -20,7 +26,7 @@ class JasnyFilePreviewUploadInput < SimpleForm::Inputs::FileInput
           end
           inside_span
         end
-        span += template.content_tag :a, class: 'btn btn-default fileinput-exists', data: { dismiss: :fileinput }, href: '#' do
+        span += template.content_tag :a, class: "#{@button} #{@default_button} fileinput-exists", data: { dismiss: :fileinput }, href: '#' do
           I18n.t('helpers.links.remove')
         end
         span

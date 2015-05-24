@@ -30,6 +30,7 @@
 //= require foundation
 //= require select2
 //= require web/users/account
+//= require jasny-bootstrap
 
 $(document).foundation();
 $(function(){
