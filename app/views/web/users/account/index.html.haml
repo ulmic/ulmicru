@@ -76,6 +76,15 @@
             %span{ class: social_network_icon(network, :big, :colored) }
           .small-2.columns.end
             = link_to t('helpers.links.auth'), auth_path(network), class: 'button'
-  %br
-  - if @user.role.admin?
-    = link_to t('.admin_panel'), admin_path
+  - unless @user.role.user?
+    .row-fluid
+      %h3
+        = t('.admin_panel')
+      %br
+      .row
+        .small-4.columns
+          = t('.your_role_is', role: @user.role.text)
+          %br
+          = t('.you_have_access_to_admin_panel')
+        .small-4.small-offset-1.columns.end
+          = link_to t('.admin_panel'), admin_path, class: 'button'
