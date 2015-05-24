@@ -2,16 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// =require foundation
-// =require web/foundation/application
-// =require pictonic
-// =require web/welcome
-// =require web/events
-// =require web/news
-// =require web/articles
-// =require web/account
-// =require web/sessions
+//= require foundation
+//= require web/foundation/application
+//= require pictonic
+//= require web/welcome
+//= require web/events
+//= require web/news
+//= require web/articles
+//= require web/account
+//= require web/sessions
 //= require select2
+//= require jasny-bootstrap
 
 @import "foundation/functions";
 
@@ -170,4 +171,11 @@ ul {
 input[type=checkbox] {
   width: 39px;
   height: 39px;
+}
+
+.preview {
+  img {
+    max-width: 50%;
+    width: auto;
+  }
 }

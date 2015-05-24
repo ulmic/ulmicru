@@ -54,6 +54,7 @@ gem 'sidekiq'
 gem 'foundation-rails', github: 'zurb/foundation-rails'
 gem "autoprefixer-rails"
 gem 'select2-rails'
+gem 'jasny_bootstrap_extension_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

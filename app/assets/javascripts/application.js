@@ -30,6 +30,8 @@
 //= require foundation
 //= require select2
 //= require web/users/account
+//= require jasny-bootstrap
+//= require jasny_file_uploader
 
 $(document).foundation();
 $(function(){
