@@ -13,7 +13,9 @@
       = f.input :lead, as: :string
       = f.input :body, as: :ckeditor
       = f.input :published_at, as: :datetime_picker
-      = f.input :photo, as: :file
+      = f.label :photo
+      = f.input :photo, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :photo, label: false, as: :jasny_file_preview_upload
       - if current_user.role.author?
         = f.input :state, as: :hidden, input_html: { value: :unviewed }
       - else

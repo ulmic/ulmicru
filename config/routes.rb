@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
-  get '/:slug' => 'pages#show', as: :page
+  get '/:slug' => 'web/pages#show', as: :page
   namespace :api do
     namespace :users do
       namespace :account do
