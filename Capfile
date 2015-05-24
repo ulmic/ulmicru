@@ -26,6 +26,7 @@ require 'capistrano/rails_tail_log'
 #require 'capistrano/sidekiq'
 #require 'capistrano/sidekiq/monit'
 require 'capistrano/rails/assets'
+require 'capistrano/faster_assets'
 # require 'capistrano/rails/migrations'
 # require "whenever/capistrano"
 
