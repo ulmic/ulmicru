@@ -26,7 +26,7 @@ class JasnyFilePreviewUploadInput < SimpleForm::Inputs::FileInput
           end
           inside_span
         end
-        span += template.content_tag :a, class: "#{@button} #{@default_button} fileinput-exists", data: { dismiss: :fileinput }, href: '#' do
+        span += template.content_tag :a, class: "#{@button} #{@default_button} fileinput-exists remove", data: { dismiss: :fileinput }, href: '#' do
           I18n.t('helpers.links.remove')
         end
         span

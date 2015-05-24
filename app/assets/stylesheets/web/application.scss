@@ -172,3 +172,10 @@ input[type=checkbox] {
   width: 39px;
   height: 39px;
 }
+
+.preview {
+  img {
+    max-width: 50%;
+    width: auto;
+  }
+}

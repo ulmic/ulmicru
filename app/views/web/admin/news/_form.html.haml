@@ -14,6 +14,8 @@
       = f.input :body, as: :ckeditor
       = f.input :published_at, as: :datetime_picker
       = f.label :photo
+      .preview
+        = image_tag @news_form.model.photo if @news_form.model.photo.present?
       = f.input :photo, as: :file, label: false, input_html: { style: 'display: none' }
       = f.input :photo, label: false, as: :jasny_file_preview_upload
       - if current_user.role.author?

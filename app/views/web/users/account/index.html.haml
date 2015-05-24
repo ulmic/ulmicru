@@ -19,6 +19,8 @@
       = f.input :home_adress, as: :string
       = f.input :municipality, as: :string
       = f.input :locality, as: :string
+      .preview
+        = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
       = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }
       = f.input :avatar, label: false, as: :jasny_file_preview_upload_foundation
       = f.association :teams, input_html: { class: :select2 }
