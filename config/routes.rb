@@ -59,8 +59,6 @@ Rails.application.routes.draw do
       resources :activity_lines, only: [:show]
     end
   end
-  get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
-  get '/:slug' => 'web/pages#show', as: :page
   namespace :api do
     namespace :users do
       namespace :account do
@@ -83,6 +81,8 @@ Rails.application.routes.draw do
       resources :tags, only: [ :create, :destroy, :index ]
     end
   end
+  get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
+  get '/:slug' => 'web/pages#show', as: :page
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
