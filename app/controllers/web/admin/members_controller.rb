@@ -22,7 +22,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     if member.unavailable?
       @member_form = ::Admin::Member::UnavailableMemberForm.new member
     else
-      @member_form = MemberForm.new @member
+      @member_form = MemberForm.new member
     end
   end
 
