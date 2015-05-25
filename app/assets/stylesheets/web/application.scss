@@ -210,3 +210,12 @@ input[type=checkbox] {
     width: auto;
   }
 }
+
+.panel {
+  &.alert {
+    background-color: #f04124;
+    h1, h2, h3, h4, h5, h6, li {
+      color: white;
+    }
+  }
+}

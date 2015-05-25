@@ -2,6 +2,8 @@
 .container
   %h3.title
     = t('.title')
+.container.errors
+  = render 'layouts/web/shared/errors', object: @member_form
 .container.mic-form-container
   = simple_form_for @member_form, url: members_path, method: :post do |f|
     - f.with_options required: true do |f|
@@ -18,6 +20,10 @@
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :type, as: :hidden, input_html: { value: 'Member' }
       = f.input :state, as: :hidden, input_html: { value: :unviewed }
-      = f.input :avatar, as: :file
+      = f.label :avatar
+      .preview
+        = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
+      = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :avatar, label: false, as: :jasny_file_preview_upload_foundation
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'
     = link_to t('helpers.links.back'), root_path, class: 'button'

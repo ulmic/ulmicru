@@ -19,6 +19,7 @@
       = f.input :home_adress, as: :string
       = f.input :municipality, as: :string
       = f.input :locality, as: :string
+      = f.label :avatar
       .preview
         = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
       = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }

@@ -9,13 +9,11 @@ class Web::MembersController < Web::ApplicationController
 
   def create
     exists_member = Member.find_by_ticket params[:member][:ticket]
+    member = exists_member
     if exists_member
       if exists_member.unavailable?
         current_user.destroy
         sign_in exists_member
-        member = exists_member
-      else
-        redirect_to account_path
       end
     else
       member = current_user.becomes! Member
