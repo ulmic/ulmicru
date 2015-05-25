@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Web::Users::AttributeAccessesControllerTest < ActionController::TestCase
+class Api::Users::Account::AttributeAccessesControllerTest < ActionController::TestCase
   setup do
     member = create :member
     sign_in member
