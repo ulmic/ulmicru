@@ -97,6 +97,7 @@ group :development, :test do
   gem 'capistrano-rails-console'
   gem 'capistrano-rails-tail-log'
   gem 'capistrano-faster-assets', '~> 1.0'
+  gem 'capistrano-rails-collection'
   gem 'quiet_assets'
   gem 'colorize', '0.6.0'
   gem 'better_errors'
