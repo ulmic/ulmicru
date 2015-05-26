@@ -1,4 +1,5 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
+  before_filter :choose_members, only: [ :new, :edit ]
   def index
     @unviewed_members = ::MemberDecorator.decorate_collection Member.unviewed
     @confirmed_members = ::MemberDecorator.decorate_collection Member.confirmed
