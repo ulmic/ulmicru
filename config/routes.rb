@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
     resources :teams, only: [ :index, :show ]
+    resource :page, only: [] do
+      get '/:slug' => 'pages#show', as: :page
+    end
     namespace :users do
       resources :account, only: :update
       resources :authentications, only: :destroy
@@ -82,7 +85,6 @@ Rails.application.routes.draw do
     end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
-  get '/:slug' => 'web/pages#show', as: :page
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
