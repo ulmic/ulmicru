@@ -20,17 +20,11 @@ class Web::OmniauthController < Web::ApplicationController
     else
       unless signed_in?
         user = User.find_by_email email if email
-        if user
-          Authentication.create user_id: user.id, provider: provider, uid: uid
-        else
+        unless user
           password = SecureRandom.hex 8
-          user = User.new email: email, first_name: first_name, last_name: last_name, password: password, password_confirmation: password
-          user.authentications.build provider: provider, uid: uid
-          user.save
+          user = User.create email: email, first_name: first_name, last_name: last_name, password: password, password_confirmation: password
         end
         sign_in user
-        redirect_to account_path
-        return
       end
       Authentication.create user_id: current_user.id, provider: provider, uid: uid
     end

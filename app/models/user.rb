@@ -18,10 +18,6 @@ class User < ActiveRecord::Base
   include UserScopes
   include Concerns::AvatarManagment
   include Concerns::SexManagment
-  include Concerns::NotificationManagment
-
-  # Notifications
-  after_save { send_notification(self, self, :after_create) if !authentications.any? && self.unviewed? }
 
   state_machine :state, initial: :unviewed do
     state :unviewed
