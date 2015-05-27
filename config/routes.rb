@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 # -*- coding: utf-8 -*-
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq', constraints: SidekiqConstraint.new
+  mount Sidekiq::Web => '/sidekiq'
   mount Ckeditor::Engine => '/ckeditor'
 
   root to: 'web/welcome#index'

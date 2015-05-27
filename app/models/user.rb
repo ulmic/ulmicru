@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   include Concerns::NotificationManagment
 
   # Notifications
-  after_save { send_notification(self, self, :after_create) }
+  after_save { send_notification(self, self, :after_create) if !authentications.any? && self.unviewed? }
 
   state_machine :state, initial: :unviewed do
     state :unviewed
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     model_name == 'Member'
   end
 
-  def generate_confirmation_token
+  def generate_token
     self.token = SecureHelper.generate_token
   end
 end
