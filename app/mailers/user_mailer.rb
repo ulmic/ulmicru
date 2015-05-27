@@ -1,13 +1,15 @@
 class UserMailer < ApplicationMailer
 
-  attr_accessor :message
+  attr_accessor :image_src
 
   include Concerns::MessageConstructor
 
+  default template_path: "mailers/#{self.name.underscore}"
+
   def after_create(object, user)
     @user = user
-    @message = create_message object.class.name.downcase, :after_create
-    mail to: user.email
+    @image_src = "http://ul-lider.ru/confirmation_idea_fair.jpg"
+    mail to: @user.email, subject: subject(object.class, :after_create)
   end
 
   def just_message(user, message, subject)
