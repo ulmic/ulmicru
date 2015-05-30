@@ -1,6 +1,8 @@
 class Web::ApplicationController < ApplicationController
   before_filter :load_categories_tree
 
+  include Concerns::NotificationManagment
+
   def load_categories_tree
     @first_category = Category.find_by_name 'Кто мы такие'
     contact_category = Category.find_by_name 'Контакты'

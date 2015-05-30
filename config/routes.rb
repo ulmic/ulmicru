@@ -1,5 +1,7 @@
+require 'sidekiq/web'
 # -*- coding: utf-8 -*-
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
   mount Ckeditor::Engine => '/ckeditor'
 
   root to: 'web/welcome#index'
@@ -63,6 +65,11 @@ Rails.application.routes.draw do
     end
   end
   namespace :api do
+    resources :users, only: [] do
+      member do
+        get :confirm
+      end
+    end
     namespace :users do
       namespace :account do
         resources :attribute_accesses, only: :create

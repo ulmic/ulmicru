@@ -1,0 +1,4 @@
+messages:
+  user:
+    after_create:
+      subject: 'Подтверждение адреса электронной почты'

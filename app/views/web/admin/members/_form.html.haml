@@ -20,8 +20,8 @@
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :avatar, as: :file
-      = f.input :state
-      = f.association :parent, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}"  }, value_method: :id
+      = f.input :state, as: :select
+      = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
       -#= f.simple_fields_for :positions do |position_form|
         = position_form.input :title, as: :string
         = position_form.input :begin_date, as: :date_picker
