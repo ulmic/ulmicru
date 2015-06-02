@@ -1,5 +1,4 @@
 class News < ActiveRecord::Base
-  before_save :set_initial_state
   has_many :tags, as: :record,
                   dependent: :destroy
   has_and_belongs_to_many :attachments, class_name: 'Document'
@@ -8,7 +7,6 @@ class News < ActiveRecord::Base
   validates :title,         presence: true
   validates :body,          presence: true
   validates :published_at,  presence: true
-  validates :photo,         presence: true
   validates :user_id,       presence: true
   validates :lead,          presence: true
   validates :state,         presence: true
@@ -39,10 +37,5 @@ class News < ActiveRecord::Base
     event :restore do
       transition :removed => :unviewed
     end
-  end
-
-  private
-  def set_initial_state
-    state = "unviewed" unless state.present?
   end
 end

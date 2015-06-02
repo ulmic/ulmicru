@@ -28,8 +28,8 @@
           %span.text
             = t('.all_news')
           %span.slider-arrows
-            %a.arrow.left-arrow
-            %a.arrow.right-arrow
+            %a.arrow.left-arrow{ data: { crease: 0 } }
+            %a.arrow.right-arrow{ data: { load: 0 } }
       .news-slider
         - @text_news.each do |news|
           %a.new-slider-item{ href: news_path(news) }
@@ -39,6 +39,11 @@
               = news.title
             %p.content.text
               = news.short_lead
+        - 5.times do
+          %a.new-slider-item{ href: '#' }
+            %p.date
+            %p.content.title
+            %p.content.text
   .events
     .container-big
       %h4.rotate
