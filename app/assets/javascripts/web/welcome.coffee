@@ -52,14 +52,14 @@ $ ->
 
   fill_news = (news) ->
     $news_slider_item = $('.news-slider .slick-track a').slice -5
+    $news_slider_item.each ->
+      $(this).children('span.spin').remove()
     $news_slider_item.each (index) ->
       current_news = news[index]
       $(this).prop 'href', Routes.news_path current_news.id
       $date = $(this).children('p.date').first()
       $title = $(this).children('p.content.title').first()
       $text = $(this).children('p.content.text').first()
-
-      $(this).children('span.spin').remove()
 
       $date.html current_news.publish_date_time
       $title.html current_news.title
