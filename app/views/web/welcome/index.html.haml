@@ -49,7 +49,7 @@
       %h4.rotate
         = t('.events')
       .container-big
-        %ul.small-block-grid-4
+        %ul.small-block-grid-4#event-list
           - @events.each do |event|
             %li.mic-event
               = render_element "mic_event", img_src: event.main_photo, |
@@ -58,6 +58,8 @@
                                             date: event.full_date_duration, |
                                             title: event.title, |
                                             text: strip_tags(event.lead)
+    .container-big.more-events{ style: 'cursor: pointer' }
+      %i.fa.fa-caret-down.fa-5x
   .humans
     %ul.small-block-grid-7
       - @members.each do |member|
