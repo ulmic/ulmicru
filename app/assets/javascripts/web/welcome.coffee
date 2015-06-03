@@ -1,4 +1,10 @@
 $ ->
+
+  spin = ->
+    '<span class = "spin"></span>'
+
+  # News
+
   $news_slider = $('.news-slider')
   options = {
     infinite: false
@@ -28,11 +34,17 @@ $ ->
       nextArrow: $('.main-slider .right-arrow')
     }
     $news_slider.slick options
+    $news_slider.on 'afterChange', ->
+      $first_active_slide = $('.news-slider .slick-track a.slick-active').first()
+      if $first_active_slide.prop('href') == ''
+        $('.news-slider .slick-track a').slice(-5).each ->
+          $(this).append spin()
+        load_news()
     return
 
   text_news_template = ->
     "
-      <a class='new-slider-item slick-slide' href='/news/33'>
+      <a class='new-slider-item slick-slide'>
         <p class='date'>
         </p>
         <p class='content title'>
@@ -71,7 +83,7 @@ $ ->
     count = 5
     offset = parseInt($('.news-slider .slick-track a').length) - count
     $.ajax {
-      url: Routes.api_news_index_path(),
+      url: Routes.api_news_index_path()
       method: 'GET'
       data: {
         count: count
@@ -85,30 +97,70 @@ $ ->
         alert 'error'
     }
 
-  $left_arrow = $('.news a.arrow.left-arrow')
-  $right_arrow = $('.news a.arrow.right-arrow')
-
-  load = ->
-    num = parseInt $right_arrow.data('load')
-
-  crease = ->
-    parseInt $left_arrow.data('crease')
-
-  $left_arrow.click ->
-    if crease() > 0
-      $right_arrow.data('load', load() + 1)
-      $left_arrow.data('crease', crease() - 1)
-    return
-
-  $right_arrow.click ->
-    if load() == 0
-      $left_arrow.data('crease', crease() + 1)
-      $('.news-slider .slick-track a').slice(-5).each ->
-        $(this).append('<span class = "spin"></span>')
-      load_news()
-    else
-      $right_arrow.data('load', load() - 1)
-    return
-
   init_slider()
+
+  # Events
+
+  template_event = (event) ->
+    "
+      <li class = 'mic-event' style = 'display: none'>
+        <a href = '/events/#{event.id}'>
+          <img class = 'slider-img' src = '#{event.photo}'/>
+        </a>
+        <section>
+          <span class = 'event-category'>
+            #{event.category}
+          </span>
+          <span>
+            #{event.date}
+          </span>
+        </section>
+        <p>
+          <a href = '/events/#{event.id}'>
+            <b>
+              #{event.title}
+            </b>
+            <br/>
+            #{event.text}
+          </a>
+        </p>
+      </li>
+    "
+
+  append_events = (events) ->
+    $event_list = $('ul#event-list')
+    $(events).each ->
+      $event_list.append template_event this
+    $event_list.children('li').slideDown()
+
+  load_events = ->
+    count = 8
+    offset = $('li.mic-event').length
+    $.ajax {
+      url: Routes.api_events_path()
+      method: 'GET'
+      data: {
+        count: count
+        offset: offset
+      }
+      dataType: 'json'
+      success: (response) ->
+        append_events response.events
+        $more_events = $('.more-events')
+        $more_events.children('span.spin').remove()
+        if response.last_events
+          $more_events.remove()
+        else
+          $more_events.append("<i class = 'fa fa-caret-down fa-5x'></i>")
+      error: ->
+        alert 'error'
+    }
+
+  $('.more-events').click (e) ->
+    $(this).append spin()
+    $(this).children('.fa-caret-down').remove()
+    load_events()
+    e.preventDefault()
+    return
+
   return
