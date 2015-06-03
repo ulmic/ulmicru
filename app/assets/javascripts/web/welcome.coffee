@@ -1,4 +1,7 @@
 $ ->
+
+  # News
+
   $news_slider = $('.news-slider')
   options = {
     infinite: false
@@ -28,11 +31,17 @@ $ ->
       nextArrow: $('.main-slider .right-arrow')
     }
     $news_slider.slick options
+    $news_slider.on 'afterChange', ->
+      $first_active_slide = $('.news-slider .slick-track a.slick-active').first()
+      if $first_active_slide.prop('href') == ''
+        $('.news-slider .slick-track a').slice(-5).each ->
+          $(this).append('<span class = "spin"></span>')
+        load_news()
     return
 
   text_news_template = ->
     "
-      <a class='new-slider-item slick-slide' href='/news/33'>
+      <a class='new-slider-item slick-slide'>
         <p class='date'>
         </p>
         <p class='content title'>
@@ -87,6 +96,7 @@ $ ->
 
   $left_arrow = $('.news a.arrow.left-arrow')
   $right_arrow = $('.news a.arrow.right-arrow')
+  init_slider()
 
   load = ->
     num = parseInt $right_arrow.data('load')
