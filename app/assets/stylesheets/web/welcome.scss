@@ -1,6 +1,8 @@
 @import "mixins";
 @import "icons";
 
+$button_hover_color: rgba(226, 112, 0, 0.71);
+
 .welcome {
   h3,h4,h5 {
     text-transform: uppercase;
@@ -82,31 +84,6 @@
       padding-top: rem-calc(14);
       font-size: rem-calc(20);
     }
-    .right {
-      line-height: rem-calc(47);
-      .text {
-        font-family: mic;
-        font-size: rem-calc(11);
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-      .left-arrow, .right-arrow {
-        display: inline-block !important;
-        background-image: image-url('arrow-small.png');
-        background-size: cover;
-      }
-      .right-arrow {
-        transform: rotate(180deg);
-      }
-      .slider-arrows {
-        margin-left: rem-calc(10);
-      }
-      .arrow {
-        width: rem-calc(25);
-        height: rem-calc(25);
-        vertical-align: middle;
-      }
-    }
     .date {
       font-family: mic;
       font-size: rem-calc(11);
@@ -116,6 +93,31 @@
       font-family: mic;
       font-size: rem-calc(15);
       font-weight: bold;
+    }
+    .left-arrow, .right-arrow {
+      width: 2%;
+      height: rem-calc(162);
+      margin-top: rem-calc(14);
+      padding-top: rem-calc(55);
+      text-align: center;
+      &:hover {
+        opacity: 0.5;
+        background-color: $button_hover_color;
+        i {
+          color: white;
+        }
+      }
+    }
+    .container-big{
+      float: left;
+    }
+    .left-arrow {
+      margin-right: 0.5%;
+      float: left;
+    }
+    .right-arrow {
+      margin-left: 0.5%;
+      float: left;
     }
   }
 
@@ -137,7 +139,7 @@
       background-color: #ececec;
       &:hover {
         opacity: 0.5;
-        background-color: rgba(226, 112, 0, 0.71);
+        background-color: $button_hover_color;
         i {
           color: white;
         }
@@ -148,7 +150,6 @@
         height: 32px;
         background-size: 100% 100%;
         background-image: image-url('spinner.gif');
-        margin-top: 22px;
       }
     }
   }

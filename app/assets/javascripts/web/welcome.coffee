@@ -10,8 +10,8 @@ $ ->
     infinite: false
     slidesToShow: 5
     slidesToScroll: 5
-    prevArrow: $('.news .slider-arrows>.left-arrow')
-    nextArrow: $('.news .slider-arrows>.right-arrow')
+    prevArrow: $('.news .left-arrow')
+    nextArrow: $('.news .right-arrow')
   }
 
   init_slider = ->
