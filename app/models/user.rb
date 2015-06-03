@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
   def is_member?
     model_name == 'Member'
   end
+
+  def generate_token
+    self.token = SecureHelper.generate_token
+  end
 end

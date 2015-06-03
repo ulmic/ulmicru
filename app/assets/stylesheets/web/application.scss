@@ -210,3 +210,24 @@ input[type=checkbox] {
     width: auto;
   }
 }
+
+.panel {
+  &.alert {
+    background-color: #f04124;
+    h1, h2, h3, h4, h5, h6, li {
+      color: white;
+    }
+  }
+}
+
+.new-slider-item {
+  span.spin {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-image: image-url('spinner.gif');
+    top: 40px;
+    margin-left: 100px;
+  }
+}
