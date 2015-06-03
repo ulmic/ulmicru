@@ -59,6 +59,8 @@ $ ->
       $title = $(this).children('p.content.title').first()
       $text = $(this).children('p.content.text').first()
 
+      $(this).children('span.spin').remove()
+
       $date.html current_news.publish_date_time
       $title.html current_news.title
       $text.html current_news.text
@@ -101,6 +103,8 @@ $ ->
   $right_arrow.click ->
     if load() == 0
       $left_arrow.data('crease', crease() + 1)
+      $('.news-slider .slick-track a').slice(-5).each ->
+        $(this).append('<span class = "spin"></span>')
       load_news()
     else
       $right_arrow.data('load', load() - 1)
