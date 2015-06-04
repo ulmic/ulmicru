@@ -2,7 +2,7 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
 
   def index
-    @activity_lines = ActivityLine.all.decorate
+    @activity_lines = Kaminari.paginate_array(ActivityLine.all.decorate).page params[:page]
   end
 
   def new

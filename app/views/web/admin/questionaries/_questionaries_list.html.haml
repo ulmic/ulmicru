@@ -1,3 +1,4 @@
+= paginate questionaries, theme: 'twitter-bootstrap-3'
 - model_class = Questionary
 %table.table.table-condensed.table-hover
   %thead
@@ -42,5 +43,4 @@
               - unless questionary.declined?
                 %li
                   = link_to t('helpers.links.decline'), admin_questionary_path(questionary, questionary: { state: :declined }), method: :patch
-
-= link_to t('.new', default: t('helpers.links.new')), new_admin_questionary_path, class: 'btn btn-primary'
+= paginate questionaries, theme: 'twitter-bootstrap-3'

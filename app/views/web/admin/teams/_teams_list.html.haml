@@ -1,3 +1,4 @@
+= paginate teams, theme: 'twitter-bootstrap-3'
 - model_class = Team
 %table.table.table-striped.table-condensed
   %thead
@@ -24,3 +25,4 @@
             %span.glyphicon.glyphicon-pencil
           = link_to admin_team_path(team), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
+= paginate teams, theme: 'twitter-bootstrap-3'

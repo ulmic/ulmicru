@@ -1,3 +1,4 @@
+= paginate @activity_lines, theme: 'twitter-bootstrap-3'
 - model_class = ActivityLine
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
@@ -27,3 +28,5 @@
           = link_to admin_activity_line_path(activity_line), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
 = link_to t('.new', default: t('helpers.links.new')), new_admin_activity_line_path, class: 'btn btn-primary'
+%br
+= paginate @activity_lines, theme: 'twitter-bootstrap-3'
