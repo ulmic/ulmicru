@@ -61,7 +61,7 @@ $button_hover_color: rgba(226, 112, 0, 0.71);
 
   .news {
     background-color: #ececec;
-    min-height: rem-calc(190);
+    min-height: rem-calc(200);
     .new-slider-item {
       padding-right: 10px;
       .content {
@@ -96,7 +96,7 @@ $button_hover_color: rgba(226, 112, 0, 0.71);
     }
     .left-arrow, .right-arrow {
       width: 2%;
-      height: rem-calc(162);
+      height: rem-calc(172);
       margin-top: rem-calc(14);
       padding-top: rem-calc(55);
       text-align: center;
