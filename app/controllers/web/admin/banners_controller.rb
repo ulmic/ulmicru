@@ -1,6 +1,6 @@
 class Web::Admin::BannersController < Web::Admin::ApplicationController
   def index
-    @banners = Banner.presented
+    @banners = Banner.presented.page params[:page]
   end
 
   def new

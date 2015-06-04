@@ -1,6 +1,6 @@
 class Web::Admin::DocumentsController < Web::Admin::ApplicationController
   def index
-    @documents = Document.presented
+    @documents = Document.presented.page params[:page]
   end
 
   def new

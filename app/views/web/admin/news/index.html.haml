@@ -18,3 +18,4 @@
     = render 'news_list', news: @unpublished_news
   #unviewed
     = render 'news_list', news: @unviewed_news
+= link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'

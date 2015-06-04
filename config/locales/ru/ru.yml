@@ -138,3 +138,9 @@ ru:
       date: "%Y-%m-%d"
       md: "%m-%d"
       descr: "%d %b %Y"
+  views:
+    pagination:
+      next: '>'
+      previous: '<'
+      last: '>>'
+      first: '<<'

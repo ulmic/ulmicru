@@ -18,3 +18,4 @@
     = render 'members_list', members: @declined_members
   #unavailable
     = render 'members_list', members: @unavailable_members
+= link_to t('.new', default: t('helpers.links.new')), new_admin_member_path, class: 'btn btn-primary'

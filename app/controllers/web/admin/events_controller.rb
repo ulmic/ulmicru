@@ -3,11 +3,11 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
   def index
     events = ::Event.presented
-    @future_events = events.future.decorate
-    @current_events = events.current.decorate
-    @past_events = events.past.decorate
-    @unviewed_events = ::Event.unviewed.decorate
-    @declined_events = ::Event.declined.decorate
+    @future_events = Kaminari.paginate_array(events.future.decorate).page params[:page]
+    @current_events = Kaminari.paginate_array(events.current.decorate).page params[:page]
+    @past_events = Kaminari.paginate_array(events.past.decorate).page params[:page]
+    @unviewed_events = Kaminari.paginate_array(::Event.unviewed.decorate).page params[:page]
+    @declined_events = Kaminari.paginate_array(::Event.declined.decorate).page params[:page]
   end
 
   def new

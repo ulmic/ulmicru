@@ -1,3 +1,4 @@
+= paginate @banners, theme: 'twitter-bootstrap-3'
 - model_class = Banner
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
@@ -24,5 +25,6 @@
             %span.glyphicon.glyphicon-pencil
           = link_to admin_banner_path(banner), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-
+= paginate @banners, theme: 'twitter-bootstrap-3'
+%br
 = link_to t('.new', default: t('helpers.links.new')), new_admin_banner_path, class: 'btn btn-primary'

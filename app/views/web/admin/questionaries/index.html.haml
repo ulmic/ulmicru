@@ -16,3 +16,4 @@
     = render 'questionaries_list', questionaries: @unviewed_questionaries
   #declined
     = render 'questionaries_list', questionaries: @declined_questionaries
+= link_to t('.new', default: t('helpers.links.new')), new_admin_questionary_path, class: 'btn btn-primary'

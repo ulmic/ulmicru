@@ -20,3 +20,4 @@
     = render 'events_list', events: @past_events
   #declined
     = render 'events_list', events: @declined_events
+= link_to t('.new', default: t('helpers.links.new')), new_admin_event_path, class: 'btn btn-primary'

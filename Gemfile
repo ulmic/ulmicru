@@ -47,6 +47,8 @@ gem "autoprefixer-rails"
 gem 'select2-rails'
 gem 'jasny_bootstrap_extension_rails'
 gem 'sinatra', '>= 1.3.0', require: nil
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :production do
   gem 'unicorn-rails'
