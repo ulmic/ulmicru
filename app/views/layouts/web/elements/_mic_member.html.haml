@@ -1,7 +1,15 @@
-%a{ href: "#{link}" }
-  %img{ src: "#{img_src}" }
-%section
+- if link
   %a{ href: "#{link}" }
+    %img{ src: "#{img_src}" }
+  %section
+    %a{ href: "#{link}" }
+      .name
+        = "#{name}"
+      .role
+        = (role ||= "")
+- else
+  %img{ src: "#{img_src}" }
+  %section
     .name
       = "#{name}"
     .role

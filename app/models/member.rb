@@ -22,6 +22,8 @@ class Member < User
   validates :ticket, uniqueness: true
   validates :mobile_phone, phone: true,
                            allow_blank: true
+  validates :motto, uniqueness: true,
+                    allow_blank: true
 
   include MemberScopes
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first

@@ -126,8 +126,11 @@ hr.orange {
 
 .mic-member {
   @extend %mic-element;
+  &.participant {
+    width: auto;
+  }
   img {
-    width: 100vw;
+    width: 15vw;
     height: 15vw;
   }
   .role {
