@@ -7,4 +7,8 @@ module Web::EventsHelper
       false
     end
   end
+
+  def link_to_profile(user)
+    member_path user.ticket if user.is_member? && user.confirmed?
+  end
 end

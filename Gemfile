@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -47,6 +46,8 @@ gem "autoprefixer-rails"
 gem 'select2-rails'
 gem 'jasny_bootstrap_extension_rails'
 gem 'sinatra', '>= 1.3.0', require: nil
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :production do
   gem 'unicorn-rails'

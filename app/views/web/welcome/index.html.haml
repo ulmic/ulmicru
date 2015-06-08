@@ -10,26 +10,22 @@
           = image_tag news.photo, class: 'slider-img'
           .slider-item-info
             = news.title
-  -#.category-navbar-container.clear-fix
+  .category-navbar-container.clear-fix
     %nav.top-bar{ data: { topbar:  '' } }
       %section.top-bar-section
         .container-big
           %ul.left
-            - ["Лидерство", "Журналистика", "IT", "Право", "Толерантность", "Волонтёрство", "НКО"].each do |item|
-              %li
-                %a{href: "#"}
-                  = item
+            - text_news_tags.each do |item|
+              %li{ data: { tag: item.first, type: item[1] } }
+                %a
+                  = item.last
   .news
+    .left-arrow
+      %i.fa.fa-caret-left.fa-3x
     .container-big
       .top
         %h4.title
           = t('.news')
-        .right
-          %span.text
-            = t('.all_news')
-          %span.slider-arrows
-            %a.arrow.left-arrow{ data: { crease: 0 } }
-            %a.arrow.right-arrow{ data: { load: 0 } }
       .news-slider
         - @text_news.each do |news|
           %a.new-slider-item{ href: news_path(news) }
@@ -44,6 +40,8 @@
             %p.date
             %p.content.title
             %p.content.text
+    .right-arrow
+      %i.fa.fa-caret-right.fa-3x
   .events
     .container-big
       %h4.rotate
@@ -58,7 +56,7 @@
                                             date: event.full_date_duration, |
                                             title: event.title, |
                                             text: strip_tags(event.lead)
-    .container-big.more-events{ style: 'cursor: pointer' }
+    .more-events{ style: 'cursor: pointer' }
       %i.fa.fa-caret-down.fa-5x
   .humans
     %ul.small-block-grid-7

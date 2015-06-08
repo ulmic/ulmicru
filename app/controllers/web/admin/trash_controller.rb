@@ -1,7 +1,7 @@
 class Web::Admin::TrashController < Web::Admin::ApplicationController
   def index
     @type = resource_type
-    @items = resource_type.removed.decorate
+    @items = Kaminari.paginate_array(resource_type.removed.decorate).page params[:page]
   end
 
   def restore

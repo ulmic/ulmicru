@@ -1,8 +1,8 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
   def index
-    @unviewed_questionaries = Questionary.unviewed.decorate
-    @on_the_trial_questionaries = Questionary.on_the_trial.decorate
-    @declined_questionaries = Questionary.declined.decorate
+    @unviewed_questionaries = Kaminari.paginate_array(Questionary.unviewed.decorate).page params[:page]
+    @on_the_trial_questionaries = Kaminari.paginate_array(Questionary.on_the_trial.decorate).page params[:page]
+    @declined_questionaries = Kaminari.paginate_array(Questionary.declined.decorate).page params[:page]
   end
 
   def new

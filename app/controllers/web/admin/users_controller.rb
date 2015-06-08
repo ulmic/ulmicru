@@ -1,6 +1,6 @@
 class Web::Admin::UsersController < Web::Admin::ApplicationController
   def index
-    @users = User.presented.order('id DESC')
+    @users = User.presented.order('id DESC').page params[:page]
   end
 
   def new

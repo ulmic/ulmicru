@@ -1,7 +1,7 @@
 class Web::Admin::TeamsController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
   def index
-    @teams = Team.active.decorate
+    @teams = Kaminari.paginate_array(Team.active.decorate).page params[:page]
   end
 
   def new

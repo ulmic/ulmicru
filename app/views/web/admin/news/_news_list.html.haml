@@ -1,3 +1,4 @@
+= paginate news, theme: 'twitter-bootstrap-3'
 - model_class = News
 %table.table.table-striped.table-condensed
   %thead
@@ -36,4 +37,4 @@
             %span.glyphicon.glyphicon-pencil
           = link_to admin_news_path(news), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-= link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'
+= paginate news, theme: 'twitter-bootstrap-3'

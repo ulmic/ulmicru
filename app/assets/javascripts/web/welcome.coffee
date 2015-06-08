@@ -10,8 +10,8 @@ $ ->
     infinite: false
     slidesToShow: 5
     slidesToScroll: 5
-    prevArrow: $('.news .slider-arrows>.left-arrow')
-    nextArrow: $('.news .slider-arrows>.right-arrow')
+    prevArrow: $('.news .left-arrow')
+    nextArrow: $('.news .right-arrow')
   }
 
   init_slider = ->
@@ -39,8 +39,19 @@ $ ->
       if $first_active_slide.prop('href') == ''
         $('.news-slider .slick-track a').slice(-5).each ->
           $(this).append spin()
-        load_news()
+        count = 5
+        params = {
+          count: count
+          offset: parseInt($('.news-slider .slick-track a').length) - count
+          tag: $news_slider.data('tag')
+        }
+        load_news params
     return
+
+  remove_all_slides = ->
+    slideIndex = $('.news-slider .slick-track a').length - 1
+    while slideIndex >= 0
+      $news_slider.slick 'slickRemove', slideIndex--
 
   text_news_template = ->
     "
@@ -79,23 +90,56 @@ $ ->
       return
     return
 
-  load_news = ->
-    count = 5
-    offset = parseInt($('.news-slider .slick-track a').length) - count
+  load_news = (params) ->
     $.ajax {
       url: Routes.api_news_index_path()
       method: 'GET'
-      data: {
-        count: count
-        offset: offset
-      }
+      data: params
       dataType: 'json'
       success: (response) ->
-        fill_news response
-        append_empty_items()
+        if params['tag'] == undefined
+          fill_news response
+          append_empty_items()
+        else
+          remove_all_slides()
+          append_empty_items()
+          fill_news response
+          append_empty_items()
       error: ->
         alert 'error'
     }
+
+  edit_buttons = ($button, tag_params)  ->
+    $news_slider.data('tag', tag_params)
+
+  reverse_buttons = ($button) ->
+    $news_slider.data('tag', '')
+
+  $('.category-navbar-container ul li').click ->
+    count = 5
+    data_type = $(this).data('type')
+    data_tag = $(this).data('tag')
+    if data_type == 'string'
+      tag_type = 'string'
+      text = data_tag
+    else
+      tag_type = 'link'
+      target_type = data_type
+      title = data_tag
+    params = {
+      count: count
+      offset: parseInt($('.news-slider .slick-track a').length) - count
+      tag: {
+        tag_type: tag_type
+        target_type: target_type
+        title: title
+        text: text
+      }
+    }
+    edit_buttons $(this), params['tag']
+    $('.news-slider .slick-track a').slice(-5).each ->
+      $(this).append spin()
+    load_news params
 
   init_slider()
 

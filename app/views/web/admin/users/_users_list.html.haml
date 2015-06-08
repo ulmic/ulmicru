@@ -1,3 +1,4 @@
+= paginate @users, theme: 'twitter-bootstrap-3'
 - model_class = User
 %table.table.table-condensed.table-hover
   %thead
@@ -22,4 +23,4 @@
             %span.glyphicon.glyphicon-pencil
           = link_to admin_user_path(user), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-= link_to t('.new', default: t('helpers.links.new')), new_admin_user_path, class: 'btn btn-primary'
+= paginate @users, theme: 'twitter-bootstrap-3'

@@ -1,6 +1,6 @@
 class Web::Admin::ArticlesController < Web::Admin::ApplicationController
   def index
-    @articles = Article.presented.decorate
+    @articles = Kaminari.paginate_array(Article.presented.decorate).page params[:page]
     @tag = Tag.new
   end
 

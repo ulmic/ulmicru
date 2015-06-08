@@ -137,6 +137,12 @@ ru:
             declined: Отклонённый
             removed: Удалённый
             unavailable: Недоступный
+    errors:
+      models:
+        member:
+          attributes:
+            motto:
+              taken: уже занят другим пользователем
   enumerize:
     user:
       role:
