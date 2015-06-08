@@ -29,6 +29,9 @@ ru:
         shared:
           errors:
             some_errors_was_found: Найдены ошибки при сохранении
+          places:
+            form:
+              title: Создать место на Foursquare
         navbar:
           people: Люди
   hints:

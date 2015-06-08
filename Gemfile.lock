@@ -391,6 +391,7 @@ GEM
     rmagick (2.15.2)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
+    russia_regions (0.0.3)
     russian (0.6.0)
       i18n (>= 0.5.0)
     russian_sex (0.0.1)
@@ -537,6 +538,7 @@ DEPENDENCIES
   railroady
   rails (= 4.2.1)
   rmagick
+  russia_regions
   russian
   russian_sex
   rvm-capistrano
