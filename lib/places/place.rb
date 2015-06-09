@@ -22,6 +22,10 @@ module Places
       @response = client.add_venue attributes
     end
 
+    def attributes
+      { name: @name, city: @city, ll: @ll, address: @address, state: @state }
+    end
+
     def response
       @response
     end

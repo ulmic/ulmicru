@@ -13,9 +13,7 @@ Configus.build Rails.env do
     end
     api do
       foursquare do
-        version do
-          '20140806'
-        end
+        version '20140806'
       end
     end
   end

@@ -35,5 +35,4 @@ class Web::OmniauthController < Web::ApplicationController
   alias :vkontakte :callback
   alias :twitter :callback
   alias :facebook :callback
-  alias :oauth2 :callback
 end

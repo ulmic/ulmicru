@@ -21,10 +21,10 @@ class EventDecorator < ApplicationDecorator
     "#{object.description.first(150)}..."
   end
 
-  include FoursquareHelper
+  include Places
 
   def place_link_to_4sq
-    @client ||= FoursquareHelper::FoursquareClient.new
+    @client ||= Places::FoursquareClient.new
     venue = @client.venue_by_id object.place
     h.content_tag :a, href: venue[:canonicalUrl],
                       target: '_blank' do

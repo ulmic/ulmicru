@@ -3,7 +3,7 @@ class Api::Admin::PlacesController < Api::Admin::ApplicationController
 
   # FIXME refactor this SHIT!
   def index
-    @client ||= FoursquareHelper::FoursquareClient.new
+    @client ||= Places::FoursquareClient.new
     venues = @client.search_venues_by_name(params[:place])[:venues]
     venues.sort_by! { |v| v[:stats][:checkinsCount] }
     venues.reverse!
@@ -15,9 +15,9 @@ class Api::Admin::PlacesController < Api::Admin::ApplicationController
   end
 
   def create
-    @place = Place.new params[:place]
+    @place = Places::Place.new params[:places_place]
     if @place.save
-      head :ok
+      render json: @place.response
     else
       head :bad_request
     end

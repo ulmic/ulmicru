@@ -13,6 +13,7 @@
 #= require ckeditor/init
 #= require web/admin/tags
 #= require web/admin/popup
+#= require web/admin/places
 #= require select2
 #= require jasny-bootstrap
 #= require jasny_file_uploader

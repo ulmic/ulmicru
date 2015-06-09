@@ -17,15 +17,21 @@
         = f.input :state, as: :hidden, input_html: { value: :confirmed }
       - else
         = f.input :state, as: :hidden, input_html: { value: :unviewed }
+      %hr
       = f.hint t('hints.admin.event.place')
+      %br
       = f.label :place
       .form-group.text.required
-        = text_field :place, '', class: 'text required form-control'
-      = link_to '#', id: 'update_list', class: 'btn btn-default' do
-        %span.glyphicon.glyphicon-search
+        .input-group
+          = text_field :place, '', class: 'text required form-control'
+          %span.input-group-btn
+            %button.btn.btn-default#update_list
+              %span.glyphicon.glyphicon-search
       = f.input :place, as: :select, collection: [], label: false
-      = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
-      = f.input :organizer_type, collection: organizer_types
+      = t(".did_not_find_anything_add_venue")
+      %br
+      = link_to t('.add_venue'), '#', class: 'btn btn-default show_popup', data: { popup_id: :place_form }
+      %hr
       = f.input :organizer_id, as: :grouped_select, collection: teams_and_members_hash(@teams, @members), group_method: :last, input_html: { class: :select2 }
       = f.association :activity_line, label_method: lambda { |activity_line| "#{I18n.t("enumerize.activity_line.activity_type.#{activity_line.activity_type}")} «#{activity_line.title}»" }, value_method: :id
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
