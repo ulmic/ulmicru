@@ -40,6 +40,7 @@ ru:
         children: Крестники
         state: Статус на сайте
         teams: Мои команды
+        state_event: Статус на сайте
       questionary:
         first_name: Имя
         patronymic: Отчество

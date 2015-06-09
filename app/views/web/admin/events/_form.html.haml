@@ -10,7 +10,11 @@
     = simple_form_for [:admin, @event_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :title, as: :string
       = f.input :description, as: :ckeditor
-      = f.input :main_photo, as: :file
+      = f.label :main_photo
+      .preview
+        = image_tag @event_form.model.main_photo if @event_form.model.main_photo.present?
+      = f.input :main_photo, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :main_photo, label: false, as: :jasny_file_preview_upload
       = f.input :begin_date, as: :datetime_picker
       = f.input :end_date, as: :datetime_picker
       - if current_user.role.admin?
