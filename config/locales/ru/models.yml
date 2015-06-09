@@ -41,6 +41,7 @@ ru:
         state: Статус на сайте
         teams: Мои команды
         state_event: Статус на сайте
+        school: Учебное заведение
       questionary:
         first_name: Имя
         patronymic: Отчество
@@ -57,6 +58,7 @@ ru:
         experience: Опыт и навыки
         locality: Населённый пункт
         created_at: Дата подачи
+        school: Учебное заведение
       news:
         title: Заголовок
         body: Контекст
@@ -119,10 +121,12 @@ ru:
         type: Тип команды
         municipality: Муниципальное образование
         members: Члены команды
+        school: Учебное заведение
         types:
           departament: Местное отделение
           subdivision: Структурное подразделение
           administration: Административные органы
+          primary: Первичная организация
       event:
         registration:
           role: Роль

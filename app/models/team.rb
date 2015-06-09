@@ -9,6 +9,7 @@ class Team < ActiveRecord::Base
   validates :title, presence: true
 
   include TeamScopes
+  extend Enumerize
 
   state_machine :state, initial: :unviewed do
     state :unviewed
