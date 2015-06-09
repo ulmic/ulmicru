@@ -32,6 +32,12 @@ class EventDecorator < ApplicationDecorator
     end
   end
 
+  def place_name
+    @client ||= Places::FoursquareClient.new
+    venue = @client.venue_by_id object.place
+    venue[:name]
+  end
+
   def organizer_link
     if object.organizer_type == 'Member'
       h.content_tag :a, href: member_path(object.organizer.ticket) do

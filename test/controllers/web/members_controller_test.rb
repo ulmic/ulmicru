@@ -28,7 +28,11 @@ class Web::MembersControllerTest < ActionController::TestCase
   end
 
   test 'should get show' do
+    create :event
     member = create :member
+    registration = create :event_registration
+    registration.user_id = member.id
+    registration.save
     member.confirm
     get :show, ticket: member.ticket
     assert_response :success, @response.body

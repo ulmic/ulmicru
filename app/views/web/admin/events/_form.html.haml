@@ -27,11 +27,14 @@
       = f.label :place
       .form-group.text.required
         .input-group
-          = text_field :place, '', class: 'text required form-control'
+          - if @event_form.model.place.present?
+            = text_field :place, '', class: 'text required form-control', value: @event_form.model.decorate.place_name
+          - else
+            = text_field :place, '', class: 'text required form-control'
           %span.input-group-btn
             %button.btn.btn-default#update_list
               %span.glyphicon.glyphicon-search
-      = f.input :place, as: :select, collection: [], label: false
+      = f.input :place, as: :select, collection: [], label: false, input_html: { value: @event_form.model.place }
       = t(".did_not_find_anything_add_venue")
       %br
       = link_to t('.add_venue'), '#', class: 'btn btn-default show_popup', data: { popup_id: :place_form }
