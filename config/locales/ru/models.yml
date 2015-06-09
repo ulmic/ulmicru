@@ -119,10 +119,12 @@ ru:
         type: Тип команды
         municipality: Муниципальное образование
         members: Члены команды
+        school: Учебное заведение
         types:
           departament: Местное отделение
           subdivision: Структурное подразделение
           administration: Административные органы
+          primary: Первичная организация
       event:
         registration:
           role: Роль
