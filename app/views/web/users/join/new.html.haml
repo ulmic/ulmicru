@@ -29,6 +29,7 @@
     = f.input :home_adress, as: :string, required: true
     = f.input :municipality, as: :string, required: true
     = f.input :locality, as: :string, required: true
+    = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
     = f.input :avatar, as: :string, required: true
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
     = f.input :want_to_do

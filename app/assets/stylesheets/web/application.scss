@@ -160,10 +160,17 @@ ul {
 .select2-container {
   width: 100%;
   margin-bottom: 10px;
+  box-shadow: none;
   &.select2-container-active {
-    .select2-choices {
+    box-shadow: none;
+    .select2-choices, .select2-choice {
       border-color: #aaa;
     }
+  }
+  .select2-choice {
+    border-radius: 0;
+    height: 35px;
+    line-height: 35px;
   }
   .select2-choices {
     li.select2-search-choice {
@@ -183,7 +190,8 @@ ul {
   }
 }
 
-.select2-drop.select2-drop-multi.select2-display-none.select2-drop-active {
+.select2-drop.select2-drop-multi.select2-display-none.select2-drop-active,
+.select2-drop.select2-drop.select2-display-none.select2-drop-active {
   border-radius: 0;
   border-color: #aaa;
   .select2-results {

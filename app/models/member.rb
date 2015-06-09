@@ -28,6 +28,7 @@ class Member < User
   include MemberScopes
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
   enumerize :locality, in: Localities.list, default: Localities.list.first
+  enumerize :school, in: Schools.list
 
   mount_uploader :avatar, AvatarUploader
 
