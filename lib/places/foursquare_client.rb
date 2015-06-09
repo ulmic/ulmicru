@@ -23,7 +23,7 @@ module Places
     end
 
     def venue_by_id(id)
-      @client.venue id
+      @client.venue id if id.present?
     end
 
     def add_venue(params)
