@@ -1,0 +1,16 @@
+- place = Places::Place.new
+.close
+  .btn
+    X
+.top
+  %h2
+    = t('.title')
+.form
+  = simple_form_for place, remote: true, url: { controller: 'api/admin/places', action: :create } do |f|
+    = f.input :name, placeholder: 'locale', label: false
+    = f.input :address, placeholder: 'locale', label: false
+    = f.input :state, label: false, collection: RussiaRegions.name_list, input_html: { class: 'select2', data: { prompt: t('forms.placeholders.web.places.default.place_state') } }
+    = f.input :city, as: :grouped_select, label: false, collection: Localities.list_hash, group_method: :last, input_html: { class: 'select2', data: { prompt: t('forms.placeholders.web.places.default.place_city') } }
+    = f.input :ll, placeholder: 'locale', label: false
+    = f.button :submit, t('.create_place')
+    = link_to t('.see_coordinates'), '#', class: 'btn btn-default see_coordinates'

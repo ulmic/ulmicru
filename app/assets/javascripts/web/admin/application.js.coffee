@@ -12,9 +12,12 @@
 #= require localities
 #= require ckeditor/init
 #= require web/admin/tags
+#= require web/admin/popup
+#= require web/admin/places
 #= require select2
 #= require jasny-bootstrap
 #= require jasny_file_uploader
+#= require placeholders
 
 $ ->
   $('.input').addClass('form-group')
@@ -22,7 +25,10 @@ $ ->
   $('input[type=hidden]').addClass('form-control')
   $('input[type=text]').addClass('form-control')
   $('input[type=submit]').addClass('btn')
-  $('select.select2').select2()
+  $('select.select2').each ->
+    $(this).select2 {
+      placeholder: $(this).data('prompt')
+    }
   $('.link').click ->
     location.href = $(this).attr('data-href')
 

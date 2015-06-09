@@ -11,6 +11,11 @@ Configus.build Rails.env do
     mailer do
       from "noreply@ulmic.ru"
     end
+    api do
+      foursquare do
+        version '20140806'
+      end
+    end
   end
 
   env :staging, parent: :production do

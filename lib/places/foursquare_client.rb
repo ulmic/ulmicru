@@ -1,10 +1,15 @@
-module FoursquareHelper
+module Places
   include Foursquare2
+
   OAUTH_KEYS = YAML.load_file(Rails.root.join('config', 'oauth.yml'))[Rails.env].with_indifferent_access
 
   class FoursquareClient
-    def initialize
-      @client = Foursquare2::Client.new client_id: OAUTH_KEYS[:foursquare_client_id], client_secret: OAUTH_KEYS[:foursquare_client_secret], api_version: '20140806'
+    def initialize(options = {})
+      foursquare_client_options = { client_id: OAUTH_KEYS[:foursquare][:client_id],
+                                    client_secret: OAUTH_KEYS[:foursquare][:client_secret],
+                                    api_version: configus.api.foursquare.version }
+      foursquare_client_options[:oauth_token] = OAUTH_KEYS[:foursquare][:organization_account_access_token] if options[:auth] == :as_organization
+      @client = Foursquare2::Client.new foursquare_client_options
     end
 
     def search_venues_by_name(query)
@@ -19,6 +24,10 @@ module FoursquareHelper
 
     def venue_by_id(id)
       @client.venue id
+    end
+
+    def add_venue(params)
+      @client.add_venue params
     end
 
     private

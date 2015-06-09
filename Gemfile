@@ -48,6 +48,7 @@ gem 'jasny_bootstrap_extension_rails'
 gem 'sinatra', '>= 1.3.0', require: nil
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'russia_regions'
 
 group :production do
   gem 'unicorn-rails'

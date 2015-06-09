@@ -1,5 +1,6 @@
 module Web::Admin::ApplicationHelper
   include Localities
+  include Places
 
   def notification_count
     Member.unviewed.count + Questionary.unviewed.count + News.unviewed.count + Event.unviewed.count

@@ -129,6 +129,13 @@ ru:
         member:
           default:
             mobile_phone: Формат номера телефона с +7
+        places:
+          default:
+            place_name: Название
+            place_address: Адрес места
+            place_city: Населённый пункт
+            place_state: Субъект Российской Федерации
+            place_ll: Координаты
   time:
     formats:
       default: "%a, %d %b %Y, %H:%M"
