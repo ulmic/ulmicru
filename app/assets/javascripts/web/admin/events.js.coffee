@@ -1,4 +1,5 @@
 $ ->
+  $event_place_select = $('select#event_place')
   open = (elem) ->
     if document.createEvent
       e = document.createEvent('MouseEvents')
@@ -9,17 +10,18 @@ $ ->
       return
 
   init_4sq_place_select = ->
+    $event_place_select.hide()
     $('#update_list').click (e) ->
       e.preventDefault()
       place = $('input[type=text]#place_').val()
       unless place == ''
         $('.loading').show()
-        $event_place_select = $('select#event_place')
         $.ajax {
           method: 'GET'
           url: Routes.index_api_admin_places_path(place)
           dataType: 'JSON'
           success: (response) ->
+            $event_place_select.show()
             $event_place_select.empty()
             $(response).each ->
               if this.city != null
@@ -29,6 +31,7 @@ $ ->
             $('.loading').hide()
             open $event_place_select
             $event_place_select.focus()
+            $('.event_place.hidden').remove()
             return false
           error: (response) ->
             $('.loading').append('Error')
