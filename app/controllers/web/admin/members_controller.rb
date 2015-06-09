@@ -42,6 +42,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     if @member_form.save
       redirect_to admin_members_path
     else
+      choose_members
       render action: :new
     end
   end
@@ -53,6 +54,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     if @member_form.save
       redirect_to admin_members_path
     else
+      choose_members
       render action: :edit
     end
   end

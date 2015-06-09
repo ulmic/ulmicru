@@ -19,8 +19,12 @@
       = f.input :home_adress, as: :string
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
-      = f.input :avatar, as: :file
-      = f.input :state, as: :select
+      = f.label :avatar
+      .preview
+        = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
+      = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :avatar, label: false, as: :jasny_file_preview_upload
+      = f.input :state_event, as: :state_event
       = f.input :role
       = f.input :parent_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
       -#= f.simple_fields_for :positions do |position_form|
