@@ -5,87 +5,107 @@
   %meta{ name:'description', content: "#{@news.description_lead} #МИЦ" }
   %link{ rel: 'image_src', href: @news.photo  }
 
-.news#news-show.container-big
-  %h3.title
-    = @news.title
-  .news-content.container-big.row
-    .small-9.columns
-      .date-author
-        .date
-          .icon-calendar
-          .date-text
-            = @news.publish_date_time
-        .author
-          = "#{t('activerecord.attributes.news.user_id')}:"
-          - if @news.user.present?
-            = image_tag @news.user.avatar, class: 'human-photo'
-            = @news.user.decorate.short_name
-          - else
-            = image_tag '', class: 'human-photo'
-            Пресс-служба МИЦ
-      .main-photo
+.news.row
+  %aside.news-sidebar
+    %a.prev-next-link.prev
+      .link-info
+        предыдущая новость
+      .link-name
+        Волонтёрское движение в ульяновске
+    %section.related-event
+      %h3
+        по этой же программе
+      - if @event.present?
+        .mic-event
+          = render_element 'mic_event', img_src: @event.main_photo, |
+                                            category: @event.activity_line.title, |
+                                            link: event_path(@event), |
+                                            date: @event.full_date_duration, |
+                                            text: @event.lead
+  %main.big-column
+    .slider-wrap
+      .slider
         = image_tag @news.photo
-      .news-lead
+        %img{:src => "https://pp.vk.me/c628718/v628718053/379/4BMFbuR0DKs.jpg"}
+      .slider-arrow.left
+      .slider-arrow.right
+    .row
+      %section.author.columns.small-5
+        - if @news.user.present?
+          = image_tag @news.user.avatar, class: 'human-photo'
+          .author-name
+            = "#{t('activerecord.attributes.news.user_id')}:"
+            = @news.user.decorate.short_name
+        - else
+          = image_tag '', class: 'human-photo'
+          .author-name
+            = "#{t('activerecord.attributes.news.user_id')}:"
+            Пресс-служба МИЦ
+        .date-text
+          = @news.publish_date_time
+        .row
+          .comments-views
+            %span.icon-eye
+            %span.view-text
+              = @news.views
+            %span.icon-comment
+            %span.comment-text
+              5
+      %section.about.columns.small-6
+        .category-wrap
+          .category
+            Всякое разное
+    %article.news-info
+      %h1
+        = @news.title
+      %p.news-lead
         = @news.lead
-      .news-row-content
+      %p.text
         = raw(@news.body)
         - @news.attachments.each do |document|
           = render_element 'mic_document', document: document
-      %hr
-      .stats-container.container-big.row.large-collapse.medium-collapse
-        %ul.stats.small-10.columns
-          %li.views
-            .icon-eye
-            %span.counter
-              = @news.views
-          - if @strings.any?
-            %li.tags
-              .icon-tags
-              - @strings.each_with_index do |tag, index|
-                = link_to tag.text, tag_path(tag)
-                - unless index == @strings.count - 1
-                  ,
-          %li.humans
-            .icon-human
-            - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
-            - @members.first(4).each do |member|
-              = link_to member_path(member.ticket), class: 'human-link' do
-                .human-photo{ style: "background-image: url(#{member.avatar.small})" }
-            - if @members.count > 4
-              %span.view-all
-                %a{href: "#"}
-                  = t('.view_all')
-                %span.count
-                  = "(#{@members.count})"
-          %li.social-icons
-            %a{href: "#"}
-              .icon-vk.min-icon
-            %a{href: "#"}
-              .icon-twitter.min-icon
-            %a{href: "#"}
-              .icon-facebook.min-icon
-    .small-3.columns.side-content
-      .title
-        = t('.same_themes')
-      .programm-or-event
-        - if @event.present?
-          .mic-event
-            = render_element 'mic_event', img_src: @event.main_photo, |
-                                          category: @event.activity_line.title, |
-                                          link: event_path(@event), |
-                                          date: @event.full_date_duration, |
-                                          text: @event.lead
-        - if @activity_line.present?
-          .mic-programm
-            = render_element 'mic_programm', img_src: @activity_line.logo, |
-                                             link: activity_line_path(@activity_line), |
-                                             name: @activity_line.full_title
-        .news
-          - @topic_news.each do |news|
-            - if news.present?
-              %hr
-              .mic-one-news
-                = render_element 'mic_one_news', img_src: news.photo, |
-                                                 link: news_path(news), |
-                                                 title: news.title, |
-                                                 date: news.publish_date
+      .news-footer.row
+        .tags.columns.small-9
+          %span.tags-icon
+          %a.tag
+            дизайн,
+          %a.tag
+            мастеркласс
+        .share.columns.small-3
+          .social.row
+            .icons.right
+              %a{ href: configus.social_networks_pages.vkontakte }
+                .min-icon.icon-vk
+              %a{ href: configus.social_networks_pages.twitter }
+                .min-icon.icon-twitter
+              %a{ href: configus.social_networks_pages.facebook }
+                .min-icon.icon-facebook
+              %a{ href: configus.social_networks_pages.google_plus }
+                .min-icon.icon-google
+        .people.colunms.row
+          %span.columns.small-2
+            упомянуты в статье:
+          .people-img.columns.small-10
+            %img.human-photo
+            %img.human-photo
+            %a.show-all
+              посмотреть всех
+  %aside.news-sidebar
+    %a.prev-next-link.next
+      .link-info
+        следующая новость
+      .link-name
+        Пожар в ульяновске
+    %section.related-event
+      %h3
+        лента новостей
+    .side-content
+      - @topic_news.each do |news|
+        - if news.present?
+          %hr
+          .mic-one-news
+            = render_element 'mic_one_news', img_src: news.photo, |
+                                             link: news_path(news), |
+                                             title: news.title, |
+                                             date: news.publish_date
+    
