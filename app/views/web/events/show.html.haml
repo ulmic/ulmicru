@@ -42,7 +42,7 @@
             %button.join-button.mic-press-button{ value: 'out', data: { event_id: @event.id, user_id: current_user.id } }
               = t('.i_attend')
           - else
-            - if signed_in?
+            - if signed_in? && current_user.confirmed?
               %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
                 = t('.attend')
             - else

@@ -4,6 +4,7 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
+    create :member
     @event = create :event
   end
 

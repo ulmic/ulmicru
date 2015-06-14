@@ -17,6 +17,7 @@
         %td= event.title
         %td= event.full_duration
         %td= event.place
+        %td= link_to event.creator.decorate.short_name, member_path(event.creator.ticket)
         %td.actions
           - if current_user.role.admin?
             - unless event.confirmed?

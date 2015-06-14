@@ -26,6 +26,10 @@ module Concerns
       redirect_to new_session_path unless signed_in?
     end
 
+    def authenticate_confirmed_user!
+      redirect_to account_path if current_user.unviewed? && request.fullpath != account_path
+    end
+
     def authenticate_member!
       if signed_in?
         unless current_user.member.present?
