@@ -29,13 +29,15 @@ ru:
     facebook: Facebook
     twitter: Twitter
     google: Google
-  notices:
+  notifications:
     web:
       users:
         account:
           attribute_accesses:
             changed: Доступ к этому аттрибуту успешно изменён
             not_changed: Доступ к этому аттрибуту не изменён
+          email:
+            empty: Для подтверждения аккаунта введите ваш email
   state_machines:
     member:
       state:
@@ -81,7 +83,8 @@ ru:
           enable_in_profile_page: Показывать в профиле
           your_role_is: 'Ваша роль на сайте %{role}.'
           you_have_access_to_admin_panel: У вас есть доступ в Админку.
-          we_have_send_you_activation_email: Мы отправили вам письмо с инструкциями по активации Вашего аккаунта.
+          #we_have_send_you_activation_email: Мы отправили вам письмо с инструкциями по активации Вашего аккаунта.
+          we_have_send_you_activation_email: Администраторы сайта в скором времени подтвердят ваш аккаунт
       new:
         register: Регистрация
         title: Регистрация на сайте

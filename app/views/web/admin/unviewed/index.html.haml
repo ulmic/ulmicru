@@ -3,15 +3,10 @@
 #tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - tabs.each do |tab|
+      - pluralize_tab = tab.to_s.pluralize
       %li
-        = link_to t("activerecord.models.#{tab}").pluralize(:ru), "##{tab.to_s.pluralize(:en)}"
-  #members
-    = render 'web/admin/members/members_list', members: @members
-  #users
-    = render 'web/admin/users/users_list', users: @users
-  #questionaries
-    = render 'web/admin/questionaries/questionaries_list', questionaries: @questionaries
-  #news
-    = render 'web/admin/news/news_list', news: @news, without_tags_form: true
-  #events
-    = render 'web/admin/events/events_list', events: @events
+        = link_to unviewed_tab_title(tab, @unviewed[pluralize_tab.to_sym].total_count), "##{pluralize_tab}"
+  - tabs.each do |tab|
+    %div{ id: tab.to_s.pluralize }
+      - pluralize_tab = tab.to_s.pluralize
+      = render "web/admin/#{pluralize_tab}/#{pluralize_tab}_list", pluralize_tab.to_sym => @unviewed[pluralize_tab.to_sym]

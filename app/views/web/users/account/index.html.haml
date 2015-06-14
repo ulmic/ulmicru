@@ -36,13 +36,15 @@
     -#- attributes_need_access.each do |attribute|
       = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.id  }
   - else
-    -# if @user.unviewed?
+    - if @user.unviewed?
       %span.label.warning
         = t('.we_have_send_you_activation_email')
     = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
       = f.input :first_name, as: :string
       = f.input :last_name, as: :string
-      = f.input :email, as: :string
+      - unless @user.email.present?
+        = f.hint t('notifications.web.users.account.email.empty')
+      = f.input :email, as: :string, required: true
       = f.input :password, as: :string
       = f.button :submit, t('helpers.links.save')
     - unless @user.is_member?
