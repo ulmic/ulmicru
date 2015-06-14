@@ -4,13 +4,20 @@ $button-font-family: 'mic-beau-reg';
 
 @import "foundation/components/buttons";
 
+@mixin image-on-bg() {
+    display: block;
+    background-size: cover;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+
 // h1,h2,h3,h4,h5,h6 надо тоже сюда вытащить
 .mic-label-black {
-  background-color: #FC9727;
-  color: #333;
-  display: inline-block;
-  padding: 3px 20px 0 18px;
-  font-family: 'mic-square-reg';
+	background-color: #FC9727;
+	color: #333;
+	display: inline-block;
+	padding: 3px 20px 0 18px;
+	font-family: 'mic-square-reg';
 }
 
 .mic-form-container.container {
@@ -20,56 +27,56 @@ $button-font-family: 'mic-beau-reg';
 
 // это плейсфолдер, класс такой не генерится
 %mic-button {
-  @extend .button;
-  padding: rem-calc(13) rem-calc(26);
-  font-size: rem-calc(18);
+	@extend .button;
+	padding: rem-calc(13) rem-calc(26);
+	font-size: rem-calc(18);
 }
 .mic-button-small {
-  padding: rem-calc(9) rem-calc(20);
+	padding: rem-calc(9) rem-calc(20);
 }
 .mic-flat-button {
-  @extend %mic-button;
-  &:active {
-    background-color: #D4611B;
-  }
+	@extend %mic-button;
+	&:active {
+		background-color: #D4611B;
+	}
 }
 
 .mic-press-button {
-  @extend %mic-button;
-  $press-height: 7px;
-  border: none;
-  box-shadow: 0 $press-height #D4611B;
-  &:focus {
-    outline: none
-  }
-  &:active {
-    box-shadow: 0 0px #D4611B;
-    transform: translateY($press-height);
-    -ms-transform: translateY($press-height);
-  }
+	@extend %mic-button;
+	$press-height: 7px;
+	border: none;
+	box-shadow: 0 $press-height #D4611B;
+	&:focus {
+		outline: none
+	}
+	&:active {
+		box-shadow: 0 0px #D4611B;
+		transform: translateY($press-height);
+		-ms-transform: translateY($press-height);
+	}
 }
 
 blockquote {
-  margin: 0 auto;
-  border: 0;
-  position: relative;
-  &:before {
-    display: inline-block;
-    line-height: 0;
-    height: 0;
-    content: open-quote;
-    position: absolute;
-    left: -15px;
-    top: 20px;
-    font-size: 50px;
-    font-family: 'mic-bold'; // шрифт на самом деле Swiss721BT
-  }
-  &:after {
-    content: close-quote;
-    @extend blockquote:before;
-    left: 100%;
-    top: 100%;
-  }
+	margin: 0 auto;
+	border: 0;
+	position: relative;
+	&:before {
+		display: inline-block;
+		line-height: 0;
+		height: 0;
+		content: open-quote;
+		position: absolute;
+		left: -15px;
+		top: 20px;
+		font-size: 50px;
+		font-family: 'mic-bold'; // шрифт на самом деле Swiss721BT
+	}
+	&:after {
+		content: close-quote;
+		@extend blockquote:before;
+		left: 100%;
+		top: 100%;
+	}
 }
 
 hr {
@@ -80,92 +87,197 @@ hr.orange {
 }
 
 %mic-element {
-  text-align: justify;
-  img {
-    width: 100%;
-    height: rem-calc(195);
-  }
-  section {
-    margin: 10px 0px;
-    text-align: center;
-  }
+	text-align: justify;
+	img {
+		width: 100%;
+		height: rem-calc(195);
+	}
+	section {
+		margin: 10px 0px;
+		text-align: center;
+	}
 }
 .mic-event {
-  @extend %mic-element;
-  section {
-    text-align: inherit;
-  }
-  .event-category {
-    font-size: rem-calc(16);
-    position: relative;
-    padding-top: 10px;
-    color: #f45c10;
-    border-top: 4px solid #f45c10;
-    text-transform: uppercase;
-  }
-  .event-date {
-    font-size: rem-calc(16);
-    margin-left: 15px;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+	@extend %mic-element;
+	section {
+		text-align: inherit;
+	}
+	.event-category {
+		font-size: rem-calc(16);
+		position: relative;
+		padding-top: 10px;
+		color: #f45c10;
+		border-top: 4px solid #f45c10;
+		text-transform: uppercase;
+	}
+	.event-date {
+		font-size: rem-calc(16);
+		margin-left: 15px;
+	}
 }
 
-.mic-programm {
-  @extend %mic-element;
-  .programm-name {
-    font-size: rem-calc(16);
-    q {
-      margin-left: rem-calc(5);
-      font-family: mic-beau-reg;
-      quotes: "«" "»";
-      color: #f45c10;
-      text-transform: uppercase;
-      white-space: nowrap;
+.mic-event2 {
+	@extend %mic-element;
+	.event-image-link {
+		height: rem-calc(124);
+        @include image-on-bg();
+	}
+	section {
+		text-align: center;
+        margin: -11px 0px;
+	}
+	.event-date {
+        background-color: #ffa531;
+        color: white;
+        padding: 7px;
+        font-family: mic-bold;
+		font-size: rem-calc(16);
+        text-align: center;
+	}
+    p.event-text {
+        text-align: center;
+        line-height: 1.4;
+        a.event-link {
+            font-size: rem-calc(16);
+            font-family: mic-bold;
+            color: black;
+            transition: color 0.1s;
+            &:hover {
+                color: #ffa531;
+            }
+        }
     }
-  }
+}
+.mic-programm {
+	@extend %mic-element;
+	.programm-name {
+		font-size: rem-calc(16);
+		q {
+			margin-left: rem-calc(5);
+			font-family: mic-beau-reg;
+			quotes: "«" "»";
+			color: #f45c10;
+			text-transform: uppercase;
+			white-space: nowrap;
+		}
+	}
 }
 
 .mic-member {
-  @extend %mic-element;
-  &.participant {
-    width: auto;
-  }
-  img {
-    width: 15vw;
-    height: 15vw;
-  }
-  .role {
-    color: #f45c10;
-  }
+	@extend %mic-element;
+	.role {
+		color: #f45c10;
+	}
 }
 
 .mic-one-news {
-  @extend %mic-element;
-  .news-date {
-    float: left;
-    font-family: mic;
-    font-size: rem-calc(12);
-    color: #f45c10;
-    .icon-calendar {
-      vertical-align: text-bottom;
-      margin-right: 4px;
+	@extend %mic-element;
+    @include clearfix();
+    color: #333;
+    .one-news-left-section {
+        float: left;
     }
-  }
-  .news-title {
-    font-size: rem-calc(16);
-    clear: both;
-    text-align: justify;
-  }
+    .one-news-right-section {
+        line-height: 1.2;
+        width: 100%;
+    }
+    .one-news-image-link {
+        height: 109px;
+        width: 109px;
+        margin-right: 16px;
+        @include image-on-bg();
+    }
+	section {
+        margin-top: 5px;
+        margin-bottom: 0;
+		text-align: inherit;
+        height: 20px;
+	}
+	.one-news-category {
+        font-family: mic-bold;
+		font-size: rem-calc(16);
+		position: relative;
+		padding-top: 5px;
+		color: #ffa531;
+		border-top: 4px solid #ffa531;
+	}
+	.one-news-date {
+        font-family: mic-square-reg;
+		font-size: rem-calc(12);
+	}
+    .one-news-comments-views {
+        color: #616161;
+        margin-top: 5px;
+        font-family: mic-square-reg;
+        font-size: 14px;
+        height: 15px;
+	    .view-text {
+		    margin-right: 10px;
+	    }
+    }
+    .one-news-title {
+        display: block;
+        font-family: mic-bold;
+        font-size: 15px;
+        margin-top: 15px;
+        color: #131313;
+        &:hover {
+            color: #ffa531;
+        }
+    }
+}
+
+.mic-one-news2 {
+	@extend %mic-element;
+	.min-one-news2-image-link {
+		height: rem-calc(124);
+        @include image-on-bg();
+	}
+	section {
+		text-align: justify;
+        margin: 0;
+        @include clearfix();
+        line-height: 1.9; // FIXME wtf
+	}
+	.min-one-news2-date {
+        background-color: #ffa531;
+        color: white;
+        padding: 7px;
+        font-family: mic-bold;
+		font-size: rem-calc(16);
+        text-align: center;
+	}
+    .one-news2-comments-views {
+        color: #616161;
+        font-family: mic-square-reg;
+        font-size: 14px;
+        float: right;
+        margin-top: 5px;
+        .view-text {
+            margin-right: 10px;
+        }
+    }
+    p.min-one-news2-text {
+        margin-top: 10px;
+        text-align: center;
+        line-height: 1.4;
+        a.min-one-news2-link {
+            font-size: rem-calc(16);
+            font-family: mic-bold;
+            color: black;
+            transition: color 0.1s;
+            &:hover {
+                color: #ffa531;
+            }
+        }
+    }
 }
 
 .mic-article {
-  @extend %mic-element;
-  .article-title {
-    font-size: rem-calc(16);
-    clear: both;
-    text-align: justify;
-  }
+	@extend %mic-element;
+	.article-title {
+		font-size: rem-calc(16);
+		clear: both;
+		text-align: justify;
+	}
 }

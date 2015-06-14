@@ -19,10 +19,11 @@ $button_hover_color: rgba(226, 112, 0, 0.71);
       z-index: 1;
       top: $slider-height/2 - $arrow-height/2;
       width: $arrow-height;
-      height: $arrow-height;
+	  height: $arrow-height + rem-calc(5);
       display: inline-block !important;
       background-image: image-url('arrow.png');
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
     .right-arrow {
       right: 9%;
