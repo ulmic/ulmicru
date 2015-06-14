@@ -227,6 +227,52 @@ hr.orange {
     }
 }
 
+.mic-one-news2 {
+	@extend %mic-element;
+	.min-one-news2-image-link {
+		height: rem-calc(124);
+        @include image-on-bg();
+	}
+	section {
+		text-align: justify;
+        margin: 0;
+        @include clearfix();
+        line-height: 1.9; // FIXME wtf
+	}
+	.min-one-news2-date {
+        background-color: #ffa531;
+        color: white;
+        padding: 7px;
+        font-family: mic-bold;
+		font-size: rem-calc(16);
+        text-align: center;
+	}
+    .one-news2-comments-views {
+        color: #616161;
+        font-family: mic-square-reg;
+        font-size: 14px;
+        float: right;
+        margin-top: 5px;
+        .view-text {
+            margin-right: 10px;
+        }
+    }
+    p.min-one-news2-text {
+        margin-top: 10px;
+        text-align: center;
+        line-height: 1.4;
+        a.min-one-news2-link {
+            font-size: rem-calc(16);
+            font-family: mic-bold;
+            color: black;
+            transition: color 0.1s;
+            &:hover {
+                color: #ffa531;
+            }
+        }
+    }
+}
+
 .mic-article {
 	@extend %mic-element;
 	.article-title {
