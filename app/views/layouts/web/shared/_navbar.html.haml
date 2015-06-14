@@ -5,6 +5,8 @@
         %ul.right
           - unless signed_in?
             %li.icons-container
+              .sign-in
+                = t('helpers.sign_in')
               .icons
                 = link_to auth_path(:vkontakte) do
                   .icon-vkontakte.min-icon
