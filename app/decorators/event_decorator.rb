@@ -11,7 +11,7 @@ class EventDecorator < ApplicationDecorator
 
   def full_date_duration
     if begin_date.to_date == end_date.to_date
-      "#{I18n.l(begin_date, format: '%d %b %Y')} #{begin_date.strftime('%H:%m')} - #{end_date.strftime('%H:%m')}"
+      "#{I18n.l(begin_date, format: '%d %b %Y')} #{begin_date.strftime('%H:%M')} - #{end_date.strftime('%H:%M')}"
     else
       "#{I18n.l(begin_date, format: '%d %b %Y')} - #{I18n.l(end_date, format: '%d %b %Y')}"
     end
