@@ -41,7 +41,7 @@
       %ul.nav.navbar-nav.navbar-right
         = menu_item admin_unviewed_index_path do
           %span.glyphicon.glyphicon-info-sign
-          = notification_count
+          = @notification_count
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
             %span.glyphicon.glyphicon-trash

@@ -142,6 +142,13 @@ ru:
             declined: Отклонённый
             removed: Удалённый
             unavailable: Недоступный
+  state_machines:
+    user:
+      state:
+        states:
+          unviewed: Новые
+          confirmed: Подтверждённые
+          declined: Отклонённые
     errors:
       models:
         member:
