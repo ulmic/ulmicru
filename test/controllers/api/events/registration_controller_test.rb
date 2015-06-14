@@ -2,8 +2,10 @@ require 'test_helper'
 
 class Api::Events::RegistrationsControllerTest < ActionController::TestCase
   setup do
-    create :user
+    user = create :user
     create :event
+    user.confirm
+    sign_in user
     @event_registration = create :event_registration
   end
 

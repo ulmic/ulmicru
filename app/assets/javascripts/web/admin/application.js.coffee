@@ -32,6 +32,9 @@ $ ->
   $('.link').click ->
     location.href = $(this).attr('data-href')
 
+  init_blank_adding = ->
+    $('.blank').prop('target', '_blank')
+
   $('a.btn-xs span.glyphicon').each ->
     klass = $(this).attr('class').split(' ')[1]
     glyphicon_titles = {
@@ -51,8 +54,10 @@ $ ->
     $("input.date_picker").datetimepicker()
     return
 
+  init_blank_adding()
   init_datetimepickers()
   $('a.add_fields').mouseover ->
     setTimeout init_datetimepickers, 500
     return
+
   return

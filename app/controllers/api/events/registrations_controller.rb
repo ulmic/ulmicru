@@ -1,4 +1,7 @@
 class Api::Events::RegistrationsController < Api::Events::ApplicationController
+  before_filter :authenticate_user!
+  before_filter :authenticate_confirmed_user!
+
   def create
     @event_form = Event::RegistrationForm.new_with_model
     @event_form.submit params[:event_registration]

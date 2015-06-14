@@ -27,7 +27,7 @@ ru:
         patronymic: Отчество
         last_name: Фамилия
         avatar: Аватар
-        full_name: Ф.И.О.
+        full_name: "Ф.И.О."
         ticket: Номер членского билета
         place: Место проживания
         motto: Девиз по жизни
@@ -47,7 +47,7 @@ ru:
         patronymic: Отчество
         last_name: Фамилия
         avatar: Аватар
-        full_name: Ф.И.О.
+        full_name: "Ф.И.О."
         place: Место проживания
         motto: Девиз по жизни
         mobile_phone: Мобильный телефон
@@ -142,6 +142,13 @@ ru:
             declined: Отклонённый
             removed: Удалённый
             unavailable: Недоступный
+  state_machines:
+    user:
+      state:
+        states:
+          unviewed: Новые
+          confirmed: Подтверждённые
+          declined: Отклонённые
     errors:
       models:
         member:
