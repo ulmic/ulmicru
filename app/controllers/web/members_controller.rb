@@ -3,7 +3,6 @@ class Web::MembersController < Web::ApplicationController
 
   def new
     member = current_user.becomes! Member
-    member.avail
     @member_form = MemberForm.new member
     @active_members = Member.where.not(state: :removed).where.not(state: :declined).order('ticket ASC').decorate
   end
