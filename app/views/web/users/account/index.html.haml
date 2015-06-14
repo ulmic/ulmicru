@@ -3,7 +3,7 @@
   %h3.title
     = t('.title')
   - if @user.is_member?
-    - if @user.unviewed?
+    -# if @user.unviewed?
       %span.label.warning
         = t('.your_member_profile_is_unviewed')
     = simple_form_for @member_form, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
