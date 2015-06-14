@@ -3,7 +3,7 @@
   %h3.title
     = t('.title')
   - if @user.is_member?
-    -# if @user.unviewed?
+    - if @user.unviewed?
       %span.label.warning
         = t('.your_member_profile_is_unviewed')
     = simple_form_for @member_form, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
@@ -36,7 +36,7 @@
     -#- attributes_need_access.each do |attribute|
       = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.id  }
   - else
-    - if @user.unviewed?
+    -# if @user.unviewed?
       %span.label.warning
         = t('.we_have_send_you_activation_email')
     = simple_form_for @user, url: { controller: 'web/users/account', action: :update, id: @user.id } do |f|
