@@ -5,7 +5,7 @@
   %meta{ name:'description', content: "#{@news.description_lead} #МИЦ" }
   %link{ rel: 'image_src', href: @news.photo  }
 
-.news.row
+.news.news_show.row
   %aside.news-sidebar
     %a.prev-next-link.prev
       .link-info
@@ -15,24 +15,33 @@
     %section.related-event
       %h3
         по этой же программе
+      - 3.times do
+        .mic-event2
+          = render_element 'mic_event2', img_src:  "/system/uploads/member/avatar/2/2165339.jpg", |
+                                        category: "Говно", |
+                                        link: "#", |
+                                        date: "22 февраля", |
+                                        text: "Мицевские волонтеры собираются отдыхать в турцию"
       - if @event.present?
-        .mic-event
-          = render_element 'mic_event', img_src: @event.main_photo, |
-                                            category: @event.activity_line.title, |
+        .mic-event2
+          = render_element 'mic_event2', img_src: @event.main_photo, |
                                             link: event_path(@event), |
                                             date: @event.full_date_duration, |
                                             text: @event.lead
   %main.big-column
     .slider-wrap
       .slider
-        = image_tag @news.photo
-        %img{:src => "https://pp.vk.me/c628718/v628718053/379/4BMFbuR0DKs.jpg"}
+        -#= image_tag @news.photo -# FIXME
+        %img{:src => "/system/uploads/member/avatar/2/2165339.jpg"}
+        %img{:src => "/system/uploads/member/avatar/2/2165339.jpg"}
+        %img{:src => "/system/uploads/member/avatar/2/2165339.jpg"}
       .slider-arrow.left
       .slider-arrow.right
     .row
       %section.author.columns.small-5
         - if @news.user.present?
-          = image_tag @news.user.avatar, class: 'human-photo'
+          = image_tag  "/system/uploads/member/avatar/2/2165339.jpg", class: 'human-photo'
+          -#= image_tag @news.user.avatar, class: 'human-photo' -# FIXME
           .author-name
             = "#{t('activerecord.attributes.news.user_id')}:"
             = @news.user.decorate.short_name
@@ -48,7 +57,7 @@
             %span.icon-eye
             %span.view-text
               = @news.views
-            %span.icon-comment
+            %span.icon-comment.fa.fa-comment
             %span.comment-text
               5
       %section.about.columns.small-6
@@ -66,7 +75,7 @@
           = render_element 'mic_document', document: document
       .news-footer.row
         .tags.columns.small-9
-          %span.tags-icon
+          %span.icon-fa-tags
           %a.tag
             дизайн,
           %a.tag
@@ -86,8 +95,8 @@
           %span.columns.small-2
             упомянуты в статье:
           .people-img.columns.small-10
-            %img.human-photo
-            %img.human-photo
+            %img.human-photo{:src => "/system/uploads/member/avatar/2/2165339.jpg"}
+            %img.human-photo{:src => "/system/uploads/member/avatar/2/2165339.jpg"}
             %a.show-all
               посмотреть всех
   %aside.news-sidebar
@@ -96,16 +105,29 @@
         следующая новость
       .link-name
         Пожар в ульяновске
-    %section.related-event
+    %section.related-news
       %h3
         лента новостей
-    .side-content
-      - @topic_news.each do |news|
-        - if news.present?
-          %hr
-          .mic-one-news
-            = render_element 'mic_one_news', img_src: news.photo, |
-                                             link: news_path(news), |
-                                             title: news.title, |
-                                             date: news.publish_date
-    
+      .side-content
+        .side-related-news
+          - 3.times do |index|
+            .mic-one-news
+              = render_element 'mic_one_news', img_src:   "/system/uploads/member/avatar/2/2165339.jpg", |
+                                             link: "#", |
+                                             category: "Категория", |
+                                             title: "Мицевские волонтеры едут на тракторе в Сербию. Мицевские волонтеры едут на тракторе в Сербию. Мицевские волонтеры едут на тракторе в Сербию", |
+                                             date: "23 февраля 2015"
+            - if index != (3 - 1)
+              %hr
+          - @topic_news.each do |news|
+            - if news.present?
+              %hr
+              .mic-one-news
+                = render_element 'mic_one_news', img_src: news.photo, |
+                                                 category: "Category", |
+                                                 link: news_path(news), |
+                                                 title: news.title, |
+                                                 date: news.publish_date
+          .all-news-container
+            %a.all-news-text
+              Все новости

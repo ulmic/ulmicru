@@ -12,6 +12,10 @@ a.big-icon {
 	      color: #FFA911;
     }
 }
+@mixin fa-icon($name) {
+    @extend .fa;
+    @extend #{$name};
+}
 @mixin fa-rounded-icon($name) {
     @extend .fa;
     @extend #{$name};
@@ -106,15 +110,20 @@ a.big-icon {
 }
 
 .icon-eye {
-    background: image-url("eye-icon.png") no-repeat;
-		width: 29px;
-		height: 19px;
+    @include fa-icon(".fa-eye");
+}
+.icon-comment {
+    @include fa-icon(".fa-comment");
 }
 
 .icon-tags {
     background: image-url("tag-icon.png") no-repeat;
 		width: 27px;
 		height: 20px;
+}
+
+.icon-fa-tags {
+    @include fa-icon(".fa-tags");
 }
 
 .icon-human {

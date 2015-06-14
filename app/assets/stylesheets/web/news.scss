@@ -1,3 +1,4 @@
+// =require slick
 @import "mixins";
 @import "elements";
 @import "icons";
@@ -18,7 +19,8 @@ $orange: #ffa531;
 	background-size: cover;
 }
 .news.row {
-	a {
+    max-width: inherit;
+	.big-column a {
 		color: $orange;
 	}
 	%img {
@@ -35,12 +37,12 @@ $orange: #ffa531;
 			color: #131313;
 			text-transform: uppercase;
 			text-align: center;
-			margin-bottom: 36px;
+			margin-bottom: 30px;
 		}
 	}
 	.big-column {
 	    border: solid 1px #ebebeb;
-	    padding: 0px; 
+	    padding: 0px;
 		width: 54%;
 		@extend .columns;
 		h1 {
@@ -57,7 +59,7 @@ $orange: #ffa531;
 		}
 	}
 	.news-info {
-		padding: 4%; 
+		padding: 4%;
 	}
 }
 .slider-wrap {
@@ -105,7 +107,7 @@ $orange: #ffa531;
 .prev-next-link {
 	border-top: solid 1px #ebebeb;
 	border-bottom: solid 1px #ebebeb;
-	padding: 10px 18%; 
+	padding: 10px 18%;
 	text-align: center;
 	cursor: pointer;
 	display: block;
@@ -134,11 +136,29 @@ $orange: #ffa531;
 		color: #282828;
 	}
 }
-.related-event {
+.related-event, .related-news {
 	padding: 18px;
+    margin-top: 18px;
+    .mic-event2 {
+        margin-bottom: 50px;
+    }
+}
+.related-news {
+    .all-news-container {
+        text-align: center;
+        margin-top: 20px;
+        .all-news-text {
+            text-transform: uppercase;
+            font-family: mic-bold;
+            border-bottom: 3px solid #ffa531;
+        }
+    }
 }
 .side-content {
-	padding: 0px 30px;
+    .mic-one-news {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
 }
 .last-news {
 	margin-bottom: 24px;
@@ -156,7 +176,7 @@ $orange: #ffa531;
 	}
 	.category {
 		font: 300 16px 'mic';
-		border-top: 4px solid $orange; 
+		border-top: 4px solid $orange;
 		display: inline-block;
 		color: $orange;
 		&:hover {
@@ -220,7 +240,7 @@ $orange: #ffa531;
 	.about {
 		.category-wrap {
 			&:after {
-					@extend .row:after;
+				@extend .row:after;
 			}
 		}
 		.category {
@@ -248,7 +268,7 @@ $orange: #ffa531;
 		margin-right: 10px;
 	}
 }
-.news-footer {
+.news.row .big-column .news-footer {
 	border-top: 2px solid #e2e2e2;
 	min-height: 145px;
 	color:#656565;
@@ -262,6 +282,9 @@ $orange: #ffa531;
 	}
 	.tags {
 		padding: 0;
+        .icon-fa-tags {
+            margin-right: 9px;
+        }
 		a {
 			font-size: 14px;
 			text-transform: uppercase;
