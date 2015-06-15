@@ -33,10 +33,10 @@ GIT
 
 GIT
   remote: git://github.com/ulmic/tconsole.git
-  revision: aef206596574ea194c7a32a4f3f7947bf2f43e79
+  revision: daccf66423f2c2d222b27cced463762e08de56b6
   branch: rails4
   specs:
-    tconsole (2.0.0.pre1)
+    tconsole (2.2.0.pre)
       ansi
       chattyproc (~> 1.0.0)
       term-ansicolor (~> 1.0.7)
