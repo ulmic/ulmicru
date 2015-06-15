@@ -17,5 +17,9 @@ module NewsScopes
     scope :main, -> { where state: :main }
     scope :confirmed, -> { where state: :confirmed }
     scope :unviewed, -> { where state: :unviewed }
+    scope :popular, -> {
+      where('published_at <= ?', DateTime.now).
+      order('views DESC')
+    }
   end
 end
