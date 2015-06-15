@@ -11,6 +11,7 @@ class ActivityLine < ActiveRecord::Base
   include ActivityLineScopes
 
   state_machine :state, initial: :active do
+    state :unviewed
     state :active
     state :removed
 
@@ -19,7 +20,7 @@ class ActivityLine < ActiveRecord::Base
     end
 
     event :restore do
-      transition removed: :active
+      transition removed: :unviewed
     end
   end
   #FIXME tags association
