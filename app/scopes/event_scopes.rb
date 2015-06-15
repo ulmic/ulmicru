@@ -4,6 +4,7 @@ module EventScopes
 
   included do
     scope :presented, -> { where.not(state: :removed) }
+    scope :removed, -> { where state: :removed }
     scope :declined, -> { where(state: :declined).order('id DESC')  }
     scope :confirmed, -> { where(state: :confirmed) }
     scope :unviewed, -> { where(state: :unviewed).order('id DESC') }
