@@ -5,6 +5,6 @@ FactoryGirl.define do
     published_at { DateTime.now }
     photo        { generate :file }
     lead         { generate :string }
-    user_id      { User.last ? User.last.id : 1 }
+    user_id      { Member.last ? Member.last.id : 1 }
   end
 end

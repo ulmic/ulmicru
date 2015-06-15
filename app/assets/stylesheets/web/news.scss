@@ -108,13 +108,13 @@ $orange: #ffa531;
 }
 .prev-next-link {
 	border-top: solid 1px #ebebeb;
-	border-bottom: solid 1px #ebebeb;
 	padding: 10px 18%;
 	text-align: center;
 	cursor: pointer;
 	display: block;
 	min-height: 117px;
 	position: relative;
+    margin-bottom: 18px;
 	&:before {
 		@extend .slider-arrow:before;
 		width: 18px;
@@ -140,7 +140,7 @@ $orange: #ffa531;
 }
 .related-event, .related-news {
 	padding: 18px;
-    margin-top: 18px;
+	border-top: solid 1px #ebebeb;
     .mic-event2 {
         margin-bottom: 50px;
     }

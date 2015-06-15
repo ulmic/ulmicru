@@ -2,6 +2,7 @@ require 'test_helper'
 
 class Web::NewsControllerTest < ActionController::TestCase
   setup do
+    create :member
     @news = create :news
   end
 
