@@ -33,7 +33,7 @@ class NewsDecorator < ApplicationDecorator
   end
 
   def author_name
-    user.present? ? user.decorate.short_name : I18n.t('helpers.no_author')
+    member.present? ? member.decorate.short_name : I18n.t('helpers.no_author')
   end
 
 end

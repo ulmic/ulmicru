@@ -1,12 +1,17 @@
-%a{ href: "#{link}" }
-  %img{ src: "#{img_src}" }
-%section
-  .news-date
-    .icon-calendar
-    = "#{date}"
-  .news-title
-    %a{ href: "#{link}" }
-      = "#{title}"
--#%p
-  %a
-    = "#{text}"
+.one-news-left-section
+  %a.one-news-image-link{ href: "#{link}", style: "background-image: url(#{img_src})" }
+  -#%section
+    %span.one-news-category
+      = category
+.one-news-right-section
+  .one-news-date
+    = date
+  .one-news-comments-views
+    %span.icon-eye
+    %span.view-text
+      = views
+    %span.icon-comment
+    -#%span.comment-text
+      = comments
+%a.one-news-title{ href: link }
+  = title

@@ -90,7 +90,13 @@ ru:
         title: Регистрация на сайте
     news:
       show:
-        same_themes: "Материалы в тему:"
+        previous: предыдущая новость
+        about_program: по этой же программе
+        referred_members: упомянуты в статье
+        most_popular: Самое популярное
+        next: следующая новость
+        news_feed: лента новостей
+        topic_news: Новости по теме
     articles:
       shared:
         default_show:

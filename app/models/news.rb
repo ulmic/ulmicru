@@ -10,7 +10,7 @@ class News < ActiveRecord::Base
   validates :user_id,       presence: true
   validates :lead,          presence: true
   validates :state,         presence: true
-  belongs_to :user
+  belongs_to :member, foreign_key: :user_id
 
   def is_published?
     published_at <= DateTime.now && state != 'removed'
@@ -18,6 +18,9 @@ class News < ActiveRecord::Base
 
   include NewsScopes
   include Concerns::ViewsManagment
+  class << self
+    include Concerns::NearRecords
+  end
 
   state_machine :state, initial: :unviewed do
     state :unviewed

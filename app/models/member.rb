@@ -12,6 +12,7 @@ class Member < User
                            foreign_key: :user_id
   has_many :events, as: :organizer,
                     foreign_key: :organizer_id
+  has_many :news, foreign_key: :user_id
 
   validates :first_name, presence: true,
                          human_name: true
