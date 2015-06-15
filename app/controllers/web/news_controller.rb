@@ -25,7 +25,7 @@ class Web::NewsController < Web::ApplicationController
     @previous_news = News.published.previous @news.id
     @next_news = News.published.next @news.id
     @same_events = ::EventDecorator.decorate_collection same_events
-    @popular_news = NewsDecorator.decorate_collection News.published.order('views DESC').first 6
+    @popular_news = NewsDecorator.decorate_collection News.popular.first 6
   end
 
   private

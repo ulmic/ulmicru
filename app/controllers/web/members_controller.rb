@@ -35,7 +35,7 @@ class Web::MembersController < Web::ApplicationController
       @member = member.decorate
       @children = MemberDecorator.decorate_collection member.children.shuffle
       @parent = MemberDecorator.decorate member.parent
-      @registrations = Event::RegistrationDecorator.decorate_collection member.registrations.reverse
+      @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.reverse
       @news = NewsDecorator.decorate_collection member.tags.news.map &:record
       @articles = member.tags.articles.map &:record
       @attribute_accesses = member.attribute_accesses

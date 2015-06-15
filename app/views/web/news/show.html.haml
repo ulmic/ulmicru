@@ -8,27 +8,28 @@
 .news.news_show.row
   %aside.news-sidebar
     - if @previous_news.present?
-      %a.prev-next-link.prev
+      %a.prev-next-link.prev{ href: news_path(@previous_news) }
         .link-info
           = t('.previous')
         .link-name
           = @previous_news.title
-    %section.related-event
-      %h3
-        = t('.about_program')
-      - @same_events.each do |event|
-        .mic-event2
-          = render_element 'mic_event2', img_src:  event.main_photo.event_main_page_version, |
-                                        category: event.activity_line.title, |
-                                        link: event_path(event), |
-                                        date: event.full_date_duration, |
-                                        text: event.title
-      - if @event.present?
-        .mic-event2
-          = render_element 'mic_event2', img_src: @event.main_photo, |
-                                            link: event_path(@event), |
-                                            date: @event.full_date_duration, |
-                                            text: @event.lead
+    - if @same_events.any?
+      %section.related-event
+        %h3
+          = t('.about_program')
+        - @same_events.each do |event|
+          .mic-event2
+            = render_element 'mic_event2', img_src:  event.main_photo.event_main_page_version, |
+                                           category: event.activity_line.title, |
+                                           link: event_path(event), |
+                                           date: event.full_date_duration, |
+                                           text: event.title
+        - if @event.present?
+          .mic-event2
+            = render_element 'mic_event2', img_src: @event.main_photo, |
+                                           link: event_path(@event), |
+                                           date: @event.full_date_duration, |
+                                           text: @event.lead
   %main.big-column
     .main-news-content
       .slider-wrap
@@ -37,7 +38,7 @@
         -#.slider-arrow.left
         -#.slider-arrow.right
       .row
-        %section.author.columns.small-5
+        %section.author.columns.small-5.link{ data: { href: member_path(@news.member.ticket) } }
           = image_tag  @news.member.avatar.small, class: 'human-photo'
           .author-name
             = "#{t('activerecord.attributes.news.user_id')}:"
@@ -80,7 +81,7 @@
               \:
             .people-img.columns.small-10
               - @members.each do |member|
-                = image_tag member.avatar.small, class: 'human-photo'
+                = image_tag member.avatar.small, class: 'human-photo link', data: { href: member_path(member.ticket) }
     -#.news-comments
       #disqus_thread
         :javascript
@@ -127,7 +128,7 @@
                                                   text: news.title
   %aside.news-sidebar
     - if @next_news.present?
-      %a.prev-next-link.next
+      %a.prev-next-link.next{ href: news_path(@next_news) }
         .link-info
           = t('.next')
         .link-name

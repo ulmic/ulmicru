@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Web::MembersControllerTest < ActionController::TestCase
   setup do
-    @user = create :user
-    sign_in @user
+    @member = create :member
+    sign_in @member
   end
 
   test 'should not get new unsigned' do
@@ -34,6 +34,8 @@ class Web::MembersControllerTest < ActionController::TestCase
     registration.user_id = member.id
     registration.save
     member.confirm
+    create :news
+    create :tag
     get :show, ticket: member.ticket
     assert_response :success, @response.body
   end

@@ -1,8 +1,7 @@
 module Concerns
   module AvatarManagment
     def default_avatar
-      @detector = RussianSex::Detector.new
-      sex = @detector.detect first_name
+      sex = SexDetector.detector.detect first_name
       if type == 'Member'
         if sex == 'M'
           ActionController::Base.helpers.asset_path 'default-mic-man-icon.png'
