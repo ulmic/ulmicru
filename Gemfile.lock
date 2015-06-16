@@ -551,7 +551,7 @@ DEPENDENCIES
   sinatra (>= 1.3.0)
   spring (= 1.3.4)
   state_machine!
-  tconsole (= 2.2.0.pre)!
+  tconsole!
   therubyracer
   uglifier (>= 1.3.0)
   unicorn-rails
