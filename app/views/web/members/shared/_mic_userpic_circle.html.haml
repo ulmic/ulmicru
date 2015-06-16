@@ -1,5 +1,5 @@
 - if member.confirmed?
-  .mic-userpic-circle.link{ data: { href: member_path(member) }, style: "background-image: url(#{member.avatar})" }
+  .mic-userpic-circle.link{ data: { href: member_path(member.ticket) }, style: "background-image: url(#{member.avatar})" }
 - else
   .mic-userpic-circle{ style: "background-image: url(#{member.element_avatar})" }
 .name
