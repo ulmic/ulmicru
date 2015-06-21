@@ -23,7 +23,7 @@ $ ->
     $view_button.show()
 
   align_mic_userpics = ->
-    $('.mic-userpic-circle').each ->
+    $('.god-fathers-childs .mic-userpic-circle').each ->
       parent_width = $(this).parents().first().width()
       $(this).css('margin-left', (parent_width - $(this).width()) / 2)
       return
