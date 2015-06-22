@@ -41,13 +41,24 @@
 /   = render 'web/articles/shared/tags'
 .history-timeline
   .history-line
+  - i = 0
   - history_events_list.keys.each do |year|
-    - history_events_list[year].keys.each_with_index do |date, index|
+    - history_events_list[year].keys.each do |date|
       .history-block.row
         .history-date
           %span.history-date-year
             = year
-          %br/
-          = date
-        .history-content{ class: (index % 2 == 0 ? 'left' : 'right') }
-          = history_events_list[year][date]
+          - unless date == 'without_date'
+            %br
+            = date
+        - content = history_events_list[year][date]
+        - if content.is_a? Array
+          .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
+            - content.each_with_index do |history_event, index|
+              = history_event
+              - unless content.size == index + 1
+                %hr
+        - else
+          .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
+            = content
+      - i += 1
