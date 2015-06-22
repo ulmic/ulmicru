@@ -149,6 +149,13 @@ ru:
           unviewed: Новые
           confirmed: Подтверждённые
           declined: Отклонённые
+    article:
+      state:
+        states:
+          unviewed: Новые
+          confirmed: Подтверждённые
+          inactive: Неактивные
+          removed: Удалённые
     errors:
       models:
         member:

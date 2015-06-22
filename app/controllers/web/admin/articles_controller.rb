@@ -1,6 +1,9 @@
 class Web::Admin::ArticlesController < Web::Admin::ApplicationController
   def index
-    @articles = Kaminari.paginate_array(Article.presented.decorate).page params[:page]
+    @articles = {}
+    @articles[:confirmed] = Kaminari.paginate_array(Article.confirmed.decorate).page params[:page]
+    @articles[:inactive] = Kaminari.paginate_array(Article.inactive.decorate).page params[:page]
+    @articles[:unviewed] = Kaminari.paginate_array(Article.unviewed.decorate).page params[:page]
     @tag = Tag.new
   end
 
