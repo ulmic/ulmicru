@@ -14,7 +14,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def notification_count
-    collections = [ :member, :questionary, :news, :event, :user ]
+    collections = [ :member, :questionary, :news, :event, :user, :feedback ]
     @notification_count = 0
     collections.each do |collection_type|
       @notification_count += collection_type.to_s.capitalize.constantize.unviewed.count
