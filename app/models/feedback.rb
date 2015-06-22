@@ -4,6 +4,8 @@ class Feedback < ActiveRecord::Base
   validates :text, presence: true
   validates :url, presence: true
 
+  include FeedbackScopes
+
   state_machine initial: :unviewed do
     state :unviewed
     state :fixing

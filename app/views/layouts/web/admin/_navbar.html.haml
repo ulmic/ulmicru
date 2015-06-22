@@ -37,6 +37,8 @@
           = Team.model_name.human.pluralize(:ru)
         = menu_item admin_documents_path do
           = Document.model_name.human.pluralize(:ru)
+        = menu_item admin_feedback_index_path do
+          = Feedback.model_name.human.pluralize(:ru)
     - if current_user.role.admin?
       %ul.nav.navbar-nav.navbar-right
         = menu_item admin_unviewed_index_path do

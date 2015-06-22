@@ -13,6 +13,7 @@ ru:
       event: Мероприятие
       team: Команда
       document: Документ
+      feedback: Обратная связь
     attributes:
       user:
         first_name: Имя
@@ -158,6 +159,13 @@ ru:
           confirmed: Подтверждённые
           inactive: Неактивные
           removed: Удалённые
+    feedback:
+      state:
+        states:
+          unviewed: Новые
+          fixing: В работе
+          done: Сделаны
+          declined: Отклонены
     errors:
       models:
         member:

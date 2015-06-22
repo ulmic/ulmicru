@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :activity_lines, except: [:show]
       resources :banners, except: [:show]
+      resources :feedback, except: [:show]
       resources :events
       resources :questionaries
       resources :teams, except: :show
