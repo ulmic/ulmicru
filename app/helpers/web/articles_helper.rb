@@ -1,4 +1,6 @@
 module Web::ArticlesHelper
+  include HistoryHelper
+
   def link_to_article_member_path(member, short_name = nil)
     if article_member_path member
       if short_name

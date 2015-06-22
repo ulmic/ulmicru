@@ -41,19 +41,13 @@
 /   = render 'web/articles/shared/tags'
 .history-timeline
   .history-line
-  .history-block.row
-    .history-date
-      %span.history-date-year
-        2009
-      %br/
-      26 апреля
-    .history-content.left
-      Ассоциации начинающих журналистов Ульяновской области «Inформат», Татьяна Лаптева также работала с молодыми журналистами и была вице-президентом «Inформата». Елена Асеева, реализовывала в регионе проекты, направленные на развитие у молодёжи лидерских качеств, проводила выездные семинары, в том числе была организатором конкурса актива старшеклассников «Я – лидер».
-  .history-block.row
-    .history-date
-      %span.history-date-year
-        2009
-      %br/
-      26 апреля
-    .history-content.right
-      Ассоциации начинающих журналистов Ульяновской области «Inформат», Татьяна Лаптева также работала с молодыми журналистами и была вице-президентом «Inформата». Елена Асеева, реализовывала в регионе проекты, направленные на развитие у молодёжи лидерских качеств, проводила выездные семинары, в том числе была организатором конкурса актива старшеклассников «Я – лидер».
+  - history_events_list.keys.each do |year|
+    - history_events_list[year].keys.each_with_index do |date, index|
+      .history-block.row
+        .history-date
+          %span.history-date-year
+            = year
+          %br/
+          = date
+        .history-content{ class: (index % 2 == 0 ? 'left' : 'right') }
+          = history_events_list[year][date]
