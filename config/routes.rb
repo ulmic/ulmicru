@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :news, only: :index
     resources :events, only: :index
+    resources :feedback, only: :create
     resources :users, only: [] do
       member do
         get :confirm

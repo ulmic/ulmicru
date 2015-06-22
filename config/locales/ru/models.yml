@@ -133,6 +133,8 @@ ru:
       document:
         file: Файл
         title: Название
+      feedback:
+        text: Описание ошибки
     state_machines:
       member:
         state:

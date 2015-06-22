@@ -30,6 +30,11 @@
       display: block;
     }
   }
+  .dropdown-site-demo:hover {
+    .site-demo-menu, ul {
+      display: block;
+    }
+  }
   .category-menu {
     position: absolute;
     display: block !important;
