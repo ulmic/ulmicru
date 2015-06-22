@@ -14,6 +14,7 @@ class Article < ActiveRecord::Base
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
+    state :inactive
     state :removed
 
     event :remove do
@@ -24,6 +25,9 @@ class Article < ActiveRecord::Base
     end
     event :restore do
       transition :removed => :unviewed
+    end
+    event :make_inactive do
+      transition all => :inactive
     end
   end
 end

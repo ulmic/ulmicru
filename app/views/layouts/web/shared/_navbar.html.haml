@@ -48,3 +48,16 @@
           %li
             %a{ href: "#" }
         %a.site-logo{ href: root_path }
+        %ul.left
+          %li.has-dropdown.dropdown-category-menu
+            %a{href: "#"}
+              .inner
+                Миц - это ...
+            %ul.dropdown
+              #category_menu.category-menu
+                - if @first_category.present?
+                  .category-column
+                    .menu-title
+                      = @first_category.name
+                    - @first_category.articles.each do |article|
+                      = link_to article.title, article_path(article)
