@@ -24,10 +24,10 @@
 #= require web/events
 #= require web/welcome
 
-$(document).foundation()
 
 $ ->
-  $(document).foundation('tab', 'reflow')
+  $(document).foundation()
+  #$(document).foundation('tab', 'reflow')
 
   init_link_class = ->
     $('.link').click ->
