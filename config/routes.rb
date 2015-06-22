@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :activity_lines, except: [:show]
       resources :banners, except: [:show]
+      resources :feedback, except: [:show]
       resources :events
       resources :questionaries
       resources :teams, except: :show
@@ -67,6 +68,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :news, only: :index
     resources :events, only: :index
+    resources :feedback, only: :create
     resources :users, only: [] do
       member do
         get :confirm
