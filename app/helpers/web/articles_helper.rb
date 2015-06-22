@@ -31,4 +31,45 @@ module Web::ArticlesHelper
     else
     end
   end
+
+  MEMBER_TAG = /%\{.*\}/
+
+  # FIXME queries from helper!!!
+
+  def member_tags_helper(content)
+    if includes_member_tags? content
+      member_ids = []
+      if content.is_a? Array
+        content.each do |text|
+          text.scan(/%{([0-9]+)}/).each do |id|
+            member_ids << id[0].to_i
+          end
+        end
+      else
+        content.scan(/%{([0-9]+)}/).each do |id|
+          member_ids << id[0].to_i
+        end
+      end
+      Member.confirmed.where ticket: member_ids
+    end
+  end
+
+  def includes_member_tags?(content)
+    if content.is_a? Array
+      content.each do |text|
+        return true if text.match MEMBER_TAG
+      end
+      return false
+    else
+      content.match MEMBER_TAG
+    end
+  end
+
+  def strip_member_tags(text)
+    if text.include? '{'
+      text.gsub MEMBER_TAG, ''
+    else
+      text
+    end
+  end
 end

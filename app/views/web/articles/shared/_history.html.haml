@@ -55,10 +55,19 @@
         - if content.is_a? Array
           .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
             - content.each_with_index do |history_event, index|
-              = history_event
-              - unless content.size == index + 1
+              = strip_member_tags history_event
+              - if content.size == index + 1
+                - members = member_tags_helper content
+                - if members.present? && members.any?
+                  %hr
+                  = render 'layouts/web/elements/mic_member_tags', members: member_tags_helper(content)
+              - else
                 %hr
         - else
           .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
-            = content
+            = strip_member_tags content
+            - members = member_tags_helper content
+            - if members.present? && members.any?
+              %hr
+              = render 'layouts/web/elements/mic_member_tags', members: member_tags_helper(content)
       - i += 1

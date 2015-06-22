@@ -22,3 +22,15 @@
     margin-bottom: rem-calc(10);
   }
 }
+
+.history {
+  .people-img {
+    img {
+      border-radius: 50%;
+      width: 50px;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

@@ -79,9 +79,7 @@
             %span.columns.small-2
               = t('.referred_members')
               \:
-            .people-img.columns.small-10
-              - @members.each do |member|
-                = image_tag member.avatar.small, class: 'human-photo link', data: { href: member_path(member.ticket) }
+            = render 'layouts/web/elements/mic_member_tags', members: @members
     -#.news-comments
       #disqus_thread
         :javascript
