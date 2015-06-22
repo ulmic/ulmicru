@@ -23,6 +23,7 @@
 #= require web/members
 #= require web/events
 #= require web/welcome
+#= require feedback
 
 
 $ ->

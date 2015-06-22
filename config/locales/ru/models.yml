@@ -13,6 +13,7 @@ ru:
       event: Мероприятие
       team: Команда
       document: Документ
+      feedback: Обратная связь
     attributes:
       user:
         first_name: Имя
@@ -133,6 +134,8 @@ ru:
       document:
         file: Файл
         title: Название
+      feedback:
+        text: Описание ошибки
     state_machines:
       member:
         state:
@@ -156,6 +159,13 @@ ru:
           confirmed: Подтверждённые
           inactive: Неактивные
           removed: Удалённые
+    feedback:
+      state:
+        states:
+          unviewed: Новые
+          fixing: В работе
+          done: Сделаны
+          declined: Отклонены
     errors:
       models:
         member:

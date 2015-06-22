@@ -10,5 +10,6 @@ class Web::ApplicationController < ApplicationController
     if signed_in?
       @korporative_category = Category.find_by_name 'Корпоративные проекты'
     end
+    @feedback = FeedbackForm.new_with_model
   end
 end

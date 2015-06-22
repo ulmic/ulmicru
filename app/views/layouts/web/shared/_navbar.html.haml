@@ -61,3 +61,7 @@
                       = @first_category.name
                     - @first_category.articles.confirmed.each do |article|
                       = link_to article.title, article_path(article)
+          %li
+            = link_to '#', data: { 'reveal-id' => 'feedbackModal' } do
+              .inner
+                Нашли ошибку?

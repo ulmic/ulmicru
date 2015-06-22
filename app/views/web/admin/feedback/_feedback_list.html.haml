@@ -1,0 +1,23 @@
+= paginate feedback, theme: 'twitter-bootstrap-3'
+- model_class = Feedback
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:url)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:text)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - feedback.each do |feedback|
+      %tr.link{ class: state_color(feedback), data: { href: edit_admin_feedback_path(feedback) } }
+        %td= feedback.id
+        %td= link_to feedback.url, feedback.url
+        %td= feedback.user.decorate.full_name
+        %td= feedback.text
+        %td.actions
+          = link_to edit_admin_feedback_path(feedback), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_feedback_path(feedback), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+= paginate feedback, theme: 'twitter-bootstrap-3'

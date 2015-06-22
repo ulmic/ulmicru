@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609135136) do
+ActiveRecord::Schema.define(version: 20150622210131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,15 @@ ActiveRecord::Schema.define(version: 20150609135136) do
     t.integer  "activity_line_id"
     t.integer  "organizer_id"
     t.text     "organizer_type"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "url"
+    t.text     "text"
+    t.text     "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "file_attachments", force: :cascade do |t|
