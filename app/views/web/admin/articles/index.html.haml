@@ -1,8 +1,16 @@
 - model_class = Article
+- tabs = [ :confirmed, :inactive, :unviewed ]
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
   %h1
     =t model_class.model_name.human.pluralize(:ru)
     = link_to "#{t 'helpers.links.new'}", new_admin_article_path, class: 'btn btn-primary'
-  = render 'articles_list', articles: @articles
-  = link_to "#{t 'helpers.links.new'}", new_admin_article_path, class: 'btn btn-primary'
+#tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    - tabs.each do |tab|
+      %li
+        = link_to tab_title(model_class, tab, @articles[tab].total_count), "##{tab}"
+  - tabs.each do |tab|
+    %div{ id: tab }
+      = render 'articles_list', articles: @articles[tab]
+= link_to t('.new', default: t('helpers.links.new')), new_admin_article_path, class: 'btn btn-primary'
