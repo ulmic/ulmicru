@@ -79,9 +79,7 @@
             %span.columns.small-2
               = t('.referred_members')
               \:
-            .people-img.columns.small-10
-              - @members.each do |member|
-                = image_tag member.avatar.small, class: 'human-photo link', data: { href: member_path(member.ticket) }
+            = render 'layouts/web/elements/mic_member_tags', members: @members
     -#.news-comments
       #disqus_thread
         :javascript
@@ -145,18 +143,19 @@
                                                title: news.title, |
                                                views: news.views, |
                                                date: news.publish_date
-            - if index != (3 - 1)
+            - if index != (@last_news.size - 1)
               %hr
           - if @topic_news.any?
             .all-news-container
               %a.all-news-text
                 = t('.topic_news')
-            - @topic_news.each do |news|
+            - @topic_news.each do |news, index|
               - if news.present?
-                %hr
                 .mic-one-news
                   = render_element 'mic_one_news', img_src: news.photo, |
                                                    link: news_path(news), |
                                                    title: news.title, |
                                                    views: news.views, |
                                                    date: news.publish_date
+                - if index != (@topic_news.size - 1)
+                  %hr

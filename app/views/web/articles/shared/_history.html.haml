@@ -41,13 +41,33 @@
 /   = render 'web/articles/shared/tags'
 .history-timeline
   .history-line
+  - i = 0
   - history_events_list.keys.each do |year|
-    - history_events_list[year].keys.each_with_index do |date, index|
+    - history_events_list[year].keys.each do |date|
       .history-block.row
         .history-date
           %span.history-date-year
             = year
-          %br/
-          = date
-        .history-content{ class: (index % 2 == 0 ? 'left' : 'right') }
-          = history_events_list[year][date]
+          - unless date == 'without_date'
+            %br
+            = date
+        - content = history_events_list[year][date]
+        - if content.is_a? Array
+          .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
+            - content.each_with_index do |history_event, index|
+              = strip_member_tags history_event
+              - if content.size == index + 1
+                - members = member_tags_helper content
+                - if members.present? && members.any?
+                  %hr
+                  = render 'layouts/web/elements/mic_member_tags', members: member_tags_helper(content)
+              - else
+                %hr
+        - else
+          .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
+            = strip_member_tags content
+            - members = member_tags_helper content
+            - if members.present? && members.any?
+              %hr
+              = render 'layouts/web/elements/mic_member_tags', members: member_tags_helper(content)
+      - i += 1
