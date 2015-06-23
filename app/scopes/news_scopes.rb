@@ -5,7 +5,7 @@ module NewsScopes
   included do
     scope :published, -> {
       where('published_at <= ?', DateTime.now).
-      where(state: :confirmed).
+      where("state = 'confirmed' OR state = 'main'").
       order('published_at DESC')
     }
     scope :unpublished, -> {
