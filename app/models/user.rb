@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     model_name == 'Questionary'
   end
 
+  def is_user?
+    model_name == 'User'
+  end
+
   def generate_token
     self.token = SecureHelper.generate_token
   end
