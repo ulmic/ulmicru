@@ -13,7 +13,7 @@
       %tr.link{ class: state_color(feedback), data: { href: edit_admin_feedback_path(feedback) } }
         %td= feedback.id
         %td= link_to feedback.url, feedback.url
-        %td= feedback.user.decorate.full_name
+        %td= feedback.user.decorate.full_name if feedback.user_id
         %td= feedback.text
         %td.actions
           = link_to edit_admin_feedback_path(feedback), class: 'btn btn-warning btn-xs' do
