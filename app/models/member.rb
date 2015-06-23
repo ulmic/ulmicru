@@ -52,6 +52,9 @@ class Member < User
     event :avail do
       transition all => :unviewed
     end
+    event :unavail do
+      transition all => :unavailable
+    end
     event :restore do
       transition removed: :unviewed
     end
