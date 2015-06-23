@@ -13,5 +13,7 @@ FactoryGirl.define do
     avatar { generate :file }
     password { generate :string }
     password_confirmation { password }
+    municipality 'г. Ульяновск'
+    locality 'г. Ульяновск'
   end
 end

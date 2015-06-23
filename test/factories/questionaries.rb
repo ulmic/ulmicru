@@ -15,5 +15,7 @@ FactoryGirl.define do
     state 'unviewed'
     password { generate :string }
     password_confirmation { password }
+    municipality 'г. Ульяновск'
+    locality 'г. Ульяновск'
   end
 end
