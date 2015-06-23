@@ -46,6 +46,9 @@
             - if signed_in? && current_user.confirmed?
               %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
                 = t('.attend')
+            - elsif signed_in? && current_user.is_user? && current_user.unviewed?
+              %a.join-button.mic-press-button{ href: account_path }
+                = t('.attend')
             - else
               %a.join-button.mic-press-button{ href: new_session_path }
                 = t('.attend')
