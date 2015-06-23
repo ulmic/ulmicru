@@ -6,25 +6,24 @@
   = render 'layouts/web/shared/errors', object: @member_form
 .container.mic-form-container
   = simple_form_for @member_form, url: members_path, method: :post do |f|
-    - f.with_options required: true do |f|
-      = f.input :first_name, as: :string
-      = f.input :patronymic, as: :string
-      = f.input :last_name, as: :string
-      = f.input :email, as: :string
-      = f.input :motto, as: :string
-      = f.input :ticket, as: :string
-      = f.input :mobile_phone, as: :string, placeholder: 'locale'
-      = f.input :birth_date, as: :date_picker
-      = f.input :home_adress, as: :string
-      = f.input :municipality
-      = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
-      = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
-      = f.input :type, as: :hidden, input_html: { value: 'Member' }
-      = f.input :state, as: :hidden, input_html: { value: :unviewed }
-      = f.label :avatar
-      .preview
-        = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
-      = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }
-      = f.input :avatar, label: false, as: :jasny_file_preview_upload_foundation
+    = f.input :first_name, as: :string
+    = f.input :patronymic, as: :string
+    = f.input :last_name, as: :string
+    = f.input :email, as: :string
+    = f.input :motto, as: :string
+    = f.input :ticket, as: :string
+    = f.input :mobile_phone, as: :string, placeholder: 'locale'
+    = f.input :birth_date, as: :date_picker
+    = f.input :home_adress, as: :string
+    = f.input :municipality
+    = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
+    = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
+    = f.input :type, as: :hidden, input_html: { value: 'Member' }
+    = f.input :state, as: :hidden, input_html: { value: :unviewed }
+    = f.label :avatar
+    .preview
+      = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
+    = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }
+    = f.input :avatar, label: false, as: :jasny_file_preview_upload_foundation
     = f.button :submit, t('helpers.links.save'), class: 'btn-success'
     = link_to t('helpers.links.back'), root_path, class: 'button'
