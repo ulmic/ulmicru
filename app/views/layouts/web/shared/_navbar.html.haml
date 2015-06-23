@@ -10,6 +10,12 @@
                   .inner
                     %i.fa.fa-info-circle
                     = @notification_count
+            - if current_user.is_user? && current_user.unviewed? && !current_user.email.present?
+              %li
+                = link_to account_path do
+                  .inner
+                    %i.fa.fa-info
+                    = t('.your_account_is_not_active')
           - else
             %li.icons-container
               .sign-in
