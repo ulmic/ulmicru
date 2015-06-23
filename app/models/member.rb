@@ -25,6 +25,7 @@ class Member < User
                            allow_blank: true
   validates :motto, uniqueness: true,
                     allow_blank: true
+  validates :avatar, presence: true
 
   include MemberScopes
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first

@@ -5,12 +5,12 @@ module NewsScopes
   included do
     scope :published, -> {
       where('published_at <= ?', DateTime.now).
-      where.not(state: :removed).
+      where(state: :confirmed).
       order('published_at DESC')
     }
     scope :unpublished, -> {
       where('published_at > ?',  DateTime.now).
-      where.not(state: :removed).
+      where(state: :confirmed).
       order('published_at DESC')
     }
     scope :removed, -> { where state: :removed }
