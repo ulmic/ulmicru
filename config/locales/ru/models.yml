@@ -172,6 +172,10 @@ ru:
           attributes:
             motto:
               taken: уже занят другим пользователем
+        user:
+          attributes:
+            mobile_phone:
+              phone: имеет неверный формат
   enumerize:
     user:
       role:
