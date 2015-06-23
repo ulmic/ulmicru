@@ -3,7 +3,14 @@
     %section.top-bar-section
       .container-big
         %ul.right
-          - unless signed_in?
+          - if signed_in?
+            - if current_user.role.admin?
+              %li
+                = link_to admin_path do
+                  .inner
+                    %i.fa.fa-info-circle
+                    = @notification_count
+          - else
             %li.icons-container
               .sign-in
                 = t('helpers.sign_in')
