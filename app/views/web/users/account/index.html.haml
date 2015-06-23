@@ -2,7 +2,7 @@
 .container.mic-form-container.account-form
   %h3.title
     = t('.title')
-  - if @user.is_member?
+  - if @user.is_member? && !@user.unavailable?
     - if @user.unviewed?
       %span.label.warning
         = t('.your_member_profile_is_unviewed')
@@ -47,7 +47,7 @@
       = f.input :email, as: :string, required: true
       = f.input :password, as: :string
       = f.button :submit, t('helpers.links.save')
-    - unless @user.is_member?
+    - if !@user.is_member? || (@user.is_member? && @user.unavailable?)
       - if @user.is_questionary?
         %span.label
           = t('.you_want_to_join_mic')
@@ -58,11 +58,12 @@
               = t('.you_are_member_mic')
             .medium-4.medium-offset-1.columns.end
               = link_to t('.enter_datas_mic_member'), new_member_path, class: 'button'
-          .row
-            .medium-4.columns
-              = t('.you_are_not_member_mic')
-            .medium-4.medium-offset-1.columns.end
-              = link_to t('organization.send_request'), new_join_path, class: 'button'
+          - unless @user.is_member?
+            .row
+              .medium-4.columns
+                = t('.you_are_not_member_mic')
+              .medium-4.medium-offset-1.columns.end
+                = link_to t('organization.send_request'), new_join_path, class: 'button'
   .row-fluid.authentications
     %h3
       = t('.authentications')
