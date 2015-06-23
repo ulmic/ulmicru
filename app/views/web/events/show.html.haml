@@ -20,6 +20,7 @@
                 = @event.full_date_duration
             .where
               .event-label-text
+                %i.fa.fa-foursquare
                 = @event.place_link_to_4sq
         .event-lead
           != strip_tags @event.lead
