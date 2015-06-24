@@ -6,7 +6,7 @@
           - if signed_in?
             - if current_user.role.admin?
               %li
-                = link_to admin_path do
+                = link_to admin_unviewed_index_path do
                   .inner
                     %i.fa.fa-info-circle
                     = @notification_count
@@ -75,6 +75,7 @@
                     - @first_category.articles.confirmed.each do |article|
                       = link_to article.title, article_path(article)
           %li
-            = link_to '#', data: { 'reveal-id' => 'feedbackModal' } do
-              .inner
-                Нашли ошибку?
+            - if signed_in? && current_user.state == 'confirmed'
+              = link_to '#', data: { 'reveal-id' => 'feedbackModal' } do
+                .inner
+                  Нашли ошибку?

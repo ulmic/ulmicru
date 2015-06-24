@@ -61,6 +61,22 @@ class Member < User
     end
   end
 
+  state_machine :member_state, initial: :unviewed do
+    state :unviewed
+    state :confirmed
+    state :declined
+
+    event :confirm do
+      transition all => :confirmed
+    end
+    event :decline do
+      transition all => :declined
+    end
+    event :renew do
+      transition all => :unviewed
+    end
+  end
+
   def has_auth_provider?(provider)
     authentications.map do |authentication|
       return authentication if authentication.provider == provider
