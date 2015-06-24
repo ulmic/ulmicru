@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
     model_name == 'User'
   end
 
+  def is_active?
+    state == 'confirmed' || state == 'on_the_trial'
+  end
+
   def generate_token
     self.token = SecureHelper.generate_token
   end
