@@ -16,6 +16,12 @@ Configus.build Rails.env do
         version '20140806'
       end
     end
+    it_projects do
+      ul_lider do
+        full_name 'organization.projects.ul_lider'
+        url 'http://ul-lider.ru'
+      end
+    end
   end
 
   env :staging, parent: :production do
