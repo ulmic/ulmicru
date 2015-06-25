@@ -12,22 +12,30 @@
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
             = t('.people')
+            %span.caret
           %ul.dropdown-menu
             = menu_item admin_users_path do
+              %span.glyphicon.glyphicon-user
               = User.model_name.human.pluralize(:ru)
             = menu_item admin_members_path do
+              %span.glyphicon.glyphicon-user
               = Member.model_name.human.pluralize(:ru)
             = menu_item admin_questionaries_path do
+              %span.glyphicon.glyphicon-list-alt
               = Questionary.model_name.human.pluralize(:ru)
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
             = t('.activity')
+            %span.caret
           %ul.dropdown-menu
             = menu_item admin_events_path do
+              %span.glyphicon.glyphicon-calendar
               = Event.model_name.human.pluralize(:ru)
             = menu_item admin_activity_lines_path do
+              %span.glyphicon.glyphicon-flag
               = ActivityLine.model_name.human.pluralize(:ru)
             = menu_item admin_teams_path do
+              %span.glyphicon.glyphicon-bullhorn
               = Team.model_name.human.pluralize(:ru)
         = menu_item admin_news_index_path do
           = News.model_name.human.pluralize(:ru)
