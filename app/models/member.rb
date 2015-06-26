@@ -14,10 +14,10 @@ class Member < User
                     foreign_key: :organizer_id
   has_many :news, foreign_key: :user_id
 
-  validates :first_name, presence: true,
-                         human_name: true
-  validates :last_name, presence: true,
-                         human_name: true
+  validates :first_name, human_name: true,
+                         allow_blank: true
+  validates :last_name, human_name: true,
+                        allow_blank: true
   validates :patronymic, human_name: true,
                          allow_blank: true
   validates :ticket, uniqueness: true
