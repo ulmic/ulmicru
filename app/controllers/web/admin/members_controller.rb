@@ -20,11 +20,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
 
   def edit
     member = Member.find params[:id]
-    if member.unavailable?
-      @member_form = ::Admin::Member::UnavailableMemberForm.new member
-    else
-      @member_form = MemberForm.new member
-    end
+    @member_form = member_form(member).new member
   end
 
   def create
@@ -48,9 +44,9 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def update
-    @member = Member.find params[:id]
-    @member_form = MemberForm.new(@member)
-    @member_form.submit(params[:member])
+    member = Member.find params[:id]
+    @member_form = member_form(member).new member
+    @member_form.submit params[:member]
     if @member_form.save
       redirect_to admin_members_path
     else
@@ -64,4 +60,11 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @member.remove
     redirect_to admin_members_path
   end
+
+  private
+
+  def member_form(member)
+    member.unavailable? ? ::Admin::Member::UnavailableMemberForm : MemberForm
+  end
+
 end
