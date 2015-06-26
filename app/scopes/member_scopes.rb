@@ -7,7 +7,7 @@ module MemberScopes
     scope :confirmed, -> { where(state: :confirmed).order('id ASC') }
     scope :declined, -> { where(state: :declined).order('id ASC') }
     scope :removed, -> { where(state: :removed).order('id ASC') }
-    scope :unviewed, -> { where(state: :unviewed, type: 'Member').order('id ASC') }
+    scope :unviewed, -> { where(state: :unviewed, type: 'Member').order('ticket DESC') }
     scope :unavailable, -> { where(state: :unavailable).order('id ASC') }
   end
 end
