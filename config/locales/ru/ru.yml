@@ -7,6 +7,8 @@ ru:
     send_request: Подать заявку на вступление в МИЦ
     name: Сайт МИЦ
     floors_growth: Этажи роста
+    projects:
+      ul_lider: "Конкурс «Я-лидер!»"
   date:
     order:
       - :day
