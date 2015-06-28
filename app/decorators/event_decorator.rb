@@ -44,9 +44,9 @@ class EventDecorator < ApplicationDecorator
         object.organizer.decorate.short_name
       end
     elsif object.organizer_type == 'Team'
-      h.content_tag :a, href: team_path(object.organizer_id) do
-        object.organizer.title
-      end
+      #h.content_tag :a, href: team_path(object.organizer_id) do
+      object.organizer.decorate.full_title
+      #end
     end
   end
 end
