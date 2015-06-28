@@ -1,4 +1,5 @@
 module Web::Admin::EventsHelper
+  # FIXME запросы из хелпера
   def organizer_types
     hash = {}
     Event.organizer_type.values.each do |value|
@@ -10,18 +11,18 @@ module Web::Admin::EventsHelper
   def teams_and_members_hash(teams, members)
     hash = {}
     if teams
-      teams_hash = {}
+      teams_array = []
       teams.each do |team|
-        teams_hash[team.full_title] = team.id
+        teams_array << [ team.id, team.full_title ]
       end
-      hash[t('activerecord.models.team')] = teams_hash
+      hash[:teams] = teams_array
     end
     if members
-      members_hash = {}
+      members_array = []
       members.each do |member|
-        members_hash[member.select_presentation] = member.id
+        members_array << [ member.id, "#{member.ticket} | #{member.full_name}" ]
       end
-      hash[t('activerecord.models.member')] = members_hash
+      hash[:members] = members_array
     end
     hash
   end

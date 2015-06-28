@@ -21,11 +21,11 @@ class Web::MembersController < Web::ApplicationController
       end
     else
       member = current_user.becomes! Member
-      User.find(member.id).update type: 'Member'
     end
     @member_form = MemberForm.new member
     @member_form.submit params[:member]
     if @member_form.save
+      User.find(member.id).update type: 'Member'
       redirect_to account_path
     else
       @active_members = Member.where.not(state: :removed).where.not(state: :declined).order('ticket ASC').decorate
