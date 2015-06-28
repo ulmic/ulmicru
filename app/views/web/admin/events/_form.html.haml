@@ -44,7 +44,7 @@
       = link_to t('.add_venue'), '#', class: 'btn btn-default show_popup', data: { popup_id: :place_form }
       %hr
       = f.input :organizer_type, collection: organizer_types
-      = f.input :organizer_id, as: :select, input_html: { data: { collection: teams_and_members_hash(@teams, @members) }, class: :select2 }
+      = f.input :organizer_id, as: :select, input_html: { data: { collection: teams_and_members_hash(@teams, @members), selected_id: @event_form.model.organizer_id }, class: :select2 }
       - unless @event_form.creator_id.present?
         = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
       = f.association :activity_line, label_method: lambda { |activity_line| "#{I18n.t("enumerize.activity_line.activity_type.#{activity_line.activity_type}")} «#{activity_line.title}»" }, value_method: :id
