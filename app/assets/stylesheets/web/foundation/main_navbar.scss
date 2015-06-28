@@ -51,15 +51,13 @@
       width: 220px;
       float: left;
       padding-left: rem-calc(20);
-      &:hover {
-        .menu-title {
-          color: #f45c10;
-        }
-      }
       &>a {
         padding: 2px !important;
         line-height: 20px !important;
         display: block;
+        &:hover {
+          color: #f45c10;
+        }
       }
     }
   }
