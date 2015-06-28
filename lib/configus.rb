@@ -21,6 +21,10 @@ Configus.build Rails.env do
         full_name 'organization.projects.ul_lider'
         url 'http://ul-lider.ru'
       end
+      international_volunteer_school do
+        full_name 'organization.projects.international_volunteer_school'
+        url 'https://ulmic-volunteers-school.herokuapp.com/'
+      end
     end
   end
 

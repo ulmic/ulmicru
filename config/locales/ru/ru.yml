@@ -9,6 +9,7 @@ ru:
     floors_growth: Этажи роста
     projects:
       ul_lider: "Конкурс «Я-лидер!»"
+      international_volunteer_school: Международная школа волонтёров
   date:
     order:
       - :day
