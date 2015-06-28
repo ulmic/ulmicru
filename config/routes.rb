@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
-    resources :teams, only: [ :index, :show ]
+    #resources :teams, only: [ :index, :show ]
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end
