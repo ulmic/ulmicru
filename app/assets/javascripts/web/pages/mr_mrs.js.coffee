@@ -27,7 +27,7 @@ $(document).ready ->
     get_view(window.location.hash)
     return
   else
-    i = Math.floor(Math.random() * 3) + 1
+    i = Math.floor(Math.random() * 4) + 1
     hash = "#view_#{i}"
     get_view(hash)
     return
