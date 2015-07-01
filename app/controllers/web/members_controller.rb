@@ -12,6 +12,7 @@ class Web::MembersController < Web::ApplicationController
     member = exists_member
     if exists_member
       if exists_member.unavailable?
+        exists_member.email = current_user.email
         exists_member.password_digest = current_user.password_digest
         exists_member.save
         current_user.authentications.each do |auth|
