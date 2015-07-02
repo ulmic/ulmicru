@@ -12,6 +12,7 @@ class Web::SessionsController < Web::ApplicationController
         sign_in @user
         redirect_to account_path
       else
+        @user = @user.becomes! User
         render :new
       end
     else
