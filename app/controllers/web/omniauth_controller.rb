@@ -16,7 +16,12 @@ class Web::OmniauthController < Web::ApplicationController
 
     authentication = Authentication.where(provider: provider, uid: uid).first
     if authentication.present?
-      sign_in authentication.user
+      if signed_in?
+        authentication.user_id = current_user.id
+        authentication.save
+      else
+        sign_in authentication.user
+      end
     else
       unless signed_in?
         user = User.find_by_email email if email
