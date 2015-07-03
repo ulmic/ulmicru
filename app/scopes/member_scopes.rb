@@ -9,5 +9,6 @@ module MemberScopes
     scope :removed, -> { where(member_state: :removed).order('ticket DESC') }
     scope :unviewed, -> { where(member_state: :unviewed, type: 'Member').where.not(state: :unavailable).order('id ASC') }
     scope :unavailable, -> { where(state: :unavailable).order('ticket ASC') }
+    scope :tag_available, -> { where.not(state: :removed).where(member_state: :confirmed) }
   end
 end
