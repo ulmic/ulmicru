@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :authentications, dependent: :destroy
   has_many :article
+  has_many :registrations, class_name: 'Event::Registration',
+                           foreign_key: :user_id
 
   validates :email, uniqueness: true,
                     allow_nil: true,
