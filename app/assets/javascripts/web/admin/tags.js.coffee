@@ -45,12 +45,7 @@ $ ->
     return
 
   show_form = ($form_input) ->
-    if !$form_input.hasClass 'tag_text'
-      $form_input.show()
-      $form_input.children('select').show()
-    else
-      $form_input.show()
-      $form_input.children('select').show()
+    $form_input.show()
     $form_input.parents('form').children('input[type=submit]').show()
 
   hide_form = ($form_input) ->
@@ -139,4 +134,11 @@ $ ->
       return
     return
 
+  init_select2_in_tags = ->
+    unless $('.select2-tags').length == 0
+      $select2_drop = $('.select2-drop')
+      $select2_drop.addClass 'tags'
+
   tag_destroy_ajax()
+  $('body').on 'DOMNodeInserted', '.select2-drop', ->
+    init_select2_in_tags()

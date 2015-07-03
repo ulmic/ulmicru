@@ -29,6 +29,10 @@ $ ->
     $(this).select2 {
       placeholder: $(this).data('prompt')
     }
+  $('select.select2-tags').each ->
+    $(this).select2 {
+      placeholder: $(this).data('prompt')
+    }
   $('.link').click ->
     location.href = $(this).attr('data-href')
 
