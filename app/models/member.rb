@@ -8,8 +8,6 @@ class Member < User
                   foreign_key: :target_id,
                   dependent: :destroy
   has_and_belongs_to_many :teams, foreign_key: :user_id
-  has_many :registrations, class_name: 'Event::Registration',
-                           foreign_key: :user_id
   has_many :events, as: :organizer,
                     foreign_key: :organizer_id
   has_many :news, foreign_key: :user_id
