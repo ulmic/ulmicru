@@ -48,7 +48,12 @@ $ ->
   init_blank_adding = ->
     $('.blank').prop('target', '_blank')
 
+  init_tabs = ->
+    $('ul.tabs').children('li').first().addClass 'active'
+    $('.tabs-content').children('.content').first().addClass 'active'
+
   init_select2()
   init_link_class()
   init_blank_adding()
+  init_tabs()
   return

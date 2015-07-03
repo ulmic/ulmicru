@@ -71,6 +71,7 @@ ru:
         tags: Тэги
         state: Статус
         attachments: Приложения
+        views: Просмотры
       article:
         title: Заголовок
         body: Контекст

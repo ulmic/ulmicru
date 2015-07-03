@@ -1,6 +1,6 @@
 - model_class = User
 - title model_class.model_name.human.pluralize(:ru), :admin
-- tabs = [ :confirmed, :unviewed, :declined ]
+- tabs = @users.keys
 .page-header
   %h1
     = model_class.model_name.human.pluralize(:ru)

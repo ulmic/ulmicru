@@ -29,6 +29,10 @@ $ ->
     $(this).select2 {
       placeholder: $(this).data('prompt')
     }
+  $('select.select2-tags').each ->
+    $(this).select2 {
+      placeholder: $(this).data('prompt')
+    }
   $('.link').click ->
     location.href = $(this).attr('data-href')
 
@@ -36,16 +40,32 @@ $ ->
     $('.blank').prop('target', '_blank')
 
   $('a.btn-xs span.glyphicon').each ->
+    color = $(this).parents('.btn-xs').first().attr('class').replace('btn-xs', '').replace('btn ', '').split('-')[1].trim()
     klass = $(this).attr('class').split(' ')[1]
     glyphicon_titles = {
-      pencil: 'edit',
-      remove: 'destroy',
-      ok: 'approve',
-      plus: 'add',
-      open: 'restore',
+      success: {
+        ok: 'approve',
+        plus: 'add',
+        pushpin: 'main',
+        font: 'string',
+        user: 'user',
+        calendar: 'event',
+        flag: 'activity_line',
+        bullhorn: 'team'
+      }
+      warning: {
+        pencil: 'edit'
+      }
+      primary: {
+        open: 'restore'
+      }
+      danger: {
+        remove: 'destroy',
+        pushpin: 'remain'
+      }
       'triangle-bottom': 'actions'
     }
-    action = glyphicon_titles[klass.replace('glyphicon-', '')]
+    action = glyphicon_titles[color][klass.replace('glyphicon-', '')]
     $(this).closest('a.btn-xs').prop('title', I18n.t("helpers.links.#{action}"))
     return
 

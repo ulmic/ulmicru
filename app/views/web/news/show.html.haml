@@ -76,10 +76,11 @@
               .icons.right
                 = render 'layouts/web/shared/social_sharing'
           .people.colunms.row
-            %span.columns.small-2
-              = t('.referred_members')
-              \:
-            = render 'layouts/web/elements/mic_member_tags', members: @members
+            - if @members.any?
+              %span.columns.small-2
+                = t('.referred_members')
+                \:
+              = render 'layouts/web/elements/mic_member_tags', members: @members
     -#.news-comments
       #disqus_thread
         :javascript

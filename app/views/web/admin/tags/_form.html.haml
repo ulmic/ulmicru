@@ -3,7 +3,7 @@
   = f.input :record_type, as: :hidden, input_html: { value: record_type }
   = f.input :record_id, as: :hidden, input_html: { value: record_id }
   = f.input :target_type, as: :hidden
-  = f.input :target_id, as: :select, label: false
+  = f.input :target_id, as: :select, label: false, input_html: { class: 'select2-tags' }
   = f.input :text, as: :hidden
   = f.input :text, as: :select, label: false
   = f.button :submit, t('.add_tag'), style: 'display: none', class: 'btn btn-xs btn-success'

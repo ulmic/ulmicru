@@ -98,7 +98,7 @@
   .row.user-content
     %ul.tabs{'data-tab' => ''}
       - if @registrations.any?
-        %li.tab-title.active
+        %li.tab-title
           %a{href: "#stages-of-grow", tabindex: "0"}
             %span.icon-stage.min-icon
             = t('organization.floors_growth')
@@ -108,7 +108,7 @@
             = t('activerecord.models.news').pluralize(:ru)
     .tabs-content
       - if @registrations.any?
-        #stages-of-grow.content.active.stages
+        #stages-of-grow.content.stages
           - @registrations.each do |registration|
             .row.stage.link{ data: { href: event_path(registration.event) } }
               .small-1.small-push-1.columns
