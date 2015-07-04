@@ -1,0 +1,38 @@
+.panel.business_card
+  .row.topbar
+    = image_tag 'topbar-logo.png'
+  .row.middlebar
+    .small-4.columns.left
+      .photo
+        = link_to member_path(user.ticket), class: 'member_link' do
+          .mic-userpic-circle{ style: "background-image: url(#{user.avatar.profile})" }
+      .name
+        = user.decorate.short_name
+      .position
+        = position
+    .small-8.columns.end.right
+      %i.fa.fa-at
+      %a{ href: "mailto:#{user.email}" }
+        %span
+          = user.email
+      %br
+      %i.fa.fa-phone
+      %a{ href: "tel:#{user.mobile_phone}" }
+        %span
+          = user.mobile_phone
+      %br
+      .social_networks
+        - auth = user.has_auth_provider?(:vkontakte)
+        - if auth
+          %a.blank{ href: profile_url(auth) }
+            %i.fa.fa-vk
+        - auth = user.has_auth_provider?(:facebook)
+        - if auth
+          |
+          %a.blank{ href: profile_url(auth) }
+            %i.fa.fa-facebook-official.fa-2x
+        - auth = user.has_auth_provider?(:twitter)
+        - if auth
+          |
+          %a.blank{ href: profile_url(auth) }
+            %i.fa.fa-twitter.fa-2x

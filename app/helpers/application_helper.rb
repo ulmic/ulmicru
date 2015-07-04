@@ -68,4 +68,8 @@ module ApplicationHelper
   def oauth_key(provider, key)
     YAML.load_file(Rails.root.join('config', 'oauth.yml'))[Rails.env].with_indifferent_access[provider][key]
   end
+
+  def google_api_key
+    YAML.load_file(Rails.root.join('config', 'oauth.yml'))[Rails.env].with_indifferent_access[:google][:api_key]
+  end
 end
