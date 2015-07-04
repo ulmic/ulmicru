@@ -1,14 +1,8 @@
-- presidium = Team.find(1)
 - locale_headers = Team.find(3)
 .news.articles.container-big
   .row.contacts-people
-    = render 'web/articles/shared/contacts/member_card', user: presidium.member, position: 'Председатель'
-  .row.contacts-people
-    - presidium.users.each do |user|
-      = render 'web/articles/shared/contacts/member_card', user: user, position: 'Член Президиума'
-  .row.contacts-people
-    - locale_headers.users.each do |user|
-      = render 'web/articles/shared/contacts/member_card', user: user, position: 'Областной руководитель'
+    - locale_headers.users.order('ticket ASC').each do |user|
+      = render 'web/articles/shared/contacts/member_card', user: user, position: ''
   .row
     %h4
       Адрес Президиума МИЦ
