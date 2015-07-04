@@ -10,4 +10,4 @@ end
 end
 contact_category = Category.find_by_name 'Контакты'
 contact_article = contact_category.articles.first
-Article.create title: 'Контакты', category_id: contact_category.id, user_id: 1 unless contact_article
+Article.create title: 'Контакты', view: 'contacts', category_id: contact_category.id, user_id: 1 unless contact_article
