@@ -30,9 +30,9 @@
         - if auth
           |
           %a.blank{ href: profile_url(auth) }
-            %i.fa.fa-facebook-official.fa-2x
+            %i.fa.fa-facebook-official
         - auth = user.has_auth_provider?(:twitter)
         - if auth
           |
           %a.blank{ href: profile_url(auth) }
-            %i.fa.fa-twitter.fa-2x
+            %i.fa.fa-twitter
