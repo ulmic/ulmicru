@@ -1,8 +1,9 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
   def index
-    @unviewed_questionaries = Kaminari.paginate_array(Questionary.unviewed.decorate).page params[:page]
-    @on_the_trial_questionaries = Kaminari.paginate_array(Questionary.on_the_trial.decorate).page params[:page]
-    @declined_questionaries = Kaminari.paginate_array(Questionary.declined.decorate).page params[:page]
+    @questionaries = {}
+    @questionaries[:on_the_trial] = Kaminari.paginate_array(Questionary.on_the_trial.decorate).page params[:page]
+    @questionaries[:unviewed] = Kaminari.paginate_array(Questionary.unviewed.decorate).page params[:page]
+    @questionaries[:declined] = Kaminari.paginate_array(Questionary.declined.decorate).page params[:page]
   end
 
   def new
@@ -27,7 +28,6 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form = QuestionaryForm.find_with_model params[:id]
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
-      @questionary_form.member.confirm if @questionary_form.model.confirmed?
       redirect_to admin_questionaries_path
     else
       render action: :edit

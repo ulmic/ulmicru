@@ -14,7 +14,7 @@
       %tr.tr_link{ class: state_color(questionary), data: { href: edit_admin_questionary_path(questionary) } }
         %td= questionary.id
         %td= image_tag questionary.avatar.small
-        %td= questionary.full_name
+        %td= link_to questionary.full_name, edit_admin_questionary_path(questionary)
         %td= questionary.place
         %td=l questionary.created_at
         %td.actions{ style: 'width: 147px' }
