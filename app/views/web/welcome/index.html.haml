@@ -55,7 +55,7 @@
                                             category: event.activity_line.title, |
                                             date: event.full_date_duration, |
                                             title: event.title, |
-                                            text: strip_tags(event.lead)
+                                            text: strip_tags(event.lead).html_safe
     .more-events{ style: 'cursor: pointer' }
       %i.fa.fa-caret-down.fa-5x
   .humans
