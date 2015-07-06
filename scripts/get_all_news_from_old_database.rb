@@ -15,11 +15,8 @@ include ActionView::Helpers::SanitizeHelper
 #-----------1st verification for wright input------------
 while true
   print 'Hide main content of news from output(Y/n)?'
-  hide_body = gets
-  hide_body.gsub!("\n", "y").downcase!
-  if(hide_body.chars.length == 1 && (hide_body.include?('n') || hide_body.include?('y')))
-    break
-  end
+  hide_body = gets.chomp.downcase
+  break  if hide_body.chars.length <= 1 && ['y', 'n'].any? {|word| hide_body.include? word}
 end
 print "Ok...\n"
 #-------------End 1st verification----------------------
