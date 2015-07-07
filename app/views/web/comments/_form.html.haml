@@ -1,0 +1,14 @@
+.comment-form
+  %h4
+    = t('.add_comment')
+  .row
+    .small-2.columns
+      = image_tag current_user.avatar.small
+    .small-10.columns.end
+      = simple_form_for @comment, remote: true, url: { controller: 'api/comments', action: :create } do |f|
+        = f.input :text, label: false
+        = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+        = f.input :record_id, as: :hidden, input_html: { value: record.id }
+        = f.input :record_type, as: :hidden, input_html: { value: record.model_name }
+        = f.button :submit, t('helpers.links.send')
+  .row.spinner

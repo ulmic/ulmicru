@@ -1,4 +1,6 @@
 class Web::NewsController < Web::ApplicationController
+  before_filter :add_comment, only: :show
+
   def index
     @news = News.published.decorate
   end

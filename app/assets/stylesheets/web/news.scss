@@ -325,7 +325,10 @@ $orange: #ffa531;
 }
 .big-column {
   .news-comments {
-    margin-top: 30px;
+    border: solid 1px #ebebeb;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 1rem;
   }
   .best-related-news {
     margin-top: 30px;

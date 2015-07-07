@@ -23,4 +23,8 @@ class Web::ApplicationController < ApplicationController
       end
     end
   end
+
+  def add_comment
+    @comment = Comment.new
+  end
 end

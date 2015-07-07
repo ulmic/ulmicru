@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     resources :news, only: :index
     resources :events, only: :index
     resources :feedback, only: :create
+    resources :comments, only: :create
     resources :users, only: [] do
       member do
         get :confirm
