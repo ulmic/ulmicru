@@ -32,6 +32,12 @@ end
 print "Ok...\n"
 #-------------End 2nd verification----------------------
 
+def find_user(user_name)
+  name =  user_name.split(" ")
+  usr = Member.where(:first_name => name[0]).where(:last_name => name[1]) if name.count > 1
+  return usr
+end
+
 puts 'Initialization successfully executed...'
 #---------End Initialization------
 #
@@ -63,10 +69,10 @@ records.each do |record|
   end
 
   news.published_at = record["publish_up"]
-  puts "News published up: #{news.published_at}"
 
   news.state = :confirmed
   
+
   puts "Try to Save news..."
   news.save
   count += 1
@@ -90,7 +96,8 @@ records.each do |record|
     puts "--------------------------------------------------------------------------------------------------------\n"
     puts "--------------------------------------------------------------------------------------------------------\n"
     puts "--------------------------------------------------------------------------------------------------------\n\n\n\n\n"
-
+    puts "User : "
+    ap find_user record["created_by_alias"]
     $stdout = old_stdout
 
     puts 'News NOT saved'
