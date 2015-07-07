@@ -53,7 +53,9 @@ end
 def lead_parser(news, lead)
   if lead != ""
     lead = Nokogiri::HTML(lead)
-    lead = lead.search("img")
+    lead.search("img").each_slice(1) do |e|
+
+    end
   end
 end
 
