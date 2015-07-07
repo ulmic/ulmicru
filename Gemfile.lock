@@ -289,6 +289,7 @@ GEM
     multi_json (1.11.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mysql2 (0.3.18)
     nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -526,6 +527,7 @@ DEPENDENCIES
   libv8 (= 3.16.14.7)
   mini_magick
   momentjs-rails (>= 2.9)!
+  mysql2
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
@@ -557,3 +559,6 @@ DEPENDENCIES
   unicorn-rails
   validates
   web-console (= 2.0.0.beta2)
+
+BUNDLED WITH
+   1.10.5

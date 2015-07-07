@@ -5,18 +5,20 @@ puts 'Hi! I\'am a script who transfer all materials from old ulmic\'s database!'
 #---------Initialization-----------
 puts 'Initialization...'
 
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
-require 'mysql2'
-require 'action_view'
-
+require "#{File.dirname(File.dirname(__FILE__))}/config/environment.rb"
 include ActionView::Helpers::SanitizeHelper
+
+old_stdout = $stdout #save stdout
+output = File.open( "log/transfer_news.errors.log", "w" ) #output to file for erorrs
+output << "HI! This is some errors...\n\n\n"
+
+count = 0
 #-----------1st verification for wright input------------
 while true
   print 'Hide main content of news from output(Y/n)?'
   hide_body = gets.chomp.downcase
   break  if hide_body.chars.length <= 1 && ['y', 'n'].any? {|word| hide_body.include? word}
+
 end
 print "Ok...\n"
 #-------------End 1st verification----------------------
@@ -24,11 +26,8 @@ print "Ok...\n"
 #-----------2nd verification for wright input-----------
 while true
   print 'Delete copy of uploaded image(Y/n)?'
-  delete_copy = gets
-  delete_copy.gsub!("\n", "y").downcase!
-  if(delete_copy.chars.length == 1 && (delete_copy.include?('n') || delete_copy.include?('y')))
-    break
-  end
+  delete_image = gets.chomp.downcase
+  break  if delete_image.chars.length <= 1 && ['y', 'n'].any? {|word| delete_image.include? word}
 end
 print "Ok...\n"
 #-------------End 2nd verification----------------------
@@ -44,8 +43,74 @@ puts 'Connected...'
 
 puts 'Geting all news...'
 records = client.query("SELECT * FROM ulmic_content where not state = '-2'").to_a
-puts "Count: #{ + records.count.to_s}..."
 puts 'Done...'
+puts "Count: #{records.count.to_s}..."
+#------------each of all records------------------------
+records.each do |record|
+  news = News.new
+
+  news.title = strip_tags record["title"]
+  puts "Found news: #{news.title}"
+
+  news.lead = strip_tags record["introtext"]
+  #puts "Found lead of news: #{news.lead}"
+
+  news.body = strip_tags record["fulltext"]
+  news.body = news.lead if news.body == ""
+
+  if  hide_body == "n"
+    puts "Found body of news: #{news.body}"
+  end
+
+  news.published_at = record["publish_up"]
+  puts "News published up: #{news.published_at}"
+
+  news.state = :confirmed
+  
+  puts "Try to Save news..."
+  news.save
+  count += 1
+  #show info about errors
+  if news.errors.count > 0
+    $stdout = output
+
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n\n"
+    puts "---id: #{record["id"]}\n\n"
+    puts "---Title: #{record['title']}\n\n"
+    puts "---Model errors: \n"
+    ap news.errors
+    puts "---Model: \n"
+    ap news
+    puts "---Record:  \n"
+    ap record
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n\n\n\n\n"
+
+    $stdout = old_stdout
+
+    puts 'News NOT saved'
+    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n'
+    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n'
+    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n'
+    next
+  end
+
+  puts "News saved..."
+  start_index = news[:id] if count == 1
+  end_index = news[:id] if count == 3198
+  progress = count * 1.0 / records.count
+  puts "News.id = #{news[:id]} Count : #{count}; Progress: #{progress.round(2) * 100.0}%"
+end
+
+puts "Range: #{start_index} - #{end_index}..."
+puts 'Closing erorrs stream...'
+output.close 
+puts 'All right. It\'s Done...' 
 =begin
 #---------each of all records------
   puts'--------------------------'
@@ -70,7 +135,7 @@ puts 'Done...'
 
     news_title = link.text.strip.delete("\r\n")
     puts 'Found title: ' + news_title[0, 50] + '...'
-    
+
     news_lead = news_lead.text.strip.delete("\r\n")
     puts 'Found lead: ' + news_lead[0, 50] + '...'
 
@@ -83,7 +148,7 @@ puts 'Done...'
     puts 'Deleting all finding tags...'
     news_body.css('.tag').remove
     puts 'Deleted...'
-    
+
     news_first_photo_text = 'http://www.ulmic.ru' + news_body.css('img')[0]['src']
     puts 'Found photo of news: ' + news_first_photo_text
     news_photo = PhotoUploader.new 
@@ -125,5 +190,4 @@ puts 'Done...'
 end
 #-----end each of all pages------
 
-puts 'All right. It\'s Done...' 
 =end
