@@ -4,16 +4,38 @@ class Web::MembersController < Web::ApplicationController
   def new
     member = current_user.becomes! Member
     @member_form = MemberForm.new member
+    @active_members = Member.where.not(state: :removed).where.not(state: :declined).order('ticket ASC').decorate
   end
 
   def create
-    member = current_user.becomes! Member
-    User.find(member.id).update(type: 'Member')
+    exists_member = Member.find_by_ticket params[:member][:ticket]
+    member = exists_member
+    if exists_member
+      if exists_member.unavailable?
+        exists_member.email = current_user.email
+        exists_member.password_digest = current_user.password_digest
+        exists_member.save
+        current_user.authentications.each do |auth|
+          auth.user_id = exists_member.id
+          auth.save
+        end
+        current_user.registrations.each do |reg|
+          reg.user_id = exists_member.id
+          reg.save
+        end
+        current_user.destroy
+        sign_in exists_member
+      end
+    else
+      member = current_user.becomes! Member
+    end
     @member_form = MemberForm.new member
     @member_form.submit params[:member]
     if @member_form.save
+      User.find(member.id).update type: 'Member'
       redirect_to account_path
     else
+      @active_members = Member.where.not(state: :removed).where.not(state: :declined).order('ticket ASC').decorate
       render action: :new
     end
   end
@@ -23,9 +45,11 @@ class Web::MembersController < Web::ApplicationController
     if member.confirmed?
       @member = member.decorate
       @children = MemberDecorator.decorate_collection member.children.shuffle
-      @registrations = member.registrations.decorate
+      @parent = MemberDecorator.decorate member.parent
+      @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.reverse
       @news = NewsDecorator.decorate_collection member.tags.news.map &:record
       @articles = member.tags.articles.map &:record
+      @attribute_accesses = member.attribute_accesses
     end
   end
 end

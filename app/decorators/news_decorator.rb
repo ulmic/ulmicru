@@ -1,4 +1,4 @@
-class NewsDecorator < Draper::Decorator
+class NewsDecorator < ApplicationDecorator
   delegate_all
 
   def generate_lead
@@ -33,7 +33,7 @@ class NewsDecorator < Draper::Decorator
   end
 
   def author_name
-    user.present? ? user.decorate.short_name : I18n.t('helpers.no_author')
+    member.present? ? member.decorate.short_name : I18n.t('helpers.no_author')
   end
 
 end

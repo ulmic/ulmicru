@@ -2,11 +2,14 @@ class Team < ActiveRecord::Base
   belongs_to :member
   has_many :tags, as: :target,
                   dependent: :destroy
-  has_and_belongs_to_many :members
+  has_and_belongs_to_many :users
+  has_many :events, as: :organizer,
+                    foreign_key: :organizer_id
 
   validates :title, presence: true
 
   include TeamScopes
+  extend Enumerize
 
   state_machine :state, initial: :unviewed do
     state :unviewed

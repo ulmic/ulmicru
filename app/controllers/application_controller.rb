@@ -10,7 +10,22 @@ class ApplicationController < ActionController::Base
     before_filter :required_basic_auth!
   end
 
+  if Rails.env.production?
+    anchor = "view_#{rand(4) + 1}"
+
+    rescue_from ActionController::RoutingError do |exception|
+      Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
+      redirect_to not_found_page_path
+    end
+
+    rescue_from ActionView::MissingTemplate, ActiveRecord::RecordNotFound, NoMethodError do |exception|
+      Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
+      redirect_to server_error_page_path
+    end
+  end
+
   private
+
   def get_categories
     @categories_tree = Category.get_tree
   end

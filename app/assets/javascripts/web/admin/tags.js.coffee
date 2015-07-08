@@ -1,4 +1,4 @@
-#FIXME refactoring
+# FIXME refactoring
 $ ->
   $('.tag_target_id').hide()
   $('.select.tag_text').hide()

@@ -13,8 +13,15 @@
       = f.input :lead, as: :string
       = f.input :body, as: :ckeditor
       = f.input :published_at, as: :datetime_picker
-      = f.input :photo, as: :file
-      = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      = f.label :photo
+      .preview
+        = image_tag @news_form.model.photo if @news_form.model.photo.present?
+      = f.input :photo, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :photo, label: false, as: :jasny_file_preview_upload
+      - if current_user.role.author?
+        = f.input :state, as: :hidden, input_html: { value: :unviewed }
+      - elsif !@news_form.model.main?
+        = f.input :state, as: :hidden, input_html: { value: :confirmed }
       = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
 

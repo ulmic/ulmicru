@@ -2,7 +2,14 @@
 .container.mic-form-container
   .row
     .medium-6.small-12.columns.medium-push-3
-      = simple_form_for @user, url: { controller: 'web/sessions', action: :create } do |f|
+      - if @user.email.present?
+        %span.label.alert
+          %i.fa.fa-exclamation-circle
+          = t('.wrong_email_or_password')
+        %span.label.info
+          %i.fa.fa-info-circle
+          = t('.may_be_you_have_auth_via_social_network')
+      = simple_form_for @user, url: { controller: 'web/sessions', action: :create }, method: :post do |f|
         = f.input :email, as: :string
         = f.input :password, required: true
         = f.button :submit, t('helpers.enter'), class: "mic-flat-button"
@@ -10,7 +17,7 @@
         .small-3.columns
           = link_to auth_path(:vkontakte) do
             = t('social_networks.vkontakte')
-            %span.icon-vk.min-icon
+            %span.icon-vkontakte.min-icon
         .small-3.columns
           = link_to auth_path(:facebook) do
             = t('social_networks.facebook')

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 module Concerns
   module AuthManagment
+    include TechinalPagesManagment
     def sign_in(user)
       session[:user_id] = user.id
     end
@@ -14,15 +15,19 @@ module Concerns
     end
 
     def signed_as_admin?
-      signed_in? && current_user.role.admin?
+      signed_in? && (current_user.role.admin? || current_user.role.author?)
     end
 
     def authenticate_admin!
-      redirect_to new_session_path unless signed_as_admin?
+      redirect_to not_found_page_path unless signed_as_admin?
     end
 
     def authenticate_user!
       redirect_to new_session_path unless signed_in?
+    end
+
+    def authenticate_confirmed_user!
+      redirect_to account_path if current_user.unviewed? && request.fullpath != account_path
     end
 
     def authenticate_member!

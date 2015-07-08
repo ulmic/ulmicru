@@ -20,6 +20,7 @@
                 = @event.full_date_duration
             .where
               .event-label-text
+                %i.fa.fa-foursquare
                 = @event.place_link_to_4sq
         .event-lead
           != strip_tags @event.lead
@@ -35,15 +36,22 @@
             = "#{t('.organizator')}:"
           .organizers-names
             .organizer
-              = @event.creator.decorate.short_name
+              = @event.organizer_link
         .join
           -#%a.join-button.mic-press-button{ href: "#" }
           - if current_user_have_attended?(@registrations + @other_registrations)
             %button.join-button.mic-press-button{ value: 'out', data: { event_id: @event.id, user_id: current_user.id } }
               = t('.i_attend')
           - else
-            %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
-              = t('.attend')
+            - if signed_in? && current_user.is_active?
+              %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
+                = t('.attend')
+            - elsif signed_in? && current_user.is_user? && current_user.unviewed?
+              %a.join-button.mic-press-button{ href: account_path }
+                = t('.attend')
+            - else
+              %a.join-button.mic-press-button{ href: new_session_path }
+                = t('.attend')
 .more-lead-info.container
   .row.large-collapse
     .small-8.columns
@@ -53,12 +61,13 @@
   .participans-container
     %h3.title
       = t('.attenders')
-      = "(#{@registrations.count})"
+      %span#participants_count
+        = "(#{@registrations.count})"
     %ul.small-block-grid-5.participants
       - @registrations.each do |registration|
-        %li.participant.mic-member
-          = render_element 'mic_member', img_src: registration.user.avatar.medium, |
-                                         link: '#', |
+        %li.participant.mic-member{ id: "participant_#{registration.user.id}" }
+          = render_element 'mic_member', img_src: registration.user.decorate.element_avatar, |
+                                         link: link_to_profile(registration.user), |
                                          name: registration.user.decorate.short_name, |
                                          role: registration.decorate.localize_role
     - if @other_registrations.any?

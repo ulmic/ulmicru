@@ -4,7 +4,7 @@ class AvatarUploader < ApplicationUploader
 
   include ImageDefaults
 
-  def default_url(email = "default@email.com")
+  def default_url(email = "default@email.com", name = nil)
     #ActionController::Base.helpers.asset_path("images/default_avatar.png")
     hash = Digest::SHA256.hexdigest email
     url  = "http://www.gravatar.com/avatar/#{hash}.png"
@@ -18,7 +18,11 @@ class AvatarUploader < ApplicationUploader
     process :resize_to_fill => [100, 100, 'North']
   end
 
+  version :element do
+    process :resize_to_fill => [200, 200, 'Center']
+  end
+
   version :profile do
-    process :resize_to_fill => [440, 600, 'Center']
+    process :resize_to_fill => [500, 680, 'Center']
   end
 end

@@ -1,0 +1,43 @@
+ru:
+  helpers:
+    enter: Войти
+    sign_in: Войти на сайт
+    sign_out: Выйти
+    no_author: Нет автора
+    in: в
+    from: c
+    until: по
+    year: 'года'
+    short_year: 'г.'
+    short_years: 'гг.'
+    more_info: 'Подробнее'
+    hide: 'Скрыть'
+    cancel: Отмена
+    view_all: посмотреть всех
+    contacts: Контакты
+    actions:
+      update: Редактировать
+      create: Создать
+      destroy: Удалить
+      show: Показать
+      index: Все
+      edit: Редактировать
+    links:
+      actions: Действия
+      edit: Изменить
+      destroy: Удалить
+      restore: Восстановить
+      new: Добавить
+      save: Сохранить
+      back: Назад
+      select: Выбрать
+      approve: Подтвердить
+      decline: Отклонить
+      published: Опубликованные новости
+      unpublished: Неопубликованные новости
+      add: Добавить
+      auth: Авторизоваться
+      select_image: Выбрать изображение
+      change: Изменить
+      remove: Удалить
+      send: Отправить

@@ -8,5 +8,7 @@ FactoryGirl.define do
     end_date { DateTime.now + 1.day }
     activity_line_id { ActivityLine.last ? ActivityLine.last.id : 1 }
     place '4e3faf5ac65b4ec275ff0a3b'
+    organizer_type 'Team'
+    organizer_id { Team.last ? Team.last.id : 1 }
   end
 end

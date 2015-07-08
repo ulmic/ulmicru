@@ -1,4 +1,4 @@
-class ActivityLineDecorator < Draper::Decorator
+class ActivityLineDecorator < ApplicationDecorator
   delegate_all
 
   def short_body
@@ -7,6 +7,10 @@ class ActivityLineDecorator < Draper::Decorator
 
   def full_title
     "#{I18n.t("enumerize.activity_line.activity_type.#{object.activity_type}")} «#{object.title}»"
+  end
+
+  def name
+    title
   end
 
 end

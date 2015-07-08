@@ -1,3 +1,4 @@
+= paginate events, theme: 'twitter-bootstrap-3'
 - model_class = Event
 %table.table.table-condensed.table-hover
   %thead
@@ -16,13 +17,14 @@
         %td= event.title
         %td= event.full_duration
         %td= event.place
+        %td= link_to event.creator.decorate.short_name, member_path(event.creator.ticket)
         %td.actions
-          - unless event.confirmed?
-            = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
-              %span.glyphicon.glyphicon-ok
+          - if current_user.role.admin?
+            - unless event.confirmed?
+              = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
+                %span.glyphicon.glyphicon-ok
           = link_to edit_admin_event_path(event), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_event_path(event), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-
-= link_to t('.new', default: t('helpers.links.new')), new_admin_event_path, class: 'btn btn-primary'
+= paginate events, theme: 'twitter-bootstrap-3'

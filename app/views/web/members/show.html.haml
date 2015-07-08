@@ -26,14 +26,22 @@
               %span.font-size23> №
               = @member.ticket
           .social
-            - if auth = @member.has_auth_provider?(:google)
-              = link_to profile_url(auth), class: 'icon-google big-icon'
-            - if auth = @member.has_auth_provider?(:facebook)
-              = link_to profile_url(auth), class: 'icon-facebook big-icon'
-            - if auth = @member.has_auth_provider?(:twitter)
-              = link_to profile_url(auth), class: 'icon-twitter big-icon'
-            - if auth = @member.has_auth_provider?(:vkontakte)
-              = link_to profile_url(auth), class: 'icon-vk big-icon'
+            - auth = @member.has_auth_provider?(:google)
+            - if auth
+              - if attribute_visible?(@attribute_accesses, auth.provider)
+                = link_to '', profile_url(auth), class: 'icon-google big-icon blank'
+            - auth = @member.has_auth_provider?(:facebook)
+            - if auth
+              - if attribute_visible?(@attribute_accesses, auth.provider)
+                = link_to '', profile_url(auth), class: 'icon-facebook big-icon blank'
+            - auth = @member.has_auth_provider?(:twitter)
+            - if auth
+              - if attribute_visible?(@attribute_accesses, auth.provider)
+                = link_to '', profile_url(auth), class: 'icon-twitter big-icon blank'
+            - auth = @member.has_auth_provider?(:vkontakte)
+            - if auth
+              - if attribute_visible?(@attribute_accesses, auth.provider)
+                = link_to '', profile_url(auth), class: 'icon-vkontakte big-icon blank'
     .small-7.columns
       .row
         .small-11.push-1
@@ -45,42 +53,48 @@
           %blockquote.user-motto
             = @member.motto
           %hr.orange
-          .user-team
-            .team-label
-              = "#{t('activerecord.models.team')}:"
-            .user-team-name
-              - @member.teams.each do |team|
-                = link_to team.decorate.full_title, team_path(team)
+          - if @member.teams.any?
+            .user-team
+              .team-label
+                - if @member.teams.count == 1
+                  = "#{t('activerecord.models.team')}:"
+                - else
+                  = "#{t('activerecord.models.team').pluralize(:ru)}:"
+              - @member.teams.each_with_index do |team, index|
+                .user-team-name
+                  %span{ class: "#{'more' if index > 0}" }
+                    = team.decorate.full_title
                 %br
           .row.god-fathers-childs
-            - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
-            - if @member.parent.present?
-              .godfather.small-4.columns.link{ data: { href: member_path(@member.parent.ticket) } }
+            - if @parent.present?
+              .godfather.small-4.columns{ class: present_link_class(@parent), data: { href: present_member_path(@parent) } }
                 .title
                   = "#{t('activerecord.attributes.member.parent')}:"
-                .photo{ style: "background-image: url(#{@member.parent_avatar})" }
-                .name
-                  %span.text
-                    = @member.parent.decorate.short_name
+                = render 'web/members/shared/mic_userpic_circle', member: @parent
             - if @children.any?
               - @member.parent.present? ? count = 2 : count = 3
               .godchilds.small-8.columns
                 .row
                   - @children.first(count).each_with_index do |child, index|
-                    .small-6.columns.link{ data: { href: member_path(child.ticket) } }
+                    .small-6.columns{ class: present_link_class(child), data: { href: present_member_path(child) } }
                       - if index == 0
                         .title
                           = "#{t('activerecord.attributes.member.children')}:"
-                      .photo{ style: "background-image: url(#{child.avatar})" }
-                      .name
-                        %span.text
-                          = child.short_name
+                      = render 'web/members/shared/mic_userpic_circle', member: child
                     .small-6.columns
-                      - if @children.count > count
+                      - if @children.count > count && index == 0
                         .view-all
-                          %a.text{ href: '#' }
+                          %a.text{ href: '#', id: 'view_all' }
                             = t('helpers.view_all')
                             = "(#{@children.count})"
+                          %a.text{ style: 'display: none', href: '#', id: 'hide_all' }
+                            = t('helpers.hide')
+              - @children.drop(count).each_slice(3) do |childs|
+                .godchilds.small-12.columns.added.hidden
+                  .row
+                    - childs.each do |child|
+                      .small-4.columns
+                        = render 'web/members/shared/mic_userpic_circle', member: child
   .row.user-content
     %ul.tabs{'data-tab' => ''}
       - if @registrations.any?
@@ -96,7 +110,7 @@
       - if @registrations.any?
         #stages-of-grow.content.active.stages
           - @registrations.each do |registration|
-            .row.stage
+            .row.stage.link{ data: { href: event_path(registration.event) } }
               .small-1.small-push-1.columns
                 .stage-date
                   .icon-bigcalendar
@@ -114,8 +128,6 @@
                     .role
                       = "#{t('activerecord.attributes.event.registration.role')}:"
                       = registration.localize_role
-                    %a.view-all{href: "#"}
-                      подробнее
             %hr
       - if @articles.any? || @news.any?
         #users-news.content
@@ -129,4 +141,5 @@
                 = render_element 'mic_one_news', img_src: news.photo, |
                                                  link: news_path(news), |
                                                  title: news.title, |
-                                                 date: news.publish_date
+                                                 date: news.publish_date, |
+                                                 views: news.views

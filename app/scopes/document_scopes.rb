@@ -4,5 +4,6 @@ module DocumentScopes
 
   included do
     scope :presented, -> { where.not(state: :removed).order('id ASC') }
+    scope :removed, -> { where state: :removed }
   end
 end

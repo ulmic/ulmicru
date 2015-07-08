@@ -1,0 +1,3 @@
+.people-img.columns.small-10
+  - members.each do |member|
+    = image_tag member.avatar.small, class: 'human-photo link', data: { href: member_path(member.ticket) }

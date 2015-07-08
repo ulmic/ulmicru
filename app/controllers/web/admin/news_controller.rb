@@ -1,7 +1,9 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
   def index
-    @published_news = News.published.decorate
-    @unpublished_news = News.unpublished.decorate
+    @published_news = Kaminari.paginate_array(News.confirmed.published.decorate).page params[:page]
+    @unpublished_news = Kaminari.paginate_array(News.confirmed.unpublished.decorate).page params[:page]
+    @unviewed_news = Kaminari.paginate_array(News.unviewed.decorate).page params[:page]
+    @main_news = Kaminari.paginate_array(News.main.decorate).page params[:page]
     @tag = Tag.new
   end
 

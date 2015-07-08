@@ -5,87 +5,157 @@
   %meta{ name:'description', content: "#{@news.description_lead} #МИЦ" }
   %link{ rel: 'image_src', href: @news.photo  }
 
-.news#news-show.container-big
-  %h3.title
-    = @news.title
-  .news-content.container-big.row
-    .small-9.columns
-      .date-author
-        .date
-          .icon-calendar
+.news.news_show.row
+  %aside.news-sidebar
+    - if @previous_news.present?
+      %a.prev-next-link.prev{ href: news_path(@previous_news) }
+        .link-info
+          = t('.previous')
+        .link-name
+          = @previous_news.title
+    - if @same_events.any?
+      %section.related-event
+        %h3
+          = t('.about_program')
+        - @same_events.each do |event|
+          .mic-event2
+            = render_element 'mic_event2', img_src:  event.main_photo.event_main_page_version, |
+                                           category: event.activity_line.title, |
+                                           link: event_path(event), |
+                                           date: event.full_date_duration, |
+                                           text: event.title
+        - if @event.present?
+          .mic-event2
+            = render_element 'mic_event2', img_src: @event.main_photo, |
+                                           link: event_path(@event), |
+                                           date: @event.full_date_duration, |
+                                           text: @event.lead
+  %main.big-column
+    .main-news-content
+      .slider-wrap
+        .slider
+          = image_tag @news.photo
+        -#.slider-arrow.left
+        -#.slider-arrow.right
+      .row
+        %section.author.columns.small-5.link{ data: { href: member_path(@news.member.ticket) } }
+          = image_tag  @news.member.avatar.small, class: 'human-photo'
+          .author-name
+            = "#{t('activerecord.attributes.news.user_id')}:"
+            = @news.member.decorate.short_name
           .date-text
             = @news.publish_date_time
-        .author
-          = "#{t('activerecord.attributes.news.user_id')}:"
-          - if @news.user.present?
-            = image_tag @news.user.avatar, class: 'human-photo'
-            = @news.user.decorate.short_name
-          - else
-            = image_tag '', class: 'human-photo'
-            Пресс-служба МИЦ
-      .main-photo
-        = image_tag @news.photo
-      .news-lead
-        = @news.lead
-      .news-row-content
-        = raw(@news.body)
-        - @news.attachments.each do |document|
-          = render_element 'mic_document', document: document
-      %hr
-      .stats-container.container-big.row.large-collapse.medium-collapse
-        %ul.stats.small-10.columns
-          %li.views
-            .icon-eye
-            %span.counter
-              2000
-          - if @strings.any?
-            %li.tags
-              .icon-tags
-              - @strings.each_with_index do |tag, index|
-                = link_to tag.text, tag_path(tag)
-                - unless index == @strings.count - 1
-                  ,
-          %li.humans
-            .icon-human
-            - img_src = "http://cs319921.vk.me/v319921441/8441/_JdsckyccWc.jpg"
-            - @members.first(4).each do |member|
-              = link_to member_path(member.ticket), class: 'human-link' do
-                .human-photo{ style: "background-image: url(#{member.avatar.small})" }
-            - if @members.count > 4
-              %span.view-all
-                %a{href: "#"}
-                  = t('.view_all')
-                %span.count
-                  = "(#{@members.count})"
-          %li.social-icons
-            %a{href: "#"}
-              .icon-vk.min-icon
-            %a{href: "#"}
-              .icon-twitter.min-icon
-            %a{href: "#"}
-              .icon-facebook.min-icon
-    .small-3.columns.side-content
-      .title
-        = t('.same_themes')
-      .programm-or-event
-        - if @event.present?
-          .mic-event
-            = render_element 'mic_event', img_src: @event.main_photo, |
-                                          category: @event.activity_line.title, |
-                                          link: event_path(@event), |
-                                          date: @event.full_date_duration, |
-                                          text: @event.lead
-        - if @activity_line.present?
-          .mic-programm
-            = render_element 'mic_programm', img_src: @activity_line.logo, |
-                                             link: activity_line_path(@activity_line), |
-                                             name: @activity_line.full_title
-        .news
-          - @topic_news.each do |news|
-            - if news.present?
+          .row
+            .comments-views
+              %span.icon-eye
+              %span.view-text
+                = @news.views
+              -#%span.icon-comment.fa.fa-comment
+              -#%span.comment-text
+                5
+      %article.news-info
+        %h1
+          = @news.title
+        %p.news-lead
+          = @news.lead
+        %p.text
+          = raw(@news.body)
+          - @news.attachments.each do |document|
+            = render_element 'mic_document', document: document
+        .news-footer.row
+          .tags.columns.small-7
+            %span.icon-fa-tags
+            - @strings.each do |tag|
+              %a.tag
+                = tag.text
+            - @not_strings.each do |tag|
+              %a.tag
+                = tag.target.title
+          .share.columns.small-5
+            .social.row
+              .icons.right
+                = render 'layouts/web/shared/social_sharing'
+          .people.colunms.row
+            %span.columns.small-2
+              = t('.referred_members')
+              \:
+            = render 'layouts/web/elements/mic_member_tags', members: @members
+    -#.news-comments
+      #disqus_thread
+        :javascript
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'ulmicru';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        %noscript
+          Please enable JavaScript to view the
+          %a{href: "https://disqus.com/?ref_noscript", rel: "nofollow"} comments powered by Disqus.
+    .best-related-news
+      -#%ul.tabs{ data: { tab: '' } }
+        -#%li.tab-title.left-tab.active
+          %a{href: "#best-by-comments", tabindex: "0"}
+            Самое комментируемое
+        %li.tab-title.right-tab
+          %a{ href: '#best-by-views', tabindex: '0' }
+            = t('.most_popular')
+      .tabs-content
+        -##best-by-comments.content.active
+          %ul.small-block-grid-3
+            - 4.times do
+              -# FIXME мб класс тоже засунуть в темплейт
+              %li.mic-one-news2
+                = render_element 'mic_one_news2', img_src:  "/system/uploads/member/avatar/2/2165339.jpg", |
+                                              link: "#", |
+                                              date: "22 февраля", |
+                                              views: 3, |
+                                              comments: 5, |
+                                              text: "Мицевские волонтеры собираются отдыхать в турцию"
+        #best-by-views.content.active
+          %ul.small-block-grid-3
+            - @popular_news.each do |news|
+              -# FIXME мб класс тоже засунуть в темплейт
+              %li.mic-one-news2
+                = render_element 'mic_one_news2', img_src:  news.photo.event_main_page_version, |
+                                                  link: news_path(news), |
+                                                  date: news.publish_date, |
+                                                  views: news.views, |
+                                                  text: news.title
+  %aside.news-sidebar
+    - if @next_news.present?
+      %a.prev-next-link.next{ href: news_path(@next_news) }
+        .link-info
+          = t('.next')
+        .link-name
+          = @next_news.title
+    %section.related-news
+      %h3
+        = t('.news_feed')
+      .side-content
+        .side-related-news
+          - @last_news.each_with_index do |news, index|
+            .mic-one-news
+              = render_element 'mic_one_news', img_src: news.photo.event_main_page_version, |
+                                               link: news_path(news), |
+                                               title: news.title, |
+                                               views: news.views, |
+                                               date: news.publish_date
+            - if index != (@last_news.size - 1)
               %hr
-              .mic-one-news
-                = render_element 'mic_one_news', img_src: news.photo, |
-                                                 link: news_path(news), |
-                                                 title: news.title, |
-                                                 date: news.publish_date
+          - if @topic_news.any?
+            .all-news-container
+              %a.all-news-text
+                = t('.topic_news')
+            - @topic_news.each do |news, index|
+              - if news.present?
+                .mic-one-news
+                  = render_element 'mic_one_news', img_src: news.photo, |
+                                                   link: news_path(news), |
+                                                   title: news.title, |
+                                                   views: news.views, |
+                                                   date: news.publish_date
+                - if index != (@topic_news.size - 1)
+                  %hr

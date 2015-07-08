@@ -24,6 +24,10 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
   test 'should get edit' do
     get :edit, id: @member
     assert_response :success, @response.body
+
+    @member.unavail
+    get :edit, id: @member
+    assert_response :success, @response.body
   end
 
   test 'should patch update' do

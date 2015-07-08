@@ -1,4 +1,4 @@
-class TeamDecorator < Draper::Decorator
+class TeamDecorator < ApplicationDecorator
   delegate_all
 
   def short_description
@@ -11,5 +11,13 @@ class TeamDecorator < Draper::Decorator
     else
       title
     end
+  end
+
+  def head_name
+    member.decorate.short_name if member
+  end
+
+  def name
+    title
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410235442) do
+ActiveRecord::Schema.define(version: 20150624113404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20150410235442) do
     t.string   "title"
     t.text     "body"
     t.string   "view"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.text     "state"
     t.integer  "category_id"
     t.integer  "user_id"
+    t.integer  "views",       default: 0
   end
 
   create_table "articles_documents", id: false, force: :cascade do |t|
@@ -134,6 +135,17 @@ ActiveRecord::Schema.define(version: 20150410235442) do
     t.text     "state"
     t.text     "place"
     t.integer  "activity_line_id"
+    t.integer  "organizer_id"
+    t.text     "organizer_type"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "url"
+    t.text     "text"
+    t.text     "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "news", force: :cascade do |t|
@@ -142,10 +154,21 @@ ActiveRecord::Schema.define(version: 20150410235442) do
     t.datetime "published_at"
     t.text     "photo"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.text     "state"
     t.text     "lead"
+    t.integer  "views",        default: 0
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.text     "title"
+    t.text     "view"
+    t.text     "size"
+    t.text     "text"
+    t.text     "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "positions", force: :cascade do |t|
@@ -195,6 +218,8 @@ ActiveRecord::Schema.define(version: 20150410235442) do
     t.text     "state"
     t.text     "municipality"
     t.text     "type"
+    t.text     "school"
+    t.integer  "team_id"
   end
 
   create_table "teams_users", id: false, force: :cascade do |t|
@@ -226,8 +251,12 @@ ActiveRecord::Schema.define(version: 20150410235442) do
     t.text     "experience"
     t.text     "want_to_do"
     t.string   "type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.datetime "join_date"
+    t.text     "token"
+    t.text     "school"
+    t.text     "member_state",    default: "unviewed"
   end
 
 end

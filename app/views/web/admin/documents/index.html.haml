@@ -1,3 +1,4 @@
+= paginate @documents, theme: 'twitter-bootstrap-3'
 - model_class = Document
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
@@ -22,5 +23,6 @@
             %span.glyphicon.glyphicon-pencil
           = link_to admin_document_path(document), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-
 = link_to t('.new', default: t('helpers.links.new')), new_admin_document_path, class: 'btn btn-primary'
+%br
+= paginate @documents, theme: 'twitter-bootstrap-3'

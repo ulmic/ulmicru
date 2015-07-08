@@ -1,3 +1,4 @@
+= paginate news, theme: 'twitter-bootstrap-3'
 - model_class = News
 %table.table.table-striped.table-condensed
   %thead
@@ -7,6 +8,7 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:published_at)
+      %th= model_class.human_attribute_name(:views)
       %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody
@@ -17,13 +19,24 @@
         %td= link_to news.title, edit_admin_news_path(news)
         %td= news.lead
         %td=l news.published_at
+        %td= news.views
         %td{ style: 'width: 200px' }
           = render 'web/admin/tags/buttons'
           = render 'web/admin/tags/list', record: news
           = render 'web/admin/tags/form', record_type: 'News', record_id: news.id, index: news.id
         %td.actions
+          - if current_user.role.admin?
+            - if news.main?
+              = link_to admin_news_path(news, news: { state: :confirmed }), method: :patch, class: 'btn btn-danger btn-xs' do
+                %span.glyphicon.glyphicon-pushpin
+            - else
+              = link_to admin_news_path(news, news: { state: :main }), method: :patch, class: 'btn btn-success btn-xs' do
+                %span.glyphicon.glyphicon-pushpin
+            - if news.unviewed?
+              = link_to admin_news_path(news, news: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
+                %span.glyphicon.glyphicon-ok
           = link_to edit_admin_news_path(news), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_news_path(news), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-= link_to t('.new', default: t('helpers.links.new')), new_admin_news_path, class: 'btn btn-primary'
+= paginate news, theme: 'twitter-bootstrap-3'

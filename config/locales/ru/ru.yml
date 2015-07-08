@@ -7,50 +7,23 @@ ru:
     send_request: Подать заявку на вступление в МИЦ
     name: Сайт МИЦ
     floors_growth: Этажи роста
+    projects:
+      ul_lider: "Конкурс «Я-лидер!»"
+      international_volunteer_school: Международная школа волонтёров
   date:
     order:
       - :day
       - :month
       - :year
-  helpers:
-    enter: Войти
-    no_author: Нет автора
-    in: в
-    from: c
-    until: по
-    year: 'года'
-    short_year: 'г.'
-    short_years: 'гг.'
-    more_info: 'Подробнее'
-    hide: 'Скрыть'
-    cancel: Отмена
-    view_all: посмотреть всех
-    actions:
-      update: Редактировать
-      create: Создать
-      destroy: Удалить
-      show: Показать
-      index: Все
-      edit: Редактировать
-    links:
-      actions: Действия
-      edit: Изменить
-      destroy: Удалить
-      restore: Восстановить
-      new: Добавить
-      save: Сохранить
-      back: Назад
-      select: Выбрать
-      approve: Подтвердить
-      decline: Отклонить
-      published: Опубликованные новости
-      unpublished: Неопубликованные новости
-      add: Добавить
   layouts:
     web:
       shared:
         errors:
           some_errors_was_found: Найдены ошибки при сохранении
+        navbar:
+          account: Настройки профиля
+          member_profile: Профиль члена МИЦ
+          your_account_is_not_active: Аккаунт неактивен
       elements:
         mic_document:
           attachment: Приложение
@@ -60,13 +33,15 @@ ru:
     facebook: Facebook
     twitter: Twitter
     google: Google
-  notices:
+  notifications:
     web:
       users:
         account:
           attribute_accesses:
             changed: Доступ к этому аттрибуту успешно изменён
             not_changed: Доступ к этому аттрибуту не изменён
+          email:
+            empty: Для подтверждения аккаунта введите ваш email
   state_machines:
     member:
       state:
@@ -74,11 +49,14 @@ ru:
           unviewed: Новые
           confirmed: Подтверждённые
           declined: Отклонённые
+          unavailable: Отсутствуют на сайте
     news:
       state:
         states:
           published: Опубликованное
           unpublished: Неопубликованное
+          main: Главные новости
+          unviewed: Неподтверждённые новости
     questionary:
       state:
         states:
@@ -98,17 +76,35 @@ ru:
       account:
         index:
           title: Настройка профиля
-          you_are_member_mic: Вы являетесь членом МИЦ
-          you_are_not_member_mic: Вы не являетесь членом МИЦ
-          enter_datas_mic_member: Заполните профиль члена МИЦ
+          you_are_member_mic: 'Члены Молодёжного инициативного центра имеют свой собственный профиль на сайте. Если ты являешься членом МИЦ, то ты можешь заполнить свой профиль члена организации по ссылке ниже.'
+          you_are_not_member_mic: 'Если Вы не являетесь членом Молодёжного инициативного центра, но хотите вступить, Вы можете заполнить анкету-заявку на вступление в УОМОО «МИЦ».'
+          enter_datas_mic_member: Заполнить профиль члена МИЦ
           my_position_in_mic: История моих должностей в МИЦ
           admin_panel: Панель администратора
+          authentications: Подключённые аккаунты
+          you_can_auth_with_social_networks: 'Вы можете проходить авторизацию, используя свои аккаунты в социальных сетях.'
+          your_member_profile_is_unviewed: 'Ваш профиль члена Молодёжного инициативного центра ожидает подтверждения. После подтверждения у вас будет открытый профиль на сайте МИЦ.'
+          enable_in_profile_page: Показывать в профиле
+          your_role_is: 'Ваша роль на сайте %{role}.'
+          you_have_access_to_admin_panel: У вас есть доступ в Админку.
+          #we_have_send_you_activation_email: Мы отправили вам письмо с инструкциями по активации Вашего аккаунта.
+          we_have_send_you_activation_email: Администраторы сайта в скором времени подтвердят ваш аккаунт
+          you_want_to_join_mic: Вы отправили заявку на вступление в Молодёжный инициативный центр
       new:
         register: Регистрация
         title: Регистрация на сайте
+      join:
+        new:
+          title: Подача заявки на вступление в Молодёжный инициативный центр
     news:
       show:
-        same_themes: "Материалы в тему:"
+        previous: предыдущая новость
+        about_program: по этой же программе
+        referred_members: упомянуты в статье
+        most_popular: Самое популярное
+        next: следующая новость
+        news_feed: лента новостей
+        topic_news: Новости по теме
     articles:
       shared:
         default_show:
@@ -124,6 +120,8 @@ ru:
         hide: Скрыть
         see_more: Увидеть больше
     members:
+      new:
+        title: Создание профиля члена Молодёжного инициативного центра
       show:
         learn_or_work: 'Учусь/Работаю'
         live: 'Живу'
@@ -132,12 +130,34 @@ ru:
       new:
         title: Авторизация
         register: Зарегистрироваться
+        wrong_email_or_password: Неверный логин или пароль
+        may_be_you_have_auth_via_social_network: Возможно вы авторизовывались через социальные сети
+    pages:
+      shared:
+        not_found:
+          not_found_page: Страница не найдена
+          this_is_404_error_page: 'Ошибка 404. Запрашиваемая вами страница не существует.'
+        server_error:
+          server_error: Серверная ошибка
+          something_went_wrong: 'Что-то пошло не так. Сообщите о проблеме администраторам ресурса или по кнопке "Нашли ошибку?"'
+        mr_and_mrs:
+          this_is_mr_and_mrs_mic_2012: 'А это Иван Карпов и Ксения Фомина. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2012"'
+          this_is_mr_and_mrs_mic_2013: 'А это Сергей Белаклоков и Елена Скворцова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2013"'
+          this_is_mr_and_mrs_mic_2014: 'А это Андрей Каляев и Ксения Парфёнова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2014"'
+          this_is_mr_and_mrs_mic_2015: 'А это Алим Бахтияров и Юлия Крашенинникова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2015"'
   forms:
     placeholders:
       web:
         member:
           default:
             mobile_phone: Формат номера телефона с +7
+        places:
+          default:
+            place_name: Название
+            place_address: Адрес места
+            place_city: Населённый пункт
+            place_state: Субъект Российской Федерации
+            place_ll: Координаты
   time:
     formats:
       default: "%a, %d %b %Y, %H:%M"
@@ -147,3 +167,9 @@ ru:
       date: "%Y-%m-%d"
       md: "%m-%d"
       descr: "%d %b %Y"
+  views:
+    pagination:
+      next: '>'
+      previous: '<'
+      last: '>>'
+      first: '<<'

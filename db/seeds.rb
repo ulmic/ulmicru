@@ -1,11 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+pages = { not_found: '404', server_error: '500' }
+pages.keys.each do |slug|
+  page = Page.find_by slug: slug
+  Page.create slug: slug, view: slug, title: pages[slug] unless page
+end
 
-
-admin = User.create({email: "admin@ulmic.ru", password: "admin",
-                      state: :confirmed, role: :admin})
+['Кто мы такие', 'Контакты'].each do |name|
+  category = Category.find_by_name name
+  Category.create name: name unless category
+end
+contact_category = Category.find_by_name 'Контакты'
+contact_article = contact_category.articles.first
+Article.create title: 'Контакты', category_id: contact_category.id, user_id: 1 unless contact_article

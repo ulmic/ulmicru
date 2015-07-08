@@ -1,25 +1,15 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 gem 'pg'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'libv8', '3.16.14.7'
 gem 'therubyracer'
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'enumerize'
@@ -32,10 +22,11 @@ gem 'bootstrap_glyphicons-rails'
 gem 'state_machine', git: 'https://github.com/seuros/state_machine.git'
 gem 'draper'
 gem 'russian'
+gem 'russian_sex'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'rmagick'
-gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
+#gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', submodules: true
 gem 'js-routes'
 gem 'i18n-js', git: 'https://github.com/fnando/i18n-js'
 gem 'omniauth-google-oauth2'
@@ -48,44 +39,35 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'configus'
 gem 'foursquare2', github: 'nitinstp23/foursquare2', branch: :gemspec_fix
 gem 'validates'
-gem "font-awesome-rails"
-
-gem 'foundation-rails', github: "zurb/foundation-rails"
+gem 'font-awesome-rails'
+gem 'sidekiq'
+gem 'foundation-rails', github: 'zurb/foundation-rails'
 gem "autoprefixer-rails"
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'select2-rails'
+gem 'jasny_bootstrap_extension_rails'
+gem 'sinatra', '>= 1.3.0', require: nil
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'russia_regions'
+gem 'mysql2'
 
 group :production do
   gem 'unicorn-rails'
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
   gem 'foreman'
-
   gem 'guard-livereload', '~> 2.4', require: false
   gem "rack-livereload"
-
-  # Access an IRB console on exception pages or by using <%= console %> in viewr
   gem 'web-console', '2.0.0.beta2'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '1.3.4'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'capistrano'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails'
+  gem 'capistrano-rails', '1.1.3'
   gem 'capistrano3-unicorn'
   gem 'capistrano-sidekiq'
   gem 'capistrano-rvm'
@@ -93,9 +75,12 @@ group :development, :test do
   gem 'capistrano-ssh-doctor', '~> 1.0'
   gem 'capistrano-rails-console'
   gem 'capistrano-rails-tail-log'
+  gem 'capistrano-faster-assets', '~> 1.0'
+  gem 'capistrano-rails-collection'
   gem 'quiet_assets'
   gem 'colorize', '0.6.0'
   gem 'better_errors'
+  gem 'railroady'
 end
 
 group :test do

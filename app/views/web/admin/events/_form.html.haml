@@ -2,6 +2,9 @@
 - title current_title, :admin
 .page-header
   %h1= page_title(action, Event.model_name.human)
+  - if @event_form.model.creator.present?
+    -#= link_to "#{t('activerecord.attributes.event.creator')}: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket)
+    = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket), class: :blank
 .row
   .col-lg-12
     = render 'layouts/web/admin/shared/errors', object: @event_form
@@ -10,21 +13,42 @@
     = simple_form_for [:admin, @event_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :title, as: :string
       = f.input :description, as: :ckeditor
-      = f.input :main_photo, as: :file
+      = f.label :main_photo
+      .preview
+        = image_tag @event_form.model.main_photo if @event_form.model.main_photo.present?
+      = f.input :main_photo, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :main_photo, label: false, as: :jasny_file_preview_upload
       = f.input :begin_date, as: :datetime_picker
       = f.input :end_date, as: :datetime_picker
-      = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      - if current_user.role.admin?
+        = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      - else
+        = f.input :state, as: :hidden, input_html: { value: :unviewed }
+      %hr
       = f.hint t('hints.admin.event.place')
+      %br
       = f.label :place
       .form-group.text.required
-        = text_field :place, '', class: 'text required form-control'
-      = link_to '#', id: 'update_list', class: 'btn btn-default' do
-        %span.glyphicon.glyphicon-search
-      -#= f.input :place, as: :select, collection: [], label: false
-      .text-danger
-        Сервис FourSquare не позволяет использовать себя на запароленных серверах, коим является этот стейджинг. Поэтому по умолчанию место высталено Дворец молодёжи. На основном сервере всё будет работать в штатном режиме.
-      = f.input :place, input_html: { value: '4e3faf5ac65b4ec275ff0a3b' }
-      = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
+        .input-group
+          - if @event_form.model.place.present?
+            = text_field :place, '', class: 'text required form-control', value: @event_form.model.decorate.place_name
+          - else
+            = text_field :place, '', class: 'text required form-control'
+          %span.input-group-btn
+            %button.btn.btn-default#update_list
+              %span.glyphicon.glyphicon-search
+      = f.input :place, as: :select, collection: [], label: false, input_html: { value: @event_form.model.place }
+      = f.input :place, as: :hidden, input_html: { value: @event_form.model.place }
+      = t(".did_not_find_anything_add_venue")
+      %br
+      = link_to t('.add_venue'), '#', class: 'btn btn-default show_popup', data: { popup_id: :place_form }
+      %hr
+      = f.input :organizer_type, collection: organizer_types
+      = f.input :organizer_id, as: :select, input_html: { data: { collection: teams_and_members_hash(@teams, @members), selected_id: @event_form.model.organizer_id }, class: :select2 }
+      - unless @event_form.creator_id.present?
+        = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
       = f.association :activity_line, label_method: lambda { |activity_line| "#{I18n.t("enumerize.activity_line.activity_type.#{activity_line.activity_type}")} «#{activity_line.title}»" }, value_method: :id
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), events_path, class: 'btn btn-default'
+.popup#place_form
+  = render 'layouts/web/admin/shared/places/form'

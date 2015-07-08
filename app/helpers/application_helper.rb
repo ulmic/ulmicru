@@ -9,7 +9,7 @@ module ApplicationHelper
     else
       title_text = "#{page_title} | #{t('application.name')}"
     end
-      content_for(:title) { title_text }
+    content_for(:title) { title_text }
   end
 
   def menu_item(name = nil, path = '#', *args, &block)
@@ -63,5 +63,9 @@ module ApplicationHelper
       list -= [ auth.provider ]
     end
     list
+  end
+
+  def oauth_key(provider, key)
+    YAML.load_file(Rails.root.join('config', 'oauth.yml'))[Rails.env].with_indifferent_access[provider][key]
   end
 end

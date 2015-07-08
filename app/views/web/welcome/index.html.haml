@@ -6,7 +6,7 @@
     %a.right-arrow
     .slider-items
       - @news.each do |news|
-        .main-slider-item.link{ data: { href: news_path(news) } }
+        .main-slider-item.slider-link{ data: { href: news_path(news) } }
           = image_tag news.photo, class: 'slider-img'
           .slider-item-info
             = news.title
@@ -15,21 +15,17 @@
       %section.top-bar-section
         .container-big
           %ul.left
-            - ["Лидерство", "Журналистика", "IT", "Право", "Толерантность", "Волонтёрство", "НКО"].each do |item|
-              %li
-                %a{href: "#"}
-                  = item
+            - text_news_tags.each do |item|
+              %li{ data: { tag: item.first, type: item[1] } }
+                %a
+                  = item.last
   .news
+    .left-arrow
+      %i.fa.fa-caret-left.fa-3x
     .container-big
       .top
         %h4.title
           = t('.news')
-        .right
-          %span.text
-            = t('.all_news')
-          %span.slider-arrows
-            %a.arrow.left-arrow
-            %a.arrow.right-arrow
       .news-slider
         - @text_news.each do |news|
           %a.new-slider-item{ href: news_path(news) }
@@ -39,20 +35,29 @@
               = news.title
             %p.content.text
               = news.short_lead
+        - 5.times do
+          %a.new-slider-item
+            %p.date
+            %p.content.title
+            %p.content.text
+    .right-arrow
+      %i.fa.fa-caret-right.fa-3x
   .events
     .container-big
       %h4.rotate
         = t('.events')
       .container-big
-        %ul.small-block-grid-4
+        %ul.small-block-grid-4#event-list
           - @events.each do |event|
             %li.mic-event
-              = render_element "mic_event", img_src: event.main_photo, |
+              = render_element "mic_event", img_src: event.main_photo.event_main_page_version, |
                                             link: event_path(event), |
                                             category: event.activity_line.title, |
                                             date: event.full_date_duration, |
                                             title: event.title, |
                                             text: strip_tags(event.lead)
+    .more-events{ style: 'cursor: pointer' }
+      %i.fa.fa-caret-down.fa-5x
   .humans
     %ul.small-block-grid-7
       - @members.each do |member|

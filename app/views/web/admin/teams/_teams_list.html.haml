@@ -1,3 +1,4 @@
+= paginate teams, theme: 'twitter-bootstrap-3'
 - model_class = Team
 %table.table.table-striped.table-condensed
   %thead
@@ -13,7 +14,7 @@
       %tr.link{ class: state_color(team), data: { href: edit_admin_team_path(team) } }
         %td= link_to team.full_title, edit_admin_team_path(team)
         %td= team.short_description
-        %td= team.member.decorate.short_name
+        %td= team.head_name
         %td= team_types_name team.type
         %td= team.municipality
         %td.actions
@@ -24,3 +25,4 @@
             %span.glyphicon.glyphicon-pencil
           = link_to admin_team_path(team), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
+= paginate teams, theme: 'twitter-bootstrap-3'

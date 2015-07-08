@@ -1,8 +1,10 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
+  before_filter :choose_members, only: [ :new, :edit ]
   def index
-    @unviewed_members = ::MemberDecorator.decorate_collection Member.unviewed
-    @confirmed_members = ::MemberDecorator.decorate_collection Member.confirmed
-    @declined_members = ::MemberDecorator.decorate_collection Member.declined
+    @unviewed_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unviewed)).page params[:page]
+    @confirmed_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.confirmed)).page params[:page]
+    @declined_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.declined)).page params[:page]
+    @unavailable_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unavailable)).page params[:page]
   end
 
   def new
@@ -17,27 +19,38 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def edit
-    @member = Member.find params[:id]
-    @member_form = MemberForm.new(@member)
+    member = Member.find params[:id]
+    @member_form = member_form(member).new member
   end
 
   def create
-    @member_form = MemberForm.new_with_model
+    member = Member.find_by_ticket params[:member][:ticket]
+    if member
+      if member.unavailable?
+        @member_form = MemberForm.find_with_model member.id
+      else
+        redirect_to admin_members_path
+      end
+    else
+      @member_form = MemberForm.new_with_model
+    end
     @member_form.submit params[:member]
     if @member_form.save
       redirect_to admin_members_path
     else
+      choose_members
       render action: :new
     end
   end
 
   def update
-    @member = Member.find params[:id]
-    @member_form = MemberForm.new(@member)
-    @member_form.submit(params[:member])
+    member = Member.find params[:id]
+    @member_form = member_form(member).new member
+    @member_form.submit params[:member]
     if @member_form.save
       redirect_to admin_members_path
     else
+      choose_members
       render action: :edit
     end
   end
@@ -47,4 +60,11 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @member.remove
     redirect_to admin_members_path
   end
+
+  private
+
+  def member_form(member)
+    member.unavailable? ? ::Admin::Member::UnavailableMemberForm : MemberForm
+  end
+
 end

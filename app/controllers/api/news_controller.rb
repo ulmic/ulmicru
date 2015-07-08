@@ -1,0 +1,25 @@
+class Api::NewsController < Api::ApplicationController
+  def index
+    source = get_source
+    news = NewsDecorator.decorate source.published.drop(params[:offset].to_i).first(params[:count].to_i)
+    hash = []
+    news.each { |n| n = n.decorate; hash << { id: n.id, title: n.title, text: n.short_lead, publish_date_time: n.publish_date_time  }  }
+    render json: hash
+  end
+
+  private
+
+  def get_source
+    if params[:tag].present?
+      tags = []
+      if params[:tag][:tag_type] == 'link'
+        tags = params[:tag][:target_type].constantize.find_by_title(params[:tag][:title]).tags
+      else
+        tags = Tag.where text: params[:tag][:text], tag_type: 'string'
+      end
+      News.where id: tags.where(record_type: 'News').map(&:record).map(&:id)
+    else
+      News
+    end
+  end
+end

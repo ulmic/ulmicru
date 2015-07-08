@@ -1,6 +1,6 @@
 class ArticleForm < ApplicationForm
   self.main_model = :article
 
-  attributes :title, :body, :user_id, required: true
-  attributes :view, :category_id
+  attributes :title, :user_id, required: true
+  attributes :view, :body, :category_id
 end

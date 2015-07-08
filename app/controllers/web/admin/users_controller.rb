@@ -1,6 +1,9 @@
 class Web::Admin::UsersController < Web::Admin::ApplicationController
   def index
-    @users = User.presented.order('id DESC')
+    @users = {}
+    @users[:confirmed] = User.confirmed.page params[:page]
+    @users[:unviewed] = User.unviewed.page params[:page]
+    @users[:declined] = User.declined.page params[:page]
   end
 
   def new

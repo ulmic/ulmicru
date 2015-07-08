@@ -19,4 +19,7 @@ class PhotoUploader < ApplicationUploader
     process :resize_to_fill => [100, 100]
   end
 
+  version :event_main_page_version do
+    process :resize_to_fill => [340, 212, 'North']
+  end
 end

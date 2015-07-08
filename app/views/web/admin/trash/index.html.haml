@@ -1,3 +1,4 @@
+= paginate @items, theme: 'twitter-bootstrap-3'
 - model_class = @type
 - title trash_page_title(model_class), :admin
 .page-header
@@ -18,3 +19,4 @@
               %span.glyphicon.glyphicon-open
             = link_to admin_trash_path(item, type: @type), method: :delete, class: 'btn btn-xs btn-danger' do
               %span.glyphicon.glyphicon-remove
+= paginate @items, theme: 'twitter-bootstrap-3'

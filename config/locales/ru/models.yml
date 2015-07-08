@@ -13,6 +13,7 @@ ru:
       event: Мероприятие
       team: Команда
       document: Документ
+      feedback: Обратная связь
     attributes:
       user:
         first_name: Имя
@@ -27,7 +28,7 @@ ru:
         patronymic: Отчество
         last_name: Фамилия
         avatar: Аватар
-        full_name: Ф.И.О.
+        full_name: "Ф.И.О."
         ticket: Номер членского билета
         place: Место проживания
         motto: Девиз по жизни
@@ -38,12 +39,16 @@ ru:
         locality: Населённый пункт
         parent: Крёстный
         children: Крестники
+        state: Статус на сайте
+        teams: Мои команды
+        state_event: Статус на сайте
+        school: Учебное заведение
       questionary:
         first_name: Имя
         patronymic: Отчество
         last_name: Фамилия
         avatar: Аватар
-        full_name: Ф.И.О.
+        full_name: "Ф.И.О."
         place: Место проживания
         motto: Девиз по жизни
         mobile_phone: Мобильный телефон
@@ -54,6 +59,7 @@ ru:
         experience: Опыт и навыки
         locality: Населённый пункт
         created_at: Дата подачи
+        school: Учебное заведение
       news:
         title: Заголовок
         body: Контекст
@@ -63,6 +69,8 @@ ru:
         lead: Лид
         photo: Фотография
         tags: Тэги
+        state: Статус
+        attachments: Приложения
       article:
         title: Заголовок
         body: Контекст
@@ -89,6 +97,9 @@ ru:
         creator: Создатель
         duration: Время проведения
         activity_line: Направление деятельности
+        organizer_type: Тип организатора
+        organizer_id: Организатор
+        activity_line: Направление деятельности
       activity_line:
         title: Название
         description: Описание
@@ -96,6 +107,7 @@ ru:
         found_date: Дата основания
         member: Руководитель
         logo: Логотип
+        member_id: Руководитель
       banner:
         photo: Изображение
         link: Ссылка
@@ -106,23 +118,70 @@ ru:
         title: Название
         description: Описание
         member: Руководитель
+        member_id: Руководитель
         type: Тип команды
         municipality: Муниципальное образование
+        members: Члены команды
+        school: Учебное заведение
         types:
           departament: Местное отделение
           subdivision: Структурное подразделение
           administration: Административные органы
+          primary: Первичная организация
       event:
         registration:
           role: Роль
       document:
         file: Файл
         title: Название
+      feedback:
+        text: Описание ошибки
+    state_machines:
+      member:
+        state:
+          states:
+            unviewed: Непросмотренный
+            confirmed: Подтверждённый
+            declined: Отклонённый
+            removed: Удалённый
+            unavailable: Недоступный
+  state_machines:
+    user:
+      state:
+        states:
+          unviewed: Новые
+          confirmed: Подтверждённые
+          declined: Отклонённые
+    article:
+      state:
+        states:
+          unviewed: Новые
+          confirmed: Подтверждённые
+          inactive: Неактивные
+          removed: Удалённые
+    feedback:
+      state:
+        states:
+          unviewed: Новые
+          fixing: В работе
+          done: Сделаны
+          declined: Отклонены
+    errors:
+      models:
+        member:
+          attributes:
+            motto:
+              taken: уже занят другим пользователем
+        user:
+          attributes:
+            mobile_phone:
+              phone: имеет неверный формат
   enumerize:
     user:
       role:
         admin: Администратор
         user: Пользователь
+        author: Автор
     activity_line:
       activity_type:
         central_program: Центральная программа

@@ -9,12 +9,15 @@
 .row
   .col-lg-12
     = simple_form_for @team_form, url: { controller: 'web/admin/teams', action: action }, input_html: { class: 'form-horizontal' } do |f|
+      = f.input :type, as: :select, collection: team_types
+      .school_input
+        = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
+      .municipality_input
+        = f.input :municipality, as: :select, collection: Municipalities.list
       = f.input :title, as: :string
       = f.input :description, as: :ckeditor
       = f.input :state, as: :hidden, input_html: { value: :active }
-      = f.input :type, as: :select, collection: team_types
-      .municipality_input
-        = f.input :municipality, as: :select, collection: Municipalities.list
-      = f.association :member, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, value_method: :id
+      = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
+      = f.association :users, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, input_html: { class: :select2 }
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_teams_path, class: 'btn btn-default'

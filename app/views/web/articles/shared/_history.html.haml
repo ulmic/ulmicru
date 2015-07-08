@@ -1,0 +1,73 @@
+- iliin = Member.find_by_ticket(1).decorate
+- titova = Member.find_by_ticket(2).decorate
+- domashevskaya = Member.find_by_ticket(451).decorate
+- lapteva = { name: 'Татьяна Лаптева' }
+- informat = domashevskaya
+.history-banner
+  %h1.title
+    = @article.title
+  %br/
+  %span.history-years
+    2006 - настоящее время
+.history-big-block
+  .row.history-user-pic-row
+    .small-3.columns
+      = link_to article_member_path(iliin), class: active_member_class(iliin) do
+        .mic-userpic-circle{ style: "background-image: url(#{iliin.avatar.profile})" }
+    .small-3.columns
+      = link_to article_member_path(titova), class: active_member_class(titova) do
+        .mic-userpic-circle{ style: "background-image: url(#{titova.avatar.profile})" }
+    .small-3.columns
+      = link_to article_member_path(domashevskaya), class: active_member_class(domashevskaya) do
+        .mic-userpic-circle{ style: "background-image: url(#{domashevskaya.avatar.profile})" }
+    .small-3.columns.end
+      .mic-userpic-circle.lapteva
+  %p
+    %b
+      Молодёжный инициативный центр
+    появился в 2006 году, сначала как проект, получивший поддержку в рамках социального конкурса администрации полномочного представителя Президента в Приволжском федеральном округе.
+    %br
+    %br
+      Фактически организацию создали четверо ульяновцев: педагог дополнительного образования областного Дворца детского творчества, руководитель «Школы будущего журналиста» Татьяна Лаптева, специалист Комитета по молодёжной политике Ульяновской области
+      = link_to_article_member_path(titova, 'Алёна Асеева')
+      (после замужества, - Титова), выпускающий редактор службы новостей «Город в эфире» Константин ИЛЬИН и консультант Управления по взаимодействию с общественными объединениями граждан администрации Губернатора Ульяновской области Елена ДОМАШЕВСКАЯ.Каждый из них до этого уже занимался реализацией различных проектов в сфере молодёжной политике.
+    %br
+    %br
+    = link_to_article_member_path(iliin)
+    по выходным преподавал в Центре детского творчества №6 и его районном пресс-центре «Норд-вест», являлся президентом Ассоциации начинающих журналистов Ульяновской области «Inформат», Татьяна Лаптева также работала с молодыми журналистами и была вице-президентом «Inформата». Елена Асеева, реализовывала в регионе проекты, направленные на развитие у молодёжи лидерских качеств, проводила выездные семинары, в том числе была организатором конкурса актива старшеклассников «Я – лидер». Елена Домашевская через свои проекты пыталась развить у молодёжи чувство толерантности, работала с иностранными студентами, приехавшими в Ульяновск для обучения в местных вузах.
+    %br
+    %br
+      20 февраля 2007 г. инициаторы создания МИЦ провели учредительное собрание. На нём Председателем организации избрали Константина Ильина. В этот же день должность Заместителя председателя заняла Елена Асеева.
+/   = render 'web/articles/shared/tags'
+.history-timeline
+  .history-line
+  - i = 0
+  - history_events_list.keys.each do |year|
+    - history_events_list[year].keys.each do |date|
+      .history-block.row
+        .history-date
+          %span.history-date-year
+            = year
+          - unless date == 'without_date'
+            %br
+            = date
+        - content = history_events_list[year][date]
+        - if content.is_a? Array
+          .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
+            - content.each_with_index do |history_event, index|
+              = strip_member_tags history_event
+              - if content.size == index + 1
+                - members = member_tags_helper content
+                - if members.present? && members.any?
+                  %hr
+                  = render 'layouts/web/elements/mic_member_tags', members: member_tags_helper(content)
+              - else
+                %hr
+        - else
+          .history-content{ class: (i % 2 == 0 ? 'left' : 'right') }
+            = strip_member_tags content
+            - members = member_tags_helper content
+            - if members.present? && members.any?
+              %hr
+              = render 'layouts/web/elements/mic_member_tags', members: member_tags_helper(content)
+      - i += 1

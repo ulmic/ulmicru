@@ -5,16 +5,16 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :attachments, class_name: 'Document'
 
   validates :title,       presence: true
-  validates :body,        presence: true
-  validates :view,        presence: false
   validates :category_id, presence: true
   validates :user_id,     presence: true
 
   include ArticleScopes
+  include Concerns::ViewsManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
+    state :inactive
     state :removed
 
     event :remove do
@@ -25,6 +25,9 @@ class Article < ActiveRecord::Base
     end
     event :restore do
       transition :removed => :unviewed
+    end
+    event :make_inactive do
+      transition all => :inactive
     end
   end
 end

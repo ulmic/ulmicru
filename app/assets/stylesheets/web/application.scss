@@ -2,15 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// =require foundation
-// =require web/foundation/application
-// =require pictonic
-// =require web/welcome
-// =require web/events
-// =require web/news
-// =require web/articles
-// =require web/account
-// =require web/sessions
+//= require foundation
+//= require web/foundation/application
+//= require pictonic
+//= require web/welcome
+//= require web/events
+//= require web/news
+//= require web/articles
+//= require web/account
+//= require web/sessions
+//= require select2
+//= require jasny-bootstrap
+
 @import "foundation/functions";
 
 @font-face {
@@ -50,6 +53,9 @@ h3,h4,h5 {
 body {
   font-family: 'mic';
   color: #333333;
+}
+body#noresponsive {
+    min-width: 1100px;
 }
 .container-big {
   width: 95%;
@@ -149,4 +155,87 @@ body {
 
 ul {
 		list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJElEQVQYV2NkIBIwIqv73MLwH10fbw0DWM2QU4gvAFA8Q1+FAM9iDwueLssPAAAAAElFTkSuQmCC");
+}
+
+.select2-container {
+  width: 100%;
+  margin-bottom: 10px;
+  box-shadow: none;
+  &.select2-container-active {
+    box-shadow: none;
+    .select2-choices, .select2-choice {
+      border-color: #aaa;
+    }
+  }
+  .select2-choice {
+    border-radius: 0;
+    height: 35px;
+    line-height: 35px;
+  }
+  .select2-choices {
+    li.select2-search-choice {
+      border-radius: 0;
+      line-height: 1.6;
+      div {
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+.select2-container-multi {
+  .select2-search-choice-close {
+    left: 4px;
+    top: 9px;
+  }
+}
+
+.select2-drop.select2-drop-multi.select2-display-none.select2-drop-active,
+.select2-drop.select2-drop.select2-display-none.select2-drop-active {
+  border-radius: 0;
+  border-color: #aaa;
+  .select2-results {
+    .select2-highlighted {
+      background-color: #fc9727;
+    }
+  }
+}
+
+.columns {
+  &.email {
+    padding-left: 0;
+  }
+}
+
+input[type=checkbox] {
+  width: 39px;
+  height: 39px;
+}
+
+.preview {
+  img {
+    max-width: 50%;
+    width: auto;
+  }
+}
+
+.panel {
+  &.alert {
+    background-color: #f04124;
+    h1, h2, h3, h4, h5, h6, li {
+      color: white;
+    }
+  }
+}
+
+.new-slider-item {
+  span.spin {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-image: image-url('spinner.gif');
+    top: 40px;
+    margin-left: 100px;
+  }
 }

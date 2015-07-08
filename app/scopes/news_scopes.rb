@@ -5,14 +5,21 @@ module NewsScopes
   included do
     scope :published, -> {
       where('published_at <= ?', DateTime.now).
-      where.not(state: :removed).
+      where("state = 'confirmed' OR state = 'main'").
       order('published_at DESC')
     }
     scope :unpublished, -> {
       where('published_at > ?',  DateTime.now).
-      where.not(state: :removed).
+      where(state: :confirmed).
       order('published_at DESC')
     }
     scope :removed, -> { where state: :removed }
+    scope :main, -> { where state: :main }
+    scope :confirmed, -> { where state: :confirmed }
+    scope :unviewed, -> { where state: :unviewed }
+    scope :popular, -> {
+      where('published_at <= ?', DateTime.now).
+      order('views DESC')
+    }
   end
 end

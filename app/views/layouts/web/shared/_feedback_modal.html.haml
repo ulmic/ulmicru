@@ -1,0 +1,13 @@
+- if signed_in?
+  #feedbackModal.reveal-modal{"aria-hidden" => "true", "aria-labelledby" => "firstModalTitle", "data-reveal" => "", role: "dialog"}
+    %h2#feedbackModalTitle
+      Нашли ошибку?
+    %p
+      Опишите её, пожалуйста.
+    = simple_form_for @feedback, remote: true, url: { controller: '/api/feedback', action: :create } do |f|
+      = f.input :text
+      = f.input :url, as: :hidden, input_html: { value: request.original_url }
+      - if signed_in?
+        = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+      = f.button :submit, t('helpers.links.send')
+    %a.close-reveal-modal{"aria-label" => "Close"} ×

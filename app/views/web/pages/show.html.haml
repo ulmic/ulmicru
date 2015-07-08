@@ -1,0 +1,5 @@
+- title @page.title
+- if @page.view.present?
+  = render "web/pages/shared/#{@page.view}"
+- else
+  = render "web/pages/shared/default_show"

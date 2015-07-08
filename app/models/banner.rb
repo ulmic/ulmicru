@@ -10,20 +10,20 @@ class Banner < ActiveRecord::Base
 
   state_machine :state, initial: :showed do
     state :showed
-    state :hidden
+    state :unviewed
     state :removed
 
     event :show do
-      transition :hidden => :showed
+      transition :unviewed => :showed
     end
     event :hide do
-      transition :showed => :hidden
+      transition :showed => :unviewed
     end
     event :remove do
       transition all => :removed
     end
     event :restore do
-      transition removed: :hidden
+      transition removed: :unviewed
     end
   end
 end

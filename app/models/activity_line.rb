@@ -6,9 +6,12 @@ class ActivityLine < ActiveRecord::Base
 
   mount_uploader :logo, PhotoUploader
 
-  enumerize :activity_type, in: [ :central_program, :local_project ]
+  enumerize :activity_type, in: [ :central_program, :local_project, :corporative ]
+
+  include ActivityLineScopes
 
   state_machine :state, initial: :active do
+    state :unviewed
     state :active
     state :removed
 
@@ -17,7 +20,7 @@ class ActivityLine < ActiveRecord::Base
     end
 
     event :restore do
-      transition removed: :active
+      transition removed: :unviewed
     end
   end
   #FIXME tags association

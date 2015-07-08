@@ -22,5 +22,7 @@ class ActiveSupport::TestCase
     template = ERB.new(File.read(File.dirname(__FILE__) + "/fixtures/#{filename}"), nil, "%")
     template.result
   end
+  Category.create name: 'Контакты'
+  Category.first.articles.build(title: 'Контакты', user_id: 1).save
   # Add more helper methods to be used by all tests here...
 end
