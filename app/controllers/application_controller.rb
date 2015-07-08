@@ -15,11 +15,13 @@ class ApplicationController < ActionController::Base
 
     rescue_from ActionController::RoutingError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
+      Rails.logger.warn "BACKTRACE: #{exception.backtrace}"
       redirect_to not_found_page_path
     end
 
     rescue_from ActionView::MissingTemplate, ActiveRecord::RecordNotFound, NoMethodError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
+      Rails.logger.warn "BACKTRACE: #{exception.backtrace}"
       redirect_to server_error_page_path
     end
   end
