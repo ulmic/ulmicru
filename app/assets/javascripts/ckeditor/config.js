@@ -6,6 +6,7 @@ CKEDITOR.editorConfig = function (config) {
   config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
   config.filebrowserImageUploadUrl = "/ckeditor/pictures";
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+	config.language = 'ru';
   config.extraPlugins = 'youtube,oembed';
   var csrf_token = $('meta[name=csrf-token]').attr('content'),
       csrf_param = $('meta[name=csrf-param]').attr('content');
