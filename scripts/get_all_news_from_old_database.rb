@@ -140,7 +140,7 @@ def news_content_parser(news, record)
         if img["src"].include? "http://"
           ckeditor.remote_data_url = img["src"]
         else
-          ckeditor.photo = Rails.root.join(img["src"]).open
+          ckeditor.photo = Rails.root.join(@IMAGES_PATH + img["src"]).open
         end
         ckeditor.save
         img["src"] = ckeditor.url
@@ -148,7 +148,7 @@ def news_content_parser(news, record)
     end
   end
   news.lead = lead.to_s
-  news.body = sanitize body.to_s, tags: %w(img)
+  news.body = body.to_s
 end
 
 puts 'Initialization successfully executed...'
