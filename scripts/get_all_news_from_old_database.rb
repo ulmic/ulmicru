@@ -8,28 +8,20 @@ puts 'Initialization...'
 require "#{File.dirname(File.dirname(__FILE__))}/config/environment.rb"
 include ActionView::Helpers::SanitizeHelper
 
-old_stdout = $stdout #save stdout
-output = File.open( "log/transfer_news.errors.log", "w" ) #output to file for erorrs
-output << "HI! This is some errors...\n\n\n"
+@old_stdout = $stdout #save stdout
+@output = File.open( "log/transfer_news.errors.log", "w" ) #@output to file for erorrs
+@output << "HI! This is some errors...\n\n\n"
 @found_users = {}
+@IMAGES_PATH = "/home/dmitry/work/ulmic/ulmic/htdocs/htdocs/"
 count = 0
-#-----------1st verification for wright input------------
-while true
-  print 'Hide main content of news from output(Y/n)?'
-  hide_body = gets.chomp.downcase
-  break  if hide_body.chars.length <= 1 && ['y', 'n'].any? {|word| hide_body.include? word}
-end
-print "Ok...\n"
-#-------------End 1st verification----------------------
-#
-#-----------2nd verification for wright input-----------
+#-----------Verification for wright input-----------
 while true
   print 'Delete copy of uploaded image(Y/n)?'
   delete_image = gets.chomp.downcase
   break  if delete_image.chars.length <= 1 && ['y', 'n'].any? {|word| delete_image.include? word}
 end
 print "Ok...\n"
-#-------------End 2nd verification----------------------
+#-------------End verification----------------------
 
 def find_user(user_name)
   user_name = user_name[0..user_name.index(",")-1] if user_name.index(",")
@@ -50,12 +42,70 @@ def skip_news?(record)
   b == ""  && a == ""
 end
 
-def lead_parser(news, lead)
-  if lead != ""
-    lead = Nokogiri::HTML(lead)
-    lead.search("img").each_slice(1) do |e|
+def find_errors_in_model(news, record)
+  if news.errors.count > 0
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n\n"
+    puts "---id: #{record["id"]}\n\n"
+    puts "---Title: #{record['title']}\n\n"
+    puts "---Model errors: \n"
+    ap news.errors
+    puts "---Model: \n"
+    ap news
+    puts "---Record:  \n"
+    ap record
+    puts "---User: #{record["created_by_alias"]}\n\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n"
+    puts "--------------------------------------------------------------------------------------------------------\n\n\n\n\n"
+    return true
+  end
+  return false
+end
 
+def images_finder(record)
+  t = "introtext"
+  local_img_path = nil
+  content = Nokogiri::HTML.fragment(record[t])
+  images = content.search("img")
+  if images.count > 0
+    local_img_path = images.first["src"]
+    local_img_path = @IMAGES_PATH + local_img_path unless local_img_path.include?("http://")
+  else
+    t = "fulltext"
+    content = Nokogiri::HTML.fragment(record[t])
+    images = content.search("img")
+
+    if images.count > 0
+      local_img_path = images.first["src"]
+      local_img_path = @IMAGES_PATH + local_img_path unless local_img_path.include?("http://")
     end
+  end
+
+  return local_img_path
+end
+
+def first_photo_parser(news, record)
+  begin
+    path = images_finder record
+
+    if path.include? "http://"
+      news.remote_photo_url = path
+    else
+      news.photo = Rails.root.join(path).open unless path.nil?
+    end
+
+    return path
+  rescue
+    byebug
+    $stdout = @output
+    news.errors.add :photo, "Path '#{path}' isn't correct..."
+    find_errors_in_model news, record
+    $stdout = @old_stdout
+    return ""
   end
 end
 
@@ -76,6 +126,7 @@ puts 'Sorting news by \'publish_up\''
 records = records.sort_by do |record|
   record["publish_up"]
 end
+records.reverse!
 puts 'Done...'
 puts "Count: #{records.count.to_s}..."
 #------------each of all records------------------------
@@ -86,18 +137,10 @@ records.each do |record|
 
   news.title = strip_tags record["title"]
   puts "Found news: #{news.title}"
-
-  news.lead = strip_tags record["introtext"]
-  #puts "Found lead of news: #{news.lead}"
-
-  news.body = strip_tags record["fulltext"]
-  news.body = news.lead if news.body == ""
-
-
-
-  if  hide_body == "n"
-    puts "Found body of news: #{news.body}"
-  end
+#FIXME 
+  news.lead = record["introtext"]
+#FIXME
+  news.body = record["fulltext"]
 
   news.published_at = record["publish_up"]
 
@@ -110,38 +153,24 @@ records.each do |record|
   else
     @found_users[record["created_by_alias"]] = news.title
   end
-  
+
+  first_photo_parser news, record
+
   puts "Try to Save news..."
   news.save
-  #show info about errors
-  if news.errors.count > 0
-    $stdout = output
 
-    puts "--------------------------------------------------------------------------------------------------------\n"
-    puts "--------------------------------------------------------------------------------------------------------\n"
-    puts "--------------------------------------------------------------------------------------------------------\n"
-    puts "--------------------------------------------------------------------------------------------------------\n\n"
-    puts "---id: #{record["id"]}\n\n"
-    puts "---Title: #{record['title']}\n\n"
-    puts "---Model errors: \n"
-    ap news.errors
-    puts "---Model: \n"
-    ap news
-    puts "---Record:  \n"
-    ap record
-    puts "---User: #{record["created_by_alias"]}\n\n"
-    puts "--------------------------------------------------------------------------------------------------------\n"
-    puts "--------------------------------------------------------------------------------------------------------\n"
-    puts "--------------------------------------------------------------------------------------------------------\n"
-    puts "--------------------------------------------------------------------------------------------------------\n\n\n\n\n"
-    $stdout = old_stdout
+  $stdout = @output
+  error = find_errors_in_model news, record
+  $stdout = @old_stdout
 
+  if error
     puts 'News NOT saved'
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
     next
   end
+
 
   puts "News saved..."
   count += 1
@@ -154,7 +183,7 @@ ap @found_users
 @end_index = News.last[:id]
 puts "to destroy type this: \"News.where(:id => #{@start_index}..#{@end_index}).destroy_all\""
 puts 'Closing erorrs stream...'
-output.close 
+@output.close 
 puts 'All right. It\'s Done...' 
 =begin
 #---------each of all records------
