@@ -1,0 +1,11 @@
+- comments.each do |comment|
+  .row.comment
+    .small-2.columns
+      - if comment.user.type == 'Member'
+        = image_tag comment.user.avatar.small
+      - else
+        = image_tag comment.user.default_avatar
+    .small-10.columns.text
+      %h4
+        = comment.user.decorate.short_name
+      = comment.text
