@@ -148,6 +148,8 @@ ru:
     comments:
       form:
         add_comment: Добавить комментарий
+        only_confirmed_users_can_leave_comments: Только подтверждённые пользователи могут оставлять комментарии
+        auth_before_leave_comment: Авторизуйтесь перед тем, как оставить комментарий
   forms:
     placeholders:
       web:

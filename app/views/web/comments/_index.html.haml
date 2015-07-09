@@ -4,7 +4,7 @@
       - if comment.user.type == 'Member'
         = image_tag comment.user.avatar.small
       - else
-        = image_tag comment.user.default_avatar
+        = image_tag comment.user.default_avatar(:image_url)
     .small-10.columns.text
       %h4
         = comment.user.decorate.short_name

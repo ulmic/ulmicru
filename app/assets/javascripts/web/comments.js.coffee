@@ -13,9 +13,8 @@ $ ->
     </div>"
 
   append_comment = (comment) ->
-    $last_comment = $('.comment').last()
-    $last_comment.after comment_template comment
-    return
+    $comment_form = $('.comment-form').last()
+    $comment_form.before comment_template comment
 
   $('.new_comment').on('ajax:success', (xhr, data) ->
     append_comment data

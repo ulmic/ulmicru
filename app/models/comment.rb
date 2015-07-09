@@ -6,7 +6,8 @@ class Comment < ActiveRecord::Base
 
   validates :record_id, presence: true
   validates :record_type, presence: true
-  validates :text, presence: true
+  validates :text, presence: true,
+                   uniqueness: { scope: [ :user_id, :record_id ] }
 
   extend Enumerize
   enumerize :record_type, in: [ 'Article', 'News' ]
