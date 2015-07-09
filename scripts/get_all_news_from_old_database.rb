@@ -13,7 +13,7 @@ include ActionView::Helpers::SanitizeHelper
 @output << "HI! This is some errors...\n\n\n"
 @found_users = {}
 #FIXME
-@IMAGES_PATH = "/home/dmitry/work/ulmic/ulmic/htdocs/htdocs/"
+@IMAGES_PATH = "/srv/ulmic/htdocs/htdocs/"
 count = 0
 #-----------Verification for wright input-----------
 while true
@@ -88,7 +88,9 @@ def images_finder(record)
 
   return local_img_path
 end
-
+def fileDeleter(path_to_file)
+  File.delete(path_to_file) if File.exist?(path_to_file)
+end
 def first_photo_parser(news, record)
   begin
     path = images_finder record
@@ -97,6 +99,7 @@ def first_photo_parser(news, record)
       news.remote_photo_url = path
     else
       news.photo = Rails.root.join(path).open unless path.nil?
+      fileDeleter path unless path.nil? && !delete_image
     end
     return path
   rescue
@@ -124,9 +127,11 @@ def news_content_parser(news, record)
       begin
         if !img["src"].include? "http://"
           ckeditor = Ckeditor::Picture.new
-          ckeditor.data = Rails.root.join(@IMAGES_PATH + img["src"]).open
+          path = @IMAGES_PATH + img["src"]
+          ckeditor.data = Rails.root.join(path).open
           ckeditor.save
           img["src"] = ckeditor.url
+          fileDeleter path unless path.nil? && !delete_image
         end
       rescue
         img.remove
@@ -141,9 +146,11 @@ def news_content_parser(news, record)
         begin 
           if !img["src"].include? "http://"
             ckeditor = Ckeditor::Picture.new
-            ckeditor.data = Rails.root.join(@IMAGES_PATH + img["src"]).open
+            path = @IMAGES_PATH + img["src"]
+            ckeditor.data = Rails.root.join(path).open
             ckeditor.save
             img["src"] = ckeditor.url
+            fileDeleter path unless path.nil? && !delete_image
           end
         rescue
           img.remove
