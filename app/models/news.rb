@@ -5,10 +5,10 @@ class News < ActiveRecord::Base
 
   mount_uploader :photo,    PhotoUploader
   validates :title,         presence: true
-  validates :body,          presence: true
+  validates :body,          presence: false
   validates :published_at,  presence: true
   validates :user_id,       presence: true
-  validates :lead,          presence: true
+  validates :lead,          presence: false
   validates :state,         presence: true
   belongs_to :member, foreign_key: :user_id
 
