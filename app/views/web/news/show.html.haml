@@ -57,7 +57,7 @@
         %h1
           = @news.title
         %p.news-lead
-          = @news.lead
+          = raw(@news.lead)
         %p.text
           = raw(@news.body)
           - @news.attachments.each do |document|

@@ -97,7 +97,6 @@ def first_photo_parser(news, record)
     else
       news.photo = Rails.root.join(path).open unless path.nil?
     end
-
     return path
   rescue
     byebug
@@ -107,6 +106,49 @@ def first_photo_parser(news, record)
     $stdout = @old_stdout
     return ""
   end
+end
+
+def news_content_parser(news, record)
+  lead = Nokogiri::HTML.fragment record["introtext"]
+  delete_body_first_tag = true
+  if lead.search("img").count > 0
+    lead.search("img").first.remove
+
+    delete_body_first_tag = false
+
+    images = lead.search("img")
+
+    images.each do |img|
+      ckeditor = Ckeditor::Picture.new
+
+      if img["src"].include? "http://"
+        ckeditor.remote_data_url = img["src"]
+      else
+        ckeditor.data = Rails.root.join(@IMAGES_PATH + img["src"]).open
+      end
+
+      ckeditor.save
+      img["src"] = ckeditor.url
+    end
+
+    body = Nokogiri::HTML.fragment record["fulltext"]
+    if body.search("img").count > 0
+      body.search("img").first.remove
+      images = body.search("img")
+      images.each do |img|
+        ckeditor = Ckeditor::Picture.new
+        if img["src"].include? "http://"
+          ckeditor.remote_data_url = img["src"]
+        else
+          ckeditor.photo = Rails.root.join(img["src"]).open
+        end
+        ckeditor.save
+        img["src"] = ckeditor.url
+      end
+    end
+  end
+  news.lead = lead.to_s
+  news.body = sanitize body.to_s, tags: %w(img)
 end
 
 puts 'Initialization successfully executed...'
@@ -123,13 +165,19 @@ records = client.query("SELECT * FROM ulmic_content where not state = '-2'").to_
 puts 'Deleting unpublished...'
 records.delete_at(3001)
 puts 'Sorting news by \'publish_up\''
+
 records = records.sort_by do |record|
   record["publish_up"]
 end
+
 records.reverse!
 puts 'Done...'
 puts "Count: #{records.count.to_s}..."
 #------------each of all records------------------------
+
+
+@start_index = News.last[:id] + 1
+
 records.each do |record|
   next if skip_news? record
 
@@ -137,10 +185,8 @@ records.each do |record|
 
   news.title = strip_tags record["title"]
   puts "Found news: #{news.title}"
-#FIXME 
-  news.lead = record["introtext"]
-#FIXME
-  news.body = record["fulltext"]
+
+  news_content_parser news, record
 
   news.published_at = record["publish_up"]
 
@@ -174,7 +220,6 @@ records.each do |record|
 
   puts "News saved..."
   count += 1
-  @start_index = News.last[:id] if count == 1
   progress = count * 1.0 / records.count
   puts "News.id = #{news[:id]} Count : #{count}; Progress: #{progress.round(5) * 100.0}%"
 end
