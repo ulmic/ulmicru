@@ -99,12 +99,14 @@ def first_photo_parser(news, record)
     end
     return path
   rescue
-    byebug
     $stdout = @output
-    news.errors.add :photo, "Path '#{path}' isn't correct..."
+    news.errors.add :photo, "Path '#{path}' isn't correct... But news will saved..."
     find_errors_in_model news, record
+    news.errors.clear
     $stdout = @old_stdout
-    return ""
+    default_img = "/home/dmitry/work/ulmicru/public/system/uploads/banner/photo/1/logo-mic-square.png"
+    news.photo = Rails.root.join(default_img).open
+    return default_img
   end
 end
 
@@ -116,34 +118,34 @@ def news_content_parser(news, record)
 
     delete_body_first_tag = false
 
-    images = lead.search("img")
-
-    images.each do |img|
-      ckeditor = Ckeditor::Picture.new
-
-      if img["src"].include? "http://"
-        ckeditor.remote_data_url = img["src"]
-      else
-        ckeditor.data = Rails.root.join(@IMAGES_PATH + img["src"]).open
+    lead.search("img").each do |img|
+      begin
+        if !img["src"].include? "http://"
+          ckeditor = Ckeditor::Picture.new
+          ckeditor.data = Rails.root.join(@IMAGES_PATH + img["src"]).open
+          ckeditor.save
+          img["src"] = ckeditor.url
+        end
+      rescue
+        img.remove
       end
-
-      ckeditor.save
-      img["src"] = ckeditor.url
     end
 
     body = Nokogiri::HTML.fragment record["fulltext"]
     if body.search("img").count > 0
-      body.search("img").first.remove
-      images = body.search("img")
-      images.each do |img|
-        ckeditor = Ckeditor::Picture.new
-        if img["src"].include? "http://"
-          ckeditor.remote_data_url = img["src"]
-        else
-          ckeditor.photo = Rails.root.join(@IMAGES_PATH + img["src"]).open
+      body.search("img").first.remove if delete_body_first_tag
+
+      body.search("img").each do |img|
+        begin 
+          if !img["src"].include? "http://"
+            ckeditor = Ckeditor::Picture.new
+            ckeditor.data = Rails.root.join(@IMAGES_PATH + img["src"]).open
+            ckeditor.save
+            img["src"] = ckeditor.url
+          end
+        rescue
+          img.remove
         end
-        ckeditor.save
-        img["src"] = ckeditor.url
       end
     end
   end
@@ -190,7 +192,7 @@ records.each do |record|
 
   news.published_at = record["publish_up"]
 
-  news.state = :confirmed
+  news.state = :unviewed
 
   news.member = find_user(record["created_by_alias"])
 
