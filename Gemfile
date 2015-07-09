@@ -49,6 +49,7 @@ gem 'sinatra', '>= 1.3.0', require: nil
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'russia_regions'
+gem 'mysql2'
 
 group :production do
   gem 'unicorn-rails'
