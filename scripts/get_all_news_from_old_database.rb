@@ -69,7 +69,7 @@ end
 
 def images_finder(record)
   t = "introtext"
-  local_img_path = nil
+  local_img_path = ""
   content = Nokogiri::HTML.fragment(record[t])
   images = content.search("img")
   if images.count > 0
@@ -98,8 +98,8 @@ def first_photo_parser(news, record)
     if path.include? "http://"
       news.remote_photo_url = path
     else
-      news.photo = Rails.root.join(path).open unless path.nil?
-      fileDeleter path unless path.nil? && !delete_image
+      news.photo = Rails.root.join(path).open unless path.empty?
+      fileDeleter path unless path.empty? && !delete_image
     end
     return path
   rescue
@@ -109,7 +109,7 @@ def first_photo_parser(news, record)
     news.errors.clear
     $stdout = @old_stdout
 #FIXME
-    default_img = "/home/dmitry/work/ulmicru/public/system/uploads/banner/photo/1/logo-mic-square.png"
+    default_img = "scripts/logo.png"
     news.photo = Rails.root.join(default_img).open
     return default_img
   end
@@ -131,7 +131,7 @@ def news_content_parser(news, record)
           ckeditor.data = Rails.root.join(path).open
           ckeditor.save
           img["src"] = ckeditor.url
-          fileDeleter path unless path.nil? && !delete_image
+          fileDeleter path unless path.empty? && !delete_image
         end
       rescue
         img.remove
@@ -150,7 +150,7 @@ def news_content_parser(news, record)
             ckeditor.data = Rails.root.join(path).open
             ckeditor.save
             img["src"] = ckeditor.url
-            fileDeleter path unless path.nil? && !delete_image
+            fileDeleter path unless path.empty? && !delete_image
           end
         rescue
           img.remove
