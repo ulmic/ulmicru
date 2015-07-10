@@ -11,7 +11,7 @@
             = image_tag current_user.default_avatar(:image_url)
         .small-10.columns.end
           = simple_form_for @comment, remote: true, url: { controller: 'api/comments', action: :create } do |f|
-            = f.input :text, label: false
+            = f.input :text, label: false, placeholder: t('.write_your_comment')
             = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
             = f.input :record_id, as: :hidden, input_html: { value: record.id }
             = f.input :record_type, as: :hidden, input_html: { value: record.model_name }

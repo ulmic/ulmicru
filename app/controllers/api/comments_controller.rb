@@ -12,4 +12,10 @@ class Api::CommentsController < Api::ApplicationController
       head :bad_request
     end
   end
+
+  def destroy
+    @comment = Comment.find params[:id]
+    @comment.destroy
+    head :ok
+  end
 end

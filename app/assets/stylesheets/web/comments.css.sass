@@ -1,3 +1,5 @@
+$orange: #ffa531
+
 .comment-form
   form
     textarea
@@ -17,5 +19,20 @@
       border-bottom: none
     h4
       margin: 0
+      &:after
+        position: absolute
+        display: block
+        content: ''
+        border: 1px solid $orange
+        margin-top: -4px
+        width: 36%
     .columns.text
       padding: 0
+    .remove
+      text-align: center
+      font-size: 25px
+      cursor: pointer
+      margin-top: -5px
+      color: $orange
+      &:hover
+        opacity: 0.5

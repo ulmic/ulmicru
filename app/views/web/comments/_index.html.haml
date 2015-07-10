@@ -5,7 +5,11 @@
         = image_tag comment.user.avatar.small
       - else
         = image_tag comment.user.default_avatar(:image_url)
-    .small-10.columns.text
+    .columns.text{ class: (current_user.id == comment.user.id || current_user.role.admin?) ? 'small-9' : 'small-10' }
       %h4
         = comment.user.decorate.short_name
       = comment.text
+    - if (current_user.id == comment.user.id) || current_user.role.admin?
+      .small-1.columns
+        .remove{ data: { comment: { id: comment.id } } }
+          %i.fa.fa-remove
