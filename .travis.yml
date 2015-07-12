@@ -16,6 +16,6 @@ services:
 oauth_keys:
   foursquare:
     client_id:
-      secure: Wpwfel3kNPNj3i9v7aQy+HksM3ag7ddg01ral44F9XIJqqiPBvZnWn74bB4YExrbHynvTK5y1Gb1J61Z/Zu8daZVNrj7LL/tssWG+bzYkVLfqu3X7HoLX3DX8ZO15pV9cpL7g3cA556cjs7pIoxBxLFgWeSCQTuXfQY4BcqO4Js=
+      secure: I68nKkRQmKe0IOGT9jpWxKM6zawYE0kInwfl95Mgs6vjoGr8pum1sdQxJHgu6EqQhk4DLKfPJMlPNHRtHveO5EokqUC56dw/ZZo9EMwQQYY53JAy5d3v7+6hYv2EhyA0xr1B0ovU+5/w36PGBQf7vlSM4Z97dYQdUDtTTZ3ENrI=
     client_secret:
-      secure: LBdGyDpEZMD9ZincYYmOQj5DlsvleAN/MgwLJHuTfnvnWqsC1GdM8KmWu1yYCyjlNWvvaknNulGhqed9iTiDW4blMsnm8W+7xBeCY3bXCxxJn1Jyp/jjceYH8A+Ok8qOQdmu27n6JER1WFDyqDXu0ZS1VyTHMf9cvHepFyCqg1w=
+      secure: GmKLLr6RQMdEkv1yQJCxYfCA2RUjon0gXFWBPCqy2zHFJNFvVX5p8ASzMSb3tIM+pltxAbrNhL8HzlY/Ddz4YYV6Y2chEDQVUuHbGjDQCdmD0e70/L406P9RhVqmQajS9wjY0SqTbcA+zhphLt1cd2tFrlFtAdSjCd3U/cCgViE=
