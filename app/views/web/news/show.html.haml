@@ -83,9 +83,9 @@
                 = t('.referred_members')
                 \:
               = render 'layouts/web/elements/mic_member_tags', members: @members
-    -#.news-comments
-      -#= render '/web/comments/index', comments: @news.comments
-      -#= render '/web/comments/form', record: @news
+    .news-comments
+      = render '/web/comments/index', comments: @news.comments
+      = render '/web/comments/form', record: @news
     .best-related-news
       -#%ul.tabs{ data: { tab: '' } }
         -#%li.tab-title.left-tab.active
