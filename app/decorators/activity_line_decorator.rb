@@ -2,7 +2,7 @@ class ActivityLineDecorator < ApplicationDecorator
   delegate_all
 
   def short_body
-    "#{ActionController::Base.helpers.strip_tags(model.description)[0..50]}..."
+    "#{strip_tags(model.description)[0..50]}..."
   end
 
   def full_title

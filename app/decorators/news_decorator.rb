@@ -2,7 +2,7 @@ class NewsDecorator < ApplicationDecorator
   delegate_all
 
   def generate_lead
-    @sentences = ActionController::Base.helpers.strip_tags(model.body).split('.')
+    @sentences = strip_tags(model.body).split('.')
     @finally_sen = "#{@sentences[0]}."
     (1..2).each { |i| @finally_sen += "#{@sentences[i]}." }
     @finally_sen
