@@ -1,0 +1,29 @@
+.comment-form
+  %h4
+    = t('.add_comment')
+  - if signed_in?
+    - if current_user.state == 'confirmed'
+      .row
+        .small-2.columns
+          - if current_user.type == 'Member'
+            = image_tag current_user.avatar.small
+          - else
+            = image_tag current_user.default_avatar(:image_url)
+        .small-10.columns.end
+          = simple_form_for @comment, remote: true, url: { controller: 'api/comments', action: :create } do |f|
+            = f.input :text, label: false, placeholder: t('.write_your_comment')
+            = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+            = f.input :record_id, as: :hidden, input_html: { value: record.id }
+            = f.input :record_type, as: :hidden, input_html: { value: record.model_name }
+            = f.button :submit, t('helpers.links.send')
+      .row.spinner
+    - else
+      %span.label.warning
+        %i.fa.fa-info-circle
+        = t('.only_confirmed_users_can_leave_comments')
+  - else
+    %span.label.warning
+      %i.fa.fa-info-circle
+      = t('.auth_before_leave_comment')
+    %br
+    = link_to t('helpers.links.auth'), new_session_path, class: 'button'

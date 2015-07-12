@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       resources :teams, except: :show
       resources :tags, only: :create
       resources :documents, except: :show
+      resources :comments, except: :show
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
     resources :news, only: :index
     resources :events, only: :index
     resources :feedback, only: :create
+    resources :comments, only: [ :create, :destroy ]
     resources :users, only: [] do
       member do
         get :confirm

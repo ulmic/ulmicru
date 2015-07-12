@@ -1,4 +1,6 @@
 - title @news.title
+= stylesheet_link_tag 'web/comments'
+= javascript_include_tag 'web/comments'
 - content_for :meta do
   %meta{ property: 'og:description', content: "#{@news.description_lead} #МИЦ" }
   %meta{ property:'og:image', content: @news.photo }
@@ -81,20 +83,9 @@
                 = t('.referred_members')
                 \:
               = render 'layouts/web/elements/mic_member_tags', members: @members
-    -#.news-comments
-      #disqus_thread
-        :javascript
-          /* * * CONFIGURATION VARIABLES * * */
-          var disqus_shortname = 'ulmicru';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        %noscript
-          Please enable JavaScript to view the
-          %a{href: "https://disqus.com/?ref_noscript", rel: "nofollow"} comments powered by Disqus.
+    .news-comments
+      = render '/web/comments/index', comments: @news.comments
+      = render '/web/comments/form', record: @news
     .best-related-news
       -#%ul.tabs{ data: { tab: '' } }
         -#%li.tab-title.left-tab.active

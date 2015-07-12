@@ -1,0 +1,38 @@
+$orange: #ffa531
+
+.comment-form
+  form
+    textarea
+      height: 100%
+  .spinner
+    z-index: 99
+    background-color: white
+    opacity: 0.3
+    width: 100%
+    height: 100%
+.news-comments
+  .row.comment
+    border-bottom: 1px solid lightgray
+    margin-bottom: 15px
+    padding-bottom: 15px
+    &:last-child
+      border-bottom: none
+    h4
+      margin: 0
+      &:after
+        position: absolute
+        display: block
+        content: ''
+        border: 1px solid $orange
+        margin-top: -4px
+        width: 36%
+    .columns.text
+      padding: 0
+    .remove
+      text-align: center
+      font-size: 25px
+      cursor: pointer
+      margin-top: -5px
+      color: $orange
+      &:hover
+        opacity: 0.5

@@ -7,6 +7,7 @@
       %th= model_class.human_attribute_name(:url)
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:text)
+      %th= model_class.human_attribute_name(:created_at)
       %th= t 'helpers.links.actions'
   %tbody
     - feedback.each do |feedback|
@@ -15,6 +16,7 @@
         %td= link_to feedback.url, feedback.url
         %td= feedback.user.decorate.short_name if feedback.user_id
         %td= feedback.text
+        %td=l feedback.created_at
         %td.actions
           = link_to edit_admin_feedback_path(feedback), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

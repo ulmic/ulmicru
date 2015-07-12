@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624113404) do
+ActiveRecord::Schema.define(version: 20150706223624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,17 @@ ActiveRecord::Schema.define(version: 20150624113404) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "record_id"
+    t.text     "record_type"
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.text     "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "documents", force: :cascade do |t|
     t.text     "file"
     t.text     "title"
@@ -175,9 +186,9 @@ ActiveRecord::Schema.define(version: 20150624113404) do
     t.text     "title"
     t.integer  "member_id"
     t.datetime "begin_date"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "end_date",   default: "for_now"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "tags", force: :cascade do |t|

@@ -27,7 +27,7 @@ class Web::OmniauthController < Web::ApplicationController
         user = User.find_by_email email if email
         unless user
           password = SecureRandom.hex 8
-          user = User.create email: email, first_name: first_name, last_name: last_name, password: password, password_confirmation: password
+          user = User.create email: email, first_name: first_name, last_name: last_name, password: password, password_confirmation: password, state: :confirmed
         end
         sign_in user
       end
