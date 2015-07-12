@@ -1,15 +1,21 @@
 language: ruby
 rvm:
-  - 2.1
+- 2.1
 env:
-  - DB=postgres
+- DB=postgres
 script:
-  - gem install tilt -v '1.4.1'
-  - gem install byebug -v '3.5.1'
-  - gem install sdoc -v '0.4.1'
-  - cp config/secrets.yml.sample config/secrets.yml
-  - cp config/database.yml.sample config/database.yml
-  - cp config/oauth.yml.sample config/oauth.yml
-  - RAILS_ENV=test bundle exec rake db:create db:migrate test
+- gem install tilt -v '1.4.1'
+- gem install byebug -v '3.5.1'
+- gem install sdoc -v '0.4.1'
+- cp config/secrets.yml.sample config/secrets.yml
+- cp config/database.yml.sample config/database.yml
+- cp config/oauth.yml.sample config/oauth.yml
+- RAILS_ENV=test bundle exec rake db:create db:migrate test
 services:
-  - redis-server
+- redis-server
+oauth_keys:
+  foursquare:
+    client_id:
+      secure: Wpwfel3kNPNj3i9v7aQy+HksM3ag7ddg01ral44F9XIJqqiPBvZnWn74bB4YExrbHynvTK5y1Gb1J61Z/Zu8daZVNrj7LL/tssWG+bzYkVLfqu3X7HoLX3DX8ZO15pV9cpL7g3cA556cjs7pIoxBxLFgWeSCQTuXfQY4BcqO4Js=
+    client_secret:
+      secure: LBdGyDpEZMD9ZincYYmOQj5DlsvleAN/MgwLJHuTfnvnWqsC1GdM8KmWu1yYCyjlNWvvaknNulGhqed9iTiDW4blMsnm8W+7xBeCY3bXCxxJn1Jyp/jjceYH8A+Ok8qOQdmu27n6JER1WFDyqDXu0ZS1VyTHMf9cvHepFyCqg1w=
