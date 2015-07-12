@@ -186,9 +186,9 @@ ActiveRecord::Schema.define(version: 20150706223624) do
     t.text     "title"
     t.integer  "member_id"
     t.datetime "begin_date"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "end_date",   default: "for_now"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "tags", force: :cascade do |t|
