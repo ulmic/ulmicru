@@ -11,8 +11,7 @@ class Web::MembersController < Web::ApplicationController
     exists_member = Member.find_by_ticket params[:member][:ticket]
     member = exists_member
     if exists_member
-      if exists_member.unavailable?
-        exists_member.email = current_user.email
+      if exists_member.state == 'unavailable'
         exists_member.password_digest = current_user.password_digest
         exists_member.save
         current_user.authentications.each do |auth|
@@ -23,8 +22,9 @@ class Web::MembersController < Web::ApplicationController
           reg.user_id = exists_member.id
           reg.save
         end
-        current_user.destroy
+        old_user = current_user
         sign_in exists_member
+        old_user.destroy
       end
     else
       member = current_user.becomes! Member
