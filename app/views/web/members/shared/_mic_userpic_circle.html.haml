@@ -4,7 +4,7 @@
   .mic-userpic-circle{ style: "background-image: url(#{member.element_avatar})" }
 .name
   - if member.confirmed?
-    %a.text{ href: member_path(member) }
+    %a.text{ href: member_path(member.ticket) }
       = member.short_name
   - else
     %span.text
