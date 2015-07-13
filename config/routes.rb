@@ -98,5 +98,5 @@ Rails.application.routes.draw do
     end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
-  get '*unmatched_route', to: 'web/pages#show'
+  get '*unmatched_route', to: 'web/pages#show', slug: :not_found
 end
