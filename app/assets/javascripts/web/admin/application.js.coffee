@@ -20,19 +20,22 @@
 #= require placeholders
 
 $ ->
-  $('.input').addClass('form-group')
-  $('select').addClass('form-control')
-  $('input[type=hidden]').addClass('form-control')
-  $('input[type=text]').addClass('form-control')
-  $('input[type=submit]').addClass('btn')
-  $('select.select2').each ->
-    $(this).select2 {
-      placeholder: $(this).data('prompt')
-    }
-  $('select.select2-tags').each ->
-    $(this).select2 {
-      placeholder: $(this).data('prompt')
-    }
+  init_bootstrap_styles = ->
+    $('.input').addClass('form-group')
+    $('select').addClass('form-control')
+    $('input[type=hidden]').addClass('form-control')
+    $('input[type=text]').addClass('form-control')
+    $('input[type=submit]').addClass('btn')
+
+  init_select2_inputs = ->
+    $('select.select2').each ->
+      $(this).select2 {
+        placeholder: $(this).data('prompt')
+      }
+    $('select.select2-tags').each ->
+      $(this).select2 {
+        placeholder: $(this).data('prompt')
+      }
   $('.link').click ->
     location.href = $(this).attr('data-href')
 
@@ -74,9 +77,13 @@ $ ->
     $("input.date_picker").datetimepicker()
     return
 
+  init_bootstrap_styles()
+  init_select2_inputs()
   init_blank_adding()
   init_datetimepickers()
   $('a.add_fields').mouseover ->
+    init_bootstrap_styles()
+    init_select2_inputs()
     setTimeout init_datetimepickers, 500
     return
 

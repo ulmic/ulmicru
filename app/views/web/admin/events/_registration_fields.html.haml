@@ -1,0 +1,4 @@
+.registration_fields
+  = f.input :user_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
+  = f.input :role, as: :select, collection: enumerize_locales_hash(Event::Registration, :role)
+  = link_to_remove_association 'X', f, class: 'btn btn-danger remove-registration', data: { 'wrapper-class' => 'registration_fields' }
