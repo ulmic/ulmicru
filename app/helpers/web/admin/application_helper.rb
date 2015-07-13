@@ -11,4 +11,8 @@ module Web::Admin::ApplicationHelper
   def tab_title(model_class, tab, count)
     "#{t("state_machines.#{model_class.name.downcase}.state.states.#{tab}").pluralize(:ru)} / #{count}"
   end
+
+  def enumerize_locales_hash(model, attribute)
+    I18n.t("enumerize.#{model.name.underscore.gsub('/', '.')}.#{attribute}").invert
+  end
 end

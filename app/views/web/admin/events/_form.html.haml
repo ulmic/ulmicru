@@ -48,6 +48,10 @@
       - unless @event_form.creator_id.present?
         = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
       = f.association :activity_line, label_method: lambda { |activity_line| "#{I18n.t("enumerize.activity_line.activity_type.#{activity_line.activity_type}")} «#{activity_line.title}»" }, value_method: :id
+      .registrations
+        = f.simple_fields_for :registrations do |reg_form|
+          = reg_form.input :user_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
+          = reg_form.input :role, as: :select, collection: enumerize_locales_hash(Event::Registration, :role)
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), events_path, class: 'btn btn-default'
 .popup#place_form
