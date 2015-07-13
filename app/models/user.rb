@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
                          allow_blank: true
   validates :last_name, human_name: true,
                          allow_blank: true
+  has_many :comments, dependent: :destroy
 
   extend Enumerize
   enumerize :role, in: [ :user, :admin, :author ], default: :user
