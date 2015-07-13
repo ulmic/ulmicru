@@ -66,12 +66,14 @@ $ ->
     if $input.prop('type') == 'hidden'
       $(this).html I18n.t('helpers.cancel')
       $select.hide()
+      $select.children('select').prop('disabled', true)
       $input.parents('.form-group.tag_text').removeClass('hidden')
       $input.removeClass('hidden')
       $input.prop('type', 'text')
     else
       $(this).html I18n.t('web.admin.tags.form.add_new_string_tag')
       $select.show()
+      $select.children('select').prop('disabled', false)
       $input.addClass('hidden')
       $input.prop('type', 'hidden')
 

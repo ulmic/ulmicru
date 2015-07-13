@@ -64,17 +64,20 @@
 
   .icons-container {
     display: table;
-    margin-top: $topbar-height/2.2;
+    height: $topbar-height;
     margin-right: 1rem;
     .sign-in {
       font-family: 'mic-bold';
       margin-right: 0.5rem;
-      margin-top: 4px;
+      margin-top: 10px;
+      text-align: center;
+      width: 100%;
     }
     .icons {
+      float: right;
+      width: 100%;
       display: table-cell;
       vertical-align: middle;
-      width: rem-calc(140);
       &>a {
         padding: 0 !important;
         padding-left: 4px !important;

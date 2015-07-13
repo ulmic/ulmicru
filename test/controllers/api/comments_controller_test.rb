@@ -2,8 +2,9 @@ require 'test_helper'
 
 class Api::CommentsControllerTest < ActionController::TestCase
   setup do
-    create :user
+    user = create :user
     @comment = create :comment
+    sign_in user
   end
 
   test 'should post create' do

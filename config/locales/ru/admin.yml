@@ -27,6 +27,8 @@ ru:
         form:
           did_not_find_anything_add_venue: Если не нашли нужную локацию, можно добавить её самостоятельно в базу данных сервиса Foursquare
           add_venue: Добавить место
+          registrations: Участники
+          add_registration: Добавить участника
   layouts:
     web:
       admin:

@@ -1,6 +1,7 @@
 class Api::CommentsController < Api::ApplicationController
   def create
     @comment = CommentForm.new_with_model
+    params[:comment][:user_id] = current_user.id
     @comment.submit params[:comment]
     if @comment.save
       render json: { id: @comment.id,
@@ -15,7 +16,11 @@ class Api::CommentsController < Api::ApplicationController
 
   def destroy
     @comment = Comment.find params[:id]
-    @comment.destroy
-    head :ok
+    if @comment.user_id == current_user.id || current_user.role.admin?
+      @comment.destroy
+      head :ok
+    else
+      head :unprocessable_entity
+    end
   end
 end

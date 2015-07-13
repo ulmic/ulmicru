@@ -17,4 +17,6 @@ access admin panel in dev
 u = User.first
 u.role = :admin
 u.save
+100.times { n = News.first.dup; n.save }
+100.times { e = Event.first.dup; e.save }
 ```
