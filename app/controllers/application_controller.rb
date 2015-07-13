@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_categories
 
   include Concerns::AuthManagment
+  include Concerns::TechinalPagesManagment
 
   if Rails.env.staging?
     before_filter :required_basic_auth!

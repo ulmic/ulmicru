@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 module Concerns
   module AuthManagment
-    include TechinalPagesManagment
     def sign_in(user)
       session[:user_id] = user.id
     end
