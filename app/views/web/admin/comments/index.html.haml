@@ -12,5 +12,5 @@
         = link_to tab_title(model_class, tab, @comments[tab].total_count), "##{tab}"
   - tabs.each do |tab|
     %div{ id: tab }
-      = render 'comment_list', comment: @comments[tab]
+      = render 'comments_list', comments: @comments[tab]
 = link_to t('.new', default: t('helpers.links.new')), new_admin_comment_path, class: 'btn btn-primary'

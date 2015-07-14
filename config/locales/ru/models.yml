@@ -168,6 +168,12 @@ ru:
           fixing: В работе
           done: Сделаны
           declined: Отклонены
+    comment:
+      state:
+        states:
+          unviewed: Непросмотренные
+          active: Активные
+          declined: Отклонённые
     errors:
       models:
         member:

@@ -7,6 +7,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
     @unviewed[:news] = Kaminari.paginate_array(News.unviewed.decorate).page params[:page]
     @unviewed[:events] = Kaminari.paginate_array(Event.unviewed.decorate).page params[:page]
     @unviewed[:feedback] = Kaminari.paginate_array(Feedback.unviewed.decorate).page params[:page]
+    @unviewed[:comments] = Kaminari.paginate_array(Comment.unviewed.decorate).page params[:page]
     @tag = Tag.new
   end
 end
