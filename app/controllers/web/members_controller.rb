@@ -34,7 +34,8 @@ class Web::MembersController < Web::ApplicationController
     if @member_form.save
       redirect_to account_path
     else
-      User.find(member.id).update type: nil
+      # FIXME fix this shiiiiit!!!!
+      ActiveRecord::Base.connection.execute "UPDATE users SET type = NULL WHERE id = #{member.id}"
       render action: :new
     end
   end
