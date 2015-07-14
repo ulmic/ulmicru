@@ -4,6 +4,7 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
+    create :news
     @comment = create :comment
   end
 

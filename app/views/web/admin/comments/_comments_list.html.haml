@@ -1,5 +1,5 @@
-= paginate comment, theme: 'twitter-bootstrap-3'
-- model_class = comment
+= paginate comments, theme: 'twitter-bootstrap-3'
+- model_class = Comment
 %table.table.table-condensed.table-hover
   %thead
     %tr
@@ -9,15 +9,18 @@
       %th= model_class.human_attribute_name(:text)
       %th= t 'helpers.links.actions'
   %tbody
-    - comment.each do |comment|
+    - comments.each do |comment|
       %tr.link{ class: state_color(comment), data: { href: edit_admin_comment_path(comment) } }
         %td= comment.id
-        %td= comment.record
+        %td= link_to comment.record.title, record_path(comment.record)
         %td= comment.user.decorate.short_name if comment.user_id
         %td= comment.text
         %td.actions
+          - unless comment.active?
+            = link_to admin_comment_path(comment, comment: { state: :active }), method: :patch, class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-ok
           = link_to edit_admin_comment_path(comment), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_comment_path(comment), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-= paginate comment, theme: 'twitter-bootstrap-3'
+= paginate comments, theme: 'twitter-bootstrap-3'

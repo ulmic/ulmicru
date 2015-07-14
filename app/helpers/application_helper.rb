@@ -1,5 +1,6 @@
 module ApplicationHelper
   include Concerns::AuthManagment
+  include ActionView::Helpers
 
   def title(page_title = t('.title'), area = :default)
     if area != :default

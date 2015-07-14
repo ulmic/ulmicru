@@ -11,6 +11,7 @@ namespace :deploy do
     puts "DONT DEPLOY TO STAGING!!!! DONT!!!"
     invoke 'unicorn:stop'
     invoke 'unicorn:start'
+    invoke 'sidekiq:stop'
   end
 
   after :publishing, :restart
