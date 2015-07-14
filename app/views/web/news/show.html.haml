@@ -84,7 +84,7 @@
                 \:
               = render 'layouts/web/elements/mic_member_tags', members: @members
     .news-comments
-      = render '/web/comments/index', comments: @news.comments
+      = render '/web/comments/index', comments: @news.comments.presented
       = render '/web/comments/form', record: @news
     .best-related-news
       -#%ul.tabs{ data: { tab: '' } }
