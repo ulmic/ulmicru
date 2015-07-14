@@ -3,7 +3,6 @@ class Web::Admin::CommentsController < Web::Admin::ApplicationController
     @comments = {}
     @comments[:unviewed] = Comment.unviewed.page params[:page]
     @comments[:active] = Comment.active.page params[:page]
-    @comments[:declined] = Comment.declined.page params[:page]
   end
 
   def new
