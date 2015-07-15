@@ -6,13 +6,21 @@ class Web::NewsControllerTest < ActionController::TestCase
     @news = create :news
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success, @response.body
   end
 
-  test "should get show" do
+  test 'should get show' do
     get :show, id: @news
     assert_response :success, @response.body
+  end
+
+  test 'should get show of unpublished news' do
+    @news.published_at = DateTime.now + 1.week
+    @news.save
+    5.times { create :tag }
+    get :show, id: @news
+    assert_response :redirect, @response.body
   end
 end
