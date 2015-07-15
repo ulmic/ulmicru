@@ -36,7 +36,7 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
 
   config.action_mailer.sendmail_settings = {
-     location: '/usr/bin/mail',
+     location: '/usr/sbin/sendmail',
      arguments: '-i -t'
    }
 
