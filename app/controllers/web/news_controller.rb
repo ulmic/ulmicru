@@ -16,7 +16,7 @@ class Web::NewsController < Web::ApplicationController
     topic_news_tags = @news.tags.last 2
     @topic_news = []
     topic_news_tags.each do |tag|
-      news_tag = Tag.where(target_type: tag.target_type, record_type: 'News').where("record_id != #{@news.id}").order('published_at DESC').last
+      news_tag = Tag.where(target_type: tag.target_type, record_type: 'News').where("record_id != #{@news.id}").order('created_at DESC').last
       @topic_news << NewsDecorator.decorate(news_tag.record) if news_tag
     end
     @last_news = NewsDecorator.decorate_collection News.published.first 3
