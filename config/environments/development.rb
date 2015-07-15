@@ -14,9 +14,9 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   # output to tmp/mails directory
-  config.action_mailer.delivery_method = :file
+  config.action_mailer.delivery_method = :sendmail
   # ... and to specify output location
   config.action_mailer.file_settings = { :location => Rails.root.join('tmp/mail') }
 
