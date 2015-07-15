@@ -13,7 +13,6 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like
@@ -28,7 +27,19 @@ Rails.application.configure do
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
+  config.action_mailer.raise_delivery_errors = true
+  # output to tmp/mails directory
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  # and to specify output location
+  config.action_mailer.file_settings = { :location => Rails.root.join('tmp/mail') }
   # Do not fallback to assets pipeline if a precompiled asset is missed.
+
+  config.action_mailer.sendmail_settings = {
+     location: '/usr/bin/mail',
+     arguments: '-i -t'
+   }
+
   config.assets.compile = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
