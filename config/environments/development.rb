@@ -15,6 +15,10 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  # output to tmp/mails directory
+  config.action_mailer.delivery_method = :file
+  # ... and to specify output location
+  config.action_mailer.file_settings = { :location => Rails.root.join('tmp/mail') }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
