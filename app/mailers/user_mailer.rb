@@ -6,11 +6,6 @@ class UserMailer < ApplicationMailer
 
   default template_path: "mailers/#{self.name.underscore}"
 
-  def confirmation_instructions(user_model)
-    @user = user_model
-    mail to: user_model.email
-  end
-
   def after_create(object, user)
     @user = user
     @image_src = "http://ul-lider.ru/confirmation_idea_fair.jpg"

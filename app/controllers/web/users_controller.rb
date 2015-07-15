@@ -11,8 +11,7 @@ class Web::UsersController < Web::ApplicationController
     else
       if @user_form.save
         #TODO replace to observers
-        #send_notification @user_form.model, @user_form.model, :after_create
-        UserMailer.after_create(@user_form.model, @user_form.model).deliver_now
+        send_notification @user_form.model, @user_form.model, :after_create
 
         sign_in @user_form.model
         redirect_to account_path
