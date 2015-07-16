@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     resources :users, only: [] do
       member do
         get :confirm
+        get :resent_email_instructions
       end
     end
     namespace :users do
