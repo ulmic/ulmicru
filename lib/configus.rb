@@ -33,6 +33,11 @@ Configus.build Rails.env do
       username 'ulmic_stg'
       password 'podporog'
     end
+    host 'staging.ulmic.ru'
+    full_host 'http://staging.ulmic.ru'
+    mailer do
+      from "noreply@ulmic.ru"
+    end
   end
   env :development, parent: :staging do
     host 'localhost:3000'
