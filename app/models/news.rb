@@ -43,4 +43,9 @@ class News < ActiveRecord::Base
       transition :removed => :unviewed
     end
   end
+
+  def category
+    activity_line_tag = tags.activity_lines.first
+    activity_line_tag.target.title if activity_line_tag
+  end
 end
