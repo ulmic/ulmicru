@@ -34,6 +34,9 @@ Configus.build Rails.env do
       password 'podporog'
     end
   end
-  env :development, parent: :staging
+  env :development, parent: :staging do
+    host 'localhost:3000'
+    full_host 'http://localhost:3000'
+  end
   env :test, parent: :development
 end

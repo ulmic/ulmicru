@@ -6,5 +6,6 @@ xml.item do
   xml.description item.lead
   xml.title item.title
   xml.category item.category
+  xml.enclosure url: "#{configus.full_host}#{item.photo.event_main_page_version.url}", type: 'image/jpeg'
   xml.tag! 'dc:creator', item.member.decorate.short_name
 end
