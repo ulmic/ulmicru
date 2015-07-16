@@ -49,6 +49,9 @@
     color: #db4437;
   }
 }
+.icon-rss {
+  @include fa-rounded-icon(".fa-rss-square");
+}
 
 .min-icon {
   vertical-align: middle;
@@ -60,7 +63,7 @@
     font-size: 28px;
     line-height: 32px;
   }
-  &.icon-facebook, &.icon-twitter, &.icon-google {
+  &.icon-facebook, &.icon-twitter, &.icon-google, &.icon-rss {
     width: 28px;
     height: 32px;
     font-size: 32px;
