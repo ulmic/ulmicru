@@ -99,6 +99,7 @@ Rails.application.routes.draw do
   end
   namespace :rss do
     resources :news, only: :index
+    resources :articles, only: :index
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
   get '*unmatched_route', to: 'web/pages#show', slug: :not_found

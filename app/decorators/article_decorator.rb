@@ -8,4 +8,6 @@ class ArticleDecorator < ApplicationDecorator
   def name
     title
   end
+
+  alias :lead :short_body
 end
