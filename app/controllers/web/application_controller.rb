@@ -16,7 +16,7 @@ class Web::ApplicationController < ApplicationController
 
   def notification_count
     if signed_in? && current_user.role.admin?
-      collections = [ :member, :questionary, :news, :event, :user, :feedback, :comment ]
+      collections = [ :member, :questionary, :news, :event, :user, :feedback, :comment, :article ]
       @notification_count = 0
       collections.each do |collection_type|
         @notification_count += collection_type.to_s.capitalize.constantize.unviewed.count
