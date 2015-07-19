@@ -1,4 +1,6 @@
 - model_class = Category
+- current_title = page_title(action, model_class.model_name.human)
+- title current_title, :admin
 .page-header
   %h1=t model_class.model_name.human
 .row
