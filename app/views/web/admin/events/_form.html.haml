@@ -51,11 +51,6 @@
       .registrations
         %h3
           = t('.registrations')
-          = f.simple_fields_for :registrations do |reg_form|
-            .registration_fields
-              = reg_form.input :user_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
-              = reg_form.input :role, as: :select, collection: enumerize_locales_hash(Event::Registration, :role)
-              = link_to_remove_association 'X', reg_form, class: 'btn btn-danger remove-registration', data: { 'wrapper-class' => 'registration_fields' }
         = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), events_path, class: 'btn btn-default'
