@@ -1,6 +1,4 @@
 - title @news.title
-= stylesheet_link_tag 'web/comments'
-= javascript_include_tag 'web/comments'
 - content_for :meta do
   %meta{ property: 'og:description', content: "#{@news.description_lead} #МИЦ" }
   %meta{ property:'og:image', content: @news.photo }

@@ -10,9 +10,6 @@ class Web::NewsController < Web::ApplicationController
     unless @news.is_published?
       redirect_to not_found_page_path
     end
-    @activity_lines = @news.tags.activity_lines
-    @events = @news.tags.events
-    @teams = @news.tags.teams
     topic_news_tags = @news.tags.last 2
     @topic_news = []
     topic_news_tags.each do |tag|
