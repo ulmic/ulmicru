@@ -20,7 +20,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
 
   def create
     @event_form = EventForm.new_with_model
-    @event_form.submit(params[:event])
+    @event_form.submit params[:event]
     if @event_form.save
       redirect_to admin_events_path
     else

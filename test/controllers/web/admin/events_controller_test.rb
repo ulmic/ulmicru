@@ -21,7 +21,7 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
   test 'should create event' do
     attributes = attributes_for :event
     post :create, event: attributes
-    assert_response :redirect, @response.body
+    assert_response :redirect
     assert_redirected_to admin_events_path
     assert_equal attributes[:title], Event.last.title
   end
