@@ -5,6 +5,10 @@ class ArticleDecorator < ApplicationDecorator
     "#{strip_tags(object.body)[0..50]}..." if object.body
   end
 
+  def description_lead
+    "#{model.body.first(200)}..."
+  end
+
   def name
     title
   end

@@ -90,7 +90,7 @@ ru:
           #we_have_send_you_activation_email: Мы отправили вам письмо с инструкциями по активации Вашего аккаунта.
           we_have_send_you_activation_email: Администраторы сайта в скором времени подтвердят ваш аккаунт
           resent_email_instructions: Заново отправить письмо на почту
-          if_email_was_not_delivered: Если письмо не пришло вам по указанному адресу, то нажмите конопку 'Заново отправить письмо на почту' 
+          if_email_was_not_delivered: Если письмо не пришло вам по указанному адресу, то нажмите конопку 'Заново отправить письмо на почту'
           you_want_to_join_mic: Вы отправили заявку на вступление в Молодёжный инициативный центр
       new:
         register: Регистрация
@@ -110,7 +110,8 @@ ru:
     articles:
       shared:
         default_show:
-          same_themes: "Смотри также:"
+          same_articles: Похожие статьи
+          popular_articles: Популярные статьи
     events:
       show:
         where: 'Где'

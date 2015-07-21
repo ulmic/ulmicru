@@ -2,6 +2,11 @@
   .article-title
     %a{ href: "#{link}" }
       = "#{title}"
--#%p
-  %a
-    = "#{text}"
+  .article-comments-views
+    %span.icon-eye
+    %span.view-text
+      = views
+    - if comments > 0
+      %span.icon-comment
+      %span.comment-text
+        = comments

@@ -1,12 +1,38 @@
-.news.articles.container-big
+= stylesheet_link_tag 'web/news'
+.articles.container-big.row
   %h3.title
     = @article.title
-  .news-content
-    .container-big
-      .row.news-row-content.large-collapse.medium-collapse
+  .news-content.big-column
+    .main-article-content
+      .row.article-row-content
         -# small-push-4 - для удобства, чтобы @article.body было в конце файла
-        .small-12.columns
+        .small-12.columns.text
           = raw(@article.body)
           - @article.attachments.each do |document|
             = render_element 'mic_document', document: document
-    %hr
+    .article-footer
+      .news-comments
+        = render '/web/comments/index', comments: @article.comments.presented.reverse
+        = render '/web/comments/form', record: @article
+  %aside.article-sidebar
+    - if @topic_articles.any?
+      %h3
+        = t('.same_articles')
+      .side-content
+        .side-related-articles
+          - @topic_articles.each do |article|
+            .mic-article
+              = render_element 'mic_article', link: article_path(article), |
+                                              title: article.title, |
+                                              views: article.views, |
+                                              comments: article.comments.count
+    %h3
+      = t('.popular_articles')
+    .side-content
+      .side-related-articles
+        - @popular_articles.each do |article|
+          .mic-article
+            = render_element 'mic_article', link: article_path(article), |
+                                            title: article.title, |
+                                            views: article.views, |
+                                            comments: article.comments.count

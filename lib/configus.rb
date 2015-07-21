@@ -9,7 +9,7 @@ Configus.build Rails.env do
     host 'ulmic.ru'
     full_host 'http://ulmic.ru'
     mailer do
-      from "noreply@ulmic.ru"
+      from 'noreply@ulmic.ru'
     end
     api do
       foursquare do
@@ -25,6 +25,9 @@ Configus.build Rails.env do
         full_name 'organization.projects.international_volunteer_school'
         url 'https://ulmic-volunteers-school.herokuapp.com/'
       end
+    end
+    organization do
+      logo 'http://ulmic.ru/assets/apps/logo-mic-square.png'
     end
   end
 
