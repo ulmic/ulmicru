@@ -4,7 +4,7 @@
   - if signed_in?
     - if current_user.state == 'confirmed'
       .row
-        .small-2.columns
+        .small-2.columns.avatar
           - if current_user.type == 'Member'
             = image_tag current_user.avatar.small
           - else

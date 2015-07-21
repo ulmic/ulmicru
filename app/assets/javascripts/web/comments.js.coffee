@@ -1,6 +1,6 @@
 $ ->
   comment_template = (comment) ->
-    "<div class='row comment'><F2>
+    "<div class='row comment'>
       <div class='small-2 columns'>
         <img src='#{comment.image}' alt='Small muptah5vzqy' />
       </div>

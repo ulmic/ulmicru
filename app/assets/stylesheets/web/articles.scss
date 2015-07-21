@@ -1,25 +1,97 @@
 @import "mixins";
+@import "elements";
+@import "foundation/components/grid";
+
+$orange: #ffa531;
 
 .articles {
   &.container-big {
     margin-bottom: 50px;
   }
 
-  .same-themes {
-    margin-top: 24px;
-    .yadirect {
-      margin-top: 16px;
+  .title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .text {
+    text-align: justify;
+    font-family: mic;
+  }
+
+  .big-column {
+    padding: 0px;
+    width: 77%;
+    @extend .columns;
+    .main-article-content {
+      .article-row-content {
+        padding: 5px;
+      }
+    }
+    h1 {
+      font: 300 28px 'mic';
+      color: #131313;
+    }
+    p.news-lead {
+      font: 400 16px 'mic-beau-reg';
+      color: #131313;
+    }
+    p.text {
+      font: 400 14px / 20px 'mic-beau-reg';
+      color: #282828;
+    }
+    .article-footer {
+      width: 100%;
+      border-top: 1px solid lightgray;
+      padding-top: 5px;
+      .news-comments {
+        border: none;
+      }
     }
   }
 
-  .yadirect-row {
-    margin-bottom: 36px;
+  .article-sidebar {
+    @extend .columns;
+    width: 23%;
+    min-height: 500px;
+    h3 {
+      font: 400 20px 'mic-square-reg';
+      color: #131313;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 30px;
+      margin-top: 15px;
+      &:first-child {
+        margin-top: none;
+      }
+    }
+    .side-content {
+      border-bottom: 1px solid lightgray;
+      &:last-child {
+        border-bottom: none
+      }
+      .side-related-articles {
+        .mic-article {
+          margin-top: 20px;
+          margin-bottom: 10px;
+          a {
+            color: #333;
+            text-decoration: underline;
+            &:hover {
+              color: $orange;
+            }
+          }
+        }
+      }
+    }
   }
 
-  .same-themes-title {
-    font-family: mic-beau-reg;
-    font-size: rem-calc(24);
-    margin-bottom: rem-calc(10);
+  a {
+    color: $orange;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

@@ -288,4 +288,13 @@ hr.orange {
 		clear: both;
 		text-align: justify;
 	}
+    .article-comments-views {
+      text-align: left;
+      font-size: 14px;
+      color: rgb(97, 97, 97);
+      font-family: mic-square-reg;
+      .icon-comment {
+        margin-left: 5px;
+      }
+    }
 }

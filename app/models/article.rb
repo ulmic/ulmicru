@@ -3,6 +3,8 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :tags, as: :record, dependent: :destroy
   has_and_belongs_to_many :attachments, class_name: 'Document'
+  has_many :comments, as: :record,
+                      dependent: :destroy
 
   validates :title,       presence: true
   validates :category_id, presence: true
