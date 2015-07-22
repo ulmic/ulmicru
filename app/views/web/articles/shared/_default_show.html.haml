@@ -11,6 +11,13 @@
           - @article.attachments.each do |document|
             = render_element 'mic_document', document: document
     .article-footer
+      .social.row
+        .left
+          %span.icon-eye
+          %span.view-text
+            = @article.views
+        .icons.right
+          = render 'layouts/web/shared/social_sharing'
       .news-comments
         = render '/web/comments/index', comments: @article.comments.presented.reverse
         = render '/web/comments/form', record: @article
