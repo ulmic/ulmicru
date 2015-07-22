@@ -45,8 +45,14 @@ $orange: #ffa531;
       width: 100%;
       border-top: 1px solid lightgray;
       padding-top: 5px;
+      font-family: mic;
+      font-size: 14px;
       .news-comments {
         border: none;
+      }
+      .social {
+        padding-left: 15px;
+        padding-right: 15px;
       }
     }
   }
