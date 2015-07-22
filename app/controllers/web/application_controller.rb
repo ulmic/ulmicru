@@ -12,6 +12,7 @@ class Web::ApplicationController < ApplicationController
       @korporative_category = Category.find_by_name 'Корпоративные проекты'
     end
     @feedback = FeedbackForm.new_with_model
+    @rss_article_id = 19
   end
 
   def notification_count
