@@ -7,7 +7,7 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:category_id)
-      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:views)
       %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody
@@ -17,7 +17,7 @@
         %td= link_to article.title, edit_admin_article_path(article)
         %td= article.short_body
         %td= (article.category.present? ? article.category.name : "")
-        %td=l article.created_at
+        %td= article.views
         %td{ style: 'width: 200px' }
           = render 'web/admin/tags/buttons'
           = render 'web/admin/tags/list', record: article

@@ -8,6 +8,6 @@ class Web::ArticlesController < Web::ApplicationController
     @strings = @article.tags.string
     @not_strings = @article.tags.events + @article.tags.activity_lines + @article.tags.teams
     @members = @article.tags.members.map &:target
-    @popular_articles = ArticleDecorator.decorate_collection Article.popular.first 3
+    @popular_articles = ArticleDecorator.decorate_collection Article.broadcasted.popular.first 3
   end
 end
