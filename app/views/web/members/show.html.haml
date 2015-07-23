@@ -135,7 +135,9 @@
             - @articles.each do |article|
               %li.mic-one-news
                 = render_element 'mic_article',  link: article_path(article), |
-                                                 title: article.title
+                                                 title: article.title, |
+                                                 views: article.views, |
+                                                 comments: article.comments.count
             - @news.each do |news|
               %li.mic-one-news
                 = render_element 'mic_one_news', img_src: news.photo, |

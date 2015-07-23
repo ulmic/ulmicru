@@ -36,6 +36,11 @@ class Web::MembersControllerTest < ActionController::TestCase
     registration = create :event_registration
     registration.user_id = member.id
     registration.save
+    create :article
+    tag = create :tag
+    tag.record_id = Article.last.id
+    tag.record_type = 'Article'
+    tag.save
     member.confirm
     create :news
     create :tag
