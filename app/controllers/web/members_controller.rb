@@ -21,6 +21,10 @@ class Web::MembersController < Web::ApplicationController
           reg.user_id = exists_member.id
           reg.save
         end
+        current_user.comments.each do |comment|
+          comment.user_id = exists_member.id
+          comment.save
+        end
         old_user = current_user
         sign_in exists_member
         old_user.destroy

@@ -1,6 +1,7 @@
 class Web::Admin::EventsController < Web::Admin::ApplicationController
   before_filter :choose_teams, only: [ :new, :edit ]
   before_filter :choose_members, only: [ :new, :edit ]
+
   def index
     events = ::Event.presented
     @future_events = Kaminari.paginate_array(events.future.decorate).page params[:page]

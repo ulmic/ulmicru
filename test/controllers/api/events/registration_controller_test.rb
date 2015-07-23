@@ -6,7 +6,6 @@ class Api::Events::RegistrationsControllerTest < ActionController::TestCase
     create :event
     user.confirm
     sign_in user
-    @event_registration = create :event_registration
   end
 
   test 'should get create' do
@@ -16,6 +15,7 @@ class Api::Events::RegistrationsControllerTest < ActionController::TestCase
   end
 
   test 'should delete destroy'  do
+    @event_registration = create :event_registration
     count = Event::Registration.count
     delete :destroy, id: 1, event_id: @event_registration.event, user_id: @event_registration.user
     assert_response :success, @response.body

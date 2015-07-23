@@ -3,7 +3,7 @@ $ ->
 
   fill_coordinates_input = (response)  ->
     coordinates = response.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.upperCorner
-    $('#places_place_ll').val coordinates.replace(' ', ',')
+    $('#places_place_ll').val coordinates.split(' ').reverse().join()
     $submit_button.show()
 
   $('.see_coordinates').click (e) ->
