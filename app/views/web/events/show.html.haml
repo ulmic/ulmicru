@@ -65,11 +65,12 @@
         = "(#{@registrations.count})"
     %ul.small-block-grid-5.participants
       - @registrations.each do |registration|
-        %li.participant.mic-member{ id: "participant_#{registration.user.id}" }
-          = render_element 'mic_member', img_src: registration.user.decorate.element_avatar, |
-                                         link: link_to_profile(registration.user), |
-                                         name: registration.user.decorate.short_name, |
-                                         role: registration.decorate.localize_role
+        - if registration.user_id.present?
+          %li.participant.mic-member{ id: "participant_#{registration.user.id}" }
+            = render_element 'mic_member', img_src: registration.user.decorate.element_avatar, |
+                                           link: link_to_profile(registration.user), |
+                                           name: registration.user.decorate.short_name, |
+                                           role: registration.decorate.localize_role
     - if @other_registrations.any?
       .get-more-participants
         %button.mic-press-button.mic-button-small#show_other_participants
