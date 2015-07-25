@@ -105,10 +105,10 @@ $ ->
   $show_other_participants.click ->
     $list_other_participants = $('ul.small-block-grid-5.participants.other')
     if $list_other_participants.css('display') == 'none'
-      $list_other_participants.show()
+      $list_other_participants.slideDown()
       $show_other_participants.html I18n.t('web.events.show.hide')
     else
-      $list_other_participants.hide()
+      $list_other_participants.slideUp()
       $show_other_participants.html I18n.t('web.events.show.see_more')
   return
 
