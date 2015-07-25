@@ -62,7 +62,7 @@
     %h3.title
       = t('.attenders')
       %span#participants_count
-        = "(#{@registrations.count})"
+        = "(#{@registrations.count + @other_registrations.count})"
     %ul.small-block-grid-5.participants
       - @registrations.each do |registration|
         - if registration.user_id.present?
