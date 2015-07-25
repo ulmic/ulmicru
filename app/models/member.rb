@@ -18,7 +18,8 @@ class Member < User
                         allow_blank: true
   validates :patronymic, human_name: true,
                          allow_blank: true
-  validates :ticket, uniqueness: true
+  validates :ticket, uniqueness: true,
+                     allow_blank: true
   validates :mobile_phone, phone: true,
                            allow_blank: true
   validates :motto, uniqueness: true,
