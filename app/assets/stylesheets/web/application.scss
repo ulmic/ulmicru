@@ -64,6 +64,9 @@ body#noresponsive {
 .container {
   width: 90%;
   margin: 0 auto;
+  a {
+    color: rgb(252, 151, 39);
+  }
 }
 .row {
 		max-width: 80rem;

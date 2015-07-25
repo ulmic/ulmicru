@@ -6,9 +6,7 @@ class User < ActiveRecord::Base
   has_many :registrations, class_name: 'Event::Registration',
                            foreign_key: :user_id
 
-  validates :email, uniqueness: true,
-                    allow_nil: true,
-                    email: true
+  validates :email, email: true
   validates :first_name, human_name: true,
                          allow_blank: true
   validates :last_name, human_name: true,
