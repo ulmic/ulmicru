@@ -1,8 +1,6 @@
 class Questionary < Member
   validates :experience, presence: true
   validates :want_to_do, presence: true
-  validates :ticket, uniqueness: true,
-                     allow_nil: true
 
   include QuestionaryScopes
 
