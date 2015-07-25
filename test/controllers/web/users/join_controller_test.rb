@@ -8,6 +8,9 @@ class Web::Users::JoinControllerTest < ActionController::TestCase
   end
 
   test 'should get new' do
+    corporate_header = create :member
+    corporate_header.ticket = 238
+    corporate_header.save
     get :new
     assert_response :success, @response.body
   end
@@ -21,6 +24,9 @@ class Web::Users::JoinControllerTest < ActionController::TestCase
   end
 
   test 'should not get create' do
+    corporate_header = create :member
+    corporate_header.ticket = 238
+    corporate_header.save
     attributes = attributes_for :questionary
     attributes[:experience] = nil
     post :create, questionary: attributes

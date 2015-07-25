@@ -27,7 +27,7 @@ class Web::MembersController < Web::ApplicationController
         end
         old_user = current_user
         sign_in exists_member
-        old_user.destroy
+        old_user.remove
       end
     else
       member = current_user.becomes! Member
