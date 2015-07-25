@@ -12,14 +12,10 @@
         = position
     .small-8.columns.end.right
       %i.fa.fa-at
-      %a{ href: "mailto:#{user.email}" }
-        %span
-          = user.email
+      = mail_to user.email
       %br
       %i.fa.fa-phone
-      %a{ href: "tel:#{user.mobile_phone}" }
-        %span
-          = user.mobile_phone
+      = tel_tag user.mobile_phone
       %br
       .social_networks
         - auth = user.has_auth_provider?(:vkontakte)
