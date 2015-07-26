@@ -29,8 +29,8 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
   def edit
     # FIXME good realize of prev and next
     @news_form = NewsForm.find_with_model params[:id]
-    @previous_news = News.where('id < ?', @news_form.model.id).last
-    @next_news = News.where('id > ?', @news_form.model.id).first
+    @previous_news = News.where('id < ? AND state = ?', @news_form.model.id, @news_form.model.state).last
+    @next_news = News.where('id > ? AND state = ?', @news_form.model.id, @news_form.model.state).first
   end
 
   def update
