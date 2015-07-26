@@ -28,7 +28,7 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
     @activity_line_form = ActivityLineForm.find_with_model params[:id]
     @activity_line_form.submit(params[:activity_line])
     if @activity_line_form.save
-      redirect_to admin_activity_lines_path
+      redirect_to edit_admin_activity_line_path @activity_line_form.model
     else
       choose_members
       render action: :edit

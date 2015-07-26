@@ -29,7 +29,7 @@ class Web::Admin::FeedbackController < Web::Admin::ApplicationController
     @feedback_form = FeedbackForm.find_with_model params[:id]
     @feedback_form.submit(params[:feedback])
     if @feedback_form.save
-      redirect_to admin_feedback_index_path
+      redirect_to edit_admin_feedback_path @feedback_form.model
     else
       render action: :edit
     end

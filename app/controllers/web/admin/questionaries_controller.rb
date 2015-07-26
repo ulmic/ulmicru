@@ -28,7 +28,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form = QuestionaryForm.find_with_model params[:id]
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
-      redirect_to admin_questionaries_path
+      redirect_to edit_admin_questionary_path @questionary_form.model
     else
       render action: :edit
     end

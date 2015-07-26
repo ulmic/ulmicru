@@ -35,7 +35,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     @event_form = EventForm.find_with_model params[:id]
     @event_form.submit(params[:event])
     if @event_form.save
-      redirect_to admin_events_path
+      redirect_to edit_admin_event_path @event_form.model
     else
       choose_teams
       choose_members

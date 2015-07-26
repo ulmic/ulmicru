@@ -2,7 +2,7 @@
   %h1= page_title(action, t('activerecord.models.questionary'))
 .row
   .col-lg-12
-    = render 'layouts/web/admin/shared/errors', object: @questionary_form
+    = render 'layouts/web/admin/shared/messages', object: @questionary_form
 .row
   .col-lg-6
     = simple_form_for [:admin, @questionary_form], input_html: { class: 'form-horizontal' } do |f|

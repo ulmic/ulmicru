@@ -29,7 +29,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     attributes = attributes_for :user
     patch :update, user: attributes, id: @user
     assert_response :redirect, @response.body
-    assert_redirected_to admin_users_path
+    assert_redirected_to edit_admin_user_path @user
     @user.reload
     assert_equal attributes[:email], @user.email
   end

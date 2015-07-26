@@ -26,7 +26,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     @category_form = CategoryForm.find_with_model params[:id]
     @category_form.submit params[:category]
     if @category_form.save
-      redirect_to admin_categories_path
+      redirect_to edit_admin_category_path @category_form.model
     else
       render action: :edit
     end

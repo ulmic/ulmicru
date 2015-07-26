@@ -35,7 +35,7 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     attributes = attributes_for :comment
     patch :update, comment: attributes, id: @comment
     assert_response :redirect, @response.body
-    assert_redirected_to admin_comments_path
+    assert_redirected_to edit_admin_comment_path @comment
     @comment.reload
     assert_equal attributes[:text], @comment.text
   end

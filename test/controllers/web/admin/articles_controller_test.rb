@@ -4,7 +4,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
-    @category = create :category
+    @article = create :article
     @article = create :article
   end
 
@@ -37,15 +37,16 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update category by admin" do
+  test "should update article by admin" do
     attributes = attributes_for :article
     put :update, id: @article, article: attributes
     assert_response :redirect
+    assert_redirected_to edit_admin_article_path @article
     @article.reload
     assert_equal attributes[:title], @article.title
   end
 
-  test "should not update adticle by admin" do
+  test "should not update article by admin" do
     attributes = attributes_for :article
     attributes[:title] = nil
     count_before_save = Article.count
@@ -54,7 +55,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should destroy category" do
+  test "should destroy article" do
     count =  Article.count
     delete :destroy, id: @article
     @article.reload

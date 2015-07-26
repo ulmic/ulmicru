@@ -7,7 +7,7 @@
     = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket), class: :blank
 .row
   .col-lg-12
-    = render 'layouts/web/admin/shared/errors', object: @event_form
+    = render 'layouts/web/admin/shared/messages', object: @event_form
 .row
   .col-lg-12
     = simple_form_for [:admin, @event_form], input_html: { class: 'form-horizontal' } do |f|

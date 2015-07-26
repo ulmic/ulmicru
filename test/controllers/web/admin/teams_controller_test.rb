@@ -40,6 +40,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     attributes = attributes_for :team
     put :update, id: @team, team: attributes
     assert_response :redirect
+    assert_redirected_to edit_admin_team_path @team
     @team.reload
     assert_equal attributes[:title], @team.title
   end
