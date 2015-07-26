@@ -16,10 +16,11 @@ $ ->
 
   open_tab_by_hash = ->
     hash = window.location.hash
-    $('#tabs div').removeClass 'active'
-    $("#tabs #{hash}").addClass 'active'
-    $('#tabs ul.nav li').removeClass 'active'
-    $("#tabs ul.nav li a[href=#{hash}]").parents('li').first().addClass 'active'
+    unless hash == ''
+      $('#tabs div').removeClass 'active'
+      $("#tabs #{hash}").addClass 'active'
+      $('#tabs ul.nav li').removeClass 'active'
+      $("#tabs ul.nav li a[href=#{hash}]").parents('li').first().addClass 'active'
 
   update_url_of_page_links = ->
     hash = window.location.hash

@@ -2,10 +2,17 @@
 - current_title = page_title(action, News.model_name.human)
 - title current_title, :admin
 .page-header
-  %h1= current_title
+  %h1
+    - if @previous_news
+      = link_to edit_admin_news_path(@previous_news), class: 'btn btn-default' do
+        %span.glyphicon.glyphicon-chevron-left
+    = current_title
+    - if @next_news
+      = link_to edit_admin_news_path(@next_news), class: 'btn btn-default' do
+        %span.glyphicon.glyphicon-chevron-right
 .row
   .col-lg-12
-    = render 'layouts/web/admin/shared/errors', object: @news_form
+    = render 'layouts/web/admin/shared/messages', object: @news_form
 .row
   .col-lg-12
     = simple_form_for [:admin, @news_form], input_html: { class: 'form-horizontal' } do |f|

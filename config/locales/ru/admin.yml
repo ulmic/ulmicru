@@ -1,5 +1,7 @@
 ru:
   admin: Админка
+  messages:
+    record_saved_success: Сохранено
   web:
     admin:
       welcome:
