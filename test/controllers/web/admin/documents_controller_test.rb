@@ -34,7 +34,7 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
     attributes = attributes_for :document
     patch :update, document: attributes, id: @document
     assert_response :redirect, @response.body
-    assert_redirected_to admin_documents_path
+    assert_redirected_to edit_admin_document_path @document
     @document.reload
     assert_equal attributes[:title], @document.title
   end

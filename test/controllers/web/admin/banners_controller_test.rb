@@ -29,7 +29,7 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     attributes = attributes_for :banner
     patch :update, banner: attributes, id: @banner
     assert_response :redirect, @response.body
-    assert_redirected_to admin_banners_path
+    assert_redirected_to edit_admin_banner_path @banner
     @banner.reload
     assert_equal attributes[:link], @banner.link
   end

@@ -24,7 +24,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     assert_redirected_to admin_categories_path
     assert_equal attributes[:name], Category.last.name
   end
-  
+
   test "should not create category" do
     attributes = { name: nil }
     post :create, category: attributes
@@ -40,6 +40,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     attributes = attributes_for :category
     put :update, id: @category, category: attributes
     assert_response :redirect
+    assert_redirected_to edit_admin_category_path @category
     @category.reload
     assert_equal attributes[:name], @category.name
   end
@@ -55,7 +56,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
 
   test "should destroy category" do
     count =  Category.count
-    delete :destroy, id: @category 
+    delete :destroy, id: @category
     @category.reload
     assert @category.removed?
   end

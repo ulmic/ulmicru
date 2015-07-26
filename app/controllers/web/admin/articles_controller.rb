@@ -34,7 +34,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
     @article_form = ArticleForm.find_with_model params[:id]
     @article_form.submit params[:article]
     if @article_form.save
-      redirect_to admin_articles_path
+      redirect_to edit_admin_article_path @article_form.model
     else
       render action: :edit
     end

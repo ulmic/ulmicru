@@ -29,7 +29,7 @@ class Web::Admin::FeedbackControllerTest < ActionController::TestCase
     attributes = attributes_for :feedback
     patch :update, feedback: attributes, id: @feedback
     assert_response :redirect, @response.body
-    assert_redirected_to admin_feedback_index_path
+    assert_redirected_to edit_admin_feedback_path @feedback
     @feedback.reload
     assert_equal attributes[:url], @feedback.url
   end

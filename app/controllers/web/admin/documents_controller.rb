@@ -25,7 +25,7 @@ class Web::Admin::DocumentsController < Web::Admin::ApplicationController
     @document_form = DocumentForm.find_with_model params[:id]
     @document_form.submit(params[:document])
     if @document_form.save
-      redirect_to admin_documents_path
+      redirect_to edit_admin_document_path @document_form.model
     else
       render action: :edit
     end

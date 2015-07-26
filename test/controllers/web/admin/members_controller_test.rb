@@ -35,7 +35,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     attributes[:positions_attributes] ||= {}
     attributes[:positions_attributes]['0'] = attributes_for :position
     patch :update, member: attributes, id: @member
-    assert_redirected_to admin_members_path
+    assert_redirected_to edit_admin_member_path @member
     @member.reload
     assert_equal attributes[:patronymic], @member.patronymic
   end

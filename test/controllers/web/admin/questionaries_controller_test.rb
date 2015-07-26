@@ -35,7 +35,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     attributes = attributes_for :questionary
     patch :update, questionary: attributes, id: @questionary
     assert_response :redirect, @response.body
-    assert_redirected_to admin_questionaries_path
+    assert_redirected_to edit_admin_questionary_path @questionary
     @questionary.reload
     assert_equal attributes[:patronymic], @questionary.patronymic
   end

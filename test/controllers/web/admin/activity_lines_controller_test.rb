@@ -27,7 +27,7 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
   test 'should patch update' do
     attributes = attributes_for :activity_line
     patch :update, activity_line: attributes, id: @activity_line
-    assert_redirected_to admin_activity_lines_path
+    assert_redirected_to edit_admin_activity_line_path @activity_line
     @activity_line.reload
     assert_equal attributes[:title], @activity_line.title
   end

@@ -19,4 +19,13 @@ module Web::Admin::ApplicationHelper
   def record_path(record)
     send "#{record.class.name.underscore}_path", record
   end
+
+  def form_after_save?
+    referrer = Rails.application.routes.recognize_path request.referrer
+    referrer[:controller] == params[:controller] && referrer[:action] == params[:action]
+  end
+
+  def object_updated_less_minute_ago?(object)
+    ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1
+  end
 end

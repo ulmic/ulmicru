@@ -27,7 +27,7 @@ class Web::Admin::CommentsController < Web::Admin::ApplicationController
     @comment_form = CommentForm.find_with_model params[:id]
     @comment_form.submit params[:comment]
     if @comment_form.save
-      redirect_to admin_comments_path
+      redirect_to edit_admin_comment_path @comment_form.model
     else
       render action: :edit
     end

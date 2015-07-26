@@ -48,7 +48,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @member_form = member_form(member).new member
     @member_form.submit params[:member]
     if @member_form.save
-      redirect_to admin_members_path
+      redirect_to edit_admin_member_path @member_form.model
     else
       choose_members
       render action: :edit

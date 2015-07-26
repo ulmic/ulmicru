@@ -5,7 +5,7 @@
   %h1= page_title(action, Comment.model_name.human)
 .row
   .col-lg-12
-    = render 'layouts/web/admin/shared/errors', object: @comment_form
+    = render 'layouts/web/admin/shared/messages', object: @comment_form
 .row
   .col-lg-6
     = simple_form_for @comment_form, url: { controller: 'web/admin/comments', action: action }, input_html: { class: 'form-horizontal' } do |f|

@@ -41,7 +41,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     attributes = attributes_for :news
     put :update, id: @news, news: attributes
     assert_response :redirect
-
+    assert_redirected_to edit_admin_news_path @news
     @news.reload
     assert_equal attributes[:title], @news.title
   end
