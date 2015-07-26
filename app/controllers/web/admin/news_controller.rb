@@ -8,13 +8,6 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @tag = Tag.new
   end
 
-  def show
-    @news = News.find(params[:id]).decorate
-    if !@news.is_published?
-      #FIXME there 404 error path
-    end
-  end
-
   def create
     @news_form = NewsForm.new_with_model
 
