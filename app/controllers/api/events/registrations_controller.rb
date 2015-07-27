@@ -7,7 +7,7 @@ class Api::Events::RegistrationsController < Api::Events::ApplicationController
     if params[:event_registration][:user_id] == current_user.id.to_s
       @event_form.submit params[:event_registration]
       if @event_form.save
-        render json: { role: @event_form.model.role, participant: @event_form.model.user.to_json(only: [:id, :ticket, :first_name, :last_name, :short_name, :avatar]) }
+        render json: { role: @event_form.model.role, participant: @event_form.model.user.to_json(only: [:id, :ticket, :first_name, :last_name]), avatar: @event_form.model.user.decorate.element_avatar }
       else
         head :bad_request
       end

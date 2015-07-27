@@ -2,10 +2,10 @@ $ ->
   $participants_count_span = $('span#participants_count')
   $participants_list = $('ul.participants')
 
-  participant_member_template = (participant, role) ->
+  participant_member_template = (participant, avatar_url, role) ->
     "<li class='participant mic-member' id = 'participant_#{participant.id}'>
        <a href='#{Routes.member_path(participant.ticket)}'>
-         <img src='#{participant.avatar.url}'>
+         <img src='#{avatar_url}'>
        </a>
        <section>
          <a href='#{Routes.member_path(participant.ticket)}'>
@@ -19,9 +19,9 @@ $ ->
        </section>
      </li>"
 
-  participant_user_template = (participant, role) ->
+  participant_user_template = (participant, avatar_url, role) ->
     "<li class='participant mic-member' id = 'participant_#{participant.id}'>
-       <img src='/default-man-icon.png'>
+       <img src='#{avatar_url}'>
        <section>
          <div class='name'>
            #{participant.first_name} #{participant.last_name}
@@ -46,10 +46,12 @@ $ ->
   add_event_participant = (response) ->
     participant = JSON.parse response.participant
     role = response.role
+    unless typeof response.avatar == 'string'
+      avatar_url = response.avatar.avatar.url
     if participant.ticket == null
-      $participants_list.prepend participant_user_template participant, role
+      $participants_list.prepend participant_user_template participant, response.avatar, role
     else
-      $participants_list.prepend participant_member_template participant, role
+      $participants_list.prepend participant_member_template participant, avatar_url, role
     increase_participant_count()
 
   remove_event_participant = (response) ->
