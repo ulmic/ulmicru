@@ -1,8 +1,7 @@
 class Web::SessionsController < Web::ApplicationController
   # FIXME forbid access if the user is signed in
   def new
-    user = User.new
-    @user = UserForm.new user
+    @user = UserForm.new_with_model
   end
 
   def create
@@ -16,6 +15,7 @@ class Web::SessionsController < Web::ApplicationController
         render :new
       end
     else
+      @user = UserForm.new_with_model
       render :new
     end
   end
