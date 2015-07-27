@@ -19,9 +19,9 @@ $ ->
        </section>
      </li>"
 
-  participant_user_template = (participant, role) ->
+  participant_user_template = (participant, avatar_url, role) ->
     "<li class='participant mic-member' id = 'participant_#{participant.id}'>
-       <img src='/default-man-icon.png'>
+       <img src='#{avatar_url}'>
        <section>
          <div class='name'>
            #{participant.first_name} #{participant.last_name}
@@ -46,9 +46,10 @@ $ ->
   add_event_participant = (response) ->
     participant = JSON.parse response.participant
     role = response.role
-    avatar_url = response.avatar_url
+    unless typeof response.avatar == 'string'
+      avatar_url = response.avatar.avatar.url
     if participant.ticket == null
-      $participants_list.prepend participant_user_template participant, role
+      $participants_list.prepend participant_user_template participant, response.avatar, role
     else
       $participants_list.prepend participant_member_template participant, avatar_url, role
     increase_participant_count()
