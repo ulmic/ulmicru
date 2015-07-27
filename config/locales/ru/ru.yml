@@ -133,7 +133,7 @@ ru:
       new:
         title: Авторизация
         register: Зарегистрироваться
-        wrong_email_or_password: Неверный логин или пароль
+        wrong_email_or_password: 'Неверный e-mail или пароль'
         may_be_you_have_auth_via_social_network: Возможно вы авторизовывались через социальные сети
     pages:
       shared:
