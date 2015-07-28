@@ -1,3 +1,5 @@
 machine:
+  timezone:
+    Europe/Moscow
   ruby:
     version: 2.2.2
