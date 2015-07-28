@@ -1,5 +1,6 @@
 class Web::Admin::EventsController < Web::Admin::ApplicationController
   before_filter :choose_teams, only: [ :new, :edit ]
+  before_filter :choose_users, only: [ :new, :edit ]
   before_filter :choose_members, only: [ :new, :edit ]
 
   def index
@@ -26,6 +27,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
       redirect_to admin_events_path
     else
       choose_teams
+      choose_users
       choose_members
       render action: :new
     end
@@ -38,6 +40,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
       redirect_to edit_admin_event_path @event_form.model
     else
       choose_teams
+      choose_users
       choose_members
       render action: :edit
     end

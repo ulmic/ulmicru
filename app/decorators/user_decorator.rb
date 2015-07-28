@@ -18,4 +18,8 @@ class UserDecorator < ApplicationDecorator
   end
 
   alias element_avatar profile_avatar
+
+  def select_presentation
+    "#{ticket}#{ticket ? ' | ' : ''} #{first_name} #{last_name}"
+  end
 end

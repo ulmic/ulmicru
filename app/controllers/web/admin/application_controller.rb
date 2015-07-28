@@ -4,6 +4,10 @@ class Web::Admin::ApplicationController < Web::ApplicationController
 
   protected
 
+  def choose_users
+    @users = User.presented.decorate
+  end
+
   def choose_members
     @members = Member.presented.decorate
   end
