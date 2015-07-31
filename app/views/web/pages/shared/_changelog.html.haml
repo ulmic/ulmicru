@@ -1,0 +1,24 @@
+- releases = Github.repos.releases.list(:ulmic, :ulmicru).sort_by { |r| r[:created_at]  }.reverse
+.articles.container
+  %h1.title
+    = @page.title
+  .row
+    %table{ style: 'border: none' }
+      %tbody
+        - releases.each do |release|
+          %tr
+            %td
+              - if release[:prerelease]
+                %span.label.warning
+                  Prerelease
+              - else
+                %span.label.success
+                  Release
+            %td{ width: '135px' }
+              =l release[:created_at].to_datetime, format: '%d %b %Y'
+            %td
+              = release[:tag_name]
+            %td
+              = release[:name]
+            %td
+              != wrap_anchors release[:body]
