@@ -1,5 +1,3 @@
-require 'naturally'
-
 module Web::PagesHelper
   def wrap_anchors(text)
     urls = %r{(?:https?|ftp|mailto)://\S+}i
