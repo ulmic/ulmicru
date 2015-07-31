@@ -29,7 +29,6 @@
                   .icon-facebook.min-icon
                 = link_to new_session_path do
                   .icon-door.min-icon
-
           %li.banner-container
             - if signed_in?
               .banner.signed-in
@@ -63,7 +62,7 @@
         %a.site-logo{ href: root_path }
         %ul.left
           %li.has-dropdown.dropdown-category-menu
-            %a{href: "#"}
+            %a{ href: '#' }
               .inner
                 Миц - это ...
             %ul.dropdown
@@ -74,8 +73,19 @@
                       = @first_category.name
                     - @first_category.articles.confirmed.each do |article|
                       = link_to article.title, article_path(article)
-          %li
+                - if @about_site_category.present?
+                  .category-column
+                    .menu-title
+                      = @about_site_category.name
+                    - @about_site_category.articles.confirmed.each do |article|
+                      = link_to article.title, article_path(article)
+          %li{ style: 'margin-right: 15px' }
             - if signed_in? && current_user.state == 'confirmed'
               = link_to '#', data: { 'reveal-id' => 'feedbackModal' } do
                 .inner
                   Нашли ошибку?
+          - if @month_article.present?
+            %li
+              = link_to article_path(@month_article) do
+                .inner
+                  Июль 2015

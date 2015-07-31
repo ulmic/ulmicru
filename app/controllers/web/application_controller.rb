@@ -6,6 +6,7 @@ class Web::ApplicationController < ApplicationController
 
   def load_categories_tree
     @first_category = Category.find_by_name 'Кто мы такие'
+    @about_site_category = Category.find_by_name 'Сайт МИЦ'
     contact_category = Category.find_by_name 'Контакты'
     @contact_article = contact_category.articles.first if contact_category
     if signed_in?
@@ -13,6 +14,7 @@ class Web::ApplicationController < ApplicationController
     end
     @feedback = FeedbackForm.new_with_model
     @rss_article_id = 19
+    @month_article = Article.find 21
   end
 
   def notification_count
