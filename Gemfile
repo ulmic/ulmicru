@@ -50,6 +50,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'russia_regions'
 gem 'mysql2'
+gem 'github_api'
 
 group :production do
   gem 'unicorn-rails'
