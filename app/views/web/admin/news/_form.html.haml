@@ -28,7 +28,7 @@
       - if current_user.role.author?
         = f.input :state, as: :hidden, input_html: { value: :unviewed }
       - elsif !@news_form.model.main?
-        = f.input :state, as: :hidden, input_html: { value: :confirmed }
+        = f.input :state_event, as: :state_event
       = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
 

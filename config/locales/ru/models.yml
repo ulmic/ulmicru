@@ -71,6 +71,7 @@ ru:
         photo: Фотография
         tags: Тэги
         state: Статус
+        state_event: Статус
         attachments: Приложения
         views: Просмотры
       article:
@@ -147,6 +148,12 @@ ru:
             declined: Отклонённый
             removed: Удалённый
             unavailable: Недоступный
+      news:
+        state:
+          events:
+            confirm: Подтвердить
+            remove: Удалить
+            to_main: Сделать главной новостью
   state_machines:
     user:
       state:
