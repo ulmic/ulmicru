@@ -8,6 +8,7 @@ ENV["RAILS_ENV"] = "test"
 SimpleCov.start('rails') if ENV["COVERAGE"]
 
 require File.expand_path('../../config/environment', __FILE__)
+load "#{Rails.root}/db/seeds.rb"
 require 'rails/test_help'
 require 'webmock/minitest'
 
@@ -20,16 +21,5 @@ class ActiveSupport::TestCase
   def load_fixture(filename)
     template = ERB.new(File.read(File.dirname(__FILE__) + "/fixtures/#{filename}"), nil, "%")
     template.result
-  end
-
-  Category.create name: 'Контакты'
-  Category.first.articles.build(title: 'Контакты', user_id: 1).save
-
-  month_article_id = 21
-  a = Article.find month_article_id
-  unless a
-    a = Article.create title: 'Статья месяца'
-    a.id = month_article_id
-    a.save
   end
 end
