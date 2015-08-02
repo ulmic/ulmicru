@@ -1,6 +1,6 @@
 class Web::Admin::BannersController < Web::Admin::ApplicationController
   def index
-    @banners = Banner.presented.page params[:page]
+    @banners = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.presented)).page params[:page]
   end
 
   def new

@@ -112,11 +112,12 @@ ru:
         logo: Логотип
         member_id: Руководитель
       banner:
-        photo: Изображение
         link: Ссылка
         begin_date: Дата установки
         end_date: Дата снятия
         duration: Период видимости
+        vertical: Вертикальная версия
+        horizontal: Горизонтальная версия
       team:
         title: Название
         description: Описание

@@ -30,6 +30,9 @@
                                            link: event_path(@event), |
                                            date: @event.full_date_duration, |
                                            text: @event.lead
+    - if @banner.present?
+      %section.side-banner
+        = image_tag @banner.vertical_version
   %main.big-column
     .main-news-content
       .slider-wrap

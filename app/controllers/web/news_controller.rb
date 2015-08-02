@@ -26,6 +26,7 @@ class Web::NewsController < Web::ApplicationController
     @same_events = ::EventDecorator.decorate_collection same_events
     @popular_news = NewsDecorator.decorate_collection News.popular.first 6
     @comments = @news.comments.published
+    @banner = Banner.active.with_vertical.last
   end
 
   private

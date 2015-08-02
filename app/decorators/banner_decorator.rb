@@ -4,4 +4,8 @@ class BannerDecorator < ApplicationDecorator
   def name
     link
   end
+
+  def small_thumb
+    vertical.present? ? vertical.small : horizontal.small
+  end
 end

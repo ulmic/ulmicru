@@ -35,7 +35,7 @@ ru:
     web:
       admin:
         shared:
-          errors:
+          messages:
             some_errors_was_found: Найдены ошибки при сохранении
           places:
             form:

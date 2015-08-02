@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706223624) do
+ActiveRecord::Schema.define(version: 20150802220134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20150706223624) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "state"
+    t.text     "horizontal"
+    t.text     "vertical"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -186,9 +188,9 @@ ActiveRecord::Schema.define(version: 20150706223624) do
     t.text     "title"
     t.integer  "member_id"
     t.datetime "begin_date"
-    t.text     "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "end_date",   default: "for_now"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "tags", force: :cascade do |t|
@@ -237,6 +239,9 @@ ActiveRecord::Schema.define(version: 20150706223624) do
     t.integer "team_id"
     t.integer "user_id"
   end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.text     "email"
