@@ -15,6 +15,6 @@ Article.create title: 'Контакты', view: 'contacts', category_id: contact
 # Create month article
 month_article_id = 21
 about_site_category = Category.find_by_name 'Сайт МИЦ'
-article = Article.where id: month_article_id
-article = Article.create title: 'Статья месяца', category_id: about_site_category.id, user_id: 1 unless article.any?
+article = Article.where(id: month_article_id).first
+article ||= Article.create title: 'Статья месяца', category_id: about_site_category.id, user_id: 1
 Article.update article.id, id: month_article_id

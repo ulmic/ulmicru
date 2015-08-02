@@ -21,15 +21,4 @@ class ActiveSupport::TestCase
     template = ERB.new(File.read(File.dirname(__FILE__) + "/fixtures/#{filename}"), nil, "%")
     template.result
   end
-
-  Category.create name: 'Контакты'
-  Category.first.articles.build(title: 'Контакты', user_id: 1).save
-
-  month_article_id = 21
-  a = Article.find month_article_id
-  unless a
-    a = Article.create title: 'Статья месяца'
-    a.id = month_article_id
-    a.save
-  end
 end

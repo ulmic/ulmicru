@@ -26,6 +26,7 @@ $ ->
     $('input[type=hidden]').addClass('form-control')
     $('input[type=text]').addClass('form-control')
     $('input[type=submit]').addClass('btn')
+    $('textarea').addClass('form-control')
 
   init_select2_inputs = ->
     $('select.select2').each ->
