@@ -1,6 +1,9 @@
 class Web::Admin::BannersController < Web::Admin::ApplicationController
   def index
-    @banners = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.presented)).page params[:page]
+    @banners = {}
+    @banners[:active] = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.active)).page params[:page]
+    @banners[:unviewed] = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.unviewed)).page params[:page]
+    @banners[:removed] = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.removed)).page params[:page]
   end
 
   def new

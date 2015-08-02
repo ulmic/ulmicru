@@ -182,6 +182,12 @@ ru:
           unviewed: Непросмотренные
           active: Активные
           declined: Отклонённые
+    banner:
+      state:
+        states:
+          unviewed: Непросмотренные
+          active: Активные
+          removed: Удалённые
     errors:
       models:
         member:
@@ -192,6 +198,7 @@ ru:
           attributes:
             mobile_phone:
               phone: имеет неверный формат
+
   enumerize:
     user:
       role:

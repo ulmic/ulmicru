@@ -10,13 +10,13 @@ class Banner < ActiveRecord::Base
   include BannerScopes
   include Concerns::DurationManagment
 
-  state_machine :state, initial: :showed do
+  state_machine :state, initial: :active do
     state :active
     state :unviewed
     state :removed
 
-    event :show do
-      transition unviewed: :showed
+    event :make_active do
+      transition unviewed: :active
     end
     event :hide do
       transition showed: :unviewed
