@@ -8,7 +8,6 @@ ENV["RAILS_ENV"] = "test"
 SimpleCov.start('rails') if ENV["COVERAGE"]
 
 require File.expand_path('../../config/environment', __FILE__)
-load "#{Rails.root}/db/seeds.rb"
 require 'rails/test_help'
 require 'webmock/minitest'
 

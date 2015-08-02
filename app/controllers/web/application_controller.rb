@@ -14,7 +14,7 @@ class Web::ApplicationController < ApplicationController
     end
     @feedback = FeedbackForm.new_with_model
     @rss_article_id = 19
-    @month_article = Article.find 21
+    @month_article = Article.where(id: 21).first
   end
 
   def notification_count
