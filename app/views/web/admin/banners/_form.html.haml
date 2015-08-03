@@ -9,7 +9,16 @@
 .row
   .col-lg-6
     = simple_form_for [:admin, @banner_form], input_html: { class: 'form-horizontal' } do |f|
-      = f.input :photo, as: :file
+      = f.label :vertical
+      .preview
+        = image_tag @banner_form.model.vertical if @banner_form.model.vertical.present?
+      = f.input :vertical, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :vertical, label: false, as: :jasny_file_preview_upload
+      = f.label :horizontal
+      .preview
+        = image_tag @banner_form.model.horizontal if @banner_form.model.horizontal.present?
+      = f.input :horizontal, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :horizontal, label: false, as: :jasny_file_preview_upload
       = f.input :link, as: :string
       = f.input :begin_date, as: :datetime_picker
       = f.input :end_date, as: :datetime_picker

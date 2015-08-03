@@ -4,6 +4,7 @@ class Web::NewsControllerTest < ActionController::TestCase
   setup do
     create :member
     @news = create :news
+    create :article, :contacts
   end
 
   test 'should get index' do

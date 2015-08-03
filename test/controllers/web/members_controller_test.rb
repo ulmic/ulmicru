@@ -4,6 +4,7 @@ class Web::MembersControllerTest < ActionController::TestCase
   setup do
     @member = create :member
     sign_in @member
+    create :article, :contacts
   end
 
   test 'should not get new unsigned' do
