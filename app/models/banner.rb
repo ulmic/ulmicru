@@ -19,7 +19,7 @@ class Banner < ActiveRecord::Base
       transition unviewed: :active
     end
     event :hide do
-      transition showed: :unviewed
+      transition active: :unviewed
     end
     event :remove do
       transition all => :removed
@@ -41,6 +41,6 @@ class Banner < ActiveRecord::Base
   end
 
   def one_of_images_presents
-    errors.add :images, I18n.t('.must_be_present') if horizontal.width.nil? && vertical.width.nil?
+    errors.add :images, I18n.t('.must_be_present') unless horizontal.present? || vertical.present?
   end
 end

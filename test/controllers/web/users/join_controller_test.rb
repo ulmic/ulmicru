@@ -5,6 +5,7 @@ class Web::Users::JoinControllerTest < ActionController::TestCase
     user = create :user
     sign_in user
     @questionary = create :questionary
+    create :article, :contacts
   end
 
   test 'should get new' do

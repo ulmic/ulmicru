@@ -4,6 +4,7 @@ class Web::ArticlesControllerTest < ActionController::TestCase
   setup do
     @category = create :category
     @article = create :article
+    create :article, :contacts
   end
 
   test "should get show" do

@@ -39,5 +39,4 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     @banner.reload
     assert @banner.removed?
   end
-
 end
