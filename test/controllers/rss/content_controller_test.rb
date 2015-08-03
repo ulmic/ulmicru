@@ -6,6 +6,7 @@ class Rss::ContentControllerTest < ActionController::TestCase
     create :member
     create :article
     create :news
+    create :article, :contacts
   end
 
   test 'should get index' do

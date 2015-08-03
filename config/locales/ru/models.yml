@@ -112,11 +112,12 @@ ru:
         logo: Логотип
         member_id: Руководитель
       banner:
-        photo: Изображение
         link: Ссылка
         begin_date: Дата установки
         end_date: Дата снятия
         duration: Период видимости
+        vertical: Вертикальная версия
+        horizontal: Горизонтальная версия
       team:
         title: Название
         description: Описание
@@ -181,6 +182,12 @@ ru:
           unviewed: Непросмотренные
           active: Активные
           declined: Отклонённые
+    banner:
+      state:
+        states:
+          unviewed: Непросмотренные
+          active: Активные
+          removed: Удалённые
     errors:
       models:
         member:
@@ -191,6 +198,7 @@ ru:
           attributes:
             mobile_phone:
               phone: имеет неверный формат
+
   enumerize:
     user:
       role:

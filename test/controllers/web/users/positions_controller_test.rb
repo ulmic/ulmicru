@@ -5,6 +5,7 @@ class Web::Users::PositionsControllerTest < ActionController::TestCase
     @position = create :position
     member = create :member
     sign_in member
+    create :article, :contacts
   end
 
   test 'should create position' do

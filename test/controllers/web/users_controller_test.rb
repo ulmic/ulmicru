@@ -3,6 +3,7 @@ require 'test_helper'
 class Web::UsersControllerTest < ActionController::TestCase
   setup do
     @user = create :user
+    create :article, :contacts
   end
 
   test 'should get new' do

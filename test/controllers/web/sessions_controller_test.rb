@@ -3,6 +3,7 @@ require 'test_helper'
 class Web::SessionsControllerTest < ActionController::TestCase
   setup do
     @user = create :user
+    create :article, :contacts
   end
 
   test 'new' do

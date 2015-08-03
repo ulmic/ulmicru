@@ -182,3 +182,6 @@ ru:
       previous: '<'
       last: '>>'
       first: '<<'
+  is_not_vertical: не вертикальная
+  is_not_horizontal: не горизонтальная
+  must_be_present: Хоть одна версия должна присутствовать

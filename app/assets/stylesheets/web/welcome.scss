@@ -205,6 +205,12 @@ $button_hover_color: rgba(226, 112, 0, 0.71);
       }
     }
   }
+  .banner {
+    height: 340px;
+    background-size: cover;
+    background-position: center center;
+    overflow: auto;
+  }
   .last-tweets {
     height: 340px;
     background: image-url('tweet.png') no-repeat;
