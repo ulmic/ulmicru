@@ -115,6 +115,13 @@ $ ->
   reverse_buttons = ($button) ->
     $news_slider.data('tag', '')
 
+  get_offset = (tag, count) ->
+    slider_tag = $news_slider.data('tag')
+    if slider_tag == tag
+      parseInt($('.news-slider .slick-track a').length) - count
+    else
+      0
+
   $('.category-navbar-container ul li').click ->
     count = 5
     data_type = $(this).data('type')
@@ -128,7 +135,7 @@ $ ->
       title = data_tag
     params = {
       count: count
-      offset: parseInt($('.news-slider .slick-track a').length) - count
+      offset: get_offset(data_tag, count)
       tag: {
         tag_type: tag_type
         target_type: target_type
