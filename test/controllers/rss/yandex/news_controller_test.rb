@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Rss::NewsControllerTest < ActionController::TestCase
+class Rss::Yandex::NewsControllerTest < ActionController::TestCase
   setup do
     @news = create :news
   end
