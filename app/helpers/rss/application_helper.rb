@@ -10,7 +10,7 @@ module Rss::ApplicationHelper
     xml.link root_url
     xml.language 'ru'
     xml.image do
-      xml.url 'http://ulmic.ru/assets/apps/logo-mic-square.png'
+      xml.url configus.organization.logo
       xml.width 100
       xml.height 100
     end

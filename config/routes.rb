@@ -102,6 +102,9 @@ Rails.application.routes.draw do
     resources :news, only: :index
     resources :articles, only: :index
     resources :content, only: :index
+    namespace :yandex do
+      resources :news, only: :index
+    end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
   get '*unmatched_route', to: 'web/pages#show', slug: :not_found
