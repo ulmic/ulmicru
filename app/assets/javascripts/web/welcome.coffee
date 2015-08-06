@@ -127,7 +127,10 @@ $ ->
     $category_list.each ->
       $a = $(this).children('a').first()
       $a.css('color', '')
-    color = '#f45c10'
+    if $li.hasClass('departament')
+      color = 'black'
+    else
+      color = '#f45c10'
     current_color = $li.css('color')
     $a = $li.children('a').first()
     if $right_arrow.data('tag') == '' || $right_arrow.data('tag') == undefined

@@ -11,12 +11,20 @@
           .slider-item-info
             = news.title
   .category-navbar-container.clear-fix
-    %nav.top-bar{ data: { topbar:  '' } }
+    %nav.hidden.top-bar{ data: { topbar:  '' } }
       %section.top-bar-section
         .container-big
           %ul.left
             - text_news_tags.each do |item|
               %li{ data: { tag: item.first, type: item[1] } }
+                %a
+                  = item.last
+    %nav.top-bar.departaments{ data: { topbar:  '' } }
+      %section.top-bar-section
+        .container-big
+          %ul.left
+            - text_news_tags.each do |item|
+              %li.departament{ data: { tag: item.first, type: item[1] } }
                 %a
                   = item.last
   .news

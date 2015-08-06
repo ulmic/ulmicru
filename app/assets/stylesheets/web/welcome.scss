@@ -2,6 +2,7 @@
 @import "icons";
 
 $button_hover_color: rgba(226, 112, 0, 0.71);
+$orange: #f45c10;
 
 .welcome {
   h3,h4,h5 {
@@ -251,6 +252,18 @@ $button_hover_color: rgba(226, 112, 0, 0.71);
         .date {
           font-style: italic;
         }
+      }
+    }
+  }
+}
+
+.category-navbar-container {
+  nav {
+    &.top-bar.departaments, ul, .top-bar-section ul li, .top-bar-section ul li:not(.has-form) a:not(.button) {
+      background-color: $orange;
+      &:hover {
+        background-color: $orange;
+        color: black;
       }
     }
   }
