@@ -34,4 +34,13 @@ class Event < ActiveRecord::Base
   end
   #FIXME tags association
   include Concerns::TagsHelper
+
+  #FIXME try fix active form
+  after_save :remove_empty_registrations
+
+  private
+
+  def remove_empty_registrations
+    registrations.where(user_id: nil).map &:destroy
+  end
 end
