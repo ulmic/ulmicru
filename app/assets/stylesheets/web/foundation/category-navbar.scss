@@ -16,4 +16,26 @@
   $topbar-link-padding: rem-calc(8.5);
 
   @import "foundation/components/top-bar";
+
+  .container-big {
+    width: 100%;
+  }
+
+  nav {
+    &.top-bar.departaments, &.departaments ul, &.departaments .top-bar-section ul li, &.departaments .top-bar-section ul li:not(.has-form) a:not(.button) {
+      background-color: $topbar-link-color-hover;
+      &:hover {
+        background-color: $topbar-link-color-hover;
+        color: black;
+      }
+      li.swap a {
+        &:hover {
+          background-color: #ef7437 !important;
+        }
+      }
+    }
+    li.swap a {
+      width: 32px;
+    }
+  }
 }

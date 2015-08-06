@@ -1,13 +1,21 @@
 module Web::WelcomeHelper
   def text_news_tags
-    [ [ 'Лидер', 'ActivityLine', 'Лидерство'],
-      [ 'Inформация', 'ActivityLine', 'Журналистика' ],
-      [  'Информационные технологии', 'ActivityLine', 'ИТ'],
-      [ 'Право', 'ActivityLine', 'Право'],
-      [ 'Диалог культур', 'ActivityLine', 'Толерантность' ],
-      [ 'Добро', 'ActivityLine',  'Волонтёрство' ],
-      [ 'Корпоративные проекты', 'ActivityLine', 'Корпоративная политика' ],
-      [ 'НКО', 'string' 'НКО' ]
+    [ [ 'Лидер', 'ActivityLine', 'ЛИДЕРСТВО'],
+      [ 'Информация', 'ActivityLine', 'ЖУРНАЛИСТИКА' ],
+      [ 'ИТ', 'ActivityLine', 'ИТ'],
+      [ 'Право', 'ActivityLine', 'ПРАВО'],
+      [ 'Диалог культур', 'ActivityLine', 'ТОЛЕРАНТНОСТЬ' ],
+      [ 'Добро', 'ActivityLine',  'ВОЛОНТЁРСТВО' ],
+      [ 'Корпоративные проекты', 'ActivityLine', 'КОРПОРАТИВНЫЕ ПРОЕКТЫ' ],
+      [ 'НКО', 'string', 'НКО' ]
     ]
+  end
+
+  def municipalities_tags(departaments)
+    tags = []
+    departaments.each do |departament|
+      tags << [ departament.municipality, 'Team', departament.municipality ]
+    end
+    tags
   end
 end

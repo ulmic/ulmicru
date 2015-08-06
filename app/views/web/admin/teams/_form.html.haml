@@ -14,7 +14,8 @@
         = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
       .municipality_input
         = f.input :municipality, as: :select, collection: Municipalities.list
-      = f.input :title, as: :string
+      .title_input
+        = f.input :title, as: :string
       = f.input :description, as: :ckeditor
       = f.input :state, as: :hidden, input_html: { value: :active }
       = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }

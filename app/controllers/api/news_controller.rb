@@ -1,4 +1,5 @@
 class Api::NewsController < Api::ApplicationController
+  # FIXME remove hash creating from controller
   def index
     source = get_source
     news = NewsDecorator.decorate source.published.drop(params[:offset].to_i).first(params[:count].to_i)

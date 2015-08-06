@@ -26,8 +26,6 @@ class Team < ActiveRecord::Base
       transition all => :unviewed
     end
   end
-  #FIXME tags association
-  include Concerns::TagsHelper
 
   def is_departament?
     model_name == 'Team::Departament'
@@ -39,5 +37,11 @@ class Team < ActiveRecord::Base
 
   def is_subdivision?
     model_name == 'Team::Subdivision'
+  end
+
+  #FIXME tags association
+  include Concerns::TagsHelper
+  def tags
+    Tag.where(target_type: 'Team', target_id: id)
   end
 end
