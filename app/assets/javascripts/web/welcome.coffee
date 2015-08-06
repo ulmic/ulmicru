@@ -6,6 +6,7 @@ $ ->
   # News
 
   $news_slider = $('.news-slider')
+  $right_arrow = $('.news .right-arrow')
   options = {
     infinite: false
     slidesToShow: 5
@@ -43,7 +44,7 @@ $ ->
         params = {
           count: count
           offset: parseInt($('.news-slider .slick-track a').length) - count
-          tag: $news_slider.data('tag')
+          tag: $right_arrow.data('tag')
         }
         load_news params
     return
@@ -79,14 +80,15 @@ $ ->
       $(this).children('span.spin').remove()
     $news_slider_item.each (index) ->
       current_news = news[index]
-      $(this).prop 'href', Routes.news_path current_news.id
-      $date = $(this).children('p.date').first()
-      $title = $(this).children('p.content.title').first()
-      $text = $(this).children('p.content.text').first()
+      unless current_news == undefined
+        $(this).prop 'href', Routes.news_path current_news.id
+        $date = $(this).children('p.date').first()
+        $title = $(this).children('p.content.title').first()
+        $text = $(this).children('p.content.text').first()
 
-      $date.html current_news.publish_date_time
-      $title.html current_news.title
-      $text.html current_news.text
+        $date.html current_news.publish_date_time
+        $title.html current_news.title
+        $text.html current_news.text
       return
     return
 
@@ -97,23 +99,20 @@ $ ->
       data: params
       dataType: 'json'
       success: (response) ->
-        if params['tag'] == undefined
-          fill_news response
-          append_empty_items()
-        else
+        if params['offset'] == 0
           remove_all_slides()
           append_empty_items()
-          fill_news response
-          append_empty_items()
+        fill_news response
+        append_empty_items()
       error: ->
         alert 'error'
     }
 
-  edit_buttons = ($button, tag_params)  ->
-    $news_slider.data('tag', tag_params)
+  add_tag_to_button = (tag_params)  ->
+    $right_arrow.data('tag', tag_params)
 
-  reverse_buttons = ($button) ->
-    $news_slider.data('tag', '')
+  reverse_buttons = ->
+    $right_arrow.data('tag', '')
 
   get_offset = (tag, count) ->
     slider_tag = $news_slider.data('tag')
@@ -122,28 +121,54 @@ $ ->
     else
       0
 
-  $('.category-navbar-container ul li').click ->
-    count = 5
-    data_type = $(this).data('type')
-    data_tag = $(this).data('tag')
-    if data_type == 'string'
-      tag_type = 'string'
-      text = data_tag
+  $category_list = $('.category-navbar-container ul li')
+
+  flag_li = ($li) ->
+    $category_list.each ->
+      $a = $(this).children('a').first()
+      $a.css('color', '')
+    color = '#f45c10'
+    current_color = $li.css('color')
+    $a = $li.children('a').first()
+    if $right_arrow.data('tag') == '' || $right_arrow.data('tag') == undefined
+      $a.css('color', '')
     else
-      tag_type = 'link'
-      target_type = data_type
-      title = data_tag
-    params = {
-      count: count
-      offset: get_offset(data_tag, count)
-      tag: {
-        tag_type: tag_type
-        target_type: target_type
-        title: title
-        text: text
+      $a.css('color', color)
+    if $li.data('current') == 'false' || $li.data('current') == undefined
+      $li.data('current', 'true')
+    else
+      $li.data('current', 'false')
+
+  $category_list.click ->
+    count = 5
+    if $(this).data('current') == 'true'
+      reverse_buttons()
+      params = {
+        count: count
+        offset: 0
       }
-    }
-    edit_buttons $(this), params['tag']
+    else
+      data_type = $(this).data('type')
+      data_tag = $(this).data('tag')
+      if data_type == 'string'
+        tag_type = 'string'
+        text = data_tag
+      else
+        tag_type = 'link'
+        target_type = data_type
+        title = data_tag
+      params = {
+        count: count
+        offset: get_offset(data_tag, count)
+        tag: {
+          tag_type: tag_type
+          target_type: target_type
+          title: title
+          text: text
+        }
+      }
+      add_tag_to_button params['tag']
+    flag_li $(this)
     $('.news-slider .slick-track a').slice(-5).each ->
       $(this).append spin()
     load_news params
