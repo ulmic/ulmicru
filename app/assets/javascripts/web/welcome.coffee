@@ -184,8 +184,8 @@ $ ->
 
   $('li.swap a').click (e) ->
     e.preventDefault()
-    $activity_navbar = $('nav.top-bar:not(.departaments)')
-    $departament_navbar = $('nav.top-bar.departaments')
+    $activity_navbar = $('.category-navbar-container nav.top-bar:not(.departaments)')
+    $departament_navbar = $('.category-navbar-container nav.top-bar.departaments')
     if $departament_navbar.hasClass 'hidden'
       swap $departament_navbar, $activity_navbar
     else
