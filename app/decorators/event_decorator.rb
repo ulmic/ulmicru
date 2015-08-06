@@ -21,6 +21,10 @@ class EventDecorator < ApplicationDecorator
     "#{object.description.first(150)}..."
   end
 
+  def name
+    object.title
+  end
+
   include Places
 
   def place_link_to_4sq
