@@ -14,7 +14,10 @@ module Web::WelcomeHelper
   def municipalities_tags(departaments)
     tags = []
     departaments.each do |departament|
-      tags << [ departament.municipality, 'Team', departament.municipality ]
+      #FIXME запросы из хелпера!
+      if departament.tags.any?
+        tags << [ departament.municipality, 'Team', departament.municipality ]
+      end
     end
     tags
   end
