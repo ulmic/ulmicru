@@ -121,7 +121,7 @@ $ ->
     else
       0
 
-  $category_list = $('.category-navbar-container ul li')
+  $category_list = $('.category-navbar-container ul li:not(.swap)')
 
   flag_li = ($li) ->
     $category_list.each ->
@@ -175,6 +175,21 @@ $ ->
     $('.news-slider .slick-track a').slice(-5).each ->
       $(this).append spin()
     load_news params
+
+  swap = ($showing, $hiding) ->
+    $hiding.hide()
+    $hiding.addClass 'hidden'
+    $showing.show()
+    $showing.removeClass 'hidden'
+
+  $('li.swap a').click (e) ->
+    e.preventDefault()
+    $activity_navbar = $('nav.top-bar:not(.departaments)')
+    $departament_navbar = $('nav.top-bar.departaments')
+    if $departament_navbar.hasClass 'hidden'
+      swap $departament_navbar, $activity_navbar
+    else
+      swap $activity_navbar, $departament_navbar
 
   init_slider()
 

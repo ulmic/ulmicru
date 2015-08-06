@@ -27,3 +27,10 @@ activity_lines.each do |activity_line|
   a = ActivityLine.find_by_title activity_line
   ActivityLine.create title: activity_line unless a
 end
+
+# Create departaments
+municipalities = ['г. Ульяновск', 'г. Димитровград', 'г. Новоульяновск', 'Чердаклинский район', 'Тереньгульский район', 'Базарносызганский район', 'Радищевский район', 'Новоспасский район']
+municipalities.each do |municipality|
+  t = Team::Departament.find_by_municipality municipality
+  Team::Departament.create municipality: municipality, title: municipality, state: :active unless t
+end

@@ -5,5 +5,6 @@ class Web::WelcomeController < Web::ApplicationController
     @members = MemberDecorator.decorate_collection Member.confirmed.shuffle.first 14
     @events = ::EventDecorator.decorate_collection ::Event.confirmed.near_future.first 8
     @banner = Banner.with_horizontal.active.last
+    @departaments = Team::Departament.active
   end
 end
