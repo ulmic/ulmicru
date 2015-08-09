@@ -18,6 +18,9 @@
             %li.swap
               %a
                 %i.fa.fa-bars
+            %li
+              %a
+                = t('.all_news')
             - text_news_tags.each do |item|
               %li{ data: { tag: item.first, type: item[1] } }
                 %a
@@ -29,6 +32,9 @@
             %li.swap
               %a
                 %i.fa.fa-bars
+            %li.departament
+              %a
+                = t('.all_news')
             - municipalities_tags(@departaments).each do |item|
               %li.departament{ data: { tag: item.first, type: item[1] } }
                 %a

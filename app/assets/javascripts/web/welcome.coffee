@@ -111,11 +111,9 @@ $ ->
   add_tag_to_button = (tag_params)  ->
     $right_arrow.data('tag', tag_params)
 
-  reverse_buttons = ->
-    $right_arrow.data('tag', '')
-
   get_offset = (tag, count) ->
     slider_tag = $news_slider.data('tag')
+    return 0 if tag == undefined
     if slider_tag == tag
       parseInt($('.news-slider .slick-track a').length) - count
     else
@@ -131,32 +129,26 @@ $ ->
       color = 'black'
     else
       color = '#f45c10'
-    current_color = $li.css('color')
     $a = $li.children('a').first()
-    if $right_arrow.data('tag') == '' || $right_arrow.data('tag') == undefined
-      $a.css('color', '')
-    else
-      $a.css('color', color)
+    $a.css('color', color)
 
   $category_list.click ->
     count = 5
-    if $(this).data('current') == 'true'
-      reverse_buttons()
+    data_type = $(this).data('type')
+    data_tag = $(this).data('tag')
+    if data_type == 'string'
+      tag_type = 'string'
+      text = data_tag
+    else
+      tag_type = 'link'
+      target_type = data_type
+      title = data_tag
+    if data_tag == undefined
       params = {
         count: count
-        offset: 0
+        offset: get_offset(data_tag, count)
       }
-      $(this).data 'current', 'false'
     else
-      data_type = $(this).data('type')
-      data_tag = $(this).data('tag')
-      if data_type == 'string'
-        tag_type = 'string'
-        text = data_tag
-      else
-        tag_type = 'link'
-        target_type = data_type
-        title = data_tag
       params = {
         count: count
         offset: get_offset(data_tag, count)
@@ -167,19 +159,17 @@ $ ->
           text: text
         }
       }
-      add_tag_to_button params['tag']
-      $category_list.data 'current', 'false'
-      $(this).data 'current', 'true'
+    add_tag_to_button params['tag']
     flag_li $(this)
     $('.news-slider .slick-track a').slice(-5).each ->
       $(this).append spin()
     load_news params
 
   swap = ($showing, $hiding) ->
-    $hiding.hide()
-    $hiding.addClass 'hidden'
-    $showing.show()
-    $showing.removeClass 'hidden'
+    $hiding.slideUp ->
+      $hiding.addClass 'hidden'
+    $showing.slideDown ->
+      $showing.removeClass 'hidden'
 
   $('li.swap a').click (e) ->
     e.preventDefault()
