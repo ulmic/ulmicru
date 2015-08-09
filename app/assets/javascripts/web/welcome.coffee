@@ -137,10 +137,6 @@ $ ->
       $a.css('color', '')
     else
       $a.css('color', color)
-    if $li.data('current') == 'false' || $li.data('current') == undefined
-      $li.data('current', 'true')
-    else
-      $li.data('current', 'false')
 
   $category_list.click ->
     count = 5
@@ -150,6 +146,7 @@ $ ->
         count: count
         offset: 0
       }
+      $(this).data 'current', 'false'
     else
       data_type = $(this).data('type')
       data_tag = $(this).data('tag')
@@ -171,6 +168,8 @@ $ ->
         }
       }
       add_tag_to_button params['tag']
+      $category_list.data 'current', 'false'
+      $(this).data 'current', 'true'
     flag_li $(this)
     $('.news-slider .slick-track a').slice(-5).each ->
       $(this).append spin()
