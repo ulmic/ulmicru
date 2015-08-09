@@ -129,8 +129,20 @@ $ ->
       color = 'black'
     else
       color = '#f45c10'
-    $a = $li.children('a').first()
-    $a.css('color', color)
+    if $li.hasClass('all_news')
+      colorize_all_news()
+    else
+      $a = $li.children('a').first()
+      $a.css('color', color)
+
+  colorize_all_news = ->
+    $('.category-navbar-container ul li.all_news').each ->
+      if $(this).hasClass('departament')
+        color = 'black'
+      else
+        color = '#f45c10'
+      $a = $(this).children('a').first()
+      $a.css('color', color)
 
   $category_list.click ->
     count = 5
@@ -181,6 +193,7 @@ $ ->
       swap $activity_navbar, $departament_navbar
 
   init_slider()
+  colorize_all_news()
 
   # Events
 
