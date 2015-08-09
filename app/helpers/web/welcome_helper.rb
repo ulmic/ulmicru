@@ -14,8 +14,14 @@ module Web::WelcomeHelper
   def municipalities_tags(departaments)
     tags = []
     departaments.each do |departament|
-      tags << [ departament.municipality, 'Team', departament.municipality ]
+      tags << [ departament.municipality, 'Team', city_name(departament.municipality) ]
     end
     tags
+  end
+
+  private
+
+  def city_name(municipality)
+    municipality.sub('г. ', '').sub('район', 'р-н').to_s.mb_chars.upcase
   end
 end
