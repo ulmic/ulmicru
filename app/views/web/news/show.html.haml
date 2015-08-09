@@ -77,7 +77,7 @@
           .share.columns.small-5
             .social.row
               .icons.right
-                = render 'layouts/web/shared/social_sharing'
+                = render 'layouts/web/shared/social_sharing', counter: true
           .people.colunms.row
             - if @members.any?
               %span.columns.small-2
