@@ -18,7 +18,7 @@
             %li.swap
               %a
                 %i.fa.fa-bars
-            %li
+            %li.all_news
               %a
                 = t('.all_news')
             - text_news_tags.each do |item|
@@ -32,7 +32,7 @@
             %li.swap
               %a
                 %i.fa.fa-bars
-            %li.departament
+            %li.departament.all_news
               %a
                 = t('.all_news')
             - municipalities_tags(@departaments).each do |item|
