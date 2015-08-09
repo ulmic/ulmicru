@@ -6,7 +6,7 @@
   .col-lg-12
     = render 'layouts/web/admin/shared/messages', object: @member_form
 .row
-  .col-lg-6
+  .col-lg-12
     = simple_form_for [:admin, @member_form], input_html: { class: 'form-horizontal' } do |f|
       = f.input :first_name, as: :string, required: true
       = f.input :patronymic, as: :string, required: true
@@ -30,12 +30,11 @@
         = f.input :member_state_event, as: :state_event
       = f.input :role
       = f.input :parent_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
-      -#= f.simple_fields_for :positions do |position_form|
-        = position_form.input :title, as: :string
-        = position_form.input :begin_date, as: :date_picker
-        = position_form.input :end_date, as: :date_picker
-        = position_form.input :member_id, as: :hidden
-      -#= link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning'
+      %h4
+        = t('.resume')
+      = f.simple_fields_for :positions do |position_form|
+        = render 'members_list', f: position_form
+      = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
       .actions
         = f.button :submit, t('helpers.links.save'), class: 'btn-success'
         = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

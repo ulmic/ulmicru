@@ -19,6 +19,7 @@ ru:
       members:
         form:
           add_position: Добавить должность
+          resume: Резюме
         position_fields:
           remove_position: Убрать должность
       tags:

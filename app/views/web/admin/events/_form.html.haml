@@ -50,7 +50,7 @@
       - else
         = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
       = f.association :activity_line, label_method: lambda { |activity_line| "#{I18n.t("enumerize.activity_line.activity_type.#{activity_line.activity_type}")} «#{activity_line.title}»" }, value_method: :id
-      .registrations
+      .registrations.nested
         %h3
           = t('.registrations')
           -# FIXME @event_form.model.registrations.any? == true && @event_form.model.registrations.count == 0

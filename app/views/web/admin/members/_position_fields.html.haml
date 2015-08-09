@@ -3,4 +3,4 @@
   = f.input :begin_date, as: :date_picker
   = f.input :end_date, as: :date_picker
   = f.input :member_id, as: :hidden
-  = link_to_remove_association t('.remove_position'), f, class: 'btn btn-danger'
+  = link_to_remove_association 'X', f, class: 'btn btn-danger', data: { 'wrapper-class' => 'position_fields' }
