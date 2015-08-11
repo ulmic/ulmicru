@@ -90,6 +90,7 @@ ru:
         title: Название
         begin_date: Дата вступления в должность
         end_date: Дата ухода с должности
+        for_now: до настоящего времени
       event:
         title: Название
         description: Описание
@@ -127,6 +128,7 @@ ru:
         municipality: Муниципальное образование
         members: Члены команды
         school: Учебное заведение
+        publicity: Публичность
         types:
           departament: Местное отделение
           subdivision: Структурное подразделение
@@ -188,6 +190,12 @@ ru:
           unviewed: Непросмотренные
           active: Активные
           removed: Удалённые
+    team:
+      state:
+        states:
+          unviewed: Непросмотренные
+          active: Активные
+          removed: Удалённые
     errors:
       models:
         member:
@@ -214,6 +222,10 @@ ru:
         role:
           participant: Участник
           organizer: Организатор
+    team:
+      publicity:
+        hidden: Скрытая
+        visible: Публичная
   scopes:
     event:
       future: Грядущие
