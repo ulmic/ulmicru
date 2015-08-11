@@ -4,7 +4,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
-    @team = create :team
+    @team = create :departament
   end
 
   test "should get index" do

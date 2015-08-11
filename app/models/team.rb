@@ -11,6 +11,8 @@ class Team < ActiveRecord::Base
   include TeamScopes
   extend Enumerize
 
+  enumerize :publicity, in: [ :visible, :hidden ], default: :hidden
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active
@@ -37,6 +39,10 @@ class Team < ActiveRecord::Base
 
   def is_subdivision?
     model_name == 'Team::Subdivision'
+  end
+
+  def is_primary?
+    model_name == 'Team::Primary'
   end
 
   #FIXME tags association

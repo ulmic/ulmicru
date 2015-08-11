@@ -8,6 +8,7 @@
       %th= model_class.human_attribute_name(:member)
       %th= model_class.human_attribute_name(:type)
       %th= model_class.human_attribute_name(:municipality)
+      %th= model_class.human_attribute_name(:publicity)
       %th=t 'helpers.links.actions'
   %tbody
     - teams.each do |team|
@@ -17,6 +18,7 @@
         %td= team.head_name
         %td= team_types_name team.type
         %td= team.municipality
+        %td= team.publicity
         %td.actions
           - if team.unviewed?
             = link_to admin_team_path(team, team: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do

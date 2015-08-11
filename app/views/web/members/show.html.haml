@@ -48,8 +48,9 @@
           .user-title-role
             .user-title
               = @member.short_name
-            -#.user-role
-              Ленивая жопа в МБОУ УФХ ЦЧЧ ЖЗ УК "Норма"
+            - @member.positions.current_positions.each do |position|
+              .user-role
+                = position.title
           %blockquote.user-motto
             = @member.motto
           %hr.orange
