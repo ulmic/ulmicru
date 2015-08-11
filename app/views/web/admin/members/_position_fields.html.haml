@@ -1,5 +1,5 @@
 .position_fields
-  = f.input :title, as: :string
+  = f.input :title, as: :select, input_html: { class: :select2 }, collection: positions_list
   = f.input :begin_date, as: :date_picker
   = f.input :end_date, as: :date_picker
   = f.input :member_id, as: :hidden

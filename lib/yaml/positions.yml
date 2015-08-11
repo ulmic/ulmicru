@@ -1,0 +1,12 @@
+positions:
+  activity_line:
+    - руководитель
+  team:
+    - руководитель
+    - пресс-секретарь
+  team/departament:
+    activity_line:
+      - куратор
+  team/primary:
+    activity_line:
+      - куратор
