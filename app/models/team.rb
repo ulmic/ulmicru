@@ -39,6 +39,10 @@ class Team < ActiveRecord::Base
     model_name == 'Team::Subdivision'
   end
 
+  def is_primary?
+    model_name == 'Team::Primary'
+  end
+
   #FIXME tags association
   include Concerns::TagsHelper
   def tags
