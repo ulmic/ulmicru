@@ -13,4 +13,8 @@ module RussianCases
   def instrumental(word)
     case_word word, :instrumental
   end
+
+  def dative(word)
+    case_word word, :dative
+  end
 end

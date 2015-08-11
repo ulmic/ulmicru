@@ -8,7 +8,7 @@ class TeamDecorator < ApplicationDecorator
   def full_title(type_case = nil)
     team_type = I18n.t("activerecord.attributes.team.types.#{type.split(':').last.downcase}")
     if object.is_departament?
-      "#{type_case ? send(type_case, team_type) : team_type} в #{object.municipality}е"
+      "#{type_case ? send(type_case, team_type) : team_type} в #{instrumental(object.municipality)}"
     elsif object.is_primary?
       "#{type_case ? send(type_case, team_type) : team_type} в #{object.school}"
     else
