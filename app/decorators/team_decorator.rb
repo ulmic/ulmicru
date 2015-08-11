@@ -10,7 +10,7 @@ class TeamDecorator < ApplicationDecorator
     if object.is_departament?
       "#{type_case ? send(type_case, team_type) : team_type} в #{municipality}е"
     else
-      title
+      type_case ? send(type_case, title) : title
     end
   end
 

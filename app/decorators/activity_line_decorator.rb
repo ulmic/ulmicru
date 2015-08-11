@@ -7,7 +7,11 @@ class ActivityLineDecorator < ApplicationDecorator
 
   def full_title(type_case = nil)
     if object.activity_type.corporative?
-      object.title
+      if type_case
+        send type_case, object.title
+      else
+        object.title
+      end
     else
       type = I18n.t("enumerize.activity_line.activity_type.#{object.activity_type}")
       if type_case
