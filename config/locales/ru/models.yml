@@ -90,6 +90,7 @@ ru:
         title: Название
         begin_date: Дата вступления в должность
         end_date: Дата ухода с должности
+        for_now: до настоящего времени
       event:
         title: Название
         description: Описание

@@ -21,6 +21,7 @@ ru:
           add_position: Добавить должность
           resume: Резюме
         position_fields:
+          for_now: до настоящего момента
           remove_position: Убрать должность
       tags:
         form:
