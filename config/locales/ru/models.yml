@@ -127,6 +127,7 @@ ru:
         municipality: Муниципальное образование
         members: Члены команды
         school: Учебное заведение
+        publicity: Публичность
         types:
           departament: Местное отделение
           subdivision: Структурное подразделение
@@ -188,6 +189,12 @@ ru:
           unviewed: Непросмотренные
           active: Активные
           removed: Удалённые
+    team:
+      state:
+        states:
+          unviewed: Непросмотренные
+          active: Активные
+          removed: Удалённые
     errors:
       models:
         member:
@@ -214,6 +221,10 @@ ru:
         role:
           participant: Участник
           organizer: Организатор
+    team:
+      publicity:
+        hidden: Скрытая
+        visible: Публичная
   scopes:
     event:
       future: Грядущие

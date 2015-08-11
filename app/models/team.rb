@@ -11,6 +11,8 @@ class Team < ActiveRecord::Base
   include TeamScopes
   extend Enumerize
 
+  enumerize :publicity, in: [ :visible, :hidden ], default: :hidden
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active

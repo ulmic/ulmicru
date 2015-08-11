@@ -18,6 +18,7 @@
         = f.input :title, as: :string
       = f.input :description, as: :ckeditor
       = f.input :state, as: :hidden, input_html: { value: :active }
+      = f.input :publicity
       = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
       = f.association :users, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, input_html: { class: :select2 }
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
