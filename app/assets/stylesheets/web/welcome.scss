@@ -207,7 +207,8 @@ $orange: #f45c10;
     }
   }
   .banner {
-    height: 340px;
+    width: 100%;
+    height: auto;
     background-size: cover;
     background-position: center center;
     overflow: auto;

@@ -9,5 +9,6 @@ module ActivityLineScopes
     scope :central_programs, -> { where activity_type: :central_program }
     scope :local_projects, -> { where activity_type: :local_project }
     scope :corporative, -> { where activity_type: :corporative }
+    scope :has_curators, -> { where.not(activity_type: :event_line) }
   end
 end

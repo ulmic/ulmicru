@@ -25,6 +25,7 @@ module PositionList
           types = positions.keys
           types.each do |type|
             type_collection = type.camelize.constantize.active
+            type_collection = type_collection.has_curators if type.camelize.constantize == ActivityLine
             position_names = positions[type]
             position_names.each do |position_name|
               collection.each do |instance|
