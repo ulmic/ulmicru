@@ -1,5 +1,6 @@
 class Web::Admin::TeamsController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
+  before_filter :choose_departaments, only: [ :new, :edit ]
 
   def index
     @teams = {}
@@ -20,6 +21,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
       redirect_to admin_teams_path
     else
       choose_members
+      choose_departaments
       @categories = Category.presented.decorate
       render action: :new
     end
@@ -32,7 +34,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   def update
     #FIXME refactoring
-    [:team_departament, :team_subdivision, :team_administration].each do |type|
+    [:team_departament, :team_subdivision, :team_administration, :team_primary].each do |type|
       if params[type]
         params[:team] = params[type]
         break
@@ -44,6 +46,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
       redirect_to edit_admin_team_path @team_form.model
     else
       choose_members
+      choose_departaments
       render action: :edit
     end
   end
@@ -52,5 +55,11 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     @team = Team.find params[:id]
     @team.remove
     redirect_to admin_teams_path
+  end
+
+  private
+
+  def choose_departaments
+    @departaments = TeamDecorator.decorate_collection Team::Departament.active
   end
 end
