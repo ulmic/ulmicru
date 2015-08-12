@@ -99,7 +99,9 @@
                 %span.glyphicon.glyphicon-credit-card
                 = member.ticket_number
     - if @banner
-      .banner{ style: "background-image: url('#{@banner.horizontal}')" }
+      .banner
+        = link_to @banner.link, class: 'blank' do
+          = image_tag @banner.horizontal
   -#.last-tweets
     .icon
     %h2
