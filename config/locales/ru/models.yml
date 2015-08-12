@@ -217,6 +217,8 @@ ru:
       activity_type:
         central_program: Центральная программа
         local_project: Областной проект
+        corporative: Корпоратив
+        event_line: Набор мероприятий
     event:
       registration:
         role:
