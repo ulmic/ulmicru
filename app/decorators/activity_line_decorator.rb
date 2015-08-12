@@ -6,7 +6,7 @@ class ActivityLineDecorator < ApplicationDecorator
   end
 
   def full_title(type_case = nil)
-    if object.activity_type.corporative?
+    if object.activity_type.corporative? || object.activity_type.event_line?
       if type_case
         send type_case, object.title
       else
