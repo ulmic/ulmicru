@@ -25,7 +25,7 @@
         = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
       = f.input :avatar, as: :file, label: false, input_html: { style: 'display: none' }
       = f.input :avatar, label: false, as: :jasny_file_preview_upload_foundation
-      = f.association :teams, input_html: { class: :select2 }
+      = f.association :teams, input_html: { class: :select2 }, collection: teams_hash(@teams)
       -#= f.hint t('.my_position_in_mic')
       -#= f.simple_fields_for :positions do |ff|
         = render 'position_fields', f: ff
