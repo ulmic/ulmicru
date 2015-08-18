@@ -8,6 +8,7 @@ class Web::Users::AccountController < Web::Users::ApplicationController
       @member_form = MemberForm.new @member
     end
     @authentications = current_user.authentications
+    @teams = Team.active.visible.decorate
   end
 
   def update

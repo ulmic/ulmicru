@@ -12,4 +12,17 @@ class Tag < ActiveRecord::Base
   enumerize :tag_type, in: [ :string, :link ]
 
   include TagScopes
+
+  state_machine :state, initial: :active do
+    state :active
+    state :removed
+
+    event :activate do
+      transition removed: :active
+    end
+
+    event :remove do
+      transition active: :remove
+    end
+  end
 end

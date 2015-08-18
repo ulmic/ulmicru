@@ -53,6 +53,9 @@
               %a.join-button.mic-press-button{ href: new_session_path }
                 = t('.attend')
         .share
+          %span
+            = t('helpers.share')
+          %br
           = render 'layouts/web/shared/social_sharing', counter: false
 .more-lead-info.container
   .row.large-collapse

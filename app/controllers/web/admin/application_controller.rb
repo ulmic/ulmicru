@@ -13,6 +13,6 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def choose_teams
-    @teams = Team.active.decorate
+    @teams = Team.active.visible.decorate
   end
 end

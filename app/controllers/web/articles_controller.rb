@@ -5,9 +5,9 @@ class Web::ArticlesController < Web::ApplicationController
     @article = Article.find(params[:id]).decorate
     @article.increase_views
     @topic_articles = Article.broadcasted.same_articles(@article).last 3
-    @strings = @article.tags.string
-    @not_strings = @article.tags.events + @article.tags.activity_lines + @article.tags.teams
-    @members = @article.tags.members.map &:target
+    @strings = @article.tags.active.string
+    @not_strings = @article.tags.active.events + @article.tags.active.activity_lines + @article.tags.active.teams
+    @members = @article.tags.active.members.map &:target
     @popular_articles = ArticleDecorator.decorate_collection Article.broadcasted.popular.first 3
   end
 end
