@@ -9,7 +9,9 @@ module Web::Admin::ApplicationHelper
   end
 
   def tab_title(model_class, tab, count)
-    "#{t("state_machines.#{model_class.name.underscore}.state.states.#{tab}").pluralize(:ru)} / #{count}"
+    model = model_class.name.underscore
+    model = :team if model.include? 'team'
+    "#{t("state_machines.#{model}.state.states.#{tab}").pluralize(:ru)} / #{count}"
   end
 
   def enumerize_locales_hash(model, attribute)
