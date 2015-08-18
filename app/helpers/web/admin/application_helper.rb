@@ -9,7 +9,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def tab_title(model_class, tab, count)
-    "#{t("state_machines.#{model_class.name.downcase}.state.states.#{tab}").pluralize(:ru)} / #{count}"
+    "#{t("state_machines.#{model_class.name.underscore}.state.states.#{tab}").pluralize(:ru)} / #{count}"
   end
 
   def enumerize_locales_hash(model, attribute)
@@ -27,5 +27,14 @@ module Web::Admin::ApplicationHelper
 
   def object_updated_less_minute_ago?(object)
     ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1
+  end
+
+  def model_of(items)
+    items.transform_values.each { |i| return i.first.model.class if i.first }
+  end
+
+  def to_path(constant)
+    constant = Team if constant.to_s.include? 'Team'
+    constant.name.underscore.gsub '/', '_'
   end
 end

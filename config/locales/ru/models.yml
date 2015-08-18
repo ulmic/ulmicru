@@ -196,6 +196,12 @@ ru:
           unviewed: Непросмотренные
           active: Активные
           removed: Удалённые
+    activity_line:
+      state:
+        states:
+          removed: Удалённые
+          active: Активные
+          unviewed: Непросмотренные
     errors:
       models:
         member:
