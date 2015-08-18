@@ -13,13 +13,13 @@ class Web::NewsController < Web::ApplicationController
     topic_news_tags = @news.tags.last 2
     @topic_news = []
     topic_news_tags.each do |tag|
-      news_tag = Tag.where(target_type: tag.target_type, record_type: 'News').where.not(record_id: @news.id).where.not(record_id: @topic_news.map(&:id)).last
+      news_tag = Tag.active.where(target_type: tag.target_type, record_type: 'News').where.not(record_id: @news.id).where.not(record_id: @topic_news.map(&:id)).last
       @topic_news << NewsDecorator.decorate(news_tag.record) if news_tag
     end
     @last_news = NewsDecorator.decorate_collection News.published.first 3
-    @members = @news.tags.members.map &:target
-    @strings = @news.tags.string
-    @not_strings = @news.tags.events + @news.tags.activity_lines + @news.tags.teams
+    @members = @news.tags.active.members.map &:target
+    @strings = @news.tags.active.string
+    @not_strings = @news.tags.active.events + @news.tags.active.activity_lines + @news.tags.active.teams
     @news.increase_views
     @previous_news = News.published.previous @news.id
     @next_news = News.published.next @news.id

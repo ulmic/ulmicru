@@ -10,5 +10,7 @@ module TagScopes
     scope :teams, -> { where target_type: 'Team' }
     scope :news, -> { where record_type: 'News' }
     scope :articles, -> { where record_type: 'Article' }
+    scope :active, -> { where state: :active }
+    scope :removed, -> { where state: :removed }
   end
 end

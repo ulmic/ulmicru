@@ -47,7 +47,4 @@ class Team < ActiveRecord::Base
 
   #FIXME tags association
   include Concerns::TagsHelper
-  def tags
-    Tag.where(target_type: 'Team', target_id: id)
-  end
 end
