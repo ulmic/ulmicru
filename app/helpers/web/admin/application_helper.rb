@@ -32,7 +32,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def model_of(items)
-    items.transform_values.each { |i| return i.first.model.class if i.first }
+    items.transform_values.each { |i| return i.first.model.class if i.first } if items
   end
 
   def to_path(constant)
