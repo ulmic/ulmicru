@@ -1,10 +1,11 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
   def index
-    @unviewed_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unviewed)).page params[:page]
-    @confirmed_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.confirmed)).page params[:page]
-    @declined_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.declined)).page params[:page]
-    @unavailable_members = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unavailable)).page params[:page]
+    @members = {}
+    @members[:unviewed] = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unviewed)).page params[:page]
+    @members[:confirmed] = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.confirmed)).page params[:page]
+    @members[:declined] = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.declined)).page params[:page]
+    @members[:unavailable] = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unavailable)).page params[:page]
   end
 
   def new
