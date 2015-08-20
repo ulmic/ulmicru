@@ -21,7 +21,7 @@ config/secrets.yml
 config/database.yml
 config/oauth.yml
 ulmic_test
-<<<<<<< HEAD
+ulmic_production
 /.bundle/db/*.sqlite3
 /log/*.log
 /tmp
