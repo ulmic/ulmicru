@@ -13,7 +13,10 @@
   %tbody
     - articles.each do |article|
       %tr{ class: state_color(article) }
-        %td= link_to article.id, edit_admin_article_path(article)
+        %td{ width: '67px' }
+          = link_to article.id, edit_admin_article_path(article)
+          = link_to article_path(article) do
+            %span.glyphicon.glyphicon-share
         %td= link_to article.title, edit_admin_article_path(article)
         %td= article.short_body
         %td= (article.category.present? ? article.category.name : "")
