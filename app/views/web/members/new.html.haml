@@ -12,6 +12,9 @@
     = f.input :email, as: :string
     = f.input :motto, as: :string
     = f.input :ticket, as: :string
+    = f.hint t('hints.member.private_data')
+    = f.hint t('hints.member.need_data')
+    = f.hint t('hints.member.update_data')
     = f.input :mobile_phone, as: :string, placeholder: 'locale'
     = f.input :birth_date, as: :date_picker
     = f.input :home_adress, as: :string
