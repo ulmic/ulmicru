@@ -22,7 +22,7 @@ class Tag < ActiveRecord::Base
     end
 
     event :remove do
-      transition active: :remove
+      transition active: :removed
     end
   end
 end
