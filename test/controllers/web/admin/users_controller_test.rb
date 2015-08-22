@@ -12,6 +12,11 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index' do
+    get :index
+    assert_response :success, @response.body
+  end
+
   test 'should create user' do
     attributes = attributes_for :user
     post :create, user: attributes
