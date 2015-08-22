@@ -1,9 +1,9 @@
 class Web::Admin::UsersController < Web::Admin::ApplicationController
   def index
     @users = {}
-    @users[:confirmed] = User.confirmed.page params[:page]
-    @users[:unviewed] = User.unviewed.page params[:page]
-    @users[:declined] = User.declined.page params[:page]
+    @users[:confirmed] = Kaminari.paginate_array(User.confirmed.decorate).page params[:page]
+    @users[:unviewed] = Kaminari.paginate_array(User.unviewed.decorate).page params[:page]
+    @users[:declined] = Kaminari.paginate_array(User.declined.decorate).page params[:page]
   end
 
   def new
