@@ -1,4 +1,4 @@
-class Api::FeedbackController < Api::ApplicationController
+class Api::FeedbacksController < Api::ApplicationController
   def create
     @feedback = FeedbackForm.new_with_model
     @feedback.submit params[:feedback]

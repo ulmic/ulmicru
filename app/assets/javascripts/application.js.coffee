@@ -52,8 +52,15 @@ $ ->
     $('ul.tabs').children('li').first().addClass 'active'
     $('.tabs-content').children('.content').first().addClass 'active'
 
+  init_datetimepickers = ->
+    $('.datepicker').datetimepicker()
+
   init_select2()
   init_link_class()
   init_blank_adding()
   init_tabs()
+
+  $('a.add_fields').click ->
+    setTimeout init_datetimepickers, 500
+    setTimeout init_select2, 500
   return

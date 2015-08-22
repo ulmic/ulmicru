@@ -1,12 +1,12 @@
-- tabs = [ :member, :user, :questionary, :news, :event, :feedback, :comment, :article ]
+- tabs = Concerns::NotificatableItems.items
 - title
 #tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - tabs.each do |tab|
-      - pluralize_tab = tab == :feedback ? :feedback : tab.to_s.pluralize
+      - pluralize_tab = tab.to_s.pluralize(:en)
       %li
         = link_to unviewed_tab_title(tab, @unviewed[pluralize_tab.to_sym].total_count), "##{pluralize_tab}"
   - tabs.each do |tab|
-    - pluralize_tab = tab == :feedback ? :feedback : tab.to_s.pluralize
+    - pluralize_tab = tab.to_s.pluralize
     %div{ id: pluralize_tab }
       = render "web/admin/#{pluralize_tab}/#{pluralize_tab}_list", pluralize_tab.to_sym => @unviewed[pluralize_tab.to_sym]

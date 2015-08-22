@@ -1,0 +1,30 @@
+= paginate positions, theme: 'twitter-bootstrap-3'
+- model_class = Position
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:begin_date)
+      %th= model_class.human_attribute_name(:end_date)
+      %th= model_class.human_attribute_name(:for_now)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - positions.each do |position|
+      %tr
+        %td= position.id
+        %td= position.member.decorate.short_name
+        %td= link_to position.title, edit_admin_member_path(position.member)
+        %td=l position.begin_date, format: '%d.%m.%Y'
+        %td= position.end_date_datetime
+        %td= position.for_now
+        %td.actions
+          - if position.unviewed?
+            = link_to admin_position_path(position, position: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-ok
+          = link_to edit_admin_member_path(position.member), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_position_path(position), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+= paginate positions, theme: 'twitter-bootstrap-3'
