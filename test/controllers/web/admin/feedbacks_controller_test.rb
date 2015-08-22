@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Web::Admin::FeedbackControllerTest < ActionController::TestCase
+class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
   setup do
     @feedback = create :feedback
     admin = create :admin
@@ -16,7 +16,7 @@ class Web::Admin::FeedbackControllerTest < ActionController::TestCase
     attributes = attributes_for :feedback
     post :create, feedback: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to admin_feedback_index_path
+    assert_redirected_to admin_feedbacks_path
     assert_equal attributes[:url], Feedback.last.url
   end
 

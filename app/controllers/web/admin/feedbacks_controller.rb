@@ -1,4 +1,4 @@
-class Web::Admin::FeedbackController < Web::Admin::ApplicationController
+class Web::Admin::FeedbacksController < Web::Admin::ApplicationController
   def index
     @feedback = {}
     @feedback[:unviewed] = Feedback.unviewed.page params[:page]
@@ -19,7 +19,7 @@ class Web::Admin::FeedbackController < Web::Admin::ApplicationController
     @feedback_form = FeedbackForm.new_with_model
     @feedback_form.submit(params[:feedback])
     if @feedback_form.save
-      redirect_to admin_feedback_index_path
+      redirect_to admin_feedbacks_path
     else
       render action: :new
     end
@@ -38,6 +38,6 @@ class Web::Admin::FeedbackController < Web::Admin::ApplicationController
   def destroy
     @feedback = Feedback.find params[:id]
     @feedback.destroy
-    redirect_to admin_feedback_index_path
+    redirect_to admin_feedbacks_path
   end
 end

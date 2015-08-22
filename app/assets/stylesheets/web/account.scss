@@ -279,4 +279,18 @@
   .table {
     margin-top: 15px;
   }
+  .position_fields {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 15px;
+    &:last-child {
+      border-bottom: none;
+    }
+    input.boolean {
+      margin-bottom: 0;
+    }
+    a.remove_fields {
+      margin-top: 7px;
+      margin-left: 15px;
+    }
+  }
 }

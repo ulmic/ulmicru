@@ -18,4 +18,6 @@ $ ->
       #success: -> alert(I18n.t('notices.web.users.account.attribute_accesses.changed'))
       #error: -> alert(I18n.t('notices.web.users.account.attribute_accesses.not_changed'))
     return
+  # FIXME
+  #$('.position_fields').last().remove()
   return

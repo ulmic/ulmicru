@@ -1,5 +1,12 @@
-= f.input :title, as: :string
-= f.input :begin_date
-= f.input :end_date
-= f.input :member_id, as: :hidden
-= link_to_remove_association t('.remove_position'), f
+.position_fields
+  = f.input :title, as: :select, label: false, input_html: { class: :select2 }, collection: positions_list
+  .small-4.columns
+    = f.input :begin_date, as: :date_picker
+  .small-4.columns
+    = f.input :end_date, as: :date_picker
+  .small-4.columns
+    = f.label :for_now
+    = f.input :for_now, label: false, as: :boolean, value: 1
+  = f.input :state, as: :hidden, input_html: { value: :unviewed }
+  = f.input :member_id, as: :hidden
+  = link_to_remove_association t('helpers.links.destroy'), f, class: 'button alert', data: { 'wrapper-class' => 'position_fields' }

@@ -3,6 +3,7 @@ class Web::ApplicationController < ApplicationController
   before_filter :notification_count
 
   include Concerns::NotificationManagment
+  include Concerns::NotificatableItems
 
   def load_categories_tree
     @first_category = Category.find_by_name 'Кто мы такие'
@@ -18,9 +19,8 @@ class Web::ApplicationController < ApplicationController
 
   def notification_count
     if signed_in? && current_user.role.admin?
-      collections = [ :member, :questionary, :news, :event, :user, :feedback, :comment, :article ]
       @notification_count = 0
-      collections.each do |collection_type|
+      Concerns::NotificatableItems.items.each do |collection_type|
         @notification_count += collection_type.to_s.capitalize.constantize.unviewed.count
       end
     end

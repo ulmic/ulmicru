@@ -3,8 +3,11 @@
 .page-header
   %h1= page_title(action, Event.model_name.human)
   - if @event_form.model.creator.present?
-    -#= link_to "#{t('activerecord.attributes.event.creator')}: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket)
     = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket), class: :blank
+  - else
+    .alert.alert-dissmissible.alert-info
+      %span.glyphicon.glyphicon-info-sign
+      = t('messages.events.enter_organizers_also')
 .row
   .col-lg-12
     = render 'layouts/web/admin/shared/messages', object: @event_form

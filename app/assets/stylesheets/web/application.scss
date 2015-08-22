@@ -212,6 +212,15 @@ ul {
   &.email {
     padding-left: 0;
   }
+  &.input {
+    padding: 0;
+  }
+}
+
+.button {
+  &.date_picker {
+    padding-top: 10px;
+  }
 }
 
 input[type=checkbox] {

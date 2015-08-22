@@ -26,7 +26,7 @@ class MemberDecorator < ApplicationDecorator
   end
 
   def main_position_title
-    for_now_positions = positions.for_now
+    for_now_positions = positions.current_positions
     return for_now_positions.first.title if for_now_positions.any?
     last_held_position = positions.last_held_position
     unless last_held_position == []

@@ -3,9 +3,7 @@ class Web::Users::AccountController < Web::Users::ApplicationController
   def index
     @user = current_user
     if @user.is_member?
-      # TODO мб лучше @member_form = MemberForm.find_with_model(current_user.id)
-      @member = Member.find current_user.id
-      @member_form = MemberForm.new @member
+      @member_form = MemberForm.find_with_model current_user.id
     end
     @authentications = current_user.authentications
     @teams = Team.active.visible.decorate

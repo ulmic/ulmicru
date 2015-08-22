@@ -49,7 +49,7 @@
           = Document.model_name.human.pluralize(:ru)
         = menu_item admin_comments_path do
           = Comment.model_name.human.pluralize(:ru)
-        = menu_item admin_feedback_index_path do
+        = menu_item admin_feedbacks_path do
           = Feedback.model_name.human.pluralize(:ru)
       - elsif current_user.role.author?
         = menu_item admin_events_path do

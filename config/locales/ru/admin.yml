@@ -3,6 +3,8 @@ ru:
   messages:
     record_saved_success: Сохранено
     fill_member_form: Вставьте номер членского билета, имя крёстного и дату вступления в МИЦ
+    events:
+      enter_organizers_also: В поле участники сразу добавляйте организаторов мероприятия
   web:
     admin:
       welcome:

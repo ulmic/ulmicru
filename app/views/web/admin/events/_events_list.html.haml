@@ -12,7 +12,10 @@
   %tbody
     - events.each do |event|
       %tr.link{ class: state_color(event), data: { href: edit_admin_event_path(event) } }
-        %td= event.id
+        %td{ width: '67px' }
+          = event.id
+          = link_to event_path(event) do
+            %span.glyphicon.glyphicon-share
         %td= image_tag event.main_photo.small
         %td= event.title
         %td= event.full_duration

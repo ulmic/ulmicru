@@ -8,10 +8,10 @@
     = render 'layouts/web/admin/shared/messages', object: @feedback_form
 .row
   .col-lg-6
-    = simple_form_for @feedback_form, url: { controller: 'web/admin/feedback', action: action }, input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for @feedback_form, url: { controller: 'web/admin/feedbacks', action: action }, input_html: { class: 'form-horizontal' } do |f|
       = f.input :text
       = f.association :user, label_method: lambda { |member| "#{member.id} | #{member.first_name} #{member.last_name}"  }, value_method: :id
       = f.input :url, as: :string
       = f.input :state_event, as: :state_event
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
-      = link_to t('helpers.links.back'), admin_feedback_index_path, class: 'btn btn-default'
+      = link_to t('helpers.links.back'), admin_feedbacks_path, class: 'btn btn-default'
