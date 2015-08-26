@@ -19,17 +19,19 @@ CKEDITOR.editorConfig = function (config) {
     var dialogDefinition = ev.data.definition;
 
     var uploadTab = dialogDefinition.getContents('Upload');
-    var uploadButton = uploadTab.get('uploadButton');
-    uploadButton['filebrowser']['onSelect'] = function( fileUrl, errorMessage ) {
-      if (dialogName == 'image') {
-        var infoTab = dialogDefinition.getContents( 'info' );
-        var dialog = CKEDITOR.dialog.getCurrent();
+    if (uploadTab != null) {
+      var uploadButton = uploadTab.get('uploadButton');
+      uploadButton['filebrowser']['onSelect'] = function( fileUrl, errorMessage ) {
+        if (dialogName == 'image') {
+          var infoTab = dialogDefinition.getContents( 'info' );
+          var dialog = CKEDITOR.dialog.getCurrent();
 
-        setTimeout(function() {
-          dialog.setValueOf('info', 'txtWidth', '');
-          dialog.setValueOf('info', 'txtHeight', '');
-        }, 100);
-      }
-    };
+          setTimeout(function() {
+            dialog.setValueOf('info', 'txtWidth', '');
+            dialog.setValueOf('info', 'txtHeight', '');
+          }, 100);
+        }
+      };
+    }
   });
 };
