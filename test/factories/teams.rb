@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :team do
     title { generate :string }
-    member_id { Member.last ? Member.last.id : 1 }
+    member_id { Member.last ? Member.last.id : create(:member).id }
     description { generate :string }
   end
 

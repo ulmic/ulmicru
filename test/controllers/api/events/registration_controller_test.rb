@@ -2,10 +2,10 @@ require 'test_helper'
 
 class Api::Events::RegistrationsControllerTest < ActionController::TestCase
   setup do
-    user = create :user
+    member = create :member
     create :event
-    user.confirm
-    sign_in user
+    member.confirm
+    sign_in member
   end
 
   test 'should get create' do
@@ -17,7 +17,7 @@ class Api::Events::RegistrationsControllerTest < ActionController::TestCase
   test 'should delete destroy'  do
     @event_registration = create :event_registration
     count = Event::Registration.count
-    delete :destroy, id: 1, event_id: @event_registration.event, user_id: @event_registration.user
+    delete :destroy, id: 1, event_id: @event_registration.event, user_id: @event_registration.user_id
     assert_response :success, @response.body
     assert_equal count - 1, Event::Registration.count
   end

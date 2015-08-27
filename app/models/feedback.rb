@@ -3,6 +3,7 @@ class Feedback < ActiveRecord::Base
 
   validates :text, presence: true
   validates :url, presence: true
+  validates :user_id, presence: true
 
   include FeedbackScopes
 
