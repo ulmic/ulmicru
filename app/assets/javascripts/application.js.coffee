@@ -55,10 +55,20 @@ $ ->
   init_datetimepickers = ->
     $('.datepicker').datetimepicker()
 
+  init_eye_password_button = ->
+    $('a.eye').click (e) ->
+      e.preventDefault()
+      $password_input = $(@).parents('.row-fluid').first().children().children('.password_foundation').first()
+      if $password_input.prop('type') == 'password'
+        $password_input.prop('type', 'text')
+      else
+        $password_input.prop('type', 'password')
+
   init_select2()
   init_link_class()
   init_blank_adding()
   init_tabs()
+  init_eye_password_button()
 
   $('a.add_fields').click ->
     setTimeout init_datetimepickers, 500
