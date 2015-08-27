@@ -1,5 +1,6 @@
 module PositionList
   class << self
+    include RussianCases
     # FIXME слишком большая функция
     def list
       positions_structure = YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access[:positions]
@@ -13,11 +14,24 @@ module PositionList
         collection = collection.visible if branch.camelize.constantize == Team
         if positions.is_a? Array
           positions.each do |p|
-            collection.each do |instance|
-              full_name = "#{p.mb_chars.capitalize.to_s} #{instance.decorate.full_title(:genitive)}"
-              unless non_existent.include? full_name
-                full_name = exceptions[full_name] if exceptions[full_name]
-                positions_list << full_name
+            if p.is_a? String
+              collection.each do |instance|
+                full_name = "#{p.mb_chars.capitalize.to_s} #{instance.decorate.full_title(:genitive)}"
+                unless non_existent.include? full_name
+                  full_name = exceptions[full_name] if exceptions[full_name]
+                  positions_list << full_name
+                end
+              end
+            elsif p.is_a? Hash
+              deputy_position_names = p[:deputy]
+              deputy_position_names.each do |name|
+                collection.each do |instance|
+                  full_name = "Заместитель #{genitive(name)} #{instance.decorate.full_title(:genitive)}"
+                  unless non_existent.include? full_name
+                    full_name = exceptions[full_name] if exceptions[full_name]
+                    positions_list << full_name
+                  end
+                end
               end
             end
           end
