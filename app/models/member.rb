@@ -85,4 +85,13 @@ class Member < User
 
   #FIXME tags association
   include Concerns::TagsHelper
+
+  #FIXME try fix active form
+  after_save :remove_empty_positions
+
+  private
+
+  def remove_empty_positions
+    registrations.where(user_id: nil).map &:destroy
+  end
 end

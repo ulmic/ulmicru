@@ -5,7 +5,6 @@ class MemberForm < ApplicationForm
   attributes :state_event, :parent_id, :school
 
   association :positions do
-    attributes :title, :begin_date, :member_id, :state, required: true
-    attributes :end_date, :for_now
+    attributes :title, :begin_date, :member_id, :state, :end_date, :for_now
   end
 end

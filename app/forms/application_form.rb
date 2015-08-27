@@ -19,8 +19,10 @@ class ApplicationForm < ActiveForm::Base
     end
 
     def new_with_model *args
-      obj = obj_class.new(*args)
-      self.new obj
+      obj = obj_class.new *args
+      active_form = self.new obj
+      #active_form.forms.each { |collection| collection.each { |f| f.delete } }
+      active_form
     end
 
     def obj_class
