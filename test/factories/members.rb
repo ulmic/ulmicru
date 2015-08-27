@@ -6,7 +6,7 @@ FactoryGirl.define do
     patronymic { generate :human_name }
     motto { generate :string }
     ticket { generate :integer }
-    parent_id 1
+    parent_id { Member.last ? Member.last.id : 1 }
     mobile_phone { generate :phone }
     birth_date { generate :date }
     home_adress { generate :string }

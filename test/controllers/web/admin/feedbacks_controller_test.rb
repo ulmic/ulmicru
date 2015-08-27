@@ -12,6 +12,11 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index' do
+    get :index
+    assert_response :success, @response.body
+  end
+
   test 'should create feedback' do
     attributes = attributes_for :feedback
     post :create, feedback: attributes

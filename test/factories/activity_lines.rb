@@ -4,6 +4,6 @@ FactoryGirl.define do
     found_date { DateTime.now }
     activity_type :central_program
     description { generate :string }
-    member_id { Member.last ? Member.last.id : 1  }
+    member_id { Member.last ? Member.last.id : create(:member).id }
   end
 end

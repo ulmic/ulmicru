@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :position do
-    title "MyText"
-    member_id 1
-    begin_date "2015-03-09 20:49:01"
-    end_date "2015-03-09 20:49:01"
+    title { generate :string }
+    member_id { Member.last ? Member.last.id : create(:member).id }
+    begin_date { DateTime.now }
+    end_date { DateTime.now }
   end
 end
