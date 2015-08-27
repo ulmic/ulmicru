@@ -28,7 +28,9 @@
       - else
         = f.input :state, as: :hidden, input_html: { value: :unviewed }
       %hr
-      = f.hint t('hints.admin.event.place')
+      .alert.alert-dissmissible.alert-info
+        %span.glyphicon.glyphicon-info-sign
+        = t('hints.admin.event.place')
       %br
       = f.label :place
       .form-group.text.required
@@ -42,7 +44,9 @@
               %span.glyphicon.glyphicon-search
       = f.input :place, as: :select, collection: [], label: false, input_html: { value: @event_form.model.place }
       = f.input :place, as: :hidden, input_html: { value: @event_form.model.place }
-      = t(".did_not_find_anything_add_venue")
+      .alert.alert-dissmissible.alert-info
+        %span.glyphicon.glyphicon-info-sign
+        = t('.did_not_find_anything_add_venue')
       %br
       = link_to t('.add_venue'), '#', class: 'btn btn-default show_popup', data: { popup_id: :place_form }
       %hr
