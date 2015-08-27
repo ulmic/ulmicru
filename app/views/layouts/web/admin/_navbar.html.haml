@@ -9,6 +9,12 @@
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
       - if current_user.role.admin?
+        = menu_item admin_events_path do
+          %span.glyphicon.glyphicon-calendar
+          = Event.model_name.human.pluralize(:ru)
+        = menu_item admin_news_index_path do
+          %span.glyphicon.glyphicon-list-alt
+          = News.model_name.human.pluralize(:ru)
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
             = t('.people')
@@ -28,28 +34,29 @@
             = t('.activity')
             %span.caret
           %ul.dropdown-menu
-            = menu_item admin_events_path do
-              %span.glyphicon.glyphicon-calendar
-              = Event.model_name.human.pluralize(:ru)
             = menu_item admin_activity_lines_path do
               %span.glyphicon.glyphicon-flag
               = ActivityLine.model_name.human.pluralize(:ru)
             = menu_item admin_teams_path do
               %span.glyphicon.glyphicon-bullhorn
               = Team.model_name.human.pluralize(:ru)
-        = menu_item admin_news_index_path do
-          = News.model_name.human.pluralize(:ru)
-        = menu_item admin_articles_path do
-          = Article.model_name.human.pluralize(:ru)
-        = menu_item admin_categories_path do
-          = Category.model_name.human.pluralize(:ru)
-        = menu_item admin_banners_path do
-          = Banner.model_name.human.pluralize(:ru)
-        = menu_item admin_documents_path do
-          = Document.model_name.human.pluralize(:ru)
-        = menu_item admin_comments_path do
-          = Comment.model_name.human.pluralize(:ru)
+        %li.dropdown
+          %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
+            = t('.content')
+            %span.caret
+          %ul.dropdown-menu
+            = menu_item admin_articles_path do
+              = Article.model_name.human.pluralize(:ru)
+            = menu_item admin_categories_path do
+              = Category.model_name.human.pluralize(:ru)
+            = menu_item admin_banners_path do
+              = Banner.model_name.human.pluralize(:ru)
+            = menu_item admin_documents_path do
+              = Document.model_name.human.pluralize(:ru)
+            = menu_item admin_comments_path do
+              = Comment.model_name.human.pluralize(:ru)
         = menu_item admin_feedbacks_path do
+          %span.glyphicon.glyphicon-share
           = Feedback.model_name.human.pluralize(:ru)
       - elsif current_user.role.author?
         = menu_item admin_events_path do

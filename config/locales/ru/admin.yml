@@ -51,6 +51,7 @@ ru:
         navbar:
           people: Люди
           activity: Деятельность
+          content: Контент
   hints:
     admin:
       user:
