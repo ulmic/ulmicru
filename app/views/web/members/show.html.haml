@@ -1,4 +1,9 @@
 - title @member.short_name
+- content_for :meta do
+  %meta{ property: 'og:description', content: "#{@member.short_name} #МИЦ" }
+  %meta{ property:'og:image', content: @member.avatar.element }
+  %meta{ name:'description', content: "#{@member.short_name} #МИЦ" }
+  %link{ rel: 'image_src', href: @member.avatar.element }
 .container.account
   .row
     .small-5.columns

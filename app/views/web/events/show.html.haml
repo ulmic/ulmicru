@@ -1,4 +1,9 @@
 - title @event.title
+- content_for :meta do
+  %meta{ property: 'og:description', content: "#{@event.title} #МИЦ" }
+  %meta{ property:'og:image', content: @event.main_photo.event_main_page_version }
+  %meta{ name:'description', content: "#{@event.title} #МИЦ" }
+  %link{ rel: 'image_src', href: @event.main_photo.event_main_page_version }
 .event-container{ style: "background-image: url(#{@event.main_photo});" }
   .event-header-overlay
   .container
