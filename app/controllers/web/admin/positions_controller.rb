@@ -8,4 +8,10 @@ class Web::Admin::PositionsController < Web::Admin::ApplicationController
       redirect_to admin_unviewed_index_path anchor: :positions
     end
   end
+
+  def destroy
+    @position = Position.find params[:id]
+    @position.remove
+    redirect_to admin_unviewed_index_path anchor: :positions
+  end
 end
