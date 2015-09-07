@@ -14,8 +14,9 @@
       %tr.link{ class: state_color(member), data: { href: edit_admin_member_path(member) } }
         %td
           = member.ticket
-          = link_to member_path(member.ticket) do
-            %span.glyphicon.glyphicon-share
+          - if member.ticket
+            = link_to member_path(member.ticket) do
+              %span.glyphicon.glyphicon-share
         %td= image_tag member.avatar.small
         %td= member.full_name
         -#%td= member.main_position_title
