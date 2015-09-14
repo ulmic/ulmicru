@@ -4,6 +4,7 @@ class Web::Users::JoinController < Web::Users::ApplicationController
   def new
     questionary = current_user.becomes! Questionary
     @questionary_form = QuestionaryForm.new questionary
+    @charter = Article.find 20
   end
 
   def create
