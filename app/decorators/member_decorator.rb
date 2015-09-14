@@ -1,4 +1,4 @@
-class MemberDecorator < ApplicationDecorator
+class MemberDecorator < UserDecorator
   delegate_all
   def full_name
     "#{first_name} #{patronymic} #{last_name}"
@@ -52,9 +52,5 @@ class MemberDecorator < ApplicationDecorator
     else
       default_avatar
     end
-  end
-
-  def select_presentation
-    "#{ticket} | #{first_name} #{last_name}"
   end
 end

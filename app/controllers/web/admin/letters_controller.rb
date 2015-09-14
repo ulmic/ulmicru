@@ -1,5 +1,5 @@
 class Web::Admin::LettersController < Web::Admin::ApplicationController
-  before_filter :choose_users, only: [ :new, :edit ]
+  before_filter :choose_members, only: [ :new, :edit ]
   before_filter :last_letter, only: [ :new, :edit ]
 
   def index
@@ -22,7 +22,7 @@ class Web::Admin::LettersController < Web::Admin::ApplicationController
     if @letter_form.save
       redirect_to admin_letters_path
     else
-      choose_users
+      choose_members
       last_letter
       render action: :new
     end
@@ -34,7 +34,7 @@ class Web::Admin::LettersController < Web::Admin::ApplicationController
     if @letter_form.save
       redirect_to edit_admin_letter_path @letter_form.model
     else
-      choose_users
+      choose_members
       last_letter
       render action: :edit
     end
@@ -49,7 +49,7 @@ class Web::Admin::LettersController < Web::Admin::ApplicationController
   private
 
   def last_letter
-    last_letter = Letter.sended.order('number ASC').last
+    last_letter = Letter.order('number ASC').last
     @last_letter_number = last_letter ? last_letter.number : 0
   end
 end

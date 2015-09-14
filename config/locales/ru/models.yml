@@ -152,7 +152,8 @@ ru:
         receiver: Получатель
         list_number: Количество листов
         annex: Приложение
-        executor: Исполнитель
+        executor_id: Исполнитель
+        executor_name: Имя исполнителя
         stamp_of_receipt: Отметка о получении
         note: Примечание
     state_machines:

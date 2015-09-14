@@ -16,7 +16,10 @@
       = f.input :title, as: :string
       = f.input :list_number, as: :string
       = f.input :annex, as: :string
-      = f.input :executor_id, as: :select, collection: users_hash(@users), input_html: { class: :select2 }
+      .alert.alert-dissmissible.alert-info
+        %span.glyphicon.glyphicon-info-sign
+        = t('hints.admin.letter.executor')
+      = f.input :executor_id, as: :select, collection: members_hash(@members, names: :official), input_html: { class: :select2 }
       = f.input :executor_name, as: :string
       = f.input :stamp_of_receipt, as: :string
       = f.input :note, as: :string

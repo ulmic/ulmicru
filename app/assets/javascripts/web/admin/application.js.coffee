@@ -85,7 +85,7 @@ $ ->
   $('a.add_fields').mouseover ->
     init_bootstrap_styles()
     init_select2_inputs()
-    setTimeout init_datetimepickers, 500
+    setTimeout init_datetimepickers, 1000
     return
 
   return

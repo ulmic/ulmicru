@@ -19,7 +19,11 @@ class UserDecorator < ApplicationDecorator
 
   alias element_avatar profile_avatar
 
-  def select_presentation
-    "#{ticket}#{ticket ? ' | ' : ''} #{first_name} #{last_name}"
+  def select_presentation(options = {})
+    if options[:names] == :official
+      "#{ticket}#{ticket ? ' | ' : ''} #{last_name} #{first_name.first}.#{patronymic.first if patronymic}."
+    else
+      "#{ticket}#{ticket ? ' | ' : ''} #{first_name} #{last_name}"
+    end
   end
 end

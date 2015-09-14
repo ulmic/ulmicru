@@ -6,10 +6,10 @@ class LetterForm < ApplicationForm
              :title,
              :list_number,
              :annex,
-             :stamp_of_receipt,
-             :note,
              :state,
              :executor_name,
              required: true
-  attributes :executor_id
+  attributes :executor_id,
+             :stamp_of_receipt,
+             :note
 end

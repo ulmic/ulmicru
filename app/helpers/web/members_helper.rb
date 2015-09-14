@@ -1,8 +1,8 @@
 module Web::MembersHelper
-  def members_hash(members)
+  def members_hash(members, options = {})
     members_hash = {}
     members.each do |member|
-      members_hash[member.select_presentation] = member.id
+      members_hash[member.select_presentation(options)] = member.id
     end
     members_hash
   end

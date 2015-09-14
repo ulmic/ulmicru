@@ -59,7 +59,7 @@
           %span.glyphicon.glyphicon-share
           = Feedback.model_name.human.pluralize(:ru)
         = menu_item admin_letters_path do
-          %span.glyphicon.glyphicon-share
+          %span.glyphicon.glyphicon-envelope
           = Letter.model_name.human.pluralize(:ru)
 
       - elsif current_user.role.author?
