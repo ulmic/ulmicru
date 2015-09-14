@@ -102,15 +102,16 @@
                       .small-4.columns
                         = render 'web/members/shared/mic_userpic_circle', member: child
   .row.user-content
-    %ul.tabs{'data-tab' => ''}
+    %ul.tabs{ 'data-tab' => '' }
       - if @registrations.any?
         %li.tab-title
-          %a{href: "#stages-of-grow", tabindex: "0"}
-            %span.icon-stage.min-icon
+          %a{ href: '#stages-of-grow', tabindex: '0' }
+            %i.fa.fa-signal
             = t('organization.floors_growth')
       - if @articles.any? || @news.any?
         %li.tab-title
-          %a{href: "#users-news", tabindex: "0"}
+          %a{ href: '#users-news', tabindex: '0' }
+            %i.fa.fa-newspaper-o
             = t('activerecord.models.news').pluralize(:ru)
     .tabs-content
       - if @registrations.any?

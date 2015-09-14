@@ -10,6 +10,7 @@ class Position < ActiveRecord::Base
     state :unviewed
     state :confirmed
     state :declined
+    state :removed
 
     event :confirm do
       transition all => :confirmed
@@ -21,6 +22,10 @@ class Position < ActiveRecord::Base
 
     event :decline do
       transition all => :declined
+    end
+
+    event :remove do
+      transition all => :removed
     end
   end
 end
