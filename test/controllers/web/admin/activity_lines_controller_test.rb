@@ -5,6 +5,7 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
     @activity_line = create :activity_line
     admin = create :admin
     sign_in admin
+    @exceptions_attributes = [ 'id', 'created_at', 'updated_at', 'found_date', 'logo' ]
   end
 
   test 'should get new' do
@@ -16,7 +17,10 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
     attributes = attributes_for :activity_line
     post :create, activity_line: attributes
     assert_redirected_to admin_activity_lines_path
-    assert_equal attributes[:title], ActivityLine.last.title
+    activity_line = ActivityLine.last
+    activity_line.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], activity_line.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -29,7 +33,9 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
     patch :update, activity_line: attributes, id: @activity_line
     assert_redirected_to edit_admin_activity_line_path @activity_line
     @activity_line.reload
-    assert_equal attributes[:title], @activity_line.title
+    @activity_line.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @activity_line.send(key), key
+    end
   end
 
   test 'should delete destroy' do

@@ -6,6 +6,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     sign_in admin
     create :member
     @questionary = create :questionary
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'birth_date', 'avatar']
   end
 
   test 'should get index' do
@@ -23,7 +24,10 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     post :create, questionary: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_questionaries_path
-    assert_equal attributes[:patronymic], Questionary.last.patronymic
+    questionary = Questionary.last
+    questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], questionary.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -37,7 +41,9 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_questionary_path @questionary
     @questionary.reload
-    assert_equal attributes[:patronymic], @questionary.patronymic
+    @questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @questionary.send(key), key
+    end
   end
 
   test 'should delete destroy' do

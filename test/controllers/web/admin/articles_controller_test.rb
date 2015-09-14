@@ -6,47 +6,53 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     sign_in admin
     @article = create :article
     @article = create :article
+    @exceptions_attributes = ['id', 'created_at', 'updated_at']
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success, @response.body
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success, @response.body
   end
 
-  test "should create article" do
+  test 'should create article' do
     attributes = attributes_for :article
     post :create, article: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_articles_path
-    assert_equal attributes[:body], Article.last.body
+    article = Article.last
+    article.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], article.send(key), key
+    end
   end
 
-  test "should not create article" do
+  test 'should not create article' do
     attributes = { body: @article.body }
     post :create, article: attributes
     assert_response :success
   end
 
-  test "should get edit by admin" do
+  test 'should get edit by admin' do
     get :edit, id: @article
     assert_response :success
   end
 
-  test "should update article by admin" do
+  test 'should update article by admin' do
     attributes = attributes_for :article
     put :update, id: @article, article: attributes
     assert_response :redirect
     assert_redirected_to edit_admin_article_path @article
     @article.reload
-    assert_equal attributes[:title], @article.title
+    @article.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @article.send(key), key
+    end
   end
 
-  test "should not update article by admin" do
+  test 'should not update article by admin' do
     attributes = attributes_for :article
     attributes[:title] = nil
     count_before_save = Article.count
@@ -55,7 +61,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should destroy article" do
+  test 'should destroy article' do
     count =  Article.count
     delete :destroy, id: @article
     @article.reload

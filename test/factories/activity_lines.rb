@@ -2,8 +2,9 @@ FactoryGirl.define do
   factory :activity_line do
     title { generate :string }
     found_date { DateTime.now }
-    activity_type :central_program
     description { generate :string }
     member_id { Member.last ? Member.last.id : create(:member).id }
+    activity_type { ActivityLine.activity_type.values.first }
+    state { ActivityLine.state_machines[:state].states.map(&:name).first.to_s }
   end
 end
