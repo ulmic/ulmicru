@@ -143,6 +143,18 @@ ru:
         title: Название
       feedback:
         text: Описание ошибки
+      letter:
+        title: Тема
+        subdivision_code: Код подразделения
+        number: Номер
+        year: Год
+        send_date: Дата отправки
+        receiver: Получатель
+        list_number: Количество листов
+        annex: Приложение
+        executor: Исполнитель
+        stamp_of_receipt: Отметка о получении
+        note: Примечание
     state_machines:
       member:
         state:
@@ -211,6 +223,11 @@ ru:
           removed: Удалённые
           active: Активные
           unviewed: Непросмотренные
+    letter:
+      state:
+        states:
+          unviewed: Непросмотренные
+          sended: Отправленные
     errors:
       models:
         member:
@@ -221,6 +238,7 @@ ru:
           attributes:
             mobile_phone:
               phone: имеет неверный формат
+
 
   enumerize:
     user:

@@ -3,8 +3,8 @@ module LetterScopes
   include Concerns::StateMachine
 
   included do
-    scope :unviewed, -> { where state: :unviewed }
-    scope :sended, -> { where state: :sended }
+    scope :unviewed, -> { where(state: :unviewed).order('number DESC') }
+    scope :sended, -> { where(state: :sended).order('number DESC') }
     scope :removed, -> { where state: :removed }
   end
 end

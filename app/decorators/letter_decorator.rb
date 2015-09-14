@@ -1,13 +1,15 @@
 class LetterDecorator < ApplicationDecorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def year
+    I18n.l object.send_date.to_datetime, format: '-%y' if object.send_date
+  end
 
+  def formatted_send_date
+    I18n.l object.send_date.to_datetime, format: '%d.%m.%Y' if object.send_date
+  end
+
+  def present_executor
+    executor ? executor.decorate.short_name : executor_name
+  end
 end

@@ -4,19 +4,20 @@ module Data::ImportLetters
   def upload_letters(filepath)
     csv_text = File.read filepath
     csv = CSV.parse csv_text
-    csv.each_with_index do |row|
+    csv.drop(1).each_with_index do |row, index|
       letter_count = Letter.count
       letter = Letter.create subdivision_code: row[0],
                     number: row[1],
                     send_date: row[3],
-                    receiver: row[4],
-                    title: row[5],
+                    receiver: receiver(row[4]),
+                    title: title(row[5]),
                     list_number: row[6],
                     annex: row[7],
                     executor_id: executor_id(row[8]),
                     executor_name: row[8],
                     stamp_of_receipt: row[9],
                     note: row[10]
+      raise [letter.errors.inspect, row].inspect if letter_count == Letter.count
     end
   end
 
@@ -36,5 +37,13 @@ module Data::ImportLetters
       end
       nil
     end
+  end
+
+  def title(row)
+    row.present? ? row : 'Пустая тема'
+  end
+
+  def receiver(row)
+    row.present? ? row : 'Пустой получатель'
   end
 end

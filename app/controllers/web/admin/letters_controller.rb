@@ -4,8 +4,8 @@ class Web::Admin::LettersController < Web::Admin::ApplicationController
 
   def index
     @letters = {}
-    @letters[:unviewed] = Kaminari.paginate_array(Letter.unviewed.decorate).page params[:page]
     @letters[:sended] = Kaminari.paginate_array(Letter.sended.decorate).page params[:page]
+    @letters[:unviewed] = Kaminari.paginate_array(Letter.unviewed.decorate).page params[:page]
   end
 
   def new

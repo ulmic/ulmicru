@@ -1,9 +1,17 @@
 class Letter < ActiveRecord::Base
   belongs_to :executor, class_name: 'User'
 
+  validates :subdivision_code, presence: true
+  validates :number, presence: true
+  validates :send_date, presence: true
+  validates :receiver, presence: true
+  validates :title, presence: true
+  validates :list_number, presence: true
+  validates :state, presence: true
+
   include LetterScopes
 
-  state_machine :state, initial: :unviewed do
+  state_machine :state, initial: :sended do
     state :unviewed
     state :sended
     state :removed

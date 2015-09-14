@@ -21,12 +21,12 @@
         %td= link_to letter.title, edit_admin_letter_path(letter)
         %td= letter.subdivision_code
         %td= letter.number
-        %td=l letter.send_date.to_datetime, format:  '-%y'
-        %td=l letter.send_date.to_datetime, format:  '%d/%m/%Y'
+        %td= letter.year
+        %td= letter.formatted_send_date
         %td= letter.receiver
         %td= letter.list_number
         %td= letter.annex
-        %td= letter.executor.decorate.short_name
+        %td= letter.present_executor
         %td= letter.stamp_of_receipt
         %td= letter.note
         %td.actions

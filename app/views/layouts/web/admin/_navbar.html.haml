@@ -58,6 +58,10 @@
         = menu_item admin_feedbacks_path do
           %span.glyphicon.glyphicon-share
           = Feedback.model_name.human.pluralize(:ru)
+        = menu_item admin_letters_path do
+          %span.glyphicon.glyphicon-share
+          = Letter.model_name.human.pluralize(:ru)
+
       - elsif current_user.role.author?
         = menu_item admin_events_path do
           = Event.model_name.human.pluralize(:ru)
