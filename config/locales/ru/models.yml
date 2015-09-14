@@ -15,6 +15,7 @@ ru:
       document: Документ
       feedback: Обратная связь
       comment: Комментарий
+      letter: Письмо
     attributes:
       user:
         first_name: Имя
