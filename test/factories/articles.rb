@@ -12,5 +12,9 @@ FactoryGirl.define do
       title 'Контакты'
       association :category, :contacts
     end
+
+    trait :charter do
+      title 'Устав'
+    end
   end
 end
