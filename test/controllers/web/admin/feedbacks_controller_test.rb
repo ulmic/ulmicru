@@ -5,6 +5,7 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     @feedback = create :feedback
     admin = create :admin
     sign_in admin
+    @exceptions_attributes = ['id', 'created_at', 'updated_at']
   end
 
   test 'should get new' do
@@ -22,7 +23,10 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     post :create, feedback: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_feedbacks_path
-    assert_equal attributes[:url], Feedback.last.url
+    feedback = Feedback.last
+    feedback.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
+      assert_equal attributes[key.to_sym], feedback.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -36,7 +40,9 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_feedback_path @feedback
     @feedback.reload
-    assert_equal attributes[:url], @feedback.url
+    @feedback.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
+      assert_equal attributes[key.to_sym], @feedback.send(key), key
+    end
   end
 
   test 'should delete destroy' do

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       resources :tags, only: :create
       resources :documents, except: :show
       resources :comments, except: :show
+      resources :letters, except: :show
       resources :positions, only: [ :update, :destroy ]
       resources :trash, only: [] do
         collection do

@@ -3,10 +3,21 @@ FactoryGirl.define do
     title { generate :string }
     member_id { Member.last ? Member.last.id : create(:member).id }
     description { generate :string }
+    state { Team.state_machines[:state].states.map(&:name).first.to_s }
+    publicity { Team.publicity.values.first }
   end
 
-  factory :departament, parent: :team, class: 'Team::Departament'
-  factory :primary, parent: :team, class: 'Team::Primary'
-  factory :subdivision, parent: :team, class: 'Team::Subdivision'
-  factory :administration, parent: :team, class: 'Team::Administration'
+  factory :departament, parent: :team, class: 'Team::Departament' do
+    municipality { Team::Departament.municipality.values.first }
+    type 'Team::Departament'
+  end
+  factory :primary, parent: :team, class: 'Team::Primary' do
+    type 'Team::Primary'
+  end
+  factory :subdivision, parent: :team, class: 'Team::Subdivision' do
+    type 'Team::Subdivision'
+  end
+  factory :administration, parent: :team, class: 'Team::Administration' do
+    type 'Team::Administration'
+  end
 end

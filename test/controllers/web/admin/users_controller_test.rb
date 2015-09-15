@@ -5,6 +5,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @user = create :user
+    @exceptions_attributes = ['id', 'created_at', 'updated_at']
   end
 
   test 'should get new' do
@@ -22,7 +23,10 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     post :create, user: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_users_path
-    assert_equal attributes[:email], User.last.email
+    user = User.last
+    user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
+      assert_equal attributes[key.to_sym], user.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -36,7 +40,9 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_user_path @user
     @user.reload
-    assert_equal attributes[:email], @user.email
+    @user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
+      assert_equal attributes[key.to_sym], @user.send(key), key
+    end
   end
 
   test 'should delete destroy' do

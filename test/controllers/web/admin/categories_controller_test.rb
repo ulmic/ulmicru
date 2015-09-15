@@ -5,47 +5,53 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @category = create :category
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'is_last']
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success, @response.body
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success, @response.body
   end
 
-  test "should create category" do
+  test 'should create category' do
     attributes = attributes_for :category
     post :create, category: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_categories_path
-    assert_equal attributes[:name], Category.last.name
+    category = Category.last
+    category.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], category.send(key), key
+    end
   end
 
-  test "should not create category" do
+  test 'should not create category' do
     attributes = { name: nil }
     post :create, category: attributes
     assert_response :success
   end
 
-  test "should get edit by admin" do
+  test 'should get edit by admin' do
     get :edit, id: @category
     assert_response :success
   end
 
-  test "should update category by admin" do
+  test 'should update category by admin' do
     attributes = attributes_for :category
     put :update, id: @category, category: attributes
     assert_response :redirect
     assert_redirected_to edit_admin_category_path @category
     @category.reload
-    assert_equal attributes[:name], @category.name
+    @category.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @category.send(key), key
+    end
   end
 
-  test "should not update adticle by admin" do
+  test 'should not update adticle by admin' do
     attributes = attributes_for :category
     attributes[:name] = nil
     count_before_save = Category.count
@@ -54,7 +60,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should destroy category" do
+  test 'should destroy category' do
     count =  Category.count
     delete :destroy, id: @category
     @category.reload

@@ -6,6 +6,7 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     sign_in admin
     create :news
     @comment = create :comment
+    @exceptions_attributes = ['id', 'created_at', 'updated_at']
   end
 
   test 'should get index' do
@@ -23,7 +24,10 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     post :create, comment: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_comments_path
-    assert_equal attributes[:text], Comment.last.text
+    comment = Comment.last
+    comment.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
+      assert_equal attributes[key.to_sym], comment.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -37,7 +41,9 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_comment_path @comment
     @comment.reload
-    assert_equal attributes[:text], @comment.text
+    @comment.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
+      assert_equal attributes[key.to_sym], @comment.send(key), key
+    end
   end
 
   test 'should delete destroy' do

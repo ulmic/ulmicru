@@ -15,6 +15,7 @@ ru:
       document: Документ
       feedback: Обратная связь
       comment: Комментарий
+      letter: Письмо
     attributes:
       user:
         first_name: Имя
@@ -142,6 +143,19 @@ ru:
         title: Название
       feedback:
         text: Описание ошибки
+      letter:
+        title: Тема
+        subdivision_code: Код подразделения
+        number: Номер
+        year: Год
+        send_date: Дата отправки
+        receiver: Получатель
+        list_number: Количество листов
+        annex: Приложение
+        executor_id: Исполнитель
+        executor_name: Имя исполнителя
+        stamp_of_receipt: Отметка о получении
+        note: Примечание
     state_machines:
       member:
         state:
@@ -210,6 +224,11 @@ ru:
           removed: Удалённые
           active: Активные
           unviewed: Непросмотренные
+    letter:
+      state:
+        states:
+          unviewed: Непросмотренные
+          sended: Отправленные
     errors:
       models:
         member:
@@ -220,6 +239,7 @@ ru:
           attributes:
             mobile_phone:
               phone: имеет неверный формат
+
 
   enumerize:
     user:

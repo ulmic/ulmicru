@@ -5,6 +5,7 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
     @document = create :document
     admin = create :admin
     sign_in admin
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'file']
   end
 
   test 'should get new' do
@@ -22,7 +23,10 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
     post :create, document: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_documents_path
-    assert_equal attributes[:title], Document.last.title
+    document = Document.last
+    document.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], document.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -36,7 +40,9 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_document_path @document
     @document.reload
-    assert_equal attributes[:title], @document.title
+    @document.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @document.send(key), key
+    end
   end
 
   test 'should delete destroy' do

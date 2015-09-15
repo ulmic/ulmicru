@@ -7,6 +7,7 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
     create :member
     @event = create :event
     stub_request(:get, "https://api.foursquare.com/v2/venues/#{@event.place}?client_id=#{OAUTH_KEYS[:foursquare][:client_id]}&client_secret=#{OAUTH_KEYS[:foursquare][:client_secret]}&v=#{configus.api.foursquare.version}").with(headers: {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby gem'}).to_return(status: 200, body: File.new("#{Rails.root}/test/mock/foursquare/place.json"), headers: {})
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'main_photo', 'begin_date', 'end_date']
   end
 
   test 'should get index' do
@@ -28,7 +29,10 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
     post :create, event: attributes
     assert_response :redirect
     assert_redirected_to admin_events_path
-    assert_equal attributes[:title], Event.last.title
+    event = Event.last
+    event.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], event.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -42,7 +46,9 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_event_path @event
     @event.reload
-    assert_equal attributes[:title], @event.title
+    @event.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @event.send(key), key
+    end
   end
 
   test 'should delete destroy' do
