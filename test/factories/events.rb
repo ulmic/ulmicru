@@ -10,5 +10,6 @@ FactoryGirl.define do
     place '4e3faf5ac65b4ec275ff0a3b'
     organizer_type 'Team'
     organizer_id { Team.last ? Team.last.id : create(:team).id }
+    state { Event.state_machines[:state].states.map(&:name).first.to_s }
   end
 end

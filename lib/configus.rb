@@ -25,6 +25,10 @@ Configus.build Rails.env do
         full_name 'organization.projects.international_volunteer_school'
         url 'https://ulmic-volunteers-school.herokuapp.com/'
       end
+      it_way do
+        full_name 'organization.projects.it_way'
+        url 'https://it-way.herokuapp.com'
+      end
     end
     organization do
       logo 'http://ulmic.ru/assets/apps/logo-mic-square.png'

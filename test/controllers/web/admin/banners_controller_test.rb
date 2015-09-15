@@ -5,6 +5,7 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     @banner = create :banner
     admin = create :admin
     sign_in admin
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'begin_date', 'end_date', 'horizontal', 'vertical']
   end
 
   test 'should get new' do
@@ -17,7 +18,10 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     post :create, banner: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_banners_path
-    assert_equal attributes[:link], Banner.last.link
+    banner = Banner.last
+    banner.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], banner.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -31,7 +35,9 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_banner_path @banner
     @banner.reload
-    assert_equal attributes[:link], @banner.link
+    @banner.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @banner.send(key), key
+    end
   end
 
   test 'should delete destroy' do

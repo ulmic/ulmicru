@@ -6,5 +6,7 @@ FactoryGirl.define do
     photo        { generate :file }
     lead         { generate :string }
     user_id      { Member.last ? Member.last.id : create(:member).id }
+    state { News.state_machines[:state].states.map(&:name).first.to_s }
+    views { generate :integer }
   end
 end

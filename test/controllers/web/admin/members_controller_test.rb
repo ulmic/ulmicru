@@ -5,6 +5,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @member = create :member
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'avatar', 'birth_date']
   end
 
   test 'should get index' do
@@ -23,7 +24,10 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     attributes[:positions_attributes]['0'] = attributes_for :position
     post :create, member: attributes
     assert_redirected_to admin_members_path
-    assert_equal attributes[:patronymic], Member.last.patronymic
+    member = Member.last
+    member.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], member.send(key), key
+    end
   end
 
   test 'should get edit' do
@@ -42,7 +46,9 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     patch :update, member: attributes, id: @member
     assert_redirected_to edit_admin_member_path @member
     @member.reload
-    assert_equal attributes[:patronymic], @member.patronymic
+    @member.attributes.keys.except(*@exceptions_attributes).each do |key|
+      assert_equal attributes[key.to_sym], @member.send(key), key
+    end
   end
 
   test 'should delete destroy' do

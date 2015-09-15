@@ -1,0 +1,27 @@
+- model_class = Letter
+- current_title = page_title(action, model_class.model_name.human)
+- title current_title, :admin
+.page-header
+  %h1= page_title(action, Letter.model_name.human)
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/messages', object: @letter_form
+.row
+  .col-lg-12
+    = simple_form_for @letter_form, url: { controller: 'web/admin/letters', action: action }, input_html: { class: 'form-horizontal' } do |f|
+      = f.input :subdivision_code, as: :string, input_html: { value: '01/' }
+      = f.input :number, as: :string, input_html: { value: @last_letter_number + 1 }
+      = f.input :send_date, as: :date_picker, input_html: { value: DateTime.now }
+      = f.input :receiver, as: :string
+      = f.input :title, as: :string
+      = f.input :list_number, as: :string
+      = f.input :annex, as: :string
+      .alert.alert-dissmissible.alert-info
+        %span.glyphicon.glyphicon-info-sign
+        = t('hints.admin.letter.executor')
+      = f.input :executor_id, as: :select, collection: members_hash(@members, names: :official), input_html: { class: :select2 }
+      = f.input :executor_name, as: :string
+      = f.input :stamp_of_receipt, as: :string
+      = f.input :note, as: :string
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_letters_path, class: 'btn btn-default'

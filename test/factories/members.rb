@@ -15,5 +15,9 @@ FactoryGirl.define do
     password_confirmation { password }
     municipality 'г. Ульяновск'
     locality 'г. Ульяновск'
+    state { Member.state_machines[:state].states.map(&:name).first.to_s }
+    member_state { Member.state_machines[:member_state].states.map(&:name).first.to_s }
+    role 'user'
+    type 'Member'
   end
 end
