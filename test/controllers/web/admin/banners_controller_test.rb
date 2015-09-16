@@ -13,6 +13,17 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index' do
+    get :index
+    assert_response :success, @response.body
+  end
+
+  test 'should get index without instances' do
+    Banner.all.map &:destroy
+    get :index
+    assert_response :success, @response.body
+  end
+
   test 'should create banner' do
     attributes = attributes_for :banner
     post :create, banner: attributes
