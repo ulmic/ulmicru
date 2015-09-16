@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       resources :positions, only: [ :create, :update, :destroy ]
     end
     namespace :admin do
-      resources :users
+      resources :users, except: :show
       resources :members
       resources :unviewed, only: :index
       resources :news

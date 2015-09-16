@@ -31,8 +31,8 @@ module Web::Admin::ApplicationHelper
     ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1
   end
 
-  def model_of(items)
-    items.transform_values.each { |i| return i.first.model.class if i.first } if items
+  def model_class
+    request[:controller].split('/').last.singularize.camelize.constantize
   end
 
   def to_path(constant)

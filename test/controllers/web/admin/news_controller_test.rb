@@ -13,6 +13,12 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should get index without instances' do
+    News.all.map &:destroy
+    get :index
+    assert_response :success, @response.body
+  end
+
   test 'should get new' do
     get :new
     assert_response :success
