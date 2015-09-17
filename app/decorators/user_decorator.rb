@@ -21,9 +21,19 @@ class UserDecorator < ApplicationDecorator
 
   def select_presentation(options = {})
     if options[:names] == :official
-      "#{ticket}#{ticket ? ' | ' : ''} #{last_name} #{first_name.first}.#{patronymic.first if patronymic}."
+      "#{ticket_or_question} #{first_name.first}.#{patronymic.first if patronymic}."
     else
-      "#{ticket}#{ticket ? ' | ' : ''} #{first_name} #{last_name}"
+      "#{ticket_or_question} #{first_name} #{last_name}"
+    end
+  end
+
+  private
+
+  def ticket_or_question
+    if object.ticket
+      "#{ticket}#{ticket ? ' | ' : ''}"
+    elsif object.is_questionary?
+      "? | "
     end
   end
 end
