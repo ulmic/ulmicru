@@ -153,9 +153,11 @@ ru:
         list_number: Количество листов
         annex: Приложение
         executor_id: Исполнитель
+        executor: Исполнитель
         executor_name: Имя исполнителя
         stamp_of_receipt: Отметка о получении
         note: Примечание
+        file: Файл
     state_machines:
       member:
         state:

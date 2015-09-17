@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :event do
     title { generate :string }
     description { generate :string }
-    main_photo { generate :file }
+    main_photo { generate :image }
     creator_id { Member.last ? Member.last.id : create(:member).id }
     begin_date { DateTime.now }
     end_date { DateTime.now + 1.day }

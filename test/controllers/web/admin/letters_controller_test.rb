@@ -6,7 +6,7 @@ class Web::Admin::LettersControllerTest < ActionController::TestCase
     sign_in admin
     create :news
     @letter = create :letter
-    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'send_date']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'send_date', 'file']
   end
 
   test 'should get index' do

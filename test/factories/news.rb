@@ -3,7 +3,7 @@ FactoryGirl.define do
     title        { generate :string }
     body         { generate :string }
     published_at { DateTime.now }
-    photo        { generate :file }
+    photo        { generate :image }
     lead         { generate :string }
     user_id      { Member.last ? Member.last.id : create(:member).id }
     state { News.state_machines[:state].states.map(&:name).first.to_s }

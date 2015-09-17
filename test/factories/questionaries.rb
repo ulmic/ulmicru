@@ -9,7 +9,7 @@ FactoryGirl.define do
     mobile_phone { generate :phone }
     birth_date { generate :date }
     home_adress { generate :string }
-    avatar { generate :file }
+    avatar { generate :image }
     experience { generate :string }
     want_to_do { generate :string }
     state { Questionary.state_machines[:state].states.map(&:name).first.to_s }
