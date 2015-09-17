@@ -23,6 +23,9 @@
       = f.input :executor_name, as: :string
       = f.input :stamp_of_receipt, as: :string
       = f.input :note, as: :string
+      .alert.alert-dissmissible.alert-info
+        %span.glyphicon.glyphicon-info-sign
+        = t('hints.admin.letter.file')
       = f.input :file, as: :file
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_letters_path, class: 'btn btn-default'

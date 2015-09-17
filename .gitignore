@@ -48,6 +48,7 @@ config/initializers/secret_token.rb
 config/database.yml
 Gemfile.lock
 .capistrano/
+!public/1.pdf
 
 
 \#*\#

@@ -22,8 +22,11 @@ FactoryGirl.define do
   sequence :date, aliases: [:start_date, :end_date] do |n|
     Date.today + n.day
   end
-  sequence :file do |n|
+  sequence :image do |n|
     fixture_file_upload('app/assets/images/apps/logo-mic-square.png', 'image/png')
+  end
+  sequence :file do |n|
+    fixture_file_upload('public/1.pdf', 'pdf')
   end
   sequence :human_name, aliases: [:name] do
     "Leopold"
