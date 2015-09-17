@@ -8,6 +8,9 @@ class Letter < ActiveRecord::Base
   validates :title, presence: true
   validates :list_number, presence: true
   validates :state, presence: true
+  validates :file, presence: true
+
+  mount_uploader :file, FileUploader
 
   include LetterScopes
 

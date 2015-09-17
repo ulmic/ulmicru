@@ -12,5 +12,6 @@ FactoryGirl.define do
     note { generate :string }
     state Letter.state_machines[:state].states.map(&:name).first.to_s
     executor_name { generate :string }
+    file { generate :file }
   end
 end

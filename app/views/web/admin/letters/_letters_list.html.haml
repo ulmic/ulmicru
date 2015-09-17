@@ -6,14 +6,10 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:subdivision_code)
       %th= model_class.human_attribute_name(:number)
-      %th= model_class.human_attribute_name(:year)
       %th= model_class.human_attribute_name(:send_date)
       %th= model_class.human_attribute_name(:receiver)
-      %th= model_class.human_attribute_name(:list_number)
-      %th= model_class.human_attribute_name(:annex)
       %th= model_class.human_attribute_name(:executor)
       %th= model_class.human_attribute_name(:stamp_of_receipt)
-      %th= model_class.human_attribute_name(:note)
       %th= t 'helpers.links.actions'
   %tbody
     - letters.each do |letter|
@@ -21,15 +17,13 @@
         %td= link_to letter.title, edit_admin_letter_path(letter)
         %td= letter.subdivision_code
         %td= letter.number
-        %td= letter.year
         %td= letter.formatted_send_date
         %td= letter.receiver
-        %td= letter.list_number
-        %td= letter.annex
         %td= letter.present_executor
         %td= letter.stamp_of_receipt
-        %td= letter.note
         %td.actions
+          = link_to letter.file.url, class: 'btn btn-success btn-xs' do
+            %span.glyphicon.glyphicon-download
           = link_to edit_admin_letter_path(letter), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_letter_path(letter), method: :delete, class: 'btn btn-xs btn-danger' do
