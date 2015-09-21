@@ -10,24 +10,20 @@ class Web::Users::AccountController < Web::Users::ApplicationController
   end
 
   def update
-    if params[:user]
-      @user = User.find params[:id]
-      @user_form = UserForm.new @user
-      @user_form.submit params[:user]
-      if @user_form.save
-        redirect_to account_path
-      else
-        redirect_to account_path
-      end
-    elsif params[:member] || params[:questionary]
-      @member = Member.find params[:id]
-      @member_form = MemberForm.new @member
-      @member_form.submit params[:member]
-      if @member_form.save
-        redirect_to account_path
-      else
-        redirect_to account_path
-      end
+    #FIXME more elegant solution
+    model_name = :user
+    [:member, :questionary].each do |name|
+      model_name = name if params[name]
+    end
+    model = model_name.to_s.camelize.constantize
+    model_form = "#{model_name.to_s.camelize}Form".constantize
+    @user = model.find params[:id]
+    @user_form = model_form.new @user
+    @user_form.submit params[model_name]
+    if @user_form.save
+      redirect_to account_path
+    else
+      redirect_to account_path
     end
   end
 end
