@@ -19,7 +19,7 @@ class Web::Users::AccountController < Web::Users::ApplicationController
       else
         redirect_to account_path
       end
-    elsif params[:member]
+    elsif params[:member] || params[:questionary]
       @member = Member.find params[:id]
       @member_form = MemberForm.new @member
       @member_form.submit params[:member]
