@@ -26,4 +26,7 @@ class ActivityLine < ActiveRecord::Base
   end
   #FIXME tags association
   include Concerns::TagsHelper
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:title]
 end

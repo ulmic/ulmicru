@@ -4,6 +4,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
     @articles[:confirmed] = Kaminari.paginate_array(Article.confirmed.decorate).page params[:page]
     @articles[:inactive] = Kaminari.paginate_array(Article.inactive.decorate).page params[:page]
     @articles[:unviewed] = Kaminari.paginate_array(Article.unviewed.decorate).page params[:page]
+    @articles[:search] = Kaminari.paginate_array(Article.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
     @tag = Tag.new
   end
 

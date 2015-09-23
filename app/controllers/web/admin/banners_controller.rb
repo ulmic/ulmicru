@@ -4,6 +4,7 @@ class Web::Admin::BannersController < Web::Admin::ApplicationController
     @banners[:active] = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.active)).page params[:page]
     @banners[:unviewed] = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.unviewed)).page params[:page]
     @banners[:removed] = Kaminari.paginate_array(BannerDecorator.decorate_collection(Banner.removed)).page params[:page]
+    @banners[:search] = Kaminari.paginate_array(Banner.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
   end
 
   def new

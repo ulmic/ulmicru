@@ -6,14 +6,15 @@
       %h1
         = t model_class.model_name.human.pluralize(:ru)
         = link_to "#{t 'helpers.links.new'}", send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
-    .col-md-6
-      .search
-        = form_tag request.fullpath, method: :get do |f|
-          .form-group.text
-            .input-group
-              = text_field_tag :search, params[:search], class: 'text form-control'
-              %span.input-group-btn
-                = submit_tag t('helpers.search')
+    - if searchable_model?(model_class)
+      .col-md-6
+        .search
+          = form_tag request.fullpath, method: :get do |f|
+            .form-group.text
+              .input-group
+                = text_field_tag :search, params[:search], class: 'text form-control'
+                %span.input-group-btn
+                  = submit_tag t('helpers.search')
 #tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - if params[:search]

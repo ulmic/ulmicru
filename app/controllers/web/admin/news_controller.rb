@@ -5,6 +5,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news[:unpublished] = Kaminari.paginate_array(News.unpublished.decorate).page params[:page]
     @news[:unviewed] = Kaminari.paginate_array(News.unviewed.decorate).page params[:page]
     @news[:main] = Kaminari.paginate_array(News.main.decorate).page params[:page]
+    @news[:search] = Kaminari.paginate_array(News.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
     @tag = Tag.new
   end
 

@@ -4,6 +4,7 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
     @users[:confirmed] = Kaminari.paginate_array(User.confirmed.decorate).page params[:page]
     @users[:unviewed] = Kaminari.paginate_array(User.unviewed.decorate).page params[:page]
     @users[:declined] = Kaminari.paginate_array(User.declined.decorate).page params[:page]
+    @users[:search] = Kaminari.paginate_array(User.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
   end
 
   def new

@@ -6,6 +6,7 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
     @activity_lines[:active] = Kaminari.paginate_array(ActivityLine.active.decorate).page params[:page]
     @activity_lines[:unviewed] = Kaminari.paginate_array(ActivityLine.unviewed.decorate).page params[:page]
     @activity_lines[:removed] = Kaminari.paginate_array(ActivityLine.removed.decorate).page params[:page]
+    @activity_lines[:search] = Kaminari.paginate_array(ActivityLine.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
   end
 
   def new

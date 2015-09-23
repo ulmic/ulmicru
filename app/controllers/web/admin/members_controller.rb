@@ -6,6 +6,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @members[:unviewed] = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unviewed)).page params[:page]
     @members[:declined] = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.declined)).page params[:page]
     @members[:unavailable] = Kaminari.paginate_array(::MemberDecorator.decorate_collection(Member.unavailable)).page params[:page]
+    @members[:search] = Kaminari.paginate_array(Member.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
   end
 
   def new

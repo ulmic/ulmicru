@@ -10,6 +10,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     @events[:past] = Kaminari.paginate_array(::Event.presented.past.decorate).page params[:page]
     @events[:unviewed] = Kaminari.paginate_array(::Event.unviewed.decorate).page params[:page]
     @events[:declined] = Kaminari.paginate_array(::Event.declined.decorate).page params[:page]
+    @events[:search] = Kaminari.paginate_array(Event.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
   end
 
   def new

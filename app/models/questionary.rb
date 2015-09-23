@@ -45,4 +45,7 @@ class Questionary < Member
       transition all => :on_the_trial
     end
   end
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name, :patronymic, :motto, :ticket, :mobile_phone, :home_adress, :municipality, :locality, :experience, :want_to_do, :school ]
 end

@@ -4,6 +4,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionaries[:on_the_trial] = Kaminari.paginate_array(Questionary.on_the_trial.decorate).page params[:page]
     @questionaries[:unviewed] = Kaminari.paginate_array(Questionary.unviewed.decorate).page params[:page]
     @questionaries[:declined] = Kaminari.paginate_array(Questionary.declined.decorate).page params[:page]
+    @questionaries[:search] = Kaminari.paginate_array(Questionary.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
   end
 
   def new
