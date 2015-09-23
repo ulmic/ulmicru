@@ -27,4 +27,7 @@ class Letter < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:title, :receiver, :number, :executor_name]
 end

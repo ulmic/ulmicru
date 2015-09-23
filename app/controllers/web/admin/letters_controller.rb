@@ -6,6 +6,7 @@ class Web::Admin::LettersController < Web::Admin::ApplicationController
     @letters = {}
     @letters[:sended] = Kaminari.paginate_array(Letter.sended.decorate).page params[:page]
     @letters[:unviewed] = Kaminari.paginate_array(Letter.unviewed.decorate).page params[:page]
+    @letters[:search] = Kaminari.paginate_array(Letter.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
   end
 
   def new

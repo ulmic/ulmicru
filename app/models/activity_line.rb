@@ -1,5 +1,6 @@
 class ActivityLine < ActiveRecord::Base
   extend Enumerize
+
   belongs_to :member
   has_many :events
   has_many :tags, as: :target, dependent: :destroy
