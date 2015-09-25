@@ -3,10 +3,10 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
 
   def index
     @activity_lines = {}
-    @activity_lines[:active] = Kaminari.paginate_array(ActivityLine.active.decorate).page params[:page]
-    @activity_lines[:unviewed] = Kaminari.paginate_array(ActivityLine.unviewed.decorate).page params[:page]
-    @activity_lines[:removed] = Kaminari.paginate_array(ActivityLine.removed.decorate).page params[:page]
-    @activity_lines[:search] = Kaminari.paginate_array(ActivityLine.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
+    @activity_lines[:active] = ActivityLine.active.page(params[:page]).decorate
+    @activity_lines[:unviewed] = ActivityLine.unviewed.page(params[:page]).decorate
+    @activity_lines[:removed] = ActivityLine.removed.page(params[:page]).decorate
+    @activity_lines[:search] = ActivityLine.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

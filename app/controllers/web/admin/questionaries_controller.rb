@@ -1,10 +1,10 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
   def index
     @questionaries = {}
-    @questionaries[:on_the_trial] = Kaminari.paginate_array(Questionary.on_the_trial.decorate).page params[:page]
-    @questionaries[:unviewed] = Kaminari.paginate_array(Questionary.unviewed.decorate).page params[:page]
-    @questionaries[:declined] = Kaminari.paginate_array(Questionary.declined.decorate).page params[:page]
-    @questionaries[:search] = Kaminari.paginate_array(Questionary.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
+    @questionaries[:on_the_trial] = Questionary.on_the_trial.page(params[:page]).decorate
+    @questionaries[:unviewed] = Questionary.unviewed.page(params[:page]).decorate
+    @questionaries[:declined] = Questionary.declined.page(params[:page]).decorate
+    @questionaries[:search] = Questionary.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

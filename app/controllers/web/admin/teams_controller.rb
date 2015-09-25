@@ -4,10 +4,10 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   def index
     @teams = {}
-    @teams[:active] = Kaminari.paginate_array(Team.active.decorate).page params[:page]
-    @teams[:unviewed] = Kaminari.paginate_array(Team.unviewed.decorate).page params[:page]
-    @teams[:removed] = Kaminari.paginate_array(Team.removed.decorate).page params[:page]
-    @teams[:search] = Kaminari.paginate_array(Team.search_everywhere(params[:search]).decorate).page(params[:page]) if params[:search]
+    @teams[:active] = Team.active.page(params[:page]).decorate
+    @teams[:unviewed] = Team.unviewed.page(params[:page]).decorate
+    @teams[:removed] = Team.removed.page(params[:page]).decorate
+    @teams[:search] = Team.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

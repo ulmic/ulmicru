@@ -8,6 +8,8 @@
     %ul.nav.nav-tabs{ role: :tablist }
       - tabs.each do |tab|
         - pluralize_tab = tab.to_s.pluralize(:en)
+        - unless @unviewed[pluralize_tab.to_sym]
+          - binding.pry
         - total_count = @unviewed[pluralize_tab.to_sym].total_count
         - if total_count > 0
           %li
