@@ -18,6 +18,11 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index with search' do
+    get :index, search: @activity_line.title
+    assert_response :success, @response.body
+  end
+
   test 'should get index without instances' do
     ActivityLine.all.map &:destroy
     get :index

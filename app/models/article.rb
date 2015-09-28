@@ -32,4 +32,6 @@ class Article < ActiveRecord::Base
       transition all => :inactive
     end
   end
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:title, :body, :view]
 end

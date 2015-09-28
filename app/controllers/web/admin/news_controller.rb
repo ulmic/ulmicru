@@ -1,10 +1,11 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
   def index
     @news = {}
-    @news[:published] = Kaminari.paginate_array(News.published.decorate).page params[:page]
-    @news[:unpublished] = Kaminari.paginate_array(News.unpublished.decorate).page params[:page]
-    @news[:unviewed] = Kaminari.paginate_array(News.unviewed.decorate).page params[:page]
-    @news[:main] = Kaminari.paginate_array(News.main.decorate).page params[:page]
+    @news[:published] = News.published.page(params[:page]).decorate
+    @news[:unpublished] = News.unpublished.page(params[:page]).decorate
+    @news[:unviewed] = News.unviewed.page(params[:page]).decorate
+    @news[:main] = News.main.page(params[:page]).decorate
+    @news[:search] = News.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
     @tag = Tag.new
   end
 

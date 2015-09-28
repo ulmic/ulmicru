@@ -14,6 +14,11 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index with search' do
+    get :index, search: @questionary.first_name
+    assert_response :success, @response.body
+  end
+
   test 'should get index without instances' do
     Questionary.all.map &:destroy
     get :index

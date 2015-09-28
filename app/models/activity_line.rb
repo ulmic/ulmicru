@@ -1,5 +1,6 @@
 class ActivityLine < ActiveRecord::Base
   extend Enumerize
+
   belongs_to :member
   has_many :events
   has_many :tags, as: :target, dependent: :destroy
@@ -25,4 +26,7 @@ class ActivityLine < ActiveRecord::Base
   end
   #FIXME tags association
   include Concerns::TagsHelper
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:title]
 end

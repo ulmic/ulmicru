@@ -29,6 +29,9 @@ class Banner < ActiveRecord::Base
     end
   end
 
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:link]
+
   private
 
   def check_dimensions

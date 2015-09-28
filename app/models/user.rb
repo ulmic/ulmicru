@@ -60,4 +60,7 @@ class User < ActiveRecord::Base
   def generate_token
     self.token = SecureHelper.generate_token
   end
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name]
 end

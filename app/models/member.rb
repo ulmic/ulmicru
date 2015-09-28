@@ -89,6 +89,9 @@ class Member < User
   #FIXME try fix active form
   after_save :remove_empty_positions
 
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name, :patronymic, :motto, :ticket, :mobile_phone, :home_adress, :municipality, :locality, :experience, :want_to_do, :school ]
+
   private
 
   def remove_empty_positions
