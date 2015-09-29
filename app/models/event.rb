@@ -38,6 +38,9 @@ class Event < ActiveRecord::Base
   #FIXME try fix active form
   after_save :remove_empty_registrations
 
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:title, :description]
+
   private
 
   def remove_empty_registrations

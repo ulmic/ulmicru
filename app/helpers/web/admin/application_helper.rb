@@ -14,6 +14,14 @@ module Web::Admin::ApplicationHelper
     "#{t("state_machines.#{model}.state.states.#{tab}").pluralize(:ru)} / #{count}"
   end
 
+  def search_tab_title(count)
+    "#{t("helpers.found")} / #{count}"
+  end
+
+  def searchable_model?(model_class)
+    model_class.methods.include? :search_everywhere
+  end
+
   def enumerize_locales_hash(model, attribute)
     I18n.t("enumerize.#{model.name.underscore.gsub('/', '.')}.#{attribute}").invert
   end

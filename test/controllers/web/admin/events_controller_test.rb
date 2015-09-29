@@ -15,6 +15,11 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index with search' do
+    get :index, search: @event.title
+    assert_response :success, @response.body
+  end
+
   test 'should get index without instances' do
     Event.all.map &:destroy
     get :index

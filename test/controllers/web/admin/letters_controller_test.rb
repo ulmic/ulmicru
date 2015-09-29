@@ -14,6 +14,11 @@ class Web::Admin::LettersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index with search' do
+    get :index, search: @letter.title
+    assert_response :success, @response.body
+  end
+
   test 'should get index without instances' do
     Letter.all.map &:destroy
     get :index

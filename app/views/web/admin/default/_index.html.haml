@@ -1,14 +1,31 @@
-- tabs = items.keys
+- tabs = items.keys.except(:search)
 - title model_class.model_name.human.pluralize(:ru), :admin
 .page-header
-  %h1
-    =t model_class.model_name.human.pluralize(:ru)
-    = link_to "#{t 'helpers.links.new'}", send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
+  .row
+    .col-md-6
+      %h1
+        = t model_class.model_name.human.pluralize(:ru)
+        = link_to "#{t 'helpers.links.new'}", send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
+    - if searchable_model?(model_class)
+      .col-md-6
+        .search
+          = form_tag request.fullpath, method: :get do |f|
+            .form-group.text
+              .input-group
+                = text_field_tag :search, params[:search], class: 'text form-control'
+                %span.input-group-btn
+                  = submit_tag t('helpers.search')
 #tabs
   %ul.nav.nav-tabs{ role: :tablist }
+    - if params[:search]
+      %li
+        = link_to search_tab_title(items[:search].total_count), "##{:search}"
     - tabs.each do |tab|
       %li
         = link_to tab_title(model_class, tab, items[tab].total_count), "##{tab}"
+  - if params[:search]
+    #search
+      = render "#{to_path(model_class).pluralize(:en)}_list", to_path(model_class).pluralize(:en).to_sym => items[:search]
   - tabs.each do |tab|
     %div{ id: tab }
       = render "#{to_path(model_class).pluralize(:en)}_list", to_path(model_class).pluralize(:en).to_sym => items[tab]

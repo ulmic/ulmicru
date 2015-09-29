@@ -13,6 +13,11 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index with search' do
+    get :index, search: @team.title
+    assert_response :success, @response.body
+  end
+
   test 'should get index without instances' do
     Team.all.map &:destroy
     get :index

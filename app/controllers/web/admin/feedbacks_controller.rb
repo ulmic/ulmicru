@@ -1,10 +1,10 @@
 class Web::Admin::FeedbacksController < Web::Admin::ApplicationController
   def index
     @feedback = {}
-    @feedback[:unviewed] = Kaminari.paginate_array(Feedback.unviewed.decorate).page params[:page]
-    @feedback[:fixing] = Kaminari.paginate_array(Feedback.fixing.decorate).page params[:page]
-    @feedback[:done] = Kaminari.paginate_array(Feedback.done.decorate).page params[:page]
-    @feedback[:declined] = Kaminari.paginate_array(Feedback.declined.decorate).page params[:page]
+    @feedback[:unviewed] = Feedback.unviewed.page(params[:page]).decorate
+    @feedback[:fixing] = Feedback.fixing.page(params[:page]).decorate
+    @feedback[:done] = Feedback.done.page(params[:page]).decorate
+    @feedback[:declined] = Feedback.declined.page(params[:page]).decorate
   end
 
   def new

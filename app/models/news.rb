@@ -44,6 +44,9 @@ class News < ActiveRecord::Base
     end
   end
 
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [:title, :body, :lead]
+
   def category
     activity_line_tag = tags.activity_lines.first
     activity_line_tag.target.title if activity_line_tag

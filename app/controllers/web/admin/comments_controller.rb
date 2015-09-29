@@ -1,8 +1,8 @@
 class Web::Admin::CommentsController < Web::Admin::ApplicationController
   def index
     @comments = {}
-    @comments[:unviewed] = Kaminari.paginate_array(Comment.unviewed.decorate).page params[:page]
-    @comments[:active] = Kaminari.paginate_array(Comment.active.decorate).page params[:page]
+    @comments[:unviewed] = Comment.unviewed.page(params[:page]).decorate
+    @comments[:active] = Comment.active.page(params[:page]).decorate
   end
 
   def new
