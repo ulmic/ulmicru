@@ -11,6 +11,7 @@ module Ulmicru
     config.autoload_paths += Dir[
       "#{config.root}/lib/**/"
     ]
+    config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews" unless Rails.env == "production"
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.available_locales = [:en, :ru]
