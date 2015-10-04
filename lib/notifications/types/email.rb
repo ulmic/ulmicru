@@ -3,7 +3,7 @@ module Notifications
 
     class Email
       def self.to_send(params)
-        UserMailer.send(params[:theme], params[:object], params[:user]) 
+        UserMailer.delay.send(params[:theme], params[:object], params[:user]) 
       end
     end
   end
