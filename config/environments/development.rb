@@ -18,7 +18,7 @@ Rails.application.configure do
   # output to tmp/mails directory
   config.action_mailer.delivery_method = :file
   # ... and to specify output location
-  #config.action_mailer.file_settings = { :location => Rails.root.join('tmp/mail') }
+  config.action_mailer.file_settings = { :location => Rails.root.join('tmp/mail') }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

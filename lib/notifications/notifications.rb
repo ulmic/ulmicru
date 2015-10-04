@@ -4,7 +4,7 @@ module Notifications
   class Notification
     def self.to_send(type, **params)
       senderObj = "Notifications::Types::#{type.to_s.classify}".constantize
-      senderObj.send_notification(params)
+      senderObj.to_send(params)
     end
   end
 end
