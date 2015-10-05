@@ -2,3 +2,9 @@ messages:
   user:
     after_create:
       subject: 'Подтверждение адреса электронной почты'
+  member:
+    after_create:
+      subject: 'Подтверждение адреса электронной почты'
+  questionary:
+    after_create:
+      subject: 'Подтверждение адреса электронной почты'

@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
 
   def after_create(object, user)
     @user = user
-    @image_src = "http://ul-lider.ru/confirmation_idea_fair.jpg"
+    @image_src = '/logo.png'
     mail to: @user.email, subject: subject(object.class, :after_create)
   end
 

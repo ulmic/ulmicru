@@ -11,6 +11,6 @@ class Api::UsersController < Api::ApplicationController
     send_notification user, user, :after_create
     redirect_to account_path
   rescue
-   head :bad_request
+    head :bad_request
   end
 end
