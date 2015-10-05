@@ -19,8 +19,13 @@ class Web::Users::AccountController < Web::Users::ApplicationController
     model_form = "#{model_name.to_s.camelize}Form".constantize
     @user = model.find params[:id]
     @user_form = model_form.new @user
+    old_email = @user.email
     @user_form.submit params[model_name]
     if @user_form.save
+      if params[:email] != old_email
+        send_notification @user_form.model, @user_form.model, :after_create
+        @user.renew
+      end
       redirect_to account_path
     else
       redirect_to account_path
