@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
     state :declined
     state :removed
 
+    event :renew do
+      transition all => :unviewed
+    end
     event :confirm do
       transition all => :confirmed
     end
