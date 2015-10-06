@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :tags, only: [ :index, :show ]
     resources :remind_password, only: [ :index, :create, :edit, :update ]
     #resources :teams, only: [ :index, :show ]
+    resources :remind_passwords, only: [ :new, :create ]
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end
