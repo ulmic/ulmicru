@@ -32,7 +32,8 @@
                                            text: @event.lead
     - if @banner.present?
       %section.side-banner
-        = image_tag @banner.vertical
+        = link_to @banner.link, class: 'blank' do
+          = image_tag @banner.vertical, class: ''
   %main.big-column
     .main-news-content
       .slider-wrap
