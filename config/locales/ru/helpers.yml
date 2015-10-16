@@ -1,6 +1,7 @@
 ru:
   helpers:
     enter: Войти
+    remind_password: Напомнить пароль
     sign_in: Войти на сайт
     sign_out: Выйти
     no_author: Нет автора
