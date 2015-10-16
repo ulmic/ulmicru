@@ -1,23 +1,25 @@
 class Web::RemindPasswordsController < Web::ApplicationController
-  def new
+  def index
     @user_form = UserForm.new_with_model
   end
 
   def create
-    @user_form = UserForm.new_with_model params[:user]
-    if @user_form.valid?
-      user = @form.user
+    @user_form = UserForm.find_with_model_by email: params[:user][:email]
+    if @user_form.model 
+      byebug
+      user = @user_form.model
       if user.can_reset_password?
-        user.generate_reset_password_token
+        user.generate_token
         user.save!
         # TODO replace to observers
         send_notification @user_form.model, @user_form.model, :remind_password
-
         redirect_to root_path
+      else
+        @user_form = @user_form.becomes! User
+        render :index
       end
-      # else f(:error)
     else
-      render :new
+      render :index
     end
   end
 end

@@ -136,6 +136,10 @@ ru:
         register: Зарегистрироваться
         wrong_email_or_password: 'Неверный e-mail или пароль'
         may_be_you_have_auth_via_social_network: Возможно вы авторизовывались через социальные сети
+    remind_passwords:
+      index:
+        title: Восстановление пароля
+        user_not_found: Пользователь с указанным email не найден
     pages:
       shared:
         not_found:
