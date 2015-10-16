@@ -9,6 +9,7 @@ rake db:create db:migrate db:seed
 cp config/secrets.yml.sample config/secrets.yml
 /* ASK oauth.yml WITH REAL KEYS */
 cp config/oauth.yml.sample config/oauth.yml
+rake db:seed
 rails s
 ```
 
