@@ -18,6 +18,8 @@
 #= require jasny-bootstrap
 #= require jasny_file_uploader
 #= require placeholders
+#= require react
+#= require react_ujs
 
 $ ->
   init_bootstrap_styles = ->
