@@ -109,8 +109,8 @@ Rails.application.routes.draw do
     end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
-  
-  #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create' 
+
+  #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create'
   #TODO Maybe add some checks for environment for this line? Like this?
   get '*unmatched_route', to: 'web/pages#show', slug: :not_found if Rails.env == "production"
 end

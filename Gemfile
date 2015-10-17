@@ -49,7 +49,6 @@ gem 'sinatra', '>= 1.3.0', require: nil
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'russia_regions'
-gem 'mysql2'
 gem 'github_api'
 gem 'pg_search'
 
