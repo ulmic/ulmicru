@@ -1,11 +1,12 @@
 class Web::RemindPasswordsController < Web::ApplicationController
   def index
+    byebug
     @user_form = UserForm.new_with_model
   end
 
   def create
     @user_form = UserForm.find_with_model_by email: params[:user][:email]
-    if @user_form.model 
+    if @user_form.model
       byebug
       user = @user_form.model
       if user.can_reset_password?
