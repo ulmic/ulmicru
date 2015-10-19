@@ -134,12 +134,14 @@ ru:
       new:
         title: Авторизация
         register: Зарегистрироваться
+        remind_password: Восстановить пароль
         wrong_email_or_password: 'Неверный e-mail или пароль'
         may_be_you_have_auth_via_social_network: Возможно вы авторизовывались через социальные сети
-    remind_passwords:
+        remind_password_notification_sended: Вам было отправлено письмо с инструкциями для восстановления пароля
+    remind_password:
       index:
         title: Восстановление пароля
-        user_not_found: Пользователь с указанным email не найден
+        remind_password_error: Пользователь с указанным email не был найден или был удалён
     pages:
       shared:
         not_found:
