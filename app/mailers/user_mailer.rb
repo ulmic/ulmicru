@@ -12,6 +12,12 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: subject(object.class, :after_create)
   end
 
+  def remind_password(object, user)
+    @user = user
+    @image_src = '/logo.png'
+    mail to: @user.email, subject: subject(object.class, :remind_password)
+  end
+
   def just_message(user, message, subject)
     @user = user
     @message = message
