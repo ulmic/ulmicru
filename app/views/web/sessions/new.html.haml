@@ -2,6 +2,10 @@
 .container.mic-form-container
   .row
     .medium-6.small-12.columns.medium-push-3
+      - if flash[:remind_password_notification]
+        %span.label.success
+          %i.fa.fa-exclamation-circle
+            = t ".#{flash[:remind_password_notification]}"
       - if @user.email.present?
         %span.label.alert
           %i.fa.fa-exclamation-circle
@@ -31,3 +35,5 @@
             = t('social_networks.google')
             %span.icon-google.min-icon
       = link_to t('.register'), new_user_path
+      <br>
+      = link_to t('.remind_password'), remind_password_index_path

@@ -1,0 +1,7 @@
+- title
+.container.mic-form-container
+  = render 'layouts/web/shared/errors', object: @user_form
+  = simple_form_for @user_form, url: { controller: :remind_password, action: :update } do |f|
+    = f.input :password, as: :password, required: true
+    = f.input :password_confirmation, as: :password, required: true
+    = f.button :submit, t('.register')
