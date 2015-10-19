@@ -2,6 +2,8 @@
 .container.mic-form-container
   .row
     .medium-6.small-12.columns.medium-push-3
+      %h3.title
+        = t('.title')
       - if @user_form.email.present?
         %span.label.alert
           %i.fa.fa-exclamation-circle

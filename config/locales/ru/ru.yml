@@ -142,6 +142,11 @@ ru:
       index:
         title: Восстановление пароля
         remind_password_error: Пользователь с указанным email не был найден или был удалён
+      edit:
+        title: Создание нового пароля
+        update_password: Обновить пароль
+        new_password: Новый пароль
+        repeat_new_password: Повторите новый пароль
     pages:
       shared:
         not_found:
