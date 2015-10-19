@@ -1,7 +1,13 @@
 - title
 .container.mic-form-container
-  = render 'layouts/web/shared/errors', object: @user_form
-  = simple_form_for @user_form, url: { controller: :remind_password, action: :update } do |f|
-    = f.input :password, as: :password, required: true
-    = f.input :password_confirmation, as: :password, required: true
-    = f.button :submit, t('.register')
+  .row
+    .medium-6.small-12.columns.medium-push-3
+      %h3.title
+        = t('.title')
+      = render 'layouts/web/shared/errors', object: @user_form
+      = simple_form_for @user_form, url: { controller: :remind_password, action: :update } do |f|
+        = f.label t('.new_password'), required: true
+        = f.input :password, as: :password, required: true, label: false
+        = f.label t('.repeat_new_password'), required: true
+        = f.input :password_confirmation, as: :password, required: true, label: false
+        = f.button :submit, t('.update_password')
