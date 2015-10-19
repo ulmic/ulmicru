@@ -18,6 +18,11 @@ class ApplicationForm < ActiveForm::Base
       self.new obj
     end
 
+    def find_with_model_by! *args
+      obj = obj_class.find_by!(*args)
+      self.new obj
+    end
+
     def new_with_model *args
       obj = obj_class.new *args
       active_form = self.new obj
