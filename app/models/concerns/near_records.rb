@@ -1,5 +1,6 @@
 module Concerns
   module NearRecords
+    extend ActiveSupport::Concern
     def previous(record_id)
       record_id ||= id
       self.where('id < ?', record_id).first
