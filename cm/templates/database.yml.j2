@@ -1,5 +1,5 @@
 default: &default
-  username: postgres
+  username: {{ pg_user }}
   adapter: postgresql
   encoding: unicode
   pool: 5
@@ -7,6 +7,7 @@ default: &default
 development:
   <<: *default
   database: ulmic_development
+
 test:
   <<: *default
   database: ulmic_test
