@@ -9,6 +9,8 @@
 .row
   .col-lg-12
     = simple_form_for @letter_form, url: { controller: 'web/admin/letters', action: action }, input_html: { class: 'form-horizontal' } do |f|
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_letters_path, class: 'btn btn-default'
       = f.input :subdivision_code, as: :string, input_html: { value: '01/' }
       = f.input :number, as: :string, input_html: { value: @last_letter_number + 1 }
       = f.input :send_date, as: :date_picker, input_html: { value: DateTime.now }
