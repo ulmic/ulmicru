@@ -47,6 +47,13 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
+set :precompile_cmd             # default: bundle exec rake assets:precompile
+set :assets_dir                 # default: "public/assets"
+set :rsync_cmd                  # default: "rsync -av"
+
+set :turbosprockets_enabled     # default: false
+set :turbosprockets_backup_dir  # default: "public/.assets"
+set :cleanexpired_cmd           # default: bundle exec rake assets:clean_expired
 
 namespace :deploy do
   task :restart do
