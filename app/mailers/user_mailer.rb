@@ -23,5 +23,4 @@ class UserMailer < ApplicationMailer
     @message = message
     mail(to: user.email, subject: subject)
   end
-
 end

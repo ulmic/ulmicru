@@ -20,19 +20,18 @@
       .row
         .small-3.columns
           = link_to auth_path(:vkontakte) do
-            = t('social_networks.vkontakte')
             %span.icon-vkontakte.min-icon
+            = t('social_networks.vkontakte')
         .small-3.columns
           = link_to auth_path(:facebook) do
-            = t('social_networks.facebook')
             %span.icon-facebook.min-icon
+            = t('social_networks.facebook')
         .small-3.columns
           = link_to auth_path(:twitter) do
-            = t('social_networks.twitter')
             %span.icon-twitter.min-icon
+            = t('social_networks.twitter')
         .small-3.columns
           = link_to auth_path(:google) do
-            = t('social_networks.google')
             %span.icon-google.min-icon
       = link_to t('.register'), new_user_path
       <br>
