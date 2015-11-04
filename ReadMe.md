@@ -11,6 +11,8 @@ cp config/secrets.yml.sample config/secrets.yml
 cp config/oauth.yml.sample config/oauth.yml
 rake db:seed
 rails s
+/* Run livereload */
+guard
 ```
 
 access admin panel in dev
