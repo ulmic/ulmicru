@@ -28,6 +28,7 @@ require 'capistrano/sidekiq'
 #require 'capistrano/sidekiq/monit'
 require 'capistrano/rails/assets'
 require 'capistrano/faster_assets'
+require 'capistrano/local_precompile'
 # require 'capistrano/rails/migrations'
 # require "whenever/capistrano"
 
