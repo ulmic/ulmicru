@@ -82,6 +82,7 @@ group :development, :test do
   gem 'colorize', '0.6.0'
   gem 'better_errors'
   gem 'railroady'
+  gem 'capistrano-local-precompile', require: false
 end
 
 group :test do
