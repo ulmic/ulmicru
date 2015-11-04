@@ -9,6 +9,8 @@
 .row
   .col-lg-6
     = simple_form_for @comment_form, url: { controller: 'web/admin/comments', action: action }, input_html: { class: 'form-horizontal' } do |f|
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_comments_path, class: 'btn btn-default'
       = f.input :text
       = f.input :record_id, as: :string
       = f.input :record_type

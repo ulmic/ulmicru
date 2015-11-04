@@ -16,6 +16,8 @@
 .row
   .col-lg-12
     = simple_form_for [:admin, @news_form], input_html: { class: 'form-horizontal' } do |f|
+      = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
+      = link_to t('helpers.links.back'), admin_news_index_path, class: 'btn btn-default'
       = f.input :title, as: :string
       = f.input :lead, as: :string
       = f.input :body, as: :ckeditor
@@ -32,5 +34,4 @@
         = f.input :state_event, as: :state_event
       = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
-
       = link_to t('helpers.links.back'), admin_news_index_path, class: 'btn btn-default'
