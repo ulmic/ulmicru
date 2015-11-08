@@ -214,6 +214,7 @@ ru:
           unviewed: Непросмотренные
           active: Активные
           removed: Удалённые
+          actual: Актуальные
     team:
       state:
         states:

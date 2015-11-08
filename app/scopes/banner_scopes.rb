@@ -9,5 +9,6 @@ module BannerScopes
     scope :removed, -> { where state: :removed }
     scope :with_vertical, -> { where.not(vertical: nil) }
     scope :with_horizontal, -> { where.not(horizontal: nil) }
+    scope :actual, -> { where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now) }
   end
 end

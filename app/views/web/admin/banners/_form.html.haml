@@ -11,6 +11,7 @@
     = simple_form_for [:admin, @banner_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'
+      %br
       = f.label :vertical
       .preview
         = image_tag @banner_form.model.vertical if @banner_form.model.vertical.present?
