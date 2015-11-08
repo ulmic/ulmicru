@@ -1,6 +1,7 @@
 class Web::Admin::BannersController < Web::Admin::ApplicationController
   def index
     @banners = {}
+    @banners[:actual] = Banner.actual.page(params[:page]).decorate
     @banners[:active] = Banner.active.page(params[:page]).decorate
     @banners[:unviewed] = Banner.unviewed.page(params[:page]).decorate
     @banners[:removed] = Banner.removed.page(params[:page]).decorate
