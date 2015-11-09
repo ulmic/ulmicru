@@ -48,7 +48,10 @@ memberSelectDisplay = (targetType) ->
     this.setState { targetId: $("##{inputId}").val() }
   stringTagForm: (e) ->
     e.preventDefault()
-    @.setState { stringInputVisible: 'visible' }
+    if this.state.stringInputVisible == 'visible'
+      @.setState { stringInputVisible: 'hidden' }
+    else
+      @.setState { stringInputVisible: 'visible' }
   render: ->
     display = formDisplay @
     stringInputDisplay = stringInputDisplayState @.state.stringInputVisible

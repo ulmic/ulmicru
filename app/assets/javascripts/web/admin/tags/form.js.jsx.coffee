@@ -5,10 +5,16 @@
       targetType: 'none'
     }
   openTagForm: (type, targetType = 'none') ->
-    this.setState {
-                    tagType: type
-                    targetType: targetType
-                  }
+    if this.state.tagType == type && this.state.targetType == targetType
+      this.setState {
+        tagType: 'none'
+        targetType: 'none'
+      }
+    else
+      this.setState {
+                      tagType: type
+                      targetType: targetType
+                    }
   render: ->
     `<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
