@@ -26,6 +26,18 @@ stringInputDisplayState = (state) ->
   else
     return 'none'
 
+tagSelectDisplay = (targetType, type) ->
+  if targetType == type
+    return 'block'
+  else
+    return 'none'
+
+stringSelectDisplay = (tagType) ->
+  tagSelectDisplay tagType, 'string'
+
+memberSelectDisplay = (targetType) ->
+  tagSelectDisplay targetType, 'member'
+
 @TagOptionForm = React.createClass
   getInitialState: ->
     {
@@ -39,8 +51,11 @@ stringInputDisplayState = (state) ->
     stringInputDisplay = stringInputDisplayState @.state.stringInputVisible
     `<form className='tag_form' action={Routes.admin_tags_path()} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
-      <div className='input select optional tag_target_id'>
-        <input className='select optional select2-tags' name='tag[target_id]' id='tag_target_id'/>
+      <div className='input select optional tag_text' style={{display: stringSelectDisplay(this.props.tagType)}}>
+        <input className='select optional select2-tags' name='tag[text]' id='tag_text' data-type='string'/>
+      </div>
+      <div className='input select optional tag_target_id' style={{display: memberSelectDisplay(this.props.targetType)}}>
+        <input className='select optional select2-tags' name='tag[target_id]' id='tag_target_id' data-type='member'/>
       </div>
       <div style={{display: stringInputDisplay}} className='input tag_text'>
         <input className='string form-control' name='tag[text]' id='tag_text' />

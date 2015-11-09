@@ -1,6 +1,8 @@
 class Api::Admin::TagsController < Api::Admin::ApplicationController
   def index
     @tags = Tag.string
+    @tags = @tags.search_everywhere params[:q] if params[:q]
+    @tags = @tags.to_a.uniq &:text
     render json: { model: 'Tag', list: @tags.to_json(only: [:id, :text]) }
   end
 

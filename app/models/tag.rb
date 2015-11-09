@@ -25,4 +25,7 @@ class Tag < ActiveRecord::Base
       transition active: :removed
     end
   end
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [ :text ]
 end

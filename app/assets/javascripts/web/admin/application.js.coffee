@@ -36,15 +36,39 @@ $ ->
         placeholder: $(this).data('prompt')
       }
     $('.select2-tags').each ->
+      dataType = $(@).data('type')
+      url = ''
+      switch dataType
+        when 'string'
+          url = Routes.api_admin_tags_path()
+        when 'member'
+          url = Routes.api_admin_members_path()
       $(this).select2 {
         ajax: {
-          url: Routes.api_admin_tags_path()
+          url: url
+          data: (term, page) ->
+            {
+              q: term
+              page: page
+            }
           dataType: 'json'
           delay: 250
           results: (data) ->
-            {
-              results: JSON.parse(data.list)
-            }
+            if dataType == 'member'
+              members = JSON.parse(data.list)
+              members_results = []
+              $(members).each ->
+                members_results.push {
+                  id: @.id
+                  text: "#{@.ticket} | #{@.first_name} #{@.last_name}"
+                }
+              {
+                results: members_results
+              }
+            else
+              {
+                results: JSON.parse(data.list)
+              }
           cache: true
         }
         escapeMarkup: (markup) ->
