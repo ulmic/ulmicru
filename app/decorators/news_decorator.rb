@@ -12,6 +12,10 @@ class NewsDecorator < ApplicationDecorator
     "#{model.body.first(200)}..."
   end
 
+  def full_text
+    "#{model.lead}\n#{model.body}"
+  end
+
   def long_lead
     "#{model.body.first(600)}..."
   end
