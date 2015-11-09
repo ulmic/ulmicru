@@ -66,8 +66,15 @@ $ ->
                 results: members_results
               }
             else
+              tags = JSON.parse(data.list)
+              tags_results = []
+              $(tags).each ->
+                tags_results.push {
+                  id: @.text
+                  text: @.text
+                }
               {
-                results: JSON.parse(data.list)
+                results: tags_results
               }
           cache: true
         }

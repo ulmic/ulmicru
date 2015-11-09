@@ -3,7 +3,7 @@ class Api::Admin::TagsController < Api::Admin::ApplicationController
     @tags = Tag.string
     @tags = @tags.search_everywhere params[:q] if params[:q]
     @tags = @tags.to_a.uniq &:text
-    render json: { model: 'Tag', list: @tags.to_json(only: [:id, :text]) }
+    render json: { model: 'Tag', list: @tags.to_json(only: :text) }
   end
 
   def create

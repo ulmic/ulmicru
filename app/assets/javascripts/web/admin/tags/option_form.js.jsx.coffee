@@ -42,23 +42,23 @@ memberSelectDisplay = (targetType) ->
   getInitialState: ->
     {
       stringInputVisible: 'hidden'
+      targetId: ''
     }
+  changeValue: (inputId) ->
+    this.setState { targetId: $("##{inputId}").val() }
   stringTagForm: (e) ->
     e.preventDefault()
     @.setState { stringInputVisible: 'visible' }
   render: ->
     display = formDisplay @
     stringInputDisplay = stringInputDisplayState @.state.stringInputVisible
-    `<form className='tag_form' action={Routes.admin_tags_path()} data-remote='true' method='post' style={{display}}>
+    `<form className='tag_form' action={Routes.api_admin_tags_path()} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
       <div className='input select optional tag_text' style={{display: stringSelectDisplay(this.props.tagType)}}>
         <input className='select optional select2-tags' name='tag[text]' id='tag_text' data-type='string'/>
       </div>
       <div className='input select optional tag_target_id' style={{display: memberSelectDisplay(this.props.targetType)}}>
         <input className='select optional select2-tags' name='tag[target_id]' id='tag_target_id' data-type='member'/>
-      </div>
-      <div style={{display: stringInputDisplay}} className='input tag_text'>
-        <input className='string form-control' name='tag[text]' id='tag_text' />
       </div>
       <input type='submit' name='commit' value='Добавить тег'  className='button btn btn-xs btn-success' />
       <a onClick={this.stringTagForm} className='btn btn-xs btn-warning' id='add_new_string_tag' href='#'>Создать новый</a>
