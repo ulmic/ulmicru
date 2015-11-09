@@ -10,7 +10,7 @@ hiddenInputs = (component) ->
       <input className='hidden' type='hidden' name='tag[tag_type]' id='tag_tag_type' value={component.props.tagType} />
     </div>
     <div className='input hidden tag_record_type'>
-      <input value='News' className='hidden' type='hidden' name='tag[record_type]' id='tag_record_type' value={component.props.recordType} />
+      <input value='News' className='hidden' type='hidden' name='tag[record_type]' id='tag_record_type' value={component.props.recordType.replace(/^./, component.props.recordType[0].toUpperCase())} />
     </div>
     <div className='input hidden tag_record_id'>
       <input value={component.props.record.id} className='hidden' type='hidden' name='tag[record_id]' id='tag_record_id' />
