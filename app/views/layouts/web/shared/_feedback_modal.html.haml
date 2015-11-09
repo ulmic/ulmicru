@@ -4,7 +4,7 @@
       Нашли ошибку?
     %p
       Опишите её, пожалуйста.
-    = simple_form_for @feedback, remote: true, url: { controller: '/api/feedback', action: :create } do |f|
+    = simple_form_for @feedback, remote: true, url: { controller: '/api/feedbacks', action: :create } do |f|
       = f.input :text
       = f.input :url, as: :hidden, input_html: { value: request.original_url }
       - if signed_in?
