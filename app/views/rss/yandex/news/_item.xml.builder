@@ -6,5 +6,5 @@ xml.item do
   xml.pubDate item.published_at.to_s(:rfc822)
   xml.category item.category
   xml.enclosure url: "#{configus.full_host}#{item.photo.event_main_page_version.url}", type: 'image/jpeg'
-  xml.tag! 'yandex:full-text', strip_tags(item.body)
+  xml.tag! 'yandex:full-text', strip_tags(item.full_text)
 end
