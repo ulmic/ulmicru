@@ -20,9 +20,7 @@ class News < ActiveRecord::Base
 
   include NewsScopes
   include Concerns::ViewsManagment
-  class << self
-    include Concerns::NearRecords
-  end
+  extend Concerns::NearRecords
 
   state_machine :state, initial: :unviewed do
     state :unviewed

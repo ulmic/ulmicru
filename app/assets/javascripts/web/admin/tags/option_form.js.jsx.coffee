@@ -40,8 +40,7 @@ stringInputDisplayState = (state) ->
     `<form className='tag_form' action={Routes.admin_tags_path()} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
       <div className='input select optional tag_target_id'>
-        <select className='select optional select2-tags' name='tag[target_id]' id='tag_target_id'>
-        </select>
+        <input className='select optional select2-tags' name='tag[target_id]' id='tag_target_id'/>
       </div>
       <div style={{display: stringInputDisplay}} className='input tag_text'>
         <input className='string form-control' name='tag[text]' id='tag_text' />

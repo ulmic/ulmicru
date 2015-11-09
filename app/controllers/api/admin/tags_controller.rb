@@ -1,7 +1,7 @@
 class Api::Admin::TagsController < Api::Admin::ApplicationController
   def index
     @tags = Tag.string
-    render json: { model: 'Tag', list: @tags.to_json(only: [:text]) }
+    render json: { model: 'Tag', list: @tags.to_json(only: [:id, :text]) }
   end
 
   def create

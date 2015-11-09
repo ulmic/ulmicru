@@ -35,8 +35,21 @@ $ ->
       $(this).select2 {
         placeholder: $(this).data('prompt')
       }
-    $('select.select2-tags').each ->
+    $('.select2-tags').each ->
       $(this).select2 {
+        ajax: {
+          url: Routes.api_admin_tags_path()
+          dataType: 'json'
+          delay: 250
+          results: (data) ->
+            {
+              results: JSON.parse(data.list)
+            }
+          cache: true
+        }
+        escapeMarkup: (markup) ->
+          markup
+        minimumInputLength: 2
         placeholder: $(this).data('prompt')
       }
   $('.link').click ->
