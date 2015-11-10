@@ -25,7 +25,7 @@
         %td=l news.published_at
         %td= news.views
         %td{ style: 'width: 200px' }
-          = react_component 'TagsForm', record: news, record_type: 'news'
+          = react_component 'TagsForm', record: news, record_type: 'news', tags: news.tags.active
         %td.actions
           - if current_user.role.admin?
             - if news.main?

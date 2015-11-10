@@ -6,7 +6,6 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news[:unviewed] = News.unviewed.page(params[:page]).decorate
     @news[:main] = News.main.page(params[:page]).decorate
     @news[:search] = News.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
-    @tag = Tag.new
   end
 
   def create

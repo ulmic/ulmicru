@@ -18,6 +18,7 @@
   render: ->
     `<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
+      <TagsPresents tags={this.props.tags} />
       <TagOptionForm tagType={this.state.tagType}
                      record={this.props.record}
                      recordType={this.props.record_type} />
