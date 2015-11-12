@@ -1,0 +1,27 @@
+- hosts: develop
+  vars:
+    pg_version: 9.4
+    pg_user: postgres
+    sudo: yes
+  roles:
+    - role: zzet.postgresql
+  tasks:
+    - name: Install libraries
+      apt: name={{ item }}
+      with_items:
+        - libpq-dev
+        - imagemagick
+        - libmagickwand-dev
+
+    - name: Create postgresql user
+      postgresql_user: name={{ pg_user }} role_attr_flags=CREATEDB,NOSUPERUSER
+
+    - name: Copy config files
+      template: src=templates/{{ item }}.yml.j2 dest=../config/{{ item }}.yml
+      with_items:
+        - database
+        - oauth
+        - secrets
+      tags:
+       - test
+
