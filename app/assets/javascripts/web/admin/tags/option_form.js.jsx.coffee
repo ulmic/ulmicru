@@ -55,7 +55,7 @@ memberSelectDisplay = (targetType) ->
   render: ->
     display = formDisplay @
     stringInputDisplay = stringInputDisplayState @.state.stringInputVisible
-    `<form className='tag_form' action={Routes.api_admin_tags_path()} onSubmit={this.props.onTagSubmit} method='post' style={{display}}>
+    `<form className='tag_form' action={Routes.api_admin_tags_path()} onSubmit={this.props.onTagSubmit} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
       <div className='input select optional tag_text' style={{display: stringSelectDisplay(this.props.tagType)}}>
         <input className='select optional select2-tags' name='tag[text]' id='tag_text' data-type='string'/>

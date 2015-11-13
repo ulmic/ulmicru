@@ -1,6 +1,13 @@
-getTags = (record_type, record_id) ->
+getTags = (component, record_type, record_id) ->
   $.ajax {
-
+    url: Routes.api_admin_tags_path()
+    data: {
+      record_id: record_id
+      record_type: record_type
+    }
+    dataType: 'JSON'
+    success: (data) ->
+      component.setState { tags: JSON.parse(data.list) }
   }
 
 @TagsForm = React.createClass
@@ -8,7 +15,7 @@ getTags = (record_type, record_id) ->
     {
       tagType: 'none'
       targetType: 'none'
-      tags: getTags(this.props.record_type, this.props.record_id)
+      tags: this.props.tags
     }
   openTagForm: (type, targetType = 'none') ->
     if this.state.tagType == type && this.state.targetType == targetType
@@ -22,13 +29,11 @@ getTags = (record_type, record_id) ->
                       targetType: targetType
                     }
   onTagSubmit: ->
-    $.ajax {
-
-    }
+    getTags(this, this.props.record_type, this.props.record.id)
   render: ->
     `<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
-      <TagsPresents tags={this.props.tags} />
+      <TagsPresents tags={this.state.tags} />
       <TagOptionForm tagType={this.state.tagType}
                      record={this.props.record}
                      recordType={this.props.record_type} />

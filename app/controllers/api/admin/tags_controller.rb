@@ -1,9 +1,14 @@
 class Api::Admin::TagsController < Api::Admin::ApplicationController
   def index
-    @tags = Tag.string
-    @tags = @tags.search_everywhere params[:q] if params[:q]
-    @tags = @tags.to_a.uniq &:text
-    render json: { model: 'Tag', list: @tags.to_json(only: :text) }
+    if params[:record_id].present?
+      tags = Tag.active.where(record_id: params[:record_id], record_type: params[:record_type].capitalize).decorate
+      render json: { model: 'Tag', list: tags.to_json(only: :id) }
+    else
+      tags = Tag.string
+      tags = tags.search_everywhere params[:q] if params[:q]
+      tags = tags.to_a.uniq &:text
+      render json: { model: 'Tag', list: tags.to_json(only: :text) }
+    end
   end
 
   def create
