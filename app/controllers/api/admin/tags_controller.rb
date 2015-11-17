@@ -5,7 +5,7 @@ class Api::Admin::TagsController < Api::Admin::ApplicationController
     else
       @tags = Tag.string
       @tags = @tags.search_everywhere params[:q] if params[:q]
-      @tags = @tags.to_a.uniq &:text
+      @tags = @tags.decorate.to_a.uniq &:text
     end
   end
 

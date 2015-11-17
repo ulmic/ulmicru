@@ -4,7 +4,7 @@ class TagDecorator < ApplicationDecorator
   def just_text
     case tag_type
     when 'string'
-      objec.text
+      object.text
     when 'link'
       case target_type
       when 'Member'
