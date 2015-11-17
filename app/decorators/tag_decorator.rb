@@ -8,13 +8,13 @@ class TagDecorator < ApplicationDecorator
     when 'link'
       case target_type
       when 'Member'
-        "#{object.record.ticket} | #{object.record.first_name} #{object.record.last_name}"
+        "#{object.target.ticket} | #{object.target.first_name} #{object.target.last_name}"
       when 'Team'
-        object.record.title
+        object.target.title
       when 'ActivityLine'
-        object.record.title
+        object.target.title
       when 'Event'
-        object.record.title
+        object.target.title
       end
     end
   end

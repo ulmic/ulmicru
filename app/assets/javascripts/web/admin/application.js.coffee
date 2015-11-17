@@ -55,7 +55,7 @@ $ ->
           delay: 250
           results: (data) ->
             if dataType == 'member'
-              members = JSON.parse(data.list)
+              members = JSON.parse(data)
               members_results = []
               $(members).each ->
                 members_results.push {
@@ -66,7 +66,7 @@ $ ->
                 results: members_results
               }
             else
-              tags = JSON.parse(data.list)
+              tags = JSON.parse(data)
               tags_results = []
               $(tags).each ->
                 tags_results.push {

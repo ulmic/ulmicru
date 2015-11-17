@@ -7,7 +7,7 @@ getTags = (component, record_type, record_id) ->
     }
     dataType: 'JSON'
     success: (data) ->
-      component.setState { tags: JSON.parse(data.list) }
+      component.setState { tags: JSON.parse(data) }
   }
 
 @TagsForm = React.createClass
@@ -29,9 +29,9 @@ getTags = (component, record_type, record_id) ->
                       targetType: targetType
                     }
   onTagSubmit: ->
-    getTags(this, this.props.record_type, this.props.record.id)
+    getTags this, this.props.record_type, this.props.record.id
   reloadTags: ->
-    getTags(this, this.props.record_type, this.props.record.id)
+    getTags this, this.props.record_type, this.props.record.id
   render: ->
     `<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
@@ -39,5 +39,6 @@ getTags = (component, record_type, record_id) ->
                     reloadTags={this.reloadTags}/>
       <TagOptionForm tagType={this.state.tagType}
                      record={this.props.record}
-                     recordType={this.props.record_type} />
+                     recordType={this.props.record_type}
+                     onTagSubmit={this.onTagSubmit}/>
     </div>`
