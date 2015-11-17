@@ -2,6 +2,7 @@
   render: ->
     presents_tags = []
     tags = this.props.tags
+    component = this
     $(tags).each ->
       text = this.text
       switch this.target_type
@@ -10,7 +11,7 @@
 
       if this.tag_type == 'string'
         presents_tags.push `<li className='list-group-item'>
-            <a className="badge tag_destroy" data-remote="true" rel="nofollow" data-method="delete" href={Routes.api_admin_tag_path(this.id)}>X
+            <a onClick={component.props.reloadTags} className="badge tag_destroy" data-remote="true" rel="nofollow" data-method="delete" href={Routes.api_admin_tag_path(this.id)}>X
             </a>
             {this.text}
           </li>`
