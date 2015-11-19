@@ -1,4 +1,6 @@
 class Api::NewsController < Api::ApplicationController
+  before_filter :allow_get_news
+
   # FIXME remove hash creating from controller
   def index
     source = get_source
@@ -22,5 +24,11 @@ class Api::NewsController < Api::ApplicationController
     else
       News
     end
+  end
+
+  private
+
+  def allow_get_news
+    headers['Access-Control-Allow-Origin'] = 'http://ul-lider.ru'
   end
 end
