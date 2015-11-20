@@ -41,7 +41,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
   end
 
   test 'should not create team' do
-    attributes = { description: @team.description }
+    attributes = { title: @team.title }
     post :create, team: attributes
     assert_response :success
   end
@@ -64,7 +64,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
 
   test 'should not update team' do
     attributes = attributes_for :team
-    attributes[:title] = nil
+    attributes[:description] = nil
     count_before_save = Team.count
     put :update, id: @team, team: attributes
     assert_equal Team.count, count_before_save
