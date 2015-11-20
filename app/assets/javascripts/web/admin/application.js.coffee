@@ -66,7 +66,7 @@ $ ->
                 results: members_results
               }
             else
-              tags = JSON.parse(data)
+              tags = data
               tags_results = []
               $(tags).each ->
                 tags_results.push {
@@ -76,10 +76,7 @@ $ ->
               {
                 results: tags_results
               }
-          cache: true
         }
-        escapeMarkup: (markup) ->
-          markup
         minimumInputLength: 2
         placeholder: $(this).data('prompt')
       }

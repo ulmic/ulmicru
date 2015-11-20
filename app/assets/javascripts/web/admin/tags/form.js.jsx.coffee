@@ -7,7 +7,7 @@ getTags = (component, record_type, record_id) ->
     }
     dataType: 'JSON'
     success: (data) ->
-      component.setState { tags: JSON.parse(data) }
+      component.setState { tags: data }
   }
 
 @TagsForm = React.createClass
