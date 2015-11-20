@@ -6,8 +6,6 @@ class Team < ActiveRecord::Base
   has_many :events, as: :organizer,
                     foreign_key: :organizer_id
 
-  validates :title, presence: true
-
   include TeamScopes
   extend Enumerize
 
