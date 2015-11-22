@@ -6,18 +6,6 @@
       targetType: 'none'
       tags: this.props.tags
     }
-  componentDidMount: ->
-    component = this
-    $.ajax {
-      url: Routes.api_admin_tags_path()
-      data: {
-        record_id: this.props.record_id
-        record_type: this.props.record_type
-      }
-      dataType: 'JSON'
-      success: ((data) ->
-        component.setState { tags: data }).bind this
-    }
   openTagForm: (type, targetType = 'none') ->
     if this.state.tagType == type && this.state.targetType == targetType
       this.setState {
@@ -30,7 +18,17 @@
                       targetType: targetType
                     }
   onTagSubmit: ->
-    alert 5
+    component = this
+    $.ajax {
+      url: Routes.api_admin_tags_path()
+      data: {
+        record_id: this.props.record_id
+        record_type: this.props.record_type
+      }
+      dataType: 'JSON'
+      success: (data) ->
+        component.setState { tags: data }
+    }
   render: ->
     `<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
