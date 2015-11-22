@@ -22,8 +22,8 @@
     $.ajax {
       url: Routes.api_admin_tags_path()
       data: {
-        record_id: this.props.record_id
-        record_type: this.props.record_type
+        record_id: component.props.record.id
+        record_type: component.props.record_type
       }
       dataType: 'JSON'
       success: (data) ->
