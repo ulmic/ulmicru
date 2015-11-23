@@ -7,7 +7,7 @@ class Api::Admin::TagsController < Api::Admin::ApplicationController
       @tags = @tags.search_everywhere params[:q] if params[:q]
       @tags = @tags.decorate.to_a.uniq &:text
     end
-    render json: TagCollectionDecorator.new(@tags).tag_with_just_text
+    render json: TagCollectionDecorator.new(@tags).with_just_text
   end
 
   def create
