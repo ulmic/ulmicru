@@ -1,3 +1,14 @@
+getTags = (component) ->
+  $.ajax {
+    url: Routes.api_admin_tags_path()
+    data: {
+      record_id: component.props.record.id
+      record_type: component.props.record_type
+    }
+    dataType: 'JSON'
+    success: (data) ->
+      component.setState { tags: data }
+  }
 
 @TagsForm = React.createClass
   getInitialState: ->
@@ -18,17 +29,7 @@
                       targetType: targetType
                     }
   onTagSubmit: ->
-    component = this
-    $.ajax {
-      url: Routes.api_admin_tags_path()
-      data: {
-        record_id: component.props.record.id
-        record_type: component.props.record_type
-      }
-      dataType: 'JSON'
-      success: (data) ->
-        component.setState { tags: data }
-    }
+    getTags this
   render: ->
     `<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />

@@ -7,12 +7,7 @@ class Api::Admin::TagsController < Api::Admin::ApplicationController
       @tags = @tags.search_everywhere params[:q] if params[:q]
       @tags = @tags.decorate.to_a.uniq &:text
     end
-    # FIXME вывести во вьюху
-    tags_presenter = []
-    @tags.each do |tag|
-      tags_presenter << { id: tag.id, text: tag.just_text }
-    end
-    render json: tags_presenter
+    render json: TagCollectionDecorator.new(@tags).tag_with_just_text
   end
 
   def create
