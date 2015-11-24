@@ -30,11 +30,13 @@ getTags = (component) ->
                     }
   onTagSubmit: ->
     getTags this
+  reloadTags: ->
+    getTags this
   render: ->
     `<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
       <TagsPresents tags={this.state.tags}
-                    reloadTags={this.reloadTags}/>
+                    reloadTags={this.reloadTags} />
       <TagOptionForm tagType={this.state.tagType}
                      record={this.props.record}
                      recordType={this.props.record_type}

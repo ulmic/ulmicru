@@ -30,7 +30,7 @@ class Api::Admin::TagsController < Api::Admin::ApplicationController
 
   def destroy
     @tag = Tag.find params[:id]
-    @tag.remove
+    @tag.destroy
     head :ok
   end
 end

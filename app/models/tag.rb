@@ -5,6 +5,10 @@ class Tag < ActiveRecord::Base
   validates :record_id, presence: true
   validates :record_type, presence: true
   validates :tag_type, presence: true
+  validates :target_id, uniqueness: { scope: [ :target_type, :record_id, :record_type ] },
+                        allow_nil: true
+  validates :text, uniqueness: { scope: [ :record_id, :record_type ] },
+                   allow_nil: true
 
   extend Enumerize
   enumerize :record_type, in: [ 'Article', 'News' ]
