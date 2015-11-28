@@ -20,23 +20,23 @@ hiddenInputs = (component) ->
     </div>
   </div>`
 
-stringInputDisplayState = (state) ->
-  if state == 'string'
+stringInputDisplayState = (component) ->
+  if component.props.tagType == 'string' && component.state.stringInputVisible == 'visible'
     return 'block'
   else
     return 'none'
 
-tagSelectDisplay = (targetType, type) ->
-  if targetType == type
+tagSelectDisplay = (targetType, type, component) ->
+  if targetType == type && component.state.stringInputVisible == 'hidden'
     return 'block'
   else
     return 'none'
 
-stringSelectDisplay = (tagType) ->
-  tagSelectDisplay tagType, 'string'
+stringSelectDisplay = (component) ->
+  tagSelectDisplay component.props.tagType, 'string', component
 
-memberSelectDisplay = (targetType) ->
-  tagSelectDisplay targetType, 'member'
+memberSelectDisplay = (component) ->
+  tagSelectDisplay component.props.targetType, 'member', component
 
 @TagOptionForm = React.createClass
   getInitialState: ->
@@ -54,13 +54,15 @@ memberSelectDisplay = (targetType) ->
       @.setState { stringInputVisible: 'visible' }
   render: ->
     display = formDisplay @
-    stringInputDisplay = stringInputDisplayState @.state.stringInputVisible
     `<form className='tag_form' action={Routes.api_admin_tags_path()} onSubmit={this.props.onTagSubmit} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
-      <div className='input select optional tag_text' style={{display: stringSelectDisplay(this.props.tagType)}}>
+      <div className='input select optional tag_text' style={{display: stringSelectDisplay(this)}}>
         <input className='select optional select2-tags' name='tag[text]' id='tag_text' data-type='string'/>
       </div>
-      <div className='input select optional tag_target_id' style={{display: memberSelectDisplay(this.props.targetType)}}>
+      <div className='input text' style={{display: stringInputDisplayState(this)}}>
+        <input className='form-control input text' name='tag[text]' id='tag_text' />
+      </div>
+      <div className='input select optional tag_target_id' style={{display: memberSelectDisplay(this)}}>
         <input className='select optional select2-tags' name='tag[target_id]' id='tag_target_id' data-type='member'/>
       </div>
       <input type='submit' name='commit' value='Добавить тег' className='button btn btn-xs btn-success' />
