@@ -1,4 +1,4 @@
-init_select2 = ->
+init_select2 = (component) ->
   to_text = (instance, type) ->
     switch type
       when 'string'
@@ -7,37 +7,41 @@ init_select2 = ->
         "#{instance.ticket} | #{instance.first_name} #{instance.last_name}"
 
   $('.select2-tags').each ->
-    dataType = $(@).data('type')
-    url = ''
-    switch dataType
-      when 'string'
-        url = Routes.api_admin_tags_path()
-      when 'member'
-        url = Routes.api_admin_members_path()
-    $(this).select2 {
-      ajax: {
-        url: url
-        data: (term, page) ->
-          {
-            q: term
-            page: page
-          }
-        dataType: 'json'
-        delay: 250
-        results: (data) ->
-          tags_results = []
-          $(data).each ->
-            tags_results.push {
-              id: @.text
-              text: to_text(@, dataType)
+    if component.props.tagType == 'string'
+      dataType = 'string'
+    else
+      dataType = component.props.targetType
+    if $(this).hasClass dataType
+      url = ''
+      switch dataType
+        when 'string'
+          url = Routes.api_admin_tags_path()
+        when 'member'
+          url = Routes.api_admin_members_path()
+      $(this).select2 {
+        ajax: {
+          url: url
+          data: (term, page) ->
+            {
+              q: term
+              page: page
             }
-          {
-            results: tags_results
-          }
+          dataType: 'json'
+          delay: 250
+          results: (data) ->
+            tags_results = []
+            $(data).each ->
+              tags_results.push {
+                id: @.text
+                text: to_text(@, dataType)
+              }
+            {
+              results: tags_results
+            }
+        }
+        minimumInputLength: 2
+        placeholder: $(this).data('prompt')
       }
-      minimumInputLength: 2
-      placeholder: $(this).data('prompt')
-    }
 
 formDisplay = (component) ->
   if component.props.tagType == 'none'
@@ -77,13 +81,13 @@ getSelectToView = (component) ->
   switch component.props.tagType
     when 'string'
       `<div className='input select optional tag_text'>
-        <input className='select optional select2-tags' name='tag[text]' id='tag_text' data-type='string'/>
+        <input className='select optional select2-tags string' name='tag[text]' id='tag_text' data-type='string'/>
       </div>`
     when 'link'
       switch component.props.targetType
         when 'member'
           `<div className='input select optional tag_target_id'>
-            <input className='select optional select2-tags' name='tag[target_id]' id='tag_target_id' data-type='member'/>
+            <input className='select optional select2-tags member' name='tag[target_id]' id='tag_target_id' data-type='member'/>
           </div>`
 
 @TagOptionForm = React.createClass
@@ -101,7 +105,7 @@ getSelectToView = (component) ->
     else
       @.setState { stringInputVisible: 'visible' }
   componentDidUpdate: ->
-    init_select2()
+    init_select2 this
   render: ->
     display = formDisplay @
     `<form className='tag_form' action={Routes.api_admin_tags_path()} onSubmit={this.props.onTagSubmit} data-remote='true' method='post' style={{display}}>
