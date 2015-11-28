@@ -137,6 +137,10 @@ newStringTagInput = (component) ->
       <input className='form-control input text' name='tag[text]' id='tag_text' />
     </div>`
 
+newStringTagButton = (component) ->
+  if component.props.tagType == 'string'
+    `<a onClick={component.stringTagForm} className='btn btn-xs btn-warning' id='add_new_string_tag' href='#'>Создать новый</a>`
+
 @TagOptionForm = React.createClass
   getInitialState: ->
     {
@@ -162,5 +166,5 @@ newStringTagInput = (component) ->
       {getSelectToView(this)}
       {newStringTagInput(this)}
       <input type='submit' name='commit' value='Добавить тег' className='button btn btn-xs btn-success' />
-      <a onClick={this.stringTagForm} className='btn btn-xs btn-warning' id='add_new_string_tag' href='#'>Создать новый</a>
+      {newStringTagButton(this)}
     </form>`
