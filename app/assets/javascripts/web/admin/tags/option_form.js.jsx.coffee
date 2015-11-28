@@ -97,6 +97,12 @@ getSelectToView = (component) ->
             <input className='select optional select2-tags member' name='tag[target_id]' id='tag_target_id' data-type='member'/>
           </div>`
 
+newStringTagInput = (component) ->
+  if component.props.tagType == 'string'
+    `<div className='input text' style={{display: stringInputDisplayState(component)}}>
+      <input className='form-control input text' name='tag[text]' id='tag_text' />
+    </div>`
+
 @TagOptionForm = React.createClass
   getInitialState: ->
     {
@@ -113,14 +119,14 @@ getSelectToView = (component) ->
       @.setState { stringInputVisible: 'visible' }
   componentDidUpdate: ->
     init_select2 this
+    component = this
+    $('.tag_form').on 'ajax:success', component.props.onTagSubmit
   render: ->
     display = formDisplay @
     `<form className='tag_form' action={Routes.api_admin_tags_path()} onSubmit={this.props.onTagSubmit} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
       {getSelectToView(this)}
-      <div className='input text' style={{display: stringInputDisplayState(this)}}>
-        <input className='form-control input text' name='tag[text]' id='tag_text' />
-      </div>
+      {newStringTagInput(this)}
       <input type='submit' name='commit' value='Добавить тег' className='button btn btn-xs btn-success' />
       <a onClick={this.stringTagForm} className='btn btn-xs btn-warning' id='add_new_string_tag' href='#'>Создать новый</a>
     </form>`
