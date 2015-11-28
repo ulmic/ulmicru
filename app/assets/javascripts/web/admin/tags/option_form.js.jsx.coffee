@@ -17,6 +17,12 @@ init_select2 = (component) ->
           url = Routes.api_admin_tags_path()
         when 'member'
           url = Routes.api_admin_members_path()
+        when 'event'
+          url = Routes.api_admin_events_path()
+        when 'team'
+          url = Routes.api_admin_teams_path()
+        when 'activity_line'
+          url = Routes.api_admin_activity_lines_path()
       $(this).select2 {
         ajax: {
           url: url
@@ -41,6 +47,21 @@ init_select2 = (component) ->
                     id: @.id
                     text: "#{@.ticket} | #{@.first_name} #{@.last_name}"
                   }
+                when 'event'
+                  tags_results.push {
+                    id: @.id
+                    text: @.title
+                  }
+                when 'team'
+                  tags_results.push {
+                    id: @.id
+                    text: @.title
+                  }
+                when 'activity_line'
+                  tags_results.push {
+                    id: @.id
+                    text: @.title
+                  }
             {
               results: tags_results
             }
@@ -56,13 +77,14 @@ formDisplay = (component) ->
     return 'block'
 
 hiddenInputs = (component) ->
-  targetType = component.props.targetType
+  targetType = component.props.targetType.replace(/(\_\w)/g, (m) -> m[1].toUpperCase())
+  recordType = component.props.recordType.replace /_/, ''
   `<div>
     <div className='input hidden tag_tag_type'>
       <input className='hidden' type='hidden' name='tag[tag_type]' id='tag_tag_type' value={component.props.tagType} />
     </div>
     <div className='input hidden tag_record_type'>
-      <input value='News' className='hidden' type='hidden' name='tag[record_type]' id='tag_record_type' value={component.props.recordType.replace(/^./, component.props.recordType[0].toUpperCase())} />
+      <input value='News' className='hidden' type='hidden' name='tag[record_type]' id='tag_record_type' value={recordType.replace(/^./, recordType[0].toUpperCase())} />
     </div>
     <div className='input hidden tag_record_id'>
       <input value={component.props.record.id} className='hidden' type='hidden' name='tag[record_id]' id='tag_record_id' />
@@ -95,6 +117,18 @@ getSelectToView = (component) ->
         when 'member'
           `<div className='input select optional tag_target_id'>
             <input className='select optional select2-tags member' name='tag[target_id]' id='tag_target_id' data-type='member'/>
+          </div>`
+        when 'event'
+          `<div className='input select optional tag_target_id'>
+            <input className='select optional select2-tags event' name='tag[target_id]' id='tag_target_id' data-type='event'/>
+          </div>`
+        when 'team'
+          `<div className='input select optional tag_target_id'>
+            <input className='select optional select2-tags team' name='tag[target_id]' id='tag_target_id' data-type='team'/>
+          </div>`
+        when 'activity_line'
+          `<div className='input select optional tag_target_id'>
+            <input className='select optional select2-tags activity_line' name='tag[target_id]' id='tag_target_id' data-type='activityline'/>
           </div>`
 
 newStringTagInput = (component) ->
