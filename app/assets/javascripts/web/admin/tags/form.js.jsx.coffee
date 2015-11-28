@@ -38,6 +38,7 @@ getTags = (component) ->
       <TagsPresents tags={this.state.tags}
                     reloadTags={this.reloadTags} />
       <TagOptionForm tagType={this.state.tagType}
+                     targetType={this.state.targetType}
                      record={this.props.record}
                      recordType={this.props.record_type}
                      onTagSubmit={this.onTagSubmit}/>

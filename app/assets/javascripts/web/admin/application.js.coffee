@@ -35,51 +35,6 @@ $ ->
       $(this).select2 {
         placeholder: $(this).data('prompt')
       }
-    $('.select2-tags').each ->
-      dataType = $(@).data('type')
-      url = ''
-      switch dataType
-        when 'string'
-          url = Routes.api_admin_tags_path()
-        when 'member'
-          url = Routes.api_admin_members_path()
-      $(this).select2 {
-        ajax: {
-          url: url
-          data: (term, page) ->
-            {
-              q: term
-              page: page
-            }
-          dataType: 'json'
-          delay: 250
-          results: (data) ->
-            if dataType == 'member'
-              members = JSON.parse(data)
-              members_results = []
-              $(members).each ->
-                members_results.push {
-                  id: @.id
-                  text: "#{@.ticket} | #{@.first_name} #{@.last_name}"
-                }
-              {
-                results: members_results
-              }
-            else
-              tags = data
-              tags_results = []
-              $(tags).each ->
-                tags_results.push {
-                  id: @.text
-                  text: @.text
-                }
-              {
-                results: tags_results
-              }
-        }
-        minimumInputLength: 2
-        placeholder: $(this).data('prompt')
-      }
   $('.link').click ->
     location.href = $(this).attr('data-href')
 
