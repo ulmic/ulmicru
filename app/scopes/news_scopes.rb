@@ -21,5 +21,6 @@ module NewsScopes
       where('published_at <= ?', DateTime.now).
       order('views DESC')
     }
+    scope :actual, -> { where("published_at > CURRENT_DATE - INTERVAL'6 days'") }
   end
 end

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
+    resources :remind_password, only: [ :index, :create, :edit, :update ]
     #resources :teams, only: [ :index, :show ]
+    resources :remind_passwords, only: [ :new, :create ]
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end
@@ -71,7 +73,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :news, only: :index
     resources :events, only: :index
-    resources :feedback, only: :create
+    resources :feedbacks, only: :create
     resources :comments, only: [ :create, :destroy ]
     resources :users, only: [] do
       member do
@@ -109,8 +111,8 @@ Rails.application.routes.draw do
     end
   end
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
-  
-  #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create' 
+
+  #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create'
   #TODO Maybe add some checks for environment for this line? Like this?
   get '*unmatched_route', to: 'web/pages#show', slug: :not_found if Rails.env == "production"
 end

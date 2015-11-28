@@ -7,9 +7,9 @@ script:
 - gem install tilt -v '1.4.1'
 - gem install byebug -v '3.5.1'
 - gem install sdoc -v '0.4.1'
-- cp config/secrets.yml.sample config/secrets.yml
-- cp config/database.yml.sample config/database.yml
-- cp config/oauth.yml.sample config/oauth.yml
+- sudo pip install ansible
+- make deps
+- ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
 - RAILS_ENV=test bundle exec rake db:create db:migrate test
 services:
 - redis-server

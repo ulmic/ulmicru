@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_secure_password validations: false
+  has_secure_password
 
   has_many :authentications, dependent: :destroy
   has_many :article
@@ -57,7 +57,11 @@ class User < ActiveRecord::Base
   end
 
   def is_active?
-    state == 'confirmed' || state == 'on_the_trial'
+    state == 'confirmed'
+  end
+
+  def can_reset_password?
+    state != 'removed'
   end
 
   def generate_token

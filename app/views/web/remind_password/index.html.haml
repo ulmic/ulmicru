@@ -1,0 +1,13 @@
+- title
+.container.mic-form-container
+  .row
+    .medium-6.small-12.columns.medium-push-3
+      %h3.title
+        = t('.title')
+      - if @user_form.email.present?
+        %span.label.alert
+          %i.fa.fa-exclamation-circle
+          = t('.remind_password_error')
+      = simple_form_for @user_form, url: { controller: :remind_password, action: :create }, method: :post do |f|
+        = f.input :email, as: :email, required: true
+        = f.button :submit, t('helpers.remind_password'), class: "mic-flat-button"

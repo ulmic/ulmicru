@@ -2,6 +2,10 @@
 .container.mic-form-container
   .row
     .medium-6.small-12.columns.medium-push-3
+      - if flash[:remind_password_notification]
+        %span.label.success
+          %i.fa.fa-exclamation-circle
+            = t ".#{flash[:remind_password_notification]}"
       - if @user.email.present?
         %span.label.alert
           %i.fa.fa-exclamation-circle
@@ -16,18 +20,19 @@
       .row
         .small-3.columns
           = link_to auth_path(:vkontakte) do
-            = t('social_networks.vkontakte')
             %span.icon-vkontakte.min-icon
+            = t('social_networks.vkontakte')
         .small-3.columns
           = link_to auth_path(:facebook) do
-            = t('social_networks.facebook')
             %span.icon-facebook.min-icon
+            = t('social_networks.facebook')
         .small-3.columns
           = link_to auth_path(:twitter) do
-            = t('social_networks.twitter')
             %span.icon-twitter.min-icon
+            = t('social_networks.twitter')
         .small-3.columns
           = link_to auth_path(:google) do
-            = t('social_networks.google')
             %span.icon-google.min-icon
       = link_to t('.register'), new_user_path
+      <br>
+      = link_to t('.remind_password'), remind_password_index_path

@@ -1,10 +1,12 @@
 class Api::NewsController < Api::ApplicationController
+  before_filter :allow_get_news
+
   # FIXME remove hash creating from controller
   def index
     source = get_source
     news = NewsDecorator.decorate source.published.drop(params[:offset].to_i).first(params[:count].to_i)
     hash = []
-    news.each { |n| n = n.decorate; hash << { id: n.id, title: n.title, text: n.short_lead, publish_date_time: n.publish_date_time  }  }
+    news.each { |n| n = n.decorate; hash << { id: n.id, title: n.title, text: n.short_lead, publish_date_time: n.publish_date_time, photo: n.photo.url }  }
     render json: hash
   end
 
@@ -22,5 +24,11 @@ class Api::NewsController < Api::ApplicationController
     else
       News
     end
+  end
+
+  private
+
+  def allow_get_news
+    headers['Access-Control-Allow-Origin'] = 'http://ul-lider.ru'
   end
 end

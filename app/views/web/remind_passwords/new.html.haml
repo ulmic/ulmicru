@@ -1,0 +1,11 @@
+- title
+.container.mic-form-container
+  .row
+    .medium-6.small-12.columns.medium-push-3
+      - unless @user.present?
+        %span.label.alert
+          %i.fa.fa-exclamation-circle
+          = t('.wrong_email')
+      = simple_form_for @user, url: { controller: 'web/remind_passwords', action: :create }, method: :post do |f|
+        = f.input :email, as: :string
+        = f.button :submit, t('helpers.remind'), class: "mic-flat-button"

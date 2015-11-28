@@ -11,7 +11,6 @@
       = f.input :patronymic, as: :string
       = f.input :last_name, as: :string
       = f.input :email, as: :string
-      = f.input :password, as: :password_foundation
       = f.input :motto, as: :string
       = f.input :ticket, as: :string
       = f.input :mobile_phone, as: :string
@@ -49,7 +48,6 @@
       - unless @user.email.present?
         = f.hint t('notifications.web.users.account.email.empty')
       = f.input :email, as: :string, required: true
-      = f.input :password, as: :string
       = f.button :submit, t('helpers.links.save')
     - if !@user.is_member? || (@user.is_member? && @user.unavailable?)
       - if @user.is_questionary?
