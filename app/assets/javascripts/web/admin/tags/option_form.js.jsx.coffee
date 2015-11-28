@@ -1,11 +1,10 @@
-init_select2 = (component) ->
-  to_text = (instance, type) ->
-    switch type
-      when 'string'
-        instance.text
-      when 'member'
-        "#{instance.ticket} | #{instance.first_name} #{instance.last_name}"
+formDisplay = (component) ->
+  if component.props.tagType == 'none'
+    return 'none'
+  else
+    return 'block'
 
+init_select2 = (component) ->
   $('.select2-tags').each ->
     if component.props.tagType == 'string'
       dataType = 'string'
@@ -31,10 +30,17 @@ init_select2 = (component) ->
           results: (data) ->
             tags_results = []
             $(data).each ->
-              tags_results.push {
-                id: @.text
-                text: to_text(@, dataType)
-              }
+              switch dataType
+                when 'string'
+                  tags_results.push {
+                    id: @.text
+                    text: @.text
+                  }
+                when 'member'
+                  tags_results.push {
+                    id: @.id
+                    text: "#{@.ticket} | #{@.first_name} #{@.last_name}"
+                  }
             {
               results: tags_results
             }
@@ -50,6 +56,7 @@ formDisplay = (component) ->
     return 'block'
 
 hiddenInputs = (component) ->
+  targetType = component.props.targetType
   `<div>
     <div className='input hidden tag_tag_type'>
       <input className='hidden' type='hidden' name='tag[tag_type]' id='tag_tag_type' value={component.props.tagType} />
@@ -61,7 +68,7 @@ hiddenInputs = (component) ->
       <input value={component.props.record.id} className='hidden' type='hidden' name='tag[record_id]' id='tag_record_id' />
     </div>
     <div className='input hidden tag_target_type'>
-      <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={component.props.targetType} />
+      <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType.replace(/^./, targetType[0].toUpperCase())} />
     </div>
   </div>`
 

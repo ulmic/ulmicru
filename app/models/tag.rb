@@ -8,7 +8,7 @@ class Tag < ActiveRecord::Base
   validates :target_id, uniqueness: { scope: [ :target_type, :record_id, :record_type ] },
                         allow_nil: true
   validates :text, uniqueness: { scope: [ :record_id, :record_type ] },
-                   allow_nil: true
+                   unless: Proc.new { |t| t.text.blank? }
 
   extend Enumerize
   enumerize :record_type, in: [ 'Article', 'News' ]
