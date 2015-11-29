@@ -66,10 +66,15 @@ formDisplay = (component) ->
   else
     return 'block'
 
-hiddenInputs = (component) ->
-  unless component.props.targetType == ''
+targetTypeInput = (component) ->
+  unless component.props.targetType == 'none'
     targetType = component.props.targetType.replace(/(\_\w)/g, (m) -> m[1].toUpperCase())
     targetType = targetType.replace /^./, targetType[0].toUpperCase()
+    `<div className='input hidden tag_target_type'>
+        <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType} />
+      </div>`
+
+hiddenInputs = (component) ->
   recordType = component.props.recordType.replace /_/, ''
   recordType = recordType.replace /^./, recordType[0].toUpperCase()
   `<div>
@@ -82,9 +87,7 @@ hiddenInputs = (component) ->
     <div className='input hidden tag_record_id'>
       <input value={component.props.record.id} className='hidden' type='hidden' name='tag[record_id]' id='tag_record_id' />
     </div>
-    <div className='input hidden tag_target_type'>
-      <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType || ''} />
-    </div>
+    {targetTypeInput(component)}
   </div>`
 
 stringInputDisplayState = (component) ->
