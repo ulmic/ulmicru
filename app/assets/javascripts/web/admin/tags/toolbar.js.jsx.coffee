@@ -2,7 +2,7 @@
   render: ->
     `<div className='btn-toolbar'>
       <div className='btn-group tag-buttons'>
-        <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'string')}>
+        <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'string', 'none')}>
           <span className='glyphicon glyphicon-font'></span>
         </a>
         <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'link', 'member')}>
