@@ -90,12 +90,6 @@ hiddenInputs = (component) ->
     {targetTypeInput(component)}
   </div>`
 
-stringInputDisplayState = (component) ->
-  if component.props.tagType == 'string' && component.state.stringInputVisible == 'visible'
-    return 'block'
-  else
-    return 'none'
-
 tagSelectDisplay = (targetType, type, component) ->
   if targetType == type
     return 'block'
@@ -128,8 +122,8 @@ getSelectToView = (component) ->
           </div>`
 
 newStringTagInput = (component) ->
-  if component.props.tagType == 'string'
-    `<div className='input text' style={{display: stringInputDisplayState(component)}}>
+  if component.props.tagType == 'string' && component.stringInputVisible == 'visible'
+    `<div className='input text'>
       <input className='form-control input text' name='tag[text]' id='tag_text' />
     </div>`
 
