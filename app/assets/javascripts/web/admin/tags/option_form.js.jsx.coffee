@@ -96,6 +96,12 @@ tagSelectDisplay = (targetType, type, component) ->
   else
     return 'none'
 
+linkSelect = (type) ->
+  classes = "select optional select2-tags #{type}"
+  `<div className='input select optional tag_target_id'>
+    <input className={classes} name='tag[target_id]' id='tag_target_id' data-type={type}/>
+  </div>`
+
 getSelectToView = (component) ->
   switch component.props.tagType
     when 'string'
@@ -104,23 +110,7 @@ getSelectToView = (component) ->
           <input className='select optional select2-tags string' name='tag[text]' id='tag_text' data-type='string'/>
         </div>`
     when 'link'
-      switch component.props.targetType
-        when 'member'
-          `<div className='input select optional tag_target_id'>
-            <input className='select optional select2-tags member' name='tag[target_id]' id='tag_target_id' data-type='member'/>
-          </div>`
-        when 'event'
-          `<div className='input select optional tag_target_id'>
-            <input className='select optional select2-tags event' name='tag[target_id]' id='tag_target_id' data-type='event'/>
-          </div>`
-        when 'team'
-          `<div className='input select optional tag_target_id'>
-            <input className='select optional select2-tags team' name='tag[target_id]' id='tag_target_id' data-type='team'/>
-          </div>`
-        when 'activity_line'
-          `<div className='input select optional tag_target_id'>
-            <input className='select optional select2-tags activity_line' name='tag[target_id]' id='tag_target_id' data-type='activityline'/>
-          </div>`
+      linkSelect component.props.targetType
 
 newStringTagInput = (component) ->
   if component.props.tagType == 'string' && component.state.stringInputVisible == 'visible'
