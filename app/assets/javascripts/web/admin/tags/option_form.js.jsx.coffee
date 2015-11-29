@@ -47,17 +47,7 @@ init_select2 = (component) ->
                     id: @.id
                     text: "#{@.ticket} | #{@.first_name} #{@.last_name}"
                   }
-                when 'event'
-                  tags_results.push {
-                    id: @.id
-                    text: @.title
-                  }
-                when 'team'
-                  tags_results.push {
-                    id: @.id
-                    text: @.title
-                  }
-                when 'activity_line'
+                when 'event', 'team', 'activity_line'
                   tags_results.push {
                     id: @.id
                     text: @.title
@@ -77,20 +67,23 @@ formDisplay = (component) ->
     return 'block'
 
 hiddenInputs = (component) ->
-  targetType = component.props.targetType.replace(/(\_\w)/g, (m) -> m[1].toUpperCase())
+  unless component.props.targetType == ''
+    targetType = component.props.targetType.replace(/(\_\w)/g, (m) -> m[1].toUpperCase())
+    targetType = targetType.replace /^./, targetType[0].toUpperCase()
   recordType = component.props.recordType.replace /_/, ''
+  recordType = recordType.replace /^./, recordType[0].toUpperCase()
   `<div>
     <div className='input hidden tag_tag_type'>
       <input className='hidden' type='hidden' name='tag[tag_type]' id='tag_tag_type' value={component.props.tagType} />
     </div>
     <div className='input hidden tag_record_type'>
-      <input value='News' className='hidden' type='hidden' name='tag[record_type]' id='tag_record_type' value={recordType.replace(/^./, recordType[0].toUpperCase())} />
+      <input value='News' className='hidden' type='hidden' name='tag[record_type]' id='tag_record_type' value={recordType} />
     </div>
     <div className='input hidden tag_record_id'>
       <input value={component.props.record.id} className='hidden' type='hidden' name='tag[record_id]' id='tag_record_id' />
     </div>
     <div className='input hidden tag_target_type'>
-      <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType.replace(/^./, targetType[0].toUpperCase())} />
+      <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType || ''} />
     </div>
   </div>`
 
