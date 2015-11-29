@@ -5,6 +5,6 @@ class Api::Admin::EventsController < Api::Admin::ApplicationController
     else
       @events = Event.confirmed
     end
-    render json: { model: 'Event', list: @events.to_json(only: [:id, :title]) }
+    render json: @events.to_json(only: [:id, :title])
   end
 end
