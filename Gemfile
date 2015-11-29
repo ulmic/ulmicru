@@ -51,6 +51,7 @@ gem 'bootstrap-kaminari-views'
 gem 'russia_regions'
 gem 'github_api'
 gem 'pg_search'
+gem 'react-rails', '~> 1.3.0'
 
 group :production do
   gem 'unicorn-rails'
