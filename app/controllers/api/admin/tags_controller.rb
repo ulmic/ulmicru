@@ -1,7 +1,13 @@
 class Api::Admin::TagsController < Api::Admin::ApplicationController
   def index
-    @tags = Tag.string
-    render json: { model: 'Tag', list: @tags.to_json(only: [:text]) }
+    if params[:record_id].present?
+      @tags = Tag.active.where(record_id: params[:record_id], record_type: params[:record_type].capitalize).decorate
+    else
+      @tags = Tag.string
+      @tags = @tags.search_everywhere params[:q] if params[:q]
+      @tags = @tags.decorate.to_a.uniq &:text
+    end
+    render json: TagCollectionDecorator.new(@tags).with_just_text
   end
 
   def create
@@ -24,7 +30,7 @@ class Api::Admin::TagsController < Api::Admin::ApplicationController
 
   def destroy
     @tag = Tag.find params[:id]
-    @tag.remove
+    @tag.destroy
     head :ok
   end
 end

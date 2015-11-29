@@ -10,7 +10,7 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
 
   test 'should get new' do
     get :new
-    assert_response :success, @response.body
+    assert_response :success
   end
 
   test 'should get index' do

@@ -18,6 +18,8 @@
 #= require jasny-bootstrap
 #= require jasny_file_uploader
 #= require placeholders
+#= require react
+#= require react_ujs
 
 $ ->
   init_bootstrap_styles = ->
@@ -30,10 +32,6 @@ $ ->
 
   init_select2_inputs = ->
     $('select.select2').each ->
-      $(this).select2 {
-        placeholder: $(this).data('prompt')
-      }
-    $('select.select2-tags').each ->
       $(this).select2 {
         placeholder: $(this).data('prompt')
       }
