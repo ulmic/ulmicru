@@ -99,9 +99,10 @@ tagSelectDisplay = (targetType, type, component) ->
 getSelectToView = (component) ->
   switch component.props.tagType
     when 'string'
-      `<div className='input select optional tag_text'>
-        <input className='select optional select2-tags string' name='tag[text]' id='tag_text' data-type='string'/>
-      </div>`
+      if component.state.stringInputVisible == 'hidden'
+        `<div className='input select optional tag_text'>
+          <input className='select optional select2-tags string' name='tag[text]' id='tag_text' data-type='string'/>
+        </div>`
     when 'link'
       switch component.props.targetType
         when 'member'
@@ -122,7 +123,7 @@ getSelectToView = (component) ->
           </div>`
 
 newStringTagInput = (component) ->
-  if component.props.tagType == 'string' && component.stringInputVisible == 'visible'
+  if component.props.tagType == 'string' && component.state.stringInputVisible == 'visible'
     `<div className='input text'>
       <input className='form-control input text' name='tag[text]' id='tag_text' />
     </div>`
