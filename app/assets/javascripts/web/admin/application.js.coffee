@@ -20,6 +20,10 @@
 #= require placeholders
 #= require react
 #= require react_ujs
+#
+$.extend String.prototype, camelize: ->
+  @replace /(?:^|[-_])(\w)/g, (_, c) ->
+    if c then c.toUpperCase() else ''
 
 $ ->
   init_bootstrap_styles = ->
@@ -85,5 +89,4 @@ $ ->
     init_select2_inputs()
     setTimeout init_datetimepickers, 1000
     return
-
   return

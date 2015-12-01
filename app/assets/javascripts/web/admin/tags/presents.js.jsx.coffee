@@ -6,6 +6,7 @@
       type: 'DELETE'
       success: ->
         component.props.reloadTags()
+      # FIXME несмотря на ответ сервера success, здесь исполняется всё равно error
       error: ->
         component.props.reloadTags()
     }

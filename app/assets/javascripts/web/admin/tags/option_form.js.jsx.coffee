@@ -68,15 +68,13 @@ formDisplay = (component) ->
 
 targetTypeInput = (component) ->
   unless component.props.targetType == 'none'
-    targetType = component.props.targetType.replace(/(\_\w)/g, (m) -> m[1].toUpperCase())
-    targetType = targetType.replace /^./, targetType[0].toUpperCase()
+    targetType = component.props.targetType.camelize()
     `<div className='input hidden tag_target_type'>
         <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType} />
       </div>`
 
 hiddenInputs = (component) ->
-  recordType = component.props.recordType.replace /_/, ''
-  recordType = recordType.replace /^./, recordType[0].toUpperCase()
+  recordType = component.props.recordType.camelize()
   `<div>
     <div className='input hidden tag_tag_type'>
       <input className='hidden' type='hidden' name='tag[tag_type]' id='tag_tag_type' value={component.props.tagType} />

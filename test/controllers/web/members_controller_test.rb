@@ -44,7 +44,7 @@ class Web::MembersControllerTest < ActionController::TestCase
     tag.save
     member.confirm
     create :news
-    create :tag
+    create :tag, :new_target
     get :show, ticket: member.ticket
     assert_response :success, @response.body
   end
