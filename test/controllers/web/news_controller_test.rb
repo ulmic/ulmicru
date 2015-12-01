@@ -20,7 +20,7 @@ class Web::NewsControllerTest < ActionController::TestCase
   test 'should get show of unpublished news' do
     @news.published_at = DateTime.now + 1.week
     @news.save
-    5.times { create :tag }
+    5.times { create :tag, :new_target }
     get :show, id: @news
     assert_response :redirect, @response.body
   end
