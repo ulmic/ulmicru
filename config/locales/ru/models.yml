@@ -161,6 +161,7 @@ ru:
         file: Файл
       activity_lines/corporative/confession:
         member_id: Член МИЦ
+        member: Член МИЦ
         year: Год
         nomination: Номинация
         state: Статус
