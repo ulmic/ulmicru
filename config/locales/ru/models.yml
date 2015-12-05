@@ -233,6 +233,13 @@ ru:
         states:
           unviewed: Непросмотренные
           sended: Отправленные
+    activity_lines/corporative/confession:
+      state:
+        states:
+          unviewed: Непросмотренные
+          on_vote: На голосовании
+          confirmed: Получившие премию
+          declined: Отклонённые
     errors:
       models:
         member:
