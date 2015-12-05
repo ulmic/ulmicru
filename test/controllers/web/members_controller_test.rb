@@ -42,7 +42,8 @@ class Web::MembersControllerTest < ActionController::TestCase
     tag.record_id = Article.last.id
     tag.record_type = 'Article'
     tag.save
-    member.confirm
+    member.member_state = 'confirmed'
+    member.save
     create :news
     create :tag, :new_target
     get :show, ticket: member.ticket
