@@ -1,36 +1,29 @@
-= paginate articles, theme: 'twitter-bootstrap-3'
-- model_class = Article
+= paginate activity_lines_corporative_confessions, theme: 'twitter-bootstrap-3'
+- model_class = ActivityLines::Corporative::Confession
 %table.table.table-striped.table-condensed
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:body)
-      %th= model_class.human_attribute_name(:category_id)
-      %th= model_class.human_attribute_name(:views)
-      %th= model_class.human_attribute_name(:tags)
+      %th= model_class.human_attribute_name(:member)
+      %th= model_class.human_attribute_name(:year)
+      %th= model_class.human_attribute_name(:nomination)
       %th=t 'helpers.links.actions'
   %tbody
-    - articles.each do |article|
-      %tr{ class: state_color(article) }
+    - activity_lines_corporative_confessions.each do |confession|
+      %tr{ class: state_color(confession) }
         %td{ width: '67px' }
-          = link_to article.id, edit_admin_article_path(article)
-          = link_to article_path(article) do
+          = link_to confession.id, edit_admin_activity_lines_corporative_confession_path(confession)
+          = link_to admin_activity_lines_corporative_confession_path(confession) do
             %span.glyphicon.glyphicon-share
-        %td= link_to article.title, edit_admin_article_path(article)
-        %td= article.short_body
-        %td= (article.category.present? ? article.category.name : "")
-        %td= article.views
-        %td{ style: 'width: 200px' }
-          = render 'web/admin/tags/buttons'
-          = render 'web/admin/tags/list', record: article
-          = render 'web/admin/tags/form', record_type: 'Article', record_id: article.id, index: article.id
+        %td= link_to confession.member.decorate.short_name, edit_admin_activity_lines_corporative_confession_path(confession)
+        %td= confession.nomination
+        %td= confession.year
         %td.actions
-          - if article.unviewed?
-            = link_to admin_article_path(article, article: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do
+          - if confession.unviewed?
+            = link_to admin_activity_lines_corporative_confession_path(confession, confession: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do
               %span.glyphicon.glyphicon-ok
-          = link_to edit_admin_article_path(article), class: 'btn btn-warning btn-xs' do
+          = link_to edit_admin_activity_lines_corporative_confession_path(confession), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
-          = link_to admin_article_path(article), method: :delete, class: 'btn btn-xs btn-danger' do
+          = link_to admin_activity_lines_corporative_confession_path(confession), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
-= paginate articles, theme: 'twitter-bootstrap-3'
+= paginate activity_lines_corporative_confessions, theme: 'twitter-bootstrap-3'

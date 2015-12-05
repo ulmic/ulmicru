@@ -16,6 +16,7 @@ ru:
       feedback: Обратная связь
       comment: Комментарий
       letter: Письмо
+      activity_lines/corporative/confession: Премия Признание
     attributes:
       user:
         first_name: Имя

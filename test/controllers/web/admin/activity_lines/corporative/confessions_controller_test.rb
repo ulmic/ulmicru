@@ -33,7 +33,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     attributes = attributes_for :confession
     post :create, confession: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to admin_confessions_path
+    assert_redirected_to admin_activity_lines_corporative_confessions_path
     confession = ActivityLines::Corporative::Confession.last
     confession.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], confession.send(key), key
@@ -41,7 +41,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
   end
 
   test 'should not create confession' do
-    attributes = { body: @confession.body }
+    attributes = { year: @confession.year }
     post :create, confession: attributes
     assert_response :success
   end
@@ -55,7 +55,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     attributes = attributes_for :confession
     put :update, id: @confession, confession: attributes
     assert_response :redirect
-    assert_redirected_to edit_admin_confession_path @confession
+    assert_redirected_to edit_admin_activity_lines_corporative_confession_path @confession
     @confession.reload
     @confession.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @confession.send(key), key

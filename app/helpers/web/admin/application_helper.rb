@@ -40,7 +40,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def model_class
-    request[:controller].split('/').last.singularize.camelize.constantize
+    request[:controller].split('/')[2..-1].join('/').singularize.camelize.constantize
   end
 
   def to_path(constant)

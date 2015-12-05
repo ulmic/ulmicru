@@ -1,4 +1,5 @@
 class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin::ActivityLines::Corporative::ApplicationController
+  before_filter :choose_members, only: [ :new, :edit ]
   def index
     @confessions = {}
     @confessions[:confirmed] =ActivityLines::Corporative::Confession.confirmed.page(params[:page]).decorate
@@ -14,12 +15,11 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
 
   def create
     @confession_form = ActivityLines::Corporative::ConfessionForm.new_with_model
-
-    params[:confession][:user_id] = current_user.id if current_user.present?
     @confession_form.submit params[:confession]
     if @confession_form.save
-      redirect_to admin_confessions_path
+      redirect_to admin_activity_lines_corporative_confessions_path
     else
+      choose_members
       @categories = Category.presented.decorate
       render action: :new
     end
@@ -33,8 +33,9 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
     @confession_form = ActivityLines::Corporative::ConfessionForm.find_with_model params[:id]
     @confession_form.submit params[:confession]
     if @confession_form.save
-      redirect_to edit_admin_confession_path @confession_form.model
+      redirect_to edit_admin_activity_lines_corporative_confession_path @confession_form.model
     else
+      choose_members
       render action: :edit
     end
   end
@@ -42,6 +43,6 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
   def destroy
     @confession = ActivityLines::Corporative::Confession.find params[:id]
     @confession.remove
-    redirect_to admin_confessions_path
+    redirect_to admin_activity_lines_corporative_confessions_path
   end
 end
