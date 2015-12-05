@@ -1,0 +1,10 @@
+- confessions = ActivityLines::Corporative::Confession.confirmed
+- years = confessions.map(&:year).uniq
+.confessions
+  .years
+    - years.each do |year|
+      %div.year{ id: "year_#{year}", href: "#confession_#{year}" }
+  .confessions_people
+    - years.each do |year|
+      - confessions_of_the_year = confessions.where year: year
+      %div.confessions_of_the_year{ id: "confession_#{year}" }
