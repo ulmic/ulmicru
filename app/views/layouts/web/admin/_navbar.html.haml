@@ -47,7 +47,7 @@
                 %li
                   %a{ href: admin_activity_lines_corporative_confessions_path }
                     %span.glyphicon.glyphicon-group
-                    = t('enumerize.activity_line.activity_type.corporative')
+                    = ActivityLines::Corporative::Confession.model_name.human
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
             = t('.content')

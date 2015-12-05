@@ -23,6 +23,10 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
     state :declined
     state :removed
 
+    event :confirm do
+      transition all => :confirmed
+    end
+
     event :to_vote do
       transition all => :on_vote
     end

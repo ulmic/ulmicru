@@ -23,7 +23,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def enumerize_locales_hash(model, attribute)
-    I18n.t("enumerize.#{model.name.underscore.gsub('/', '.')}.#{attribute}").invert
+    I18n.t("enumerize.#{model.name.underscore}.#{attribute}").invert
   end
 
   def record_path(record)

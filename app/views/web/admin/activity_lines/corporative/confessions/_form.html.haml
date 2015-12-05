@@ -13,7 +13,7 @@
       = link_to t('helpers.links.back'), admin_activity_lines_corporative_confessions_path, class: 'btn btn-default'
       = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
       = f.input :year, as: :string
-      = f.input :nomination
-      = f.input :state
+      = f.input :nomination, collection: enumerize_locales_hash(@confession_form.model.model_name, :nomination)
+      = f.input :state_event, as: :state_event
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_activity_lines_corporative_confessions_path, class: 'btn btn-default'

@@ -10,27 +10,26 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
   end
 
   def new
-    @confession_form = ActivityLines::Corporative::ConfessionForm.new_with_model
+    @confession_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
   end
 
   def create
-    @confession_form = ActivityLines::Corporative::ConfessionForm.new_with_model
+    @confession_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
     @confession_form.submit params[:confession]
     if @confession_form.save
       redirect_to admin_activity_lines_corporative_confessions_path
     else
       choose_members
-      @categories = Category.presented.decorate
       render action: :new
     end
   end
 
   def edit
-    @confession_form = ActivityLines::Corporative::ConfessionForm.find_with_model params[:id]
+    @confession_form = ::ActivityLines::Corporative::ConfessionForm.find_with_model params[:id]
   end
 
   def update
-    @confession_form = ActivityLines::Corporative::ConfessionForm.find_with_model params[:id]
+    @confession_form = ::ActivityLines::Corporative::ConfessionForm.find_with_model params[:id]
     @confession_form.submit params[:confession]
     if @confession_form.save
       redirect_to edit_admin_activity_lines_corporative_confession_path @confession_form.model
@@ -41,7 +40,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
   end
 
   def destroy
-    @confession = ActivityLines::Corporative::Confession.find params[:id]
+    @confession = ::ActivityLines::Corporative::Confession.find params[:id]
     @confession.remove
     redirect_to admin_activity_lines_corporative_confessions_path
   end

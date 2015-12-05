@@ -159,6 +159,11 @@ ru:
         stamp_of_receipt: Отметка о получении
         note: Примечание
         file: Файл
+      activity_lines/corporative/confession:
+        member_id: Член МИЦ
+        year: Год
+        nomination: Номинация
+        state: Статус
     state_machines:
       member:
         state:
@@ -174,6 +179,13 @@ ru:
             confirm: Подтвердить
             remove: Удалить
             to_main: Сделать главной новостью
+      activity_lines/corporative/confession:
+        state:
+          events:
+            confirm: Премия получена
+            remove: Удалить
+            to_vote: Поставить на голосование
+            unviewed: Новое ходатайство
   state_machines:
     user:
       state:
@@ -273,6 +285,10 @@ ru:
       publicity:
         hidden: Скрытая
         visible: Публичная
+    activity_lines/corporative/confession:
+      nomination:
+        debut: Дебют года
+        number_one: Номер один
   scopes:
     event:
       future: Грядущие
