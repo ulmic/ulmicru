@@ -25,8 +25,8 @@
         = link_to tab_title(model_class, tab, items[tab].total_count), "##{tab}"
   - if params[:search]
     #search
-      = render "#{to_path(model_class).pluralize(:en)}_list", to_path(model_class).pluralize(:en).to_sym => items[:search]
+      = render 'list', to_path(model_class).pluralize(:en).to_sym => items[:search]
   - tabs.each do |tab|
     %div{ id: tab }
-      = render "#{to_path(model_class).pluralize(:en)}_list", to_path(model_class).pluralize(:en).to_sym => items[tab]
+      = render 'list', to_path(model_class).pluralize(:en).to_sym => items[tab]
 = link_to t('.new', default: t('helpers.links.new')), send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
