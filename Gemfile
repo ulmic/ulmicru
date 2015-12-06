@@ -58,6 +58,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'sshkit', '1.5.1'
   gem 'byebug'
   gem 'foreman'
   gem 'guard-livereload', '~> 2.4', require: false
