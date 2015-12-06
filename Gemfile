@@ -57,6 +57,10 @@ group :production do
   gem 'unicorn-rails'
 end
 
+group :development do
+  gem 'bower-rails'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'foreman'
