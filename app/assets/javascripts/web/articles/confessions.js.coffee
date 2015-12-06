@@ -12,6 +12,7 @@ $ ->
     $('html, body').animate({
       scrollTop: $(id).offset().top - 20
     }, 2000)
+$(window).load ->
   confessions_height = 0
   $('.confessions_people').each ->
     confessions_height += $(this).height()
