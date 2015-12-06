@@ -1,21 +1,15 @@
 language: ruby
 rvm:
-- 2.1
+  - 2.1
 env:
-- DB=postgres
+  - DB=postgres
 script:
-- gem install tilt -v '1.4.1'
-- gem install byebug -v '3.5.1'
-- gem install sdoc -v '0.4.1'
-- sudo pip install ansible
-- make deps
-- ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
-- RAILS_ENV=test bundle exec rake db:create db:migrate test
+  - gem install tilt -v '1.4.1'
+  - gem install byebug -v '3.5.1'
+  - gem install sdoc -v '0.4.1'
+  - sudo pip install ansible
+  - make deps
+  - ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
+  - RAILS_ENV=test bundle exec rake db:create db:migrate test
 services:
-- redis-server
-oauth_keys:
-  foursquare:
-    client_id:
-      secure: I68nKkRQmKe0IOGT9jpWxKM6zawYE0kInwfl95Mgs6vjoGr8pum1sdQxJHgu6EqQhk4DLKfPJMlPNHRtHveO5EokqUC56dw/ZZo9EMwQQYY53JAy5d3v7+6hYv2EhyA0xr1B0ovU+5/w36PGBQf7vlSM4Z97dYQdUDtTTZ3ENrI=
-    client_secret:
-      secure: GmKLLr6RQMdEkv1yQJCxYfCA2RUjon0gXFWBPCqy2zHFJNFvVX5p8ASzMSb3tIM+pltxAbrNhL8HzlY/Ddz4YYV6Y2chEDQVUuHbGjDQCdmD0e70/L406P9RhVqmQajS9wjY0SqTbcA+zhphLt1cd2tFrlFtAdSjCd3U/cCgViE=
+  - redis-server
