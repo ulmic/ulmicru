@@ -3,7 +3,8 @@
 .confessions
   .years
     - years.each do |year|
-      = react_component 'ConfessionYear', year: year
+      .year{ id: "year_#{year}", href: "#confesson_#{year}" }
+        = year
   .confessions_people
     - years.each do |year|
       - confessions_of_the_year = confessions.where year: year
