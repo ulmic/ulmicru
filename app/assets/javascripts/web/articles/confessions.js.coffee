@@ -1,5 +1,9 @@
 $ ->
-  $('.year').on 'hover', ->
-    $(this).animate {
-      marginRight: '15px'
-    }, 500
+  $('.year').hover((->
+    $(this).animate({
+      marginRight: '+=15'
+    }, 500)),
+    (->
+      $(this).animate({
+        marginRight: '-=15'
+      }, 500)))
