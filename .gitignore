@@ -49,6 +49,8 @@ config/database.yml
 Gemfile.lock
 .capistrano/
 !public/1.pdf
+vendor/assets/bower*
+vendor/assets/.bower*
 
 
 \#*\#
