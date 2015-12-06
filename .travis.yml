@@ -8,5 +8,6 @@ script:
   - make deps
   - ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
   - RAILS_ENV=test bundle exec rake db:create db:migrate test
+  - sudo gem update --system
 services:
   - redis-server
