@@ -8,4 +8,6 @@
   .confessions_people
     - years.each do |year|
       - confessions_of_the_year = confessions.where year: year
-      %div.confessions_of_the_year{ id: "confession_#{year}" }
+      .confessions_of_the_year{ id: "confession_#{year}" }
+        .year_text
+          = year

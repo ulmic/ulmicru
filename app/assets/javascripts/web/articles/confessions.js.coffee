@@ -10,5 +10,5 @@ $ ->
   $('.year').click ->
     id = $(this).data 'element'
     $('html, body').animate({
-      scrollTop: $(id).offset().top
+      scrollTop: $(id).offset().top - 20
     }, 2000)
