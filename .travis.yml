@@ -4,7 +4,7 @@ rvm:
 env:
   - DB=postgres
 before_install:
-  - sudo gem update --system
+  - gem install bundler
 script:
   - sudo pip install ansible
   - make deps
