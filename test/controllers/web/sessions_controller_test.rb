@@ -6,10 +6,10 @@ class Web::SessionsControllerTest < ActionController::TestCase
     create :article, :contacts
   end
 
-  test 'new' do
-    get :new
-    assert_response :success
-  end
+#  test 'new' do
+#    get :new
+#    assert_response :success
+#  end
 
   test 'create ok' do
     post :create, user: { email: @user.email, password: @user.password }
