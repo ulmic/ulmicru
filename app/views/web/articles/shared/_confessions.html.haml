@@ -11,3 +11,10 @@
       .confessions_of_the_year{ id: "confession_#{year}" }
         .year_text
           = year
+        .people
+          - confessions_of_the_year.each do |confession|
+            .member
+              = render 'layouts/web/elements/mic_member', link: member_path(confession.member.ticket),
+                                                        img_src: confession.member.avatar.element.url,
+                                                        name: confession.member.decorate.short_name
+

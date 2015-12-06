@@ -1,9 +1,11 @@
 .confessions
+  min-height: 500px
   .years
     position: fixed
     right: 15px
     top: 100px
     width: 75px
+    z-index: 99
     .year
       width: 75px
       height: 75px
@@ -17,18 +19,27 @@
       margin-bottom: 5px
       float: right
   .confessions_people
+    height: auto
+    float: left
+    width: 95%
     .confessions_of_the_year
-      height: 300px
+      float: left
       width: 100%
       margin-left: 15px
       margin-right: 15px
       border-top: 2px solid darkgrey
       text-align: center
+      margin-top: 30px
       .year_text
         width: 100px
         margin-top: -18px
         font-family: 'mic-bold'
         font-size: 20pt
         background-color: white
-      &:first-child
-        margin-top: 30px
+      .people
+        height: auto
+        text-align: left
+        margin-top: 15px
+        margin-left: 20px
+        .member
+          float: left
