@@ -7,6 +7,7 @@ script:
   - gem install tilt -v '1.4.1'
   - gem install byebug -v '3.5.1'
   - gem install sdoc -v '0.4.1'
+  - gem install state_machine -v '1.2.0'
   - sudo pip install ansible
   - make deps
   - ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
