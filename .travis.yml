@@ -4,15 +4,14 @@ rvm:
 env:
   - DB=postgres
 script:
+  - sudo pip install ansible
+  - make deps
+  - ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
+  - RAILS_ENV=test bundle exec rake db:create db:migrate test
   - gem install tilt -v '1.4.1'
   - gem install byebug -v '3.5.1'
   - gem install sdoc -v '0.4.1'
   - gem install state_machine -v '1.2.0'
   - gem install i18n-js -v '3.0.0.rc11'
-  - sudo pip install ansible
-  - make deps
-  - ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
-  - RAILS_ENV=test bundle exec rake db:create db:migrate test
 services:
   - redis-server
-sudo: false
