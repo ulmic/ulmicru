@@ -3,7 +3,7 @@
 .confessions
   .years
     - years.each do |year|
-      .year{ id: "year_#{year}", href: "#confesson_#{year}" }
+      .year{ id: "year_#{year}", data: { element: "#confession_#{year}" } }
         = year
   .confessions_people
     - years.each do |year|
