@@ -7,14 +7,26 @@
         = year
   .confessions_people
     - years.each do |year|
-      - confessions_of_the_year = confessions.where year: year
+      - number_one_of_the_year = confessions.where year: year, nomination: :number_one
+      - debut_of_the_year = confessions.where year: year, nomination: :debut
       .confessions_of_the_year{ id: "confession_#{year}" }
         .year_text
           = year
         .people
-          - confessions_of_the_year.each do |confession|
+          .number_one_name
+            = t('.number_one_of_the_year')
+          - number_one_of_the_year.each do |confession|
             .member
-              = render 'layouts/web/elements/mic_member', link: member_path(confession.member.ticket),
-                                                        img_src: confession.member.avatar.element.url,
-                                                        name: confession.member.decorate.short_name
+              = render 'layouts/web/elements/mic_member_2', link: member_path(confession.member.ticket),
+                                                            img_src: confession.member.avatar.element.url,
+                                                            name: confession.member.decorate.short_name
+        .people
+          .debut_name
+            = t('.debut_of_the_year')
+          - debut_of_the_year.each do |confession|
+            .member
+              = render 'layouts/web/elements/mic_member_2', link: member_path(confession.member.ticket),
+                                                            img_src: confession.member.avatar.element.url,
+                                                            name: confession.member.decorate.short_name
+
 

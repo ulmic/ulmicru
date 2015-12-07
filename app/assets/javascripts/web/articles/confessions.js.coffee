@@ -18,3 +18,6 @@ $(window).load ->
     confessions_height += $(this).height()
   confessions_height += 15
   $('.confessions').css height: confessions_height
+  nomination_name_width = $('.member').width()
+  $('.debut_name').width nomination_name_width
+  $('.number_one_name').width nomination_name_width
