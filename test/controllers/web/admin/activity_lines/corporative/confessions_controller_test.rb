@@ -31,7 +31,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
 
   test 'should create confession' do
     attributes = attributes_for :confession
-    post :create, confession: attributes
+    post :create, activity_lines_corporative_confession: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_activity_lines_corporative_confessions_path
     confession = ActivityLines::Corporative::Confession.last
@@ -42,7 +42,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
 
   test 'should not create confession' do
     attributes = { year: @confession.year }
-    post :create, confession: attributes
+    post :create, activity_lines_corporative_confession: attributes
     assert_response :success
   end
 
@@ -53,7 +53,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
 
   test 'should update confession by admin' do
     attributes = attributes_for :confession
-    put :update, id: @confession, confession: attributes
+    put :update, id: @confession, activity_lines_corporative_confession: attributes
     assert_response :redirect
     assert_redirected_to edit_admin_activity_lines_corporative_confession_path @confession
     @confession.reload
@@ -66,7 +66,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     attributes = attributes_for :confession
     attributes[:year] = nil
     count_before_save = ActivityLines::Corporative::Confession.count
-    put :update, id: @confession, confession: attributes
+    put :update, id: @confession, activity_lines_corporative_confession: attributes
     assert_equal ActivityLines::Corporative::Confession.count, count_before_save
     assert_response :success
   end

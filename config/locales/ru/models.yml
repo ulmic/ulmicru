@@ -277,11 +277,10 @@ ru:
         local_project: Областной проект
         corporative: Корпоративные проекты
         event_line: Набор мероприятий
-    event:
-      registration:
-        role:
-          participant: Участник
-          organizer: Организатор
+    event/registration:
+      role:
+        participant: Участник
+        organizer: Организатор
     team:
       publicity:
         hidden: Скрытая
