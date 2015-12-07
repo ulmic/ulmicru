@@ -17,4 +17,4 @@
       - total_count = @unviewed[pluralize_tab.to_sym].total_count
       - if total_count > 0
         %div{ id: pluralize_tab }
-          = render "web/admin/#{pluralize_tab}/#{pluralize_tab}_list", pluralize_tab.to_sym => @unviewed[pluralize_tab.to_sym]
+          = render "web/admin/#{pluralize_tab}/list", pluralize_tab.to_sym => @unviewed[pluralize_tab.to_sym]

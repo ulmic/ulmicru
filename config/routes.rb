@@ -57,6 +57,11 @@ Rails.application.routes.draw do
           delete 'destroy'
         end
       end
+      namespace :activity_lines do
+        namespace :corporative do
+          resources :confessions, except: :show
+        end
+      end
     end
     namespace :users do
       resources :account, only: :update

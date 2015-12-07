@@ -113,6 +113,9 @@ ru:
         default_show:
           same_articles: Похожие статьи
           popular_articles: Популярные статьи
+        confessions:
+          debut_of_the_year: Дебют года
+          number_one_of_the_year: Номер один
     events:
       show:
         where: 'Где'

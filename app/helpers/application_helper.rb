@@ -22,7 +22,6 @@ module ApplicationHelper
     end
   end
 
-
   def is_active?(path, options = {})
     'active' if uri_state(path, options).in? [:active, :chosen]
   end
