@@ -16,6 +16,7 @@ ru:
       feedback: Обратная связь
       comment: Комментарий
       letter: Письмо
+      activity_lines/corporative/confession: Премия Признание
     attributes:
       user:
         first_name: Имя
@@ -158,6 +159,12 @@ ru:
         stamp_of_receipt: Отметка о получении
         note: Примечание
         file: Файл
+      activity_lines/corporative/confession:
+        member_id: Член МИЦ
+        member: Член МИЦ
+        year: Год
+        nomination: Номинация
+        state: Статус
     state_machines:
       member:
         state:
@@ -173,6 +180,13 @@ ru:
             confirm: Подтвердить
             remove: Удалить
             to_main: Сделать главной новостью
+      activity_lines/corporative/confession:
+        state:
+          events:
+            confirm: Премия получена
+            remove: Удалить
+            to_vote: Поставить на голосование
+            unviewed: Новое ходатайство
   state_machines:
     user:
       state:
@@ -232,6 +246,13 @@ ru:
         states:
           unviewed: Непросмотренные
           sended: Отправленные
+    activity_lines/corporative/confession:
+      state:
+        states:
+          unviewed: Непросмотренные
+          on_vote: На голосовании
+          confirmed: Получившие премию
+          declined: Отклонённые
     errors:
       models:
         member:
@@ -254,17 +275,20 @@ ru:
       activity_type:
         central_program: Центральная программа
         local_project: Областной проект
-        corporative: Корпоратив
+        corporative: Корпоративные проекты
         event_line: Набор мероприятий
-    event:
-      registration:
-        role:
-          participant: Участник
-          organizer: Организатор
+    event/registration:
+      role:
+        participant: Участник
+        organizer: Организатор
     team:
       publicity:
         hidden: Скрытая
         visible: Публичная
+    activity_lines/corporative/confession:
+      nomination:
+        debut: Дебют года
+        number_one: Номер один
   scopes:
     event:
       future: Грядущие

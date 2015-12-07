@@ -22,10 +22,6 @@ module Web::Admin::ApplicationHelper
     model_class.methods.include? :search_everywhere
   end
 
-  def enumerize_locales_hash(model, attribute)
-    I18n.t("enumerize.#{model.name.underscore.gsub('/', '.')}.#{attribute}").invert
-  end
-
   def record_path(record)
     send "#{record.class.name.underscore}_path", record
   end
@@ -40,7 +36,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def model_class
-    request[:controller].split('/').last.singularize.camelize.constantize
+    request[:controller].split('/')[2..-1].join('/').singularize.camelize.constantize
   end
 
   def to_path(constant)

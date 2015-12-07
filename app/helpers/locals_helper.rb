@@ -11,4 +11,11 @@ module LocalsHelper
     t('web.admin.trash.deleted') + ' ' + model_class.model_name.human.pluralize(:ru).mb_chars.downcase.to_s
   end
 
+  def enumerize_locales_hash(model, attribute)
+    I18n.t("enumerize.#{model.name.underscore}.#{attribute}").invert
+  end
+
+  def enumerize_locales_value(model, attribute, value)
+    I18n.t "enumerize.#{model.name.underscore}.#{attribute}.#{value}"
+  end
 end
