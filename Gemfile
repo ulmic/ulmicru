@@ -25,7 +25,7 @@ gem 'russian'
 gem 'russian_sex'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'rmagick'
+gem 'rmagick', '2.15.3'
 #gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', submodules: true
 gem 'js-routes'
 gem 'i18n-js', git: 'https://github.com/fnando/i18n-js'

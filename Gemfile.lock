@@ -415,7 +415,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rmagick (2.15.4)
+    rmagick (2.15.3)
     ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
     russia_regions (0.0.3)
@@ -569,7 +569,7 @@ DEPENDENCIES
   railroady
   rails (= 4.2.1)
   react-rails (~> 1.3.0)
-  rmagick
+  rmagick (= 2.15.3)
   russia_regions
   russian
   russian_sex
