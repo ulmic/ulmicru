@@ -40,14 +40,13 @@
             = menu_item admin_teams_path do
               %span.glyphicon.glyphicon-bullhorn
               = Team.model_name.human.pluralize(:ru)
+            %li.divider{ role: :separator }
+            %li.dropdown-header
+              = t('enumerize.activity_line.activity_type.corporative')
             %li
-              %a.trigger.right-caret
-                = t('enumerize.activity_line.activity_type.corporative')
-              %ul.dropdown-menu.sub-menu
-                %li
-                  %a{ href: admin_activity_lines_corporative_confessions_path }
-                    %span.glyphicon.glyphicon-group
-                    = ActivityLines::Corporative::Confession.model_name.human
+              %a{ href: admin_activity_lines_corporative_confessions_path }
+                %span.glyphicon.glyphicon-sunglasses
+                = ActivityLines::Corporative::Confession.model_name.human
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
             = t('.content')
