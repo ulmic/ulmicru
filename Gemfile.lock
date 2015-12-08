@@ -42,14 +42,6 @@ GIT
       term-ansicolor (~> 1.0.7)
 
 GIT
-  remote: git://github.com/zurb/foundation-rails.git
-  revision: a709f2e60f8428c979397cbaedc19077be1a8cf5
-  specs:
-    foundation-rails (5.5.2.1)
-      railties (>= 3.1.0)
-      sass (>= 3.3.0, < 3.5)
-
-GIT
   remote: https://github.com/fnando/i18n-js
   revision: 968837d676e23a8d630a866f925e09b3a0f8fba6
   specs:
@@ -227,6 +219,9 @@ GEM
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
+    foundation-rails (5.5.2.1)
+      railties (>= 3.1.0)
+      sass (>= 3.3.0, < 3.5)
     github_api (0.12.3)
       addressable (~> 2.3)
       descendants_tracker (~> 0.0.4)
@@ -543,7 +538,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   foreman
-  foundation-rails!
+  foundation-rails (= 5.5.2.1)
   foursquare2!
   github_api
   guard-livereload (~> 2.4)
@@ -592,3 +587,6 @@ DEPENDENCIES
   validates
   web-console (= 2.0.0.beta2)
   webmock
+
+BUNDLED WITH
+   1.10.6

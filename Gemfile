@@ -41,7 +41,7 @@ gem 'foursquare2', github: 'nitinstp23/foursquare2', branch: :gemspec_fix
 gem 'validates'
 gem 'font-awesome-rails'
 gem 'sidekiq'
-gem 'foundation-rails', github: 'zurb/foundation-rails'
+gem 'foundation-rails', '5.5.2.1'
 gem "autoprefixer-rails"
 gem 'select2-rails'
 gem 'jasny_bootstrap_extension_rails'
