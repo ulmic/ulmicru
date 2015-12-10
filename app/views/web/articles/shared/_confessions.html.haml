@@ -1,5 +1,5 @@
 - confessions = ActivityLines::Corporative::Confession.confirmed
-- years = confessions.map(&:year).uniq
+- years = confessions.map(&:year).uniq.sort { |x, y| y <=> x }
 .confessions
   .years
     - years.each do |year|
