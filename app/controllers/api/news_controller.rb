@@ -4,9 +4,14 @@ class Api::NewsController < Api::ApplicationController
   # FIXME remove hash creating from controller
   def index
     source = get_source
-    news = NewsDecorator.decorate source.published.drop(params[:offset].to_i).first(params[:count].to_i)
+    news = NewsDecorator.decorate source.published.drop params[:offset].to_i
+    news = news.first params[:count].to_i if params[:count]
     hash = []
-    news.each { |n| n = n.decorate; hash << { id: n.id, title: n.title, text: n.short_lead, publish_date_time: n.publish_date_time, photo: n.photo.url }  }
+    if params[:data] == 'id'
+      hash = news.map &:id
+    else
+      news.each { |n| n = n.decorate; hash << { id: n.id, title: n.title, text: n.short_lead, publish_date_time: n.publish_date_time, photo: n.photo.url }  }
+    end
     render json: hash
   end
 
