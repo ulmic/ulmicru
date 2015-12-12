@@ -5,4 +5,8 @@ FactoryGirl.define do
     member_id { Member.last ? Member.last.id : create(:member).id }
     state { ActivityLines::Corporative::Confession.state_machines[:state].states.map(&:name).first.to_s }
   end
+
+  factory :petition, parent: :confession do
+    year DateTime.now.year
+  end
 end

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   include Concerns::AuthManagment
   include Concerns::TechinalPagesManagment
+  include DatesHelper
 
   if Rails.env.staging?
     before_filter :required_basic_auth!

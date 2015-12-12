@@ -5,6 +5,5 @@ FactoryGirl.define do
     size { generate :string }
     text { generate :string }
     slug { generate :string }
-    state { Page.state_machines[:state].states.map(&:name).first.to_s }
   end
 end

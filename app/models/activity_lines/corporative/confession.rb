@@ -35,4 +35,11 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include DatesHelper
+
+  def user_can_update_petition?(user_id)
+    (on_vote? || unviewed?) && user_id == creator_id &&
+      submissions_petitions_during?
+  end
 end

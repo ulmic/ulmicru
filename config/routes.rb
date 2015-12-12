@@ -30,6 +30,11 @@ Rails.application.routes.draw do
       resources :authentications, only: :destroy
       resources :positions, only: [ :create, :update, :destroy ]
     end
+    namespace :members do
+      namespace :corporative do
+        resources :petitions, except: [ :show, :destroy ]
+      end
+    end
     namespace :admin do
       resources :users, except: :show
       resources :members
