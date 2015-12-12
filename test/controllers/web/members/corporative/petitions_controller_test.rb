@@ -10,6 +10,7 @@ class Web::Members::Corporative::PetitionsControllerTest < ActionController::Tes
     page = :confession_submissions_petitions_ends
     create :page, slug: page, view: page
     @exceptions_attributes = [ 'id', 'created_at', 'updated_at' ]
+    create :article, :contacts
   end
 
   test 'should create petition' do
