@@ -25,6 +25,12 @@ ru:
           account: Настройки профиля
           member_profile: Профиль члена МИЦ
           your_account_is_not_active: Аккаунт неактивен
+        activity_lines:
+          corporative:
+            confession:
+              confessions_of_the_year:
+                debut_of_the_year: Дебют года
+                number_one_of_the_year: Номер один
       elements:
         mic_document:
           attachment: Приложение
@@ -113,9 +119,6 @@ ru:
         default_show:
           same_articles: Похожие статьи
           popular_articles: Популярные статьи
-        confessions:
-          debut_of_the_year: Дебют года
-          number_one_of_the_year: Номер один
     events:
       show:
         where: 'Где'
