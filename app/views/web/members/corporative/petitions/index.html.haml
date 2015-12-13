@@ -2,7 +2,7 @@
 = stylesheet_link_tag 'web/articles/confessions'
 = javascript_include_tag 'web/articles/confessions'
 .confessions
-  .articles.container
+  .container
     %h1.title
       = t('.title', year: current_confession_year)
     Перед вами номинанты корпоративной премии «Признание»
@@ -15,6 +15,10 @@
     %br
     - if current_user.is_member?
       = link_to 'Подать ходатайство', new_members_corporative_petition_path, class: 'button'
+    - elsif signed_in?
+      %i.fa.fa-exclamation-circle
+      Только члены Молодёжного инициативного центра могут подавать ходатайства на корпоративную премию  «Признание».
+      = link_to t('organization.send_request'), new_join_path, class: 'button'
   .confessions_people
     = render 'layouts/web/shared/activity_lines/corporative/confession/confessions_of_the_year',
       year: current_confession_year,
