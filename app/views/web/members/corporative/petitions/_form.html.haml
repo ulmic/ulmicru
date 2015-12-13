@@ -1,1 +1,4 @@
-
+= simple_form_for @petition_form, url: { controller: 'web/members/corporative/petitions', action: action } do |f|
+  = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
+  = f.input :nomination, as: :radio_buttons, collection: enumerize_locales_hash(@petition_form.model.model_name, :nomination), item_wrapper_class: :inline
+  = f.button :submit, value: t('.submit_petition')

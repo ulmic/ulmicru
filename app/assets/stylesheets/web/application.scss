@@ -259,3 +259,13 @@ input[type=checkbox] {
 .eye {
   padding-top: 10px;
 }
+
+form {
+  .radio.inline {
+    float: left;
+    margin-right: 15px;
+    &:last-child {
+      float: none;
+    }
+  }
+}

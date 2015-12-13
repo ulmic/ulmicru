@@ -140,6 +140,8 @@ ru:
         petitions:
           new:
             title: Подать ходатайство на получение корпоративной премии «Признание» %{year} года
+          form:
+            submit_petition: Подать ходатайство
     activity_lines:
       corporative:
         petitions:
