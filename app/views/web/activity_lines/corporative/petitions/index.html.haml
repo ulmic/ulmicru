@@ -24,6 +24,8 @@
     - else
       = link_to t('helpers.enter'), new_session_path, class: :button
       чтобы подать ходатайство.
+    %br
+    Если человек, которого вы считаете достойным уже есть в этом списке, вы можете проголосовать за него,а также оставить комментарий о том, почему именно этот кандидат достоин получить корпоративную премию «Признание» 2015 года.
   .confessions_people
     = render 'layouts/web/shared/activity_lines/corporative/confession/confessions_of_the_year',
       year: current_confession_year,
