@@ -136,6 +136,10 @@ ru:
         learn_or_work: 'Учусь/Работаю'
         live: 'Живу'
         ticket: 'Членский билет'
+      corporative:
+        petitions:
+          new:
+            title: Подать ходатайство на получение корпоративной премии «Признание» %{year} года
     activity_lines:
       corporative:
         petitions:

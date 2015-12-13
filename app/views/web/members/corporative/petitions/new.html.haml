@@ -1,0 +1,6 @@
+- title t('.title', year: current_confession_year)
+
+.container.mic-form-container
+  %h2.title
+    = t('.title', year: current_confession_year)
+= render 'form', action: :create
