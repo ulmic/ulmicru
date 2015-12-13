@@ -1,9 +1,4 @@
 class Web::Members::Corporative::PetitionsController < Web::Members::Corporative::ApplicationController
-  def index
-    @debut_of_the_year = ::ActivityLines::Corporative::Confession.debut.of_the_year(current_confession_year).on_vote
-    @number_one_of_the_year = ::ActivityLines::Corporative::Confession.number_one.of_the_year(current_confession_year).on_vote
-  end
-
   def new
     if submissions_petitions_not_begins?
       redirect_to not_found_page_path

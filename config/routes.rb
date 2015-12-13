@@ -32,7 +32,12 @@ Rails.application.routes.draw do
     end
     namespace :members do
       namespace :corporative do
-        resources :petitions, except: [ :show, :destroy ]
+        resources :petitions, except: [ :index, :show, :destroy ]
+      end
+    end
+    namespace :activity_lines do
+      namespace :corporative do
+        resources :petitions, only: :index
       end
     end
     namespace :admin do

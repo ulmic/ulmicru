@@ -41,17 +41,6 @@ class Web::Members::Corporative::PetitionsControllerTest < ActionController::Tes
     end
   end
 
-  test 'should get index' do
-    get :index
-    assert_response :success, @response.body
-  end
-
-  test 'should get index without instances' do
-    ::ActivityLines::Corporative::Confession.all.map &:destroy
-    get :index
-    assert_response :success, @response.body
-  end
-
   test 'should get edit' do
     get :edit, id: @petition
     if DateTime.now > CONFESSION_DATES.begining_submissions_petitions &&
