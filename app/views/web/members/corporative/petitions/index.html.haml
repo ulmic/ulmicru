@@ -1,6 +1,20 @@
+- title t('.title', year: current_confession_year)
 = stylesheet_link_tag 'web/articles/confessions'
 = javascript_include_tag 'web/articles/confessions'
 .confessions
+  .articles.container
+    %h1.title
+      = t('.title', year: current_confession_year)
+    Перед вами номинанты корпоративной премии «Признание»
+    = current_confession_year
+    года. Даты голосования за номинантов c
+    =l configus.dates.activity_lines.corporative.confession.begining_submissions_petitions, format: '%d %B %Y'
+    года до
+    =l configus.dates.activity_lines.corporative.confession.ending_submissions_petitions, format: '%d %B %Y'
+    года. Корпоративную премию «Признание» могут получать только члены Молодёжного инициативного центра, состоящие в организации более 3-х месяцев. Если кандидат, которого вы считаете достойным отсутствует в списке ниже, вы можете подать ходатайство на него, используя специальную форму.
+    %br
+    - if current_user.is_member?
+      = link_to 'Подать ходатайство', new_members_corporative_petition_path, class: 'button'
   .confessions_people
     = render 'layouts/web/shared/activity_lines/corporative/confession/confessions_of_the_year',
       year: current_confession_year,

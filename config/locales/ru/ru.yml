@@ -136,6 +136,10 @@ ru:
         learn_or_work: 'Учусь/Работаю'
         live: 'Живу'
         ticket: 'Членский билет'
+      corporative:
+        petitions:
+          index:
+            title: Номинанты корпоративной премии признание %{year} года
     sessions:
       new:
         title: Авторизация
