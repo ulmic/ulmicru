@@ -1,4 +1,4 @@
-class ActivityLines::Corporative::ConfessionDecorator < ApplicationDecorator
+class ActivityLines::Corporative::ArgumentDecorator < ApplicationDecorator
   delegate_all
 
   def short_name

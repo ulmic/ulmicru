@@ -69,7 +69,7 @@ Rails.application.routes.draw do
       end
       namespace :activity_lines do
         namespace :corporative do
-          resources :confessions, except: :show
+          resources :confessions
         end
       end
     end
