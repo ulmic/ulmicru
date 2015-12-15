@@ -2,6 +2,8 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
   belongs_to :member
   has_many :arguments
 
+  accepts_nested_attributes_for :arguments
+
   validates :year, presence: true
   validates :member_id, presence: true
   validates :nomination, presence: true
