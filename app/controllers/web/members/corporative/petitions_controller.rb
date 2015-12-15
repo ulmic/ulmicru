@@ -8,6 +8,7 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
       redirect_to page_page_path :confession_submissions_petitions_ends
     else
       @petition_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
+      @petition_form.build_arguments_for_petition
     end
   end
 

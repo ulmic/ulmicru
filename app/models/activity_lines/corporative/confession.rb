@@ -1,5 +1,6 @@
 class ActivityLines::Corporative::Confession < ActiveRecord::Base
   belongs_to :member
+  has_many :arguments
 
   validates :year, presence: true
   validates :member_id, presence: true
