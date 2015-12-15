@@ -18,7 +18,7 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
       params[:activity_lines_corporative_confession][:creator_id] = current_user.id
       @petition_form = ::ActivityLines::Corporative::EditConfessionType.new params[:activity_lines_corporative_confession]
       if @petition_form.save
-        redirect_to members_corporative_petitions_path
+        redirect_to activity_lines_corporative_petitions_path
       else
         choose_members
         render :new

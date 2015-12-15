@@ -67,7 +67,7 @@ body#noresponsive {
   width: 90%;
   margin: 0 auto;
   .text {
-    a {
+    a:not(.button) {
       color: rgb(252, 151, 39);
     }
   }
