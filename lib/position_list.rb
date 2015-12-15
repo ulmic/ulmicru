@@ -58,9 +58,7 @@ module PositionList
       positions_list
     end
 
-    private
-
-    def self.load_positions_yml
+    def load_positions_yml
       @_cache_positions_yml ||= YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access
     end
   end
