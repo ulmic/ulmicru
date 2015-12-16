@@ -14,8 +14,13 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
 
   def create
     if submissions_petitions_during?
-      params[:activity_lines_corporative_confession][:year] = configus.dates.activity_lines.corporative.confession.begining_submissions_petitions.year
-      params[:activity_lines_corporative_confession][:creator_id] = current_user.id
+      confession_params = params[:activity_lines_corporative_confession]
+      confession_params[:year] = configus.dates.activity_lines.corporative.confession.begining_submissions_petitions.year
+      confession_params[:creator_id] = current_user.id
+      confession_params[:arguments_attributes].keys.each do |index|
+        confession_params[:arguments_attributes][index][:member_id] = current_user.id
+      end
+      params[:activity_lines_corporative_confession] = confession_params
       @petition_form = ::ActivityLines::Corporative::EditConfessionType.new params[:activity_lines_corporative_confession]
       if @petition_form.save
         redirect_to activity_lines_corporative_petitions_path

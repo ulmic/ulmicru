@@ -11,7 +11,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
 
   def show
     @confession = ::ActivityLines::Corporative::Confession.includes(:member).find(params[:id]).decorate
-    @arguments = @confession.arguments.includes(:member).order :member_id, :argument_type
+    @arguments = @confession.arguments.includes(:member).order(:member_id, :argument_type).decorate
   end
 
   def new
