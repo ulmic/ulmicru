@@ -271,6 +271,9 @@ ActiveRecord::Schema.define(version: 20151205184419) do
     t.integer "user_id"
   end
 
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.text     "email"
     t.text     "password_digest"
