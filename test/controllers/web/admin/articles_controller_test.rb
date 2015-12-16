@@ -32,6 +32,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
 
   test 'should create article' do
     attributes = attributes_for :article
+    attributes[:user_id] = current_user.id
     post :create, article: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_articles_path

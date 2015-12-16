@@ -7,7 +7,7 @@ FactoryGirl.define do
     title { generate :string }
     list_number { generate :integer }
     annex { generate :integer }
-    executor_id { User.last ? User.last.id : create(:user).id }
+    executor_id { create(:user).id }
     stamp_of_receipt { generate :string }
     note { generate :string }
     state Letter.state_machines[:state].states.map(&:name).first.to_s
