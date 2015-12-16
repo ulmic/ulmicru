@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :team do
     title { generate :string }
-    member_id { Member.last ? Member.last.id : create(:member).id }
+    member_id { create(:member).id }
     description { generate :string }
     state { Team.state_machines[:state].states.map(&:name).first.to_s }
     publicity { Team.publicity.values.first }
