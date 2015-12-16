@@ -3,8 +3,8 @@ FactoryGirl.define do
     title       { generate :string }
     body        { generate :string }
     view        nil
-    category_id { Category.first ? Category.first.id : create(:category).id }
-    user_id     { User.last ? User.last.id : create(:user).id }
+    category_id { create(:category).id }
+    user_id     { create(:user).id }
     state { Article.state_machines[:state].states.map(&:name).first.to_s }
     views { generate :integer }
 

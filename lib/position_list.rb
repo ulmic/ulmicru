@@ -1,11 +1,12 @@
+# coding: utf-8
 module PositionList
   class << self
     include RussianCases
     # FIXME слишком большая функция
     def list
-      positions_structure = YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access[:positions]
-      exceptions = YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access[:exceptions]
-      non_existent = YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access[:non_existent]
+      positions_structure = self.load_positions_yml[:positions]
+      exceptions = self.load_positions_yml[:exceptions]
+      non_existent = self.load_positions_yml[:non_existent]
       positions_list = []
       positions_structure.keys.each do |branch|
         positions = positions_structure[branch]
@@ -55,6 +56,10 @@ module PositionList
         end
       end
       positions_list
+    end
+
+    def load_positions_yml
+      @_cache_positions_yml ||= YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access
     end
   end
 end

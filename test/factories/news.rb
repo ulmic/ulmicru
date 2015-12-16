@@ -5,7 +5,7 @@ FactoryGirl.define do
     published_at { DateTime.now }
     photo        { generate :image }
     lead         { generate :string }
-    user_id      { Member.last ? Member.last.id : create(:member).id }
+    user_id      { create(:member).id }
     state { News.state_machines[:state].states.map(&:name).first.to_s }
     views { generate :integer }
   end
