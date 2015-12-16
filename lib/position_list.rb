@@ -4,9 +4,9 @@ module PositionList
     include RussianCases
     # FIXME слишком большая функция
     def list
-      positions_structure = self.load_positions_yml[:positions]
-      exceptions = self.load_positions_yml[:exceptions]
-      non_existent = self.load_positions_yml[:non_existent]
+      positions_structure = load_positions_yml[:positions]
+      exceptions = load_positions_yml[:exceptions]
+      non_existent = load_positions_yml[:non_existent]
       positions_list = []
       positions_structure.keys.each do |branch|
         positions = positions_structure[branch]
