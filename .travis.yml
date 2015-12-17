@@ -4,7 +4,7 @@ rvm:
 env:
   - DB=postgres
 before_script:
-  - psql -c 'create role ulmicru with createdb;' -U postgres
+  - psql -c 'create role ulmicru with createdb,login;' -U postgres
 before_install:
   - gem install bundler
 script:
