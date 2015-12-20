@@ -1,3 +1,5 @@
+#= require web/google_calendar
+
 $ ->
   $participants_count_span = $('span#participants_count')
   $participants_list = $('ul.participants')
@@ -62,6 +64,9 @@ $ ->
   $join_event_button = $('button.join-button')
   $join_event_button.click ->
     value = $(this).val()
+    google_id = $join_event_button.data('googleId')
+    event = $join_event_button.data('event')
+    registration = $join_event_button.data('registration')
     if value == 'join'
       $.ajax {
         method: 'POST'
@@ -69,14 +74,16 @@ $ ->
         dataType: 'JSON'
         data: {
           event_registration: {
-            event_id: $(this).data('eventId')
+            event_id: $(this).data()['event']['id']
             user_id: $(this).data('userId')
           }
         }
         success: (response) ->
           $join_event_button.val('out')
           $join_event_button.html I18n.t('web.events.show.i_attend')
+          $join_event_button.data("registration", {id: response['id']})
           add_event_participant(response)
+          googleCalendarEvent(google_id, 'add',  event, $join_event_button)
           return
         error: ->
           #FIXME адекватный алерт
@@ -89,13 +96,15 @@ $ ->
         url: Routes.api_events_registration_path
         dataType: 'JSON'
         data: {
-          event_id: $(this).data('eventId')
+          event_id: $(this).data()['event']['id']
           user_id: $(this).data('userId')
         }
         success: (response) ->
           $join_event_button.val('join')
           $join_event_button.html I18n.t('web.events.show.attend')
           remove_event_participant response
+          googleCalendarEvent(google_id, 'delete', event, $join_event_button)
+          $join_event_button.data('registration', {})
           return
         error: ->
           #FIXME адекватный алерт
