@@ -92,7 +92,7 @@ Rails.application.routes.draw do
       end
     end
     namespace :events do
-      resources :registrations, only: [ :create, :destroy ]
+      resources :registrations, only: [ :create, :destroy, :update ]
     end
     namespace :admin do
       resources :places, only: [:create] do
