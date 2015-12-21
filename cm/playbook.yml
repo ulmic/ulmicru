@@ -1,7 +1,7 @@
 - hosts: develop
   vars:
     pg_version: 9.4
-    pg_user: postgres
+    pg_user: ulmicru
     sudo: yes
   roles:
     - role: zzet.postgresql

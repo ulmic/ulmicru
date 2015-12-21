@@ -1,7 +1,7 @@
 class Api::Admin::EventsController < Api::Admin::ApplicationController
   def index
     if params[:q].present?
-      @events = Event.confirmed.search_everywhere params[:q]
+      @events = Event.confirmed.search_everywhere params[:q][:term]
     else
       @events = Event.confirmed
     end
