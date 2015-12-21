@@ -5,7 +5,7 @@ class Tag < ActiveRecord::Base
   validates :record_id, presence: true
   validates :record_type, presence: true
   validates :tag_type, presence: true
-  validates :target_id, uniqueness: { scope: [ :target_type, :record_id, :record_type ] },
+  validates :target_id, uniqueness: { scope: [ :target_type, :record_id, :record_type, :state ] },
                         allow_nil: true
   validates :text, uniqueness: { scope: [ :record_id, :record_type ] },
                    unless: Proc.new { |t| t.text.blank? }

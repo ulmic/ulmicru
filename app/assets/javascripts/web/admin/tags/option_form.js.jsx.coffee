@@ -33,7 +33,7 @@ init_select2 = (component) ->
             }
           dataType: 'json'
           delay: 250
-          results: (data) ->
+          processResults: (data) ->
             tags_results = []
             $(data).each ->
               switch dataType
@@ -57,7 +57,6 @@ init_select2 = (component) ->
             }
         }
         minimumInputLength: 2
-        placeholder: $(this).data('prompt')
       }
 
 formDisplay = (component) ->
@@ -97,7 +96,7 @@ tagSelectDisplay = (targetType, type, component) ->
 linkSelect = (type) ->
   classes = "select optional select2-tags #{type}"
   `<div className='input select optional tag_target_id'>
-    <input className={classes} name='tag[target_id]' id='tag_target_id' data-type={type}/>
+    <select className={classes} name='tag[target_id]' id='tag_target_id' data-type={type} style={{width: '100%'}}/>
   </div>`
 
 getSelectToView = (component) ->
@@ -105,7 +104,7 @@ getSelectToView = (component) ->
     when 'string'
       if component.state.stringInputVisible == 'hidden'
         `<div className='input select optional tag_text'>
-          <input className='select optional select2-tags string' name='tag[text]' id='tag_text' data-type='string'/>
+          <select className='select optional select2-tags string' name='tag[text]' id='tag_text' data-type='string' style={{width: '100%'}}/>
         </div>`
     when 'link'
       linkSelect component.props.targetType
