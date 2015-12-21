@@ -57,7 +57,7 @@ function googleCalendarEvent(client_id, action, event, element) {
 							{'method': 'popup', 'minutes': 24 * 60}
 						]
 					},
-					"description": event['description'],
+					"description": event['strip_tags_description'],
 					"summary": event['title']
 				});
 				request.execute(function(resp) {
