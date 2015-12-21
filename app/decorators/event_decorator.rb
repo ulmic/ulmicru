@@ -22,7 +22,7 @@ class EventDecorator < ApplicationDecorator
   end
 
   def strip_tags_description
-    strip_tags(object.description).html_safe
+    strip_tags(object.description).html_safe.gsub(/&#13;/, '')
   end
 
   def name
