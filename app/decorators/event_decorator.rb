@@ -21,6 +21,10 @@ class EventDecorator < ApplicationDecorator
     "#{object.description.first(150)}..."
   end
 
+  def strip_tags_description
+    strip_tags(object.description).html_safe
+  end
+
   def name
     object.title
   end
