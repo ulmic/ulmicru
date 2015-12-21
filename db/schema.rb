@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.text     "logo"
   end
 
+  create_table "activity_lines_corporative_arguments", force: :cascade do |t|
+    t.integer  "member_id"
+    t.text     "text"
+    t.text     "argument_type"
+    t.integer  "confession_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "activity_lines_corporative_confessions", force: :cascade do |t|
     t.integer  "year"
     t.integer  "member_id"
@@ -35,6 +44,7 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.text     "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "creator_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -116,6 +126,16 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.text     "record_type"
     t.integer  "user_id"
     t.integer  "parent_id"
+    t.text     "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "content_videos", force: :cascade do |t|
+    t.text     "title"
+    t.text     "description"
+    t.integer  "author_id"
+    t.text     "link"
     t.text     "state"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -271,6 +291,9 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.integer "team_id"
     t.integer "user_id"
   end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.text     "email"
