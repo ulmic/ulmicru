@@ -3,6 +3,7 @@
 - title t('.title', year: current_confession_year)
 = stylesheet_link_tag 'web/articles/confessions'
 = javascript_include_tag 'web/articles/confessions'
+= javascript_include_tag 'web/activity_lines/corporative/petitions'
 .confessions
   .container
     %h1.title
@@ -37,4 +38,6 @@
     = render 'layouts/web/shared/activity_lines/corporative/confession/confessions_of_the_year',
       year: current_confession_year,
       debut_of_the_year: @debut_of_the_year,
-      number_one_of_the_year: @number_one_of_the_year
+      number_one_of_the_year: @number_one_of_the_year,
+      vote: true
+= render 'arguments_modal'

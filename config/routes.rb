@@ -116,6 +116,11 @@ Rails.application.routes.draw do
       resources :teams, only: :index
       resources :tags, only: [ :create, :destroy, :index ]
     end
+    namespace :members do
+      namespace :corporative do
+        resources :argumentes, only: :create
+      end
+    end
   end
   namespace :rss do
     resources :news, only: :index
