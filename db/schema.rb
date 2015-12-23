@@ -131,16 +131,6 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "content_videos", force: :cascade do |t|
-    t.text     "title"
-    t.text     "description"
-    t.integer  "author_id"
-    t.text     "link"
-    t.text     "state"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "documents", force: :cascade do |t|
     t.text     "file"
     t.text     "title"
