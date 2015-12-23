@@ -103,9 +103,11 @@ $ ->
   init_blank_adding()
   init_datetimepickers()
   init_dropdown_sub_menu()
-  $('a.add_fields').mouseover ->
-    init_bootstrap_styles()
-    init_select2_inputs()
+  $('a.add_fields').click ->
+    setTimeout( (->
+      init_bootstrap_styles()
+      init_select2_inputs()
+      ), 300)
     setTimeout init_datetimepickers, 1000
     return
   return

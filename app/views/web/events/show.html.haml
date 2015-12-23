@@ -44,12 +44,12 @@
               = @event.organizer_link
         .join
           -#%a.join-button.mic-press-button{ href: "#" }
-          - if current_user_have_attended?(@registrations + @other_registrations)
-            %button.join-button.mic-press-button{ value: 'out', data: { event_id: @event.id, user_id: current_user.id } }
+          - if current_user_have_attended?(@all_registrations)
+            %button.join-button.mic-press-button{ value: 'out', data: { event: @event.decorated_to_json(only: [:id, :title, :strip_tags_description, :begin_date, :end_date]), user_id: current_user.id, google_id: google_id, registration: current_registration(@all_registrations).to_json(only: [:id, :google_calendar_event_id])} }
               = t('.i_attend')
           - else
             - if signed_in? && current_user.is_active?
-              %button.join-button.mic-press-button{ value: 'join', data: { event_id: @event.id, user_id: current_user.id } }
+              %button.join-button.mic-press-button{ value: 'join', data: { event: @event.to_json(only: [:id, :title, :description, :begin_date, :end_date]), user_id: current_user.id, google_id: google_id } }
                 = t('.attend')
             - elsif signed_in? && current_user.is_user? && current_user.unviewed?
               %a.join-button.mic-press-button{ href: account_path }

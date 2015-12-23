@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'web/application'
     = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'https://apis.google.com/js/client.js?onload=checkAuth'
     = csrf_meta_tags
     = favicon_link_tag 'favicon.ico'
     = render 'layouts/web/shared/services/google_analytics'
