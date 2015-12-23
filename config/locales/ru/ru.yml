@@ -216,3 +216,6 @@ ru:
   is_not_vertical: не вертикальная
   is_not_horizontal: не горизонтальная
   must_be_present: Хоть одна версия должна присутствовать
+  javascript:
+    flash:
+      petition_updated: Ходатайство обновлено
