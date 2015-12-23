@@ -13,6 +13,11 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     assert_response :success, @response.body
   end
 
+  test 'should get show' do
+    get :show, id: @confession
+    assert_response :success, @response.body
+  end
+
   test 'should get index with search' do
     get :index, search: @confession.year
     assert_response :success, @response.body
@@ -31,6 +36,8 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
 
   test 'should create confession' do
     attributes = attributes_for :confession
+    attributes[:arguments_attributes] = {}
+    attributes[:arguments_attributes]['0'] = attributes_for :argument
     post :create, activity_lines_corporative_confession: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_activity_lines_corporative_confessions_path

@@ -31,4 +31,12 @@ class Web::ApplicationController < ApplicationController
   def add_comment
     @comment = Comment.new
   end
+
+  def choose_members
+    @members = Member.presented.decorate
+  end
+
+  def choose_teams
+    @teams = Team.active.visible.decorate
+  end
 end

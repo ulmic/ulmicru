@@ -1,0 +1,43 @@
+- ticket = 238
+- corporative_head = Member.find_by_ticket(238).decorate
+- title t('.title', year: current_confession_year)
+= stylesheet_link_tag 'web/articles/confessions'
+= javascript_include_tag 'web/articles/confessions'
+= javascript_include_tag 'web/activity_lines/corporative/petitions'
+.confessions
+  .container
+    %h1.title
+      = t('.title', year: current_confession_year)
+    .text
+      Перед вами номинанты корпоративной премии «Признание»
+      = current_confession_year
+      года. Даты голосования за номинантов c
+      =l configus.dates.activity_lines.corporative.confession.begining_submissions_petitions, format: '%d %B %Y'
+      года до
+      =l configus.dates.activity_lines.corporative.confession.ending_submissions_petitions, format: '%d %B %Y'
+      года. Корпоративную премию «Признание» могут получить только члены Молодёжного инициативного центра, состоящие в организации более 3-х месяцев. Если кандидат, которого вы считаете достойным, отсутствует в списке ниже, вы можете подать ходатайство на него, используя специальную форму.
+      %br
+      - if signed_in?
+        - if current_user.is_member?
+          = link_to 'Подать ходатайство', new_members_corporative_petition_path, class: 'button'
+        - else
+          .panel.info
+            %i.fa.fa-exclamation-circle
+            Только члены Молодёжного инициативного центра могут подавать ходатайства на корпоративную премию  «Признание»
+          = link_to t('organization.send_request'), new_join_path, class: 'button'
+      - else
+        = link_to t('helpers.enter'), new_session_path, class: :button
+        чтобы подать ходатайство.
+      %br
+      Если человек, которого вы считаете достойным, уже есть в этом списке, вы можете проголосовать за него или дополнить ходатайство на него. Голосовать и ходайтаствовать могут только члены Молодёжного инициативного центра.
+      %br
+      После того, как вы заполните ходатайство, оно отправится на модерацию. Модератором является руководитель корпоративных проектов МИЦ
+      = link_to corporative_head.short_name, member_path(ticket)
+      и команда, реализующая корпоративные проекты МИЦ.
+  .confessions_people
+    = render 'layouts/web/shared/activity_lines/corporative/confession/confessions_of_the_year',
+      year: current_confession_year,
+      debut_of_the_year: @debut_of_the_year,
+      number_one_of_the_year: @number_one_of_the_year,
+      vote: true
+= render 'arguments_modal'

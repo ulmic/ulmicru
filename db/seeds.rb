@@ -1,4 +1,7 @@
-pages = { not_found: '404', server_error: '500', changelog: 'changelog' }
+pages = { not_found: '404',
+          server_error: '500',
+          changelog: 'changelog',
+          confession_submissions_petitions_ends: 'confession_submissions_petitions_ends' }
 pages.keys.each do |slug|
   page = Page.find_by slug: slug
   Page.create slug: slug, view: slug, title: pages[slug] unless page

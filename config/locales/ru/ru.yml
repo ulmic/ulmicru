@@ -25,6 +25,12 @@ ru:
           account: Настройки профиля
           member_profile: Профиль члена МИЦ
           your_account_is_not_active: Аккаунт неактивен
+        activity_lines:
+          corporative:
+            confession:
+              confessions_of_the_year:
+                debut_of_the_year: Дебют года
+                number_one_of_the_year: Номер один
       elements:
         mic_document:
           attachment: Приложение
@@ -113,9 +119,6 @@ ru:
         default_show:
           same_articles: Похожие статьи
           popular_articles: Популярные статьи
-        confessions:
-          debut_of_the_year: Дебют года
-          number_one_of_the_year: Номер один
     events:
       show:
         where: 'Где'
@@ -133,6 +136,19 @@ ru:
         learn_or_work: 'Учусь/Работаю'
         live: 'Живу'
         ticket: 'Членский билет'
+      corporative:
+        petitions:
+          new:
+            title: Подать ходатайство на получение корпоративной премии «Признание» %{year} года
+          form:
+            submit_petition: Подать ходатайство
+    activity_lines:
+      corporative:
+        petitions:
+          index:
+            title: Номинанты корпоративной премии «Признание» %{year} года
+          arguments_modal:
+            renew_petition: Обновить ходатайство
     sessions:
       new:
         title: Авторизация
@@ -200,3 +216,6 @@ ru:
   is_not_vertical: не вертикальная
   is_not_horizontal: не горизонтальная
   must_be_present: Хоть одна версия должна присутствовать
+  javascript:
+    flash:
+      petition_updated: Ходатайство обновлено
