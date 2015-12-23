@@ -2,8 +2,10 @@
   #argumentsModal.reveal-modal{ aria: { hidden: true, labelledby: :firstModalTitle }, data: { reveal: '', role: :dialog } }
     %h2#argumentsModalTitle
     = form_tag api_members_corporative_argumentes_path, method: :post, remote: true do
-      = text_field :argument_type, 'fuck'
-      = text_field :text, 'fuck'
-      = hidden_field :confession_id, 'fuck'
+      - ::ActivityLines::Corporative::Argument.argument_type.values.each do |argument_type|
+        = label argument_type, argument_type
+        = text_field :text, 'fuck'
+        = hidden_field :confession_id, ''
+        = hidden_field :argument_type, argument_type
       = submit_tag 'fuck'
     %a.close-reveal-modal{ aria: { label: 'Close' } } ×
