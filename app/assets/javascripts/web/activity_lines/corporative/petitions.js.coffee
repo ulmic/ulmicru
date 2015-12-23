@@ -1,4 +1,4 @@
 $ ->
   $('.member').on 'click', (e) ->
     e.preventDefault()
-    $('body').append $(vote_popover_template())
+    $('.confession_id').val $(this).data('id')

@@ -118,7 +118,7 @@ Rails.application.routes.draw do
     end
     namespace :members do
       namespace :corporative do
-        resources :argumentes, only: :create
+        resources :arguments, only: :create
       end
     end
   end

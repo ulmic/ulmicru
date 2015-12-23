@@ -147,6 +147,8 @@ ru:
         petitions:
           index:
             title: Номинанты корпоративной премии «Признание» %{year} года
+          arguments_modal:
+            renew_petition: Обновить ходатайство
     sessions:
       new:
         title: Авторизация

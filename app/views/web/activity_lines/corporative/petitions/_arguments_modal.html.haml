@@ -1,11 +1,11 @@
 - if signed_in? && current_user.is_member?
   #argumentsModal.reveal-modal{ aria: { hidden: true, labelledby: :firstModalTitle }, data: { reveal: '', role: :dialog } }
     %h2#argumentsModalTitle
-    = form_tag api_members_corporative_argumentes_path, method: :post, remote: true do
-      - ::ActivityLines::Corporative::Argument.argument_type.values.each do |argument_type|
-        = label argument_type, argument_type
-        = text_field :text, 'fuck'
-        = hidden_field :confession_id, ''
-        = hidden_field :argument_type, argument_type
-      = submit_tag 'fuck'
+    = form_tag api_members_corporative_arguments_path, method: :post, remote: true do
+      - ::ActivityLines::Corporative::Argument.argument_type.values.each_with_index do |argument_type, index|
+        = label argument_type, t("enumerize.activity_lines/corporative/argument.argument_type.#{argument_type}")
+        = text_field_tag "arguments[#{index}][text]"
+        = hidden_field_tag "arguments[#{index}][argument_type]", argument_type
+        = hidden_field_tag "arguments[#{index}][confession_id]", '', class: :confession_id
+      = submit_tag t('.renew_petition'), class: :button
     %a.close-reveal-modal{ aria: { label: 'Close' } } ×
