@@ -33,6 +33,19 @@ Configus.build Rails.env do
     organization do
       logo 'http://ulmic.ru/assets/apps/logo-mic-square.png'
     end
+    #FIXME it will fixed on https://trello.com/c/MqBhJhpc/407-configus-dates ticket
+    dates do
+      activity_lines do
+        corporative do
+          confession do
+            begining_submissions_petitions '1/12/2015'.to_datetime
+            ending_submissions_petitions '10/01/2016'.to_datetime
+            begining_voting '11/01/2016'.to_datetime
+            ending_voting '16/01/2016'.to_datetime
+          end
+        end
+      end
+    end
   end
 
   env :staging, parent: :production do

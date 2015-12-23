@@ -8,5 +8,8 @@ module ActivityLines::Corporative::ConfessionScopes
     scope :on_vote, -> { where state: :on_vote }
     scope :declined, -> { where state: :declined }
     scope :unviewed, -> { where state: :unviewed }
+    scope :debut, -> { where nomination: :debut }
+    scope :number_one, -> { where nomination: :number_one }
+    scope :of_the_year, -> (year) { where year: year }
   end
 end

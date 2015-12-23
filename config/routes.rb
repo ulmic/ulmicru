@@ -30,6 +30,16 @@ Rails.application.routes.draw do
       resources :authentications, only: :destroy
       resources :positions, only: [ :create, :update, :destroy ]
     end
+    namespace :members do
+      namespace :corporative do
+        resources :petitions, except: [ :index, :show, :destroy ]
+      end
+    end
+    namespace :activity_lines do
+      namespace :corporative do
+        resources :petitions, only: :index
+      end
+    end
     namespace :admin do
       resources :users, except: :show
       resources :members
@@ -59,7 +69,7 @@ Rails.application.routes.draw do
       end
       namespace :activity_lines do
         namespace :corporative do
-          resources :confessions, except: :show
+          resources :confessions
         end
       end
     end
@@ -105,6 +115,11 @@ Rails.application.routes.draw do
       resources :activity_lines, only: :index
       resources :teams, only: :index
       resources :tags, only: [ :create, :destroy, :index ]
+    end
+    namespace :members do
+      namespace :corporative do
+        resources :arguments, only: :create
+      end
     end
   end
   namespace :rss do

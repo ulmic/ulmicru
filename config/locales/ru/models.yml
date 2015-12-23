@@ -165,6 +165,11 @@ ru:
         year: Год
         nomination: Номинация
         state: Статус
+      activity_lines/corporative/argument:
+        member_id: Автор
+        member: Автор
+        text: Текст аргумента
+        argument_type: Типа аргумента
     state_machines:
       member:
         state:
@@ -289,6 +294,12 @@ ru:
       nomination:
         debut: Дебют года
         number_one: Номер один
+    activity_lines/corporative/argument:
+      argument_type:
+        honors: 'Опишите достижения (НЕ участие в мероприятиях) кандидата в деятельности МИЦ'
+        reason: 'Почему этот кандидат достоин получить премию (максимально подробно,9 аргументированно)?'
+        out_ulmic_honors: 'Расскажите о достижениях кандидата вне МИЦ (победы в значимых конкурсах, должности, размещения на досках почёта и т.д.)'
+        hobby: 'Чем увлекается (хобби, любимые занятия) кандидат в свободное время?'
   scopes:
     event:
       future: Грядущие

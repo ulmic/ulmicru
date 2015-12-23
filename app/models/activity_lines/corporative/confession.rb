@@ -1,5 +1,8 @@
 class ActivityLines::Corporative::Confession < ActiveRecord::Base
   belongs_to :member
+  has_many :arguments
+
+  accepts_nested_attributes_for :arguments
 
   validates :year, presence: true
   validates :member_id, presence: true
@@ -34,5 +37,12 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
     event :remove do
       transition all => :removed
     end
+  end
+
+  include DatesHelper
+
+  def user_can_update_petition?(user_id)
+    (on_vote? || unviewed?) && user_id == creator_id &&
+      submissions_petitions_during?
   end
 end

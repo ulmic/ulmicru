@@ -9,6 +9,11 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
     @confessions[:search] = ActivityLines::Corporative::Confession.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
+  def show
+    @confession = ::ActivityLines::Corporative::Confession.includes(:member).find(params[:id]).decorate
+    @arguments = @confession.arguments.includes(:member).order(:member_id, :argument_type).decorate
+  end
+
   def new
     @confession_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
   end

@@ -1,0 +1,13 @@
+- current_title = "#{@confession.short_name} | #{enumerize_locales_value(@confession.model_name, :nomination, @confession.nomination)}"
+- title current_title
+.panel-info
+  .panel-heading
+    %h4
+      = current_title
+  .panel-body
+    %table.table.table-bordered.table-striped
+      - @arguments.each do |argument|
+        %tr
+          %td= argument.short_name
+          %td= enumerize_locales_value argument.model_name, :argument_type, argument.argument_type
+          %td= argument.text
