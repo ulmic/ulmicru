@@ -3,7 +3,7 @@ module ApplicationHelper
   include ActionView::Helpers
   include DatesHelper
 
-  def title(page_title = t('.title'), area = :default)
+  def title(page_title = default_title, area = :default)
     if area != :default
       title_text = "#{page_title} | #{t(area)} | #{t('application.name')}"
     elsif page_title == :app_name
@@ -12,6 +12,10 @@ module ApplicationHelper
       title_text = "#{page_title} | #{t('application.name')}"
     end
     content_for(:title) { title_text }
+  end
+
+  def default_title
+    t('.title')
   end
 
   def menu_item(name = nil, path = '#', *args, &block)

@@ -37,6 +37,11 @@ ru:
           add_venue: Добавить место
           registrations: Участники
           add_registration: Добавить участника
+      activity_lines:
+        corporative:
+          confessions:
+            index:
+              title: Премия «Признание»
   layouts:
     web:
       admin:
