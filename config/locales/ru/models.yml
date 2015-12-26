@@ -254,7 +254,7 @@ ru:
     activity_lines/corporative/confession:
       state:
         states:
-          unviewed: Непросмотренные
+          unviewed: Ходатайства
           on_vote: На голосовании
           confirmed: Получившие премию
           declined: Отклонённые
