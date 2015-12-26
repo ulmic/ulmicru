@@ -10,5 +10,15 @@ module MemberScopes
     scope :unviewed, -> { where(member_state: :unviewed, type: 'Member').where.not(state: :unavailable).order('id ASC') }
     scope :unavailable, -> { where(state: :unavailable).order('ticket ASC') }
     scope :tag_available, -> { where.not(state: :removed).where(member_state: :confirmed) }
+    scope :without_confessions, -> {
+      where.not(id: ::ActivityLines::Corporative::Confession.all.map(&:member_id).uniq)
+    }
+    scope :cannot_get_confession, -> { where('join_date > ?', DateTime.now - 3.month) }
+    scope :without_debut, -> {
+      includes(:confessions).references(:confessions).where('activity_lines_corporative_confessions.nomination != \'debut\'') + Member.without_confessions - Member.cannot_get_confession
+    }
+    scope :without_number_one, -> {
+      includes(:confessions).references(:confessions).where('activity_lines_corporative_confessions.nomination != \'number_one\'') + Member.without_confessions - Member.cannot_get_confession
+    }
   end
 end

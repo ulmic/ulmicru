@@ -1,7 +1,6 @@
 - argument_types = ::ActivityLines::Corporative::Argument.argument_type.values
 = simple_form_for @petition_form, url: { controller: 'web/members/corporative/petitions', action: action } do |f|
-  = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
-  = f.input :nomination, as: :radio_buttons, collection: enumerize_locales_hash(@petition_form.model_name, :nomination), item_wrapper_class: :inline
+  = react_component 'PetitionInputs', nomination: @petition_form.nomination
   = f.simple_fields_for :arguments do |a|
     = a.input :argument_type, as: :hidden
     = label :text, t("enumerize.activity_lines/corporative/argument.argument_type.#{argument_types[0]}")
