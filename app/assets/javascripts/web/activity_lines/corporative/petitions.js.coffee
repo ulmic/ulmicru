@@ -6,6 +6,6 @@ $ ->
   ).on('ajax:error', (e, data, status, xhr) ->
     alert 'error'
   )
-  $('.member').on 'click', (e) ->
+  $('.member.petition').on 'click', (e) ->
     e.preventDefault()
     $('.confession_id').val $(this).data('id')

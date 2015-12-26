@@ -1,6 +1,9 @@
 .mic-member-2
-  %a{ href: "#{link}" }
+  - if link == ''
     %img{ src: "#{img_src}" }
+  - else
+    %a{ href: "#{link}" }
+      %img{ src: "#{img_src}" }
   %section.info
     %a{ href: "#{link}" }
       .name

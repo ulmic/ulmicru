@@ -1,5 +1,5 @@
 - tabs = items.keys.except(:search)
-- default_page_title ||= nil
+- default_page_title ||= nil; on_site_link ||= nil
 - current_title = default_page_title || model_class.model_name.human.pluralize(:ru)
 - title current_title, :admin
 .page-header
@@ -8,6 +8,9 @@
       %h1
         = current_title
         = link_to "#{t 'helpers.links.new'}", send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
+        - if on_site_link
+          = link_to on_site_link do
+            %span.glyphicon.glyphicon-share
     - if searchable_model?(model_class)
       .col-md-6
         .search
