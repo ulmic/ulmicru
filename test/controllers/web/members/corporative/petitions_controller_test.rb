@@ -15,7 +15,9 @@ class Web::Members::Corporative::PetitionsControllerTest < ActionController::Tes
 
   test 'should create petition' do
     attributes = attributes_for :petition
-    post :create, petition: attributes
+    attributes[:creator_id] = current_user.id
+    attributes[:arguments_attributes] = { '0' => attributes_for(:argument) }
+    post :create, activity_lines_corporative_confession: attributes
     if DateTime.now > CONFESSION_DATES.begining_submissions_petitions &&
       DateTime.now < CONFESSION_DATES.ending_submissions_petitions
       assert_response :redirect, @response.body
@@ -41,20 +43,10 @@ class Web::Members::Corporative::PetitionsControllerTest < ActionController::Tes
     end
   end
 
-  test 'should get edit' do
-    get :edit, id: @petition
-    if DateTime.now > CONFESSION_DATES.begining_submissions_petitions &&
-       DateTime.now < CONFESSION_DATES.ending_submissions_petitions
-      assert_response :success, @response.body
-    else
-      assert_response :redirect, @response.body
-      assert_redirected_to page_page_path :not_found
-    end
-  end
-
   test 'should patch update' do
     attributes = attributes_for :petition
-    patch :update, petition: attributes, id: @petition
+    attributes[:creator_id] = current_user.id
+    patch :update, activity_lines_corporative_confession: attributes, id: @petition
     if DateTime.now > CONFESSION_DATES.begining_submissions_petitions &&
       DateTime.now < CONFESSION_DATES.ending_submissions_petitions
       assert_redirected_to members_corporative_petitions_path

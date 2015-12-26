@@ -33,13 +33,6 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
     end
   end
 
-  def edit
-    confession = ::ActivityLines::Corporative::EditConfessionType.find params[:id]
-    unless confession.user_can_update_petition? current_user.id
-      redirect_to not_found_page_path
-    end
-  end
-
   def update
     confession = ::ActivityLines::Corporative::EditConfessionType.find params[:id]
     if confession.user_can_update_petition? current_user.id

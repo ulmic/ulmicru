@@ -14,6 +14,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
   end
 
   test 'should get show' do
+    4.times { create :argument }
     get :show, id: @confession
     assert_response :success, @response.body
   end
@@ -30,6 +31,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
   end
 
   test 'should get new' do
+    4.times { create :argument }
     get :new
     assert_response :success, @response.body
   end
@@ -54,6 +56,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
   end
 
   test 'should get edit by admin' do
+    4.times { create :argument }
     get :edit, id: @confession
     assert_response :success
   end

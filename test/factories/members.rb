@@ -19,5 +19,9 @@ FactoryGirl.define do
     member_state { Member.state_machines[:member_state].states.map(&:name).first.to_s }
     role 'user'
     type 'Member'
+
+    trait :corporate_head do
+      ticket 238
+    end
   end
 end
