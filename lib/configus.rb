@@ -46,6 +46,13 @@ Configus.build Rails.env do
         end
       end
     end
+    activity_lines do
+      corporative do
+        confession do
+          article_id 25
+        end
+      end
+    end
   end
 
   env :staging, parent: :production do
