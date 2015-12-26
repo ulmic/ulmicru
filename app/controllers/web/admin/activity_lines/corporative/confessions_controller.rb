@@ -14,6 +14,11 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
     @confession_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
   end
 
+  def show
+    @confession = ::ActivityLines::Corporative::Confession.find(params[:id]).decorate
+    @arguments = @confession.arguments.decorate
+  end
+
   def create
     @confession_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
     @confession_form.submit params[:activity_lines_corporative_confession]

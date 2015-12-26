@@ -1,5 +1,5 @@
 - ticket = 238
-- corporative_head = Member.find_by_ticket(238).decorate
+- corporative_head = Member.find_by_ticket(configus.people.headers.corporative).decorate
 - title t('.title', year: current_confession_year)
 = stylesheet_link_tag 'web/articles/confessions'
 = javascript_include_tag 'web/articles/confessions'

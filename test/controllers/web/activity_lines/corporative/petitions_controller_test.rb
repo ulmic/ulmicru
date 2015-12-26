@@ -3,6 +3,7 @@ require 'test_helper'
 class Web::ActivityLines::Corporative::PetitionsControllerTest < ActionController::TestCase
   setup do
     create :article, :contacts
+    create :member, :corporate_head
   end
 
   test 'should get index' do

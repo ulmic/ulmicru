@@ -53,6 +53,11 @@ Configus.build Rails.env do
         end
       end
     end
+    people do
+      headers do
+        corporative 238
+      end
+    end
   end
 
   env :staging, parent: :production do
