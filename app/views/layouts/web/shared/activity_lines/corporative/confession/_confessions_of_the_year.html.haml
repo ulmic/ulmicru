@@ -3,30 +3,32 @@
   .year_text
     = year
   .people
-    .number_one_name
-      = image_tag 'organization/activity_lines/corporative/confession/number_one.png'
-      %span
-        = nomination
-      %br
-      .nomination
-        = t('.number_one_of_the_year')
-    - number_one_of_the_year.each do |confession|
-      .member{ class: (:petition if vote), data: { id: confession.id, 'reveal-id' => ('argumentsModal' if vote) } }
-        = render 'layouts/web/elements/mic_member_2',
-          link: (('#' if vote) || ('' if confession.member.state != 'confirmed') || member_path(confession.member.ticket)),
-          img_src: confession.member.avatar.element.url,
-          name: confession.member.decorate.short_name
+    - if number_one_of_the_year.any?
+      .number_one_name
+        = image_tag 'organization/activity_lines/corporative/confession/number_one.png'
+        %span
+          = nomination
+        %br
+        .nomination
+          = t('.number_one_of_the_year')
+      - number_one_of_the_year.each do |confession|
+        .member{ class: (:petition if vote), data: { id: confession.id, 'reveal-id' => ('argumentsModal' if vote) } }
+          = render 'layouts/web/elements/mic_member_2',
+            link: (('#' if vote) || ('' if confession.member.state != 'confirmed') || member_path(confession.member.ticket)),
+            img_src: confession.member.avatar.element.url,
+            name: confession.member.decorate.short_name
   .people
-    .debut_name
-      = image_tag 'organization/activity_lines/corporative/confession/debut_of_the_year.png'
-      %span
-        = nomination
-      %br
-      .nomination
-        = t('.debut_of_the_year')
-    - debut_of_the_year.each do |confession|
-      .member{ class: (:petition if vote), data: { id: confession.id, 'reveal-id' => ('argumentsModal' if vote) } }
-        = render 'layouts/web/elements/mic_member_2',
-          link: (('#' if vote) || ('' if confession.member.state != 'confirmed') || member_path(confession.member.ticket)),
-          img_src: confession.member.avatar.element.url,
-          name: confession.member.decorate.short_name
+    - if debut_of_the_year.any?
+      .debut_name
+        = image_tag 'organization/activity_lines/corporative/confession/debut_of_the_year.png'
+        %span
+          = nomination
+        %br
+        .nomination
+          = t('.debut_of_the_year')
+      - debut_of_the_year.each do |confession|
+        .member{ class: (:petition if vote), data: { id: confession.id, 'reveal-id' => ('argumentsModal' if vote) } }
+          = render 'layouts/web/elements/mic_member_2',
+            link: (('#' if vote) || ('' if confession.member.state != 'confirmed') || member_path(confession.member.ticket)),
+            img_src: confession.member.avatar.element.url,
+            name: confession.member.decorate.short_name
