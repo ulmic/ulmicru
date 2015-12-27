@@ -1,7 +1,11 @@
 class Web::Admin::TrashController < Web::Admin::ApplicationController
   def index
-    @type = resource_type
-    @items = resource_type.removed.page(params[:page]).decorate
+    if params[:type].to_sym.in? trash_models
+      @type = resource_type
+      @items = resource_type.removed.page(params[:page]).decorate
+    else
+      redirect_to not_found_page_path
+    end
   end
 
   def restore
