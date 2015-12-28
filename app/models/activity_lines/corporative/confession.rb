@@ -34,6 +34,10 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
       transition all => :on_vote
     end
 
+    event :renew do
+      transition all => :unviewed
+    end
+
     event :remove do
       transition all => :removed
     end

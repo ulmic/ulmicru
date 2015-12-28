@@ -191,7 +191,7 @@ ru:
             confirm: Премия получена
             remove: Удалить
             to_vote: Поставить на голосование
-            unviewed: Новое ходатайство
+            renew: Сделать непросмотренным
   state_machines:
     user:
       state:
