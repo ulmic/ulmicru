@@ -110,3 +110,5 @@
               = Team.model_name.human.pluralize(:ru)
             = menu_item type_admin_trash_index_path('document') do
               = Document.model_name.human.pluralize(:ru)
+            = menu_item type_admin_trash_index_path(to_trash_param(ActivityLines::Corporative::Confession)) do
+              = ActivityLines::Corporative::Confession.model_name.human.pluralize(:ru)

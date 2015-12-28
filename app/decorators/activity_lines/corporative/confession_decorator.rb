@@ -4,4 +4,6 @@ class ActivityLines::Corporative::ConfessionDecorator < ApplicationDecorator
   def short_name
     object.member.decorate.short_name
   end
+
+  alias name short_name
 end

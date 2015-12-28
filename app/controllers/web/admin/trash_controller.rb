@@ -19,6 +19,15 @@ class Web::Admin::TrashController < Web::Admin::ApplicationController
   private
 
   def resource_type
-    params[:type].camelize.constantize
+    resource = nil
+    if params[:type].to_sym.in? trash_models
+      resource = params[:type]
+    else
+      modules = params[:type].split('-')
+      if modules.count > 1 && modules.all? { |mod| mod.to_sym.in?(trash_modules) || mod.to_sym.in?(trash_models) }
+        resource = modules.join '/'
+      end
+    end
+    resource.camelize.constantize
   end
 end
