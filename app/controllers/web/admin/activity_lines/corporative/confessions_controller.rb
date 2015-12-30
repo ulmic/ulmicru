@@ -17,6 +17,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
   def show
     @confession = ::ActivityLines::Corporative::Confession.find(params[:id]).decorate
     @arguments = @confession.arguments.decorate
+    @images = @confession.images.decorate
   end
 
   def create

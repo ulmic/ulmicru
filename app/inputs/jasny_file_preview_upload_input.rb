@@ -7,7 +7,10 @@ class JasnyFilePreviewUploadInput < SimpleForm::Inputs::FileInput
   end
 
   def input(wrapper_options)
-    model_name = object.model.model_name.name.downcase
+    model_name = object.model_name.name.downcase
+    if object.methods.include? :model
+      model_name = object.model.model_name.name.downcase
+    end
     template.content_tag :div, class: 'fileinput fileinput-new', data: { provides: :fileinput } do
       input = template.content_tag :div, class: 'fileinput-preview thumbnail', data: { trigger: :fileinput }, style: 'width: 200px; height: 150px' do
       end

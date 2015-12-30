@@ -1,8 +1,10 @@
 class ActivityLines::Corporative::Confession < ActiveRecord::Base
   belongs_to :member
   has_many :arguments
+  has_many :images
 
   accepts_nested_attributes_for :arguments
+  accepts_nested_attributes_for :images
 
   validates :year, presence: true
   validates :member_id, presence: true
