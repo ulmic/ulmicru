@@ -7,7 +7,7 @@ class PhotoUploader < ApplicationUploader
     ActionController::Base.helpers.asset_path("images/default_news_photo.png")
   end
 
-  version :mediun do
+  version :medium do
     process :resize_to_fill => [400, 400]
   end
 

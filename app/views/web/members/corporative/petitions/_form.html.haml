@@ -5,4 +5,13 @@
     = a.input :argument_type, as: :hidden
     = label :text, t("enumerize.activity_lines/corporative/argument.argument_type.#{argument_types[a.index]}")
     = a.input :text, label: false
+  = f.hint t('.upload_photos')
+  = f.simple_fields_for :images do |p|
+    .preview
+      - if p.object.file.present?
+        = image_tag image.object.file
+      - else
+        %i.fa.fa-file-image-o.fa-5x
+    = p.input :file, as: :file, label: false, input_html: { style: 'display: none' }
+    = p.input :file, label: false, as: :jasny_file_preview_upload_foundation
   = f.button :submit, value: t('.submit_petition')

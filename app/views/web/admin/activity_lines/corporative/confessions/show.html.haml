@@ -11,3 +11,8 @@
           %td= argument.short_name
           %td= enumerize_locales_value argument.model_name, :argument_type, argument.argument_type
           %td= argument.text
+    %table.table.table-bordered.table-striped
+      - @images.each do |image|
+        %tr
+          %td= image.short_name
+          %td= image_tag image.file.medium

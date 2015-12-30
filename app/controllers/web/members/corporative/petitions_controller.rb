@@ -8,7 +8,7 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
       redirect_to page_page_path :confession_submissions_petitions_ends
     else
       @petition_form = ::ActivityLines::Corporative::EditConfessionType.new
-      @petition_form.build_arguments_for_petition
+      @petition_form.build_petition
     end
   end
 
@@ -20,9 +20,16 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
       confession_params[:arguments_attributes].keys.each do |index|
         confession_params[:arguments_attributes][index][:member_id] = current_user.id
       end
+      # FIXME привести в адекватный вид
+      confession_params[:images_attributes] = {}
+      confession_params[:images_attributes][0] = params['activitylines::corporative::image']
+      confession_params[:images_attributes][0][:member_id] = current_user.id
       params[:activity_lines_corporative_confession] = confession_params
       @petition_form = ::ActivityLines::Corporative::EditConfessionType.new params[:activity_lines_corporative_confession]
       if @petition_form.save
+        confession_params[:images_attributes].keys.each do |index|
+          @petition_form.images.create! confession_params[:images_attributes][index].permit!
+        end
         redirect_to activity_lines_corporative_petitions_path
       else
         choose_members
