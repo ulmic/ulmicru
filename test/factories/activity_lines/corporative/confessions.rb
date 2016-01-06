@@ -7,6 +7,6 @@ FactoryGirl.define do
   end
 
   factory :petition, parent: :confession do
-    year DateTime.now.year
+    year 2015
   end
 end
