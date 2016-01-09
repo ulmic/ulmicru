@@ -69,7 +69,7 @@
               - @member.teams.each_with_index do |team, index|
                 .user-team-name
                   %span{ class: "#{'more' if index > 0}" }
-                    = team.decorate.full_title
+                    = team.full_title
                 %br
           .row.god-fathers-childs
             - if @parent.present?

@@ -46,7 +46,7 @@
           = image_tag  @news.member.avatar.small, class: 'human-photo'
           .author-name
             = "#{t('activerecord.attributes.news.user_id')}:"
-            = @news.member.decorate.short_name
+            = @news.member.short_name
           .date-text
             = @news.publish_date_time
           .row

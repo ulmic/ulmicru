@@ -16,7 +16,7 @@
         %td=l activity_line.found_date, format: '%d %b %Y'
         %td
           - if activity_line.member.present?
-            = activity_line.member.decorate.short_name
+            = activity_line.member.short_name
         %td.actions
           = link_to edit_admin_activity_line_path(activity_line), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

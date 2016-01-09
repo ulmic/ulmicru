@@ -1,6 +1,8 @@
 class TagDecorator < ApplicationDecorator
   delegate_all
 
+  decorates_association :target
+
   def just_text
     case tag_type
     when 'string'

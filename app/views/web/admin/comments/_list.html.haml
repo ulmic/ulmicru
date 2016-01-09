@@ -13,7 +13,7 @@
       %tr.link{ class: state_color(comment), data: { href: edit_admin_comment_path(comment) } }
         %td= comment.id
         %td= link_to comment.record.title, record_path(comment.record)
-        %td= comment.user.decorate.short_name if comment.user_id
+        %td= comment.user.short_name if comment.user_id
         %td= comment.text
         %td.actions
           - unless comment.active?
