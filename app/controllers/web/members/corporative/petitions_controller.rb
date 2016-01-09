@@ -4,7 +4,7 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
   include DatesHelper
 
   def new
-    if submissions_petitions_not_begins?
+    if !submissions_petitions_begins?
       redirect_to not_found_page_path
     elsif submissions_petitions_ends?
       redirect_to page_page_path :confession_submissions_petitions_ends
