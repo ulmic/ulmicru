@@ -24,10 +24,10 @@
             = link_to '#', class: 'btn btn-xs btn-success dropdown-toggle', data: { toggle: :dropdown }, aria: { expanded: false } do
               %span.glyphicon.glyphicon-triangle-bottom
             %ul.dropdown-menu
-              - if questionary.member_state == 'unviewed'
+              - if questionary.member_unviewed?
                 %li
                   = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(questionary, questionary: { member_state: :on_the_trial }), method: :put
-              - unless questionary.member_state == 'confirmed'
+              - unless questionary.member_confirmed?
                 %li
                   = link_to t('state_machines.questionary.state.events.confirm'), admin_questionary_path(questionary, questionary: { member_state: :confirmed }), method: :put
           = link_to edit_admin_questionary_path(questionary), class: 'btn btn-warning btn-xs' do
@@ -40,7 +40,7 @@
             %ul.dropdown-menu
               %li
                 = link_to t('helpers.links.destroy'), admin_questionary_path(questionary), method: :delete
-              - unless questionary.member_state == :declined
+              - unless questionary.member_declined?
                 %li
                   = link_to t('helpers.links.decline'), admin_questionary_path(questionary, questionary: { member_state: :declined }), method: :patch
 = paginate questionaries, theme: 'twitter-bootstrap-3'

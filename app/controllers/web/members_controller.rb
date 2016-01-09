@@ -46,7 +46,7 @@ class Web::MembersController < Web::ApplicationController
 
   def show
     member = Member.find_by_ticket(params[:ticket])
-    if member.member_state == 'confirmed'
+    if member.member_confirmed?
       @member = member.decorate
       @children = MemberDecorator.decorate_collection member.children.shuffle
       @parent = MemberDecorator.decorate member.parent

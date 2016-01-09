@@ -60,7 +60,7 @@ class Member < User
     end
   end
 
-  state_machine :member_state, initial: :unviewed do
+  state_machine :member_state, initial: :unviewed, namespace: :member do
     state :unviewed
     state :confirmed
     state :declined
