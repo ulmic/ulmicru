@@ -6,6 +6,5 @@ module CategoryScopes
     scope :roots, -> { presented.where(parent_id: nil)}
     scope :last_childs, -> { where is_last: true }
     scope :presented, -> { where.not state: :removed}
-    scope :removed, -> { where state: :removed}
   end
 end

@@ -7,9 +7,6 @@ class Banner < ActiveRecord::Base
   validate :check_dimensions
   validate :one_of_images_presents
 
-  include BannerScopes
-  include Concerns::DurationManagment
-
   state_machine :state, initial: :active do
     state :active
     state :unviewed
@@ -28,6 +25,9 @@ class Banner < ActiveRecord::Base
       transition removed: :unviewed
     end
   end
+
+  include BannerScopes
+  include Concerns::DurationManagment
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:link]

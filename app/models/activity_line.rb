@@ -9,8 +9,6 @@ class ActivityLine < ActiveRecord::Base
 
   enumerize :activity_type, in: [ :central_program, :local_project, :corporative, :event_line ]
 
-  include ActivityLineScopes
-
   state_machine :state, initial: :active do
     state :unviewed
     state :active
@@ -27,6 +25,7 @@ class ActivityLine < ActiveRecord::Base
   #FIXME tags association
   include Concerns::TagsHelper
 
+  include ActivityLineScopes
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title]
 end

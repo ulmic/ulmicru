@@ -9,7 +9,6 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
   validates :nomination, presence: true
   validates :state, presence: true
 
-  include ActivityLines::Corporative::ConfessionScopes
   extend Enumerize
   enumerize :nomination, in: [ :debut, :number_one ]
 
@@ -42,6 +41,8 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include ActivityLines::Corporative::ConfessionScopes
 
   include DatesHelper
 

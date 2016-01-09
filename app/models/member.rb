@@ -27,7 +27,6 @@ class Member < User
                     allow_blank: true
   validates :avatar, presence: true
 
-  include MemberScopes
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
   enumerize :locality, in: Localities.list, default: Localities.list.first
   enumerize :school, in: Schools.list
@@ -76,6 +75,8 @@ class Member < User
       transition all => :unviewed
     end
   end
+
+  include MemberScopes
 
   def has_auth_provider?(provider)
     authentications.map do |authentication|

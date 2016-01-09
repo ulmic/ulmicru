@@ -4,8 +4,6 @@ class Document < ActiveRecord::Base
 
   mount_uploader :file, FileUploader
 
-  include DocumentScopes
-
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active
@@ -23,4 +21,6 @@ class Document < ActiveRecord::Base
       transition all => :unviewed
     end
   end
+
+  include DocumentScopes
 end

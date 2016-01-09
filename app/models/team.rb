@@ -8,7 +8,6 @@ class Team < ActiveRecord::Base
 
   validates :description, presence: true
 
-  include TeamScopes
   extend Enumerize
 
   enumerize :publicity, in: [ :visible, :hidden ], default: :hidden
@@ -28,6 +27,8 @@ class Team < ActiveRecord::Base
       transition all => :unviewed
     end
   end
+
+  include TeamScopes
 
   def is_departament?
     model_name == 'Team::Departament'

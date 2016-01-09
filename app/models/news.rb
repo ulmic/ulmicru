@@ -18,7 +18,6 @@ class News < ActiveRecord::Base
     published_at <= DateTime.now && state != 'removed'
   end
 
-  include NewsScopes
   include Concerns::ViewsManagment
   extend Concerns::NearRecords
 
@@ -42,6 +41,7 @@ class News < ActiveRecord::Base
     end
   end
 
+  include NewsScopes
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :lead]
 

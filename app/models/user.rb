@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   extend Enumerize
   enumerize :role, in: [ :user, :admin, :author ], default: :user
 
-  include UserScopes
   include Concerns::AvatarManagment
   include Concerns::SexManagment
 
@@ -44,6 +43,8 @@ class User < ActiveRecord::Base
       transition :removed => :unviewed
     end
   end
+
+  include UserScopes
 
   def is_member?
     model_name == 'Member'
