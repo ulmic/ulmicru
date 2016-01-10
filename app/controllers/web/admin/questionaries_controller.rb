@@ -29,7 +29,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form = QuestionaryForm.find_with_model params[:id]
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
-      if @questionary_form.model.member_state == 'confirmed'
+      if @questionary_form.model.member_confirmed?
         User.update params[:id], type: 'Member'
         #FIXME message in controller
         redirect_to edit_admin_member_path(params[:id], message: :fill_member_form)

@@ -8,9 +8,6 @@ class Event < ActiveRecord::Base
 
   mount_uploader :main_photo, PhotoUploader
 
-  include EventScopes
-  include Concerns::DurationManagment
-
   extend Enumerize
   enumerize :organizer_type, in: [ 'Member', 'Team' ]
 
@@ -37,6 +34,9 @@ class Event < ActiveRecord::Base
 
   #FIXME try fix active form
   after_save :remove_empty_registrations
+
+  include EventScopes
+  include Concerns::DurationManagment
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description]

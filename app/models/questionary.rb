@@ -2,8 +2,6 @@ class Questionary < Member
   validates :experience, presence: true
   validates :want_to_do, presence: true
 
-  include QuestionaryScopes
-
   mount_uploader :avatar, AvatarUploader
 
   state_machine :state, initial: :unviewed do
@@ -45,6 +43,8 @@ class Questionary < Member
       transition all => :on_the_trial
     end
   end
+
+  include QuestionaryScopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name, :patronymic, :motto, :ticket, :mobile_phone, :home_adress, :municipality, :locality, :experience, :want_to_do, :school ]

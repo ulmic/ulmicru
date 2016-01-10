@@ -8,6 +8,6 @@
     %table.table.table-bordered.table-striped
       - @arguments.each do |argument|
         %tr
-          %td= argument.short_name
+          %td= argument.member.short_name
           %td= enumerize_locales_value argument.model_name, :argument_type, argument.argument_type
           %td= argument.text

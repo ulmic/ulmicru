@@ -16,7 +16,7 @@
           = render 'layouts/web/elements/mic_member_2',
             link: (('#' if vote) || ('' if confession.member.state != 'confirmed') || member_path(confession.member.ticket)),
             img_src: confession.member.avatar.element.url,
-            name: confession.member.decorate.short_name
+            name: confession.member.short_name
   .people
     - if debut_of_the_year.any?
       .debut_name
@@ -31,4 +31,4 @@
           = render 'layouts/web/elements/mic_member_2',
             link: (('#' if vote) || ('' if confession.member.state != 'confirmed') || member_path(confession.member.ticket)),
             img_src: confession.member.avatar.element.url,
-            name: confession.member.decorate.short_name
+            name: confession.member.short_name

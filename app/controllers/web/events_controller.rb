@@ -7,7 +7,7 @@ class Web::EventsController < Web::ApplicationController
     @event = ::Event.find(params[:id]).decorate
     organizers = @event.registrations.organizers
     attenders = @event.registrations.attenders
-    @all_registrations = organizers + attenders
+    @all_registrations = Event::RegistrationDecorator.decorate_collection(organizers + attenders)
     @registrations = @all_registrations.first 10
     @other_registrations = @all_registrations.drop 10
   end

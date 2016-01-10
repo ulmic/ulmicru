@@ -1,8 +1,10 @@
 class Web::Members::Corporative::PetitionsController < Web::Members::Corporative::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
 
+  include DatesHelper
+
   def new
-    if submissions_petitions_not_begins?
+    if !submissions_petitions_begins?
       redirect_to not_found_page_path
     elsif submissions_petitions_ends?
       redirect_to page_page_path :confession_submissions_petitions_ends
@@ -15,7 +17,7 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
   def create
     if submissions_petitions_during?
       confession_params = params[:activity_lines_corporative_confession]
-      confession_params[:year] = configus.dates.activity_lines.corporative.confession.begining_submissions_petitions.year
+      confession_params[:year] = current_confession_year
       confession_params[:creator_id] = current_user.id
       confession_params[:arguments_attributes].keys.each do |index|
         confession_params[:arguments_attributes][index][:member_id] = current_user.id

@@ -1,5 +1,8 @@
 class MemberDecorator < UserDecorator
   delegate_all
+
+  decorates_association :teams
+
   def full_name
     "#{first_name} #{patronymic} #{last_name}"
   end

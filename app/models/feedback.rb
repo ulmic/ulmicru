@@ -5,8 +5,6 @@ class Feedback < ActiveRecord::Base
   validates :url, presence: true
   validates :user_id, presence: true
 
-  include FeedbackScopes
-
   state_machine initial: :unviewed do
     state :unviewed
     state :fixing
@@ -23,4 +21,6 @@ class Feedback < ActiveRecord::Base
       transition all => :declined
     end
   end
+
+  include FeedbackScopes
 end

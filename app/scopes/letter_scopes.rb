@@ -5,6 +5,5 @@ module LetterScopes
   included do
     scope :unviewed, -> { where(state: :unviewed).order('number DESC') }
     scope :sended, -> { where(state: :sended).order('number DESC') }
-    scope :removed, -> { where state: :removed }
   end
 end

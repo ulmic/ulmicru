@@ -3,7 +3,6 @@ class Position < ActiveRecord::Base
 
   validate :begin_before_end_date
 
-  include PositionScopes
   include Concerns::DurationManagment
 
   state_machine :state, initial: :confirmed do
@@ -28,4 +27,6 @@ class Position < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include PositionScopes
 end

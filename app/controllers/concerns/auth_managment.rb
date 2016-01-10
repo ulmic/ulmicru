@@ -30,12 +30,9 @@ module Concerns
     end
 
     def authenticate_member!
-      if signed_in?
-        unless current_user.is_member? && current_user.member_state == 'confirmed'
-          redirect_to not_found_page_path
-        end
-      else
-        redirect_to new_session_path
+      authenticate_user!
+      unless current_user.is_member? && current_user.member_confirmed?
+        redirect_to not_found_page_path
       end
     end
 

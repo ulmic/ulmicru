@@ -10,8 +10,6 @@ class Category < ActiveRecord::Base
   validates :parent_id, presence: false
   validates :is_last,   presence: false
 
-  include CategoryScopes
-
   def self.get_by_parent_id(category_id, all_tree = false)
     Category.where(parent_id: category_id).where.not(state: :removed)
   end
@@ -58,6 +56,8 @@ class Category < ActiveRecord::Base
       transition :removed => :unviewed
     end
   end
+
+  include CategoryScopes
 
   private
   def initial_load

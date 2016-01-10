@@ -10,9 +10,6 @@ class Article < ActiveRecord::Base
   validates :category_id, presence: true
   validates :user_id,     presence: true
 
-  include ArticleScopes
-  include Concerns::ViewsManagment
-
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
@@ -32,6 +29,9 @@ class Article < ActiveRecord::Base
       transition all => :inactive
     end
   end
+
+  include ArticleScopes
+  include Concerns::ViewsManagment
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :view]
 end

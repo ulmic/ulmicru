@@ -3,7 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      if methods.include? 'state_machines'
+      if ancestors.first.methods.include? :state_machines
         state_machines.each do |name, sm|
           sm.states.each do |s|
             scope_name = sm.namespace.present? ? :"#{sm.namespace}_#{s.name}" : s.name

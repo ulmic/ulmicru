@@ -1,6 +1,5 @@
 module MemberScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
 
   included do
     scope :presented, -> { where('member_state != \'removed\' AND member_state != \'not_member\'').order('ticket ASC') }

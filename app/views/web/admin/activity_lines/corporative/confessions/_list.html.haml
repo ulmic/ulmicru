@@ -13,7 +13,7 @@
       %tr{ class: state_color(confession) }
         %td{ width: '67px' }
           = link_to confession.id, admin_activity_lines_corporative_confession_path(confession)
-        %td= link_to confession.member.decorate.short_name, admin_activity_lines_corporative_confession_path(confession)
+        %td= link_to confession.member.short_name, admin_activity_lines_corporative_confession_path(confession)
         %td= confession.year
         %td= enumerize_locales_value confession.model_name, :nomination, confession.nomination
         %td.actions

@@ -12,8 +12,6 @@ class Letter < ActiveRecord::Base
 
   mount_uploader :file, FileUploader
 
-  include LetterScopes
-
   state_machine :state, initial: :sended do
     state :unviewed
     state :sended
@@ -27,6 +25,8 @@ class Letter < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include LetterScopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :receiver, :number, :executor_name]

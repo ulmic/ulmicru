@@ -1,6 +1,8 @@
 class ActivityLineDecorator < ApplicationDecorator
   delegate_all
 
+  decorates_association :member
+
   def short_body
     "#{strip_tags(model.description)[0..50]}..."
   end

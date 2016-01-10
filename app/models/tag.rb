@@ -15,8 +15,6 @@ class Tag < ActiveRecord::Base
   enumerize :target_type, in: [ 'ActivityLine', 'Event', 'Member', 'Team' ]
   enumerize :tag_type, in: [ :string, :link ]
 
-  include TagScopes
-
   state_machine :state, initial: :active do
     state :active
     state :removed
@@ -29,6 +27,8 @@ class Tag < ActiveRecord::Base
       transition active: :removed
     end
   end
+
+  include TagScopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :text ]
