@@ -117,4 +117,8 @@ module ApplicationHelper
   def google_api_key
     YAML.load_file(Rails.root.join('config', 'oauth.yml'))[Rails.env].with_indifferent_access[:google][:api_key]
   end
+
+  def google_map_src(address)
+    "https://www.google.com/maps/embed/v1/search?q=" + address.split.join("+") + "&key=" + google_api_key
+  end
 end

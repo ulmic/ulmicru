@@ -303,6 +303,7 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.text     "school"
     t.integer  "team_id"
     t.text     "publicity"
+    t.string   "address"
   end
 
   create_table "teams_users", id: false, force: :cascade do |t|

@@ -1,0 +1,86 @@
+- title @team.title
+- content_for :meta do
+  %meta{ property: 'og:description', content: "#{@team.title} #МИЦ" }
+  %meta{ name:'description', content: "#{@team.title} #МИЦ" }
+.container.account
+  .row
+    .small-5.columns
+      - if @team.address
+        %iframe.team-map{src: google_map_src(@team.address)}
+      - else
+        .team-card
+          .owner-head
+            = t('.owner')
+          .owner
+            = @owner.short_name
+            .locality= @owner.locality
+            .phone= @owner.mobile_phone
+            .email= @owner.email
+    .small-7.columns
+      .row
+        .small-11.push-1
+          .team-info
+            .team-title
+              = @team.title
+            - if @owner.email
+              .team-email
+                = @owner.email
+            .team-description
+              != @team.description
+.event-content.container
+  .participans-container
+    %h3.title
+      = t('.members')
+      %span#participants_count
+        = "(#{@members.count + 1})"
+    %ul.small-block-grid-5.participants
+      %li.owner.mic-member{ id: "participant_#{@owner.id}" }
+        = render_element 'mic_member', img_src: @owner.element_avatar, |
+                                       link: link_to_profile(@owner), |
+                                       name: @owner.short_name, |
+                                       role: t('.owner')
+      - @members.each do |member|
+        %li.participant.mic-member{ id: "participant_#{member.id}" }
+          = render_element 'mic_member', img_src: member.decorate.element_avatar, |
+                                         link: link_to_profile(member), |
+                                         name: member.decorate.short_name
+  .row.team-content
+    %ul.tabs{ 'data-tab' => '' }
+      %li.tab-title
+        %a{ href: '#events', tabindex: '0' }
+          %i.fa.fa-signal
+            = t('.events')
+      - if @articles.any? || @news.any?
+        %li.tab-title
+          %a{ href: '#news', tabindex: '0' }
+            %i.fa.fa-newspaper-o
+            = t('activerecord.models.news').pluralize(:ru)
+    .tabs-content
+      #events.content
+        - if @events.any?
+          .events
+            .container-big
+              %ul.small-block-grid-4#event-list
+                - @events.each do |event|
+                  %li.mic-event
+                    = render_element "mic_event2", img_src: event.main_photo.event_main_page_version, |
+                                                  link: event_path(event), |
+                                                  date: event.full_date_duration, |
+                                                  title: event.title, |
+                                                  text: strip_tags(event.lead).html_safe
+      #news.content
+        - if @articles.any? || @news.any?
+          %ul.news.small-block-grid-4
+            - @articles.each do |article|
+              %li.mic-one-news
+                = render_element 'mic_article',  link: article_path(article), |
+                                                 title: article.title, |
+                                                 views: article.views, |
+                                                 comments: article.comments.count
+            - @news.each do |news|
+              %li.mic-one-news
+                = render_element 'mic_one_news', img_src: news.photo, |
+                                                 link: news_path(news), |
+                                                 title: news.title, |
+                                                 date: news.publish_date, |
+                                                 views: news.views

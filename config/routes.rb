@@ -20,13 +20,9 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
-    resources :remind_password, only: [ :new, :create ] do
-      collection do
-        get :edit
-        patch :update
-      end
-    end
-    #resources :teams, only: [ :index, :show ]
+    resources :remind_password, only: [ :index, :create, :edit, :update ]
+    resources :teams, only: [ :show ]
+    resources :remind_passwords, only: [ :new, :create ]
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end
@@ -79,7 +75,7 @@ Rails.application.routes.draw do
       end
       namespace :delivery do
 	resources :campaigns
-	resources :sessions, only: [ :create, :destroy ] 
+	resources :sessions, only: [ :create, :destroy ]
       end
     end
     namespace :users do
