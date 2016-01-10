@@ -3,4 +3,4 @@
     - if member.state == 'confirmed'
       = image_tag member.avatar.small, class: 'human-photo link', data: { href: member_path(member.ticket), tooltip: '' }, title: member.short_name
     - else
-      = image_tag member.default_avatar(:image_url), class: 'human-photo', data: { tooltip: '' }, title: member.short_name
+      = image_tag member.default_avatar(:image_url), class: 'human-photo', data: { tooltip: '' }, title: member.decorate.short_name
