@@ -7,8 +7,8 @@
         = year
   .confessions_people
     - years.each do |year|
-      - number_one_of_the_year = confessions.where(year: year, nomination: :number_one).order 'users.member_state ASC'
-      - debut_of_the_year = confessions.where(year: year, nomination: :debut).order 'users.member_state ASC'
+      - number_one_of_the_year = confessions.where(year: year, nomination: :number_one).order('users.member_state ASC').decorate
+      - debut_of_the_year = confessions.where(year: year, nomination: :debut).order('users.member_state ASC').decorate
       = render 'layouts/web/shared/activity_lines/corporative/confession/confessions_of_the_year',
         year: year,
         debut_of_the_year: debut_of_the_year,
