@@ -44,7 +44,5 @@ module Web::Admin::ApplicationHelper
     constant.name.underscore.gsub '/', '_'
   end
 
-  def to_trash_param(class_name)
-    class_name.to_s.split('::').map(&:underscore).join '-'
-  end
+  include Concerns::Trash
 end

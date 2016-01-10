@@ -11,7 +11,8 @@ class Member < User
   has_many :events, as: :organizer,
                     foreign_key: :organizer_id
   has_many :news, foreign_key: :user_id
-  has_many :confessions, class_name: 'ActivityLines::Corporative::Confession'
+  has_many :confessions, class_name: 'ActivityLines::Corporative::Confession',
+                         dependent: :destroy
 
   validates :first_name, human_name: true,
                          allow_blank: true
