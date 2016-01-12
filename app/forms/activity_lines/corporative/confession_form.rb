@@ -8,7 +8,7 @@ class ActivityLines::Corporative::ConfessionForm < ApplicationReform
   def build_arguments_for_petition
     argument_types = ::ActivityLines::Corporative::Argument.argument_type.values
     argument_types.each do |type|
-      model.arguments.build argument_type: type
+      arguments << model.arguments.build(argument_type: type)
     end
   end
 end
