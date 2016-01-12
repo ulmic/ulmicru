@@ -54,6 +54,7 @@ gem 'russia_regions', '>= 0.0.4'
 gem 'github_api'
 gem 'pg_search'
 gem 'react-rails', '~> 1.3.0'
+gem 'reform'
 
 group :production do
   gem 'unicorn-rails'

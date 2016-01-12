@@ -7,10 +7,10 @@ class Api::Members::Corporative::ArgumentsControllerTest < ActionController::Tes
   end
 
   test 'should create argument' do
-    count = ::ActivityLines::Corporative::ArgumentType.count
+    count = ::ActivityLines::Corporative::Argument.count
     attributes = { '0' => attributes_for(:argument) }
     post :create, arguments: attributes
     assert_response :success, @response.body
-    assert_equal count + 1, ::ActivityLines::Corporative::ArgumentType.count
+    assert_equal count + 1, ::ActivityLines::Corporative::Argument.count
   end
 end
