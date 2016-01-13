@@ -27,7 +27,7 @@ class Banner < ActiveRecord::Base
   end
 
   include BannerScopes
-  include Concerns::DurationManagment
+  include DurationManagment
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:link]

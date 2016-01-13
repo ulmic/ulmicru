@@ -1,5 +1,5 @@
 class ActivityLines::Corporative::ConfessionForm < ApplicationReform
-  properties :year, :member_id, :state, :nomination, :creator_id
+  properties :year, :member_id, :state, :nomination, :creator_id, :state_event
 
   collection :arguments, populate_if_empty: ActivityLines::Corporative::Argument do
     properties :id, :argument_type, :text, :member_id, :confession_id

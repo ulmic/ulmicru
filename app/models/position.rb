@@ -3,7 +3,7 @@ class Position < ActiveRecord::Base
 
   validate :begin_before_end_date
 
-  include Concerns::DurationManagment
+  include DurationManagment
 
   state_machine :state, initial: :confirmed do
     state :unviewed
