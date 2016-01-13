@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
   after_save :remove_empty_registrations
 
   include EventScopes
-  include Concerns::DurationManagment
+  include DurationManagment
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description]

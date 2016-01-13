@@ -19,7 +19,7 @@ class News < ActiveRecord::Base
   end
 
   include Concerns::ViewsManagment
-  extend Concerns::NearRecords
+  include NearRecords
 
   state_machine :state, initial: :unviewed do
     state :unviewed
