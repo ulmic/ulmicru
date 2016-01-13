@@ -19,7 +19,10 @@ class News < ActiveRecord::Base
   end
 
   include Concerns::ViewsManagment
-  include NearRecords
+
+  class << self
+    include NearRecords
+  end
 
   state_machine :state, initial: :unviewed do
     state :unviewed
