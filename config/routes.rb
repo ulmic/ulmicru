@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :remind_password, only: [ :index, :create, :edit, :update ]
     #resources :teams, only: [ :index, :show ]
     resources :remind_passwords, only: [ :new, :create ]
+    resources :votes, only: [ :create, :update, :destroy ]
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end

@@ -14,6 +14,11 @@ module DatesHelper
     DateTime.now > CONFESSION_DATES.ending_submissions_petitions
   end
 
+  def voting_petitions_during?
+    DateTime.now > CONFESSION_DATES.begining_voting &&
+    DateTime.now < CONFESSION_DATES.ending_voting
+  end
+
   def current_confession_year
     CONFESSION_DATES.begining_submissions_petitions.year
   end

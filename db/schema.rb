@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218110008) do
+ActiveRecord::Schema.define(version: 20160113002425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "creator_id"
+  end
+
+  create_table "activity_lines_corporative_images", force: :cascade do |t|
+    t.integer  "confession_id"
+    t.integer  "member_id"
+    t.text     "file"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "articles", force: :cascade do |t|
@@ -126,6 +134,16 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.text     "record_type"
     t.integer  "user_id"
     t.integer  "parent_id"
+    t.text     "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "content_videos", force: :cascade do |t|
+    t.text     "title"
+    t.text     "description"
+    t.integer  "author_id"
+    t.text     "link"
     t.text     "state"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -282,6 +300,9 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.integer "user_id"
   end
 
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.text     "email"
     t.text     "password_digest"
@@ -309,6 +330,15 @@ ActiveRecord::Schema.define(version: 20151218110008) do
     t.text     "token"
     t.text     "school"
     t.text     "member_state",    default: "unviewed"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "difference"
+    t.integer  "user_id"
+    t.integer  "target_id"
+    t.text     "target_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
