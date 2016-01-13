@@ -36,8 +36,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
 
   def update
     @confession_form = ::ActivityLines::Corporative::ConfessionForm.find_with_model params[:id]
-    @confession_form.submit params[:activity_lines_corporative_confession]
-    if @confession_form.save
+    if @confession_form.submit params[:activity_lines_corporative_confession]
       create_tag
       redirect_to edit_admin_activity_lines_corporative_confession_path @confession_form.model
     else
