@@ -10,5 +10,5 @@
           = hidden_field_tag "arguments[#{index}][confession_id]", '', class: :confession_id
         = submit_tag t('.renew_petition'), class: :button
     - elsif voting_petitions_during?
-      = render 'layouts/web/shared/vote', target_type: 'ActivityLines::Corporative::Confession'
+      = render 'layouts/web/shared/vote', target_type: 'ActivityLines::Corporative::Confession', target_id: nil
     %a.close-reveal-modal{ aria: { label: 'Close' } } ×
