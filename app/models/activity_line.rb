@@ -22,8 +22,6 @@ class ActivityLine < ActiveRecord::Base
       transition removed: :unviewed
     end
   end
-  #FIXME tags association
-  include Concerns::TagsHelper
 
   include ActivityLineScopes
   include PgSearch

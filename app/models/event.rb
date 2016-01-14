@@ -29,8 +29,6 @@ class Event < ActiveRecord::Base
       transition all => :unviewed
     end
   end
-  #FIXME tags association
-  include Concerns::TagsHelper
 
   #FIXME try fix active form
   after_save :remove_empty_registrations
