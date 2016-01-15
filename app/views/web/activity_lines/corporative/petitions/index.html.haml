@@ -11,8 +11,8 @@
     Перед вами люди номинированные на корпоративную премию «Признание»
     = current_confession_year
     года.
+    %br
     - if submissions_petitions_during?
-      %br
       Эту награду могут получить только члены Молодёжного инициативного центра, состоящие в организации не менее 3-х месяцев. Если кандидат, которого вы считаете достойным, отсутствует в списке ниже, вы можете подать ходатайство на него, используя специальную форму с
       =l configus.dates.activity_lines.corporative.confession.begining_submissions_petitions, format: '%d %B %Y'
       года до
@@ -43,8 +43,6 @@
       =l configus.dates.activity_lines.corporative.confession.ending_voting, format: '%d %B %Y'
       года в этом же разделе.
     - elsif voting_petitions_during?
-      Перед вами люди, номинированные на корпоративную премию «Признание» 2015 года.
-      %br
       Следующий этап выбора достойных получателей награды - голосование. В период с
       =l configus.dates.activity_lines.corporative.confession.begining_voting, format: '%d %B %Y'
       по
