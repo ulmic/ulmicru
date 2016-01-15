@@ -3,11 +3,24 @@
 .panel-info
   .panel-heading
     %h4
+      = image_tag @confession.member.avatar.small, style: 'width: 50px; height: 50px'
       = current_title
   .panel-body
     %table.table.table-bordered.table-striped
       - @arguments.each do |argument|
         %tr
-          %td= argument.member.short_name
+          %td
+            = image_tag argument.member.avatar.small, style: 'width: 50px; height: 50px'
+            %br
+            = argument.member.short_name
           %td= enumerize_locales_value argument.model_name, :argument_type, argument.argument_type
           %td= argument.text
+  .panel-body
+    %table.table.table-bordered.table-striped
+      - @comments.each do |comment|
+        %tr
+          %td
+            = image_tag comment.user.element_avatar, style: 'width: 50px; height: 50px'
+            = comment.user.short_name
+          %td= comment.text
+          %td=l comment.created_at, format: '%d/%b/%Y %H:%M'

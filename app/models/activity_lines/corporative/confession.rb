@@ -1,6 +1,8 @@
 class ActivityLines::Corporative::Confession < ActiveRecord::Base
   belongs_to :member
   has_many :arguments
+  has_many :comments, as: :record,
+                      dependent: :destroy
 
   accepts_nested_attributes_for :arguments
 
