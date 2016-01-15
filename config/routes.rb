@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     resources :remind_password, only: [ :index, :create, :edit, :update ]
     #resources :teams, only: [ :index, :show ]
     resources :remind_passwords, only: [ :new, :create ]
-    resources :votes, only: [ :create, :update, :destroy ]
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end
@@ -98,6 +97,12 @@ Rails.application.routes.draw do
       end
     end
     namespace :users do
+      resources :votes, only: [ :create ] do
+        collection do
+          patch :update
+          delete :destroy
+        end
+      end
       namespace :account do
         resources :attribute_accesses, only: :create
       end
