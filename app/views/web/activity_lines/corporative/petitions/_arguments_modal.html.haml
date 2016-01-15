@@ -1,4 +1,5 @@
 - if signed_in? && current_user.is_member?
+  = stylesheet_link_tag 'web/activity_lines/corporative/petitions'
   #argumentsModal.reveal-modal{ aria: { hidden: true, labelledby: :firstModalTitle }, data: { reveal: '', role: :dialog } }
     %h2#argumentsModalTitle
     - if submissions_petitions_during?
@@ -10,5 +11,11 @@
           = hidden_field_tag "arguments[#{index}][confession_id]", '', class: :confession_id
         = submit_tag t('.renew_petition'), class: :button
     - elsif voting_petitions_during?
-      = render 'layouts/web/shared/vote', target_type: 'ActivityLines::Corporative::Confession', target_id: nil
+      .row
+        .columns.large-3.avatar
+          = image_tag '', class: :avatar_on_modal
+          = render 'layouts/web/shared/vote', target_type: 'ActivityLines::Corporative::Confession', target_id: nil
+        .columns.large-9.comments
+          - petition = Struct.new(:id, :model_name).new nil, 'ActivityLines::Corporative::Confession'
+          = render 'web/comments/form', record: petition
     %a.close-reveal-modal{ aria: { label: 'Close' } } ×

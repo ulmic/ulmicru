@@ -23,7 +23,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def record_path(record)
-    send "#{record.class.name.underscore}_path", record
+    "#{record.class.name.underscore.pluralize}/#{record.id}"
   end
 
   def form_after_save?

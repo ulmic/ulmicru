@@ -13,3 +13,5 @@ $ ->
       $('.confession_id').val value
     unless $('.vote').length == 0
       $('.vote').data 'targetId', value
+      $('#comment_record_id').val value
+      $('.avatar_on_modal').prop 'src', $(this).children().children().children('img').first().prop 'src'

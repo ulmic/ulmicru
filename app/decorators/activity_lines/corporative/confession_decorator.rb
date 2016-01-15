@@ -3,6 +3,10 @@ class ActivityLines::Corporative::ConfessionDecorator < ApplicationDecorator
 
   decorates_association :member
 
+  def title
+    "#{object.member.decorate.short_name} | #{I18n.t("enumerize.activity_lines/corporative/confession.nomination.#{object.nomination}")}"
+  end
+
   def short_name
     object.member.decorate.short_name
   end
