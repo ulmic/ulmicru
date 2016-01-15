@@ -24,7 +24,10 @@ $ ->
     $('#new_comment #comment_text').val ''
 
   $('.new_comment').on('ajax:success', (xhr, data) ->
-    append_comment data
+    if document.URL.includes('petitions')
+      alert 'Комментарий добавлен'
+    else
+      append_comment data
     return
   ).on 'ajax:error', (xhr, data) ->
     alert 'error'

@@ -97,6 +97,13 @@ Rails.application.routes.draw do
       end
     end
     namespace :users do
+      resources :votes, only: [ :create ] do
+        collection do
+          get :show
+          patch :update
+          delete :destroy
+        end
+      end
       namespace :account do
         resources :attribute_accesses, only: :create
       end

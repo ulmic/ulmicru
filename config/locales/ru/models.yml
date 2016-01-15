@@ -170,6 +170,8 @@ ru:
         member: Автор
         text: Текст аргумента
         argument_type: Типа аргумента
+      vote:
+        rating: Рейтинг
     state_machines:
       member:
         state:

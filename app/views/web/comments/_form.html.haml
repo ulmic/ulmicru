@@ -1,3 +1,5 @@
+= stylesheet_link_tag 'web/comments'
+= javascript_include_tag 'web/comments'
 .comment-form
   %h4
     = t('.add_comment')
@@ -10,7 +12,7 @@
           - else
             = image_tag current_user.default_avatar(:image_url)
         .small-10.columns.end
-          = simple_form_for @comment, remote: true, url: { controller: 'api/comments', action: :create } do |f|
+          = simple_form_for @comment, remote: true, url: { controller: '/api/comments', action: :create } do |f|
             = f.input :text, label: false, placeholder: t('.write_your_comment')
             = f.input :record_id, as: :hidden, input_html: { value: record.id }
             = f.input :record_type, as: :hidden, input_html: { value: record.model_name }

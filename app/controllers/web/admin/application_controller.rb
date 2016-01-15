@@ -2,7 +2,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   before_filter :authenticate_admin!
   layout 'web/admin/application'
 
-  include Concerns::ModelsConcern
+  include ModelsConcern
 
   protected
 

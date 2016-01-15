@@ -8,4 +8,10 @@ $ ->
   )
   $('.member.petition').on 'click', (e) ->
     e.preventDefault()
-    $('.confession_id').val $(this).data('id')
+    value = $(this).data('id')
+    unless $('.confession_id').length == 0
+      $('.confession_id').val value
+    unless $('.vote').length == 0
+      $('.vote').data 'targetId', value
+      $('#comment_record_id').val value
+      $('.avatar_on_modal').prop 'src', $(this).children().children().children('img').first().prop 'src'

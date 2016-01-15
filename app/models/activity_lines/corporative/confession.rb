@@ -1,6 +1,10 @@
 class ActivityLines::Corporative::Confession < ActiveRecord::Base
   belongs_to :member
   has_many :arguments
+  has_many :comments, as: :record,
+                      dependent: :destroy
+  has_many :votes, as: :target,
+                   dependent: :destroy
 
   accepts_nested_attributes_for :arguments
 
@@ -17,6 +21,8 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
                                       associated_against: {
                                         member: [ :first_name, :patronymic, :last_name ]
                                       }
+
+  include VoteManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed

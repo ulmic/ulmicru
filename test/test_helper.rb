@@ -16,7 +16,7 @@ FactoryGirl.reload
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
   include Concerns::AuthManagment
-  include Concerns::ModelsConcern
+  include ModelsConcern
   include Concerns::TechinalPagesManagment
 
   def load_fixture(filename)
