@@ -33,14 +33,53 @@ voting = (component, vote) ->
       alert 'error'
   }
 
+current_vote_state = (component) ->
+  $.ajax {
+    url: Routes.api_users_votes_path(vote: {
+                                             target_type: $('.vote').data('targetType')
+                                             target_id: $('.vote').data('targetId')
+                                           })
+    method: 'GET'
+    data: {
+      vote: {
+        # NOTE: используем jQuery, потому что target_type и target_id могут изменяться вне React класса. Антипаттерн :(
+        # FIXME исправить при полном переходе на React
+
+
+      }
+    }
+    dataType: 'JSON'
+    success: (data) ->
+      switch data
+        when 1
+          state = 'like'
+        when -1
+          state = 'dislike'
+        else
+          state = 'none'
+      component.setState { vote: state }
+    error: ->
+      component.setState { vote: 'none' }
+  }
+
 @Vote = React.createClass
   getInitialState: ->
     { vote: 'none' }
+  componentDidMount: ->
+    component = this
+    target_id = $('.vote').data('targetId')
+    setInterval (->
+      if $('.vote').data('targetId') != target_id
+        current_vote_state(component)
+        target_id = $('.vote').data 'targetId'
+    ), 500
   vote: (type) ->
     voting this, type
   render: ->
-    `<div className='vote' data-target-type={this.props.target_type}
-                             data-target-id={this.props.target_id}>
-      <i onClick={this.vote.bind(null, 'like')} className='fa fa-thumbs-up fa-3x'></i>
-      <i onClick={this.vote.bind(null, 'dislike')} className='fa fa-thumbs-down fa-3x'></i>
+    like_classes = "fa fa-thumbs-up fa-3x #{'checked' if this.state.vote == 'like'}"
+    dislike_classes = "fa fa-thumbs-down fa-3x #{'checked' if this.state.vote == 'dislike'}"
+    `<div onMouseUp={this.updateStates} className='vote' data-target-type={this.props.target_type}
+                                                        data-target-id={this.props.target_id}>
+      <i onClick={this.vote.bind(null, 'like')} className={like_classes}></i>
+      <i onClick={this.vote.bind(null, 'dislike')} className={dislike_classes}></i>
     </div>`

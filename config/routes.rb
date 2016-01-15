@@ -99,6 +99,7 @@ Rails.application.routes.draw do
     namespace :users do
       resources :votes, only: [ :create ] do
         collection do
+          get :show
           patch :update
           delete :destroy
         end
