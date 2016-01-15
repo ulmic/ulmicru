@@ -5,6 +5,9 @@
     %h4
       = image_tag @confession.member.avatar.small, style: 'width: 50px; height: 50px'
       = current_title
+      |
+      = t('activerecord.attributes.vote.rating')
+      = @confession.rating
   .panel-body
     %table.table.table-bordered.table-striped
       - @arguments.each do |argument|
