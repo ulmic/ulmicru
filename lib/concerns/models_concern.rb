@@ -1,4 +1,4 @@
-module Concerns::ModelsConcern
+module ModelsConcern
   #хорошие имена функций, правда!)) Цените!!
   def trash_models
     [ :member, :questionary, :news, :category, :article, :activity_line,

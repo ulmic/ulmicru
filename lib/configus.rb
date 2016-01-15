@@ -40,8 +40,8 @@ Configus.build Rails.env do
           confession do
             begining_submissions_petitions '21/12/2015'.to_datetime
             ending_submissions_petitions '15/01/2016'.to_datetime
-            begining_voting '16/01/2016'.to_datetime
-            ending_voting '25/01/2016'.to_datetime
+            begining_voting '15/01/2016'.to_datetime
+            ending_voting '21/01/2016'.to_datetime
           end
         end
       end

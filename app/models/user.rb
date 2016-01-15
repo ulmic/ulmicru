@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   extend Enumerize
   enumerize :role, in: [ :user, :admin, :author ], default: :user
 
-  include Concerns::AvatarManagment
+  include AvatarManagment
   include Concerns::SexManagment
 
   state_machine :state, initial: :unviewed do
