@@ -26,7 +26,7 @@ class Member < User
                            allow_blank: true
   validates :motto, uniqueness: true,
                     allow_blank: true
-  validates :avatar, presence: true
+  validates :avatar, presence: true, if: Proc.new { state != :unavailable }
 
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
   enumerize :locality, in: Localities.list, default: Localities.list.first

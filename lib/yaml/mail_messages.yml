@@ -4,9 +4,3 @@ messages:
       subject: 'Подтверждение адреса электронной почты'
     remind_password:
       subject: 'Восстановление утерянного пароля'
-  member:
-    after_create:
-      subject: 'Подтверждение адреса электронной почты'
-  questionary:
-    after_create:
-      subject: 'Подтверждение адреса электронной почты'

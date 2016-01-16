@@ -17,7 +17,11 @@ module Concerns
     end
 
     def class_to_type(obj_class)
-      obj_class.name.downcase
+      if !((class_name = obj_class.name.downcase).in? %w[member questionary])
+        class_name
+      else
+        'user'
+      end
     end
   end
 end
