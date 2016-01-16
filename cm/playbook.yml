@@ -17,7 +17,7 @@
       postgresql_user: name={{ pg_user }} role_attr_flags=CREATEDB,NOSUPERUSER
 
     - name: Copy config files
-      template: src=templates/{{ item }}.yml.j2 dest=../config/{{ item }}.yml
+      template: src=templates/{{ item }}.yml.j2 dest=config/{{ item }}.yml
       with_items:
         - database
         - oauth
