@@ -13,7 +13,15 @@ class Api::Users::VotesController < Api::Users::ApplicationController
     vote = Vote.where(target_type: params[:vote][:target_type],
                       target_id: params[:vote][:target_id],
                       user_id: current_user.id).first
-    vote ? render(json: vote.difference) : head(:not_found)
+    likes = Vote.likes.where(target_type: params[:vote][:target_type],
+                       target_id: params[:vote][:target_id]).count
+    dislikes = Vote.dislikes.where(target_type: params[:vote][:target_type],
+                             target_id: params[:vote][:target_id]).count
+    if vote
+      render json: { difference: vote.difference, results: { likes: likes, dislikes: dislikes }}
+    else
+      head :not_found
+    end
   end
 
   def update
