@@ -29,7 +29,7 @@ class Web::RemindPasswordController < Web::ApplicationController
 
   def update
     @user_form = UserForm.find_with_model_by! token: params[:token]
-    @user_form.submit params[:user]
+    @user_form.submit params[:user] || params[:member] || params[:questionary]
     if @user_form.save
       redirect_to new_session_path
     else
