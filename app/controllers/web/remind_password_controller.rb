@@ -1,5 +1,5 @@
 class Web::RemindPasswordController < Web::ApplicationController
-  def index
+  def new
     @user_form = UserForm.new_with_model
   end
 
@@ -18,21 +18,22 @@ class Web::RemindPasswordController < Web::ApplicationController
       redirect_to new_session_path
     else
       @user_form = UserForm.new_with_model email: params[:user][:email]
-
-      render :index
+      render :new
     end
   end
 
   def edit
-    @user_form = UserForm.find_with_model_by! id: params[:id], token: params[:token]
+    @user_form = UserForm.find_with_model_by! token: params[:token]
+    @token = params[:token]
   end
 
   def update
-    @user_form = UserForm.find_with_model_by! id: params[:id]
+    @user_form = UserForm.find_with_model_by! token: params[:token]
     @user_form.submit params[:user]
     if @user_form.save
       redirect_to new_session_path
     else
+      @token = params[:token]
       render :edit
     end
   end
