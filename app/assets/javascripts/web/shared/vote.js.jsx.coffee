@@ -76,10 +76,20 @@ current_vote_state = (component) ->
   vote: (type) ->
     voting this, type
   render: ->
+    if this.props.mode == 'view_results'
+      results_display = 'block'
+    else
+      results_display = 'none'
     like_classes = "fa fa-thumbs-up fa-3x #{'checked' if this.state.vote == 'like'}"
     dislike_classes = "fa fa-thumbs-down fa-3x #{'checked' if this.state.vote == 'dislike'}"
     `<div onMouseUp={this.updateStates} className='vote' data-target-type={this.props.target_type}
                                                         data-target-id={this.props.target_id}>
-      <i onClick={this.vote.bind(null, 'like')} className={like_classes}></i>
-      <i onClick={this.vote.bind(null, 'dislike')} className={dislike_classes}></i>
+      <i onClick={this.vote.bind(null, 'like')} className={like_classes} style={{float: 'left'}}></i>
+      <span className='vote_results' style={{display: results_display, float: 'left'}}>
+        1
+      </span>
+      <i onClick={this.vote.bind(null, 'dislike')} className={dislike_classes} style={{float: 'left'}}></i>
+      <span className='vote_results' style={{display: results_display, float: 'left'}}>
+        1
+      </span>
     </div>`
