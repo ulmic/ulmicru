@@ -8,6 +8,6 @@
         %span.label.alert
           %i.fa.fa-exclamation-circle
           = t('.remind_password_error')
-      = simple_form_for @user_form, url: { controller: :remind_password, action: :create }, method: :post do |f|
+      = simple_form_for @user_form, url: remind_password_index_path, method: :post do |f|
         = f.input :email, as: :email, required: true
         = f.button :submit, t('helpers.remind_password'), class: "mic-flat-button"
