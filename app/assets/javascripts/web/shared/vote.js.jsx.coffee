@@ -40,31 +40,32 @@ current_vote_state = (component) ->
                                              target_id: $('.vote').data('targetId')
                                            })
     method: 'GET'
-    data: {
-      vote: {
-        # NOTE: используем jQuery, потому что target_type и target_id могут изменяться вне React класса. Антипаттерн :(
-        # FIXME исправить при полном переходе на React
-
-
-      }
-    }
     dataType: 'JSON'
     success: (data) ->
-      switch data
+      difference = data.difference
+      switch difference
         when 1
           state = 'like'
         when -1
           state = 'dislike'
         else
           state = 'none'
-      component.setState { vote: state }
+      component.setState {
+                           vote: state
+                           likes: data.results.likes
+                           dislikes: data.results.dislikes
+                         }
     error: ->
       component.setState { vote: 'none' }
   }
 
 @Vote = React.createClass
   getInitialState: ->
-    { vote: 'none' }
+    {
+      vote: 'none'
+      likes: 0
+      dislikes: 0
+    }
   componentDidMount: ->
     component = this
     target_id = $('.vote').data('targetId')
@@ -83,13 +84,13 @@ current_vote_state = (component) ->
     like_classes = "fa fa-thumbs-up fa-3x #{'checked' if this.state.vote == 'like'}"
     dislike_classes = "fa fa-thumbs-down fa-3x #{'checked' if this.state.vote == 'dislike'}"
     `<div onMouseUp={this.updateStates} className='vote' data-target-type={this.props.target_type}
-                                                        data-target-id={this.props.target_id}>
+                                                         data-target-id={this.props.target_id}>
       <i onClick={this.vote.bind(null, 'like')} className={like_classes} style={{float: 'left'}}></i>
       <span className='vote_results' style={{display: results_display, float: 'left'}}>
-        1
+        {this.state.likes}
       </span>
       <i onClick={this.vote.bind(null, 'dislike')} className={dislike_classes} style={{float: 'left'}}></i>
       <span className='vote_results' style={{display: results_display, float: 'left'}}>
-        1
+        {this.state.dislikes}
       </span>
     </div>`
