@@ -27,8 +27,24 @@ voting = (component, vote) ->
     success: ->
       if component.state.vote == vote
         component.setState { vote: 'none' }
+        difference = -1
       else
+        difference = 1
+        if component.state.vote == 'like' && vote == 'dislike' ||
+           component.state.vote == 'dislike' && vote == 'like'
+          other_difference = 1
         component.setState { vote: vote }
+      likes = component.state.likes
+      dislikes = component.state.dislikes
+      switch vote
+        when 'like'
+          component.setState { likes: likes + difference }
+          unless other_difference == undefined
+            component.setState { dislikes: dislikes - other_difference }
+        when 'dislike'
+          component.setState { dislikes: dislikes + difference }
+          unless other_difference == undefined
+            component.setState { likes: likes - other_difference }
     error: ->
       alert 'error'
   }
