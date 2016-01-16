@@ -20,7 +20,7 @@ class Api::Users::VotesController < Api::Users::ApplicationController
     if vote
       render json: { difference: vote.difference, results: { likes: likes, dislikes: dislikes }}
     else
-      head :not_found
+      render json: { results: { likes: likes, dislikes: dislikes } }
     end
   end
 

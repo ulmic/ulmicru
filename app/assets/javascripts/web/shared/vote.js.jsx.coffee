@@ -1,3 +1,11 @@
+init_results = (component, vote, data) ->
+  component.setState {
+                       vote: vote
+                       likes: data.results.likes
+                       dislikes: data.results.dislikes
+                     }
+
+
 voting = (component, vote) ->
   if component.state.vote == 'none'
     method = 'POST'
@@ -58,21 +66,15 @@ current_vote_state = (component) ->
     method: 'GET'
     dataType: 'JSON'
     success: (data) ->
-      difference = data.difference
-      switch difference
-        when 1
-          state = 'like'
-        when -1
-          state = 'dislike'
-        else
-          state = 'none'
-      component.setState {
-                           vote: state
-                           likes: data.results.likes
-                           dislikes: data.results.dislikes
-                         }
-    error: ->
-      component.setState { vote: 'none' }
+      if data.difference == undefined
+        state = 'none'
+      else
+        switch data.difference
+          when 1
+            state = 'like'
+          when -1
+            state = 'dislike'
+      init_results component, state, data
   }
 
 @Vote = React.createClass
@@ -89,7 +91,7 @@ current_vote_state = (component) ->
       if $('.vote').data('targetId') != target_id
         current_vote_state(component)
         target_id = $('.vote').data 'targetId'
-    ), 500
+    ), 100
   vote: (type) ->
     voting this, type
   render: ->
