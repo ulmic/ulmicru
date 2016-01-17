@@ -2,8 +2,9 @@ class User < ActiveRecord::Base
   has_secure_password validations: false
   attr_accessor :password_confirmation
   validates :password, right_confirmation: true,
-                       allow_blank: false,
-                       length: { maximum: ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED }
+                       length: {
+                         in: 8..ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED
+                       }
 
   has_many :authentications, dependent: :destroy
   has_many :article
