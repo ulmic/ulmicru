@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   validates :password, right_confirmation: true,
                        length: {
+                         allow_nil: true,
                          in: 8..ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED
                        }
 
