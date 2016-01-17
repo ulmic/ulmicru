@@ -163,6 +163,7 @@ ru:
         remind_password_error: Пользователь с указанным email не был найден или был удалён
       edit:
         title: Создание нового пароля
+        title_for: 'Восстановление пароля по email: %{email}'
         update_password: Обновить пароль
         new_password: Новый пароль
         repeat_new_password: Повторите новый пароль

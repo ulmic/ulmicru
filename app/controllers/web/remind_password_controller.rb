@@ -23,14 +23,18 @@ class Web::RemindPasswordController < Web::ApplicationController
   end
 
   def edit
-    @user_form = UserForm.find_with_model_by! token: params[:token]
-    @token = params[:token]
+    if params[:token] && !params[:token].empty?
+      @user_form = UserForm.find_with_model_by! token: params[:token]
+      @token = params[:token]
+    else
+      redirect_to new_session_path
+    end
   end
 
   def update
     @user_form = UserForm.find_with_model_by! token: params[:token]
     @user_form.submit params[:user] || params[:member] || params[:questionary]
-    if @user_form.save
+    if @user_form.save && @user_form.update(token: nil)
       redirect_to new_session_path
     else
       @token = params[:token]

@@ -3,11 +3,9 @@
   .row
     .medium-6.small-12.columns.medium-push-3
       %h3.title
-        = t('.title')
+        = t('.title_for', email: @user_form.email)
       = render 'layouts/web/shared/errors', object: @user_form
       = simple_form_for @user_form, url: remind_password_index_path(token: @token), method: :patch do |f|
-        = f.label t('.new_password'), required: true
-        = f.input :password, as: :password, required: true, label: false
-        = f.label t('.repeat_new_password'), required: true
-        = f.input :password_confirmation, as: :password, required: true, label: false
+        = f.input :password, as: :password, required: true, label: t('.new_password'), error_html: { id: 'password_error'}
+        = f.input :password_confirmation, as: :password, required: true, label: t('.repeat_new_password')
         = f.button :submit, t('.update_password')
