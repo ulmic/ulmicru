@@ -259,4 +259,15 @@ $ ->
     e.preventDefault()
     return
 
+  stick_to_bottom_of_avatar_labels = ->
+    $labels = $('.labels')
+    $labels.each ->
+      $avatar = $(this).first().parents('.info').first()
+      $name = $avatar.children('.name').first()
+      $post = $avatar.children('.post').first()
+      $credo = $avatar.children('.credo').first()
+      $ticket = $avatar.children('.ticket').first()
+      $(this).css 'top', $name.height() + $post.height() + $credo.height() + $ticket.height()
+
+  stick_to_bottom_of_avatar_labels()
   return

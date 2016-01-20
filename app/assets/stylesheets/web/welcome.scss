@@ -204,6 +204,14 @@ $orange: #f45c10;
       .post, .credo {
         margin-top: rem-calc(14);
       }
+      .labels {
+        position: absolute;
+        .label {
+          width: 35px;
+          height: 35px;
+          padding: 0;
+        }
+      }
     }
   }
   .banner {

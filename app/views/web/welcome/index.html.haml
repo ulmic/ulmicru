@@ -100,6 +100,12 @@
               .ticket
                 %span.glyphicon.glyphicon-credit-card
                 = member.ticket_number
+              .labels
+                %ul.inline-list
+                  %li
+                    = image_tag number_one_image, class: :label
+                  %li
+                    = image_tag debut_of_the_year_image, class: :label
     - if @banner
       .banner
         = link_to @banner.link, class: 'blank' do
