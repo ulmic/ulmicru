@@ -87,10 +87,12 @@
           %a.info
             .vertical-center
               .name
-                = member.short_name
-              -#.post
-                = member.main_position_title
-              -#- if member.position_duration
+                %u
+                  = member.short_name
+              .post
+                %u
+                  = member.main_position_title
+              - if member.position_duration
                 .duration
                   = member.position_duration
               .credo
