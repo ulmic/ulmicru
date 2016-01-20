@@ -35,6 +35,7 @@ class Event < ActiveRecord::Base
 
   include EventScopes
   include DurationManagment
+  include TagsHelper
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description]

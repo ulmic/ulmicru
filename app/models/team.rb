@@ -29,6 +29,7 @@ class Team < ActiveRecord::Base
   end
 
   include TeamScopes
+  include TagsHelper
 
   def is_departament?
     model_name == 'Team::Departament'
