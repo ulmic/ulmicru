@@ -78,6 +78,7 @@ class Member < User
   end
 
   include MemberScopes
+  include TagsHelper
 
   def has_auth_provider?(provider)
     authentications.map do |authentication|
