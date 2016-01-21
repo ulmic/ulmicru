@@ -207,10 +207,14 @@ $orange: #f45c10;
       .labels {
         position: absolute;
         left: 0;
+        li {
+          margin-left: 5px;
+        }
         .label {
           width: 30px;
           height: 30px;
           padding: 0;
+          background: transparent;
         }
       }
     }

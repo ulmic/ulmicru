@@ -264,7 +264,7 @@ $(window).on 'load', ->
   stick_to_bottom_of_avatar_labels = ->
     $labels = $('.labels')
     $labels.each ->
-      top = $('a.info').height() - $(this).height() - 30
+      top = $('a.info').first().height() - $(this).height() - 35
       $(this).css 'top', top
   stick_to_bottom_of_avatar_labels()
   return
