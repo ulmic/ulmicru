@@ -9,6 +9,7 @@ ru:
     from: c
     until: по
     year: 'года'
+    years: 'года'
     short_year: 'г.'
     short_years: 'гг.'
     more_info: 'Подробнее'
