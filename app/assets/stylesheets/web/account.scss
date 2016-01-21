@@ -93,6 +93,41 @@
     font-family: mic-bold;
     font-weight: bold;
   }
+  .honors, .nominated {
+    width: 100%;
+    margin-top: 15px;
+    h2 {
+      text-align: center;
+    }
+    .user-confessions {
+      width: 100%;
+      height: 110px;
+      margin-top: 20px;
+      .user-confession {
+        width: 100px;
+        float: left;
+        margin-right: 10px;
+        cursor: pointer;
+        img {
+          width: 100%;
+          background: #ffa911;
+          &:hover {
+            background-color: #ffc90B;
+          }
+        }
+        .text {
+          margin-top: 2px;
+          font-family: 'mic-bold';
+          font-size: 25px;
+          width: 100%;
+          text-align: center;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
   blockquote.user-motto {
     margin-top: 48px;
     color: #333;
