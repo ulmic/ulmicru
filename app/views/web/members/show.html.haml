@@ -47,6 +47,29 @@
             - if auth
               - if attribute_visible?(@attribute_accesses, auth.provider)
                 = link_to '', profile_url(auth), class: 'icon-vkontakte big-icon blank'
+      %hr.orange
+      - if @member.confessions.confirmed.any?
+        .honors
+          %h2
+            = t('.honors_in_mic')
+          - gender = @member.is_female? ? 'a' : ''
+          .user-confessions
+            - @member.confessions.confirmed.each do |confession|
+              .user-confession.link{ title: t("tooltip.web.members.show.#{confession.nomination}", name: @member.first_name, gender: gender, year: confession.year), data: { tooltip: true, href: article_path(configus.activity_lines.corporative.confession.article_id) } }
+                = image_tag send("#{confession.nomination}_image")
+                .text
+                  = confession.year
+      - if @member.confessions.on_vote.any?
+        .nominated
+          %h2
+            = t('.nominated')
+          - gender = @member.is_female? ? 'a' : ''
+          .user-confessions
+            - @member.confessions.on_vote.each do |confession|
+              .user-confession.link{ title: t("tooltip.web.members.show.nominated.#{confession.nomination}", name: @member.first_name, gender: gender), data: { tooltip: true, href: activity_lines_corporative_petitions_path } }
+                = image_tag send("#{confession.nomination}_image")
+                .text
+                  = confession.year
     .small-7.columns
       .row
         .small-11.push-1
