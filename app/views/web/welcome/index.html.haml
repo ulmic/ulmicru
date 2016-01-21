@@ -102,12 +102,13 @@
                 = member.ticket_number
             .labels.vertical-center
               %ul.inline-list
-                - if member.has_confession? :debut
-                  %li
-                    = image_tag debut_of_the_year_white_image, class: :label
-                - if member.has_confession? :number_one
-                  %li
-                    = image_tag number_one_white_image, class: :label
+                - [ :debut, :number_one ].each do |nomination|
+                  - if member.has_confession? nomination
+                    %li
+                      %img{ src: "/assets/#{send("#{nomination}_white_image")}",
+                            class: "label #{nomination} has-tip",
+                            title: t("tooltip.web.welcome.index.#{nomination}", name: member.first_name, gender: (member.is_female? ? 'а' : '')),
+                            'data-tooltip' => true, 'aria-haspopup' => true }
     - if @banner
       .banner
         = link_to @banner.link, class: 'blank' do

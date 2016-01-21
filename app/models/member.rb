@@ -91,6 +91,8 @@ class Member < User
     confessions.where(nomination: nomination).any?
   end
 
+  include GenderHelper
+
   #FIXME try fix active form
   after_save :remove_empty_positions
 

@@ -11,7 +11,7 @@ module Web::ImagesHelper
     'organization/activity_lines/corporative/confession/number_one_white.png'
   end
 
-  def debut_of_the_year_white_image
+  def debut_white_image
     'organization/activity_lines/corporative/confession/debut_of_the_year_white.png'
   end
 end
