@@ -87,6 +87,10 @@ class Member < User
     nil
   end
 
+  def has_confession?(nomination)
+    confessions.where(nomination: nomination).any?
+  end
+
   #FIXME try fix active form
   after_save :remove_empty_positions
 

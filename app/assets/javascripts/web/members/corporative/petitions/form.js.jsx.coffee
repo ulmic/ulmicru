@@ -11,6 +11,7 @@ checkedValue = (component, nomination) ->
 init_select2 = (component) ->
   $(".select2-petition#activity_lines_corporative_confession_member_id").select2 {
     ajax: {
+      #FIXME don't get from admin namespace
       url: Routes.api_admin_members_path()
       data: (term, page) ->
         {
