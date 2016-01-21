@@ -25,7 +25,7 @@ class MemberDecorator < UserDecorator
 
   def position_duration
     last_held_position = positions.last_held_position
-    last_held_position.duration if last_held_position.present?
+    last_held_position.duration if last_held_position.present? && last_held_position.duration.present?
   end
 
   def main_position_title
