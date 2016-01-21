@@ -88,7 +88,7 @@ class Member < User
   end
 
   def has_confession?(nomination)
-    confessions.where(nomination: nomination).any?
+    confessions.where(nomination: nomination, state: :confirmed).any?
   end
 
   include GenderHelper
