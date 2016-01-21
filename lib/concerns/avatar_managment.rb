@@ -1,6 +1,7 @@
 module AvatarManagment
   def default_avatar(target = false)
-    sex = SexDetector.detector.detect first_name
+    @sex_detector ||= SexDetector.detector
+    sex = @sex_detector.detect first_name
     image_url = ''
     if type == 'Member'
       if sex == 'M'

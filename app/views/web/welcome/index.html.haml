@@ -87,10 +87,12 @@
           %a.info
             .vertical-center
               .name
-                = member.short_name
-              -#.post
-                = member.main_position_title
-              -#- if member.position_duration
+                %u
+                  = member.short_name
+              .post
+                %u
+                  = member.main_position_title
+              - if member.position_duration
                 .duration
                   = member.position_duration
               .credo
@@ -98,6 +100,15 @@
               .ticket
                 %span.glyphicon.glyphicon-credit-card
                 = member.ticket_number
+            .labels.vertical-center
+              %ul.inline-list
+                - [ :debut, :number_one ].each do |nomination|
+                  - if member.has_confession? nomination
+                    %li
+                      %img{ src: "/assets/#{send("#{nomination}_white_image")}",
+                            class: "label #{nomination} has-tip",
+                            title: t("tooltip.web.welcome.index.#{nomination}", name: member.first_name, gender: (member.is_female? ? 'а' : '')),
+                            'data-tooltip' => true, 'aria-haspopup' => true }
     - if @banner
       .banner
         = link_to @banner.link, class: 'blank' do

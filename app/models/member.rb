@@ -87,6 +87,12 @@ class Member < User
     nil
   end
 
+  def has_confession?(nomination)
+    confessions.where(nomination: nomination, state: :confirmed).any?
+  end
+
+  include GenderHelper
+
   #FIXME try fix active form
   after_save :remove_empty_positions
 
