@@ -17,5 +17,6 @@ module Localities
 
   def self.load_yml
     @_cache_localities_yml ||= YAML.load_file("#{Rails.root}/lib/yaml/localities.yml")
+    @_cache_localities_yml ||= YAML.load_file("#{Rails.root}/lib/yaml/localities.yml")
   end
 end
