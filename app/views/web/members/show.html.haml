@@ -82,18 +82,19 @@
           %blockquote.user-motto
             = @member.motto
           %hr.orange
-          - if @teams.any?
+          - if @public_teams.any?
             .user-team
               .team-label
-                -# FIXME use pluralize option
-                - if @teams.count == 1
+                - if @public_teams.count == 1
                   = "#{t('activerecord.models.team')}:"
                 - else
                   = "#{t('activerecord.models.team').pluralize(:ru)}:"
-              - @member.teams.each_with_index do |team, index|
+              - @public_teams.each_with_index do |team, index|
                 .user-team-name
-                  %span{ class: "#{'more' if index > 0}" }
-                    = team.full_title
+                  = link_to team_path(team) do
+                    %u
+                      %span{ class: "#{'more' if index > 0}" }
+                        = team.decorate.full_title
                 %br
           .row.god-fathers-childs
             - if @parent.present?

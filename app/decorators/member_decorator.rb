@@ -56,4 +56,8 @@ class MemberDecorator < UserDecorator
       default_avatar
     end
   end
+
+  def public_teams
+    object.teams.visible
+  end
 end
