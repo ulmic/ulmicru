@@ -1,3 +1,5 @@
+= stylesheet_link_tag 'web/comments'
+= javascript_include_tag 'web/comments'
 - comments.each do |comment|
   .row.comment
     .small-2.columns
@@ -7,7 +9,7 @@
         = image_tag comment.user.default_avatar(:image_url)
     .columns.text{ class: (signed_in? && (current_user.id == comment.user.id || current_user.role.admin?)) ? 'small-9' : 'small-10' }
       %h4
-        = comment.short_name
+        = comment.user.short_name
       = comment.text
     - if signed_in? && (current_user.id == comment.user.id || current_user.role.admin?)
       .small-1.columns
