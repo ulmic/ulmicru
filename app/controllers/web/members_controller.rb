@@ -36,7 +36,7 @@ class Web::MembersController < Web::ApplicationController
     @member_form.submit params[:member]
     User.find(member.id).update type: 'Member'
     if @member_form.save
-      redirect_to account_path
+      redirect_to member_path @member_form.ticket
     else
       # FIXME fix this shiiiiit!!!!
       ActiveRecord::Base.connection.execute "UPDATE users SET type = NULL WHERE id = #{member.id}"
