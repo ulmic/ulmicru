@@ -11,7 +11,7 @@ FactoryGirl.define do
     birth_date { generate :date }
     home_adress { generate :string }
     avatar { generate :image }
-    password { generate :string }
+    password { generate :password }
     password_confirmation { password }
     municipality 'г. Ульяновск'
     locality 'г. Ульяновск'

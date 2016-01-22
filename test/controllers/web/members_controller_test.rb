@@ -27,7 +27,7 @@ class Web::MembersControllerTest < ActionController::TestCase
     create :authentication
     post :create, member: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to account_path
+    assert_redirected_to member_path attributes[:ticket]
     assert_equal attributes[:patronymic], Member.last.patronymic
   end
 
