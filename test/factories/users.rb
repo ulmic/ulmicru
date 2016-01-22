@@ -4,7 +4,7 @@ FactoryGirl.define do
     last_name { generate :name }
     patronymic { generate :name }
     email
-    password { generate :string }
+    password { generate :password }
     password_confirmation { password }
     state { User.state_machines[:state].states.map(&:name).first.to_s }
     member_state { User.state_machines[:state].states.map(&:name).first.to_s }
