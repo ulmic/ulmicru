@@ -6,7 +6,7 @@
   .row
     .small-5.columns
       - if @team.address
-        %iframe.team-map{src: google_map_src(@team.address)}
+        %iframe.team-map{ src: google_map_src(@team.address) }
       - else
         .team-card
           .owner-head
