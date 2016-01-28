@@ -3,7 +3,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news = {}
     @news[:published] = News.published.page(params[:page]).decorate
     @news[:unpublished] = News.unpublished.page(params[:page]).decorate
-    @news[:unviewed] = News.unviewed.page(params[:page]).decorate
+    @news[:unviewed] = News.unviewed.order('published_at DESC').page(params[:page]).decorate
     @news[:main] = News.main.page(params[:page]).decorate
     @news[:search] = News.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
