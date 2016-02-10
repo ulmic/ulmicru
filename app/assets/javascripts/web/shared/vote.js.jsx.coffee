@@ -15,10 +15,7 @@ voting = (component, vote) ->
     else
       method = 'PATCH'
 
-  if vote == 'like'
-    difference = 1
-  else if vote == 'dislike'
-    difference = -1
+  difference = vote
 
   $.ajax {
     url: Routes.api_users_votes_path()
