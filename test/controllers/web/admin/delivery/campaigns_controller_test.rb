@@ -33,7 +33,7 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
 
   test 'should create campaign' do
     attributes = attributes_for :delivery_campaign
-    post :create, campaign: attributes
+    post :create, delivery_campaign: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_delivery_campaigns_path
     campaign = Delivery::Campaign.last
@@ -49,7 +49,7 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
 
   test 'should patch update' do
     attributes = attributes_for :delivery_campaign
-    patch :update, campaign: attributes, id: @campaign
+    patch :update, delivery_campaign: attributes, id: @campaign
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_delivery_campaign_path @campaign
     @campaign.reload

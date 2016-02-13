@@ -4,20 +4,25 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:photo)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:body)
+      %th= model_class.human_attribute_name(:image)
       %th= model_class.human_attribute_name(:link)
-      %th= model_class.human_attribute_name(:duration)
+      %th= model_class.human_attribute_name(:creator)
       %th= t 'helpers.links.actions'
   %tbody
     - delivery_campaigns.each do |delivery_campaign|
       %tr.link{ class: state_color(delivery_campaign), data: { href: edit_admin_delivery_campaign_path(delivery_campaign) } }
         %td= delivery_campaign.id
-        %td= image_tag delivery_campaign.small_thumb
-        %td= link_to delivery_campaign.link, delivery_campaign.link
-        %td= "#{l(delivery_campaign.begin_date)} - #{l(delivery_campaign.end_date)}"
+        %td= delivery_campaign.title
+        %td= delivery_campaign.lead
+        %td= image_tag delivery_campaign.image.small
+        %td= link_to t('helpers.link'), delivery_campaign.link
+        %td=l delivery_campaign.mailing_date
+        %td= delivery_campaign.creator.short_name
         %td.actions
-          = link_to edit_admin_delivery_delivery_campaign_path(delivery_campaign), class: 'btn btn-warning btn-xs' do
+          = link_to edit_admin_delivery_campaign_path(delivery_campaign), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
-          = link_to admin_delivery_delivery_campaign_path(delivery_campaign), method: :delete, class: 'btn btn-xs btn-danger' do
+          = link_to admin_delivery_campaign_path(delivery_campaign), method: :delete, class: 'btn btn-xs btn-danger' do
             %span.glyphicon.glyphicon-remove
 = paginate delivery_campaigns, theme: 'twitter-bootstrap-3'

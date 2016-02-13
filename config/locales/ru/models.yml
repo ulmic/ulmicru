@@ -173,6 +173,11 @@ ru:
         argument_type: Типа аргумента
       vote:
         rating: Рейтинг
+      delivery/campaign:
+        title: Тема
+        body: Текст
+        link: Ссылка
+        mailing_date: Дата рассылки
     state_machines:
       member:
         state:
@@ -261,6 +266,12 @@ ru:
           on_vote: На голосовании
           confirmed: Получившие премию
           declined: Отклонённые
+    delivery/campaign:
+      state:
+        states:
+          ready: Готовы к рассылке
+          removed: Удалены
+          declined: Отменены
     errors:
       models:
         member:
