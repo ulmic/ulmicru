@@ -1,6 +1,6 @@
 class VoteForm < ApplicationReform
   properties :user_id, :target_id, :target_type, :difference
-  property :difference, sync: lambda { |identificator| model.difference = difference_count(identificator)  }
+  property :difference, sync: -> (identificator) { model.difference = difference_count(identificator)  }
 
   validates :user_id, presence: true
   validates :target_id, presence: true
