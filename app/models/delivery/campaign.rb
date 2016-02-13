@@ -6,4 +6,25 @@ class Delivery::Campaign < ActiveRecord::Base
   validates :image, presence: true
   validates :creator_id, presence: true
   validates :mailing_date, presence: true
+
+  state_machine :state, initial: :ready do
+    state :ready
+    state :removed
+    state :declined
+
+    event :get_ready do
+      transition all => :ready
+    end
+
+    event :remove do
+      transition all => :removed
+    end
+
+    event :decline do
+      transition all => :declined
+    end
+  end
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [ :title, :body, :link, :mailing_date ]
 end

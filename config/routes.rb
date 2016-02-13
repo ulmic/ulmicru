@@ -76,6 +76,9 @@ Rails.application.routes.draw do
           resources :confessions
         end
       end
+      namespace :delivery do
+	resources :campaigns
+      end
     end
     namespace :users do
       resources :account, only: :update

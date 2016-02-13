@@ -17,6 +17,7 @@ ru:
       comment: Комментарий
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
+      delivery/campaign: Кампания
     attributes:
       user:
         first_name: Имя
