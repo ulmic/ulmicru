@@ -2,6 +2,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
   def index
     @campaigns = {}
     @campaigns[:ready] = ::Delivery::Campaign.ready.page(params[:page]).decorate
+    @campaigns[:done] = ::Delivery::Campaign.done.page(params[:page]).decorate
     @campaigns[:removed] = ::Delivery::Campaign.removed.page(params[:page]).decorate
     @campaigns[:declined] = ::Delivery::Campaign.declined.page(params[:page]).decorate
     @campaigns[:search] = ::Delivery::Campaign.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]

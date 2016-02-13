@@ -14,6 +14,7 @@ class Delivery::Campaign < ActiveRecord::Base
     state :ready
     state :removed
     state :declined
+    state :done
 
     event :get_ready do
       transition all => :ready
