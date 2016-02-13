@@ -57,6 +57,7 @@ ru:
           people: Люди
           activity: Деятельность
           content: Контент
+          delivery: Рассылки
   hints:
     admin:
       user:

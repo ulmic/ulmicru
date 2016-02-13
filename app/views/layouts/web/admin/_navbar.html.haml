@@ -40,6 +40,9 @@
             = menu_item admin_teams_path do
               %span.glyphicon.glyphicon-bullhorn
               = Team.model_name.human.pluralize(:ru)
+            = menu_item admin_letters_path do
+              %span.glyphicon.glyphicon-envelope
+              = Letter.model_name.human.pluralize(:ru)
             %li.divider{ role: :separator }
             %li.dropdown-header
               = t('enumerize.activity_line.activity_type.corporative')
@@ -65,9 +68,9 @@
         = menu_item admin_feedbacks_path do
           %span.glyphicon.glyphicon-share
           = Feedback.model_name.human.pluralize(:ru)
-        = menu_item admin_letters_path do
-          %span.glyphicon.glyphicon-envelope
-          = Letter.model_name.human.pluralize(:ru)
+        = menu_item admin_delivery_campaigns_path do
+          %span.glyphicon.glyphicon-send
+          = t('.delivery')
 
       - elsif current_user.role.author?
         = menu_item admin_events_path do
