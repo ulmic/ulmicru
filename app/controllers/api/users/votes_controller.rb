@@ -1,11 +1,7 @@
 class Api::Users::VotesController < Api::Users::ApplicationController
-  include Concerns::Vote
-
   def create
     @vote_form = VoteForm.new_with_model
-    params[:vote][:difference] = difference_count params[:vote][:difference]
     params[:vote].merge! user_id: current_user.id
-    binding.pry
     if @vote_form.submit params[:vote]
       head :ok
     else
@@ -32,7 +28,6 @@ class Api::Users::VotesController < Api::Users::ApplicationController
     vote = Vote.where(target_type: params[:vote][:target_type],
                       target_id: params[:vote][:target_id],
                       user_id: current_user.id).first
-    params[:vote][:difference] = difference_count params[:vote][:difference]
     @vote_form = VoteForm.new vote
     if @vote_form.submit params[:vote]
       head :ok
