@@ -52,6 +52,19 @@ module ApplicationHelper
     end
   end
 
+  def dropdown(text, &block)
+    content_tag :li, class: :drowdown do
+      concat(link_to('#', class: 'dropdown-toggle', data: { toggle: :dropdown }) do
+	concat text
+	concat ' '
+	concat content_tag :span, '', class: :caret
+      end)
+      concat(content_tag(:ul, class: 'dropdown-menu') do
+	yield block
+      end)
+    end
+  end
+
   def auth_path(provider)
     "/auth/#{provider}"
   end
