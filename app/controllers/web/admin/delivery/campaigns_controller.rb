@@ -10,6 +10,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
 
   def new
     @campaign_form = ::Delivery::CampaignForm.new_with_model
+    @campaign_form.build_audiences
   end
 
   def edit

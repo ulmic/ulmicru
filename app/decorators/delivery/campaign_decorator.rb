@@ -6,4 +6,7 @@ class Delivery::CampaignDecorator < ApplicationDecorator
   def lead
     "#{model.body.first(200)}..."
   end
+
+  def emails
+  end
 end
