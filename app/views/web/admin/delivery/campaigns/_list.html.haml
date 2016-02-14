@@ -21,6 +21,9 @@
         %td=l delivery_campaign.mailing_date
         %td= delivery_campaign.creator.short_name
         %td.actions
+          - if delivery_campaign.ready?
+            = link_to edit_admin_delivery_campaign_path(delivery_campaign), class: 'btn btn-primary btn-xs' do
+              %span.glyphicon.glyphicon-send
           = link_to edit_admin_delivery_campaign_path(delivery_campaign), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           = link_to admin_delivery_campaign_path(delivery_campaign), method: :delete, class: 'btn btn-xs btn-danger' do

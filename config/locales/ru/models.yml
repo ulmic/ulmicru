@@ -272,6 +272,7 @@ ru:
           ready: Готовы к рассылке
           removed: Удалены
           declined: Отменены
+          done: Выполнены
     errors:
       models:
         member:
