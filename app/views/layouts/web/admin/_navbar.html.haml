@@ -33,7 +33,7 @@
           = admin_menu_item Document, admin_documents_path
           = admin_menu_item Comment, admin_comments_path
         = admin_menu_item Feedback, admin_feedbacks_path, :share
-        = dropdown t('.delivery') do
+        = dropdown "#{t('.delivery')} (Beta)" do
           = admin_menu_item Delivery::Campaign, admin_delivery_campaigns_path, :send
       - elsif current_user.role.author?
         = admin_menu_item Event, admin_events_path, :calendar
