@@ -52,12 +52,18 @@ module ApplicationHelper
     end
   end
 
-  def dropdown(text, &block)
+  def dropdown(text, icon = nil, &block)
     content_tag :li, class: :drowdown do
       concat(link_to('#', class: 'dropdown-toggle', data: { toggle: :dropdown }) do
+	if icon
+	  concat content_tag :span, '', class: "glyphicon glyphicon-#{icon}"
+	  concat ' '
+	end
 	concat text
-	concat ' '
-	concat content_tag :span, '', class: :caret
+	unless icon
+	  concat ' '
+	  concat content_tag :span, '', class: :caret
+	end
       end)
       concat(content_tag(:ul, class: 'dropdown-menu') do
 	yield block
