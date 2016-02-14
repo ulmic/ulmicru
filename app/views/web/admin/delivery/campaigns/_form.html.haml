@@ -17,7 +17,6 @@
       != image_input f, @campaign_form, :image
       = hint @campaign_form.model.class, :mailing_date
       = f.input :mailing_date, as: :datetime_picker
-      = f.simple_fields_for :audiences do |a_form|
-        = a_form.input :audience_type, as: :select, collection: audience_type_collection
+      = react_component 'AudienceNestedForm'
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_delivery_campaigns_path, class: 'btn btn-default'
