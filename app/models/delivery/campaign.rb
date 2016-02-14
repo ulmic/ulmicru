@@ -6,7 +6,6 @@ class Delivery::Campaign < ActiveRecord::Base
   validates :body, presence: true
   validates :image, presence: true
   validates :creator_id, presence: true
-  validates :mailing_date, presence: true
 
   mount_uploader :image, PhotoUploader
 

@@ -15,6 +15,7 @@
       = f.input :body
       = f.input :link, as: :string
       != image_input f, @campaign_form, :image
+      = hint @campaign_form.model.class, :mailing_date
       = f.input :mailing_date, as: :datetime_picker
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_delivery_campaigns_path, class: 'btn btn-default'
