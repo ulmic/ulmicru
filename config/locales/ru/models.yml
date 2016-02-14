@@ -178,6 +178,8 @@ ru:
         body: Текст
         link: Ссылка
         mailing_date: Дата рассылки
+      delivery/audience:
+        audience_type: Целевая аудитория
     state_machines:
       member:
         state:
