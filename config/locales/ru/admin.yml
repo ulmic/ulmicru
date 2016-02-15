@@ -42,6 +42,11 @@ ru:
           confessions:
             index:
               title: Премия «Признание»
+      delivery:
+        campaigns:
+          form:
+            select_team: Выберите команду
+            select_event: Выберите мероприятие
   layouts:
     web:
       admin:
