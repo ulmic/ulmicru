@@ -46,7 +46,7 @@ ru:
         campaigns:
           form:
             select_team: Выберите команду
-            select_event: Выберите мероприятие
+            select_event_registrations: Выберите мероприятие
   layouts:
     web:
       admin:

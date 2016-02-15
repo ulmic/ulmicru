@@ -1,4 +1,8 @@
 selectAudienceInstance = (component) ->
+  if component.state.audience_type == 'team'
+    label = I18n.t("web.admin.delivery.campaigns.form.select_team")
+  else if 'event_registrations'
+    label = I18n.t("web.admin.delivery.campaigns.form.select_event_registrations")
   switch component.state.audience_type
     when 'users', 'contact_emails'
       ``
@@ -6,7 +10,7 @@ selectAudienceInstance = (component) ->
       `<div className="input select required">
 	<label className="select required" for="delivery_campaign_audiences_select">
 	  <abbr title="required">*</abbr> 
-	  {I18n.t('web.admin.delivery.campaigns.form.select_team')}
+	  {label}
 	</label>
 	<select onChange={this.editForm} className="select required" name="delivery_campaign[audiences_instance_select]" id="delivery_campaign_audiences_select">
 	</select>
