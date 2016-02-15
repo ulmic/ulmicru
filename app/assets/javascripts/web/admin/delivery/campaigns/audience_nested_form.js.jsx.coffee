@@ -12,11 +12,18 @@ selectAudienceInstance = (component) ->
 	</select>
       </div>`
 
+current_audience_type_value = ->
+  $('#delivery_campaign_audiences_attributes_0_audience_type').val()
+
 @AudienceNestedForm = React.createClass
   getInitialState: ->
     { audience_type: 'users' }
   editForm: ->
-    this.setState { audience_type: $('#delivery_campaign_audiences_attributes_0_audience_type').val() }
+    this.setState { audience_type: current_audience_type_value() }
+  componentDidUpdate: ->
+    $('select').addClass('form-control')
+  componentDidMount: ->
+    this.setState { audience_type: current_audience_type_value() }
   render: ->
     options = []
     $(this.props.audience_types).each ->
