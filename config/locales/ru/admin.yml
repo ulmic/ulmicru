@@ -47,6 +47,7 @@ ru:
           form:
             select_team: Выберите команду
             select_event_registrations: Выберите мероприятие
+            add_audience: Добавить
   layouts:
     web:
       admin:
