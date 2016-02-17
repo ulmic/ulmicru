@@ -18,7 +18,7 @@
         %td= delivery_campaign.lead
         %td= image_tag delivery_campaign.image.small
         %td= link_to t('helpers.link'), delivery_campaign.link
-        %td=l delivery_campaign.mailing_date
+        %td=l delivery_campaign.mailing_date if delivery_campaign.mailing_date.present?
         %td= delivery_campaign.creator.short_name
         %td.actions
           - if delivery_campaign.ready?
