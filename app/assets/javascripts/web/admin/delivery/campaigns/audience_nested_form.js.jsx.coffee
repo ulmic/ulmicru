@@ -8,13 +8,12 @@ selectAudienceInstance = (component) ->
       ``
     when 'team', 'event_registrations'
       `<div className="input select required">
-	<label className="select required" for="delivery_campaign_audiences_select">
-	  <abbr title="required">* </abbr> 
+	<label className="select required" for="delivery_campaign_audiences_attributes_0_audience_type">
+	  <abbr title="required">* </abbr>
 	  {label}
 	</label>
-	<select onChange={component.editId} className="select select2-audience required" name="delivery_campaign[audiences_instance_select]" id="delivery_campaign_audiences_select">
+	<select onChange={component.editId} className="select select2-audience required" name="delivery_campaign[audiences_attributes][0][audience_id]" id="delivery_campaign_audiences_attributes_0_audience_id">
 	</select>
-	<input type="hidden" name="delivery_campaign[audiences_attributes][0][audience_id]" id="delivery_campaign_audiences_attributes_0_audience_id" value={component.state.audience_id}/>
       </div>`
 
 current_audience_type_value = ->
@@ -25,8 +24,8 @@ current_audience_id_value = ->
 
 @AudienceNestedForm = React.createClass
   getInitialState: ->
-    { 
-      audience_type: 'users' 
+    {
+      audience_type: 'users'
     }
   editForm: ->
     this.setState { audience_type: current_audience_type_value() }
@@ -72,7 +71,7 @@ current_audience_id_value = ->
     `<div>
       <div className="input select required delivery_campaign_audiences_audience_type">
 	<label className="select required" for="delivery_campaign_audiences_attributes_0_audience_type">
-	  <abbr title="required">* </abbr> 
+	  <abbr title="required">* </abbr>
 	  {I18n.t('activerecord.attributes.delivery/audience.audience_type')}
 	</label>
 	<select onChange={this.editForm} className="select required" name="delivery_campaign[audiences_attributes][0][audience_type]" id="delivery_campaign_audiences_attributes_0_audience_type">
