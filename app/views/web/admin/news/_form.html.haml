@@ -31,6 +31,6 @@
         = f.input :state, as: :hidden, input_html: { value: :confirmed }
       - if @news_form.title.present?
         = f.input :state_event, as: :state_event
-      = f.association :attachments
+      = f.association :attachments, input_html: { class: :select2 }
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_news_index_path, class: 'btn btn-default'
