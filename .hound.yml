@@ -1,3 +1,5 @@
 ruby:
-  config_file: .ruby-style.yml
+  config_file: code_styles/.ruby-style.yml
+haml:
+  config_file: code_styles/.haml-style.yml
 fail_on_violations: true

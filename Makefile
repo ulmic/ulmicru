@@ -1,5 +1,5 @@
 deps:
-	ansible-galaxy install -p cm/roles zzet.postgresql --ignore-errors
+	sudo ansible-galaxy install -p cm/roles zzet.postgresql --ignore-errors
 
 install:
 	ansible-playbook -i cm/inventory cm/playbook.yml -K

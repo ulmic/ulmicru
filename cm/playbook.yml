@@ -8,10 +8,12 @@
   tasks:
     - name: Install libraries
       apt: name={{ item }}
+      sudo: yes
       with_items:
         - libpq-dev
         - imagemagick
         - libmagickwand-dev
+        - python-psycopg2
 
     - name: Create postgresql user
       postgresql_user: name={{ pg_user }} role_attr_flags=CREATEDB,NOSUPERUSER
@@ -24,4 +26,5 @@
         - secrets
       tags:
        - test
-
+    - command: aptitude install libgmp-dev
+      sudo: yes
