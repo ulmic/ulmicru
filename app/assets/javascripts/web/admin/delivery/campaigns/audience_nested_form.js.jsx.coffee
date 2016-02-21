@@ -1,9 +1,13 @@
-newForms = (component) ->
-  forms = []
+shortAudienceTypes = (audience_types) ->
   audienceTypes = []
-  $(component.props.audience_types).each ->
+  $(audience_types).each ->
     if $.inArray(@[1], ['users', 'contact_emails']) == -1
       audienceTypes.push @
+  audienceTypes
+
+newForms = (component) ->
+  forms = []
+  audienceTypes = shortAudienceTypes component.props.audience_types
   for i in [0...component.state.newFieldsCount]
     forms.push `<AudienceForm index={i + component.props.audiences.length}
                               campaign_id={component.props.campaign_id}
@@ -12,11 +16,16 @@ newForms = (component) ->
 
 existedForms = (component) ->
   forms = []
-  for i in component.props.audiences
-    forms.push `<AudienceForm audience={this}
-                              index={i + component.props.audiences.length}
+  for i in [1..component.props.audiences.length]
+    index = i + component.props.audiences.length - 2
+    if index == 0
+      audienceTypes = component.props.audience_types
+    else
+      audienceTypes = shortAudienceTypes component.props.audience_types
+    forms.push `<AudienceForm audience={component.props.audiences[i]}
+                              index={index}
                               campaign_id={component.props.campaign_id}
-                              audience_types={component.props.audience_types} />`
+                              audience_types={audienceTypes} />`
   forms
 
 addNewFieldsButton = (component) ->
