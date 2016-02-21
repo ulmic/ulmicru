@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 # -*- coding: utf-8 -*-
 Rails.application.routes.draw do
+  mount RailsEmailPreview::Engine, at: 'emails'
   mount Sidekiq::Web => '/sidekiq'
   mount Ckeditor::Engine => '/ckeditor'
 

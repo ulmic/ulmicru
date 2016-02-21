@@ -60,6 +60,10 @@ group :production do
   gem 'unicorn-rails'
 end
 
+group :development do
+  gem 'rails_email_preview', '~> 0.2.29'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'foreman'

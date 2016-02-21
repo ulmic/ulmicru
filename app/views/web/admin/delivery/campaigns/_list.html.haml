@@ -22,6 +22,8 @@
         %td= delivery_campaign.creator.short_name
         %td.actions
           - if delivery_campaign.ready?
+            = link_to rails_email_preview.rep_emails_url, class: 'btn btn-primary btn-xs' do
+              %span.glyphicon.glyphicon-eye-open
             = link_to edit_admin_delivery_campaign_path(delivery_campaign), class: 'btn btn-primary btn-xs' do
               %span.glyphicon.glyphicon-send
           = link_to edit_admin_delivery_campaign_path(delivery_campaign), class: 'btn btn-warning btn-xs' do

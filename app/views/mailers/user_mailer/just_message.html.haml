@@ -130,13 +130,13 @@
                           / start of image
                           %td{ align: "center" }
                             .imgpop
-                              .uploader_wrap{ style: "width: 540px; margin-top: 121px; opacity: 0;" }
+                              .uploader_wrap{ style: "width: 540px; opacity: 0;" }
                                 .upload_buttons
                                   .img_link
                                   .img_upload
                                   .img_edit{ style: "visibility: visible;" }
                               %a{ href: "#" }
-                                %img.bigimage{ alt: "", border: "0", height: "282", src: @image.url, style: "display:block; border:none; outline:none; text-decoration:none;", width: "540" }/
+                                %img.bigimage{ alt: "", border: "0", height: "333", src: @image.url, style: "display:block; border:none; outline:none; text-decoration:none;", width: "540" }/
                         / end of image
                         / Spacing
                         %tr
@@ -170,8 +170,8 @@
                                 %tr
                                   %td{ align: "center", height: "30", style: "padding-left:18px; padding-right:18px;font-family:Helvetica, arial, sans-serif; text-align:center;  color:#ffffff; font-weight: 300;", valign: "middle", width: "auto" }
                                     %p{ align: "center" }
-                                      %span{ style: "color: rgb(255, 255, 255); font-weight: 300; font-size: 36pt;" }
-                                        %a{ href: @link, style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" } = t('.read_more')
+                                      %span{ style: "color: rgb(255, 255, 255); font-weight: 300; font-size: 20pt;" }
+                                        %a{ href: @link, style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" }= t('.read_more')
                         / /button
                         / Spacing
                         %tr
@@ -191,8 +191,9 @@
                 %tr
                   %td{ align: "center", style: "font-family: Helvetica, arial, sans-serif; font-size: 10px;color: #999999", valign: "middle" }
                     %p
-                      If you don't want to receive updates. please
-                      %span{ style: "text-decoration: none; color: #0db9ea" } unsubscribe
+                      = t('mailers.helpers.unsubscribe_text')
+                      %span{ style: "text-decoration: none; color: #0db9ea" }
+                        = t('mailers.helpers.unsubscribe')
                 / Spacing
                 %tr
                   %td{ height: "5", width: "100%" }
