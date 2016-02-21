@@ -14,7 +14,11 @@
       = f.input :title, as: :string
       = f.input :body
       = f.input :link, as: :string
-      != image_input f, @campaign_form, :image
+      = f.label :image
+      .preview
+        = image_tag @campaign_form.model.image if @campaign_form.model.image.present?
+      = f.input :image, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :image, label: false, as: :jasny_file_preview_upload
       = hint @campaign_form.model.class, :mailing_date
       = f.input :mailing_date, as: :datetime_picker
       = react_component 'AudienceNestedForm', audience_types: audience_type_collection,

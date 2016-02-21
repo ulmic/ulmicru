@@ -11,14 +11,14 @@ selectAudienceInstance = (component) ->
       audienceInstanceSelectId = "delivery_campaign_audiences_attributes_#{index}_audience_id"
       audienceInstanceSelectName = "delivery_campaign[audiences_attributes][#{index}][audience_id]"
       `<div className="input select required col-md-5">
-	<label className="select required" for={audienceInstanceSelectId}>
-	  <abbr title="required">* </abbr>
-	  {label}
-	</label>
-	<select onChange={component.editId} className="select select2-audience required" 
-		name={audienceInstanceSelectName} 
-		id={audienceInstanceSelectId}>
-	</select>
+         <label className="select required" for={audienceInstanceSelectId}>
+           <abbr title="required">* </abbr>
+           {label}
+         </label>
+         <select onChange={component.editId} className="select select2-audience required" 
+                 name={audienceInstanceSelectName} 
+                 id={audienceInstanceSelectId}>
+         </select>
       </div>`
 
 current_audience_type_value = (component)->
@@ -88,7 +88,7 @@ current_audience_id_value = ->
     if this.state.visible
       `<div>
 	<div className="input select required delivery_campaign_audiences_audience_type col-md-5">
-	  <label className="select required" for={audienceTypeSelectId}>
+	  <label className="select required" htmlFor={audienceTypeSelectId}>
 	    <abbr title="required">* </abbr>
 	    {I18n.t('activerecord.attributes.delivery/audience.audience_type')}
 	  </label>
