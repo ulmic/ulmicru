@@ -1,9 +1,12 @@
-shortAudienceTypes = (audience_types) ->
-  audienceTypes = []
-  $(audience_types).each ->
-    if $.inArray(@[1], ['users', 'contact_emails']) == -1
-      audienceTypes.push @
-  audienceTypes
+shortAudienceTypes = (component) ->
+  if component.props.audiences.length + component.state.newFieldsCount > 1
+    audienceTypes = []
+    $(component.props.audience_types).each ->
+      if $.inArray(@[1], ['users', 'contact_emails']) == -1
+	audienceTypes.push @
+    audienceTypes
+  else
+    component.props.audience_types
 
 newForms = (component) ->
   forms = []
@@ -18,10 +21,7 @@ existedForms = (component) ->
   forms = []
   for i in [1..component.props.audiences.length]
     index = i + component.props.audiences.length - 2
-    if index == 0
-      audienceTypes = component.props.audience_types
-    else
-      audienceTypes = shortAudienceTypes component.props.audience_types
+    audienceTypes = shortAudienceTypes component.props.audience_types
     forms.push `<AudienceForm audience={component.props.audiences[i]}
                               index={index}
                               campaign_id={component.props.campaign_id}
@@ -34,6 +34,16 @@ addNewFieldsButton = (component) ->
       {I18n.t('web.admin.delivery.campaigns.form.add_audience')}
     </a>`
 
+checkAddNewFieldButtonStatus = (component) ->
+  if this.state.newFieldsCount + this.props.audiences.length == 1
+    mainAudienceType = $('#delivery_campaign_audiences_attributes_0_audience_type').val()
+    switch mainAudienceType
+      when 'team', 'event_registrations'
+        status = 'visible'
+      when 'users', 'contact_emails'
+        status = 'hidden'
+  this.setState { addNewFieldsButtonStatus: status }
+
 @AudienceNestedForm = React.createClass
   getInitialState: ->
     {
@@ -44,15 +54,6 @@ addNewFieldsButton = (component) ->
   addFields: (e) ->
     e.preventDefault()
     this.setState { newFieldsCount: this.state.newFieldsCount + 1 }
-  componentDidUpdate: ->
-    if this.state.newFieldsCount + this.props.audiences.length == 1
-      mainAudienceType = $('#delivery_campaign_audiences_attributes_0_audience_type').val()
-      switch mainAudienceType
-        when 'team', 'event_registrations'
-          status = 'visible'
-        when 'users', 'contact_emails'
-          status = 'hidden'
-      this.setState { addNewFieldsButtonStatus: status }
   render: ->
     `<div>
       {existedForms(this)}
