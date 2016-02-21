@@ -79,6 +79,7 @@ Rails.application.routes.draw do
       end
       namespace :delivery do
 	resources :campaigns
+	resources :sessions, only: [ :create, :destroy ] 
       end
     end
     namespace :users do
