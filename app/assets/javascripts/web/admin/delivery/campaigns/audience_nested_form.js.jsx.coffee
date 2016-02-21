@@ -6,7 +6,7 @@ newForms = (component) ->
                               audience_types={component.props.audience_types} />`
   forms
 
-forms = (component) ->
+existedForms = (component) ->
   forms = []
   for i in component.props.audiences
     forms.push `<AudienceForm audience={this}
@@ -28,7 +28,8 @@ addNewFieldsButton = (component) ->
       audiences: this.props.audiences
       addNewFieldsButtonStatus: 'visible'
     }
-  addFields: ->
+  addFields: (e) ->
+    e.preventDefault()
     this.setState { newFieldsCount: this.state.newFieldsCount + 1 }
   componentDidUpdate: ->
     if this.state.newFieldsCount + this.props.audiences.length == 1
@@ -38,10 +39,10 @@ addNewFieldsButton = (component) ->
           status = 'visible'
         when 'users', 'contact_emails'
           status = 'hidden'
-    this.setState { addNewFieldsButtonStatus: status }
+      this.setState { addNewFieldsButtonStatus: status }
   render: ->
     `<div>
-      {forms(this)}
+      {existedForms(this)}
       {newForms(this)}
       {addNewFieldsButton(this)}
     </div>`

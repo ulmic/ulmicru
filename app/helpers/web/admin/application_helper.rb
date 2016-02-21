@@ -32,7 +32,9 @@ module Web::Admin::ApplicationHelper
   end
 
   def object_updated_less_minute_ago?(object)
-    ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1
+    if object.model.updated_at
+      ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1
+    end
   end
 
   def model_class
