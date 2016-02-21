@@ -3,53 +3,54 @@ shortAudienceTypes = (component) ->
     audienceTypes = []
     $(component.props.audience_types).each ->
       if $.inArray(@[1], ['users', 'contact_emails']) == -1
-	audienceTypes.push @
+        audienceTypes.push @
     audienceTypes
   else
     component.props.audience_types
 
 newForms = (component) ->
   forms = []
-  audienceTypes = shortAudienceTypes component.props.audience_types
+  audienceTypes = shortAudienceTypes component
   for i in [0...component.state.newFieldsCount]
-    forms.push `<AudienceForm index={i + component.props.audiences.length}
+    forms.push `<div className='row-fluid'>
+		  <AudienceForm index={i + component.props.audiences.length}
                               campaign_id={component.props.campaign_id}
-                              audience_types={audienceTypes} />`
+                              audience_types={audienceTypes} />
+		</div>`
   forms
 
 existedForms = (component) ->
   forms = []
   for i in [1..component.props.audiences.length]
-    index = i + component.props.audiences.length - 2
-    audienceTypes = shortAudienceTypes component.props.audience_types
-    forms.push `<AudienceForm audience={component.props.audiences[i]}
+    index = i + component.props.audiences.length
+    audienceTypes = shortAudienceTypes component
+    forms.push `<div className='row-fluid'>
+		  <AudienceForm audience={component.props.audiences[i]}
                               index={index}
                               campaign_id={component.props.campaign_id}
-                              audience_types={audienceTypes} />`
+                              audience_types={audienceTypes} />
+		</div>`
   forms
 
 addNewFieldsButton = (component) ->
-  if component.state.addNewFieldsButtonStatus == 'visible'
-    `<a href='#' className='btn btn-warning' onClick={component.addFields} >
-      {I18n.t('web.admin.delivery.campaigns.form.add_audience')}
-    </a>`
+  `<a href='#' className='btn btn-warning add-new-fields' onClick={component.addFields} >
+    {I18n.t('web.admin.delivery.campaigns.form.add_audience')}
+  </a>`
 
 checkAddNewFieldButtonStatus = (component) ->
-  if this.state.newFieldsCount + this.props.audiences.length == 1
+  if $('.delivery_campaign_audiences_audience_type').length == 1
     mainAudienceType = $('#delivery_campaign_audiences_attributes_0_audience_type').val()
     switch mainAudienceType
       when 'team', 'event_registrations'
-        status = 'visible'
+        $('.add-new-fields').prop 'display', 'block'
       when 'users', 'contact_emails'
-        status = 'hidden'
-  this.setState { addNewFieldsButtonStatus: status }
+        $('.add-new-fields').prop 'display', 'none'
+  
 
 @AudienceNestedForm = React.createClass
   getInitialState: ->
     {
       newFieldsCount: 0
-      audiences: this.props.audiences
-      addNewFieldsButtonStatus: 'visible'
     }
   addFields: (e) ->
     e.preventDefault()

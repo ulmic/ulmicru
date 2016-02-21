@@ -7,17 +7,22 @@ selectAudienceInstance = (component) ->
     when 'users', 'contact_emails'
       ``
     when 'team', 'event_registrations'
-      `<div className="input select required">
-	<label className="select required" for="delivery_campaign_audiences_attributes_0_audience_type">
+      index = component.props.index
+      audienceInstanceSelectId = "delivery_campaign_audiences_attributes_#{index}_audience_id"
+      audienceInstanceSelectName = "delivery_campaign[audiences_attributes][#{index}][audience_id]"
+      `<div className="input select required col-md-5">
+	<label className="select required" for={audienceInstanceSelectId}>
 	  <abbr title="required">* </abbr>
 	  {label}
 	</label>
-	<select onChange={component.editId} className="select select2-audience required" name="delivery_campaign[audiences_attributes][0][audience_id]" id="delivery_campaign_audiences_attributes_0_audience_id">
+	<select onChange={component.editId} className="select select2-audience required" 
+		name={audienceInstanceSelectName} 
+		id={audienceInstanceSelectId}>
 	</select>
       </div>`
 
-current_audience_type_value = ->
-  $('#delivery_campaign_audiences_attributes_0_audience_type').val()
+current_audience_type_value = (component)->
+  $("#delivery_campaign_audiences_attributes_#{component.props.index}_audience_type").val()
 
 current_audience_id_value = ->
   $('#delivery_campaign_audiences_select').val()
@@ -26,6 +31,7 @@ current_audience_id_value = ->
   getInitialState: ->
     {
       audience_type: 'users'
+      visible: true
     }
   editForm: ->
     this.setState { audience_type: current_audience_type_value() }
@@ -63,23 +69,42 @@ current_audience_id_value = ->
       minimumInputLength: 2
     }
   componentDidMount: ->
-    this.setState { audience_type: current_audience_type_value() }
+    this.setState { audience_type: current_audience_type_value(this) }
+  removeField: (e) ->
+    e.preventDefault()
+    this.setState { visible: false }
+  restoreField: (e) ->
+    e.preventDefault()
+    this.setState { visible: true }
   render: ->
     options = []
+    index = this.props.index
     $(this.props.audience_types).each ->
       options.push `<option value={this[1]}>{this[0]}</option>`
-    `<div>
-      <div className="input select required delivery_campaign_audiences_audience_type">
-        <label className="select required" for="delivery_campaign_audiences_attributes_0_audience_type">
-          <abbr title="required">* </abbr>
-          {I18n.t('activerecord.attributes.delivery/audience.audience_type')}
-        </label>
-        <select onChange={this.editForm} className="select required" name="delivery_campaign[audiences_attributes][0][audience_type]" id="delivery_campaign_audiences_attributes_0_audience_type">
-          {options}
-        </select>
-      </div>
-      <input type="hidden" name="delivery_campaign[audiences_attributes][0][campaign_id]"
-                           id="delivery_campaign_audiences_attributes_0_campaign_id"
-                           value={this.props.campaign_id} />
-      {selectAudienceInstance(this)}
-    </div>`
+    campaignIdInputName = "delivery_campaign[audiences_attributes][#{index}][campaign_id]"
+    campaignIdInputId = "delivery_campaign_audiences_attributes_#{index}_campaign_id"
+    audienceTypeSelectName = "delivery_campaign[audiences_attributes][#{index}][audience_type]"
+    audienceTypeSelectId = "delivery_campaign_audiences_attributes_#{index}_audience_type"
+    if this.state.visible
+      `<div>
+	<div className="input select required delivery_campaign_audiences_audience_type col-md-5">
+	  <label className="select required" for={audienceTypeSelectId}>
+	    <abbr title="required">* </abbr>
+	    {I18n.t('activerecord.attributes.delivery/audience.audience_type')}
+	  </label>
+	  <select onChange={this.editForm} className="select required" 
+		  name={audienceTypeSelectName}
+		  id={audienceTypeSelectId}>
+	    {options}
+	  </select>
+	</div>
+	<input type="hidden" name={campaignIdInputName}
+			     id={campaignIdInputId}
+			     value={this.props.campaign_id} />
+	{selectAudienceInstance(this)}
+	<div className='col-md-2'>
+	  <a onClick={this.removeField} href='#' style={{'margin-top': '22px', 'margin-bottom': '22px'}} className='btn btn-danger'>X</a>
+	</div>
+      </div>`
+    else
+      `<a onClick={this.restoreField} href='#' className='btn btn-primary'>{I18n.t('helpers.links.restore')}</a>`
