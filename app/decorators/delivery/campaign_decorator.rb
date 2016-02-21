@@ -7,6 +7,11 @@ class Delivery::CampaignDecorator < ApplicationDecorator
     "#{model.body.first(200)}..."
   end
 
-  def emails
+  def contacts
+    contacts = []
+    object.audiences.each do |audience|
+      contacts += audience.decorate.contacts
+    end
+    contacts
   end
 end
