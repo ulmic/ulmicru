@@ -1,0 +1,28 @@
+- model_class = Delivery::Campaign
+- current_title = page_title(action, model_class.model_name.human)
+- title current_title, :admin
+.page-header
+  %h1= page_title(action, Delivery::Campaign.model_name.human)
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/messages', object: @campaign_form
+.row
+  .col-lg-12
+    = simple_form_for [:admin, @campaign_form], input_html: { class: 'form-horizontal' } do |f|
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'
+      = f.input :title, as: :string
+      = f.input :body
+      = f.input :link, as: :string
+      = f.label :image
+      .preview
+        = image_tag @campaign_form.model.image if @campaign_form.model.image.present?
+      = f.input :image, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :image, label: false, as: :jasny_file_preview_upload
+      = hint @campaign_form.model.class, :mailing_date
+      = f.input :mailing_date, as: :datetime_picker
+      = react_component 'AudienceNestedForm', audience_types: audience_type_collection,
+                                              audiences: @campaign_form.audiences,
+                                              campaign_id: @campaign_form.id
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_delivery_campaigns_path, class: 'btn btn-default'

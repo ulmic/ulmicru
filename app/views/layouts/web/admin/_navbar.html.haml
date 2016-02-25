@@ -9,106 +9,50 @@
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
       - if current_user.role.admin?
-        = menu_item admin_events_path do
-          %span.glyphicon.glyphicon-calendar
-          = Event.model_name.human.pluralize(:ru)
-        = menu_item admin_news_index_path do
-          %span.glyphicon.glyphicon-list-alt
-          = News.model_name.human.pluralize(:ru)
-        %li.dropdown
-          %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
-            = t('.people')
-            %span.caret
-          %ul.dropdown-menu
-            = menu_item admin_users_path do
-              %span.glyphicon.glyphicon-user
-              = User.model_name.human.pluralize(:ru)
-            = menu_item admin_members_path do
-              %span.glyphicon.glyphicon-user
-              = Member.model_name.human.pluralize(:ru)
-            = menu_item admin_questionaries_path do
-              %span.glyphicon.glyphicon-list-alt
-              = Questionary.model_name.human.pluralize(:ru)
-        %li.dropdown
-          %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
-            = t('.activity')
-            %span.caret
-          %ul.dropdown-menu
-            = menu_item admin_activity_lines_path do
-              %span.glyphicon.glyphicon-flag
-              = ActivityLine.model_name.human.pluralize(:ru)
-            = menu_item admin_teams_path do
-              %span.glyphicon.glyphicon-bullhorn
-              = Team.model_name.human.pluralize(:ru)
-            %li.divider{ role: :separator }
-            %li.dropdown-header
-              = t('enumerize.activity_line.activity_type.corporative')
-            %li
-              %a{ href: admin_activity_lines_corporative_confessions_path }
-                = image_tag 'organization/activity_lines/corporative/confession/number_one.png', class: 'my-glyphicon'
-                = ActivityLines::Corporative::Confession.model_name.human
-        %li.dropdown
-          %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
-            = t('.content')
-            %span.caret
-          %ul.dropdown-menu
-            = menu_item admin_articles_path do
-              = Article.model_name.human.pluralize(:ru)
-            = menu_item admin_categories_path do
-              = Category.model_name.human.pluralize(:ru)
-            = menu_item admin_banners_path do
-              = Banner.model_name.human.pluralize(:ru)
-            = menu_item admin_documents_path do
-              = Document.model_name.human.pluralize(:ru)
-            = menu_item admin_comments_path do
-              = Comment.model_name.human.pluralize(:ru)
-        = menu_item admin_feedbacks_path do
-          %span.glyphicon.glyphicon-share
-          = Feedback.model_name.human.pluralize(:ru)
-        = menu_item admin_letters_path do
-          %span.glyphicon.glyphicon-envelope
-          = Letter.model_name.human.pluralize(:ru)
-
+        = admin_menu_item Event, admin_events_path, :calendar
+        = admin_menu_item News, admin_news_index_path, 'list-alt'
+        = dropdown t('.people') do
+          = admin_menu_item User, admin_users_path, :user
+          = admin_menu_item Member, admin_members_path, :user
+          = admin_menu_item Questionary, admin_questionaries_path, 'list-alt'
+        = dropdown t('.activity') do
+          = admin_menu_item ActivityLine, admin_activity_lines_path, :flag
+          = admin_menu_item Team, admin_teams_path, :bullhorn
+          = admin_menu_item Letter, admin_letters_path, :envelope
+          %li.divider{ role: :separator }
+          %li.dropdown-header
+            = t('enumerize.activity_line.activity_type.corporative')
+          %li
+            %a{ href: admin_activity_lines_corporative_confessions_path }
+              = image_tag 'organization/activity_lines/corporative/confession/number_one.png', class: 'my-glyphicon'
+              = ActivityLines::Corporative::Confession.model_name.human
+        = dropdown t('.content') do
+          = admin_menu_item Article, admin_articles_path
+          = admin_menu_item Category, admin_categories_path
+          = admin_menu_item Banner, admin_banners_path
+          = admin_menu_item Document, admin_documents_path
+          = admin_menu_item Comment, admin_comments_path
+        = admin_menu_item Feedback, admin_feedbacks_path, :share
+        = dropdown "#{t('.delivery')} (Beta)" do
+          = admin_menu_item Delivery::Campaign, admin_delivery_campaigns_path, :send
       - elsif current_user.role.author?
-        = menu_item admin_events_path do
-          = Event.model_name.human.pluralize(:ru)
-        = menu_item admin_news_index_path do
-          = News.model_name.human.pluralize(:ru)
-        = menu_item admin_articles_path do
-          = Article.model_name.human.pluralize(:ru)
-        = menu_item admin_categories_path do
-          = Category.model_name.human.pluralize(:ru)
+        = admin_menu_item Event, admin_events_path, :calendar
+        = admin_menu_item News, admin_news_index_path, 'list-alt'
+        = admin_menu_item Article, admin_articles_path
+        = admin_menu_item Category, admin_categories_path
     - if current_user.role.admin?
       %ul.nav.navbar-nav.navbar-right
-        = menu_item admin_unviewed_index_path do
-          %span.glyphicon.glyphicon-info-sign
-          = @notification_count
-        %li.dropdown
-          %a.dropdown-toggle{ href: '#', data: { toggle: :dropdown } }
-            %span.glyphicon.glyphicon-trash
-            = t('web.admin.trash.title')
-          %ul.dropdown-menu
-            = menu_item type_admin_trash_index_path('user') do
-              = User.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('member') do
-              = Member.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('questionary') do
-              = Questionary.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('event') do
-              = Event.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('news') do
-              = News.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('article') do
-              = Article.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('category') do
-              = Category.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('activity_line') do
-              = ActivityLine.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('banner') do
-              = Banner.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('team') do
-              = Team.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path('document') do
-              = Document.model_name.human.pluralize(:ru)
-            = menu_item type_admin_trash_index_path(to_trash_param(ActivityLines::Corporative::Confession)) do
-              = ActivityLines::Corporative::Confession.model_name.human.pluralize(:ru)
+        = admin_menu_item @notification_count, admin_unviewed_index_path, 'info-sign'
+        = dropdown t('web.admin.trash.title'), :trash do
+          = admin_trash_menu_item User
+          = admin_trash_menu_item Member
+          = admin_trash_menu_item Questionary
+          = admin_trash_menu_item Event
+          = admin_trash_menu_item News
+          = admin_trash_menu_item Article
+          = admin_trash_menu_item Category
+          = admin_trash_menu_item ActivityLine
+          = admin_trash_menu_item Banner
+          = admin_trash_menu_item Team
+          = admin_trash_menu_item Document
+          = admin_trash_menu_item ActivityLines::Corporative::Confession

@@ -30,9 +30,7 @@
       - else
         = f.input :state, as: :hidden, input_html: { value: :unviewed }
       %hr
-      .alert.alert-dissmissible.alert-info
-        %span.glyphicon.glyphicon-info-sign
-        = t('hints.admin.event.place')
+      = hint :event, :place
       %br
       = f.label :place
       .form-group.text.required

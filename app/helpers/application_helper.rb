@@ -18,6 +18,23 @@ module ApplicationHelper
     t('.title')
   end
 
+  def admin_menu_item(name, url, icon = nil)
+    title = name.is_a?(Class) ? name.model_name.human.pluralize(:ru) : name
+    if icon
+      menu_item url do
+	concat icon_element icon
+	concat ' '
+	concat title
+      end
+    else
+      menu_item title, url
+    end
+  end
+
+  def admin_trash_menu_item(type)
+    menu_item type.model_name.human.pluralize(:ru), type_admin_trash_index_path(to_trash_param(type))
+  end
+
   def menu_item(name = nil, path = '#', *args, &block)
     path = name || path if block_given?
     options = args.extract_options!
@@ -50,6 +67,29 @@ module ApplicationHelper
         :inactive
       end
     end
+  end
+
+  def dropdown(text, icon = nil, &block)
+    content_tag :li, class: :drowdown do
+      concat(link_to('#', class: 'dropdown-toggle', data: { toggle: :dropdown }) do
+	if icon
+	  concat icon_element icon
+	  concat ' '
+	end
+	concat text
+	unless icon
+	  concat ' '
+	  concat content_tag :span, '', class: :caret
+	end
+      end)
+      concat(content_tag(:ul, class: 'dropdown-menu') do
+	yield block
+      end)
+    end
+  end
+
+  def icon_element(name)
+    content_tag :span, '', class: "glyphicon glyphicon-#{name}"
   end
 
   def auth_path(provider)

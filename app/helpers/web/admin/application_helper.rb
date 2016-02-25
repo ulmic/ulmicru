@@ -32,7 +32,9 @@ module Web::Admin::ApplicationHelper
   end
 
   def object_updated_less_minute_ago?(object)
-    ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1
+    if object.model.updated_at
+      ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1
+    end
   end
 
   def model_class
@@ -45,4 +47,16 @@ module Web::Admin::ApplicationHelper
   end
 
   include Concerns::Trash
+
+  def beta_testing_notice
+    content_tag :div, class: 'alert alert-dissmissible alert-info' do
+      content_tag :span, t('notices.functional_in_beta'), class: 'glyphicon glyphicon-info-sign'
+    end
+  end
+
+  def hint(model_name, attribute_name)
+    content_tag :div, class: 'alert alert-dissmissible alert-info' do
+      content_tag :span, t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}"), class: 'glyphicon glyphicon-info-sign'
+    end
+  end
 end

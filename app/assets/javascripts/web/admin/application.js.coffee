@@ -12,6 +12,7 @@
 #= require localities
 #= require ckeditor/init
 #= require web/admin/tags
+#= require web/admin/delivery/campaigns
 #= require web/admin/popup
 #= require web/admin/places
 #= require select2
@@ -20,7 +21,7 @@
 #= require placeholders
 #= require react
 #= require react_ujs
-#
+
 $.extend String.prototype, camelize: ->
   @replace /(?:^|[-_])(\w)/g, (_, c) ->
     if c then c.toUpperCase() else ''

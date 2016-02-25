@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113002425) do
+ActiveRecord::Schema.define(version: 20160214140733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,34 @@ ActiveRecord::Schema.define(version: 20160113002425) do
     t.text     "state"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "delivery_audiences", force: :cascade do |t|
+    t.text     "audience_type"
+    t.integer  "audience_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "campaign_id"
+  end
+
+  create_table "delivery_campaigns", force: :cascade do |t|
+    t.text     "title"
+    t.text     "body"
+    t.text     "image"
+    t.text     "link"
+    t.integer  "creator_id"
+    t.datetime "mailing_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "state"
+  end
+
+  create_table "delivery_contact_emails", force: :cascade do |t|
+    t.text     "email"
+    t.text     "first_name"
+    t.text     "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "documents", force: :cascade do |t|
@@ -281,6 +309,9 @@ ActiveRecord::Schema.define(version: 20160113002425) do
     t.integer "team_id"
     t.integer "user_id"
   end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.text     "email"

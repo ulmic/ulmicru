@@ -12,9 +12,7 @@
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_documents_path, class: 'btn btn-default'
       = f.input :title, as: :string
-      .alert.alert-dissmissible.alert-info
-        %span.glyphicon.glyphicon-info-sign
-        = t('hints.admin.document.file')
+      = hint @document_form.model.class.to_s, :file
       = f.input :file, as: :attachment_preview
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_documents_path, class: 'btn btn-default'

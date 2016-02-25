@@ -2,7 +2,7 @@ class DatetimePickerInput < SimpleForm::Inputs::StringInput
   def input(wrapper_options)
     value = object.send(attribute_name) if object.respond_to? attribute_name
     display_pattern = I18n.t('datepicker.dformat', :default => '%d/%m/%Y') + ' ' + I18n.t('timepicker.dformat', :default => '%R')
-    input_html_options[:value] ||= I18n.localize(value, :format => display_pattern) if value.present?
+    input_html_options[:value] ||= I18n.localize(value.to_datetime, :format => display_pattern) if value.present?
 
     input_html_options[:type] = 'text'
     picker_pattern = I18n.t('datepicker.pformat', :default => 'DD/MM/YYYY') + ' ' + I18n.t('timepicker.pformat', :default => 'HH:mm')
