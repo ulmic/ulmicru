@@ -31,8 +31,6 @@ class Api::NewsController < Api::ApplicationController
     end
   end
 
-  private
-
   def allow_get_news
     headers['Access-Control-Allow-Origin'] = 'http://ul-lider.ru'
   end
