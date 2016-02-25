@@ -1,7 +1,7 @@
 selectAudienceInstance = (component) ->
   if component.state.audience_type == 'team'
     label = I18n.t("web.admin.delivery.campaigns.form.select_team")
-  else if 'event_registrations'
+  else if component.state.audience_type == 'event_registrations'
     label = I18n.t("web.admin.delivery.campaigns.form.select_event_registrations")
   switch component.state.audience_type
     when 'users', 'contact_emails'
