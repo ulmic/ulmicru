@@ -11,6 +11,7 @@ class Delivery::Campaign < ActiveRecord::Base
 
   state_machine :state, initial: :ready do
     state :ready
+    state :during_mailing
     state :removed
     state :declined
     state :done
@@ -25,6 +26,10 @@ class Delivery::Campaign < ActiveRecord::Base
 
     event :decline do
       transition all => :declined
+    end
+
+    event :start_mailing do
+      transition all => :during_mailing
     end
   end
 
