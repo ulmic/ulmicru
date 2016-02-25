@@ -1,0 +1,8 @@
+ru:
+  mailers:
+    user_mailer:
+      just_message:
+        read_more: Подробности
+    helpers:
+      unsubscribe_text: 'Если вы не хотите получать рассылку от Молодёжного инициативного центра, вы можете '
+      unsubscribe: отписаться

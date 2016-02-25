@@ -27,7 +27,7 @@
       = f.input :note, as: :string
       .alert.alert-dissmissible.alert-info
         %span.glyphicon.glyphicon-info-sign
-        = t('hints.admin.letter.file')
+      = hint :letter, :file
       = f.input :file, as: :attachment_preview
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_letters_path, class: 'btn btn-default'

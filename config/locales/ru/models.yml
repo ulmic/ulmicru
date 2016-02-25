@@ -17,6 +17,7 @@ ru:
       comment: Комментарий
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
+      delivery/campaign: Кампания
     attributes:
       user:
         first_name: Имя
@@ -172,6 +173,13 @@ ru:
         argument_type: Типа аргумента
       vote:
         rating: Рейтинг
+      delivery/campaign:
+        title: Тема
+        body: Текст
+        link: Ссылка
+        mailing_date: Дата рассылки
+      delivery/audience:
+        audience_type: Целевая аудитория
     state_machines:
       member:
         state:
@@ -260,6 +268,13 @@ ru:
           on_vote: На голосовании
           confirmed: Получившие премию
           declined: Отклонённые
+    delivery/campaign:
+      state:
+        states:
+          ready: Готовы к рассылке
+          removed: Удалены
+          declined: Отменены
+          done: Выполнены
     errors:
       models:
         member:
@@ -302,6 +317,12 @@ ru:
         reason: 'Почему этот кандидат достоин получить премию (максимально подробно, аргументированно)?'
         out_ulmic_honors: 'Расскажите о достижениях кандидата вне МИЦ (победы в значимых конкурсах, должности, размещения на досках почёта и т.д.)'
         hobby: 'Чем увлекается (хобби, любимые занятия) кандидат в свободное время?'
+    delivery/audience:
+      audience_type:
+        users: Все пользователи сайта
+        contact_emails: На все имеющиеся почтовые адреса
+        team: На команду
+        event_registrations: Участников мероприятия 
   scopes:
     event:
       future: Грядущие

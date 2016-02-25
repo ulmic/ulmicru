@@ -20,4 +20,7 @@ FactoryGirl.define do
   factory :administration, parent: :team, class: 'Team::Administration' do
     type 'Team::Administration'
   end
+  factory :team_with_teammates, parent: :team do
+    users { create_list :user, 5 }
+  end
 end
