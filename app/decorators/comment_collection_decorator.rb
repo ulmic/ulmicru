@@ -1,14 +1,9 @@
-class CommentCollectionDecorator < Draper::CollectionDecorator
+class CommentCollectionDecorator < DefaultCollectionDecorator
   def with_users
-    object.decorate.map do |comment|
-      { 
-	id: comment.id, 
-	text: comment.text, 
+    with :id, :text, 
 	user: { 
-		avatar: comment.user.small_avatar_url,
-		short_name: comment.user.short_name
-	      }
-      }
-    end
+		avatar: -> { user.small_avatar_url },
+		short_name: -> { user.short_name }
+	      } 
   end
 end
