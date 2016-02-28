@@ -1,3 +1,6 @@
+hr = (component) ->
+  `<hr/>` unless component.state.comments.length == 0
+
 @CommentsField = React.createClass
   loadComments: ->
     $.ajax {
@@ -39,7 +42,7 @@
     `<div>
       <CommentsList comments={this.state.comments}
 		    currentUser={this.props.current_user}/>
-      <hr/>
+      {hr(this)}
       <CommentsForm currentUser={this.props.current_user}
 		    currentUserAvatar={this.props.current_user_avatar}
 		    handleSubmit={this.handleSubmit}

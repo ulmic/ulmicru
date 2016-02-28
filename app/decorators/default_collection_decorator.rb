@@ -3,10 +3,9 @@ class DefaultCollectionDecorator < Draper::CollectionDecorator
     if object.any?
       decorator_class = "#{object.first.class}Decorator".constantize
       decorator_class.decorate_collection(object).map do |instance|
-	arr = attributes.map do |attribute|
+	attributes.map do |attribute|
 	  compile_attributes attribute, instance
-	end
-	arr.to_h
+	end.to_h
       end
     end
   end
@@ -22,6 +21,8 @@ class DefaultCollectionDecorator < Draper::CollectionDecorator
 	arr << key
 	if value.is_a? Proc
 	  arr << instance.instance_exec(&value)
+	elsif value.is_a? Symbol
+	  arr << instance.send(value)
 	elsif value.is_a? Hash
 	  arr << compile_attributes(value, instance).to_h
 	end
