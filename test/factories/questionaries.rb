@@ -14,7 +14,7 @@ FactoryGirl.define do
     want_to_do { generate :string }
     state { Questionary.state_machines[:state].states.map(&:name).first.to_s }
     member_state { Questionary.state_machines[:member_state].states.map(&:name).first.to_s }
-    password { generate :string }
+    password { generate :password }
     role { Questionary.role.values.first }
     password_confirmation { password }
     type 'Questionary'
