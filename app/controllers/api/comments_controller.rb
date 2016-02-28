@@ -1,4 +1,9 @@
 class Api::CommentsController < Api::ApplicationController
+  def index
+    comments = CommentCollectionDecorator.new(Comment.where(record_type: params[:record_type], record_id: params[:record_id]).includes(:user).published).with_users
+    render json: comments
+  end
+
   def create
     @comment = CommentForm.new_with_model
     params[:comment][:user_id] = current_user.id

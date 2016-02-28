@@ -98,7 +98,7 @@ Rails.application.routes.draw do
     resources :news, only: :index
     resources :events, only: :index
     resources :feedbacks, only: :create
-    resources :comments, only: [ :create, :destroy ]
+    resources :comments, only: [ :create, :destroy, :index ]
     resources :users, only: [] do
       member do
         get :confirm
