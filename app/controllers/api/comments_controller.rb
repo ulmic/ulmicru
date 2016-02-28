@@ -22,7 +22,7 @@ class Api::CommentsController < Api::ApplicationController
   def destroy
     @comment = Comment.find params[:id]
     if @comment.user_id == current_user.id || current_user.role.admin?
-      @comment.destroy
+      @comment.remove
       head :ok
     else
       head :unprocessable_entity
