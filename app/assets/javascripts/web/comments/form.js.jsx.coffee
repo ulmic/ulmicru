@@ -11,7 +11,7 @@
     `<div>
       <div className='comment-form'>
 	<h4>
-	  Добавить комментарий
+	  {I18n.t('web.comments.form.add_comment')}
 	</h4>
 	<div className='row'>
 	  <div className='small-2 columns avatar'>
@@ -24,12 +24,12 @@
 	      <input name="utf8" type="hidden" value="&#x2713;" />      
 	      <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
 	      <div className="input text required comment_text">
-		<textarea className="text required" placeholder="Введите свой комментарий..." 
+		<textarea className="text required" placeholder={I18n.t('web.comments.form.write_your_comment')}
 			  name="comment[text]" id="comment_text"
 			  onChange={this.onTextChange} value={this.state.text}>
 		</textarea>
 	      </div>
-	      <input type="submit" name="commit" value="Отправить" className="button" />
+	      <input type="submit" name="commit" value={I18n.t('helpers.submit')} className="button" />
 	    </form>
 	  </div>
 	</div>
