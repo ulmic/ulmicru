@@ -185,9 +185,10 @@ ru:
     comments:
       form:
         add_comment: Добавить комментарий
+        write_your_comment: Введите свой комментарий...
+      index:
         only_confirmed_users_can_leave_comments: Только подтверждённые пользователи могут оставлять комментарии
         auth_before_leave_comment: Авторизуйтесь перед тем, как оставить комментарий
-        write_your_comment: Введите свой комментарий...
   forms:
     placeholders:
       web:

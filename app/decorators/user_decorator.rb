@@ -17,6 +17,14 @@ class UserDecorator < ApplicationDecorator
     default_avatar
   end
 
+  def small_avatar_url
+    if object.type == 'Member' && object.member_confirmed?
+      object.avatar.small.url
+    else
+      object.default_avatar
+    end
+  end
+
   alias element_avatar profile_avatar
 
   def select_presentation(options = {})
