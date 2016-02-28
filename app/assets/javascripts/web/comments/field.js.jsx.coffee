@@ -1,5 +1,5 @@
 hr = (component) ->
-  `<hr/>` unless component.state.comments.length == 0
+  `<hr/>` unless component.state.comments == null
 
 @CommentsField = React.createClass
   loadComments: ->
@@ -38,10 +38,23 @@ hr = (component) ->
         alert 'error'
       ).bind component
     }
+  handleRemove: (id) ->
+    component = this
+    $.ajax {
+      url: Routes.api_comment_path(id)
+      method: 'DELETE'
+      success:(->
+        component.loadComments()
+      ).bind component
+      error:(->
+        component.loadComments()
+      ).bind component
+    }
   render: ->
     `<div>
       <CommentsList comments={this.state.comments}
-		    currentUser={this.props.current_user}/>
+		    currentUser={this.props.current_user}
+		    removeComment={this.handleRemove}/>
       {hr(this)}
       <CommentsForm currentUser={this.props.current_user}
 		    currentUserAvatar={this.props.current_user_avatar}
