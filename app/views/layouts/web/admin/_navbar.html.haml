@@ -40,6 +40,7 @@
         = admin_menu_item News, admin_news_index_path, 'list-alt'
         = admin_menu_item Article, admin_articles_path
         = admin_menu_item Category, admin_categories_path
+        = admin_menu_item Letter, admin_letters_path, :envelope
     - if current_user.role.admin?
       %ul.nav.navbar-nav.navbar-right
         = admin_menu_item @notification_count, admin_unviewed_index_path, 'info-sign'
