@@ -30,7 +30,6 @@ class Article < ActiveRecord::Base
     end
   end
 
-  include ArticleScopes
   include Concerns::ViewsManagment
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :view]

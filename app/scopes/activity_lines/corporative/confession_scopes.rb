@@ -1,6 +1,8 @@
+require 'scopes_rails/state_machine_scopes'
+
 module ActivityLines::Corporative::ConfessionScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
+  include StateMachineScopes
 
   included do
     scope :debut, -> { where nomination: :debut }

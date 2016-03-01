@@ -44,7 +44,6 @@ class News < ActiveRecord::Base
     end
   end
 
-  include NewsScopes
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :lead]
 

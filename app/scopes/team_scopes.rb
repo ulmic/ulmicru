@@ -1,6 +1,8 @@
+require 'scopes_rails/state_machine_scopes'
+
 module TeamScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
+  include StateMachineScopes
 
   included do
     scope :visible, -> { where publicity: :visible }

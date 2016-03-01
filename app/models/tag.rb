@@ -28,8 +28,6 @@ class Tag < ActiveRecord::Base
     end
   end
 
-  include TagScopes
-
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :text ]
 end

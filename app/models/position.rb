@@ -27,6 +27,4 @@ class Position < ActiveRecord::Base
       transition all => :removed
     end
   end
-
-  include PositionScopes
 end

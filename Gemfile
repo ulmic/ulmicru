@@ -56,6 +56,7 @@ gem 'pg_search'
 gem 'react-rails', '~> 1.3.0'
 gem 'reform'
 gem 'rails_email_preview', '~> 0.2.29'
+gem 'scopes_rails'
 
 group :production do
   gem 'unicorn-rails'

@@ -77,7 +77,6 @@ class Member < User
     end
   end
 
-  include MemberScopes
   include TagsHelper
 
   def has_auth_provider?(provider)

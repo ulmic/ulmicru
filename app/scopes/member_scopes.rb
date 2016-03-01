@@ -1,3 +1,5 @@
+require 'scopes_rails/state_machine_scopes'
+
 module MemberScopes
   extend ActiveSupport::Concern
 

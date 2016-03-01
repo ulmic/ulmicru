@@ -50,8 +50,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  include UserScopes
-
   def is_member?
     model_name == 'Member'
   end
