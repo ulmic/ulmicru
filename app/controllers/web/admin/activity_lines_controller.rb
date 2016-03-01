@@ -6,7 +6,7 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
     @activity_lines[:active] = ActivityLine.active.page(params[:page]).decorate
     @activity_lines[:unviewed] = ActivityLine.unviewed.page(params[:page]).decorate
     @activity_lines[:removed] = ActivityLine.removed.page(params[:page]).decorate
-    @activity_lines[:search] = ActivityLine.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @activity_lines[:search] = ActivityLine.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

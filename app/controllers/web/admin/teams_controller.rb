@@ -7,7 +7,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     @teams[:active] = Team.active.page(params[:page]).decorate
     @teams[:unviewed] = Team.unviewed.page(params[:page]).decorate
     @teams[:removed] = Team.removed.page(params[:page]).decorate
-    @teams[:search] = Team.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @teams[:search] = Team.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

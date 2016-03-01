@@ -4,7 +4,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionaries[:on_the_trial] = Questionary.on_the_trial.page(params[:page]).decorate
     @questionaries[:unviewed] = Questionary.unviewed.page(params[:page]).decorate
     @questionaries[:declined] = Questionary.declined.page(params[:page]).decorate
-    @questionaries[:search] = Questionary.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @questionaries[:search] = Questionary.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new
