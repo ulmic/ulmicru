@@ -1,6 +1,6 @@
 #FIXME it will fixed on https://trello.com/c/MqBhJhpc/407-configus-dates ticket
 module DatesHelper
-  CONFESSION_DATES = configus.dates.activity_lines.corporative.confession if configus.present?
+  CONFESSION_DATES = configus.dates.activity_lines.corporative.confession
 
   def submissions_petitions_during?
     submissions_petitions_begins? && !submissions_petitions_ends?
