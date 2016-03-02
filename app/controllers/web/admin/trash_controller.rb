@@ -3,7 +3,9 @@ class Web::Admin::TrashController < Web::Admin::ApplicationController
 
   def index
     @type = resource_type
-    @items = resource_type.removed.page(params[:page]).decorate
+    items = resource_type.removed
+    items = items.search_everywhere(params[:search]) if params[:search]
+    @items = items.page(params[:page]).decorate
   end
 
   def restore

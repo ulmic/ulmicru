@@ -2,7 +2,11 @@
 - model_class = @type
 - title trash_page_title(model_class), :admin
 .page-header
-  %h1= trash_page_title(model_class)
+  .row
+    .col-md-6
+      %h1
+        = trash_page_title(model_class)
+    = render 'web/admin/default/search', model_class: model_class
 %table.table.table-condensed.table-hover
   %thead
     %tr
