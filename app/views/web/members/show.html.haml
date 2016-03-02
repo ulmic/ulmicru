@@ -82,10 +82,11 @@
           %blockquote.user-motto
             = @member.motto
           %hr.orange
-          - if @member.teams.any?
+          - if @teams.any?
             .user-team
               .team-label
-                - if @member.teams.count == 1
+                -# FIXME use pluralize option
+                - if @teams.count == 1
                   = "#{t('activerecord.models.team')}:"
                 - else
                   = "#{t('activerecord.models.team').pluralize(:ru)}:"
