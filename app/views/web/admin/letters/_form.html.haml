@@ -25,8 +25,6 @@
       = f.input :executor_name, as: :string
       = f.input :stamp_of_receipt, as: :string
       = f.input :note, as: :string
-      .alert.alert-dissmissible.alert-info
-        %span.glyphicon.glyphicon-info-sign
       = hint :letter, :file
       = f.input :file, as: :attachment_preview
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
