@@ -24,7 +24,7 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
 
   test 'should get index without instances' do
     @types.each do |type|
-      type.to_s.camelize.constantize.all.map &:destroy
+      type.to_s.camelize.constantize.removed.delete_all
       get :index, type: type
       assert_response :success, @response.body
     end
