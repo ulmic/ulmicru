@@ -11,15 +11,7 @@
         - if on_site_link
           = link_to on_site_link do
             %span.glyphicon.glyphicon-share
-    - if searchable_model?(model_class)
-      .col-md-6
-        .search
-          = form_tag request.fullpath, method: :get do |f|
-            .form-group.text
-              .input-group
-                = text_field_tag :search, params[:search], class: 'text form-control'
-                %span.input-group-btn
-                  = submit_tag t('helpers.search')
+    = render 'web/admin/default/search', model_class: model_class
 #tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - if params[:search]
