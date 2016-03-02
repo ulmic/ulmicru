@@ -1,17 +1,18 @@
 = stylesheet_link_tag 'web/comments'
-= javascript_include_tag 'web/comments'
-- comments.each do |comment|
-  .row.comment
-    .small-2.columns
-      - if comment.user.type == 'Member'
-        = image_tag comment.user.avatar.small
-      - else
-        = image_tag comment.user.default_avatar(:image_url)
-    .columns.text{ class: (signed_in? && (current_user.id == comment.user.id || current_user.role.admin?)) ? 'small-9' : 'small-10' }
-      %h4
-        = comment.user.short_name
-      = comment.text
-    - if signed_in? && (current_user.id == comment.user.id || current_user.role.admin?)
-      .small-1.columns
-        .remove{ data: { comment: { id: comment.id } } }
-          %i.fa.fa-remove
+- if signed_in?
+  - if current_user.confirmed?
+    = javascript_include_tag 'web/comments'
+    = react_component 'CommentsField', record_type: record_type, record_id: record_id,
+                                       current_user: current_user, 
+                                       current_user_avatar: current_user.decorate.small_avatar_url,
+                                       authenticity_token: form_authenticity_token
+  - else
+    %span.label.warning
+      %i.fa.fa-info-circle
+      = t('.only_confirmed_users_can_leave_comments')
+- else
+  %span.label.warning
+    %i.fa.fa-info-circle
+    = t('.auth_before_leave_comment')
+  %br
+  = link_to t('helpers.links.auth'), new_session_path, class: 'button'

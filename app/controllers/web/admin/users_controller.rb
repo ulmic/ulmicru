@@ -4,7 +4,7 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
     @users[:confirmed] = User.confirmed.page(params[:page]).decorate
     @users[:unviewed] = User.unviewed.page(params[:page]).decorate
     @users[:declined] = User.declined.page(params[:page]).decorate
-    @users[:search] = User.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @users[:search] = User.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

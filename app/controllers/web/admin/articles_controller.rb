@@ -4,7 +4,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
     @articles[:confirmed] = Article.confirmed.page(params[:page]).decorate
     @articles[:inactive] = Article.inactive.page(params[:page]).decorate
     @articles[:unviewed] = Article.unviewed.page(params[:page]).decorate
-    @articles[:search] = Article.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @articles[:search] = Article.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
     @tag = Tag.new
   end
 

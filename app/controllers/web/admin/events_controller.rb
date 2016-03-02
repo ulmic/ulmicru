@@ -10,7 +10,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     @events[:past] = ::Event.presented.past.page(params[:page]).decorate
     @events[:unviewed] = ::Event.unviewed.page(params[:page]).decorate
     @events[:declined] = ::Event.declined.page(params[:page]).decorate
-    @events[:search] = Event.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @events[:search] = Event.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

@@ -27,7 +27,7 @@ Configus.build Rails.env do
       end
       it_way do
         full_name 'organization.projects.it_way'
-        url 'https://it-way.herokuapp.com'
+        url 'http://it-way.pro'
       end
     end
     organization do

@@ -19,8 +19,7 @@
         .icons.right
           = render 'layouts/web/shared/social_sharing', counter: true
       .news-comments
-        = render '/web/comments/index', comments: @article.comments.presented.reverse
-        = render '/web/comments/form', record: @article
+        = render '/web/comments/index', record_type: 'Article', record_id: @article.id
   %aside.article-sidebar
     - if @topic_articles.any?
       %h3

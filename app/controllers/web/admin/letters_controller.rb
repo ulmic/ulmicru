@@ -6,7 +6,7 @@ class Web::Admin::LettersController < Web::Admin::ApplicationController
     @letters = {}
     @letters[:sended] = Letter.sended.page(params[:page]).decorate
     @letters[:unviewed] = Letter.unviewed.page(params[:page]).decorate
-    @letters[:search] = Letter.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @letters[:search] = Letter.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new

@@ -18,5 +18,6 @@ module NewsScopes
       order('views DESC')
     }
     scope :actual, -> { where("published_at > CURRENT_DATE - INTERVAL'6 days'") }
+    scope :presented, -> { where.not(state: :removed) }
   end
 end

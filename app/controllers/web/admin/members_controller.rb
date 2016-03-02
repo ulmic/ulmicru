@@ -6,7 +6,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @members[:unviewed] = Member.unviewed.page(params[:page]).decorate
     @members[:declined] = Member.declined.page(params[:page]).decorate
     @members[:unavailable] = Member.unavailable.page(params[:page]).decorate
-    @members[:search] = Member.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @members[:search] = Member.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def new
