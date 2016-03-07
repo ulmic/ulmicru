@@ -159,6 +159,7 @@ ru:
         wrong_email_or_password: 'Неверный e-mail или пароль'
         may_be_you_have_auth_via_social_network: Возможно вы авторизовывались через социальные сети
         remind_password_notification_sended: Вам было отправлено письмо с инструкциями для восстановления пароля
+        sign_in_with: Авторизуйтесь через социальную сеть
     remind_password:
       new:
         title: Восстановление пароля

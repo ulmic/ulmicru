@@ -17,22 +17,35 @@
         = f.input :email, as: :string
         = f.input :password, required: true
         = f.button :submit, t('helpers.enter'), class: "mic-flat-button"
-      .row
-        .small-3.columns
-          = link_to auth_path(:vkontakte) do
-            %span.icon-vkontakte.min-icon
-            = t('social_networks.vkontakte')
-        .small-3.columns
-          = link_to auth_path(:facebook) do
-            %span.icon-facebook.min-icon
-            = t('social_networks.facebook')
-        .small-3.columns
-          = link_to auth_path(:twitter) do
-            %span.icon-twitter.min-icon
-            = t('social_networks.twitter')
-        .small-3.columns
-          = link_to auth_path(:google) do
-            %span.icon-google.min-icon
-      = link_to t('.register'), new_user_path
-      %br
-      = link_to t('.remind_password'), new_remind_password_path
+      .panel
+        .row
+          .small-12.columns
+            %h5
+              = t('.sign_in_with')
+        .row
+          .small-3.columns
+            = link_to auth_path(:vkontakte) do
+              %span.icon-vkontakte.min-icon
+              = t('social_networks.vkontakte')
+          .small-3.columns
+            = link_to auth_path(:facebook) do
+              %span.icon-facebook.min-icon
+              = t('social_networks.facebook')
+          .small-3.columns
+            = link_to auth_path(:twitter) do
+              %span.icon-twitter.min-icon
+              = t('social_networks.twitter')
+          .small-3.columns
+            = link_to auth_path(:google) do
+              %span.icon-google.min-icon
+              = t('social_networks.google')
+      .panel
+        .row
+          .small-6.columns
+            = link_to new_user_path do
+              = fa_icon 'user-plus'
+              = t('.register')
+          .small-6.columns
+            = link_to new_remind_password_path do
+              = fa_icon 'unlock-alt'
+              = t('.remind_password')
