@@ -10,12 +10,13 @@ class Web::NewsController < Web::ApplicationController
     unless @news.is_published?
       redirect_to not_found_page_path
     end
-    topic_news_tags = @news.tags.last 2
-    @topic_news = []
+    topic_news_tags = @news.tags
+    topic_news = []
     topic_news_tags.each do |tag|
-      news_tag = Tag.active.where(target_type: tag.target_type, record_type: 'News').where.not(record_id: @news.id).where.not(record_id: @topic_news.map(&:id)).last
-      @topic_news << NewsDecorator.decorate(news_tag.record) if news_tag
+      news_tag = Tag.active.where(target_type: tag.target_type, record_type: 'News').where.not(record_id: @news.id).where.not(record_id: topic_news.map(&:id)).last
+      topic_news << NewsDecorator.decorate(news_tag.record) if news_tag && news_tag.record.is_published?
     end
+    @topic_news = topic_news.last 2
     @last_news = NewsDecorator.decorate_collection News.published.first 3
     @members = @news.tags.active.members.map &:target
     @strings = @news.tags.active.string
