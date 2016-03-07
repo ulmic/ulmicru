@@ -49,6 +49,9 @@ ru:
             not_changed: Доступ к этому аттрибуту не изменён
           email:
             empty: Для подтверждения аккаунта введите ваш email
+      sessions:
+        create:
+          your_account_is_not_active: Ваш аккаунт заблокирован
   state_machines:
     member:
       state:

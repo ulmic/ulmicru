@@ -6,7 +6,7 @@
         %span.label.success
           %i.fa.fa-exclamation-circle
             = t ".#{flash[:remind_password_notification]}"
-      - if @user.email.present?
+      - if @user.email.present? && @user.has_access?
         %span.label.alert
           %i.fa.fa-exclamation-circle
           = t('.wrong_email_or_password')
