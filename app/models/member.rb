@@ -59,6 +59,9 @@ class Member < User
     event :restore do
       transition removed: :unviewed
     end
+    event :state_renew do
+      transition all => :unviewed
+    end
   end
 
   state_machine :member_state, initial: :unviewed, namespace: :member do

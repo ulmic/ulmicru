@@ -21,8 +21,6 @@
     = f.input :municipality
     = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
     = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
-    = f.input :member_state, as: :hidden, input_html: { value: :unviewed }
-    = f.input :state, as: :hidden, input_html: { value: :unviewed }
     = f.label :avatar
     .preview
       = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
