@@ -7,40 +7,33 @@ class Web::MembersController < Web::ApplicationController
   end
 
   def create
-    exists_member = Member.find_by_ticket params[:member][:ticket]
-    member = exists_member
-    if exists_member
-      if exists_member.state == 'unavailable'
-        exists_member.password_digest = current_user.password_digest
-        exists_member.save
-        current_user.authentications.each do |auth|
-          auth.user_id = exists_member.id
-          auth.save
-        end
-        current_user.registrations.each do |reg|
-          reg.user_id = exists_member.id
-          reg.save
-        end
-        current_user.comments.each do |comment|
-          comment.user_id = exists_member.id
-          comment.save
-        end
-        old_user = current_user
-        sign_in exists_member
-        old_user.remove
+    # FIXME fix with reform
+    members = Member.where ticket: params[:member][:ticket] 
+    if members.any?
+      @member_form = MemberForm.find_with_model_by ticket: params[:member][:ticket]
+      @member_form.check_repeated_registration
+      @member_form.check_complies
+      @member_form.submit params[:member]
+      if @member_form.save
+	@member_form.state_renew
+	@member_form.update member_state: :unviewed
+	[:authentications, :registrations, :comments].each do |collection|
+	  current_user.send(collection).update_all user_id: @member_form.id
+	end
+	@member_form.update password_digest: current_user.password_digest
+	old_user = current_user
+	sign_in @member_form.model
+	old_user.remove
+	redirect_to account_path
+      else
+	render :new
       end
     else
       member = current_user.becomes! Member
-    end
-    @member_form = MemberForm.new member
-    @member_form.submit params[:member]
-    User.find(member.id).update type: 'Member'
-    if @member_form.save
-      redirect_to member_path @member_form.ticket
-    else
-      # FIXME fix this shiiiiit!!!!
-      ActiveRecord::Base.connection.execute "UPDATE users SET type = NULL WHERE id = #{member.id}"
-      render action: :new
+      @member_form = MemberForm.new member
+      @member_form.errors.add :ticket, 
+	I18n.t('validations.there_is_not_such_ticket_or_your_account_still_out_of_database')
+      render :new
     end
   end
 
