@@ -20,7 +20,7 @@
         %td= questionary.place
         %td=l questionary.created_at
         - if searching?
-          %td= activity_line.human_state_name
+          %td= questionary.human_state_name
         %td.actions{ style: 'width: 147px' }
           .btn-group
             = link_to '#', class: 'btn btn-xs btn-success' do

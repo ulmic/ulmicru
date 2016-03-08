@@ -20,7 +20,7 @@
         %td= feedback.text
         %td=l feedback.created_at
         - if searching?
-          %td= activity_line.human_state_name
+          %td= feedback.human_state_name
         %td.actions
           = link_to edit_admin_feedback_path(feedback), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

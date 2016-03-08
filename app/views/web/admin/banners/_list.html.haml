@@ -18,7 +18,7 @@
         %td= link_to banner.link, banner.link
         %td= "#{l(banner.begin_date)} - #{l(banner.end_date)}"
         - if searching?
-          %td= activity_line.human_state_name
+          %td= banner.human_state_name
         %td.actions
           = link_to edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

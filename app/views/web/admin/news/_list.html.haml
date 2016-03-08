@@ -27,7 +27,7 @@
         %td=l news.published_at
         %td= news.views
         - if searching?
-          %td= activity_line.human_state_name
+          %td= news.human_state_name
         %td{ style: 'width: 200px' }
           = react_component 'TagsForm', record: news, record_type: 'news', tags: TagCollectionDecorator.new(news.tags.active).with_just_text
         %td.actions
