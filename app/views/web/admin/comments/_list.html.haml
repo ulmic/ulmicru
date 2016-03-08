@@ -7,8 +7,6 @@
       %th= model_class.human_attribute_name(:text)
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:text)
-      - if searching?
-        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - comments.each do |comment|
@@ -17,8 +15,6 @@
         %td= link_to comment.record.decorate.title, record_path(comment.record)
         %td= comment.user.short_name if comment.user_id
         %td= comment.text
-        - if searching?
-          %td= comment.human_state_name
         %td.actions
           - unless comment.active?
             = link_to admin_comment_path(comment, comment: { state: :active }), method: :patch, class: 'btn btn-success btn-xs' do
