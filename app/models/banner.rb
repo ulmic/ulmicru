@@ -26,7 +26,6 @@ class Banner < ActiveRecord::Base
     end
   end
 
-  include BannerScopes
   include DurationManagment
 
   include PgSearch

@@ -7,6 +7,4 @@ class Vote < ActiveRecord::Base
                       uniqueness: { scope: [ :target_id, :target_type ] }
   validates :target_id, presence: true
   validates :target_type, presence: true
-
-  include VoteScopes
 end

@@ -27,6 +27,7 @@ ru:
         email: E-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
+        type: Тип
         types:
           user: Пользователь
           member: Член МИЦ

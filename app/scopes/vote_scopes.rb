@@ -1,3 +1,5 @@
+require 'scopes_rails/state_machine_scopes'
+
 module VoteScopes
   extend ActiveSupport::Concern
 

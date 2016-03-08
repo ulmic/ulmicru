@@ -33,7 +33,6 @@ class Event < ActiveRecord::Base
   #FIXME try fix active form
   after_save :remove_empty_registrations
 
-  include EventScopes
   include DurationManagment
   include TagsHelper
 

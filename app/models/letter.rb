@@ -26,8 +26,6 @@ class Letter < ActiveRecord::Base
     end
   end
 
-  include LetterScopes
-
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :receiver, :number, :executor_name]
 end

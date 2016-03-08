@@ -1,6 +1,8 @@
+require 'scopes_rails/state_machine_scopes'
+
 module EventScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
+  include StateMachineScopes
 
   included do
     scope :presented, -> { where.not(state: :removed) }

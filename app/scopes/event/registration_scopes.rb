@@ -1,6 +1,7 @@
+require 'scopes_rails/state_machine_scopes'
+
 module Event::RegistrationScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
 
   included do
     scope :attenders, -> { where role: :participant }
