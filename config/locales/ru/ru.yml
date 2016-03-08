@@ -243,3 +243,6 @@ ru:
   validations:
     errors:
       email_presents_in_application: присутствует в приложении
+      there_is_not_such_ticket_or_your_account_still_out_of_database: 'Такого членского билета не существует в базе данных членов МИЦ, либо он ещё не был туда занесён. Если номер вашего членского билета верный, в течение суток он станет активным на сайте МИЦ'
+      you_already_have_an_member_account: У вас уже есть аккаунт члена МИЦ
+      wrong_ticket_or_member_not_exists: Неверный номер членского билета

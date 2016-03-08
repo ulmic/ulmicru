@@ -14,7 +14,7 @@ class Web::MembersController < Web::ApplicationController
       @member_form.check_repeated_registration
       @member_form.check_complies
       @member_form.submit params[:member]
-      if @member_form.save
+      if @member_form.errors.empty? && @member_form.save
 	@member_form.state_renew
 	@member_form.update member_state: :unviewed
 	[:authentications, :registrations, :comments].each do |collection|
@@ -32,7 +32,7 @@ class Web::MembersController < Web::ApplicationController
       member = current_user.becomes! Member
       @member_form = MemberForm.new member
       @member_form.errors.add :ticket, 
-	I18n.t('validations.there_is_not_such_ticket_or_your_account_still_out_of_database')
+	I18n.t('validations.errors.there_is_not_such_ticket_or_your_account_still_out_of_database')
       render :new
     end
   end
