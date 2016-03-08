@@ -27,6 +27,10 @@ ru:
         email: E-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
+        types:
+          user: Пользователь
+          member: Член МИЦ
+          questionary: Кандидат на вступление в МИЦ
       member:
         first_name: Имя
         patronymic: Отчество
