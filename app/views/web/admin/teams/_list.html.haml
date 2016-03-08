@@ -21,6 +21,8 @@
         %td= team_types_name team.type
         %td= team.municipality
         %td= team.publicity
+        - if searching?
+          %td= activity_line.human_state_name
         %td.actions
           - if team.unviewed?
             = link_to admin_team_path(team, team: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do

@@ -197,94 +197,91 @@ ru:
             to_main: Сделать главной новостью
       activity_lines/corporative/confession:
         state:
+          states:
+            unviewed: Ходатайства
+            on_vote: На голосовании
+            confirmed: Получившие премию
+            declined: Отклонённые
           events:
             confirm: Премия получена
             remove: Удалить
             to_vote: Поставить на голосование
             renew: Сделать непросмотренным
-  state_machines:
-    user:
-      state:
-        states:
-          unviewed: Новые
-          confirmed: Подтверждённые
-          declined: Отклонённые
-    event:
-      state:
-        states:
-          future: Будущий
-          current: Текущий
-          past: Прошедший
-          unviewed: Новые
-          declined: Отклонённые
-    article:
-      state:
-        states:
-          unviewed: Новые
-          confirmed: Подтверждённые
-          inactive: Неактивные
-          removed: Удалённые
-    feedback:
-      state:
-        states:
-          unviewed: Новые
-          fixing: В работе
-          done: Сделаны
-          declined: Отклонены
-    comment:
-      state:
-        states:
-          unviewed: Непросмотренные
-          active: Активные
-          declined: Отклонённые
-    banner:
-      state:
-        states:
-          unviewed: Непросмотренные
-          active: Активные
-          removed: Удалённые
-          actual: Актуальные
-    team:
-      state:
-        states:
-          unviewed: Непросмотренные
-          active: Активные
-          removed: Удалённые
-    activity_line:
-      state:
-        states:
-          removed: Удалённые
-          active: Активные
-          unviewed: Непросмотренные
-    letter:
-      state:
-        states:
-          unviewed: Непросмотренные
-          sended: Отправленные
-    activity_lines/corporative/confession:
-      state:
-        states:
-          unviewed: Ходатайства
-          on_vote: На голосовании
-          confirmed: Получившие премию
-          declined: Отклонённые
-    delivery/campaign:
-      state:
-        states:
-          ready: Готовы к рассылке
-          removed: Удалены
-          declined: Отменены
-          done: Выполнены
-    errors:
-      models:
-        member:
-          attributes:
-            motto:
-              taken: уже занят другим пользователем
-        user:
-          attributes:
-            mobile_phone:
-              phone: имеет неверный формат
+      user:
+        state:
+          states:
+            unviewed: Новые
+            confirmed: Подтверждённые
+            declined: Отклонённые
+      event:
+        state:
+          states:
+            future: Будущий
+            current: Текущий
+            past: Прошедший
+            unviewed: Новые
+            declined: Отклонённые
+      article:
+        state:
+          states:
+            unviewed: Новые
+            confirmed: Подтверждённые
+            inactive: Неактивные
+            removed: Удалённые
+      feedback:
+        state:
+          states:
+            unviewed: Новые
+            fixing: В работе
+            done: Сделаны
+            declined: Отклонены
+      comment:
+        state:
+          states:
+            unviewed: Непросмотренные
+            active: Активные
+            declined: Отклонённые
+      banner:
+        state:
+          states:
+            unviewed: Непросмотренные
+            active: Активные
+            removed: Удалённые
+            actual: Актуальные
+      team:
+        state:
+          states:
+            unviewed: Непросмотренные
+            active: Активные
+            removed: Удалённые
+      activity_line:
+        state:
+          states:
+            removed: Удалённые
+            active: Активные
+            unviewed: Непросмотренные
+      letter:
+        state:
+          states:
+            unviewed: Непросмотренные
+            sended: Отправленные
+      delivery/campaign:
+        state:
+          states:
+            ready: Готовы к рассылке
+            removed: Удалены
+            declined: Отменены
+            done: Выполнены
+      errors:
+        models:
+          member:
+            attributes:
+              motto:
+                taken: уже занят другим пользователем
+          user:
+            attributes:
+              mobile_phone:
+                phone: имеет неверный формат
 
 
   enumerize:

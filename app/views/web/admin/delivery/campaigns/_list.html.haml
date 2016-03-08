@@ -23,6 +23,8 @@
         %td= link_to t('helpers.link'), delivery_campaign.link
         %td=l delivery_campaign.mailing_date if delivery_campaign.mailing_date.present?
         %td= delivery_campaign.creator.short_name
+        - if searching?
+          %td= activity_line.human_state_name
         %td.actions
           - if delivery_campaign.ready?
             = link_to rails_email_preview.rep_email_path('user_mailer_preview-just_message', email: delivery_campaign.contacts.first.email, first_name: delivery_campaign.contacts.first.first_name, last_name: delivery_campaign.contacts.first.last_name, link: delivery_campaign.link, subject: delivery_campaign.title, message: delivery_campaign.body, image: delivery_campaign.image), class: 'btn btn-primary btn-xs' do

@@ -21,6 +21,8 @@
         %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
         %td= position.end_date_datetime
         %td= position.for_now
+        - if searching?
+          %td= activity_line.human_state_name
         %td.actions
           - if position.unviewed?
             = link_to admin_position_path(position, position: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
