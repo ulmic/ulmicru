@@ -7,6 +7,8 @@
       %th= model_class.human_attribute_name(:member)
       %th= model_class.human_attribute_name(:year)
       %th= model_class.human_attribute_name(:nomination)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th=t 'helpers.links.actions'
   %tbody
     - activity_lines_corporative_confessions.each do |confession|
@@ -16,6 +18,8 @@
         %td= link_to confession.member.short_name, admin_activity_lines_corporative_confession_path(confession)
         %td= confession.year
         %td= enumerize_locales_value confession.model_name, :nomination, confession.nomination
+        - if searching?
+          %td= confession.human_state_name
         %td.actions
           - if confession.unviewed?
             = link_to admin_activity_lines_corporative_confession_path(confession, activity_lines_corporative_confession: { state: :on_vote }), method: :patch, class: 'btn btn-xs btn-success' do

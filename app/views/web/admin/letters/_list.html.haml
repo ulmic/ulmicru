@@ -10,6 +10,8 @@
       %th= model_class.human_attribute_name(:receiver)
       %th= model_class.human_attribute_name(:executor)
       %th= model_class.human_attribute_name(:stamp_of_receipt)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - letters.each do |letter|
@@ -21,6 +23,8 @@
         %td= letter.receiver
         %td= letter.present_executor
         %td= letter.stamp_of_receipt
+        - if searching?
+          %td= letter.human_state_name
         %td.actions
           = link_to letter.file.url, class: 'btn btn-success btn-xs' do
             %span.glyphicon.glyphicon-download

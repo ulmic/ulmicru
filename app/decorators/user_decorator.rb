@@ -35,6 +35,10 @@ class UserDecorator < ApplicationDecorator
     end
   end
 
+  def human_type_name
+    I18n.t("activerecord.attributes.user.types.#{object.type&.underscore || :user}")
+  end
+
   private
 
   def ticket_or_question
