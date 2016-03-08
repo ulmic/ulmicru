@@ -1,6 +1,8 @@
+require 'scopes_rails/state_machine_scopes'
+
 module TagScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
+  include StateMachineScopes
 
   included do
     scope :string, -> { where tag_type: :string }

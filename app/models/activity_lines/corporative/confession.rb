@@ -48,8 +48,6 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
     end
   end
 
-  include ActivityLines::Corporative::ConfessionScopes
-
   include DatesHelper
 
   def user_can_update_petition?(user_id)

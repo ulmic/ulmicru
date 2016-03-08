@@ -26,7 +26,6 @@ class Team < ActiveRecord::Base
     end
   end
 
-  include TeamScopes
   include TagsHelper
 
   def is_departament?

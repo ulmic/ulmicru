@@ -21,6 +21,4 @@ class Feedback < ActiveRecord::Base
       transition all => :declined
     end
   end
-
-  include FeedbackScopes
 end

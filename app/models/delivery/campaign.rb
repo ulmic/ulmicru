@@ -33,7 +33,6 @@ class Delivery::Campaign < ActiveRecord::Base
     end
   end
 
-  include Delivery::CampaignScopes
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :body, :link, :mailing_date ]
 end

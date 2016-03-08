@@ -21,6 +21,4 @@ class Document < ActiveRecord::Base
       transition all => :unviewed
     end
   end
-
-  include DocumentScopes
 end

@@ -24,6 +24,4 @@ class Comment < ActiveRecord::Base
       transition all => :removed
     end
   end
-
-  include CommentScopes
 end

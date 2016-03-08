@@ -1,6 +1,8 @@
+require 'scopes_rails/state_machine_scopes'
+
 module UserScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
+  include StateMachineScopes
 
   included do
     scope :admins, -> { where role: :admin }
