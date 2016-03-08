@@ -10,7 +10,7 @@ class Web::SessionsController < Web::ApplicationController
       if @user.authenticate(params[:user][:password]) 
 	if @user.has_access?
 	  sign_in @user
-	  redirect_to account_path
+	  redirect_to params[:url]
 	else
 	  @user.errors.add :email, I18n.t('notifications.web.sessions.create.your_account_is_not_active')
 	  render :new

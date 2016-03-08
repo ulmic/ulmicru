@@ -13,7 +13,7 @@
         %span.label.info
           %i.fa.fa-info-circle
           = t('.may_be_you_have_auth_via_social_network')
-      = simple_form_for @user, url: { controller: 'web/sessions', action: :create }, method: :post do |f|
+      = simple_form_for @user, url: { controller: 'web/sessions', action: :create, url: params[:url] }, method: :post do |f|
         = f.input :email, as: :string
         = f.input :password, required: true
         = f.button :submit, t('helpers.enter'), class: "mic-flat-button"
