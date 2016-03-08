@@ -12,7 +12,7 @@ class Web::MembersController < Web::ApplicationController
     if members.any?
       @member_form = MemberForm.find_with_model_by ticket: params[:member][:ticket]
       @member_form.check_repeated_registration
-      @member_form.check_complies
+      @member_form.check_complies params[:member]
       @member_form.submit params[:member]
       if @member_form.errors.empty? && @member_form.save
 	@member_form.state_renew

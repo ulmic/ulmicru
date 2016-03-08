@@ -8,9 +8,9 @@ class MemberForm < ApplicationForm
     attributes :title, :begin_date, :member_id, :state, :end_date, :for_now
   end
 
-  def check_complies(**params)
-    unless first_name == params[:first_name] && first_name == params[:last_name] && 
-       first_name == params[:patronymic] && first_name == params[:ticket]
+  def check_complies(params)
+    unless first_name == params[:first_name] && last_name == params[:last_name] && 
+       patronymic == params[:patronymic] && ticket == params[:ticket].to_i
       errors.add :ticket, I18n.t('validations.errors.wrong_ticket_or_member_not_exists')
     end
   end

@@ -13,8 +13,8 @@ FactoryGirl.define do
     avatar { generate :image }
     password { generate :password }
     password_confirmation { password }
-    municipality 'г. Ульяновск'
-    locality 'г. Ульяновск'
+    municipality { Member.municipality.values.first } 
+    locality { Member.locality.values.first }
     state { Member.state_machines[:state].states.map(&:name).first.to_s }
     member_state { Member.state_machines[:member_state].states.map(&:name).first.to_s }
     role 'user'
