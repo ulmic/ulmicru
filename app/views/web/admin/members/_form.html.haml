@@ -17,7 +17,7 @@
       = f.input :motto, as: :string
       = f.input :ticket, as: :string, required: true
       = f.input :mobile_phone, as: :string
-      = f.input :birth_date, as: :string, as: :date_picker
+      = f.input :birth_date, as: :date_picker
       = f.input :home_adress, as: :string
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
