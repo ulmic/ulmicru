@@ -14,6 +14,7 @@ class Member < User
   has_many :confessions, class_name: 'ActivityLines::Corporative::Confession',
                          dependent: :destroy
 
+  validates :email, uniqueness: true
   validates :first_name, human_name: true,
                          allow_blank: true
   validates :last_name, human_name: true,
