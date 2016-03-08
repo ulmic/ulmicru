@@ -17,6 +17,8 @@
         %td= user.first_name
         %td= user.last_name
         %td= user.email
+        - if searching?
+          %td= activity_line.human_state_name
         %td.actions
           - unless user.is_member?
             = link_to new_admin_member_path(id: user.id), class: 'btn btn-success btn-xs' do

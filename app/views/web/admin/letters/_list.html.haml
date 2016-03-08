@@ -23,6 +23,8 @@
         %td= letter.receiver
         %td= letter.present_executor
         %td= letter.stamp_of_receipt
+        - if searching?
+          %td= activity_line.human_state_name
         %td.actions
           = link_to letter.file.url, class: 'btn btn-success btn-xs' do
             %span.glyphicon.glyphicon-download

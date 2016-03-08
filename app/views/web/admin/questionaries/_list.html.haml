@@ -19,6 +19,8 @@
         %td= link_to questionary.full_name, edit_admin_questionary_path(questionary)
         %td= questionary.place
         %td=l questionary.created_at
+        - if searching?
+          %td= activity_line.human_state_name
         %td.actions{ style: 'width: 147px' }
           .btn-group
             = link_to '#', class: 'btn btn-xs btn-success' do
