@@ -8,8 +8,6 @@
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:text)
       %th= model_class.human_attribute_name(:created_at)
-      - if searching?
-        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - feedbacks.each do |feedback|
@@ -19,8 +17,6 @@
         %td= feedback.user.short_name if feedback.user
         %td= feedback.text
         %td=l feedback.created_at
-        - if searching?
-          %td= feedback.human_state_name
         %td.actions
           = link_to edit_admin_feedback_path(feedback), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
