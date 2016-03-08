@@ -1,5 +1,6 @@
 class Web::SessionsController < Web::ApplicationController
-  # FIXME forbid access if the user is signed in
+  before_filter :redirect_if_signed_in, except: :destroy
+
   def new
     @user = UserForm.new_with_model
   end
@@ -28,5 +29,11 @@ class Web::SessionsController < Web::ApplicationController
   def destroy
     sign_out
     redirect_to params[:url] || root_path
+  end
+
+  private
+
+  def redirect_if_signed_in
+    redirect_to account_path if signed_in?
   end
 end
