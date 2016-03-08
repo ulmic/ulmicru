@@ -17,7 +17,7 @@ class MemberForm < ApplicationForm
 
   def check_repeated_registration
     unless unavailable?
-      errors.add :ticket, I18n.t('validations.you_already_have_an_member_account')
+      errors.add :ticket, I18n.t('validations.errors.you_already_have_an_member_account')
     end
   end
 end
