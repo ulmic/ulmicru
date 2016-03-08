@@ -7,6 +7,8 @@
       %th= model_class.human_attribute_name(:first_name)
       %th= model_class.human_attribute_name(:last_name)
       %th= model_class.human_attribute_name(:email)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - users.each do |user|

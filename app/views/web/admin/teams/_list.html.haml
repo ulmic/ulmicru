@@ -9,6 +9,8 @@
       %th= model_class.human_attribute_name(:type)
       %th= model_class.human_attribute_name(:municipality)
       %th= model_class.human_attribute_name(:publicity)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th=t 'helpers.links.actions'
   %tbody
     - teams.each do |team|

@@ -9,6 +9,8 @@
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:published_at)
       %th= model_class.human_attribute_name(:views)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody

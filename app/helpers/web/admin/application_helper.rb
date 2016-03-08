@@ -59,4 +59,8 @@ module Web::Admin::ApplicationHelper
       content_tag :span, t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}"), class: 'glyphicon glyphicon-info-sign'
     end
   end
+
+  def searching?
+    params[:search].present?
+  end
 end

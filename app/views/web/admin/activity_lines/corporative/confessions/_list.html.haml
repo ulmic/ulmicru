@@ -7,6 +7,8 @@
       %th= model_class.human_attribute_name(:member)
       %th= model_class.human_attribute_name(:year)
       %th= model_class.human_attribute_name(:nomination)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th=t 'helpers.links.actions'
   %tbody
     - activity_lines_corporative_confessions.each do |confession|
