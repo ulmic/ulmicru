@@ -92,7 +92,8 @@ module ApplicationHelper
     content_tag :span, '', class: "glyphicon glyphicon-#{name}"
   end
 
-  def auth_path(provider)
+  def auth_path(provider, **http_params)
+    session[:redirect_url] = http_params[:url]
     "/auth/#{provider}"
   end
 

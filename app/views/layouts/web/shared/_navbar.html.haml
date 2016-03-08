@@ -21,11 +21,11 @@
               .sign-in
                 = t('helpers.sign_in')
               .icons
-                = link_to auth_path(:vkontakte) do
+                = link_to auth_path(:vkontakte, url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-vkontakte.min-icon
-                = link_to auth_path(:twitter) do
+                = link_to auth_path(:twitter, url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-twitter.min-icon
-                = link_to auth_path(:facebook) do
+                = link_to auth_path(:facebook, url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-facebook.min-icon
                 = link_to new_session_path(url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-door.min-icon
