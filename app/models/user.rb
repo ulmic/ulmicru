@@ -68,8 +68,12 @@ class User < ActiveRecord::Base
     state == 'confirmed'
   end
 
+  def has_access?
+    state != 'removed' && state != 'declined'
+  end
+
   def can_reset_password?
-    state != 'removed'
+    has_access?
   end
 
   def generate_token

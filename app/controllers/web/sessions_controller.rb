@@ -7,9 +7,14 @@ class Web::SessionsController < Web::ApplicationController
   def create
     @user = User.find_by_email params[:user][:email]
     if @user
-      if @user.authenticate params[:user][:password]
-        sign_in @user
-        redirect_to account_path
+      if @user.authenticate(params[:user][:password]) 
+	if @user.has_access?
+	  sign_in @user
+	  redirect_to account_path
+	else
+	  @user.errors.add :email, I18n.t('notifications.web.sessions.create.your_account_is_not_active')
+	  render :new
+	end
       else
         @user = @user.becomes! User
         render :new
