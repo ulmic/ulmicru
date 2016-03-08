@@ -24,7 +24,7 @@
         %td= event.place
         %td= link_to event.creator.short_name, member_path(event.creator.ticket) if event.creator
         - if searching?
-          %td= activity_line.human_state_name
+          %td= event.human_state_name
         %td.actions
           - if current_user.role.admin?
             - unless event.confirmed?

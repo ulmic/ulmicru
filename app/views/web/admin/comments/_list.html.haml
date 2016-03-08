@@ -18,7 +18,7 @@
         %td= comment.user.short_name if comment.user_id
         %td= comment.text
         - if searching?
-          %td= activity_line.human_state_name
+          %td= comment.human_state_name
         %td.actions
           - unless comment.active?
             = link_to admin_comment_path(comment, comment: { state: :active }), method: :patch, class: 'btn btn-success btn-xs' do
