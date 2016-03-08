@@ -33,7 +33,7 @@ class Web::OmniauthController < Web::ApplicationController
       end
       Authentication.create user_id: current_user.id, provider: provider, uid: uid
     end
-    redirect_to account_path
+    redirect_to params[:url]
   end
 
   alias :google :callback

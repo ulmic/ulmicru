@@ -27,7 +27,7 @@
                   .icon-twitter.min-icon
                 = link_to auth_path(:facebook) do
                   .icon-facebook.min-icon
-                = link_to new_session_path do
+                = link_to new_session_path(url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-door.min-icon
           %li.banner-container
             - if signed_in?
