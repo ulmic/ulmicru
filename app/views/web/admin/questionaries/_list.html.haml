@@ -8,6 +8,8 @@
       %th= model_class.human_attribute_name(:full_name)
       %th= model_class.human_attribute_name(:place)
       %th= model_class.human_attribute_name(:created_at)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - questionaries.each do |questionary|

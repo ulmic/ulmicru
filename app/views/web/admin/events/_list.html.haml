@@ -8,6 +8,8 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:duration)
       %th= model_class.human_attribute_name(:place)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - events.each do |event|

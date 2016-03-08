@@ -10,6 +10,8 @@
       %th= model_class.human_attribute_name(:link)
       %th= model_class.human_attribute_name(:mailing_date)
       %th= model_class.human_attribute_name(:creator)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - delivery_campaigns.each do |delivery_campaign|

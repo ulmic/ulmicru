@@ -8,6 +8,8 @@
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:text)
       %th= model_class.human_attribute_name(:created_at)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - feedbacks.each do |feedback|
