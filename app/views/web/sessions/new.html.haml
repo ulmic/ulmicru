@@ -24,19 +24,19 @@
               = t('.sign_in_with')
         .row
           .small-3.columns
-            = link_to auth_path(:vkontakte) do
+            = link_to auth_path(:vkontakte, url: params[:url]) do
               %span.icon-vkontakte.min-icon
               = t('social_networks.vkontakte')
           .small-3.columns
-            = link_to auth_path(:facebook) do
+            = link_to auth_path(:facebook, url: params[:url]) do
               %span.icon-facebook.min-icon
               = t('social_networks.facebook')
           .small-3.columns
-            = link_to auth_path(:twitter) do
+            = link_to auth_path(:twitter, url: params[:url]) do
               %span.icon-twitter.min-icon
               = t('social_networks.twitter')
           .small-3.columns
-            = link_to auth_path(:google) do
+            = link_to auth_path(:google, url: params[:url]) do
               %span.icon-google.min-icon
               = t('social_networks.google')
       .panel
