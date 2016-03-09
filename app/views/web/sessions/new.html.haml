@@ -13,6 +13,10 @@
         %span.label.info
           %i.fa.fa-info-circle
           = t('.may_be_you_have_auth_via_social_network')
+      - if params[:notification].present?
+        %span.label.info
+          = fa_icon 'info-circle'
+          = t("notifications.web.sessions.new.#{params[:notification]}")
       = simple_form_for @user, url: { controller: 'web/sessions', action: :create, url: params[:url] }, method: :post do |f|
         = f.input :email, as: :string
         = f.input :password, required: true
