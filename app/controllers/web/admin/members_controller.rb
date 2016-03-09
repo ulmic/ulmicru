@@ -10,7 +10,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def show
-    @member = Member.find(params[:id]).decorate
+    @member = Member.includes(:positions, :registrations).find(params[:id]).decorate
   end
 
   def new

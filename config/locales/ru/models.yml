@@ -47,12 +47,14 @@ ru:
         municipality: Муниципальное образование
         locality: Населённый пункт
         parent: Крёстный
+        parent_id: Крёстный
         children: Крестники
         state: Статус на сайте
         teams: Мои команды
         state_event: Статус на сайте
         school: Учебное заведение
-        main_position: Текущая должность
+        main_position_title: Текущая должность
+        join_date: Дата вступления
       questionary:
         first_name: Имя
         patronymic: Отчество

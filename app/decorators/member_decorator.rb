@@ -2,6 +2,7 @@ class MemberDecorator < UserDecorator
   delegate_all
 
   decorates_association :teams
+  decorates_association :parent
 
   def full_name
     "#{first_name} #{patronymic} #{last_name}"
@@ -49,11 +50,46 @@ class MemberDecorator < UserDecorator
     avatar.profile if avatar
   end
 
+  def presentation
+    h.content_tag :a, href: admin_member_path(id) do
+      short_name
+    end
+  end
+
+  alias to_s presentation
+
   def element_avatar
     if avatar.present? && confirmed?
       avatar.element
     else
       default_avatar
     end
+  end
+
+  def real_attributes
+    [:ticket, :email, :motto, :parent, :mobile_phone, :birth_date, :municipality, :locality, :join_date, :school, :main_position_title]
+  end
+
+  def show_attribute(attribute)
+    case attribute
+    when :email
+      mail_to send attribute
+    when :mobile_phone
+      tel_tag send attribute
+    when :birth_date
+      I18n.l send(attribute), format: '%d %B %Y'
+    when :municipality, :locality, :join_date, :school
+      h.content_tag :a, href: admin_members_path(search: send(attribute)) do
+        send attribute
+      end
+    when :role
+      send "#{attribute}_text"
+    else
+      send attribute
+    end
+  end
+
+  def sites_attributes
+    [:id, :role]
   end
 end
