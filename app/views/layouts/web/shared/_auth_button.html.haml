@@ -1,0 +1,9 @@
+= link_to t('helpers.links.auth'), new_session_path(url: request.env['ORIGINAL_FULLPATH']), class: :button
+= link_to auth_path(:vkontakte, url: request.env['ORIGINAL_FULLPATH']) do
+  %span.icon-vkontakte.min-icon
+= link_to auth_path(:facebook, url: request.env['ORIGINAL_FULLPATH']) do
+  %span.icon-facebook.min-icon
+= link_to auth_path(:twitter, url: request.env['ORIGINAL_FULLPATH']) do
+  %span.icon-twitter.min-icon
+= link_to auth_path(:google, url: request.env['ORIGINAL_FULLPATH']) do
+  %span.icon-google.min-icon
