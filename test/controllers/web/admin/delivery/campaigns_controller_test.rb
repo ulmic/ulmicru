@@ -27,7 +27,7 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
 #  end
 
   test 'should get index without instances' do
-    Delivery::Campaign.destroy_all
+    Delivery::Campaign.delete_all
     get :index
     assert_response :success, @response.body
   end
