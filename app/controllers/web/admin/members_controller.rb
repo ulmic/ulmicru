@@ -9,6 +9,10 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @members[:search] = Member.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
+  def show
+    @member = Member.find(params[:id]).decorate
+  end
+
   def new
     if params[:id]
       user = User.find params[:id]

@@ -24,6 +24,11 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get show' do
+    get :show, id: @member
+    assert_response :success, @response.body
+  end
+
   test 'should get new' do
     get :new
     assert_response :success, @response.body

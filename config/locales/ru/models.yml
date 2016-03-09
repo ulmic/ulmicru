@@ -52,6 +52,7 @@ ru:
         teams: Мои команды
         state_event: Статус на сайте
         school: Учебное заведение
+        main_position: Текущая должность
       questionary:
         first_name: Имя
         patronymic: Отчество
@@ -233,7 +234,7 @@ ru:
         users: Все пользователи сайта
         contact_emails: На все имеющиеся почтовые адреса
         team: На команду
-        event_registrations: Участников мероприятия 
+        event_registrations: Участников мероприятия
   scopes:
     event:
       future: Грядущие
