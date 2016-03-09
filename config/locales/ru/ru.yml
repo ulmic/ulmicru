@@ -50,6 +50,8 @@ ru:
           email:
             empty: Для подтверждения аккаунта введите ваш email
       sessions:
+        new:
+          need_auth: Для выполнения этого действия требуется авторизация
         create:
           your_account_is_not_active: Ваш аккаунт заблокирован
   state_machines:
