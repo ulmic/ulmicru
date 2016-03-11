@@ -1,0 +1,2 @@
+- if instance.member_unviewed? && instance.first_name.present?
+  = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(instance, questionary: { member_state: :on_the_trial }), method: :patch, class: 'btn btn-success'

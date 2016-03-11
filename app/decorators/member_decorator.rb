@@ -87,6 +87,8 @@ class MemberDecorator < UserDecorator
 	end
       when :role
 	send "#{attribute}_text"
+      when :member_state, :state
+	human_state_name send attribute
       else
 	send attribute
       end
@@ -101,6 +103,6 @@ class MemberDecorator < UserDecorator
   end
 
   def sites_attributes
-    [:id, :role, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }] 
+    [:id, :role, :state, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }] 
   end
 end

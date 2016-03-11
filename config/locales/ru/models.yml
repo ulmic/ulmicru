@@ -77,6 +77,7 @@ ru:
         experience: Опыт и навыки
         locality: Населённый пункт
         school: Учебное заведение
+        member_state: Статус заявки
       news:
         title: Заголовок
         body: Контекст
