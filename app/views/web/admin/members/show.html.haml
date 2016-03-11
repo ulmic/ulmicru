@@ -16,13 +16,13 @@
     %table.table.attributes-table
       - @member.sites_attributes.each do |attribute|
         %tr
-          %td= model_class.human_attribute_name attribute
+          %td= @member.show_human_attribute_name attribute
           %td= @member.show_attribute attribute
   .col-lg-9
     %table.table.attributes-table
       - @member.real_attributes.each do |attribute|
         %tr
-          %td= model_class.human_attribute_name(attribute)
+          %td= @member.show_human_attribute_name attribute
           %td= @member.show_attribute attribute
     %hr
     - if @member.positions.any?

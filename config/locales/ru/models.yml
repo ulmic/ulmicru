@@ -28,6 +28,7 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
         type: Тип
+        sign_in_count: Количество входов
         types:
           user: Пользователь
           member: Член МИЦ

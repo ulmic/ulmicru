@@ -72,25 +72,34 @@ class MemberDecorator < UserDecorator
   end
 
   def show_attribute(attribute)
-    case attribute
-    when :email
-      mail_to send attribute
-    when :mobile_phone
-      tel_tag send attribute
-    when :birth_date
-      I18n.l send(attribute), format: '%d %B %Y'
-    when :municipality, :locality, :join_date, :school
-      h.content_tag :a, href: admin_members_path(search: send(attribute)) do
-        send attribute
+    if attribute.is_a? Symbol
+      case attribute
+      when :email
+	mail_to send attribute
+      when :mobile_phone
+	tel_tag send attribute
+      when :birth_date
+	I18n.l send(attribute), format: '%d %B %Y'
+      when :municipality, :locality, :join_date, :school
+	h.content_tag :a, href: admin_members_path(search: send(attribute)) do
+	  send attribute
+	end
+      when :role
+	send "#{attribute}_text"
+      else
+	send attribute
       end
-    when :role
-      send "#{attribute}_text"
     else
-      send attribute
+      instance_exec(&attribute.values.first)
     end
   end
 
+  def show_human_attribute_name(attribute)
+    attr = attribute.is_a?(Symbol) ? attribute : attribute.keys.first
+    object.class.human_attribute_name attr
+  end
+
   def sites_attributes
-    [:id, :role]
+    [:id, :role, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }] 
   end
 end
