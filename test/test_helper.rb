@@ -19,6 +19,7 @@ class ActiveSupport::TestCase
   include Concerns::AuthManagment
   include ModelsConcern
   include Concerns::TechinalPagesManagment
+  ScopesRailsIncluding.initialize_scopes
 
   def load_fixture(filename)
     template = ERB.new(File.read(File.dirname(__FILE__) + '/fixtures/#{filename}'), nil, '%')
