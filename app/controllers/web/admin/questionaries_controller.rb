@@ -7,6 +7,10 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionaries[:search] = Questionary.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
+  def show
+    @questionary = Questionary.find(params[:id]).decorate
+  end
+
   def new
     @questionary_form = QuestionaryForm.new_with_model
   end

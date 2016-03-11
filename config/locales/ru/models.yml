@@ -55,6 +55,8 @@ ru:
         school: Учебное заведение
         main_position_title: Текущая должность
         join_date: Дата вступления
+        want_to_do: "Чем хочешь заниматься в МИЦ?"
+        experience: Опыт и навыки
       questionary:
         first_name: Имя
         patronymic: Отчество

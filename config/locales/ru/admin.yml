@@ -30,6 +30,9 @@ ru:
         position_fields:
           for_now: до настоящего момента
           remove_position: Убрать должность
+      questionaries:
+        show: 
+          event_attendings: Участие в мероприятиях
       tags:
         form:
           add_tag: Добавить тег
