@@ -57,6 +57,8 @@ ru:
         join_date: Дата вступления
         want_to_do: "Чем хочешь заниматься в МИЦ?"
         experience: Опыт и навыки
+        departament: Местное отделение
+        departament_title: Местное отделение
       questionary:
         first_name: Имя
         patronymic: Отчество

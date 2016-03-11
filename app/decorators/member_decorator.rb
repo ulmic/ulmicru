@@ -67,7 +67,8 @@ class MemberDecorator < UserDecorator
   end
 
   def real_attributes
-    [:ticket, :email, :motto, :parent, :mobile_phone, :birth_date, :municipality, :locality, :join_date, :school, :main_position_title]
+    [:ticket, :email, :motto, :parent, :mobile_phone, :birth_date, :municipality, :locality, 
+     :join_date, :school, :main_position_title]
   end
 
   def show_attribute(attribute)
