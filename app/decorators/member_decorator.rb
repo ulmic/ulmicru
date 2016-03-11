@@ -78,8 +78,9 @@ class MemberDecorator < UserDecorator
 	mail_to send attribute
       when :mobile_phone
 	tel_tag send attribute
-      when :birth_date
-	I18n.l send(attribute), format: '%d %B %Y'
+      when :birth_date, :join_date, :request_date
+	date = send attribute
+	I18n.l date, format: '%d %B %Y' if date.present?
       when :municipality, :locality, :join_date, :school
 	h.content_tag :a, href: admin_members_path(search: send(attribute)) do
 	  send attribute

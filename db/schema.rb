@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311210218) do
+ActiveRecord::Schema.define(version: 20160311212637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -348,6 +348,7 @@ ActiveRecord::Schema.define(version: 20160311210218) do
     t.text     "school"
     t.text     "member_state",    default: "unviewed"
     t.text     "email_ulmic"
+    t.datetime "request_date"
   end
 
   create_table "votes", force: :cascade do |t|
