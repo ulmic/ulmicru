@@ -10,6 +10,6 @@ class QuestionaryDecorator < MemberDecorator
   end
 
   def sites_attributes
-    [:id, :request_date]
+    [:id, :request_date, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }]
   end
 end

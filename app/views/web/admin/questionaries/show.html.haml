@@ -14,13 +14,13 @@
     %table.table.attributes-table
       - @questionary.sites_attributes.each do |attribute|
         %tr
-          %td= model_class.human_attribute_name attribute
+          %td= @questionary.show_human_attribute_name attribute
           %td= @questionary.show_attribute attribute
   .col-lg-9
     %table.table.attributes-table
       - @questionary.real_attributes.each do |attribute|
         %tr
-          %td= model_class.human_attribute_name(attribute)
+          %td= @questionary.show_human_attribute_name attribute
           %td= @questionary.show_attribute attribute
     %hr
     - if @questionary.positions.any?
