@@ -21,7 +21,7 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    Event.all.map &:destroy
+    Event.destroy_all
     get :index
     assert_response :success, @response.body
   end

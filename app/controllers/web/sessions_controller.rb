@@ -11,6 +11,7 @@ class Web::SessionsController < Web::ApplicationController
       if @user.authenticate(params[:user][:password]) 
 	if @user.has_access?
 	  sign_in @user
+	  log_action :sign_in
 	  redirect_to params[:url] || account_path
 	else
 	  @user.errors.add :email, I18n.t('notifications.web.sessions.create.your_account_is_not_active')
@@ -28,6 +29,7 @@ class Web::SessionsController < Web::ApplicationController
 
   def destroy
     sign_out
+    log_action :sign_out
     redirect_to params[:url] || root_path
   end
 

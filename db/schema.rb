@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214140733) do
+ActiveRecord::Schema.define(version: 20160311212637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,16 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.text     "file"
   end
 
+  create_table "logged_actions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "action_type"
+    t.text     "record_type"
+    t.integer  "record_id"
+    t.text     "params"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -337,6 +347,8 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.text     "token"
     t.text     "school"
     t.text     "member_state",    default: "unviewed"
+    t.text     "email_ulmic"
+    t.datetime "request_date"
   end
 
   create_table "votes", force: :cascade do |t|

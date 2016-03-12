@@ -19,7 +19,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    News.all.map &:destroy
+    News.destroy_all
     get :index
     assert_response :success, @response.body
   end

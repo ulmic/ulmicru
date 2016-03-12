@@ -28,6 +28,12 @@ ru:
           events:
             put_on_the_trial: Поставить на испытательный срок
             confirm: Принять в организацию
+        member_state:
+          states:
+            on_the_trial: Испытательный срок
+            unviewed: Новые
+            declined: Отклонённые
+            confirmed: Принят в организацию
       activity_lines/corporative/confession:
         state:
           states:

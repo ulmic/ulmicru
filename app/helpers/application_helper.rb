@@ -22,9 +22,9 @@ module ApplicationHelper
     title = name.is_a?(Class) ? name.model_name.human.pluralize(:ru) : name
     if icon
       menu_item url do
-	concat icon_element icon
-	concat ' '
-	concat title
+        concat icon_element icon
+        concat ' '
+        concat title
       end
     else
       menu_item title, url
