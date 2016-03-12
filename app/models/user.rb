@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :registrations, class_name: 'Event::Registration',
                            foreign_key: :user_id,
                            dependent: :destroy
+  has_many :logged_actions
 
   validates :email, email: true,
                     allow_blank: true
@@ -26,6 +27,7 @@ class User < ActiveRecord::Base
 
   include AvatarManagment
   include Concerns::SexManagment
+  include Concerns::ActionLoggerManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed

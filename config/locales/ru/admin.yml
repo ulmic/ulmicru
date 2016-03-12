@@ -21,12 +21,18 @@ ru:
       article:
         push_into: Добавить в категорию '%{category}'
       members:
+        show:
+          positions_history: История должностей
+          event_attendings: Участие в мероприятиях
         form:
           add_position: Добавить должность
           resume: Резюме
         position_fields:
           for_now: до настоящего момента
           remove_position: Убрать должность
+      questionaries:
+        show: 
+          event_attendings: Участие в мероприятиях
       tags:
         form:
           add_tag: Добавить тег

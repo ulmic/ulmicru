@@ -28,10 +28,12 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
         type: Тип
+        sign_in_count: Количество входов
         types:
           user: Пользователь
           member: Член МИЦ
           questionary: Кандидат на вступление в МИЦ
+        request_date: Дата подачи
       member:
         first_name: Имя
         patronymic: Отчество
@@ -47,11 +49,18 @@ ru:
         municipality: Муниципальное образование
         locality: Населённый пункт
         parent: Крёстный
+        parent_id: Крёстный
         children: Крестники
         state: Статус на сайте
         teams: Мои команды
         state_event: Статус на сайте
         school: Учебное заведение
+        main_position_title: Текущая должность
+        join_date: Дата вступления
+        want_to_do: "Чем хочешь заниматься в МИЦ?"
+        experience: Опыт и навыки
+        departament: Местное отделение
+        departament_title: Местное отделение
       questionary:
         first_name: Имя
         patronymic: Отчество
@@ -67,8 +76,8 @@ ru:
         want_to_do: "Чем хочешь заниматься в МИЦ?"
         experience: Опыт и навыки
         locality: Населённый пункт
-        created_at: Дата подачи
         school: Учебное заведение
+        member_state: Статус заявки
       news:
         title: Заголовок
         body: Контекст
@@ -233,7 +242,7 @@ ru:
         users: Все пользователи сайта
         contact_emails: На все имеющиеся почтовые адреса
         team: На команду
-        event_registrations: Участников мероприятия 
+        event_registrations: Участников мероприятия
   scopes:
     event:
       future: Грядущие

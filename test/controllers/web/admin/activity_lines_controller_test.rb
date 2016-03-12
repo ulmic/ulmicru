@@ -24,7 +24,7 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    ActivityLine.all.map &:destroy
+    ActivityLine.destroy_all
     get :index
     assert_response :success, @response.body
   end

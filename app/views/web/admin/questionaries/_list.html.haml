@@ -7,18 +7,18 @@
       %th= model_class.human_attribute_name(:avatar)
       %th= model_class.human_attribute_name(:full_name)
       %th= model_class.human_attribute_name(:place)
-      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:request_date)
       - if searching?
         %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - questionaries.each do |questionary|
-      %tr.tr_link{ class: state_color(questionary), data: { href: edit_admin_questionary_path(questionary) } }
+      %tr.tr_link{ class: state_color(questionary), data: { href: admin_questionary_path(questionary) } }
         %td= questionary.id
         %td= image_tag questionary.avatar.small
-        %td= link_to questionary.full_name, edit_admin_questionary_path(questionary)
+        %td= link_to questionary.full_name, admin_questionary_path(questionary)
         %td= questionary.place
-        %td=l questionary.created_at
+        %td= l(questionary.request_date, format: '%d %B %Y') if questionary.request_date.present?
         - if searching?
           %td= questionary.human_state_name
         %td.actions{ style: 'width: 147px' }

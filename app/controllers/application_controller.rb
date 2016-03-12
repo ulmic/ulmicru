@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   include Concerns::AuthManagment
   include Concerns::TechinalPagesManagment
+  include Concerns::ActionLogger
   include DatesHelper
 
   if Rails.env.staging?

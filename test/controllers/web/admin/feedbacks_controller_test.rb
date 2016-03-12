@@ -19,7 +19,7 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    Feedback.all.map &:destroy
+    Feedback.destroy_all
     get :index
     assert_response :success, @response.body
   end
