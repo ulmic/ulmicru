@@ -19,7 +19,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    Member.delete_all
+    Member.destroy_all
     get :index
     assert_response :success, @response.body
   end

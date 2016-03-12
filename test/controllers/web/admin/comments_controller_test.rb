@@ -15,7 +15,7 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    Comment.delete_all
+    Comment.destroy_all
     get :index
     assert_response :success, @response.body
   end

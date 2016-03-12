@@ -20,7 +20,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    Questionary.delete_all
+    Questionary.destroy_all
     get :index
     assert_response :success, @response.body
   end

@@ -25,7 +25,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
   end
 
   test 'should get index without instances' do
-    ActivityLines::Corporative::Confession.delete_all
+    ActivityLines::Corporative::Confession.destroy_all
     get :index
     assert_response :success, @response.body
   end

@@ -39,7 +39,7 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
 
   test 'should get index without instances with hard types' do
     @hard_types.keys.each do |key|
-      key.camelize.constantize.delete_all
+      key.camelize.constantize.destroy_all
       get :index, type: @hard_types[key]
       assert_response :success, @response.body
     end
