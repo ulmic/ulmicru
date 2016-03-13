@@ -96,4 +96,5 @@ group :test do
   gem 'tconsole', github: 'ulmic/tconsole', branch: 'rails4'
   gem 'coveralls', require: false
   gem 'webmock'
+  gem "rack-livereload"
 end
