@@ -8,7 +8,6 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:begin_date)
       %th= model_class.human_attribute_name(:end_date)
-      %th= model_class.human_attribute_name(:for_now)
       - if searching?
         %th= model_class.human_attribute_name(:state)
       %th=t 'helpers.links.actions'
@@ -20,7 +19,6 @@
         %td= link_to position.title, edit_admin_member_path(position.member)
         %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
         %td= position.end_date_datetime
-        %td= position.for_now
         - if searching?
           %td= activity_line.human_state_name
         %td.actions
