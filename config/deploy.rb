@@ -107,5 +107,5 @@ end
 #  end
 #end
 
-        require './config/boot'
-        require 'airbrake/capistrano'
+require 'airbrake/capistrano3'
+after :"deploy:restart", "airbrake:deploy"
