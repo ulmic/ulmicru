@@ -28,6 +28,7 @@ class Questionary < Member
     state :unviewed
     state :confirmed
     state :on_the_trial
+    state :trial_passed
     state :declined
 
     event :confirm do
@@ -41,6 +42,9 @@ class Questionary < Member
     end
     event :put_on_the_trial do
       transition all => :on_the_trial
+    end
+    event :pass_trial do
+      transition all => :trial_passed
     end
   end
 

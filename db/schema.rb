@@ -347,7 +347,6 @@ ActiveRecord::Schema.define(version: 20160311212637) do
     t.text     "token"
     t.text     "school"
     t.text     "member_state",    default: "unviewed"
-    t.text     "email_ulmic"
     t.datetime "request_date"
   end
 
