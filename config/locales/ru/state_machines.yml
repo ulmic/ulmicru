@@ -1,6 +1,17 @@
 ru:
   activerecord:
     state_machines:
+      user:
+        state:
+          states:
+            unviewed: Новые
+            confirmed: Подтверждённые
+          events:
+            renew: Сделать непросмотренным
+            decline: Отклонить
+            remove: Удалить
+            avail: Сделать доступным на сайте (только для членов МИЦ)
+            unavail: Сделать недоступным на сайте (только для членов МИЦ)
       member:
         state:
           states:
@@ -8,6 +19,28 @@ ru:
             confirmed: Подтверждённые
             declined: Отклонённые
             unavailable: Отсутствуют на сайте
+      questionary:
+        state:
+          states:
+            on_the_trial: Испытательный срок
+            unviewed: Новые
+            declined: Отклонённые
+          events:
+            confirm: Подтвердить
+            put_on_the_trial: Поставить на испытательный срок
+        member_state:
+          states:
+            on_the_trial: Испытательный срок
+            unviewed: Новые
+            declined: Отклонённые
+            confirmed: Принят в организацию
+            trial_passed: Испытательный срок пройден
+          events:
+            confirm: Принять в организацию
+            decline: Отклонить заявку на вступление
+            renew: Сделать заявку непросмотренной
+            put_on_the_trial: Поставить на испатательный срок
+            pass_trial: Подготовить к принятию в организацию
       news:
         state:
           states:
@@ -19,21 +52,6 @@ ru:
             confirm: Подтвердить
             remove: Удалить
             to_main: Сделать главной новостью
-      questionary:
-        state:
-          states:
-            on_the_trial: Испытательный срок
-            unviewed: Новые
-            declined: Отклонённые
-          events:
-            put_on_the_trial: Поставить на испытательный срок
-            confirm: Принять в организацию
-        member_state:
-          states:
-            on_the_trial: Испытательный срок
-            unviewed: Новые
-            declined: Отклонённые
-            confirmed: Принят в организацию
       activity_lines/corporative/confession:
         state:
           states:
@@ -46,11 +64,6 @@ ru:
             remove: Удалить
             to_vote: Поставить на голосование
             renew: Сделать непросмотренным
-      user:
-        state:
-          states:
-            unviewed: Новые
-            confirmed: Подтверждённые
             declined: Отклонённые
       event:
         state:
