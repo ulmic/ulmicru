@@ -28,6 +28,7 @@ ru:
           events:
             confirm: Подтвердить
             put_on_the_trial: Поставить на испытательный срок
+            trial_passed: Испытательный срок пройден
         member_state:
           states:
             on_the_trial: Испытательный срок

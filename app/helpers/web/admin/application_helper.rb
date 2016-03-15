@@ -8,10 +8,10 @@ module Web::Admin::ApplicationHelper
     end
   end
 
-  def tab_title(model_class, tab, count)
+  def tab_title(model_class, tab, count, state_method = :state)
     model = model_class.name.underscore
     model = :team if model.include? 'team'
-    "#{t("activerecord.state_machines.#{model}.state.states.#{tab}").pluralize(:ru)} / #{count}"
+    "#{t("activerecord.state_machines.#{model}.#{state_method}.states.#{tab}").pluralize(:ru)} / #{count}"
   end
 
   def search_tab_title(count)
