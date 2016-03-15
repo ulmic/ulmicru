@@ -1,11 +1,11 @@
 class Api::Admin::TagsController < Api::Admin::ApplicationController
   def index
     if params[:record_id].present?
-      @tags = Tag.active.where(record_id: params[:record_id], record_type: params[:record_type].capitalize).decorate
+      @tags = Tag.active.where(record_id: params[:record_id], record_type: params[:record_type].capitalize)
     else
       @tags = Tag.string
       @tags = @tags.search_everywhere params[:q] if params[:q]
-      @tags = @tags.decorate.to_a.uniq &:text
+      @tags = @tags.to_a.uniq &:text
     end
     render json: TagCollectionDecorator.new(@tags).with_just_text
   end
