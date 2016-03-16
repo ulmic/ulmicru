@@ -12,14 +12,14 @@
           = link_to on_site_link do
             %span.glyphicon.glyphicon-share
     = render 'web/admin/default/search', model_class: model_class
-#tabs
+.tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - if params[:search]
       %li
         = link_to search_tab_title(items[:search].total_count), "##{:search}"
     - tabs.each do |tab|
-      %li
-        = link_to tab_title(model_class, tab, @counts[tab], state_method), "##{tab}"
+      %li{ class: (params[:scope] == tab.to_s ? :active : '') }
+        = link_to tab_title(model_class, tab, @counts[tab], state_method), send("admin_#{to_path(model_class).pluralize(:en)}_path", scope: tab)
   - if params[:search]
     #search
       = render 'list', to_path(model_class).pluralize(:en).to_sym => items[:search]
