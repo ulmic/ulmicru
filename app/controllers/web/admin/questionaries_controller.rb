@@ -1,11 +1,7 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
   def index
-    @questionaries = {}
-    @questionaries[:on_the_trial] = Questionary.on_the_trial.order(:id).page(params[:page]).decorate
-    @questionaries[:unviewed] = Questionary.where(member_state: :unviewed).page(params[:page]).decorate
-    @questionaries[:declined] = Questionary.where(member_state: :declined).page(params[:page]).decorate
-    @questionaries[:trial_passed] = Questionary.where(member_state: :trial_passed).page(params[:page]).decorate
-    @questionaries[:search] = Questionary.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    @questionaries = Questionary.send(params[:scope]).page(params[:page]).decorate
+    #@questionaries[:search] = Questionary.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
   end
 
   def show

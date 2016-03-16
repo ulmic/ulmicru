@@ -1,1 +1,3 @@
-= render 'web/admin/default/index', items: @questionaries, state_method: :member_state
+= render 'web/admin/default/index', items: @questionaries,
+                                    state_method: :member_state,
+                                    tabs: [ :on_the_trial, :unviewed, :declined, :trial_passed ]
