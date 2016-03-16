@@ -23,7 +23,6 @@
   - if params[:search]
     #search
       = render 'list', to_path(model_class).pluralize(:en).to_sym => items[:search]
-  - tabs.each do |tab|
-    %div{ id: tab }
-      = render 'list', to_path(model_class).pluralize(:en).to_sym => items[tab]
+  %div{ id: params[:scope] }
+    = render 'list', to_path(model_class).pluralize(:en).to_sym => items
 = link_to t('.new', default: t('helpers.links.new')), send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'

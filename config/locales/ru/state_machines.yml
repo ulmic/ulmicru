@@ -36,6 +36,7 @@ ru:
             declined: Отклонённые
             confirmed: Принят в организацию
             trial_passed: Испытательный срок пройден
+            member_trial_passed: Испытательный срок пройден
           events:
             confirm: Принять в организацию
             decline: Отклонить заявку на вступление
