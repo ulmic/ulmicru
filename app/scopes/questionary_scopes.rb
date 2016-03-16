@@ -1,8 +1,8 @@
-require 'scopes_rails/state_machine_scopes'
+require 'scopes_rails/state_machine/scopes'
 
 module QuestionaryScopes
   extend ActiveSupport::Concern
-  include StateMachineScopes
+  include StateMachine::Scopes
 
   included do
     scope :unviewed, -> { where(member_state: :unviewed).order('id DESC') }

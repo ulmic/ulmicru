@@ -1,4 +1,4 @@
-require 'scopes_rails/state_machine_scopes'
+require 'scopes_rails/state_machine/scopes'
 
 module Event::RegistrationScopes
   extend ActiveSupport::Concern

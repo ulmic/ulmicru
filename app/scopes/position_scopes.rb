@@ -1,8 +1,8 @@
-require 'scopes_rails/state_machine_scopes'
+require 'scopes_rails/state_machine/scopes'
 
 module PositionScopes
   extend ActiveSupport::Concern
-  include StateMachineScopes
+  include StateMachine::Scopes
 
   included do
     scope :current_positions, -> { where for_now: 1 }

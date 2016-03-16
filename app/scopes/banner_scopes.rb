@@ -1,8 +1,8 @@
-require 'scopes_rails/state_machine_scopes'
+require 'scopes_rails/state_machine/scopes'
 
 module BannerScopes
   extend ActiveSupport::Concern
-  include StateMachineScopes
+  include StateMachine::Scopes
 
   included do
     scope :active, -> { where(state: :active).order('created_at ASC') }
