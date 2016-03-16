@@ -14,6 +14,14 @@ GIT
       orm_adapter (~> 0.5.0)
 
 GIT
+  remote: git://github.com/kalashnikovisme/scopes_rails.git
+  revision: d3db39a3ea46fde97b65d8eb3ef917a6f738d0b6
+  branch: list_of_scopes
+  specs:
+    scopes_rails (0.0.3)
+      rails (~> 4)
+
+GIT
   remote: git://github.com/nitinstp23/foursquare2.git
   revision: 2cf6d21edf37e64eea9505b3d57ecb664af4fbf2
   branch: gemspec_fix
@@ -53,12 +61,6 @@ GIT
   revision: 95ba53f03e5657a5873343c2b1dc6a148ea3542e
   specs:
     state_machine (1.2.0)
-
-PATH
-  remote: /home/pavel/projects/scopes_rails
-  specs:
-    scopes_rails (0.0.2)
-      rails (~> 4)
 
 GEM
   remote: https://rubygems.org/

@@ -58,7 +58,7 @@ gem 'react-rails', '~> 1.3.0'
 gem 'reform'
 gem 'rails_email_preview', '~> 0.2.29'
 #gem 'scopes_rails', '>= 0.0.3'
-gem 'scopes_rails', path: '/home/pavel/projects/scopes_rails'
+gem 'scopes_rails', github: 'kalashnikovisme/scopes_rails', branch: 'list_of_scopes'
 
 group :production do
   gem 'unicorn-rails'
