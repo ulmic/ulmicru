@@ -12,4 +12,8 @@ class QuestionaryDecorator < MemberDecorator
   def sites_attributes
     [:id, :request_date, :member_state, :state, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }]
   end
+
+  def self.collections
+    [ :on_the_trial, :unviewed, :declined, :trial_passed ]
+  end
 end
