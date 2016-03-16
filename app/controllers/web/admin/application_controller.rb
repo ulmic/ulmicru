@@ -15,8 +15,12 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def check_declared_scopes
-    unless controller_name.classify.constantize.scopes.map(&:to_s).include? params[:scope]
-      redirect_to params.except(:scope)
+    if params[:scope].present?
+      if !model_class.scopes.map(&:to_s).include?(params[:scope])
+        redirect_to params.except(:scope)
+      end
+    else
+      params[:scope] ||= decorator_class.collections.first
     end
   end
 

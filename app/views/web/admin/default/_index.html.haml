@@ -18,7 +18,7 @@
       %li
         = link_to search_tab_title(items[:search].total_count), "##{:search}"
     - tabs.each do |tab|
-      %li{ class: (params[:scope] == tab.to_s ? :active : '') }
+      %li{ class: (params[:scope].to_s == tab.to_s ? :active : '') }
         = link_to tab_title(model_class, tab, @counts[tab], state_method), send("admin_#{to_path(model_class).pluralize(:en)}_path", scope: tab)
   - if params[:search]
     #search
