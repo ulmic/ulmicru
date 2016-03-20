@@ -6,6 +6,7 @@ ru:
           states:
             unviewed: Новые
             confirmed: Подтверждённые
+            declined: Отклонённые
           events:
             renew: Сделать непросмотренным
             decline: Отклонить
