@@ -2,6 +2,7 @@
 - current_title = default_page_title || model_class.model_name.human.pluralize(:ru)
 - title current_title, :admin
 - state_method ||= :state
+- tabs = get_collection model_class
 .page-header
   .row
     .col-md-6

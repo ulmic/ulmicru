@@ -63,4 +63,8 @@ module Web::Admin::ApplicationHelper
   def searching?
     params[:search].present?
   end
+
+  def get_collection(model_class)
+    "#{model_class}Decorator".constantize.collections
+  end
 end

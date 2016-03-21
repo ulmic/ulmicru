@@ -59,4 +59,8 @@ class EventDecorator < ApplicationDecorator
       #end
     end
   end
+
+  def self.collections
+    [ :future, :current, :past, :unviewed, :declined ]
+  end
 end
