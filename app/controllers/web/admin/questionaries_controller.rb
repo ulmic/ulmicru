@@ -1,7 +1,11 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
   def index
-    @questionaries = Questionary.send(params[:scope]).page(params[:page]).decorate
-    #@questionaries[:search] = Questionary.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      questionaries = Questionary.search_everywhere(params[:search])
+    else
+      questionaries = Questionary.send params[:scope]
+    end
+    @questionaries = questionaries.page(params[:page]).decorate
   end
 
   def show

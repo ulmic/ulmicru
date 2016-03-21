@@ -20,10 +20,7 @@
         = link_to search_tab_title(items.total_count), '#'
     - tabs.each do |tab|
       %li{ class: (params[:search].nil? && params[:scope].to_s == tab.to_s ? :active : '') }
-        = link_to tab_title(model_class, tab, @counts[tab], state_method), send("admin_#{to_path(model_class).pluralize(:en)}_path", scope: tab)
-  - if params[:search]
-    #search
-      = render 'list', to_path(model_class).pluralize(:en).to_sym => items
-  %div{ id: params[:scope] }
+        = link_to tab_title(model_class, tab, @counts[tab], state_method), admin_index_path_of_model(model_class, tab) 
+  %div{ id: (params[:search] ? :search : params[:scope]) }
     = render 'list', to_path(model_class).pluralize(:en).to_sym => items
 = link_to t('.new', default: t('helpers.links.new')), send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
