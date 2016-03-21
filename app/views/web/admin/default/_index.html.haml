@@ -16,14 +16,14 @@
 .tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - if params[:search]
-      %li
-        = link_to search_tab_title(items[:search].total_count), "##{:search}"
+      %li.active
+        = link_to search_tab_title(items.total_count), '#'
     - tabs.each do |tab|
-      %li{ class: (params[:scope].to_s == tab.to_s ? :active : '') }
+      %li{ class: (params[:search].nil? && params[:scope].to_s == tab.to_s ? :active : '') }
         = link_to tab_title(model_class, tab, @counts[tab], state_method), send("admin_#{to_path(model_class).pluralize(:en)}_path", scope: tab)
   - if params[:search]
     #search
-      = render 'list', to_path(model_class).pluralize(:en).to_sym => items[:search]
+      = render 'list', to_path(model_class).pluralize(:en).to_sym => items
   %div{ id: params[:scope] }
     = render 'list', to_path(model_class).pluralize(:en).to_sym => items
 = link_to t('.new', default: t('helpers.links.new')), send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'

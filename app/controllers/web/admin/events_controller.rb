@@ -4,8 +4,12 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
 
   def index
-    @events = ::Event.send(params[:scope]).page(params[:page]).decorate
-    #@events[:search] = Event.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      events = ::Event.presented.search_everywhere params[:search]
+    else
+      events = ::Event.send params[:scope]
+    end
+    @events = events.page(params[:page]).decorate
   end
 
   def new
