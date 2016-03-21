@@ -105,4 +105,8 @@ class MemberDecorator < UserDecorator
   def sites_attributes
     [:id, :role, :state, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }] 
   end
+
+  def self.collections
+    [ :confirmed, :unviewed, :declined, :unavailable ]
+  end
 end
