@@ -14,4 +14,8 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   alias :lead :short_body
+
+  def self.collections
+    [ :confirmed, :inactive, :unviewed ]
+  end
 end

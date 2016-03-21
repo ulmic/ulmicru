@@ -1,10 +1,11 @@
 class Web::Admin::ArticlesController < Web::Admin::ApplicationController
   def index
-    @articles = {}
-    @articles[:confirmed] = Article.confirmed.page(params[:page]).decorate
-    @articles[:inactive] = Article.inactive.page(params[:page]).decorate
-    @articles[:unviewed] = Article.unviewed.page(params[:page]).decorate
-    @articles[:search] = Article.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      articles = Article.presented.search_everywhere params[:search]
+    else 
+      articles = Article.send params[:scopes]
+    end
+    @articles = articles.page(params[:page]).decorate
     @tag = Tag.new
   end
 
