@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
     state :confirmed
     state :declined
     state :removed
+    state :unavailable
 
     event :renew do
       transition all => :unviewed
