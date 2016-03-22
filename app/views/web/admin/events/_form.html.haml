@@ -1,7 +1,11 @@
 - current_title = page_title(action, Event.model_name.human)
+
 - title current_title, :admin
 .page-header
   %h1= page_title(action, Event.model_name.human)
+  .alert.alert-dissmissible.alert-danger
+    %span.glyphicon.glyphicon-info-sign
+    = t('messages.technical_works')
   - if @event_form.model.creator.present?
     = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket), class: :blank
   - else
@@ -65,7 +69,7 @@
           = f.simple_fields_for :registrations do |reg_form|
             = render 'registration_fields', f: reg_form
         = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
-      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      -#= f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), events_path, class: 'btn btn-default'
 .popup#place_form
   = render 'layouts/web/admin/shared/places/form'
