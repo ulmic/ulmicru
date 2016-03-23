@@ -6,6 +6,13 @@ GIT
       railties (>= 3.1)
 
 GIT
+  remote: git://github.com/fnando/i18n-js.git
+  revision: 1cd5e54c84aadaab9c331fb8b43fbea694c8c547
+  specs:
+    i18n-js (3.0.0.rc12)
+      i18n (~> 0.6, >= 0.6.6)
+
+GIT
   remote: git://github.com/galetahub/ckeditor.git
   revision: 0ebc23b5c512b1ceb6de58a2616cacf25ec5c2f6
   specs:
@@ -32,6 +39,12 @@ GIT
       rails (~> 4.1)
 
 GIT
+  remote: git://github.com/seuros/state_machine.git
+  revision: 95ba53f03e5657a5873343c2b1dc6a148ea3542e
+  specs:
+    state_machine (1.2.0)
+
+GIT
   remote: git://github.com/ulmic/tconsole.git
   revision: daccf66423f2c2d222b27cced463762e08de56b6
   branch: rails4
@@ -40,19 +53,6 @@ GIT
       ansi
       chattyproc (~> 1.0.0)
       term-ansicolor (~> 1.0.7)
-
-GIT
-  remote: https://github.com/fnando/i18n-js
-  revision: 00bef042ae819eb772f2b552ad6b7c971e9b1e75
-  specs:
-    i18n-js (3.0.0.rc11)
-      i18n (~> 0.6, >= 0.6.6)
-
-GIT
-  remote: https://github.com/seuros/state_machine.git
-  revision: 95ba53f03e5657a5873343c2b1dc6a148ea3542e
-  specs:
-    state_machine (1.2.0)
 
 GEM
   remote: https://rubygems.org/
