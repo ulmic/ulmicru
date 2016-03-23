@@ -3,9 +3,6 @@
 - title current_title, :admin
 .page-header
   %h1= page_title(action, Event.model_name.human)
-  .alert.alert-dissmissible.alert-danger
-    %span.glyphicon.glyphicon-info-sign
-    = t('messages.technical_works')
   - if @event_form.model.creator.present?
     = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket), class: :blank
   - else
