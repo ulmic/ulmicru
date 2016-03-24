@@ -1,12 +1,12 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
   def index
-    @members = {}
-    @members[:confirmed] = Member.confirmed.page(params[:page]).decorate
-    @members[:unviewed] = Member.unviewed.page(params[:page]).decorate
-    @members[:declined] = Member.declined.page(params[:page]).decorate
-    @members[:unavailable] = Member.unavailable.page(params[:page]).decorate
-    @members[:search] = Member.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      members = Member.presented.search_everywhere params[:search]
+    else
+      members = Member.send params[:scope]
+    end
+    @members = members.page(params[:page]).decorate 
   end
 
   def show

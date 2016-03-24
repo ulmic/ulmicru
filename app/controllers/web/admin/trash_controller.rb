@@ -1,5 +1,7 @@
 class Web::Admin::TrashController < Web::Admin::ApplicationController
   include Concerns::Trash
+  skip_before_filter :check_declared_scopes
+  skip_before_filter :collections_counts
 
   def index
     @type = resource_type

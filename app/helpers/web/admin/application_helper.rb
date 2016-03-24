@@ -63,4 +63,12 @@ module Web::Admin::ApplicationHelper
   def searching?
     params[:search].present?
   end
+
+  def get_collection(model_class)
+    "#{model_class}Decorator".constantize.collections
+  end
+
+  def admin_index_path_of_model(model_class, tab)
+    send("admin_#{to_path(model_class).pluralize(:en)}#{model_class == News ? '_index' : ''}_path", scope: tab)
+  end
 end

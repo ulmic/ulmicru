@@ -4,9 +4,7 @@ module Web::Admin::UnviewedHelper
   end
 
   # FIXME refactor
-  def no_any_unviewed?(unviewed)
-    unviewed.keys.each do |key|
-      return false if unviewed[key.to_s.pluralize(:en).to_sym].total_count
-    end
+  def no_any_unviewed?
+    @counts.values.uniq == [0]
   end
 end
