@@ -3,11 +3,12 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
   before_filter :choose_departaments, only: [ :new, :edit ]
 
   def index
-    @teams = {}
-    @teams[:active] = Team.active.page(params[:page]).decorate
-    @teams[:unviewed] = Team.unviewed.page(params[:page]).decorate
-    @teams[:removed] = Team.removed.page(params[:page]).decorate
-    @teams[:search] = Team.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      teams = Team.presented.search_everywhere params[:search]
+    else
+      teams = Team.send params[:scope]
+    end
+    @teams = teams.page(params[:page]).decorate
   end
 
   def new

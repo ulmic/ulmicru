@@ -1,10 +1,6 @@
 class Web::Admin::FeedbacksController < Web::Admin::ApplicationController
   def index
-    @feedback = {}
-    @feedback[:unviewed] = Feedback.unviewed.page(params[:page]).decorate
-    @feedback[:fixing] = Feedback.fixing.page(params[:page]).decorate
-    @feedback[:done] = Feedback.done.page(params[:page]).decorate
-    @feedback[:declined] = Feedback.declined.page(params[:page]).decorate
+    @feedback = Feedback.send(params[:scope]).page(params[:page]).decorate
   end
 
   def new

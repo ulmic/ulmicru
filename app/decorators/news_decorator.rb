@@ -42,4 +42,8 @@ class NewsDecorator < ApplicationDecorator
     member.present? ? member.decorate.short_name : I18n.t('helpers.no_author')
   end
 
+
+  def self.collections
+    [:published, :unpublished, :unviewed, :main]
+  end
 end

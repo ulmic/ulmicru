@@ -2,11 +2,12 @@ class Web::Admin::ActivityLinesController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
 
   def index
-    @activity_lines = {}
-    @activity_lines[:active] = ActivityLine.active.page(params[:page]).decorate
-    @activity_lines[:unviewed] = ActivityLine.unviewed.page(params[:page]).decorate
-    @activity_lines[:removed] = ActivityLine.removed.page(params[:page]).decorate
-    @activity_lines[:search] = ActivityLine.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      activity_lines = ActivityLine.presented.search_everywhere params[:search]
+    else
+      activity_lines = ActivityLine.send params[:scope]
+    end
+    @activity_lines = activity_lines.page(params[:page]).decorate
   end
 
   def new

@@ -1,8 +1,6 @@
 class Web::Admin::CommentsController < Web::Admin::ApplicationController
   def index
-    @comments = {}
-    @comments[:unviewed] = Comment.unviewed.page(params[:page]).decorate
-    @comments[:active] = Comment.active.page(params[:page]).decorate
+    @comments = Comment.send(params[:scope]).page(params[:page]).decorate
   end
 
   def new

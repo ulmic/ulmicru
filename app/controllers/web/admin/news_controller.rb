@@ -1,11 +1,11 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
   def index
-    @news = {}
-    @news[:published] = News.published.page(params[:page]).decorate
-    @news[:unpublished] = News.unpublished.page(params[:page]).decorate
-    @news[:unviewed] = News.unviewed.order('published_at DESC').page(params[:page]).decorate
-    @news[:main] = News.main.page(params[:page]).decorate
-    @news[:search] = News.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      news = News.search_everywhere params[:search]
+    else
+      news = News.send params[:scope]
+    end
+    @news = news.page(params[:page]).decorate
   end
 
   def create

@@ -3,10 +3,12 @@ class Web::Admin::LettersController < Web::Admin::ApplicationController
   before_filter :last_letter, only: [ :new, :edit ]
 
   def index
-    @letters = {}
-    @letters[:sended] = Letter.sended.page(params[:page]).decorate
-    @letters[:unviewed] = Letter.unviewed.page(params[:page]).decorate
-    @letters[:search] = Letter.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      letters = Letter.presented.search_everywhere params[:search]
+    else
+      letters = Letter.send params[:scope]
+    end
+    @letters = letters.page(params[:page]).decorate
   end
 
   def new

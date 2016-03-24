@@ -1,8 +1,8 @@
-require 'scopes_rails/state_machine_scopes'
+require 'scopes_rails/state_machine/scopes'
 
 module CategoryScopes
   extend ActiveSupport::Concern
-  include StateMachineScopes
+  include StateMachine::Scopes
 
   included do
     scope :roots, -> { presented.where(parent_id: nil)}
