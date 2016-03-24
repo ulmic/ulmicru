@@ -7,6 +7,7 @@ ru:
             unviewed: Новые
             confirmed: Подтверждённые
             declined: Отклонённые
+            unavailable: Отсутствуют на сайте
           events:
             renew: Сделать непросмотренным
             decline: Отклонить
