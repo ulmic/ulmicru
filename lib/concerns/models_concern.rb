@@ -10,7 +10,7 @@ module ModelsConcern
   end
 
   def model_name
-    controller_name.classify
+    controller_path.sub('web/admin/', '').classify
   end
 
   def model_class

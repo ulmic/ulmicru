@@ -1,7 +1,7 @@
 module Concerns
   module DecoratorsConcern
     def decorator_name
-      "#{controller_name.classify}Decorator"
+      "#{controller_path.sub('web/admin/', '').classify}Decorator"
     end
 
     def decorator_class
