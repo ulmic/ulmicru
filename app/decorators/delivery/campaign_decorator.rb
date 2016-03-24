@@ -14,4 +14,8 @@ class Delivery::CampaignDecorator < ApplicationDecorator
     end
     contacts
   end
+
+  def self.collections
+    [ :ready, :done, :removed, :declined ]
+  end
 end

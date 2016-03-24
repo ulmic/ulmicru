@@ -3,7 +3,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
     if params[:search]
       articles = Article.presented.search_everywhere params[:search]
     else 
-      articles = Article.send params[:scopes]
+      articles = Article.send params[:scope]
     end
     @articles = articles.page(params[:page]).decorate
     @tag = Tag.new

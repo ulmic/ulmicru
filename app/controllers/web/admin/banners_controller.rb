@@ -1,11 +1,11 @@
 class Web::Admin::BannersController < Web::Admin::ApplicationController
   def index
-    @banners = {}
-    @banners[:actual] = Banner.actual.page(params[:page]).decorate
-    @banners[:active] = Banner.active.page(params[:page]).decorate
-    @banners[:unviewed] = Banner.unviewed.page(params[:page]).decorate
-    @banners[:removed] = Banner.removed.page(params[:page]).decorate
-    @banners[:search] = Banner.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      banners = Banner.presented.search_everywhere params[:search]
+    else
+      banners = Banner.send params[:scope]
+    end
+    @banners = banners.page(params[:page]).decorate
   end
 
   def new
