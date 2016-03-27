@@ -15,7 +15,7 @@ $ ->
              #{participant.first_name} #{participant.last_name}
            </div>
            <div class='role'>
-             #{I18n.t("enumerize.event.registration.role.#{role}")}
+             #{I18n.t("enumerize.event/registration.role.#{role}")}
            </div>
          </a>
        </section>
@@ -29,7 +29,7 @@ $ ->
            #{participant.first_name} #{participant.last_name}
          </div>
          <div class='role'>
-           #{I18n.t("enumerize.event.registration.role.#{role}")}
+           #{I18n.t("enumerize.event/registration.role.#{role}")}
          </div>
        </section>
      </li>"
