@@ -22,10 +22,6 @@ module Web::Admin::ApplicationHelper
     model_class.methods.include? :search_everywhere
   end
 
-  def record_path(record)
-    "#{record.class.name.underscore.pluralize}/#{record.id}"
-  end
-
   def form_after_save?
     referrer = Rails.application.routes.recognize_path request.referrer
     referrer[:controller] == params[:controller] && referrer[:action] == params[:action]

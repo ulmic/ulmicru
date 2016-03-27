@@ -19,7 +19,7 @@
         %td{ width: '67px' }
           = link_to news.id, edit_admin_news_path(news)
           = link_to news_path(news) do
-            %span.glyphicon.glyphicon-share
+            = fa_icon 'share-square-o'
         %td= news.author_name
         %td
           = link_to news.title, edit_admin_news_path(news)

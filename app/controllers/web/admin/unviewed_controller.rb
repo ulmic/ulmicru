@@ -17,7 +17,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
 	redirect_to params.except(:items)
       end
     else
-      params[:items] ||= Concerns::NotificatableItems.items.first
+      redirect_to admin_unviewed_index_path items: Concerns::NotificatableItems.items.first
     end
   end
 
