@@ -35,7 +35,7 @@ $ ->
      </li>"
 
   set_participants_count_from_span = (changes)  ->
-    count = parseInt $participants_count_span.html().match(/[0-9]/)[0]
+    count = parseInt $participants_count_span.html().match(/[0-9]+/)[0]
     count += changes
     $participants_count_span.html("(#{count})")
 
