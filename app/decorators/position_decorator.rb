@@ -4,7 +4,8 @@ class PositionDecorator < ApplicationDecorator
   decorates_association :member
 
   def end_date_datetime
-    if for_now
+    # FIXME change for_now type
+    if for_now == '1'
       I18n.t('activerecord.attributes.position.for_now')
     else
       object.end_date ? I18n.l(object.end_date.to_datetime, format: '%d.%m.%Y') : object.end_date
