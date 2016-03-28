@@ -1,8 +1,8 @@
 class Web::Admin::UnviewedController < Web::Admin::ApplicationController
   skip_before_filter :check_declared_scopes
   skip_before_filter :collections_counts
-  before_filter :check_notificatable_items
   before_filter :unviewed_counts
+  before_filter :check_notificatable_items
 
   def index
     @unviewed = params[:items].to_s.classify.constantize.unviewed.page(params[:page]).decorate
@@ -17,7 +17,8 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
 	redirect_to params.except(:items)
       end
     else
-      redirect_to admin_unviewed_index_path items: Concerns::NotificatableItems.items.first
+      any_items_key = @counts.keys.select { |k| @counts[k] != 0 }.first
+      redirect_to admin_unviewed_index_path items: any_items_key
     end
   end
 
