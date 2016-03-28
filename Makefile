@@ -14,4 +14,7 @@ develop:
 up:
 	git pull --rebase && bundle && rake db:migrate db:seed
 
-.PHONY: install up deps develop
+deploy:
+	ansible-playbook -i cm/inventory cm/deploy.yml
+
+.PHONY: install up deps develop deploy
