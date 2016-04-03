@@ -24,6 +24,7 @@
     - name: Checking out repo
       git: repo=https://github.com/ulmic/ulmicru.git
            dest={{ release_path }}
+           version=master
 
     - name: Linking config files
       file:
@@ -89,6 +90,6 @@
         force=yes
 
     - name: Restart unicorn
-      shell: "[ -e /srv/ulmicru/shared/tmp/pids/unicorn.pid ] && kill -0 `cat /srv/ulmicru/shared/tmp/pids/unicorn.pid` || /usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec unicorn -c /srv/ulmicru/current/config/unicorn/production.rb -E deployment -D"
+      shell: "[ -e /srv/ulmicru/shared/tmp/pids/unicorn.pid ] && kill `cat /srv/ulmicru/shared/tmp/pids/unicorn.pid` || /usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec unicorn -c /srv/ulmicru/current/config/unicorn/production.rb -E production -D"
       args:
         chdir: "{{ release_path }}"
