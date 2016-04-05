@@ -4,4 +4,7 @@ class LoggedActionDecorator < ApplicationDecorator
   def user_short_name
     object.user.decorate.short_name
   end
+
+  def table_params
+  end
 end

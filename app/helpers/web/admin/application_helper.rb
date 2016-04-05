@@ -1,6 +1,7 @@
 module Web::Admin::ApplicationHelper
   include Localities
   include Places
+  include Concerns::DecoratorsConcern
 
   def state_color(item)
     if item.methods.include? :unviewed?
@@ -73,6 +74,6 @@ module Web::Admin::ApplicationHelper
   end
 
   def record_title(instance)
-    [t("activerecord.models.#{logged_action.record_type.underscore}"), instance.record.decorate.name].join ' '
+    [t("activerecord.models.#{instance.record_type.underscore}"), decorator_class(instance.record_type).decorate(instance.record).name].join ' '
   end
 end

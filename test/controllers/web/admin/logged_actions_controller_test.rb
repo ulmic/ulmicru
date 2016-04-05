@@ -2,6 +2,8 @@ require 'test_helper'
 
 class Web::Admin::LoggedActionsControllerTest < ActionController::TestCase
   setup do
+    admin = create :admin
+    sign_in admin
     @logged_action = create :logged_action
   end
 
