@@ -63,7 +63,7 @@ Rails.application.routes.draw do
       resources :comments, except: :show
       resources :letters, except: :show
       resources :positions, only: [ :update, :destroy ]
-      resources :logged_actions, only: :index
+      resources :logged_actions, only: [ :index, :show ]
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

@@ -17,4 +17,9 @@ class Web::Admin::LoggedActionsControllerTest < ActionController::TestCase
     get :index
     assert_response :success, @response.body
   end
+
+  test 'should get show' do
+    get :show, id: @logged_action
+    assert_response :success, @response.body
+  end
 end

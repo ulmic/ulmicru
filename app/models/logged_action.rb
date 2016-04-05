@@ -6,6 +6,7 @@ class LoggedAction < ActiveRecord::Base
   enumerize :action_type, in: [ :create, :update, :destroy, :sign_in, :sign_out, :restore, :delete ]
 
   def parsed_params
-    JSON.parse params
+    # FIXME with PG 9.4 and jsonb
+    eval params
   end
 end
