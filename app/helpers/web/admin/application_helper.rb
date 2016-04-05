@@ -70,10 +70,10 @@ module Web::Admin::ApplicationHelper
   end
 
   def admin_record_path(instance)
-    send("#{instance.record_type.underscore}_path", instance.record_id)
+    send("admin_#{instance.record_type.underscore}_path", instance.record_id)
   end
 
   def record_title(instance)
-    [t("activerecord.models.#{instance.record_type.underscore}"), decorator_class(instance.record_type).decorate(instance.record).name].join ' '
+    [t("activerecord.models.#{instance.record_type.underscore}"), decorator_class(instance.record_type).decorate(instance.record).name].join ': '
   end
 end
