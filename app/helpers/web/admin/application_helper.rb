@@ -67,4 +67,12 @@ module Web::Admin::ApplicationHelper
   def admin_index_path_of_model(model_class, tab)
     send("admin_#{to_path(model_class).pluralize(:en)}#{model_class == News ? '_index' : ''}_path", scope: tab)
   end
+
+  def admin_record_path(instance)
+    send("#{instance.record_type.underscore}_path", instance.record_id)
+  end
+
+  def record_title(instance)
+    [t("activerecord.models.#{logged_action.record_type.underscore}"), instance.record.decorate.name].join ' '
+  end
 end

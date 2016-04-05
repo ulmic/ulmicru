@@ -4,7 +4,7 @@ module Concerns
       case action_name
       when 'update'
 	object = model_class.find(params[:id])
-	attributes_diff(object.attributes, params[model_class.name.underscore], @prev_object.attributes)
+	attributes_diff(object.attributes, params[to_param(model_class.name)], @prev_object.attributes)
       when 'create'
 	params[model_class.name.underscore]
       end
@@ -23,6 +23,10 @@ module Concerns
 	comparison[key] = value unless hash2[key] == value	
       end
       comparison
+    end
+
+    def to_param(model_class_name)
+      model_class_name.underscore.gsub '/', '_'
     end
   end
 end

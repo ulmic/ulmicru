@@ -39,7 +39,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def log_action
-    if self.status == 302
+    if self.status == 302 && !not_logged_controllers.include?(self.class)
       LoggedAction.create! user_id: current_user.id,
 	record_type: model_class.name,
 	record_id: params[:id],

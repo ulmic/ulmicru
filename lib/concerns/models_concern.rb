@@ -16,4 +16,8 @@ module ModelsConcern
   def model_class
     model_name.constantize
   end
+
+  def not_logged_controllers
+    [Web::Admin::Delivery::SessionsController]
+  end
 end
