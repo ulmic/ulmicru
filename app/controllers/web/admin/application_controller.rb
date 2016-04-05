@@ -3,7 +3,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   before_filter :check_declared_scopes, only: :index
   before_filter :collections_counts, only: :index
   before_action :save_object, only: [ :update, :destroy ]
-  after_action :log_action, only: [ :create, :update, :destroy ]
+  after_action :log_action, only: [ :create, :update, :destroy, :restore ]
 
   layout 'web/admin/application'
 
@@ -39,10 +39,12 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def log_action
-    LoggedAction.create! user_id: current_user.id,
-			 record_type: model_class.name,
-			 record_id: params[:id],
-			 action_type: action_name,
-			 params: log_params
+    if self.status == 302
+      LoggedAction.create! user_id: current_user.id,
+	record_type: model_class.name,
+	record_id: params[:id],
+	action_type: action_name,
+	params: log_params
+    end
   end
 end
