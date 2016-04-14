@@ -21,7 +21,11 @@ module Concerns
       hash1.except('updated_at').each do |key, value|
 	next unless hash2[key].present?
 	if value.is_a? ActiveSupport::TimeWithZone
-	  hash2[key] = hash2[key].to_datetime.in_time_zone('Moscow')
+	  if hash2[key].to_datetime.to_s.include? "+00"
+	    hash2[key] = (hash2[key].to_datetime - 3.hour).in_time_zone('Moscow')
+	  else
+	    hash2[key] = hash2[key].to_datetime.in_time_zone('Moscow')
+	  end
 	end
 	comparison[key] = value unless hash2[key].to_s == value.to_s
       end

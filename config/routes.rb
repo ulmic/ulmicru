@@ -53,7 +53,7 @@ Rails.application.routes.draw do
       resources :articles
       resources :categories
       resources :activity_lines, except: [:show]
-      resources :banners, except: [:show]
+      resources :banners
       resources :feedbacks, except: [:show]
       resources :events
       resources :questionaries
