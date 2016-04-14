@@ -8,7 +8,7 @@ FactoryGirl.define do
     ticket { generate :integer }
     parent_id { Member.last ? Member.last.id : nil }
     mobile_phone { generate :phone }
-    birth_date { generate :date }
+    birth_date { generate :datetime }
     home_adress { generate :string }
     avatar { generate :image }
     password { generate :password }

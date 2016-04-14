@@ -56,11 +56,13 @@ class Web::Admin::LettersControllerTest < ActionController::TestCase
     @letter.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @letter.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should delete destroy' do
     count = Letter.count
     delete :destroy, id: @letter
     assert_equal count - 1, Letter.count
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

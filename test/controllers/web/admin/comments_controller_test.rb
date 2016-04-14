@@ -51,11 +51,13 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     @comment.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
       assert_equal attributes[key.to_sym], @comment.send(key), key
     end
+    assert_equal attributes[:text], LoggedAction.last.parsed_params[:text]
   end
 
   test 'should delete destroy' do
     count = Comment.count
     delete :destroy, id: @comment
     assert_equal count - 1, Comment.count
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

@@ -39,12 +39,12 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def log_action
-    if self.status == 302 && !not_logged_controllers.include?(self.class) && log_params.present?
+    if self.status == 302 && !not_logged_controllers.include?(self.class)
       LoggedAction.create! user_id: current_user.id,
 	record_type: model_class.name,
 	record_id: params[:id],
 	action_type: action_name,
-	params: log_params.except(*not_logged_attributes)
+	params: transform_to_save(log_params&.except(*not_logged_attributes))
     end
   end
 end

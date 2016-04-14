@@ -6,8 +6,8 @@ FactoryGirl.define do
     email
     password { generate :password }
     password_confirmation { password }
-    state { User.state_machines[:state].states.map(&:name).sample.to_s }
-    member_state { User.state_machines[:state].states.map(&:name).sample.to_s }
+    state { User.state_machines[:state].states.map(&:name).first.to_s }
+    member_state { User.state_machines[:state].states.map(&:name).first.to_s }
     role { User.role.values.sample }
   end
 end

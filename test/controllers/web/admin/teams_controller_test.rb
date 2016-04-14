@@ -61,6 +61,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     @team.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @team.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not update team' do
@@ -77,5 +78,6 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     delete :destroy, id: @team
     @team.reload
     assert @team.removed?
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end
