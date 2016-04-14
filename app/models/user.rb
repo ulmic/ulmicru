@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   end
 
   def has_access?
-    state != 'removed' && state != 'declined'
+    !removed? && !declined?
   end
 
   def can_reset_password?

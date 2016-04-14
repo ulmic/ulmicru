@@ -39,6 +39,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], questionary.send(key), key
     end
+    assert_equal attributes[:first_name], LoggedAction.last.parsed_params[:first_name]
   end
 
   test 'should get edit' do
@@ -55,6 +56,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     @questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @questionary.send(key), key
     end
+    assert_equal attributes[:email], LoggedAction.last.parsed_params[:email]
   end
 
   test 'should delete destroy' do
@@ -62,5 +64,6 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     delete :destroy, id: @questionary
     @questionary.reload
     assert @questionary.removed?
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

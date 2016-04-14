@@ -41,6 +41,7 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
     campaign.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], campaign.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should get edit' do
@@ -57,11 +58,13 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
     @campaign.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @campaign.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should delete destroy' do
     delete :destroy, id: @campaign
     @campaign.reload
     assert @campaign.removed?
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

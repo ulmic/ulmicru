@@ -21,4 +21,5 @@ ActiveSupport::Inflector.inflections(:ru) do |inflect|
   inflect.plural /ий$/i, 'ие'
   inflect.plural /ментарий$/i, 'ментарии'
   inflect.plural /мо$/i, 'ма'
+  inflect.plural /лог действия$/i, 'Логи действий'
 end

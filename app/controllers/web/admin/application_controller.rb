@@ -2,11 +2,14 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   before_filter :authenticate_admin!
   before_filter :check_declared_scopes, only: :index
   before_filter :collections_counts, only: :index
+  before_action :save_object, only: [ :update, :destroy ]
+  after_action :log_action, only: [ :create, :update, :destroy, :restore ]
 
   layout 'web/admin/application'
 
   include ModelsConcern
   include Concerns::DecoratorsConcern
+  include Concerns::ParamsComparingConcern
 
   protected
 
@@ -28,6 +31,20 @@ class Web::Admin::ApplicationController < Web::ApplicationController
     @counts = {}
     decorator_class.collections.each do |collection|
       @counts[collection] = model_class.send(collection).count
+    end
+  end
+
+  def save_object
+    @prev_object = model_class.find params[:id]
+  end
+
+  def log_action
+    if self.status == 302 && !not_logged_controllers.include?(self.class)
+      LoggedAction.create! user_id: current_user.id,
+	record_type: model_class.name,
+	record_id: params[:id] || model_class.last.id,
+	action_type: action_name,
+	params: transform_to_save(log_params&.except(*not_logged_attributes))
     end
   end
 end

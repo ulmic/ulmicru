@@ -8,6 +8,6 @@ FactoryGirl.define do
     password_confirmation { password }
     state { User.state_machines[:state].states.map(&:name).first.to_s }
     member_state { User.state_machines[:state].states.map(&:name).first.to_s }
-    role { User.role.values.first }
+    role { User.role.values.sample }
   end
 end
