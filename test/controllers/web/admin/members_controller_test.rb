@@ -44,6 +44,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     member.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], member.send(key), key
     end
+    assert_equal attributes[:first_name], LoggedAction.last.parsed_params[:first_name]
   end
 
   test 'should get edit' do

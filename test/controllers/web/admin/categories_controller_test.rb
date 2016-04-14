@@ -27,6 +27,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     category.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], category.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not create category' do

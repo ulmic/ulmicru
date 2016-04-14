@@ -39,6 +39,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], questionary.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should get edit' do

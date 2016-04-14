@@ -38,6 +38,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     team.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], team.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not create team' do

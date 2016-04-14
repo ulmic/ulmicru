@@ -37,6 +37,7 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
     activity_line.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], activity_line.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should get edit' do

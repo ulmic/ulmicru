@@ -20,4 +20,8 @@ module ModelsConcern
   def not_logged_controllers
     [Web::Admin::Delivery::SessionsController]
   end
+
+  def not_logged_attributes
+    [:horizontal, :vertical]
+  end
 end

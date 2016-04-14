@@ -44,6 +44,7 @@ class Web::Admin::EventsControllerTest < ActionController::TestCase
     event.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], event.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should get edit' do

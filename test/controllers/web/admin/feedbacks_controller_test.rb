@@ -33,6 +33,7 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     feedback.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
       assert_equal attributes[key.to_sym], feedback.send(key), key
     end
+    assert_equal attributes[:text], LoggedAction.last.parsed_params[:text]
   end
 
   test 'should get edit' do

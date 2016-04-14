@@ -38,6 +38,7 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     banner.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], banner.send(key), key
     end
+    assert_equal attributes[:link], LoggedAction.last.parsed_params[:link]
   end
 
   test 'should get edit' do
