@@ -25,6 +25,9 @@ FactoryGirl.define do
   sequence :date, aliases: [:start_date, :end_date] do |n|
     Date.today + n.day
   end
+  sequence :datetime do |n|
+    DateTime.now + n.day
+  end
   sequence :image do |n|
     fixture_file_upload('app/assets/images/apps/logo-mic-square.png', 'image/png')
   end

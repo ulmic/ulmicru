@@ -33,6 +33,7 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
     document.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], document.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should get edit' do
@@ -49,11 +50,13 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
     @document.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @document.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should delete destroy' do
     delete :destroy, id: @document
     @document.reload
     assert @document.removed?
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

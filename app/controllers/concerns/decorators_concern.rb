@@ -1,11 +1,12 @@
 module Concerns
   module DecoratorsConcern
-    def decorator_name
-      "#{controller_path.sub('web/admin/', '').classify}Decorator"
+    def decorator_name(model_class = nil)
+      model_class ||= controller_path.sub('web/admin/', '').classify
+      "#{model_class}Decorator"
     end
 
-    def decorator_class
-      decorator_name.constantize
+    def decorator_class(model_class = nil)
+      decorator_name(model_class).constantize
     end
   end
 end

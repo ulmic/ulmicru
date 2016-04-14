@@ -38,6 +38,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     news.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], news.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not create news' do
@@ -61,6 +62,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     @news.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @news.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not update news with render edit' do
@@ -76,5 +78,6 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     delete :destroy, id: @news
     @news.reload
     assert @news.removed?
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

@@ -16,4 +16,12 @@ module ModelsConcern
   def model_class
     model_name.constantize
   end
+
+  def not_logged_controllers
+    [Web::Admin::Delivery::SessionsController]
+  end
+
+  def not_logged_attributes
+    [:horizontal, :vertical, :avatar, :file, :photo, :main_photo, :image].map &:to_s
+  end
 end

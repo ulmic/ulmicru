@@ -40,6 +40,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     article.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], article.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not create article' do
@@ -62,6 +63,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     @article.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @article.send(key), key
     end
+    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not update article by admin' do
@@ -78,5 +80,6 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     delete :destroy, id: @article
     @article.reload
     assert @article.removed?
+    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

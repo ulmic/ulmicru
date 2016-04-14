@@ -18,6 +18,7 @@ ru:
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
       delivery/campaign: Кампания
+      logged_action: Лог действия
     attributes:
       user:
         first_name: Имя
@@ -198,6 +199,14 @@ ru:
         mailing_date: Дата рассылки
       delivery/audience:
         audience_type: Целевая аудитория
+      logged_action:
+        user: Пользователь
+        user_id: Пользователь
+        record: Запись
+        record_id: Запись
+        action_type: Действие
+        params: Параметры
+        created_at: Дата
     errors:
       models:
         member:
@@ -244,6 +253,15 @@ ru:
         contact_emails: На все имеющиеся почтовые адреса
         team: На команду
         event_registrations: Участников мероприятия
+    logged_action:
+      action_type:
+        update: Обновил
+        create: Создал
+        sign_in: Залогинился
+        sign_out: Разлогинился
+        destroy: Удалил в корзину
+        restore: Восстановил из корзины
+        delete: Удалил из базы
   scopes:
     event:
       future: Грядущие
