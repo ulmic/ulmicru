@@ -6,7 +6,9 @@ module Concerns
         object = model_class.find(params[:id])
         attributes_diff(object.attributes, params[to_param(model_class.name)], @prev_object.attributes)
       when 'create'
-        params[model_class.name.underscore]
+        params[to_param(model_class.name)]
+      when 'destroy'
+	@prev_object.attributes
       end
     end
 

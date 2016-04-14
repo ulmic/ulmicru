@@ -22,6 +22,6 @@ module ModelsConcern
   end
 
   def not_logged_attributes
-    [:horizontal, :vertical]
+    [:horizontal, :vertical, :avatar, :file, :photo, :main_photo]
   end
 end
