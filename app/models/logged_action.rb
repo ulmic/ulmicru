@@ -7,6 +7,6 @@ class LoggedAction < ActiveRecord::Base
 
   def parsed_params
     # FIXME with PG >9.4 and jsonb
-    eval(params).with_indifferent_access if params.present?
+    params.present? ? eval(params).with_indifferent_access : {}
   end
 end
