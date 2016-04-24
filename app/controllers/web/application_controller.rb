@@ -10,10 +10,13 @@ class Web::ApplicationController < ApplicationController
   end
 
   if Rails.env.production?
-    rescue_from ActionView::MissingTemplate, ActiveRecord::RecordNotFound, NoMethodError do |exception|
+    rescue_from ActionController::RoutingError,
+		ActionView::MissingTemplate,
+		ActiveRecord::RecordNotFound,
+		NoMethodError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
       Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-      render html: '/web/pages/shared/_server_error', status: 500
+      render '/web/pages/shared/_server_error', status: 500
     end
   end
 
