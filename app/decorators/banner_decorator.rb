@@ -2,11 +2,11 @@ class BannerDecorator < ApplicationDecorator
   delegate_all
 
   def name
-    link
+    object.link
   end
 
   def small_thumb
-    vertical.present? ? vertical.small : horizontal.small
+    (object.vertical || object.horizontal).small
   end
 
   def self.collections

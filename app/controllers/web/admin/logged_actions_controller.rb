@@ -3,7 +3,12 @@ class Web::Admin::LoggedActionsController < Web::Admin::ApplicationController
   skip_before_filter :collections_counts
 
   def index
-    @logged_actions = LoggedAction.all.page(params[:page]).decorate
+    if params[:search]
+      logged_actions = LoggedAction.search_everywhere params[:search]
+    else
+      logged_actions = LoggedAction.all
+    end
+    @logged_actions = logged_actions.page(params[:page]).decorate
   end
 
   def show
