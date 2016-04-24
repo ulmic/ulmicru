@@ -3,6 +3,10 @@ class PositionDecorator < ApplicationDecorator
 
   decorates_association :member
 
+  def name
+    object.title
+  end
+
   def end_date_datetime
     # FIXME change for_now type
     if for_now == '1'
