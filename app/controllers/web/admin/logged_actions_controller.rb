@@ -8,7 +8,7 @@ class Web::Admin::LoggedActionsController < Web::Admin::ApplicationController
     else
       logged_actions = LoggedAction.all
     end
-    @logged_actions = logged_actions.page(params[:page]).decorate
+    @logged_actions = logged_actions.order('created_at DESC').page(params[:page]).decorate
   end
 
   def show
