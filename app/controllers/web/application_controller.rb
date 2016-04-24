@@ -13,7 +13,7 @@ class Web::ApplicationController < ApplicationController
     rescue_from ActionView::MissingTemplate, ActiveRecord::RecordNotFound, NoMethodError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
       Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-      render '/web/pages/shared/_server_error', status: 500
+      render html: '/web/pages/shared/_server_error', status: 500
     end
   end
 
