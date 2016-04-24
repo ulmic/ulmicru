@@ -70,7 +70,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def admin_record_path(instance)
-    send("admin_#{instance.record_type.underscore}_path", instance.record_id)
+    instance.record_type ? send("admin_#{instance.record_type.underscore}_path", instance.record_id) : '#'
   end
 
   def record_title(instance)
