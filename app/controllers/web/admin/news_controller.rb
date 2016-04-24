@@ -1,4 +1,6 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
+  before_filter :choose_members, only: [ :new, :edit ]
+
   def index
     if params[:search]
       news = News.search_everywhere params[:search]
@@ -18,6 +20,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     if @news_form.save
       redirect_to admin_news_index_path
     else
+      choose_members
       render action: :new
     end
   end
@@ -39,6 +42,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     if @news_form.save
       redirect_to edit_admin_news_path @news_form.model
     else
+      choose_members
       render action: :edit
     end
   end

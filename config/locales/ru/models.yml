@@ -93,6 +93,8 @@ ru:
         state_event: Статус
         attachments: Приложения
         views: Просмотры
+        user_id: Автор
+        member: Автор
       article:
         title: Заголовок
         body: Контекст
