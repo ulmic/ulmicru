@@ -5,6 +5,18 @@ class Web::ApplicationController < ApplicationController
   include Concerns::NotificationManagment
   include Concerns::NotificatableItems
 
+  if Rails.env.staging?
+    before_filter :required_basic_auth!
+  end
+
+  if Rails.env.production?
+    rescue_from ActionView::MissingTemplate, ActiveRecord::RecordNotFound, NoMethodError do |exception|
+      Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
+      Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
+      render '/web/pages/shared/_server_error', status: 500
+    end
+  end
+
   def load_categories_tree
     @first_category = Category.find_by_name 'Кто мы такие'
     @about_site_category = Category.find_by_name 'Сайт МИЦ'
