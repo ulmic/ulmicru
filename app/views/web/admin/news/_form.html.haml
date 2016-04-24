@@ -21,6 +21,7 @@
       = f.input :title, as: :string
       = f.input :lead, as: :string
       = f.input :body, as: :ckeditor
+      = f.input :user_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }, selected: current_user.id
       = f.input :published_at, as: :datetime_picker
       = f.label :photo
       .preview
