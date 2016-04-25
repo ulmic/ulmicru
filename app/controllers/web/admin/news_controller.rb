@@ -12,10 +12,6 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
 
   def create
     @news_form = NewsForm.new_with_model
-
-    # FIXME because sessions work wrong
-    params[:news][:user_id] = current_user.id if current_user.present?
-
     @news_form.submit params[:news]
     if @news_form.save
       redirect_to admin_news_index_path
