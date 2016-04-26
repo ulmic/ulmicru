@@ -36,7 +36,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def save_object
-    @prev_object = model_class.find params[:id]
+    @prev_object_attributes = object_attributes_with_associations model_class.find(params[:id]), params[to_param(model_class.name)]
   end
 
   def log_action

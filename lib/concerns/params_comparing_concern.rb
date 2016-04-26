@@ -6,7 +6,7 @@ module Concerns
         object = model_class.find(params[:id])
         new_params = params[to_param(model_class.name)]
         attributes = object_attributes_with_associations object, new_params
-        attributes_diff attributes.except(*not_logged_attributes), new_params, @prev_object.attributes
+        attributes_diff attributes.except(*not_logged_attributes), new_params, @prev_object_attributes
       when 'create'
         params[to_param(model_class.name)]
       end
@@ -14,7 +14,7 @@ module Concerns
 
     def attributes_diff(object_hash, params, prev_object_hash)
       if comparing(object_hash, params) == {}
-        comparing object_hash, prev_object_hash
+        comparing object_hash, prev_object_hash, :prev_object
       end
     end
 
@@ -30,10 +30,10 @@ module Concerns
       attributes
     end
 
-    def comparing(hash1, hash2)
+    def comparing(hash1, hash2, prev_object = nil)
       comparison = {}
       hash1.except('updated_at').each do |key, value|
-        next unless hash2[key].present?
+        next if !hash2[key].present? && !prev_object
         if value.is_a? ActiveSupport::TimeWithZone
           if hash2[key].to_datetime.to_s.include? "+00"
             hash2[key] = (hash2[key].to_datetime - 3.hour).in_time_zone('Moscow')
@@ -41,7 +41,12 @@ module Concerns
             hash2[key] = hash2[key].to_datetime.in_time_zone('Moscow')
           end
         end
-        comparison[key] = value unless hash2[key].to_s == value.to_s
+        unless hash2[key].to_s == value.to_s
+          if value.is_a? Hash
+            value.except!(*not_logged_attributes)
+          end
+          comparison[key] = value
+        end
       end
       comparison
     end
