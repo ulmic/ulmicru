@@ -10,6 +10,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   include ModelsConcern
   include Concerns::DecoratorsConcern
   include Concerns::ParamsComparingConcern
+  include Concerns::LoggedActionsParamsConcern
 
   protected
 

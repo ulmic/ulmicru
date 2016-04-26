@@ -6,11 +6,18 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     else
       members = Member.send params[:scope]
     end
-    @members = members.page(params[:page]).decorate 
+    @members = members.page(params[:page]).decorate
   end
 
   def show
-    @member = Member.includes(:positions, :registrations).find(params[:id]).decorate
+    @member = Member.includes(:positions).find(params[:id]).decorate
+    registrations = @member.registrations
+    @registrations = {}
+    registrations.each do |registration|
+      registration.event.logged_actions.each do |logged_action|
+        @registrations.merge! registration => logged_action if nested_params_contains? logged_action, :registrations, user_id: @member.id
+      end
+    end
   end
 
   def new
