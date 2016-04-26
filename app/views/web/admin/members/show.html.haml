@@ -46,4 +46,5 @@
               = link_to event_path(registration.event) do
                 %span.glyphicon.glyphicon-share
             %td= registration.role_text
-            %td= logged_action.user.decorate.short_name
+            - if logged_action.present?
+              %td= logged_action.user.decorate.short_name

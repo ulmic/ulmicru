@@ -14,8 +14,9 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     registrations = @member.registrations
     @registrations = {}
     registrations.each do |registration|
+      @registrations[registration] = ''
       registration.event.logged_actions.each do |logged_action|
-        @registrations.merge! registration => logged_action if nested_params_contains? logged_action, :registrations, user_id: @member.id
+        @registrations[registration] = logged_action if nested_params_contains? logged_action, :registrations, user_id: @member.id
       end
     end
   end

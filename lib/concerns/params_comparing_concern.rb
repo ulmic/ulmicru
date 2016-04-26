@@ -41,6 +41,11 @@ module Concerns
             hash2[key] = hash2[key].to_datetime.in_time_zone('Moscow')
           end
         end
+        if value.is_a? Hash
+          # because of nested values hash has one value (association_attributes)
+          comparison[key] = comparing hash2[key].values.first, value.values.first
+          next
+        end
         unless hash2[key].to_s == value.to_s
           if value.is_a? Hash
             value.except!(*not_logged_attributes)
