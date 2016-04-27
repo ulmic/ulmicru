@@ -59,6 +59,7 @@ gem 'reform'
 gem 'rails_email_preview', '~> 0.2.29'
 #gem 'scopes_rails', '>= 0.0.3'
 gem 'scopes_rails', github: 'kalashnikovisme/scopes_rails', branch: 'list_of_scopes'
+gem 'trap', '~> 1'
 
 group :production do
   gem 'unicorn-rails'

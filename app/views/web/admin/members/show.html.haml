@@ -35,14 +35,16 @@
             %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
             %td= position.end_date_datetime
     %hr
-    - if @member.registrations.any?
+    - unless @registrations.empty?
       %h4
         = t('.event_attendings')
       %table.table.attributes-tabl
-        - @member.registrations.each do |registration|
+        - @registrations.each do |registration, logged_action|
           %tr
             %td
               = registration.event.title
               = link_to event_path(registration.event) do
                 %span.glyphicon.glyphicon-share
             %td= registration.role_text
+            - if logged_action.present?
+              %td= logged_action.user.decorate.short_name

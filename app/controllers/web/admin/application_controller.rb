@@ -10,6 +10,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   include ModelsConcern
   include Concerns::DecoratorsConcern
   include Concerns::ParamsComparingConcern
+  include Concerns::LoggedActionsParamsConcern
 
   protected
 
@@ -35,16 +36,16 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   end
 
   def save_object
-    @prev_object = model_class.find params[:id]
+    @prev_object_attributes = object_attributes_with_associations model_class.find(params[:id]), params[to_param(model_class.name)]
   end
 
   def log_action
     if self.status == 302 && !not_logged_controllers.include?(self.class)
       LoggedAction.create! user_id: current_user.id,
-	record_type: model_class.name,
-	record_id: params[:id] || model_class.last.id,
-	action_type: action_name,
-	params: transform_to_save(log_params&.except(*not_logged_attributes))
+        record_type: model_class.name,
+        record_id: params[:id] || model_class.last.id,
+        action_type: action_name,
+        params: transform_to_save(log_params&.except(*not_logged_attributes))
     end
   end
 end
