@@ -1,6 +1,5 @@
 module Web::ApplicationHelper
   include PositionList
-  include HtmlTags
 
   def positions_list
     PositionList.list

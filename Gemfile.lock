@@ -284,6 +284,7 @@ GEM
     mini_magick (4.3.6)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    more_html_tags (0.1.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -547,6 +548,7 @@ DEPENDENCIES
   libv8 (= 3.16.14.7)
   mini_magick
   momentjs-rails (>= 2.9)!
+  more_html_tags
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter

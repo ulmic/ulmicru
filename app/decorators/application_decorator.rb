@@ -2,7 +2,9 @@ class ApplicationDecorator < Draper::Decorator
   include Rails.application.routes.url_helpers
   include ActionView::Helpers
   include RussianCases
-  include HtmlTags
+
+  # FIXME add to more_html_tags including to draper
+  include HTMLTagsHelpers
 
   def decorated_to_json(options = {})
     hash = object.as_json options
