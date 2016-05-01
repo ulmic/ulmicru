@@ -19,6 +19,7 @@ ru:
       activity_lines/corporative/confession: Премия Признание
       delivery/campaign: Кампания
       logged_action: Лог действия
+      redirect_rule: Редирект
     attributes:
       user:
         first_name: Имя
@@ -209,6 +210,11 @@ ru:
         action_type: Действие
         params: Параметры
         created_at: Дата
+      redirect_rule:
+        status: HTTP статус
+        url: Старый URL
+        redirect_to: Новый URL
+        reason: Причина
     errors:
       models:
         member:
@@ -264,6 +270,10 @@ ru:
         destroy: Удалил в корзину
         restore: Восстановил из корзины
         delete: Удалил из базы
+    redirect_rule:
+      status:
+        moved_permanently: Перемещено навсегда
+        moved_temporarily: Перемещено временно
   scopes:
     event:
       future: Грядущие

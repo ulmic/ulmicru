@@ -16,7 +16,12 @@ class Web::ApplicationController < ApplicationController
 		NoMethodError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
       Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-      render '/web/pages/shared/_server_error', status: 500
+      redirect_rule = RedirectRule.find_by_url(request.env['PATH_INFO'])
+      if redirect_rule.present?
+	redirect_to redirect_rule.redirect_to, status: redirect_rule.status
+      else
+	render '/web/pages/shared/_server_error', status: 500
+      end
     end
   end
 

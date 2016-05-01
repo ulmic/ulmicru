@@ -47,7 +47,6 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     confession.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], confession.send(key), key
     end
-    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not create confession' do
@@ -71,7 +70,6 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     @confession.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @confession.send(key), key
     end
-    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not update confession by admin' do
@@ -88,6 +86,5 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     delete :destroy, id: @confession
     @confession.reload
     assert @confession.removed?
-    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

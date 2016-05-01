@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       resources :letters, except: :show
       resources :positions, only: [ :update, :destroy ]
       resources :logged_actions, only: [ :index, :show ]
+      resources :redirect_rules, except: :show
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type
@@ -151,5 +152,5 @@ Rails.application.routes.draw do
 
   #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create'
   #TODO Maybe add some checks for environment for this line? Like this?
-  get '*unmatched_route', to: 'web/pages#show', slug: :not_found if Rails.env == "production"
+  get '*unmatched_route', to: 'web/pages#show' if Rails.env == "production"
 end

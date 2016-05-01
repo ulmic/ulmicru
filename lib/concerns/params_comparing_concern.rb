@@ -20,12 +20,14 @@ module Concerns
 
     def object_attributes_with_associations(object, params)
       attributes = object.attributes
-      params.keys.each do |key|
-        if key.to_s.include? 'attributes'
-          attributes.merge!(object.send(key.split('_')[0]).reduce({}) do |a_hash, ass|
-            a_hash.merge! ass.id => ass.attributes
-          end)
-        end
+      unless action_name == 'destroy'
+	params.keys.each do |key|
+	  if key.to_s.include? 'attributes'
+	    attributes.merge!(object.send(key.split('_')[0]).reduce({}) do |a_hash, ass|
+	      a_hash.merge! ass.id => ass.attributes
+	    end)
+	  end
+	end
       end
       attributes
     end
