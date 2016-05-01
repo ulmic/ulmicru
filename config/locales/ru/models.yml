@@ -19,6 +19,7 @@ ru:
       activity_lines/corporative/confession: Премия Признание
       delivery/campaign: Кампания
       logged_action: Лог действия
+      redirect_rule: Редирект
     attributes:
       user:
         first_name: Имя
