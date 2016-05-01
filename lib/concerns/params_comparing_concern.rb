@@ -45,7 +45,9 @@ module Concerns
         end
         if value.is_a? Hash
           # because of nested values hash has one value (association_attributes)
-          comparison[key] = comparing hash2[key].values.first, value.values.first
+	  if hash2[key]
+	    comparison[key] = comparing hash2[key].values.first, value.values.first
+	  end
           next
         end
         unless hash2[key].to_s == value.to_s
