@@ -1,8 +1,7 @@
 class RedirectRule < ActiveRecord::Base
   validates :url, presence: true,
-		  url: true
-  validates :redirect_to, presence: true,
-			  url: true
+		  uniqueness: true
+  validates :redirect_to, presence: true
 
   extend Enumerize
   enumerize :status, in: [ :moved_temporarily, :moved_permanently ]
