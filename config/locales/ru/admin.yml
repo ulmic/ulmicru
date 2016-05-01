@@ -16,6 +16,7 @@ ru:
           uniq_logged_users_for_month_count: Количество уникальных авторизовавшихся на сайте пользователей за месяц
           new_users_count: Количество новых пользователей за месяц
           news_views: Всего просмотров новостей
+          uniq_users_event_registrations_count: Количество уникальных пользователей, участвоваших в мероприятиях
       unviewed:
         index:
           title: Непросмотренные
