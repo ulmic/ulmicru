@@ -33,7 +33,6 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     feedback.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
       assert_equal attributes[key.to_sym], feedback.send(key), key
     end
-    assert_equal attributes[:text], LoggedAction.last.parsed_params[:text]
   end
 
   test 'should get edit' do
@@ -50,13 +49,11 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     @feedback.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
       assert_equal attributes[key.to_sym], @feedback.send(key), key
     end
-    assert_equal attributes[:text], LoggedAction.last.parsed_params[:text]
   end
 
   test 'should delete destroy' do
     count = Feedback.count
     delete :destroy, id: @feedback
     assert_equal count - 1, Feedback.count
-    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

@@ -38,7 +38,6 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     banner.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], banner.send(key), key
     end
-    assert_equal attributes[:link], LoggedAction.last.parsed_params[:link]
   end
 
   test 'should get edit' do
@@ -55,13 +54,11 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     @banner.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @banner.send(key), key
     end
-    assert_equal attributes[:link], LoggedAction.last.parsed_params[:link]
   end
 
   test 'should delete destroy' do
     delete :destroy, id: @banner
     @banner.reload
     assert @banner.removed?
-    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end
