@@ -1,1 +1,8 @@
 - title
+.panel-info
+  .panel-body
+    %table.table.table-striped.table-bordered
+      - @report.each do |key, value|
+        %tr
+          %td= t(".#{key}")
+          %td= value
