@@ -44,6 +44,7 @@
         = admin_menu_item Letter, admin_letters_path, :envelope
     - if current_user.role.admin?
       %ul.nav.navbar-nav.navbar-right
+        = admin_menu_item '', admin_path, :home
         = admin_menu_item @notification_count, admin_unviewed_index_path, 'info-sign'
         = dropdown t('web.admin.trash.title'), :trash do
           = admin_trash_menu_item User
