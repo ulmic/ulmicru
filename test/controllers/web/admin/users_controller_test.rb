@@ -32,7 +32,6 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
       assert_equal attributes[key.to_sym], user.send(key), key
     end
-    assert_equal attributes[:first_name], LoggedAction.last.parsed_params[:first_name]
   end
 
   test 'should get edit' do
@@ -50,7 +49,6 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     @user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
       assert_equal attributes[key.to_sym], @user.send(key), key
     end
-    assert_equal attributes[:first_name], LoggedAction.last.parsed_params[:first_name]
   end
 
   test 'should delete destroy' do
@@ -58,6 +56,5 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     delete :destroy, id: @user
     @user.reload
     assert @user.removed?
-    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end

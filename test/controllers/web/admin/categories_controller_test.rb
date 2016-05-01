@@ -27,7 +27,6 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     category.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], category.send(key), key
     end
-    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not create category' do
@@ -50,7 +49,6 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     @category.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @category.send(key), key
     end
-    assert_equal attributes[:title], LoggedAction.last.parsed_params[:title]
   end
 
   test 'should not update adticle by admin' do
@@ -67,6 +65,5 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     delete :destroy, id: @category
     @category.reload
     assert @category.removed?
-    assert_equal 'destroy', LoggedAction.last.action_type
   end
 end
