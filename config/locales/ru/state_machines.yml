@@ -130,3 +130,8 @@ ru:
             removed: Удалены
             declined: Отменены
             done: Выполнены
+      redirect_rule:
+        state:
+          states:
+            active: Активные
+            removed: Удалённые
