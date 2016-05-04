@@ -2,7 +2,7 @@ class RedirectRuleDecorator < ApplicationDecorator
   delegate_all
 
   def name
-    "#{url} -> #{redirect_to}"
+    "#{object.url} -> #{object.redirect_to}"
   end
 
   def self.collections
