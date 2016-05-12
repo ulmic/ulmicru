@@ -30,11 +30,12 @@ init_select2 = function(component) {
       $(this).select2({
         ajax: {
           url: url,
-          data: (term, page) ->
-            {
+          data: function(term, page) {
+            return {
               q: term,
               page: page
-            },
+            }
+          },
           dataType: 'json',
           delay: 250,
           processResults: function(data) {

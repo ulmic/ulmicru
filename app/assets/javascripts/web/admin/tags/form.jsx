@@ -9,10 +9,10 @@ getTags = function(component) {
     data: {
       record_id: component.props.record.id,
       record_type: component.props.record_type
-    }
+    },
     dataType: 'JSON',
     success: function(data) {
-      component.setState { tags: data }
+      component.setState({ tags: data })
     }
   })
 }
