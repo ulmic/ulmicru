@@ -14,7 +14,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
   def check_notificatable_items
     if params[:items].present?
       unless Concerns::NotificatableItems.items.include? params[:items].to_sym
-	redirect_to params.except(:items)
+        redirect_to params.except(:items)
       end
     else
       any_items_key = @counts.keys.select { |k| @counts[k] != 0 }.first

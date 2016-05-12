@@ -11,9 +11,9 @@ class Web::ApplicationController < ApplicationController
 
   if Rails.env.production?
     rescue_from ActionController::RoutingError,
-		ActionView::MissingTemplate,
-		ActiveRecord::RecordNotFound,
-		NoMethodError do |exception|
+                ActionView::MissingTemplate,
+                ActiveRecord::RecordNotFound,
+                NoMethodError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
       Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
       redirect_rule = RedirectRule.find_by_url(request.env['PATH_INFO'])
