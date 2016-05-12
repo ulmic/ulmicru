@@ -6,8 +6,8 @@ class TagsPresents extends React.Component {
       type: 'DELETE',
       success: function() {
         component.props.reloadTags()
-        # FIXME несмотря на ответ сервера success, здесь исполняется всё равно error
-      }
+        // FIXME несмотря на ответ сервера success, здесь исполняется всё равно error
+      },
       error: function() {
         component.props.reloadTags()
       }

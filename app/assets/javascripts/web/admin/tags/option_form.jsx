@@ -81,7 +81,7 @@ formDisplay = function(component) {
 targetTypeInput = function(component) {
   if (component.props.targetType == 'none') {
     targetType = component.props.targetType.camelize()
-    return(`<div className='input hidden tag_target_type'>
+    return(<div className='input hidden tag_target_type'>
         <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType} />
       </div>)
   }
@@ -154,14 +154,14 @@ class TagOptionForm extends React.Component {
     }
   }
   changeValue(inputId) {
-    this.setState { targetId: $("##{inputId}").val() }
+    this.setState({ targetId: $('#' + inputId).val() })
   }
   stringTagForm(e) {
     e.preventDefault()
     if (this.state.stringInputVisible == 'visible') {
-      this.setState(){ stringInputVisible: 'hidden' })
+      this.setState({ stringInputVisible: 'hidden' })
     } else {
-      this.setState(){ stringInputVisible: 'visible' })
+      this.setState({ stringInputVisible: 'visible' })
     }
   }
   componentDidUpdate() {
@@ -170,7 +170,7 @@ class TagOptionForm extends React.Component {
     $('.tag_form').on('ajax:success', component.props.onTagSubmit)
   }
   render() {
-    display = formDisplay this
+    display = formDisplay(this)
     return(<form className='tag_form' action={Routes.api_admin_tags_path()} onSubmit={this.props.onTagSubmit} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
       {getSelectToView(this)}
