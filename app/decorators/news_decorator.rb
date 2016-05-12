@@ -30,13 +30,11 @@ class NewsDecorator < ApplicationDecorator
     I18n.l published_at, format: "%d %b %Y #{I18n.t('helpers.year')} %H:%m"
   end
 
-  def name
-    model.title.first 30
-  end
-
   def short_lead
     "#{model.lead.first(100)}..."
   end
+
+  alias name :short_lead
 
   def author_name
     member.present? ? member.decorate.short_name : I18n.t('helpers.no_author')
