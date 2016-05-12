@@ -18,7 +18,7 @@ class Web::ApplicationController < ApplicationController
       Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
       redirect_rule = RedirectRule.find_by_url(request.env['PATH_INFO'])
       if redirect_rule.present?
-	redirect_to redirect_rule.redirect_to, status: redirect_rule.status
+	redirect_to redirect_rule.redirect_to
       else
 	render '/web/pages/shared/_server_error', status: 500
       end
