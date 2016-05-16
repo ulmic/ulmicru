@@ -5,20 +5,24 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
   before_filter :check_notificatable_items
 
   def index
-    @unviewed = params[:items].to_s.classify.constantize.unviewed.page(params[:page]).decorate
-    @tag = Tag.new
+    if params[:items].present?
+      @unviewed = params[:items].to_s.classify.constantize.unviewed.page(params[:page]).decorate
+      @tag = Tag.new
+    end
   end
 
   private
 
   def check_notificatable_items
-    if params[:items].present?
-      unless Concerns::NotificatableItems.items.include? params[:items].to_sym
-        redirect_to params.except(:items)
+    any_items_key = @counts.keys.select { |k| @counts[k] != 0 }.first
+    if any_items_key
+      if params[:items].present?
+        unless Concerns::NotificatableItems.items.include? params[:items].to_sym
+          redirect_to params.except(:items)
+        end
+      else
+        redirect_to admin_unviewed_index_path items: any_items_key
       end
-    else
-      any_items_key = @counts.keys.select { |k| @counts[k] != 0 }.first
-      redirect_to admin_unviewed_index_path items: any_items_key
     end
   end
 
