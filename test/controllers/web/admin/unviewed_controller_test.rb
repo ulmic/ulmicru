@@ -25,8 +25,8 @@ class Web::Admin::UnviewedControllerTest < ActionController::TestCase
   test 'should get index without instances' do
     @types.each do |type|
       type.to_s.camelize.constantize.destroy_all
-      get :index
-      assert_response :redirect, @response.body
     end
+    get :index
+    assert_response :success, @response.body
   end
 end

@@ -16,7 +16,7 @@ class Web::ApplicationController < ApplicationController
                 NoMethodError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
       Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-      redirect_rule = RedirectRule.find_by_url(request.env['PATH_INFO'])
+      redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
       if redirect_rule.present?
 	redirect_to redirect_rule.redirect_to
       else

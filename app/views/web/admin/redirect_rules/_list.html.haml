@@ -4,7 +4,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:url)
+      %th= model_class.human_attribute_name(:old_path)
       %th= model_class.human_attribute_name(:redirect_to)
       %th= model_class.human_attribute_name(:status)
       %th= model_class.human_attribute_name(:reason)
@@ -15,9 +15,9 @@
     - redirect_rules.each do |redirect_rule|
       %tr.link{ class: state_color(redirect_rule), data: { href: edit_admin_redirect_rule_path(redirect_rule) } }
         %td= redirect_rule.id
-        %td= redirect_rule.url
+        %td= redirect_rule.old_path
         %td= redirect_rule.redirect_to
-        %td= redirect_rule.status
+        %td= enumerize_locales_value redirect_rule.model_name, :status, redirect_rule.status
         %td= redirect_rule.reason
         - if searching?
           %td= redirect_rule.human_state_name
