@@ -17,7 +17,7 @@
         %td= redirect_rule.id
         %td= redirect_rule.old_path
         %td= redirect_rule.redirect_to
-        %td= redirect_rule.status
+        %td= enumerize_locales_value redirect_rule.model_name, :status, redirect_rule.status
         %td= redirect_rule.reason
         - if searching?
           %td= redirect_rule.human_state_name
