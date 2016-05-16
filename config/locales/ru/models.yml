@@ -212,8 +212,8 @@ ru:
         created_at: Дата
       redirect_rule:
         status: HTTP статус
-        url: Старый URL
-        redirect_to: Новый URL
+        old_path: Старый запрос
+        redirect_to: Редирект на URL (PATH)
         reason: Причина
     errors:
       models:

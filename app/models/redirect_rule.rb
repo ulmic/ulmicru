@@ -1,5 +1,5 @@
 class RedirectRule < ActiveRecord::Base
-  validates :url, presence: true,
+  validates :old_path, presence: true,
 		  uniqueness: true
   validates :redirect_to, presence: true
 
@@ -20,5 +20,5 @@ class RedirectRule < ActiveRecord::Base
   end
 
   include PgSearch
-  pg_search_scope :search_everywhere, against: [ :url, :redirect_to, :status, :reason ]
+  pg_search_scope :search_everywhere, against: [ :old_path, :redirect_to, :status, :reason ]
 end
