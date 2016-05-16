@@ -11,6 +11,7 @@ ru:
       ul_lider: "Конкурс «Я-лидер!»"
       international_volunteer_school: Международная школа волонтёров
       it_way: IT Way
+      i_am_lider: "Я - лидер!"
   date:
     order:
       - :day
