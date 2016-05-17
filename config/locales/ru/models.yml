@@ -216,6 +216,12 @@ ru:
         old_path: Старый запрос
         redirect_to: Редирект на URL (PATH)
         reason: Причина
+      image:
+        date: Дата создания
+        author: Автор
+        author_name: Имя автора 
+        slug: Адрес
+        image_type: Тип изображения
     errors:
       models:
         member:
@@ -275,6 +281,11 @@ ru:
       status:
         moved_permanently: Перемещено навсегда
         moved_temporarily: Перемещено временно
+    image:
+      image_type:
+        photo: Фото
+        just_image: Картинка
+        logo: Логотип
   scopes:
     event:
       future: Грядущие

@@ -135,3 +135,8 @@ ru:
           states:
             active: Активные
             removed: Удалённые
+      image:
+        state:
+          states:
+            active: Активные
+            removed: Удалённые
