@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
 
-  validates :image, presence: true
+  validates :file, presence: true
   validates :slug, presence: true
   validates :image_type, presence: true
 

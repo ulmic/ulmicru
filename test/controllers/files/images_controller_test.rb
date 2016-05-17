@@ -6,7 +6,8 @@ class Files::ImagesControllerTest < ActionController::TestCase
   end
 
   test 'should get show' do
-    get :show, slug: @image.image.slug
-    assert_response :success
+    get :show, slug: @image.slug
+    assert_response :redirect
+    assert_redirected_to @image.file
   end
 end

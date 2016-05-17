@@ -151,7 +151,9 @@ Rails.application.routes.draw do
 
   scope module: :files do
     resources :images, only: [] do
-      get '/:slug' => 'images#show', as: :image
+      collection do
+        get '/:slug' => 'images#show', as: :image
+      end
     end
   end
 
