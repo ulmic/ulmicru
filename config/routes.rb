@@ -148,6 +148,13 @@ Rails.application.routes.draw do
       resources :news, only: :index
     end
   end
+
+  scope module: :files do
+    resources :images, only: [] do
+      get '/:slug' => 'images#show', as: :image
+    end
+  end
+
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
 
   #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create'
