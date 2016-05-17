@@ -20,6 +20,7 @@ ru:
       delivery/campaign: Кампания
       logged_action: Лог действия
       redirect_rule: Редирект
+      image: Изображение
     attributes:
       user:
         first_name: Имя

@@ -5,8 +5,23 @@ class Image < ActiveRecord::Base
   validates :slug, presence: true
   validates :image_type, presence: true
 
-  mount_uploader :image, PhotoUploader
+  mount_uploader :file, PhotoUploader
 
   extend Enumerize
   enumerize :image_type, in: [ :photo, :just_image, :logo ]
+
+  state_machine :state, initial: :active do
+    state :active
+    state :removed
+
+    event :remove do
+      transition all => :removed
+    end
+  end
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [ :slug, :author_name ],
+    associated_against: {
+      author: [ :first_name, :last_name, :patronymic ]
+    }
 end

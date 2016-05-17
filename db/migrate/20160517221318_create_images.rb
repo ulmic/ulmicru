@@ -7,6 +7,7 @@ class CreateImages < ActiveRecord::Migration
       t.text :author_name
       t.text :slug
       t.text :image_type
+      t.text :state
 
       t.timestamps null: false
     end

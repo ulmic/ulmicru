@@ -1,0 +1,28 @@
+- model_class = Image
+- current_title = page_title(action, model_class.model_name.human)
+- title current_title, :admin
+.page-header
+  %h1= page_title(action, Image.model_name.human)
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/messages', object: @image_form
+.row
+  .col-lg-6
+    = simple_form_for [:admin, @image_form], input_html: { class: 'form-horizontal' } do |f|
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_images_path, class: 'btn btn-default'
+      %br
+      .preview
+        = image_tag @image_form.model.file if @image_form.model.file.present?
+      = f.input :file, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :file, label: false, as: :jasny_file_preview_upload
+      = f.input :date, as: :datetime_picker
+      .alert.alert-dissmissible.alert-info
+        %span.glyphicon.glyphicon-info-sign
+        = t('hints.admin.image.author')
+      = f.input :author_id, as: :select, collection: users_hash(@users, names: :official), input_html: { class: :select2 }
+      = f.input :author_name, as: :string
+      = f.input :slug, as: :string
+      = f.input :image_type
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_images_path, class: 'btn btn-default'
