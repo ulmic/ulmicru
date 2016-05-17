@@ -17,7 +17,7 @@
           = link_to confession.id, admin_activity_lines_corporative_confession_path(confession)
         %td= link_to confession.member.short_name, admin_activity_lines_corporative_confession_path(confession)
         %td= confession.year
-        %td= enumerize_locales_value confession.model_name, :nomination, confession.nomination
+        %td= enumerize_locales_value confession, :nomination
         - if searching?
           %td= confession.human_state_name
         %td.actions

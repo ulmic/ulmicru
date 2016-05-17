@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :image do
-    file { generate :image }
+    file { generate :image_as_file }
     date { DateTime.now }
     author_id { User.last ? User.last.id : create(:user) }
     author_name { generate :human_name }
