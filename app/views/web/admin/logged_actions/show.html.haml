@@ -15,7 +15,7 @@
     %td= link_to record_title(@logged_action), admin_record_path(@logged_action)
   %tr
     %th= model_class.human_attribute_name(:action_type)
-    %td= enumerize_locales_value model_class, :action_type, @logged_action.action_type
+    %td= enumerize_locales_value @logged_action, :action_type
   %tr
     %th= model_class.human_attribute_name(:params)
     %td

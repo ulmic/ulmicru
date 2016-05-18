@@ -10,7 +10,7 @@ FactoryGirl.define do
     mobile_phone { generate :phone }
     birth_date { generate :datetime }
     home_adress { generate :string }
-    avatar { generate :image }
+    avatar { generate :image_as_file }
     password { generate :password }
     password_confirmation { password }
     municipality { Member.municipality.values.first } 

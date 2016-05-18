@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :banner do
-    horizontal { generate :image }
+    horizontal { generate :image_as_file }
     link { generate :url }
     begin_date { DateTime.now }
     end_date { DateTime.now + 1.day }

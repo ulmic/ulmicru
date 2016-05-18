@@ -30,7 +30,10 @@
       - unless @member_form.model.unavailable?
         = f.input :state_event, as: :state_event
         = f.input :member_state_event, as: :state_event
-      = f.input :role
+      - if current_user.role.tech_admin?
+        = f.input :role
+      - else
+        = f.input :role, collection: roles_without_tech_admin
       = f.input :parent_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
       %h4
         = t('.resume')

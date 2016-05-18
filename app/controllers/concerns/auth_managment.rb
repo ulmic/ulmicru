@@ -14,7 +14,7 @@ module Concerns
     end
 
     def signed_as_admin?
-      signed_in? && (current_user.role.admin? || current_user.role.author?)
+      signed_in? && current_user.role.in?(['admin', 'author', 'tech_admin'])
     end
 
     def authenticate_admin!
