@@ -4,7 +4,7 @@
       .container-big
         %ul.right
           - if signed_in?
-            - if current_user.role.admin?
+            - if current_user.role.in? [ 'admin', 'tech_admin' ]
               %li
                 = link_to admin_path do
                   .inner

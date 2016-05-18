@@ -8,7 +8,7 @@
       = t('application.name')
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
-      - if current_user.role.admin?
+      - if current_user.role.in? ['admin', 'tech_admin']
         = admin_menu_item Event, admin_events_path, :calendar
         = admin_menu_item News, admin_news_index_path, 'list-alt'
         = dropdown t('.people') do
@@ -32,9 +32,9 @@
           = admin_menu_item Banner, admin_banners_path
           = admin_menu_item Document, admin_documents_path
           = admin_menu_item Comment, admin_comments_path
-          = admin_menu_item LoggedAction, admin_logged_actions_path
+          = admin_menu_item RedirectRule, admin_redirect_rules_path
           - if current_user.role.tech_admin?
-            = admin_menu_item RedirectRule, admin_redirect_rules_path
+            = admin_menu_item LoggedAction, admin_logged_actions_path
             = admin_menu_item Image, admin_images_path
         = admin_menu_item Feedback, admin_feedbacks_path, :share
         = dropdown "#{t('.delivery')} (Beta)" do

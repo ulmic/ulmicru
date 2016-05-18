@@ -238,6 +238,7 @@ ru:
         admin: Администратор
         user: Пользователь
         author: Автор
+        tech_admin: Технический администратор
     activity_line:
       activity_type:
         central_program: Центральная программа

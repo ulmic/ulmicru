@@ -20,7 +20,7 @@
       .alert.alert-dissmissible.alert-info
         %span.glyphicon.glyphicon-info-sign
         = t('hints.admin.image.author')
-      = f.input :author_id, as: :select, collection: users_hash(@users, names: :official), input_html: { class: :select2 }
+      = f.input :author_id, as: :select, collection: users_hash(@users), input_html: { class: :select2 }
       = f.input :author_name, as: :string
       = f.input :slug, as: :string
       = f.input :image_type
