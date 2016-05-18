@@ -1,6 +1,6 @@
 class RedirectRule < ActiveRecord::Base
   validates :old_path, presence: true,
-		  uniqueness: true
+		  uniqueness: { scope: :state }
   validates :redirect_to, presence: true
 
   extend Enumerize
