@@ -19,7 +19,7 @@ class Image < ActiveRecord::Base
   end
 
   include PgSearch
-  pg_search_scope :search_everywhere, against: [ :slug, :author_name ],
+  pg_search_scope :search_everywhere, against: [ :author_name ],
     associated_against: {
       author: [ :first_name, :last_name, :patronymic ]
     }
