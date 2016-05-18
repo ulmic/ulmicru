@@ -4,7 +4,6 @@ FactoryGirl.define do
     date { DateTime.now }
     author_id { User.last ? User.last.id : create(:user) }
     author_name { generate :human_name }
-    slug { generate :string }
     image_type { Image.image_type.values.sample }
     state { Image.state_machines[:state].states.map(&:name).first.to_s }
   end
