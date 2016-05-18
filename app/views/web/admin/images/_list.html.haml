@@ -16,7 +16,7 @@
       %tr.link{ class: state_color(image), data: { href: edit_admin_image_path(image) } }
         %td= image.id
         %td= image_tag image.file.small
-        %td=l image.date, format: '%d.%m.%Y'
+        %td= l(image.date, format: '%d.%m.%Y') if image.date.present?
         %td= image.present_author
         %td= enumerize_locales_value image, :image_type
         - if searching?
