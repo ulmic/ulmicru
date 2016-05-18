@@ -19,7 +19,7 @@ class Web::Admin::ImagesControllerTest < ActionController::TestCase
   end
 
   test 'should get index with search' do
-    get :index, search: @image.slug
+    get :index, search: @image.author_name
     assert_response :success, @response.body
   end
 
