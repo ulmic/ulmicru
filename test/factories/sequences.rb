@@ -28,7 +28,7 @@ FactoryGirl.define do
   sequence :datetime do |n|
     DateTime.now + n.day
   end
-  sequence :image do |n|
+  sequence :image_as_file do |n|
     fixture_file_upload('app/assets/images/apps/logo-mic-square.png', 'image/png')
   end
   sequence :file do |n|
