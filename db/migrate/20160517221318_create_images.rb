@@ -5,7 +5,6 @@ class CreateImages < ActiveRecord::Migration
       t.datetime :date
       t.integer :author_id
       t.text :author_name
-      t.text :slug
       t.text :image_type
       t.text :state
 

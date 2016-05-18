@@ -22,7 +22,6 @@
         = t('hints.admin.image.author')
       = f.input :author_id, as: :select, collection: users_hash(@users), input_html: { class: :select2 }
       = f.input :author_name, as: :string
-      = f.input :slug, as: :string
       = f.input :image_type
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_images_path, class: 'btn btn-default'
