@@ -19,8 +19,6 @@
 #= require web/users/account
 #= require jasny-bootstrap
 #= require jasny_file_uploader
-#= require react
-#= require react_ujs
 # Views logic
 #= require web/members
 #= require web/events
