@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   extend Enumerize
-  enumerize :role, in: [ :user, :admin, :author ], default: :user
+  enumerize :role, in: [ :user, :admin, :author, :tech_admin ], default: :user
 
   include AvatarManagment
   include Concerns::SexManagment

@@ -1,4 +1,4 @@
-- current_title = "#{@confession.short_name} | #{enumerize_locales_value(@confession.model_name, :nomination, @confession.nomination)}"
+- current_title = "#{@confession.short_name} | #{enumerize_locales_value(@confession, :nomination)}"
 - title current_title
 .panel-info
   .panel-heading
@@ -16,7 +16,7 @@
             = image_tag argument.member.avatar.small, style: 'width: 50px; height: 50px'
             %br
             = argument.member.short_name
-          %td= enumerize_locales_value argument.model_name, :argument_type, argument.argument_type
+          %td= enumerize_locales_value argument, :argument_type
           %td= argument.text
   .panel-body
     %table.table.table-bordered.table-striped

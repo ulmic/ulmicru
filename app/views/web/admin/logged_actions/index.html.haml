@@ -21,6 +21,6 @@
         %td= link_to logged_action.id, admin_logged_action_path(logged_action.id)
         %td= link_to logged_action.user_short_name, admin_member_path(logged_action.user_id)
         %td= link_to record_title(logged_action), admin_record_path(logged_action)
-        %td= enumerize_locales_value model_class, :action_type, logged_action.action_type
+        %td= enumerize_locales_value logged_action, :action_type
         %td=l logged_action.created_at, format: "%d %b %Y %H:%m"
 = paginate @logged_actions, theme: 'twitter-bootstrap-3'

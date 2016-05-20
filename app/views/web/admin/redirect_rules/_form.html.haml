@@ -11,8 +11,8 @@
     = simple_form_for [:admin, @redirect_rule_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'
-      = f.input :url, as: :string
-      = f.input :redirect_to, as: :string
+      = f.input :old_path, as: :string
+      = f.input :redirect_to, as: :string, input_html: { value: params[:redirect_to] }
       = f.input :status
       = f.input :reason
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'

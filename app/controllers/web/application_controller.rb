@@ -16,9 +16,9 @@ class Web::ApplicationController < ApplicationController
                 NoMethodError do |exception|
       Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
       Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-      redirect_rule = RedirectRule.find_by_url(request.env['PATH_INFO'])
+      redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
       if redirect_rule.present?
-	redirect_to redirect_rule.redirect_to, status: redirect_rule.status
+	redirect_to redirect_rule.redirect_to
       else
 	render '/web/pages/shared/_server_error', status: 500
       end
@@ -41,7 +41,7 @@ class Web::ApplicationController < ApplicationController
   end
 
   def notification_count
-    if signed_in? && current_user.role.admin?
+    if signed_in? && current_user.role.in?([ 'admin', 'tech_admin' ])
       @notification_count = 0
       Concerns::NotificatableItems.items.each do |collection_type|
         @notification_count += collection_type.to_s.capitalize.constantize.unviewed.count

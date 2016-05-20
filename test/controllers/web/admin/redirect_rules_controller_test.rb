@@ -19,7 +19,7 @@ class Web::Admin::RedirectRulesControllerTest < ActionController::TestCase
   end
 
   test 'should get index with search' do
-    get :index, search: @redirect_rule.url
+    get :index, search: @redirect_rule.old_path
     assert_response :success, @response.body
   end
 

@@ -15,7 +15,7 @@ module LocalsHelper
     I18n.t("enumerize.#{model.name.underscore}.#{attribute}").invert
   end
 
-  def enumerize_locales_value(model, attribute, value)
-    I18n.t "enumerize.#{model.name.underscore}.#{attribute}.#{value}"
+  def enumerize_locales_value(object, attribute)
+    I18n.t "enumerize.#{object.model_name.name.underscore}.#{attribute}.#{object.send(attribute)}"
   end
 end

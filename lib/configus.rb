@@ -20,6 +20,7 @@ Configus.build Rails.env do
       ul_lider do
         full_name 'organization.projects.ul_lider'
         url 'http://ul-lider.ru'
+        ico 'organization/activity_lines/lider/ya-lider.png'
       end
       international_volunteer_school do
         full_name 'organization.projects.international_volunteer_school'
@@ -27,7 +28,9 @@ Configus.build Rails.env do
       end
       it_way do
         full_name 'organization.projects.it_way'
+        short_name "IT Way'#{DateTime.now.strftime('%y')}"
         url 'http://it-way.pro'
+        ico 'organization/activity_lines/it/it_way.png'
       end
     end
     organization do
