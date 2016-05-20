@@ -1,4 +1,6 @@
-formDisplay = function(component) {
+import React from 'react'
+
+var formDisplay = function(component) {
   if (component.props.tagType == 'none') {
     return 'none'
   } else {
@@ -6,7 +8,7 @@ formDisplay = function(component) {
   }
 }
 
-init_select2 = function(component) {
+var init_select2 = function(component) {
   $('.select2-tags').each(function() {
     if (component.props.tagType == 'string') {
       dataType = 'string'
@@ -70,7 +72,7 @@ init_select2 = function(component) {
   })
 }
 
-formDisplay = function(component) {
+var formDisplay = function(component) {
   if (component.props.tagType == 'none') {
     return 'none'
   } else {
@@ -78,7 +80,7 @@ formDisplay = function(component) {
   }
 }
 
-targetTypeInput = function(component) {
+var targetTypeInput = function(component) {
   if (component.props.targetType == 'none') {
     targetType = component.props.targetType.camelize()
     return(<div className='input hidden tag_target_type'>
@@ -87,7 +89,7 @@ targetTypeInput = function(component) {
   }
 }
 
-hiddenInputs = function(component) {
+var hiddenInputs = function(component) {
   recordType = component.props.recordType.camelize()
   return(<div>
     <div className='input hidden tag_tag_type'>
@@ -103,7 +105,7 @@ hiddenInputs = function(component) {
   </div>)
 }
 
-tagSelectDisplay = function(targetType, type, component) {
+var tagSelectDisplay = function(targetType, type, component) {
   if (targetType == type) {
     return 'block'
   } else {
@@ -111,14 +113,14 @@ tagSelectDisplay = function(targetType, type, component) {
   }
 }
 
-linkSelect = function(type) {
+var linkSelect = function(type) {
   classes = `select optional select2-tags ${type}`
   return(<div className='input select optional tag_target_id'>
     <select className={classes} name='tag[target_id]' id='tag_target_id' data-type={type} style={{width: '100%'}}/>
   </div>)
 }
 
-getSelectToView = function(component) {
+var getSelectToView = function(component) {
   switch(component.props.tagType) {
     case 'string':
       if (component.state.stringInputVisible == 'hidden') {
@@ -131,7 +133,7 @@ getSelectToView = function(component) {
   }
 }
 
-newStringTagInput = function(component) {
+var newStringTagInput = function(component) {
   if ((component.props.tagType == 'string') && (component.state.stringInputVisible == 'visible')) {
     return(<div className='input text'>
       <input className='form-control input text' name='tag[text]' id='tag_text' />
@@ -139,7 +141,7 @@ newStringTagInput = function(component) {
   }
 }
 
-newStringTagButton = function(component) {
+var newStringTagButton = function(component) {
   if (component.props.tagType == 'string') {
     return(<a onClick={component.stringTagForm} className='btn btn-xs btn-warning' id='add_new_string_tag' href='#'>Создать новый</a>)
   }
@@ -180,3 +182,5 @@ class TagOptionForm extends React.Component {
     </form>)
   }
 }
+
+export default TagOptionForm

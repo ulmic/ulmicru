@@ -1,3 +1,5 @@
+import React from 'react'
+
 var initial_nomination = function(component) {
   if (component.props.nomination == undefined) {
     return component.props.nomination
@@ -17,18 +19,19 @@ var init_select2 = function(component) {
     ajax: {
       //FIXME don't get from admin namespace
       url: Routes.api_admin_members_path(),
-      data: (term, page) ->
-        {
+      data: function(term, page) {
+        return({
           condition: `without_${component.state.nomination}`,
           q: term
-        },
+        })
+      },
       dataType: 'json',
       processResults: function(data) {
         var members = []
         $(data).each(function() {
           members.push({
             id: this.id,
-            text: `${@.ticket} | ${@.first_name} ${@.last_name}`
+            text: `${this.ticket} | ${this.first_name} ${this.last_name}`
           })})
         return({ results: members })
       }

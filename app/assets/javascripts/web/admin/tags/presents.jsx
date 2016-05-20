@@ -1,3 +1,5 @@
+import React from 'react'
+
 class TagsPresents extends React.Component {
   removeTag(tag_id) {
     component = this
@@ -30,3 +32,5 @@ class TagsPresents extends React.Component {
     </ul>)
   }
 }
+
+export default TagsPresents

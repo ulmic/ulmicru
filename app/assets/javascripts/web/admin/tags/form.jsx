@@ -3,7 +3,7 @@ import TagToolbar from './toolbar'
 import TagsPresents from './presents'
 import TagOptionForm from './option_form'
 
-getTags = function(component) {
+var getTags = function(component) {
   $.ajax({
     url: Routes.api_admin_tags_path(),
     data: {
@@ -46,7 +46,7 @@ class TagsForm extends React.Component {
     getTags(this)
   }
   render() {
-    return(<div className='tags-form'>
+    /* return(<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
       <TagsPresents tags={this.state.tags}
                     reloadTags={this.reloadTags} />
@@ -56,6 +56,8 @@ class TagsForm extends React.Component {
                      recordType={this.props.record_type}
                      onTagSubmit={this.onTagSubmit}/>
     </div>)
+   */
+    return <span>fuck</span>
   }
 }
 

@@ -17,6 +17,7 @@
 #= require jasny-bootstrap
 #= require jasny_file_uploader
 #= require placeholders
+#= require react_bundle
 
 $.extend String.prototype, camelize: ->
   @replace /(?:^|[-_])(\w)/g, (_, c) ->

@@ -1,3 +1,5 @@
+import React from 'react'
+
 var fillCommentTemplate = function(component, comment, currentUser) {
   var removeButton = ''
   if (currentUser.id == comment.user.id) {
