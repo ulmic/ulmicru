@@ -1,14 +1,19 @@
-@CommentsForm = React.createClass
-  getInitialState: ->
-    { text: '' }
-  handleSubmit: (e) ->
+import React from 'react'
+
+class CommentsForm extends React.Component {
+  getInitialState() {
+    return { text: '' }
+  }
+  handleSubmit(e) {
     e.preventDefault()
-    this.props.handleSubmit this.state.text
-    this.setState { text: '' }
-  onTextChange: (e) ->
-    this.setState { text: e.target.value }
-  render: ->
-    `<div>
+    this.props.handleSubmit(this.state.text)
+    this.setState({ text: '' })
+  }
+  onTextChange(e) {
+    this.setState({ text: e.target.value })
+  }
+  render() {
+    return(<div>
       <div className='comment-form'>
 	<h4>
 	  {I18n.t('web.comments.form.add_comment')}
@@ -34,4 +39,8 @@
 	  </div>
 	</div>
       </div>
-    </div>`
+    </div>)
+  }
+}
+
+export default CommentsForm
