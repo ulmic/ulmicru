@@ -538,6 +538,7 @@ DEPENDENCIES
   github_api
   guard-livereload (~> 2.4)
   haml-rails
+  hashdiff
   i18n-js!
   jasny_bootstrap_extension_rails
   jbuilder (~> 2.0)
