@@ -3,7 +3,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   before_filter :check_declared_scopes, only: :index
   before_filter :collections_counts, only: :index
   before_action :save_object, only: [ :update, :destroy ]
-  after_action :log_action, only: [ :create, :update, :destroy, :restore ]
+  #after_action :log_action, only: [ :create, :update, :destroy, :restore ]
 
   layout 'web/admin/application'
 

@@ -61,6 +61,7 @@ gem 'rails_email_preview', '~> 0.2.29'
 gem 'scopes_rails', github: 'kalashnikovisme/scopes_rails', branch: 'list_of_scopes'
 gem 'trap', '~> 1'
 gem 'more_html_tags'
+gem 'hashdiff'
 
 group :production do
   gem 'unicorn-rails'
