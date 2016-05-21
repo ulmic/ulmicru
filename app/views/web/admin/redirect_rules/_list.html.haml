@@ -14,7 +14,10 @@
   %tbody
     - redirect_rules.each do |redirect_rule|
       %tr.link{ class: state_color(redirect_rule), data: { href: edit_admin_redirect_rule_path(redirect_rule) } }
-        %td= redirect_rule.id
+        %td
+          = redirect_rule.id
+          = link_to "http://ulmic.ru#{redirect_rule.old_path}" do
+            %span.glyphicon.glyphicon-share
         %td= redirect_rule.old_path
         %td= redirect_rule.redirect_to
         %td= enumerize_locales_value redirect_rule, :status
