@@ -22,6 +22,6 @@ module ModelsConcern
   end
 
   def not_logged_attributes
-    [:horizontal, :vertical, :avatar, :file, :photo, :main_photo, :image, :created_at, :updated_at].map &:to_s
+    [:horizontal, :vertical, :avatar, :file, :photo, :main_photo, :image, :created_at, :updated_at, :google_calendar_event_id, :_destroy].map &:to_s
   end
 end
