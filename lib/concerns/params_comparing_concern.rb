@@ -63,7 +63,7 @@ module Concerns
     end
 
     def transfrom_object_hash(hash)
-      hash.except! *not_logged_attributes
+      hash.except! *not_logged_attributes, 'id'
       to_s_keys_hash = {}
       hash.each do |key, value|
         if key.is_a? Integer
