@@ -34,33 +34,21 @@ module Concerns
     end
 
     def comparing(hash1, hash2, prev_object = nil)
-      hash1.except!('id', 'updated_at')
-      to_s_keys_hash = {}
-      hash1.each do |key, value|
-        if key.is_a? Integer
-          to_s_keys_hash.merge! key.to_s => value
-        else
-          to_s_keys_hash.merge! key => value
-        end
+      hash1 = transfrom_object_hash hash1
+      if prev_object
+        hash2 = transfrom_object_hash hash2
+      else
+        hash2 = transform_params_hash hash2
       end
-      hash1 = to_s_keys_hash
-      hash1.each do |key, value|
-        if !value.is_a?(String) && !value.is_a?(Hash)
-          hash1[key] = value.to_s
-        end
-        if value.is_a? Hash
-          nested_hash = value.except *not_logged_attributes, "#{model_class.name.to_s.underscore}_id"
-          nested_hash.each do |v_key, v_value|
-            nested_hash[v_key] = v_value.to_s
-          end
-          hash1[key] = nested_hash
-        end
-      end
+      HashDiff.diff hash1.compact, hash2.compact
+    end
+
+    def transform_params_hash(hash)
       nested_attributes = {}
-      hash2.each do |key, value|
-        if value.include?('/') && Date.valid_date?(*value.split('/').reverse.map(&:to_i))
+      hash.each do |key, value|
+        if value.try(:include?, '/') && Date.valid_date?(*value.split('/').reverse.map(&:to_i))
           if value.to_datetime.to_s.include?("+00")
-            hash2[key] = (hash2[key].to_datetime - 3.hour).in_time_zone('Moscow').to_s
+            hash[key] = (hash[key].to_datetime - 3.hour).in_time_zone('Moscow').to_s
           end
         end
         if value.is_a?(Hash) && key.to_s.include?('attributes')
@@ -68,14 +56,36 @@ module Concerns
             id = v_value['id']
             nested_attributes.merge! id => v_value.except(*not_logged_attributes)
           end
-          hash2[key] = nil
+          hash[key] = nil
         end
       end
-      hash2.merge! nested_attributes
-      HashDiff.diff hash1.compact, hash2.compact
+      hash.merge nested_attributes
     end
 
-    def recursive_to_s(hash)
+    def transfrom_object_hash(hash)
+      hash.except! *not_logged_attributes
+      to_s_keys_hash = {}
+      hash.each do |key, value|
+        if key.is_a? Integer
+          to_s_keys_hash.merge! key.to_s => value
+        else
+          to_s_keys_hash.merge! key => value
+        end
+      end
+      hash = to_s_keys_hash
+      hash.each do |key, value|
+        if !value.is_a?(String) && !value.is_a?(Hash)
+          hash[key] = value.to_s
+        end
+        if value.is_a? Hash
+          nested_hash = value.except *not_logged_attributes, "#{model_class.name.to_s.underscore}_id"
+          nested_hash.each do |v_key, v_value|
+            nested_hash[v_key] = v_value.to_s
+          end
+          hash[key] = nested_hash
+        end
+      end
+      hash
     end
 
     def to_param(model_class_name)
