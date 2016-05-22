@@ -1,4 +1,4 @@
-- model_class = item.class.name
+- model_class = item.model_name.name
 - model_class_underscore = model_class.underscore
 - title item.short_name, :admin
 .page-header
@@ -38,14 +38,16 @@
             %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
             %td= position.end_date_datetime
     %hr
-    - if item.registrations.any?
+    - if @registrations.any?
       %h4
         = t('.event_attendings')
       %table.table.attributes-tabl
-        - item.registrations.each do |registration|
+        - @registrations.each do |registration, logged_action|
           %tr
             %td
               = registration.event.title
               = link_to event_path(registration.event) do
                 %span.glyphicon.glyphicon-share
             %td= registration.role_text
+            - if logged_action.present?
+              %td= logged_action.user.decorate.short_name
