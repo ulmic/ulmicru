@@ -15,7 +15,8 @@
   .col-lg-3
     = image_tag item.avatar.medium, style: 'width: 100%'
     %hr
-    = render 'buttons', instance: item.object
+    - if item.is_questionary?
+      = render 'web/admin/questionaries/buttons', instance: item.object
     %table.table.attributes-table
       - item.sites_attributes.each do |attribute|
         %tr
