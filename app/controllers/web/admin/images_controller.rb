@@ -33,7 +33,7 @@ class Web::Admin::ImagesController < Web::Admin::ApplicationController
     @image_form = ImageForm.find_with_model params[:id]
     @image_form.submit(params[:image])
     if @image_form.save
-      redirect_to admin_image_path @image_form.model
+      redirect_to edit_admin_image_path @image_form.model
     else
       choose_users
       render action: :edit

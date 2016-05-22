@@ -1,4 +1,6 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
+  include Concerns::RegistrationWithLogs
+
   def index
     if params[:search]
       questionaries = Questionary.search_everywhere(params[:search])
@@ -10,6 +12,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
 
   def show
     @questionary = Questionary.find(params[:id]).decorate
+    get_registrations_with_logs @questionary.registrations
   end
 
   def new

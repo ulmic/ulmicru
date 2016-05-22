@@ -21,9 +21,12 @@ module Concerns
       unless action_name == 'destroy'
         params.keys.each do |key|
           if key.to_s.include? 'attributes'
-            attributes.merge!(object.send(key.split('_')[0]).reduce({}) do |a_hash, ass|
+            association_attributes_hash = {}
+            association_name = key.split('_')[0] 
+            association_attributes_hash.merge!(object.send(association_name).reduce({}) do |a_hash, ass|
               a_hash.merge! ass.id => ass.attributes
             end)
+            attributes.merge! association_name => association_attributes_hash
           end
         end
       end

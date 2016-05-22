@@ -1,5 +1,7 @@
 class Web::Admin::MembersController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
+  include Concerns::RegistrationWithLogs
+
   def index
     if params[:search]
       members = Member.presented.search_everywhere params[:search]
@@ -11,14 +13,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
 
   def show
     @member = Member.includes(:positions).find(params[:id]).decorate
-    registrations = @member.registrations
-    @registrations = {}
-    registrations.each do |registration|
-      @registrations[registration] = ''
-      registration.event.logged_actions.each do |logged_action|
-        @registrations[registration] = logged_action if nested_params_contains? logged_action, :registrations, user_id: @member.id
-      end
-    end
+    get_registrations_with_logs @member.registrations
   end
 
   def new
