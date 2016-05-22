@@ -10,9 +10,4 @@ class LoggedAction < ActiveRecord::Base
     associated_against: {
       user: [ :first_name, :patronymic, :last_name, :ticket ]
     }
-
-  def parsed_params
-    # FIXME with PG >9.4 and jsonb
-    params.present? ? eval(params).with_indifferent_access : {}
-  end
 end
