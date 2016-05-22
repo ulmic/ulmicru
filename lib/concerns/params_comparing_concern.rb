@@ -6,17 +6,14 @@ module Concerns
         object = model_class.find(params[:id])
         new_params = params[to_param(model_class.name)]
         attributes = object_attributes_with_associations object, new_params
-        attributes_diff attributes.except(*not_logged_attributes), new_params, @prev_object_attributes
+        attributes_diff attributes.except(*not_logged_attributes), @prev_object_attributes
       when 'create'
         params[to_param(model_class.name)]
       end
     end
 
-    def attributes_diff(object_hash, params, prev_object_hash)
-      binding.pry
-      if comparing(object_hash, params) == []
-        comparing object_hash, prev_object_hash, :prev_object
-      end
+    def attributes_diff(object_hash, prev_object_hash)
+      comparing prev_object_hash, object_hash
     end
 
     def object_attributes_with_associations(object, params)
@@ -33,33 +30,10 @@ module Concerns
       attributes
     end
 
-    def comparing(hash1, hash2, prev_object = nil)
+    def comparing(hash1, hash2)
       hash1 = transfrom_object_hash hash1
-      if prev_object
-        hash2 = transfrom_object_hash hash2
-      else
-        hash2 = transform_params_hash hash2
-      end
+      hash2 = transfrom_object_hash hash2
       HashDiff.diff hash1.compact, hash2.compact
-    end
-
-    def transform_params_hash(hash)
-      nested_attributes = {}
-      hash.each do |key, value|
-        if value.try(:include?, '/') && Date.valid_date?(*value.split('/').reverse.map(&:to_i))
-          if value.to_datetime.to_s.include?("+00")
-            hash[key] = (hash[key].to_datetime - 3.hour).in_time_zone('Moscow').to_s
-          end
-        end
-        if value.is_a?(Hash) && key.to_s.include?('attributes')
-          value.each do |v_key, v_value|
-            id = v_value['id']
-            nested_attributes.merge! id => v_value.except(*not_logged_attributes)
-          end
-          hash[key] = nil
-        end
-      end
-      hash.merge nested_attributes
     end
 
     def transfrom_object_hash(hash)
