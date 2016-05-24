@@ -139,6 +139,7 @@ var getSelectToView = function(component) {
           <select className='select optional select2-tags string' name='tag[text]' id='tag_text' data-type='string' style={{width: '100%'}}/>
         </div>)
       }
+      break
     case 'link':
       return linkSelect(component.props.targetType)
   }
