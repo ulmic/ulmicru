@@ -5,6 +5,7 @@
 ```shell
 make deps
 make install
+rails generate react_webpack_rails:install --no-example --no-hot-reload --no-server-side --no-karma-setup --redux --skip
 ```
 
 ### Run server
