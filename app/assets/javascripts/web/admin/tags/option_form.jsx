@@ -55,16 +55,21 @@ var init_select2 = function(component) {
                     id: this.text,
                     text: this.text
                   })
+                  break
                 case 'member':
                   tags_results.push({
                     id: this.id,
                     text: `${this.ticket} | ${this.first_name} ${this.last_name}`
                   })
-                case 'event', 'team', 'activity_line':
+                  break
+                case 'event':
+                case 'team':
+                case 'activity_line':
                   tags_results.push({
                     id: this.id,
                     text: this.title
                   })
+                  break
               }
             })
             return({
