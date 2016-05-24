@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import TagToolbar from './toolbar'
 import TagsPresents from './presents'
 import TagOptionForm from './option_form'
@@ -61,4 +61,4 @@ class TagsForm extends React.Component {
   }
 }
 
-export default TagsForm;
+export default TagsForm
