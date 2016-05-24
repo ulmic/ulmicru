@@ -1,7 +1,6 @@
 = stylesheet_link_tag 'web/comments'
 - if signed_in?
   - if current_user.confirmed?
-    = javascript_include_tag 'web/comments'
     = react_component 'CommentsField', record_type: record_type, record_id: record_id,
                                        current_user: current_user, 
                                        current_user_avatar: current_user.decorate.small_avatar_url,
