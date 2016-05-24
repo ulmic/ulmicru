@@ -46,18 +46,16 @@ class TagsForm extends React.Component {
     getTags(this)
   }
   render() {
-    /* return(<div className='tags-form'>
+    return(<div className='tags-form'>
       <TagToolbar toolbarButtonOnClick={this.openTagForm} />
       <TagsPresents tags={this.state.tags}
-                    reloadTags={this.reloadTags} />
+                    reloadTags={this.reloadTags.bind(this)} />
       <TagOptionForm tagType={this.state.tagType}
                      targetType={this.state.targetType}
                      record={this.props.record}
                      recordType={this.props.record_type}
-                     onTagSubmit={this.onTagSubmit}/>
+                     onTagSubmit={this.onTagSubmit.bind(this)}/>
     </div>)
-   */
-    return <span>fuck</span>
   }
 }
 

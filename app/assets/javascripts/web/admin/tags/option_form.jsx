@@ -10,13 +10,14 @@ var formDisplay = function(component) {
 
 var init_select2 = function(component) {
   $('.select2-tags').each(function() {
+    var dataType;
     if (component.props.tagType == 'string') {
       dataType = 'string'
     } else {
       dataType = component.props.targetType
     }
     if ($(this).hasClass(dataType)) {
-      url = ''
+      var url = ''
       switch(dataType) {
         case 'string':
           url = Routes.api_admin_tags_path()
@@ -41,7 +42,7 @@ var init_select2 = function(component) {
           dataType: 'json',
           delay: 250,
           processResults: function(data) {
-            tags_results = []
+            var tags_results = []
             $(data).each(function() {
               switch(dataType) {
                 case 'string':
@@ -82,7 +83,7 @@ var formDisplay = function(component) {
 
 var targetTypeInput = function(component) {
   if (component.props.targetType == 'none') {
-    targetType = component.props.targetType.camelize()
+    var targetType = component.props.targetType.camelize()
     return(<div className='input hidden tag_target_type'>
         <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType} />
       </div>)
@@ -90,7 +91,7 @@ var targetTypeInput = function(component) {
 }
 
 var hiddenInputs = function(component) {
-  recordType = component.props.recordType.camelize()
+  var recordType = component.props.recordType.camelize()
   return(<div>
     <div className='input hidden tag_tag_type'>
       <input className='hidden' type='hidden' name='tag[tag_type]' id='tag_tag_type' value={component.props.tagType} />
@@ -114,7 +115,7 @@ var tagSelectDisplay = function(targetType, type, component) {
 }
 
 var linkSelect = function(type) {
-  classes = `select optional select2-tags ${type}`
+  var classes = `select optional select2-tags ${type}`
   return(<div className='input select optional tag_target_id'>
     <select className={classes} name='tag[target_id]' id='tag_target_id' data-type={type} style={{width: '100%'}}/>
   </div>)
@@ -168,11 +169,11 @@ class TagOptionForm extends React.Component {
   }
   componentDidUpdate() {
     init_select2(this)
-    component = this
+    var component = this
     $('.tag_form').on('ajax:success', component.props.onTagSubmit)
   }
   render() {
-    display = formDisplay(this)
+    var display = formDisplay(this)
     return(<form className='tag_form' action={Routes.api_admin_tags_path()} onSubmit={this.props.onTagSubmit} data-remote='true' method='post' style={{display}}>
       {hiddenInputs(this)}
       {getSelectToView(this)}
