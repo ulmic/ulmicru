@@ -21,14 +21,19 @@ var init_select2 = function(component) {
       switch(dataType) {
         case 'string':
           url = Routes.api_admin_tags_path()
+          break
         case 'member':
           url = Routes.api_admin_members_path()
+          break
         case 'event':
           url = Routes.api_admin_events_path()
+          break
         case 'team':
           url = Routes.api_admin_teams_path()
+          break
         case 'activity_line':
           url = Routes.api_admin_activity_lines_path()
+          break
       }
       $(this).select2({
         ajax: {
@@ -82,7 +87,7 @@ var formDisplay = function(component) {
 }
 
 var targetTypeInput = function(component) {
-  if (component.props.targetType == 'none') {
+  if (!(component.props.targetType == 'none')) {
     var targetType = component.props.targetType.camelize()
     return(<div className='input hidden tag_target_type'>
         <input className='hidden' type='hidden' name='tag[target_type]' id='tag_target_type' value={targetType} />
@@ -130,7 +135,7 @@ var getSelectToView = function(component) {
         </div>)
       }
     case 'link':
-      linkSelect(component.props.targetType)
+      return linkSelect(component.props.targetType)
   }
 }
 
@@ -144,7 +149,7 @@ var newStringTagInput = function(component) {
 
 var newStringTagButton = function(component) {
   if (component.props.tagType == 'string') {
-    return(<a onClick={component.stringTagForm} className='btn btn-xs btn-warning' id='add_new_string_tag' href='#'>Создать новый</a>)
+    return(<a onClick={component.stringTagForm.bind(component)} className='btn btn-xs btn-warning' id='add_new_string_tag' href='#'>Создать новый</a>)
   }
 }
 
