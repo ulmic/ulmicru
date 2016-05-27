@@ -54,7 +54,6 @@ gem 'bootstrap-kaminari-views'
 gem 'russia_regions', '>= 0.0.4'
 gem 'github_api'
 gem 'pg_search'
-gem 'react-rails', '~> 1.3.0'
 gem 'reform'
 gem 'rails_email_preview', '~> 0.2.29'
 #gem 'scopes_rails', '>= 0.0.3'
@@ -62,6 +61,7 @@ gem 'scopes_rails', github: 'kalashnikovisme/scopes_rails', branch: 'list_of_sco
 gem 'trap', '~> 1'
 gem 'more_html_tags'
 gem 'hashdiff'
+gem 'react_webpack_rails'
 
 group :production do
   gem 'unicorn-rails'
@@ -75,8 +75,6 @@ group :development, :test do
   gem 'web-console', '2.0.0.beta2'
   gem 'spring', '1.3.4'
   gem 'factory_girl_rails'
-  gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'quiet_assets'
   gem 'colorize', '0.6.0'
   gem 'better_errors'
@@ -89,3 +87,4 @@ group :test do
   gem 'coveralls', require: false
   gem 'webmock'
 end
+gem 'rwr-redux'

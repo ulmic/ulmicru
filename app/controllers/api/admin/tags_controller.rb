@@ -4,7 +4,7 @@ class Api::Admin::TagsController < Api::Admin::ApplicationController
       @tags = Tag.active.where(record_id: params[:record_id], record_type: params[:record_type].capitalize)
     else
       @tags = Tag.string
-      @tags = @tags.search_everywhere params[:q] if params[:q]
+      @tags = @tags.search_everywhere params[:q][:term] if params[:q].present?
       @tags = @tags.to_a.uniq &:text
     end
     render json: TagCollectionDecorator.new(@tags).with_just_text

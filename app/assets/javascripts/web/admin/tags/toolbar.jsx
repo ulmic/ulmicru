@@ -1,6 +1,8 @@
-@TagToolbar = React.createClass
-  render: ->
-    `<div className='btn-toolbar'>
+import React from 'react'
+
+class TagToolbar extends React.Component {
+  render() {
+    return(<div className='btn-toolbar'>
       <div className='btn-group tag-buttons'>
         <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'string', 'none')}>
           <span className='glyphicon glyphicon-font'></span>
@@ -18,4 +20,8 @@
             <span className='glyphicon glyphicon-bullhorn'></span>
           </a>
         </div>
-    </div>`
+    </div>)
+  }
+}
+
+export default TagToolbar;
