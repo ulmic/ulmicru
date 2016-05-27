@@ -74,8 +74,6 @@ group :development, :test do
   gem 'web-console', '2.0.0.beta2'
   gem 'spring', '1.3.4'
   gem 'factory_girl_rails'
-  gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'quiet_assets'
   gem 'colorize', '0.6.0'
   gem 'better_errors'

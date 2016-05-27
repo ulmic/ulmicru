@@ -332,11 +332,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
-      pry (~> 0.10)
-    pry-rails (0.3.4)
-      pry (>= 0.9.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -548,8 +543,6 @@ DEPENDENCIES
   omniauth-vkontakte
   pg
   pg_search
-  pry-byebug
-  pry-rails
   quiet_assets
   rack-livereload
   railroady
@@ -581,5 +574,8 @@ DEPENDENCIES
   web-console (= 2.0.0.beta2)
   webmock
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.12.3
