@@ -9,7 +9,8 @@ class Api::CommentsController < Api::ApplicationController
     params[:comment][:user_id] = current_user.id
     @comment.submit params[:comment]
     if @comment.save
-      render json: { id: @comment.id,
+      render json: {
+                     id: @comment.id,
                      name: @comment.user.decorate.short_name,
                      text: @comment.text,
                      image: (@comment.user.type == 'Member' ? @comment.user.decorate.element_avatar.url : @comment.user.default_avatar)
