@@ -24,6 +24,10 @@ var fillCommentTemplate = function(component, comment, currentUser) {
 }
 
 class CommentsList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.removeComment = this.removeComment.bind(this)
+  }
   removeComment(id) {
     this.props.removeComment(id)
   }

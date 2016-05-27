@@ -9,6 +9,13 @@ var hr = function(component) {
 }
 
 class CommentsField extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { comments: [] }
+    this.loadComments = this.loadComments.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleRemove = this.handleRemove.bind(this)
+  }
   loadComments() {
     $.ajax({
       url: Routes.api_comments_path(),
@@ -21,9 +28,6 @@ class CommentsField extends React.Component {
         this.setState({ comments: data })
       }).bind(this)
     })
-  }
-  getInitialState() {
-    return { comments: [] }
   }
   componentDidMount() {
     this.loadComments()
