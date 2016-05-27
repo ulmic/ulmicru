@@ -1,4 +1,5 @@
 import React from 'react'
+import AudienceForm from './audience_form'
 
 var shortAudienceTypes = function(component) {
   if (component.props.audiences.length + component.state.newFieldsCount > 1) {
@@ -29,7 +30,7 @@ var newForms = function(component) {
 
 var existedForms = function(component) {
   var forms = []
-  for (var i in [1..component.props.audiences.length]) {
+  for (var i = 1; i < component.props.audiences.length; i++) {
     var index = i + component.props.audiences.length
     var audienceTypes = shortAudienceTypes(component)
     forms.push(<div className='row-fluid'>
@@ -68,9 +69,9 @@ class AudienceNestedForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = { newFieldsCount: 0 }
+    this.addFields = this.addFields.bind(this)
   }
-  addFields(e) {
-    e.preventDefault()
+  addFields() {
     this.setState({ newFieldsCount: this.state.newFieldsCount + 1 })
   }
   render() {

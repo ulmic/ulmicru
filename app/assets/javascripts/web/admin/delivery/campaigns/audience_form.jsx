@@ -1,5 +1,4 @@
 import React from 'react'
-import AudienceNestedForm from './audience_nested_form'
 
 var selectAudienceInstance = function(component) {
   if (component.state.audience_type == 'team') {
@@ -44,6 +43,10 @@ class AudienceForm extends React.Component {
       audience_type: 'users',
       visible: true
     }
+    this.editForm = this.editForm.bind(this)
+    this.editId = this.editId.bind(this)
+    this.removeField = this.removeField(this)
+    this.restoreField = this.restoreField(this)
   }
   editForm() {
     this.setState({ audience_type: current_audience_type_value() })
@@ -90,12 +93,10 @@ class AudienceForm extends React.Component {
   componentDidMount() {
     this.setState({ audience_type: current_audience_type_value(this) })
   }
-  removeField(e) {
-    e.preventDefault()
+  removeField() {
     this.setState({ visible: false })
   }
-  restoreField(e) {
-    e.preventDefault()
+  restoreField() {
     this.setState({ visible: true })
   }
   render() {
