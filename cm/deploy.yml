@@ -3,6 +3,11 @@
     app_path: "/srv/ulmicru"
     shared_path: "{{ app_path }}/shared"
 
+  vars_prompt:
+    - name: 'branch'
+      prompt: 'Choose branch'
+      default: 'master'
+
   tasks:
     - name: Ping to server
       shell: echo 'Ready to deploy, main lieben fuhrer!'
