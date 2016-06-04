@@ -6,7 +6,7 @@
   vars_prompt:
     - name: 'branch'
       prompt: 'Choose branch'
-      default: 'master'
+      default: 'sometime_deploy'
 
   tasks:
     - name: Ping to server
