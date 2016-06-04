@@ -29,7 +29,7 @@
     - name: Checking out repo
       git: repo=https://github.com/ulmic/ulmicru.git
            dest={{ release_path }}
-           version=master
+           version={{ branch }}
 
     - name: Linking config files
       file:
