@@ -7,11 +7,6 @@
       prompt: Choose branch
       default: master
 
-  vars_prompt:
-    - name: 'branch'
-      prompt: 'Choose branch'
-      default: 'sometime_deploy'
-
   tasks:
     - name: Ping to server
       shell: echo 'Ready to deploy, main lieben fuhrer!'
