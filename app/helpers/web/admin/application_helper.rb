@@ -47,13 +47,17 @@ module Web::Admin::ApplicationHelper
 
   def beta_testing_notice
     content_tag :div, class: 'alert alert-dissmissible alert-info' do
-      content_tag :span, t('notices.functional_in_beta'), class: 'glyphicon glyphicon-info-sign'
+      concat fa_icon 'info-circle'
+      concat ' '
+      concat t('notices.functional_in_beta')
     end
   end
 
   def hint(model_name, attribute_name)
     content_tag :div, class: 'alert alert-dissmissible alert-info' do
-      content_tag :span, t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}"), class: 'glyphicon glyphicon-info-sign'
+      concat fa_icon 'info-circle'
+      concat ' '
+      concat t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}")
     end
   end
 
