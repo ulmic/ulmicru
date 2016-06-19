@@ -47,7 +47,7 @@ class Web::MembersController < Web::ApplicationController
       @news = NewsDecorator.decorate_collection member.tags.active.news.map &:record
       @articles = member.tags.active.articles.map &:record
       @attribute_accesses = member.attribute_accesses
-      @teams = member.teams.active.visible
+      @teams = member.teams.active.visible.decorate
     end
   end
 end
