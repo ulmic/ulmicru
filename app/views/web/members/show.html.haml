@@ -90,7 +90,7 @@
                   = "#{t('activerecord.models.team')}:"
                 - else
                   = "#{t('activerecord.models.team').pluralize(:ru)}:"
-              - @member.teams.each_with_index do |team, index|
+              - @teams.each_with_index do |team, index|
                 .user-team-name
                   %span{ class: "#{'more' if index > 0}" }
                     = team.full_title
