@@ -11,7 +11,7 @@ end
 
 namespace :assets do
   #In this task, set prerequisites for the assets:precompile task
-  task :compile_environment => :webpack do
+  task compile_environment: :webpack do
     Rake::Task['assets:environment'].invoke
   end
 

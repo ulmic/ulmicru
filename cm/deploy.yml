@@ -77,12 +77,6 @@
       args:
         chdir: "{{ release_path }}"
 
-
-    - name: Compile Webpack environment
-      shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do {{ release_path }}/bin/rake assets:compile_environment"
-      args:
-        chdir: "{{ release_path }}"
-    
     - name: Assets
       shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do {{ release_path }}/bin/rake assets:precompile"
       args:
