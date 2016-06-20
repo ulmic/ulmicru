@@ -28,8 +28,9 @@ var selectAudienceInstance = function(component) {
   }
 }
 
-var current_audience_type_value = function(component) {
-  return $(`#delivery_campagn_audiences_attributes_${component.props.index}_audience_type`).val()
+var current_audience_type_value = function(select) {
+  let value = $(select).val() 
+  return value
 }
 
 var current_audience_id_value = function() {
@@ -48,8 +49,8 @@ class AudienceForm extends React.Component {
     this.removeField = this.removeField(this)
     this.restoreField = this.restoreField(this)
   }
-  editForm() {
-    this.setState({ audience_type: current_audience_type_value() })
+  editForm(e) {
+    this.setState({ audience_type: current_audience_type_value(e.target.value) })
   }
   editId() {
     this.setState({ audience_id: current_audience_id_value() })
@@ -110,26 +111,27 @@ class AudienceForm extends React.Component {
     var audienceTypeSelectName = `delivery_campaign[audiences_attributes][${index}][audience_type]`
     var audienceTypeSelectId = `delivery_campaign_audiences_attributes_${index}_audience_type`
     if (this.state.visible) {
-      return(<div>
-	<div className="input select required delivery_campaign_audiences_audience_type col-md-5">
-	  <label className="select required" htmlFor={audienceTypeSelectId}>
-	    <abbr title="required">* </abbr>
-	    {I18n.t('activerecord.attributes.delivery/audience.audience_type')}
-	  </label>
-	  <select onChange={this.editForm} className="select required" 
-		  name={audienceTypeSelectName}
-		  id={audienceTypeSelectId}>
-	    {options}
-	  </select>
-	</div>
-	<input type="hidden" name={campaignIdInputName}
-			     id={campaignIdInputId}
-			     value={this.props.campaign_id} />
-	{selectAudienceInstance(this)}
-	<div className='col-md-2'>
-	  <a onClick={this.removeField} href='#' style={{'margin-top': '22px', 'margin-bottom': '22px'}} className='btn btn-danger'>X</a>
-	</div>
-      </div>)
+      return(
+        <div>
+          <div className="input select required delivery_campaign_audiences_audience_type col-md-5">
+            <label className="select required" htmlFor={audienceTypeSelectId}>
+              <abbr title="required">* </abbr>
+              {I18n.t('activerecord.attributes.delivery/audience.audience_type')}
+            </label>
+            <select onChange={this.editForm} className="select required" 
+                    name={audienceTypeSelectName}
+                    id={audienceTypeSelectId}>
+              {options}
+            </select>
+          </div>
+          <input type="hidden" name={campaignIdInputName}
+                               id={campaignIdInputId}
+                               value={this.props.campaign_id} />
+          {selectAudienceInstance(this)}
+          <div className='col-md-2'>
+            <a onClick={this.removeField} href='#' style={{'margin-top': '22px', 'margin-bottom': '22px'}} className='btn btn-danger'>X</a>
+          </div>
+        </div>)
     } else {
       return(<a onClick={this.restoreField} href='#' className='btn btn-primary'>{I18n.t('helpers.links.restore')}</a>)
     }

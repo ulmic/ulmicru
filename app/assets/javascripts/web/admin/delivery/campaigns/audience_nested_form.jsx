@@ -20,7 +20,7 @@ var newForms = function(component) {
   var audienceTypes = shortAudienceTypes(component)
   for (var i = 0; i < component.state.newFieldsCount; i++) {
     forms.push(<div className='row-fluid'>
-		  <AudienceForm index={i + component.props.audiences.length}
+		  <AudienceForm key={`new-${i}`} index={i + component.props.audiences.length}
                               campaign_id={component.props.campaign_id}
                               audience_types={audienceTypes} />
 		</div>)
@@ -34,7 +34,7 @@ var existedForms = function(component) {
     var index = i + component.props.audiences.length
     var audienceTypes = shortAudienceTypes(component)
     forms.push(<div className='row-fluid'>
-		  <AudienceForm audience={component.props.audiences[i]}
+		  <AudienceForm key={`existed-${i}`} audience={component.props.audiences[i]}
                               index={index}
                               campaign_id={component.props.campaign_id}
                               audience_types={audienceTypes} />
@@ -44,7 +44,7 @@ var existedForms = function(component) {
 }
 
 var addNewFieldsButton = function(component) {
-  return(<a href='#' className='btn btn-warning add-new-fields' onClick={component.addFields} >
+  return(<a href='#' key='add-new-field-button' className='btn btn-warning add-new-fields' onClick={component.addFields} >
     {I18n.t('web.admin.delivery.campaigns.form.add_audience')}
   </a>)
 }
