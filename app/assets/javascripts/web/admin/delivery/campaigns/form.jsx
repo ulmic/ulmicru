@@ -91,9 +91,6 @@ class AudienceForm extends React.Component {
       minimumInputLength: 2
     })
   }
-  componentDidMount() {
-    this.setState({ audience_type: current_audience_type_value(this) })
-  }
   removeField() {
     this.setState({ visible: false })
   }
