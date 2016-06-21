@@ -543,6 +543,7 @@ DEPENDENCIES
   omniauth-vkontakte
   pg
   pg_search
+  pry
   quiet_assets
   rack-livereload
   railroady
