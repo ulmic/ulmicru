@@ -60,14 +60,12 @@ class AudienceForm extends React.Component {
   }
   componentDidUpdate() {
     $('select').addClass('form-control')
-    var url = ''
-    switch (this.state.audience_type) {
-      case 'team':
-        url = Routes.api_admin_teams_path()
-        return 
-      case 'event_registrations':
-        url = Routes.api_admin_events_path()
-        return
+    let url = ''
+    if (this.state.audience_type == 'team') {
+      url = Routes.api_admin_teams_path()
+    }
+    if (this.state.audience_type == 'event_registrations') {
+      url = Routes.api_admin_events_path()
     }
     $('.select2-audience').select2({
       ajax: {
@@ -81,7 +79,7 @@ class AudienceForm extends React.Component {
         dataType: 'json',
         delay: 250,
         processResults: function(data) {
-          audience_results = []
+          let audience_results = []
           $(data).each(function() {
             audience_results.push({
               id: this.id,
