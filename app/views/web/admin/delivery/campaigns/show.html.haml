@@ -20,9 +20,22 @@
         = link_to fa_icon(:plus), '#', class: 'btn btn-primary add-audience'
     = render 'web/admin/delivery/audiences/new', campaign_id: @campaign.id
     %table.table.attributes-table
-      - @campaign.audiences.each do |audience|
-        - audience.attributes.each do |name, value|
+      %thead
+        %th
+          = model_class.human_attribute_name :id
+        %th
+          = model_class.human_attribute_name :audience_type
+        %th
+          = model_class.human_attribute_name :audience
+        %th
+      %tbody
+        - @campaign.audiences.each do |audience|
           %tr
-            %td= model_class.human_attribute_name name
-            %td= value
-
+            %td
+              = audience.id
+            %td
+              = enumerize_locales_value audience, :audience_type
+            %td
+              = audience_path audience
+            %td
+              = link_to fa_icon(:remove), admin_delivery_audience_path(audience), method: :delete, class: 'btn btn-danger'
