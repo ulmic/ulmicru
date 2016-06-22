@@ -26,7 +26,7 @@
         - if searching?
           %td= event.human_state_name
         %td.actions
-          - if current_user.role.admin?
+          - if current_user.admin?
             - unless event.confirmed?
               = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
                 %span.glyphicon.glyphicon-ok

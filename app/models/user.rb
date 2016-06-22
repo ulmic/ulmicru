@@ -69,6 +69,10 @@ class User < ActiveRecord::Base
     state == 'confirmed'
   end
 
+  def admin?
+    role.admin? || role.tech_admin?
+  end
+
   def has_access?
     !removed? && !declined?
   end
