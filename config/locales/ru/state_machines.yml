@@ -130,6 +130,7 @@ ru:
             removed: Удалены
             declined: Отменены
             done: Выполнены
+            during_mailing: В процессе рассылки
       redirect_rule:
         state:
           states:
