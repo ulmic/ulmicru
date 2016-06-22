@@ -8,4 +8,10 @@ class Web::Admin::Delivery::AudiencesController < Web::Admin::Delivery::Applicat
       render :new
     end
   end
+
+  def destroy
+    @audience = ::Delivery::Audience.find params[:id]
+    @audience.destroy
+    redirect_to admin_delivery_campaign_path @audience.campaign
+  end
 end

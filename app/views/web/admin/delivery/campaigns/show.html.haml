@@ -17,8 +17,9 @@
     %h4
       %b
         = t('activerecord.models.delivery/audience')
-        = link_to fa_icon(:plus), '#', class: 'btn btn-primary add-audience'
-    = render 'web/admin/delivery/audiences/new', campaign_id: @campaign.id
+        - unless @campaign.fill_audiences?
+          = link_to fa_icon(:plus), '#', class: 'btn btn-primary add-audience'
+    = render 'web/admin/delivery/audiences/new', campaign: @campaign
     %table.table.attributes-table
       %thead
         %th
