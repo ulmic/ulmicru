@@ -16,6 +16,6 @@ class Delivery::CampaignDecorator < ApplicationDecorator
   end
 
   def self.collections
-    [ :ready, :done, :removed, :declined ]
+    [ :ready, :done, :removed, :during_mailing, :declined ]
   end
 end
