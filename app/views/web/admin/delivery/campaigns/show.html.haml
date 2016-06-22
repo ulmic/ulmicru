@@ -17,7 +17,7 @@
     %h4
       %b
         = t('activerecord.models.delivery/audience')
-        = link_to fa_icon(:plus), '#', class: 'btn btn-primary'
+        = link_to fa_icon(:plus), '#', class: 'btn btn-primary add-audience'
     = render 'web/admin/delivery/audiences/new', campaign_id: @campaign.id
     %table.table.attributes-table
       - @campaign.audiences.each do |audience|

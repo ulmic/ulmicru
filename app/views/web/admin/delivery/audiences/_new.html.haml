@@ -3,5 +3,9 @@
   .col-lg-12
     = simple_form_for @audience_form, url: admin_delivery_audiences_path, method: :post, input_html: { class: 'form-horizontal' } do |f|
       = f.input :campaign_id, as: :hidden, input_html: { value: campaign_id }
-      = f.input :audience_type, label: false
+      .row
+        .col-md-6
+          = f.input :audience_type, label: false
+        .col-md-6
+          = f.input :audience_id, as: :select, input_html: { class: :select2 }, label: false
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
