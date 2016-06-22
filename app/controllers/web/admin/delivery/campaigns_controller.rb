@@ -18,7 +18,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
   end
 
   def show
-    @campaign = ::Delivery::Campaign.includes(:audiences).find params[:id]
+    @campaign = ::Delivery::Campaign.includes(:audiences).find(params[:id]).decorate
     @audience_form = ::Delivery::AudienceForm.new_with_model
   end
 
@@ -38,7 +38,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.find_with_model params[:id]
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
-      redirect_to admin_delivery_campaign_path(@campaign.model)
+      redirect_to admin_delivery_campaign_path(@campaign_form.model)
     else
       render action: :edit
     end
