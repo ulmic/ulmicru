@@ -21,8 +21,5 @@
       = f.input :image, label: false, as: :jasny_file_preview_upload
       = hint @campaign_form.model.class, :mailing_date
       = f.input :mailing_date, as: :datetime_picker
-      = react_component 'AudienceNestedForm', audience_types: audience_type_collection,
-                                              audiences: @campaign_form.audiences,
-                                              campaign_id: @campaign_form.id
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_delivery_campaigns_path, class: 'btn btn-default'
