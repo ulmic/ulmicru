@@ -37,4 +37,8 @@ class Delivery::Campaign < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :body, :link, :mailing_date ]
+
+  def fill_audiences?
+    audiences.any? && audiences.first.audience_type.in?([ 'users', 'contacts_emails' ])
+  end
 end

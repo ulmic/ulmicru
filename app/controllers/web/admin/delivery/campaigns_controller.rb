@@ -17,12 +17,17 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.find_with_model params[:id]
   end
 
+  def show
+    @campaign = ::Delivery::Campaign.includes(:audiences).find(params[:id]).decorate
+    @audience_form = ::Delivery::AudienceForm.new_with_model
+  end
+
   def create
     params[:delivery_campaign].merge! creator_id: current_user.id
     @campaign_form = ::Delivery::CampaignForm.new_with_model
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
-      redirect_to admin_delivery_campaigns_path
+      redirect_to admin_delivery_campaign_path(@campaign.model)
     else
       render action: :new
     end
@@ -33,7 +38,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.find_with_model params[:id]
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
-      redirect_to edit_admin_delivery_campaign_path @campaign_form
+      redirect_to admin_delivery_campaign_path(@campaign_form.model)
     else
       render action: :edit
     end
