@@ -1,6 +1,7 @@
 import React from 'react'
 
 var selectAudienceInstance = function(component) {
+  let label
   if (component.state.audience_type == 'team') {
     label = I18n.t("web.admin.delivery.campaigns.form.select_team")
   } else if (component.state.audience_type == 'event_registrations') {
@@ -12,19 +13,21 @@ var selectAudienceInstance = function(component) {
       return ''
     case 'event_registrations':
     case 'team':
-      index = component.props.index
-      audienceInstanceSelectId = `delivery_campaign_audiences_attributes_${index}_audience_id`
-      audienceInstanceSelectName = `delivery_campaign[audiences_attributes][${index}][audience_id]`
-      return(<div className="input select required col-md-5">
-         <label className="select required" for={audienceInstanceSelectId}>
-           <abbr title="required">* </abbr>
-           {label}
-         </label>
-         <select onChange={component.editId} className="select select2-audience required" 
+      let index = component.props.index
+      let audienceInstanceSelectId = `delivery_campaign_audiences_attributes_${index}_audience_id`
+      let audienceInstanceSelectName = `delivery_campaign[audiences_attributes][${index}][audience_id]`
+      return(
+        <div className="input select required col-md-5">
+          <label className="select required" for={audienceInstanceSelectId}>
+            <abbr title="required">* </abbr>
+            {label}
+          </label>
+          <select onChange={component.editId} className="select select2-audience required" 
                  name={audienceInstanceSelectName} 
                  id={audienceInstanceSelectId}>
-         </select>
-      </div>)
+          </select>
+        </div>
+      )
   }
 }
 
@@ -50,21 +53,19 @@ class AudienceForm extends React.Component {
     this.restoreField = this.restoreField(this)
   }
   editForm(e) {
-    this.setState({ audience_type: current_audience_type_value(e.target.value) })
+    this.setState({ audience_type: e.target.value })
   }
   editId() {
     this.setState({ audience_id: current_audience_id_value() })
   }
   componentDidUpdate() {
     $('select').addClass('form-control')
-    var url = ''
-    switch (this.state.audience_type) {
-      case 'team':
-        url = Routes.api_admin_teams_path()
-        return 
-      case 'event_registrations':
-        url = Routes.api_admin_events_path()
-        return
+    let url = ''
+    if (this.state.audience_type == 'team') {
+      url = Routes.api_admin_teams_path()
+    }
+    if (this.state.audience_type == 'event_registrations') {
+      url = Routes.api_admin_events_path()
     }
     $('.select2-audience').select2({
       ajax: {
@@ -78,7 +79,7 @@ class AudienceForm extends React.Component {
         dataType: 'json',
         delay: 250,
         processResults: function(data) {
-          audience_results = []
+          let audience_results = []
           $(data).each(function() {
             audience_results.push({
               id: this.id,
@@ -91,9 +92,6 @@ class AudienceForm extends React.Component {
       minimumInputLength: 2
     })
   }
-  componentDidMount() {
-    this.setState({ audience_type: current_audience_type_value(this) })
-  }
   removeField() {
     this.setState({ visible: false })
   }
@@ -103,8 +101,13 @@ class AudienceForm extends React.Component {
   render() {
     var options = []
     var index = this.props.index
+    let component = this
     $(this.props.audience_types).each(function() {
-      options.push(<option value={this[1]}>{this[0]}</option>)
+      if (this[1] == component.state.audience_type) {
+        options.push(<option value={this[1]} selected>{this[0]}</option>)
+      } else {
+        options.push(<option value={this[1]}>{this[0]}</option>)
+      }
     })
     var campaignIdInputName = `delivery_campaign[audiences_attributes][${index}][campaign_id]`
     var campaignIdInputId = `delivery_campaign_audiences_attributes_${index}_campaign_id`

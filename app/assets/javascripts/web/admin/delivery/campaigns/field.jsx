@@ -1,8 +1,9 @@
 import React from 'react'
-import AudienceForm from './audience_form'
+import AudienceForm from './form'
+import AudiencesList from './list'
 
 var shortAudienceTypes = function(component) {
-  if (component.props.audiences.length + component.state.newFieldsCount > 1) {
+  if (component.props.audiences.length + component.state.formsCount > 2) {
     var audienceTypes = []
     $(component.props.audience_types).each(function() {
       if ($.inArray(this[1], ['users', 'contact_emails']) == -1) {
@@ -18,27 +19,13 @@ var shortAudienceTypes = function(component) {
 var newForms = function(component) {
   var forms = []
   var audienceTypes = shortAudienceTypes(component)
-  for (var i = 0; i < component.state.newFieldsCount; i++) {
-    forms.push(<div className='row-fluid'>
-		  <AudienceForm key={`new-${i}`} index={i + component.props.audiences.length}
-                              campaign_id={component.props.campaign_id}
-                              audience_types={audienceTypes} />
-		</div>)
-  }
-  return forms
-}
-
-var existedForms = function(component) {
-  var forms = []
-  for (var i = 1; i < component.props.audiences.length; i++) {
-    var index = i + component.props.audiences.length
-    var audienceTypes = shortAudienceTypes(component)
-    forms.push(<div className='row-fluid'>
-		  <AudienceForm key={`existed-${i}`} audience={component.props.audiences[i]}
-                              index={index}
-                              campaign_id={component.props.campaign_id}
-                              audience_types={audienceTypes} />
-               </div>)
+  for (var i = 0; i < component.state.formsCount; i++) {
+    forms.push(
+      <div className='row-fluid'>
+        <AudienceForm key={`form-${i}`} index={i + component.props.audiences.length}
+          campaign_id={component.props.campaign_id}
+          audience_types={audienceTypes} />
+      </div>)
   }
   return forms
 }
@@ -68,18 +55,19 @@ var checkAddNewFieldButtonStatus = function(component) {
 class AudienceNestedForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { newFieldsCount: 0 }
+    this.state = { formsCount: 0 }
     this.addFields = this.addFields.bind(this)
   }
   addFields() {
-    this.setState({ newFieldsCount: this.state.newFieldsCount + 1 })
+    this.setState({ formsCount: this.state.formsCount + 1 })
   }
   render() {
-    return(<div>
-      {existedForms(this)}
-      {newForms(this)}
-      {addNewFieldsButton(this)}
-    </div>)
+    return(
+      <div key='main-div'>
+        <AudiencesList audiences={this.props.audiences}/>
+        {newForms(this)}
+        {addNewFieldsButton(this)}
+      </div>)
   }
 }
 

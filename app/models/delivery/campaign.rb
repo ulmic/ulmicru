@@ -7,6 +7,8 @@ class Delivery::Campaign < ActiveRecord::Base
   validates :image, presence: true
   validates :creator_id, presence: true
 
+  accepts_nested_attributes_for :audiences
+
   mount_uploader :image, PhotoUploader
 
   state_machine :state, initial: :ready do

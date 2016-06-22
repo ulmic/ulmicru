@@ -9,7 +9,7 @@ integrationsManager.register('redux-container', RWRRedux.containerIntegrationWra
 import TagsForm from '../assets/javascripts/web/admin/tags/form'
 import CommentsField from '../assets/javascripts/web/comments/field'
 import PetitionInputs from '../assets/javascripts/web/members/corporative/petitions/form'
-import AudienceNestedForm from '../assets/javascripts/web/admin/delivery/campaigns/audience_nested_form'
+import AudienceNestedForm from '../assets/javascripts/web/admin/delivery/campaigns/field'
 RWR.registerComponent('TagsForm', TagsForm)
 RWR.registerComponent('CommentsField', CommentsField)
 RWR.registerComponent('PetitionInputs', PetitionInputs)
