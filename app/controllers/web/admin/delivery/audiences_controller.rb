@@ -1,0 +1,15 @@
+class Web::Admin::Delivery::AudiencesController < Web::Admin::Delivery::ApplicationController
+  def new
+    @audience_form = ::Delivery::AudienceForm.new_with_model
+  end
+
+  def create
+    @audience_form = ::Delivery::AudienceForm.new_with_model
+    @audience_form.submit params[:delivery_audience]
+    if @audience_form.save
+      redirect_to admin_delivery_campaign_path(@audience_form.model.campaign)
+    else
+      render :new
+    end
+  end
+end

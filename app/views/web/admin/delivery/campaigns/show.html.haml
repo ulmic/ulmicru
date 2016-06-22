@@ -1,0 +1,27 @@
+- model_class = Delivery::Campaign
+- title @campaign.title, :admin
+.page-header
+  %h1
+    = @campaign.title
+    = link_to fa_icon(:pencil), edit_admin_delivery_campaign_path(@campaign), class: 'btn btn-warning'
+    = link_to fa_icon(:remove), admin_delivery_campaign_path(@campaign), method: :delete, class: 'btn btn-danger'
+.row
+  .col-lg-6
+    %table.table.attributes-table
+      - @campaign.attributes.each do |name, value|
+        %tr
+          %td= model_class.human_attribute_name name
+          %td= value
+
+  .col-lg-6
+    %h4
+      %b
+        = t('activerecord.models.delivery/audience')
+        = link_to fa_icon(:plus), new_admin_delivery_audience_path(campaign_id: @campaign.id), class: 'btn btn-primary'
+    %table.table.attributes-table
+      - @campaign.audiences.each do |audience|
+        - audience.attributes.each do |name, value|
+          %tr
+            %td= model_class.human_attribute_name name
+            %td= value
+

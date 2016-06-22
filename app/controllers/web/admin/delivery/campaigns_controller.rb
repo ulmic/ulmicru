@@ -17,6 +17,10 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.find_with_model params[:id]
   end
 
+  def show
+    @campaign = ::Delivery::Campaign.includes(:audiences).find params[:id]
+  end
+
   def create
     params[:delivery_campaign].merge! creator_id: current_user.id
     @campaign_form = ::Delivery::CampaignForm.new_with_model

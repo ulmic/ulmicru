@@ -18,10 +18,17 @@ ru:
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
       delivery/campaign: Кампания
+      delivery/audience: Целевая аудитория
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение
     attributes:
+      default: &default
+        created_at: Дата создания
+        updated_at: Дата последнего изменения
+        creator_id: Создатель
+        state: Статус
+        image: Изображение
       user:
         first_name: Имя
         patronymic: Отчество
@@ -201,6 +208,7 @@ ru:
         body: Текст
         link: Ссылка
         mailing_date: Дата рассылки
+        <<: *default
       delivery/audience:
         audience_type: Целевая аудитория
       logged_action:
