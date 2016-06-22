@@ -1,8 +1,4 @@
 class Web::Admin::Delivery::AudiencesController < Web::Admin::Delivery::ApplicationController
-  def new
-    @audience_form = ::Delivery::AudienceForm.new_with_model
-  end
-
   def create
     @audience_form = ::Delivery::AudienceForm.new_with_model
     @audience_form.submit params[:delivery_audience]

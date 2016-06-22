@@ -82,7 +82,7 @@ Rails.application.routes.draw do
       end
       namespace :delivery do
 	resources :campaigns
-        resources :audiences, only: [ :new, :create ]
+        resources :audiences, only: [ :create, :destroy ]
 	resources :sessions, only: [ :create, :destroy ] 
       end
     end
