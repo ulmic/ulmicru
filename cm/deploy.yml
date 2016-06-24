@@ -87,8 +87,8 @@
       args:
         chdir: "{{ release_path }}"
 
-    - name: Stop sidekiq
-      shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiqctl stop /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid 10"
+    - name: Stop idekiq
+      shel: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiqctl stop /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid 10"
       args:
         chdir: "{{ release_path }}"
 
@@ -104,5 +104,10 @@
 
     - name: Start unicorn
       shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec unicorn -c /srv/ulmicru/current/config/unicorn/production.rb -E production -D"
+      args:
+        chdir: "{{ release_path }}"
+
+    - name: Start sidekiq
+      shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiq -d -P /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid -L /srv/ulmicru/shared/log/sidekiq.log"
       args:
         chdir: "{{ release_path }}"
