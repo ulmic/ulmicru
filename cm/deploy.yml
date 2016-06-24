@@ -87,8 +87,8 @@
       args:
         chdir: "{{ release_path }}"
 
-    - name: Stop idekiq
-      shel: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiqctl stop /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid 10"
+    - name: Stop sidekiq
+      shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiqctl stop /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid 10"
       args:
         chdir: "{{ release_path }}"
 
