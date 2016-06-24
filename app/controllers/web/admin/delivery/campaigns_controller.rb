@@ -26,7 +26,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.new_with_model
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
-      redirect_to admin_delivery_campaign_path(@campaign.model)
+      redirect_to admin_delivery_campaign_path(@campaign_form.model)
     else
       render action: :new
     end
