@@ -9,13 +9,13 @@ class UserMailer < ApplicationMailer
   def after_create(object, user)
     @user = user
     @image_src = src_with_host '/logo.png'
-    mail to: @user.email, subject: subject(object.class, :after_create)
+    mail from: sender_name, to: @user.email, subject: subject(object.class, :after_create)
   end
 
   def remind_password(object, user)
     @user = user
     @image_src = src_with_host '/logo.png'
-    mail to: @user.email, subject: subject(object.class, :remind_password)
+    mail from: sender_name, to: @user.email, subject: subject(object.class, :remind_password)
   end
 
   def just_message(user, subject, message, link = nil, image = nil)
@@ -23,12 +23,16 @@ class UserMailer < ApplicationMailer
     @message = message
     @link = link
     @image = src_with_host image
-    mail to: user.email, subject: subject
+    mail from: sender_name, to: user.email, subject: subject
   end
 
   private
 
   def src_with_host(src)
     "#{configus.full_host}#{src}"
+  end
+
+  def sender_name
+    "#{I18n.t('organization.name')} <#{configus.mailer.from}>"
   end
 end
