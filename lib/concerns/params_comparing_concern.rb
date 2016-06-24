@@ -22,7 +22,7 @@ module Concerns
         params.keys.each do |key|
           if key.to_s.include? 'attributes'
             association_attributes_hash = {}
-            association_name = key.split('_')[0] 
+            association_name = key.split('_')[0]
             association_attributes_hash.merge!(object.send(association_name).reduce({}) do |a_hash, ass|
               a_hash.merge! ass.id => ass.attributes
             end)
