@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @message = message
     @link = link
-    @image = scr_with_host image
+    @image = src_with_host image
     mail to: user.email, subject: subject
   end
 
