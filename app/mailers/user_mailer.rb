@@ -33,6 +33,6 @@ class UserMailer < ApplicationMailer
   end
 
   def sender_name
-    "#{I18n.t('organization.name')} <#{configus.mailer.from}>"
+    "#{I18n.t('organization.title')} <#{configus.mailer.from}>"
   end
 end
