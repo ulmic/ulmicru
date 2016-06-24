@@ -1,10 +1,13 @@
-pages = { not_found: '404',
+pages = {
+          not_found: '404',
           server_error: '500',
           changelog: 'changelog',
-          confession_submissions_petitions_ends: 'confession_submissions_petitions_ends' }
-pages.keys.each do |slug|
+          confession_submissions_petitions_ends: 'confession_submissions_petitions_ends',
+          successfully_unsubscribed: :successfully_unsubscribed
+        }
+pages.each do |slug, title|
   page = Page.find_by slug: slug
-  Page.create slug: slug, view: slug, title: pages[slug] unless page
+  Page.create slug: slug, view: slug, title: title unless page
 end
 
 ['Кто мы такие', 'Контакты', 'Сайт МИЦ'].each do |name|
