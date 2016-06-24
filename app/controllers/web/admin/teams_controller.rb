@@ -1,4 +1,9 @@
 class Web::Admin::TeamsController < Web::Admin::ApplicationController
+  # NOTE we need it to edit params before save object
+  skip_before_action :save_object, only: :update
+  before_action :edit_params, only: :update
+  before_action :save_object, only: :update
+
   before_filter :choose_members, only: [ :new, :edit ]
   before_filter :choose_departaments, only: [ :new, :edit ]
 
@@ -35,13 +40,6 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
   end
 
   def update
-    #FIXME refactoring
-    [:team_departament, :team_subdivision, :team_administration, :team_primary].each do |type|
-      if params[type]
-        params[:team] = params[type]
-        break
-      end
-    end
     @team_form = TeamForm.find_with_model params[:id]
     @team_form.submit params[:team]
     if @team_form.save
@@ -63,5 +61,15 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   def choose_departaments
     @departaments = TeamDecorator.decorate_collection Team::Departament.active
+  end
+
+  def edit_params
+    #FIXME refactoring
+    [:team_departament, :team_subdivision, :team_administration, :team_primary].each do |type|
+      if params[type]
+        params[:team] = params[type]
+        break
+      end
+    end
   end
 end
