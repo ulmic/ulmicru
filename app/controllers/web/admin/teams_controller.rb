@@ -45,7 +45,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     @team_form = TeamForm.find_with_model params[:id]
     @team_form.submit params[:team]
     if @team_form.save
-      redirect_to edit_admin_team_path @team_form.model
+      redirect_to admin_teams_path
     else
       choose_members
       choose_departaments
