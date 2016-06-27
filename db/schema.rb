@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517221318) do
+ActiveRecord::Schema.define(version: 20160627073941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160517221318) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "views",       default: 0
+    t.text     "publicity"
   end
 
   create_table "articles_documents", id: false, force: :cascade do |t|
@@ -155,8 +156,9 @@ ActiveRecord::Schema.define(version: 20160517221318) do
     t.text     "email"
     t.text     "first_name"
     t.text     "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.text     "state",      default: "subscribed"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -339,6 +341,14 @@ ActiveRecord::Schema.define(version: 20160517221318) do
   create_table "teams_users", id: false, force: :cascade do |t|
     t.integer "team_id"
     t.integer "user_id"
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "record_id"
+    t.text     "record_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

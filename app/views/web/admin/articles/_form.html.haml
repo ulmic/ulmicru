@@ -14,6 +14,7 @@
       = f.input :title, as: :string
       = f.input :body, as: :ckeditor
       = f.input :state_event, as: :state_event
+      = f.input :publicity
       = f.input :view
       = f.association :category, collection: @categories, prompt: t('helpers.links.select'), label: t(model_class.human_attribute_name :category_id)
       = f.association :attachments
