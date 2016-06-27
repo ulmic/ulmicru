@@ -9,5 +9,6 @@ module ArticleScopes
     scope :broadcasted, -> { where.not(category_id: Category.find_by_name('Контакты').id).where(state: :confirmed) }
     scope :same_articles, -> (article) { article.category.articles.where.not(id: article.id) }
     scope :popular, -> { order('views DESC') }
+    scope :public, -> { where publicity: :visible }
   end
 end

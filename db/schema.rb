@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624233616) do
+ActiveRecord::Schema.define(version: 20160627073941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160624233616) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "views",       default: 0
+    t.text     "publicity"
   end
 
   create_table "articles_documents", id: false, force: :cascade do |t|

@@ -71,19 +71,19 @@
                   .category-column
                     .menu-title
                       = @first_category.name
-                    - @first_category.articles.confirmed.each do |article|
+                    - @first_category.articles.public.confirmed.each do |article|
                       = link_to article.title, article_path(article)
                 - if @about_site_category.present?
                   .category-column
                     .menu-title
                       = @about_site_category.name
-                    - @about_site_category.articles.confirmed.each do |article|
+                    - @about_site_category.articles.public.confirmed.each do |article|
                       = link_to article.title, article_path(article)
                 - if @corporative_category.present?
                   .category-column
                     .menu-title
                       = @corporative_category.name
-                    - @corporative_category.articles.confirmed.each do |article|
+                    - @corporative_category.articles.public.confirmed.each do |article|
                       = link_to article.title, article_path(article)
           %li{ style: 'margin-right: 15px' }
             - if signed_in? && current_user.state == 'confirmed'
