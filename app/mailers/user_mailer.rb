@@ -23,6 +23,7 @@ class UserMailer < ApplicationMailer
     @message = message
     @link = link
     @image = src_with_host image
+    @subscription_token = subscription_token
     mail from: sender_name, to: user.email, subject: subject
   end
 

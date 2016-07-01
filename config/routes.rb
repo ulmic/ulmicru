@@ -83,7 +83,7 @@ Rails.application.routes.draw do
       namespace :delivery do
 	resources :campaigns
         resources :audiences, only: [ :create, :destroy ]
-	resources :sessions, only: [ :create, :destroy ] 
+	resources :sessions, only: [ :create, :destroy ]
       end
     end
     namespace :users do
@@ -103,6 +103,7 @@ Rails.application.routes.draw do
     resources :events, only: :index
     resources :feedbacks, only: :create
     resources :comments, only: [ :create, :destroy, :index ]
+    resources :subscriptions, only: :destroy
     resources :users, only: [] do
       member do
         get :confirm
