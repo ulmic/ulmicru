@@ -103,7 +103,11 @@ Rails.application.routes.draw do
     resources :events, only: :index
     resources :feedbacks, only: :create
     resources :comments, only: [ :create, :destroy, :index ]
-    resources :subscriptions, only: :destroy
+    resources :subscriptions, only: [] do
+      member do
+        get :destroy
+      end
+    end
     resources :users, only: [] do
       member do
         get :confirm
