@@ -41,4 +41,10 @@ class Delivery::Campaign < ActiveRecord::Base
   def fill_audiences?
     audiences.any? && audiences.first.audience_type.in?([ 'users', 'contacts_emails' ])
   end
+
+  def contacts
+    audiences.reduce([]) do |arr, audience|
+      arr += audience.decorate.contacts
+    end
+  end
 end
