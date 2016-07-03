@@ -3,11 +3,9 @@ class Web::ExceptionsController < Web::ApplicationController
 
   #Show the exception page
   def show
-    if @status == "404"
-      redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
-      if redirect_rule.present?
-	redirect_to redirect_rule.redirect_to
-      end
+    redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
+    if redirect_rule.present?
+      redirect_to redirect_rule.redirect_to
     end
     @year = 2012 + rand(4)
     render @status_name, status: @status_code and return

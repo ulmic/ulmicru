@@ -8,7 +8,7 @@ class Web::MembersController < Web::ApplicationController
 
   def create
     # FIXME fix with reform
-    members = Member.where ticket: params[:member][:ticket] 
+    members = Member.where ticket: params[:member][:ticket]
     if members.any?
       @member_form = MemberForm.find_with_model_by ticket: params[:member][:ticket]
       @member_form.check_repeated_registration
@@ -31,14 +31,14 @@ class Web::MembersController < Web::ApplicationController
     else
       member = current_user.becomes! Member
       @member_form = MemberForm.new member
-      @member_form.errors.add :ticket, 
+      @member_form.errors.add :ticket,
 	I18n.t('validations.errors.there_is_not_such_ticket_or_your_account_still_out_of_database')
       render :new
     end
   end
 
   def show
-    member = Member.find_by_ticket(params[:ticket])
+    member = Member.find_by_ticket!(params[:ticket])
     if member.member_confirmed?
       @member = member.decorate
       @children = MemberDecorator.decorate_collection member.children.shuffle

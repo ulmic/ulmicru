@@ -165,5 +165,5 @@ Rails.application.routes.draw do
 
   #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create'
   #TODO Maybe add some checks for environment for this line? Like this?
-  get '*unmatched_route', to: 'web/pages#show' if Rails.env == "production"
+  get '*unmatched_route', to: 'web/pages#show'
 end

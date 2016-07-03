@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -45,4 +45,5 @@ Rails.application.configure do
 
   config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
   config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
+  config.exceptions_app = ->(env) { Web::ExceptionsController.action(:show).call(env) }
 end
