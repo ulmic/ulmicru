@@ -192,7 +192,7 @@
                   %td{ align: "center", style: "font-family: Helvetica, arial, sans-serif; font-size: 10px;color: #999999", valign: "middle" }
                     %p
                       = t('mailers.helpers.unsubscribe_text')
-                      = link_to api_subscription_url(@subscription_token) do
+                      = link_to unsubscribe_url(@subscription_token) do
                         %span{ style: "text-decoration: none; color: #0db9ea" }
                           = t('mailers.helpers.unsubscribe')
                 / Spacing

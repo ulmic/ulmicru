@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         patch :update
       end
     end
+    get 'unsubscribe/:token' => 'subscriptions#destroy', as: :unsubscribe
     #resources :teams, only: [ :index, :show ]
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
@@ -103,11 +104,6 @@ Rails.application.routes.draw do
     resources :events, only: :index
     resources :feedbacks, only: :create
     resources :comments, only: [ :create, :destroy, :index ]
-    resources :subscriptions, only: [] do
-      collection do
-        get '/:token' => 'subscriptions#destroy'
-      end
-    end
     resources :users, only: [] do
       member do
         get :confirm
