@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                            foreign_key: :user_id,
                            dependent: :destroy
   has_many :logged_actions
-  has_many :subscriptions
+  has_many :subscriptions, as: :receiver
 
   validates :email, email: true,
                     allow_blank: true
@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
     self.token = SecureHelper.generate_token
   end
 
-  def subscription_token(subscription = nil)
+  def subscribe_token(subscription = nil)
     subscription ||= :deliveries
     subscriptions.where(subscription_type: subscription).first.token
   end

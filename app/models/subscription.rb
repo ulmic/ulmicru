@@ -1,3 +1,7 @@
 class Subscription < ActiveRecord::Base
-  has_one :token
+  belongs_to :receiver, polymorphic: true
+  has_one :token, as: :record
+
+  extend Enumerize
+  enumerize :subscription_type, in: [ :deliveries ]
 end
