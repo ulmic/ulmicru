@@ -167,6 +167,7 @@ ru:
           subdivision: Структурное подразделение
           administration: Административные органы
           primary: Первичная организация
+          committee: Орг.комитет
       event:
         registration:
           role: Роль
