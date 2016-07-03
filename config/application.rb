@@ -30,5 +30,6 @@ module Ulmicru
       g.decorator false
     end
     config.time_zone = 'Moscow'
+    config.exceptions_app = ->(env) { Web::ExceptionsController.action(:show).call(env) }
   end
 end
