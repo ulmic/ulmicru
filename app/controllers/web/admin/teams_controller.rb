@@ -65,7 +65,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   def edit_params
     #FIXME refactoring
-    [:team_departament, :team_subdivision, :team_administration, :team_primary].each do |type|
+    [:team_departament, :team_subdivision, :team_administration, :team_primary, :team_committee].each do |type|
       if params[type]
         params[:team] = params[type]
         break
