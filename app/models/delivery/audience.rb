@@ -10,19 +10,19 @@ class Delivery::Audience < ActiveRecord::Base
     contacts = []
     case audience_type
     when 'users'
-      contacts = User.subscribed_to_deliveries
+      contacts = User.subscribed_to_deliveries.with_email
     when 'contacts_emails'
       [User, ContactEmail].each do |type|
-        type.subscribed_to_deliveries.find_each(batch_size: 1000) do |instance|
+        type.subscribed_to_deliveries.with_email.find_each(batch_size: 1000) do |instance|
           contacts << OpenStruct.new(email: instance.email, first_name: instance.first_name, last_name: instance.last_name)
         end
       end
     when 'team'
       team = Team.find audience_id
-      contacts = team.users.subscribed_to_deliveries
+      contacts = team.users.subscribed_to_deliveries.with_email
     when 'event_registrations'
       event = Event.find audience_id
-      contacts = User.subscribed_to_deliveries.where id: event.registrations.map(&:user_id)
+      contacts = User.subscribed_to_deliveries.with_email.where id: event.registrations.map(&:user_id)
     end
     contacts
   end

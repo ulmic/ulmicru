@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                            foreign_key: :user_id,
                            dependent: :destroy
   has_many :logged_actions
-  has_many :subscriptions, as: :receiver
+  has_many :subscriptions, as: :receiver, dependent: :destroy
 
   validates :email, email: true,
                     allow_blank: true
