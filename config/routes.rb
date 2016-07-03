@@ -104,8 +104,8 @@ Rails.application.routes.draw do
     resources :feedbacks, only: :create
     resources :comments, only: [ :create, :destroy, :index ]
     resources :subscriptions, only: [] do
-      member do
-        get :destroy
+      collection do
+        get '/:token' => 'subscriptions#destroy'
       end
     end
     resources :users, only: [] do
