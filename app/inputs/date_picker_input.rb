@@ -18,7 +18,7 @@ class DatePickerInput < SimpleForm::Inputs::StringInput
     input_html_options[:data] ||= {}
     input_html_options[:data].merge!({date_options: date_options })
 
-    template.content_tag :div, class: "input-group date datepicker #{ value.eql? 'for_now' ? :disabled : '' }" do
+    template.content_tag :div, class: "input-group date datepicker" do
       input = super(wrapper_options) # leave StringInput do the real rendering
       input += template.content_tag :span, class: 'input-group-btn' do
         template.content_tag :button, class: 'btn btn-default', type: 'button' do
