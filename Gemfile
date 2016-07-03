@@ -62,8 +62,9 @@ gem 'trap', '~> 1'
 gem 'more_html_tags'
 gem 'hashdiff'
 gem 'react_webpack_rails'
+gem 'rwr-redux'
 
-group :production do
+group :development, :production do
   gem 'unicorn-rails'
 end
 
@@ -88,4 +89,3 @@ group :test do
   gem 'coveralls', require: false
   gem 'webmock'
 end
-gem 'rwr-redux'
