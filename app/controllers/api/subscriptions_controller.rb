@@ -1,6 +1,6 @@
 class Api::SubscriptionsController < Api::ApplicationController
   def destroy
-    subscription = Subscription.joins(:token).where('token.content = ?', params[:token]).first
+    subscription = Token.subscriptions.where(content: params[:token]).first&.record
     if subscription.present?
       subscription.destroy
       head :ok
