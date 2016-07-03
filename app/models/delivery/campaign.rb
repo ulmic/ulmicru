@@ -44,7 +44,7 @@ class Delivery::Campaign < ActiveRecord::Base
 
   def contacts
     audiences.reduce([]) do |arr, audience|
-      arr += audience.decorate.contacts
+      arr += audience.contacts
     end
   end
 end

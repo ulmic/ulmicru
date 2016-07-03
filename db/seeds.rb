@@ -3,7 +3,8 @@ pages = {
           server_error: '500',
           changelog: 'changelog',
           confession_submissions_petitions_ends: 'confession_submissions_petitions_ends',
-          successfully_unsubscribed: :successfully_unsubscribed
+          successfully_unsubscribed: :successfully_unsubscribed,
+          unsubscribe_successful: :unsubscribe_successful
         }
 pages.each do |slug, title|
   page = Page.find_by slug: slug

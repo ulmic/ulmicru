@@ -209,6 +209,7 @@ ru:
         body: Текст
         link: Ссылка
         mailing_date: Дата рассылки
+        contacts_count: Количество писем
         <<: *default
       delivery/audience:
         audience_type: Целевая аудитория
