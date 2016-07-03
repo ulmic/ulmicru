@@ -19,6 +19,9 @@
         %tr
           %td= model_class.human_attribute_name name
           %td= value
+      %tr
+        %td= model_class.human_attribute_name :contacts_count
+        %td= @campaign.contacts.count
 
   .col-lg-6
     %h4
