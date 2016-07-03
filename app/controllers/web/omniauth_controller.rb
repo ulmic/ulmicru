@@ -29,6 +29,7 @@ class Web::OmniauthController < Web::ApplicationController
         unless user
           password = SecureRandom.hex 8
           user = User.create email: email, first_name: first_name, last_name: last_name, password: password, password_confirmation: password, state: :confirmed
+          initialize_subscriptions user
         end
         sign_in user
 	log_action :sign_in

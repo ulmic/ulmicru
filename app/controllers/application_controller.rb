@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include Concerns::AuthManagment
   include Concerns::TechinalPagesManagment
   include Concerns::ActionLogger
+  include Concerns::ContactsSubscriptionsManagment
   include DatesHelper
 
   private
