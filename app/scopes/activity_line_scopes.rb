@@ -10,5 +10,6 @@ module ActivityLineScopes
     scope :local_projects, -> { where activity_type: :local_project }
     scope :corporative, -> { where activity_type: :corporative }
     scope :has_curators, -> { where.not(activity_type: :event_line) }
+    scope :ulmic, -> { where organization_type: :ulmic }
   end
 end
