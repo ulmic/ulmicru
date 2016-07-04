@@ -16,6 +16,7 @@
       = f.input :found_date, as: :date_picker
       = f.input :activity_type
       = f.input :state_event, as: :state_event
+      = f.input :organization_type
       = f.input :logo, as: :file
       = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
