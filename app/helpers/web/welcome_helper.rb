@@ -4,7 +4,6 @@ module Web::WelcomeHelper
       [ 'Информация', 'ActivityLine', 'ЖУРНАЛИСТИКА' ],
       [ 'ИТ', 'ActivityLine', 'ИТ'],
       [ 'Право', 'ActivityLine', 'ПРАВО'],
-      [ 'Диалог культур', 'ActivityLine', 'ТОЛЕРАНТНОСТЬ' ],
       [ 'Добро', 'ActivityLine',  'ВОЛОНТЁРСТВО' ],
       [ 'Корпоративные проекты', 'ActivityLine', 'КОРПОРАТИВНЫЕ ПРОЕКТЫ' ],
       [ 'НКО', 'string', 'НКО' ]
