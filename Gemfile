@@ -64,7 +64,7 @@ gem 'hashdiff'
 gem 'react_webpack_rails'
 gem 'rwr-redux'
 
-group :development, :production do
+group :production do
   gem 'unicorn-rails'
 end
 

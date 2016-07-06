@@ -6,9 +6,6 @@
         %li= message
       - object.model.errors.full_messages.each do |message|
         %li= message
-- elsif form_after_save? && object_updated_less_minute_ago?(object)
-  .alert.alert-dismissible.alert-success
-    %h4= t('messages.record_saved_success')
 - if params[:message]
   .alert.alert-dismissible.alert-info
     %h4= t("messages.#{params[:message]}")

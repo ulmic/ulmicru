@@ -1,6 +1,8 @@
 ru:
   activerecord:
     state_machines:
+      default: &default
+        closed: Закрытые
       user:
         state:
           states:
@@ -118,6 +120,7 @@ ru:
             removed: Удалённые
             active: Активные
             unviewed: Непросмотренные
+            <<: *default
       letter:
         state:
           states:

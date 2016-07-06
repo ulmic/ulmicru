@@ -14,6 +14,7 @@ class ActivityLine < ActiveRecord::Base
     state :unviewed
     state :active
     state :removed
+    state :closed
 
     event :remove do
       transition all => :removed
@@ -21,6 +22,10 @@ class ActivityLine < ActiveRecord::Base
 
     event :restore do
       transition removed: :unviewed
+    end
+
+    event :close do
+      transition active: :closed
     end
   end
 
