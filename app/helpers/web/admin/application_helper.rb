@@ -23,11 +23,6 @@ module Web::Admin::ApplicationHelper
     model_class.methods.include? :search_everywhere
   end
 
-  def form_after_save?
-    referrer = Rails.application.routes.recognize_path request.referrer
-    referrer[:controller] == params[:controller] && referrer[:action] == params[:action]
-  end
-
   def object_updated_less_minute_ago?(object)
     if object.model.updated_at
       ((DateTime.now - object.model.updated_at.to_datetime) * 24 * 60).to_i < 1

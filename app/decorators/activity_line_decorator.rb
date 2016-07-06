@@ -29,6 +29,6 @@ class ActivityLineDecorator < ApplicationDecorator
   end
 
   def self.collections
-    [ :active, :unviewed, :removed ]
+    [ :active, :unviewed, :removed, :closed ]
   end
 end
