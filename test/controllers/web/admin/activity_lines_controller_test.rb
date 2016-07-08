@@ -47,7 +47,7 @@ class Web::Admin::ActivityLinesControllerTest < ActionController::TestCase
   test 'should patch update' do
     attributes = attributes_for :activity_line
     patch :update, activity_line: attributes, id: @activity_line
-    assert_redirected_to edit_admin_activity_line_path @activity_line
+    assert_redirected_to admin_activity_lines_path
     @activity_line.reload
     @activity_line.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @activity_line.send(key), key
