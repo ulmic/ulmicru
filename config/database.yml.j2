@@ -1,0 +1,13 @@
+default: &default
+  username: ulmicru
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: ulmicru_development
+
+test:
+  <<: *default
+  database: ulmicru_test

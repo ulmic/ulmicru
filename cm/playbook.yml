@@ -25,6 +25,6 @@
         - oauth
         - secrets
       tags:
-       - test
+        - test
     - command: aptitude install libgmp-dev
       sudo: yes
