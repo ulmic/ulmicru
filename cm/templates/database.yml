@@ -1,5 +1,5 @@
 default: &default
-  username: {{ pg_user }}
+  username: ulmic
   adapter: postgresql
   encoding: unicode
   pool: 5

@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+#
+# USE bin/prod get_db server_user_name database_name
 if ARGV[0] == 'get_db'
   at = Time.now.strftime("%Y-%m-%d--%H-%M")
   dump = "ulmicru--#{at}.dump"

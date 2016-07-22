@@ -7,6 +7,7 @@ FactoryGirl.define do
     user_id     { create(:user).id }
     state { Article.state_machines[:state].states.map(&:name).first.to_s }
     views { generate :integer }
+    publicity { Article.publicity.values.sample }
 
     trait :contacts do
       title 'Контакты'

@@ -13,18 +13,17 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
-  # FIXME issue https://github.com/glebm/rails_email_preview/issues/64
-#  test 'should get index' do
-#    create_list :delivery_campaign, 5
-#    get :index
-#    assert_response :success, @response.body
-#  end
+  test 'should get index' do
+    create_list :delivery_campaign, 5
+    get :index
+    assert_response :success, @response.body
+  end
 
-#  test 'should get index with search' do
-#    create_list :delivery_campaign, 5
-#    get :index, search: @campaign.link
-#    assert_response :success, @response.body
-#  end
+  test 'should get index with search' do
+    create_list :delivery_campaign, 5
+    get :index, search: @campaign.link
+    assert_response :success, @response.body
+  end
 
   test 'should get index without instances' do
     Delivery::Campaign.destroy_all
@@ -36,8 +35,8 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
     attributes = attributes_for :delivery_campaign
     post :create, delivery_campaign: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to admin_delivery_campaigns_path
     campaign = Delivery::Campaign.last
+    assert_redirected_to admin_delivery_campaign_path campaign
     campaign.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], campaign.send(key), key
     end
@@ -52,7 +51,7 @@ class Web::Admin::Delivery::CampaignsControllerTest < ActionController::TestCase
     attributes = attributes_for :delivery_campaign
     patch :update, delivery_campaign: attributes, id: @campaign
     assert_response :redirect, @response.body
-    assert_redirected_to edit_admin_delivery_campaign_path @campaign
+    assert_redirected_to admin_delivery_campaign_path @campaign
     @campaign.reload
     @campaign.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @campaign.send(key), key
