@@ -33,6 +33,10 @@ class Delivery::Campaign < ActiveRecord::Base
     event :start_mailing do
       transition all => :during_mailing
     end
+
+    event :make_done do
+      transition all => :done
+    end
   end
 
   include PgSearch
