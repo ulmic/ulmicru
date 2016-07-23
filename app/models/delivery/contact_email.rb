@@ -8,17 +8,12 @@ class Delivery::ContactEmail < ActiveRecord::Base
   validates :first_name, human_name: true
   validates :last_name, human_name: true
 
-  state_machine :state, initial: :subscribed do
-    state :subscribed
-    state :unsubscribed
+  state_machine :state, initial: :active do
+    state :active
     state :removed
 
-    event :subscribe do
-      transition all => :subscribed
-    end
-
-    event :unsubscribe do
-      transition all => :unsubscribed
+    event :restore do
+      transition all => :active
     end
 
     event :remove do
