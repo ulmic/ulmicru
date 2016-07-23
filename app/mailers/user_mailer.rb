@@ -27,19 +27,9 @@ class UserMailer < ApplicationMailer
     mail from: sender_name, to: user.email, subject: subject
   end
 
-  def news_create(user, news)
-    @user = user
-    @news = news
-    mail from: sender_name, to: user.email, subject: subject(news.class, :create)
-  end
-
   private
 
   def src_with_host(src)
     "#{configus.full_host}#{src}"
-  end
-
-  def sender_name
-    "#{I18n.t('organization.title')} <#{configus.mailer.from}>"
   end
 end
