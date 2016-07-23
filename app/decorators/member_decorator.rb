@@ -109,4 +109,8 @@ class MemberDecorator < UserDecorator
   def self.collections
     [ :confirmed, :unviewed, :declined, :unavailable ]
   end
+
+  def email
+    object.email
+  end
 end
