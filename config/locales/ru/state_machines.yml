@@ -3,6 +3,8 @@ ru:
     state_machines:
       default: &default
         closed: Закрытые
+        active: Активные
+        removed: Удалённые
       user:
         state:
           states:
@@ -117,8 +119,6 @@ ru:
       activity_line:
         state:
           states:
-            removed: Удалённые
-            active: Активные
             unviewed: Непросмотренные
             <<: *default
       letter:
@@ -134,6 +134,11 @@ ru:
             declined: Отменены
             done: Выполнены
             during_mailing: В процессе рассылки
+      delivery/contact_email:
+        state:
+          states:
+            subscribed_to_deliveries: Подписаны на рассылки
+            <<: *default
       redirect_rule:
         state:
           states:

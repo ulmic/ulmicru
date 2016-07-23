@@ -1,0 +1,29 @@
+= paginate delivery_contact_emails, theme: 'twitter-bootstrap-3'
+- model_class = Delivery::ContactEmail
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:short_name)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - delivery_contact_emails.each do |delivery_contact_email|
+      %tr.link{ class: state_color(delivery_contact_email), data: { href: admin_delivery_contact_email_path(delivery_contact_email) } }
+        %td= delivery_contact_email.id
+        %td= delivery_contact_email.email
+        %td= delivery_contact_email.short_name
+        - if searching?
+          %td= delivery_contact_email.human_state_name
+        %td.actions
+          - if delivery_contact_email.subscribed?
+            = link_to admin_delivery_contact_email_path(delivery_contact_email, contact_email: { state: :unsubscribed }), method: :patch, class: 'btn btn-danger btn-xs' do
+              = fa_icon 'hand-pointer-o'
+          - if delivery_contact_email.unsubscribed?
+            = link_to admin_delivery_contact_email_path(delivery_contact_email, contact_email: { state: :subscribed }), method: :patch, class: 'btn btn-success btn-xs' do
+              = fa_icon 'hand-pointer-o'
+          = link_to admin_delivery_contact_email_path(delivery_contact_email), method: :delete, class: 'btn btn-xs btn-danger' do
+            = fa_icon :remove
+= paginate delivery_contact_emails, theme: 'twitter-bootstrap-3'
