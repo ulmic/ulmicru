@@ -1,5 +1,6 @@
 class Delivery::ContactEmail < ActiveRecord::Base
   has_one :subscribe_token, class_name: 'Token', as: :record
+  has_many :subscriptions, as: :receiver, dependent: :destroy
 
   validates :email, presence: true,
 		    email: true,
