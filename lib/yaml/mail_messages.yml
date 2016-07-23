@@ -4,3 +4,6 @@ messages:
       subject: 'Подтверждение адреса электронной почты'
     remind_password:
       subject: 'Восстановление утерянного пароля'
+  news:
+    create:
+      subject: 'Добавлена новость на сайт МИЦ'
