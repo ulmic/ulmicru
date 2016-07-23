@@ -11,6 +11,7 @@ class Delivery::ContactEmail < ActiveRecord::Base
   state_machine :state, initial: :subscribed do
     state :subscribed
     state :unsubscribed
+    state :removed
 
     event :subscribe do
       transition all => :subscribed
@@ -19,7 +20,14 @@ class Delivery::ContactEmail < ActiveRecord::Base
     event :unsubscribe do
       transition all => :unsubscribed
     end
+
+    event :remove do
+      transition all => :removed
+    end
   end
+
+  include PgSearch
+  pg_search_scope :search, against: [ :email, :first_name, :last_name ]
 
   private
 

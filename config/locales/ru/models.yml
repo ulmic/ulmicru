@@ -17,11 +17,12 @@ ru:
       comment: Комментарий
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
-      delivery/campaign: Кампания
-      delivery/audience: Целевая аудитория
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение
+      delivery/campaign: Кампания
+      delivery/audience: Целевая аудитория
+      delivery/contact_email: Электронная почта
     attributes:
       default: &default
         created_at: Дата создания
@@ -214,6 +215,8 @@ ru:
         <<: *default
       delivery/audience:
         audience_type: Целевая аудитория
+      delivery/contact_email:
+        short_name: Имя
       logged_action:
         user: Пользователь
         user_id: Пользователь

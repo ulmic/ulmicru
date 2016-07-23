@@ -85,6 +85,7 @@ Rails.application.routes.draw do
 	resources :campaigns
         resources :audiences, only: [ :create, :destroy ]
 	resources :sessions, only: [ :create, :destroy ]
+        resources :contact_emails, only: [ :index, :update, :destroy ]
       end
     end
     namespace :users do

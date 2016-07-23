@@ -134,6 +134,11 @@ ru:
             declined: Отменены
             done: Выполнены
             during_mailing: В процессе рассылки
+      delivery/contact_email:
+        state:
+          states:
+            subscribed: Подписаны
+            unsubscribed: Отписаны
       redirect_rule:
         state:
           states:
