@@ -14,6 +14,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news_form = NewsForm.new_with_model
     @news_form.submit params[:news]
     if @news_form.save
+      send_notification press_center_lead, @news_form.model, :create
       redirect_to admin_news_index_path
     else
       choose_members
