@@ -10,4 +10,8 @@ class Delivery::CampaignDecorator < ApplicationDecorator
   def self.collections
     [ :ready, :done, :removed, :during_mailing, :declined ]
   end
+
+  def name
+    model.title
+  end
 end
