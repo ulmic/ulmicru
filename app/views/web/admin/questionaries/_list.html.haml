@@ -21,7 +21,7 @@
         %td= l(questionary.request_date, format: '%d %B %Y') if questionary.request_date.present?
         - if searching?
           %td= questionary.human_state_name
-        %td.actions{ style: 'width: 147px' }
+        %td.actions{ style: 'width: 152px' }
           .btn-group
             = link_to '#', class: 'btn btn-xs btn-success' do
               %span.glyphicon.glyphicon-ok
