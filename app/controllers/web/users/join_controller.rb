@@ -13,6 +13,7 @@ class Web::Users::JoinController < Web::Users::ApplicationController
     @questionary_form.submit params[:questionary]
     User.find(questionary.id).update type: 'Questionary'
     if @questionary_form.save
+      send_notification corporative_lead, @questionary_form.model, :create
       @questionary_form.update_attributes request_date: DateTime.now
       redirect_to account_path
     else

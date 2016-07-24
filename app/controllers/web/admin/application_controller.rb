@@ -11,7 +11,6 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   include Concerns::DecoratorsConcern
   include Concerns::ParamsComparingConcern
   include Concerns::LoggedActionsParamsConcern
-  include Organization::PeopleHelper
 
   protected
 
