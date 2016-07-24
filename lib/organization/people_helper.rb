@@ -1,7 +1,7 @@
 module Organization
   module PeopleHelper
     def press_center_lead
-      User.first.decorate
+      Member.first
     end
   end
 end
