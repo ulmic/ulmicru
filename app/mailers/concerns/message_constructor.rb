@@ -5,8 +5,8 @@ module Concerns
       messages_hash[type][theme]
     end
 
-    def subject(obj_class, theme)
-      type = class_to_type obj_class
+    def subject(obj_class, theme, admin = nil)
+      type = admin ? obj_class.name.downcase : class_to_type(obj_class)
       messages_hash[type][theme][:subject]
     end
 
