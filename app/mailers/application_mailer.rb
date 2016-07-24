@@ -3,6 +3,8 @@ class ApplicationMailer < ActionMailer::Base
   default from: "#{configus.host} <#{configus.mailer.from}>", content_transfer_encoding: '7bit'
   default template_path: 'mailers'
 
+  include Concerns::MessageConstructor
+
   protected
 
   def sender_name
