@@ -6,6 +6,8 @@ module Notifications
         case params[:object].class.name
         when 'News'
           NewsMailer.delay.send(params[:theme], params[:object], params[:user])
+        when 'Questionary'
+          QuestionaryMailer.delay.send(params[:theme], params[:object], params[:user])
         else
           UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end
