@@ -6,7 +6,6 @@ module Organization
 
     def corporative_lead
       Position.current_positions.where(title: 'Руководитель корпоративных проектов').first.member
-      Member.first
     end
   end
 end
