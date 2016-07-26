@@ -83,14 +83,10 @@ Rails.application.routes.draw do
         end
       end
       namespace :delivery do
-	resources :campaigns
-<<<<<<< HEAD
-	resources :sessions, only: [ :create, :destroy ]
-=======
+        resources :campaigns
         resources :audiences, only: [ :create, :destroy ]
-	resources :sessions, only: [ :create, :destroy ]
+        resources :sessions, only: [ :create, :destroy ]
         resources :contact_emails, only: [ :index, :update, :destroy ]
->>>>>>> develop
       end
     end
     namespace :users do
