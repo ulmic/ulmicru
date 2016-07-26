@@ -22,7 +22,6 @@
             .live
               .icon-container
                 .icon-pointer
-              = "#{t('.live')}:"
               %span
                 = @team.place
           .social
@@ -34,11 +33,11 @@
       .row
         .small-11.push-1
           .row.god-fathers-childs
-            - if @parent.present?
-              .godfather.small-4.columns{ class: present_link_class(@parent), data: { href: present_team_path(@parent) } }
+            - if @owner.present?
+              .godfather.small-4.columns{ class: present_link_class(@owner), data: { href: present_member_path(@owner) } }
                 .title
-                  = "#{t('activerecord.attributes.team.parent')}:"
-                = render 'web/teams/shared/mic_userpic_circle', team: @parent
+                  = "#{t('activerecord.attributes.team.owner')}:"
+                = render 'web/members/shared/mic_userpic_circle', member: @owner
             - if @members.any?
               - @owner.present? ? count = 2 : count = 3
               .godchilds.small-8.columns
@@ -47,7 +46,7 @@
                     .small-6.columns{ class: present_link_class(member), data: { href: present_member_path(member) } }
                       - if index == 0
                         .title
-                          = "#{t('activerecord.attributes.team.memberren')}:"
+                          = "#{t('activerecord.attributes.team.members')}:"
                       = render 'web/members/shared/mic_userpic_circle', member: member
                     .small-6.columns
                       - if @members.count > count && index == 0
