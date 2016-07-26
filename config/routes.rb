@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
+    resources :remind_passwords, only: [ :new, :create ]
     resources :remind_password, only: [ :new, :create ] do
       collection do
         get :edit
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
       end
     end
     get 'unsubscribe/:token' => 'subscriptions#destroy', as: :unsubscribe
-    #resources :teams, only: [ :index, :show ]
+    resources :teams, only: :show
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end
@@ -82,9 +83,9 @@ Rails.application.routes.draw do
         end
       end
       namespace :delivery do
-	resources :campaigns
+        resources :campaigns
         resources :audiences, only: [ :create, :destroy ]
-	resources :sessions, only: [ :create, :destroy ]
+        resources :sessions, only: [ :create, :destroy ]
         resources :contact_emails, only: [ :index, :update, :destroy ]
       end
     end

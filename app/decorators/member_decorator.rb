@@ -66,6 +66,10 @@ class MemberDecorator < UserDecorator
     end
   end
 
+  def public_teams
+    object.teams.visible
+  end
+
   def real_attributes
     [:ticket, :email, :motto, :parent, :mobile_phone, :birth_date, :municipality, :locality, 
      :join_date, :school, :main_position_title]

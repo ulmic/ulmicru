@@ -1,0 +1,32 @@
+.team-info {
+  padding-left: 20px;
+}
+
+.team-title {
+  margin-top: 10px;
+  font-size: 48px;
+}
+
+.team-email {
+  margin-left: 5px;
+  font-size: 14px;
+  font-family: mic-bold;
+  font-weight: bold;
+}
+
+.team-map {
+  width: 100%;
+  height: 100%;
+}
+
+.team-card {
+  text-align: center;
+  .owner-head {
+    font-size: 50px;
+  }
+
+  .owner {
+    text-decoration: bold;
+    font-size: 30px;
+  }
+}

@@ -27,4 +27,18 @@ class TeamDecorator < ApplicationDecorator
   def self.collections
     [ :active, :unviewed, :removed ]
   end
+
+  def place
+    case object.type
+    when 'depatartament'
+      object.municipality
+    when 'primary'
+      h.content_tag :div do
+        h.content_tag :a, href: team_path(object.team) do
+          object.team.decorate.full_title
+        end
+        object.school
+      end
+    end
+  end
 end

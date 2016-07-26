@@ -1,0 +1,111 @@
+- title @team.full_title
+- content_for :meta do
+  %meta{ property: 'og:description', content: "#{@team.full_title} #МИЦ" }
+  %meta{ property:'og:image', content: @team.avatar.element }
+  %meta{ name:'description', content: "#{@team.full_title} #МИЦ" }
+  %link{ rel: 'image_src', href: @team.avatar.element }
+.container.account
+  .row
+    .small-5.columns
+      .user-avatar
+        = image_tag @team.avatar.profile, class: :avatar
+        .overlay
+          .text
+        .user-info
+          .info
+            -#.learn
+              .icon-container
+                .icon-learn
+              = t('.learn_or_work')
+              %span
+                МБОУ Гимназия №79
+            .live
+              .icon-container
+                .icon-pointer
+              %span
+                = @team.place
+          .social
+            - [ :vkontakte, :twitter, :instagram ].each do |social|
+              - if @team.send(social).present?
+                = link_to account_url(social, @team.send(social)), class: :blank do
+                  = fa_icon :social
+    .small-7.columns
+      .row
+        .small-11.push-1
+          .row.god-fathers-childs
+            - if @owner.present?
+              .godfather.small-4.columns{ class: present_link_class(@owner), data: { href: present_member_path(@owner) } }
+                .title
+                  = "#{t('activerecord.attributes.team.owner')}:"
+                = render 'web/members/shared/mic_userpic_circle', member: @owner
+            - if @members.any?
+              - @owner.present? ? count = 2 : count = 3
+              .godchilds.small-8.columns
+                .row
+                  - @members.first(count).each_with_index do |member, index|
+                    .small-6.columns{ class: present_link_class(member), data: { href: present_member_path(member) } }
+                      - if index == 0
+                        .title
+                          = "#{t('activerecord.attributes.team.members')}:"
+                      = render 'web/members/shared/mic_userpic_circle', member: member
+                    .small-6.columns
+                      - if @members.count > count && index == 0
+                        .view-all
+                          %a.text{ href: '#', id: 'view_all' }
+                            = t('helpers.view_all')
+                            = "(#{@members.count})"
+                          %a.text{ style: 'display: none', href: '#', id: 'hide_all' }
+                            = t('helpers.hide')
+              - @members.drop(count).each_slice(3) do |members|
+                .godchilds.small-12.columns.added.hidden
+                  .row
+                    - members.each do |member|
+                      .small-4.columns
+                        = render 'web/members/shared/mic_userpic_circle', member: member
+  .row.user-content
+    %ul.tabs{ 'data-tab' => '' }
+      - if @events.any?
+        %li.tab-title
+          %a{ href: '#stages-of-grow', tabindex: '0' }
+            %i.fa.fa-signal
+            = t('organization.floors_growth')
+      - if @articles.any? || @news.any?
+        %li.tab-title
+          %a{ href: '#users-news', tabindex: '0' }
+            %i.fa.fa-newspaper-o
+            = t('activerecord.models.news').pluralize(:ru)
+    .tabs-content
+      - if @events.any?
+        #stages-of-grow.content.stages
+          - @events.each do |event|
+            .row.stage.link{ data: { href: event_path(event) } }
+              .small-1.small-push-1.columns
+                .stage-date
+                  .icon-bigcalendar
+                  .day
+                    = event.begin_date.day
+                  .month
+                    =l event.begin_date, format: ('%b')
+                  .year
+                    = event.begin_date.year
+              .columns.small-10
+                .stage-text
+                  .title
+                    = event.title
+            %hr
+      - if @articles.any? || @news.any?
+        #users-news.content
+          %ul.news.small-block-grid-4
+            - @articles.each do |article|
+              %li.mic-one-news
+                = render_element 'mic_article',  link: article_path(article), |
+                                                 title: article.title, |
+                                                 views: article.views, |
+                                                 comments: article.comments.count
+            - @news.each do |news|
+              %li.mic-one-news
+                = render_element 'mic_one_news', img_src: news.photo, |
+                                                 link: news_path(news), |
+                                                 title: news.title, |
+                                                 date: news.publish_date, |
+                                                 views: news.views

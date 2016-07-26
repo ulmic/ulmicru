@@ -41,6 +41,7 @@ class Web::MembersController < Web::ApplicationController
     member = Member.find_by_ticket(params[:ticket])
     if member.member_confirmed?
       @member = member.decorate
+      @public_teams = @member.public_teams
       @children = MemberDecorator.decorate_collection member.children.shuffle
       @parent = MemberDecorator.decorate member.parent
       @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.date_order
