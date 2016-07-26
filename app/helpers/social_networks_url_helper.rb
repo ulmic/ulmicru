@@ -16,4 +16,15 @@ module SocialNetworksUrlHelper
   def social_network_icon(provider, size, colored = false)
     "icon-#{provider} #{size}-icon #{colored}"
   end
+
+  def account_url(social, account)
+    case social
+    when :vkontakte
+      "http://vk.com/#{account}"
+    when :twitter
+      "http://twitter.com/#{account}"
+    when :instagram
+      "http://instagram.com/#{account}"
+    end
+  end
 end

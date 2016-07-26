@@ -6,6 +6,8 @@ class Team < ActiveRecord::Base
 
   validates :description, presence: true
 
+  mount_uploader :avatar, AvatarUploader
+
   extend Enumerize
 
   enumerize :publicity, in: [ :visible, :hidden ], default: :hidden
