@@ -1,0 +1,151 @@
+ru:
+  activerecord:
+    state_machines:
+      default: &default
+        closed: Закрытые
+        active: Активные
+        removed: Удалённые
+      user:
+        state:
+          states:
+            unviewed: Новые
+            confirmed: Подтверждённые
+            declined: Отклонённые
+            unavailable: Отсутствуют на сайте
+          events:
+            renew: Сделать непросмотренным
+            decline: Отклонить
+            remove: Удалить
+            avail: Сделать доступным на сайте (только для членов МИЦ)
+            unavail: Сделать недоступным на сайте (только для членов МИЦ)
+      member:
+        state:
+          states:
+            unviewed: Новые
+            confirmed: Подтверждённые
+            declined: Отклонённые
+            unavailable: Отсутствуют на сайте
+      questionary:
+        state:
+          states:
+            on_the_trial: Испытательный срок
+            unviewed: Новые
+            declined: Отклонённые
+          events:
+            confirm: Подтвердить
+            put_on_the_trial: Поставить на испытательный срок
+            trial_passed: Испытательный срок пройден
+        member_state:
+          states:
+            on_the_trial: Испытательный срок
+            unviewed: Новые
+            declined: Отклонённые
+            confirmed: Принят в организацию
+            trial_passed: Испытательный срок пройден
+            member_trial_passed: Испытательный срок пройден
+            member_on_the_trial: Испытательный срок
+          events:
+            confirm: Принять в организацию
+            decline: Отклонить заявку на вступление
+            renew: Сделать заявку непросмотренной
+            put_on_the_trial: Поставить на испатательный срок
+            pass_trial: Подготовить к принятию в организацию
+      news:
+        state:
+          states:
+            published: Опубликованное
+            unpublished: Неопубликованное
+            main: Главные новости
+            unviewed: Неподтверждённые новости
+          events:
+            confirm: Подтвердить
+            remove: Удалить
+            to_main: Сделать главной новостью
+      activity_lines/corporative/confession:
+        state:
+          states:
+            unviewed: Ходатайства
+            on_vote: На голосовании
+            confirmed: Получившие премию
+            declined: Отклонённые
+          events:
+            confirm: Премия получена
+            remove: Удалить
+            to_vote: Поставить на голосование
+            renew: Сделать непросмотренным
+            declined: Отклонённые
+      event:
+        state:
+          states:
+            confirmed: Подтверждённое
+            future: Будущий
+            current: Текущий
+            past: Прошедший
+            unviewed: Новые
+            declined: Отклонённые
+      article:
+        state:
+          states:
+            unviewed: Новые
+            confirmed: Подтверждённые
+            inactive: Неактивные
+            removed: Удалённые
+      feedback:
+        state:
+          states:
+            unviewed: Новые
+            fixing: В работе
+            done: Сделаны
+            declined: Отклонены
+      comment:
+        state:
+          states:
+            unviewed: Непросмотренные
+            active: Активные
+            declined: Отклонённые
+      banner:
+        state:
+          states:
+            unviewed: Непросмотренные
+            active: Активные
+            removed: Удалённые
+            actual: Актуальные
+      team:
+        state:
+          states:
+            unviewed: Непросмотренные
+            active: Активные
+            removed: Удалённые
+      activity_line:
+        state:
+          states:
+            unviewed: Непросмотренные
+            <<: *default
+      letter:
+        state:
+          states:
+            unviewed: Непросмотренные
+            sended: Отправленные
+      delivery/campaign:
+        state:
+          states:
+            ready: Готовы к рассылке
+            removed: Удалены
+            declined: Отменены
+            done: Выполнены
+            during_mailing: В процессе рассылки
+      delivery/contact_email:
+        state:
+          states:
+            subscribed_to_deliveries: Подписаны на рассылки
+            <<: *default
+      redirect_rule:
+        state:
+          states:
+            active: Активные
+            removed: Удалённые
+      image:
+        state:
+          states:
+            active: Активные
+            removed: Удалённые

@@ -1,0 +1,52 @@
+= beta_testing_notice
+- model_class = Delivery::Campaign
+- title @campaign.title, :admin
+.page-header
+  %h1
+    = @campaign.title
+    - if @campaign.audiences.any?
+      - if @campaign.ready?
+        = link_to fa_icon(:eye), rails_email_preview.rep_email_path('user_mailer_preview-just_message', email: @campaign.contacts.first.email, first_name: @campaign.contacts.first.first_name, last_name: @campaign.contacts.first.last_name, link: @campaign.link, subject: @campaign.title, message: @campaign.body, image: @campaign.image), class: 'btn btn-primary'
+        = link_to fa_icon(:send), admin_delivery_sessions_path(id: @campaign.id), method: :post, class: 'btn btn-primary'
+      - else
+        = link_to fa_icon(:bullseye), admin_delivery_campaign_path(delivery_campaign: { state: :ready }), method: :patch, class: 'btn btn-primary'
+    = link_to fa_icon(:pencil), edit_admin_delivery_campaign_path(@campaign), class: 'btn btn-warning'
+    = link_to fa_icon(:remove), admin_delivery_campaign_path(@campaign), method: :delete, class: 'btn btn-danger'
+.row
+  .col-lg-6
+    %table.table.attributes-table
+      - @campaign.attributes.each do |name, value|
+        %tr
+          %td= model_class.human_attribute_name name
+          %td= value
+      %tr
+        %td= model_class.human_attribute_name :contacts_count
+        %td= @campaign.contacts.count
+
+  .col-lg-6
+    %h4
+      %b
+        = t('activerecord.models.delivery/audience')
+        - unless @campaign.fill_audiences?
+          = link_to fa_icon(:plus), '#', class: 'btn btn-primary add-audience'
+    = render 'web/admin/delivery/audiences/new', campaign: @campaign
+    %table.table.attributes-table
+      %thead
+        %th
+          = model_class.human_attribute_name :id
+        %th
+          = model_class.human_attribute_name :audience_type
+        %th
+          = model_class.human_attribute_name :audience
+        %th
+      %tbody
+        - @campaign.audiences.each do |audience|
+          %tr
+            %td
+              = audience.id
+            %td
+              = enumerize_locales_value audience, :audience_type
+            %td
+              = audience_path audience
+            %td
+              = link_to fa_icon(:remove), admin_delivery_audience_path(audience), method: :delete, class: 'btn btn-danger'

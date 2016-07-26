@@ -17,8 +17,19 @@ ru:
       comment: Комментарий
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
+      logged_action: Лог действия
+      redirect_rule: Редирект
+      image: Изображение
       delivery/campaign: Кампания
+      delivery/audience: Целевая аудитория
+      delivery/contact_email: Электронная почта
     attributes:
+      default: &default
+        created_at: Дата создания
+        updated_at: Дата последнего изменения
+        creator_id: Создатель
+        state: Статус
+        image: Изображение
       user:
         first_name: Имя
         patronymic: Отчество
@@ -27,6 +38,13 @@ ru:
         email: E-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
+        type: Тип
+        sign_in_count: Количество авторизаций
+        types:
+          user: Пользователь
+          member: Член МИЦ
+          questionary: Кандидат на вступление в МИЦ
+        request_date: Дата подачи
       member:
         first_name: Имя
         patronymic: Отчество
@@ -42,11 +60,18 @@ ru:
         municipality: Муниципальное образование
         locality: Населённый пункт
         parent: Крёстный
+        parent_id: Крёстный
         children: Крестники
         state: Статус на сайте
         teams: Мои команды
         state_event: Статус на сайте
         school: Учебное заведение
+        main_position_title: Текущая должность
+        join_date: Дата вступления
+        want_to_do: "Чем хочешь заниматься в МИЦ?"
+        experience: Опыт и навыки
+        departament: Местное отделение
+        departament_title: Местное отделение
       questionary:
         first_name: Имя
         patronymic: Отчество
@@ -62,8 +87,9 @@ ru:
         want_to_do: "Чем хочешь заниматься в МИЦ?"
         experience: Опыт и навыки
         locality: Населённый пункт
-        created_at: Дата подачи
         school: Учебное заведение
+        member_state: Статус заявки на вступление
+        member_state_event: Статус заявки на вступление
       news:
         title: Заголовок
         body: Контекст
@@ -77,6 +103,8 @@ ru:
         state_event: Статус
         attachments: Приложения
         views: Просмотры
+        user_id: Автор
+        member: Автор
       article:
         title: Заголовок
         body: Контекст
@@ -85,6 +113,8 @@ ru:
         created_at: Создано
         tags: Теги
         attachments: Приложения
+        state: Статус
+        publicity: Доступ
       category:
         name: Название
         parent: Родитель
@@ -132,11 +162,13 @@ ru:
         members: Члены команды
         school: Учебное заведение
         publicity: Публичность
+        state: Статус
         types:
           departament: Местное отделение
           subdivision: Структурное подразделение
           administration: Административные органы
           primary: Первичная организация
+          committee: Орг.комитет
       event:
         registration:
           role: Роль
@@ -160,6 +192,7 @@ ru:
         stamp_of_receipt: Отметка о получении
         note: Примечание
         file: Файл
+        state: Статус
       activity_lines/corporative/confession:
         member_id: Член МИЦ
         member: Член МИЦ
@@ -178,103 +211,31 @@ ru:
         body: Текст
         link: Ссылка
         mailing_date: Дата рассылки
+        contacts_count: Количество писем
+        <<: *default
       delivery/audience:
         audience_type: Целевая аудитория
-    state_machines:
-      member:
-        state:
-          states:
-            unviewed: Непросмотренный
-            confirmed: Подтверждённый
-            declined: Отклонённый
-            removed: Удалённый
-            unavailable: Недоступный
-      news:
-        state:
-          events:
-            confirm: Подтвердить
-            remove: Удалить
-            to_main: Сделать главной новостью
-      activity_lines/corporative/confession:
-        state:
-          events:
-            confirm: Премия получена
-            remove: Удалить
-            to_vote: Поставить на голосование
-            renew: Сделать непросмотренным
-  state_machines:
-    user:
-      state:
-        states:
-          unviewed: Новые
-          confirmed: Подтверждённые
-          declined: Отклонённые
-    event:
-      state:
-        states:
-          future: Будущий
-          current: Текущий
-          past: Прошедший
-          unviewed: Новые
-          declined: Отклонённые
-    article:
-      state:
-        states:
-          unviewed: Новые
-          confirmed: Подтверждённые
-          inactive: Неактивные
-          removed: Удалённые
-    feedback:
-      state:
-        states:
-          unviewed: Новые
-          fixing: В работе
-          done: Сделаны
-          declined: Отклонены
-    comment:
-      state:
-        states:
-          unviewed: Непросмотренные
-          active: Активные
-          declined: Отклонённые
-    banner:
-      state:
-        states:
-          unviewed: Непросмотренные
-          active: Активные
-          removed: Удалённые
-          actual: Актуальные
-    team:
-      state:
-        states:
-          unviewed: Непросмотренные
-          active: Активные
-          removed: Удалённые
-    activity_line:
-      state:
-        states:
-          removed: Удалённые
-          active: Активные
-          unviewed: Непросмотренные
-    letter:
-      state:
-        states:
-          unviewed: Непросмотренные
-          sended: Отправленные
-    activity_lines/corporative/confession:
-      state:
-        states:
-          unviewed: Ходатайства
-          on_vote: На голосовании
-          confirmed: Получившие премию
-          declined: Отклонённые
-    delivery/campaign:
-      state:
-        states:
-          ready: Готовы к рассылке
-          removed: Удалены
-          declined: Отменены
-          done: Выполнены
+      delivery/contact_email:
+        short_name: Имя
+      logged_action:
+        user: Пользователь
+        user_id: Пользователь
+        record: Запись
+        record_id: Запись
+        action_type: Действие
+        params: Параметры
+        created_at: Дата
+      redirect_rule:
+        status: HTTP статус
+        old_path: Старый запрос
+        redirect_to: Редирект на URL (PATH)
+        reason: Причина
+      image:
+        date: Дата создания
+        author: Автор
+        author_name: Имя автора 
+        slug: Адрес
+        image_type: Тип изображения
     errors:
       models:
         member:
@@ -285,44 +246,6 @@ ru:
           attributes:
             mobile_phone:
               phone: имеет неверный формат
-
-
-  enumerize:
-    user:
-      role:
-        admin: Администратор
-        user: Пользователь
-        author: Автор
-    activity_line:
-      activity_type:
-        central_program: Центральная программа
-        local_project: Областной проект
-        corporative: Корпоративные проекты
-        event_line: Набор мероприятий
-    event/registration:
-      role:
-        participant: Участник
-        organizer: Организатор
-    team:
-      publicity:
-        hidden: Скрытая
-        visible: Публичная
-    activity_lines/corporative/confession:
-      nomination:
-        debut: Дебют года
-        number_one: Номер один
-    activity_lines/corporative/argument:
-      argument_type:
-        honors: 'Опишите достижения (НЕ участие в мероприятиях) кандидата в деятельности МИЦ'
-        reason: 'Почему этот кандидат достоин получить премию (максимально подробно, аргументированно)?'
-        out_ulmic_honors: 'Расскажите о достижениях кандидата вне МИЦ (победы в значимых конкурсах, должности, размещения на досках почёта и т.д.)'
-        hobby: 'Чем увлекается (хобби, любимые занятия) кандидат в свободное время?'
-    delivery/audience:
-      audience_type:
-        users: Все пользователи сайта
-        contact_emails: На все имеющиеся почтовые адреса
-        team: На команду
-        event_registrations: Участников мероприятия 
   scopes:
     event:
       future: Грядущие

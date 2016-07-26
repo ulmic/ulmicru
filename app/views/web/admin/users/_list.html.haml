@@ -7,6 +7,9 @@
       %th= model_class.human_attribute_name(:first_name)
       %th= model_class.human_attribute_name(:last_name)
       %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:type)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - users.each do |user|
@@ -15,6 +18,9 @@
         %td= user.first_name
         %td= user.last_name
         %td= user.email
+        %td= user.human_type_name
+        - if searching?
+          %td= user.human_state_name
         %td.actions
           - unless user.is_member?
             = link_to new_admin_member_path(id: user.id), class: 'btn btn-success btn-xs' do

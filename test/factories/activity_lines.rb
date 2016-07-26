@@ -6,5 +6,6 @@ FactoryGirl.define do
     member_id { create(:member).id }
     activity_type { ActivityLine.activity_type.values.first }
     state { ActivityLine.state_machines[:state].states.map(&:name).first.to_s }
+    organization_type { ActivityLine.organization_type.values.sample }
   end
 end

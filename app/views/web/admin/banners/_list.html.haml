@@ -7,6 +7,8 @@
       %th= model_class.human_attribute_name(:photo)
       %th= model_class.human_attribute_name(:link)
       %th= model_class.human_attribute_name(:duration)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - banners.each do |banner|
@@ -15,6 +17,8 @@
         %td= image_tag banner.small_thumb
         %td= link_to banner.link, banner.link
         %td= "#{l(banner.begin_date)} - #{l(banner.end_date)}"
+        - if searching?
+          %td= banner.human_state_name
         %td.actions
           = link_to edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil

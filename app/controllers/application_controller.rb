@@ -6,21 +6,9 @@ class ApplicationController < ActionController::Base
 
   include Concerns::AuthManagment
   include Concerns::TechinalPagesManagment
+  include Concerns::ActionLogger
+  include Concerns::ContactsSubscriptionsManagment
   include DatesHelper
-
-  if Rails.env.staging?
-    before_filter :required_basic_auth!
-  end
-
-  if Rails.env.production?
-    anchor = "view_#{rand(4) + 1}"
-
-    rescue_from ActionView::MissingTemplate, ActiveRecord::RecordNotFound, NoMethodError do |exception|
-      Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
-      Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-      redirect_to server_error_page_path
-    end
-  end
 
   private
 

@@ -1,20 +1,15 @@
 - tabs = Concerns::NotificatableItems.items
 - title
-- if no_any_unviewed?(@unviewed)
+- if no_any_unviewed?
   %h2
     = t('.there_is_not_any_unviewed_record')
 - else
-  #tabs
+  .tabs
     %ul.nav.nav-tabs{ role: :tablist }
       - tabs.each do |tab|
-        - pluralize_tab = tab.to_s.pluralize(:en)
-        - total_count = @unviewed[pluralize_tab.to_sym].total_count
-        - if total_count > 0
-          %li
-            = link_to unviewed_tab_title(tab, total_count), "##{pluralize_tab}"
-    - tabs.each do |tab|
-      - pluralize_tab = tab.to_s.pluralize
-      - total_count = @unviewed[pluralize_tab.to_sym].total_count
-      - if total_count > 0
-        %div{ id: pluralize_tab }
-          = render "web/admin/#{pluralize_tab}/list", pluralize_tab.to_sym => @unviewed[pluralize_tab.to_sym]
+        - if @counts[tab] > 0
+          %li{ class: (:active if params[:items] == tab.to_s)}
+            = link_to unviewed_tab_title(tab, @counts[tab]), admin_unviewed_index_path(items: tab)
+    - pluralize_tab = params[:items].to_s.pluralize(:en)
+    %div{ id: params[:items] }
+      = render "web/admin/#{pluralize_tab}/list", pluralize_tab.to_sym => @unviewed

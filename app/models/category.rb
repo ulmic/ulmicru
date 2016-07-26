@@ -57,8 +57,6 @@ class Category < ActiveRecord::Base
     end
   end
 
-  include CategoryScopes
-
   private
   def initial_load
     self.is_last = true if  self.is_last == nil

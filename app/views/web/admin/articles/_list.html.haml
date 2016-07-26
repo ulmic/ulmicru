@@ -8,6 +8,8 @@
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:category_id)
       %th= model_class.human_attribute_name(:views)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody
@@ -21,6 +23,8 @@
         %td= article.short_body
         %td= (article.category.present? ? article.category.name : "")
         %td= article.views
+        - if searching?
+          %td= article.human_state_name
         %td{ style: 'width: 200px' }
           = render 'web/admin/tags/buttons'
           = render 'web/admin/tags/list', record: article

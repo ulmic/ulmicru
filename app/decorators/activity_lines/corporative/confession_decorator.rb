@@ -11,5 +11,9 @@ class ActivityLines::Corporative::ConfessionDecorator < ApplicationDecorator
     object.member.decorate.short_name
   end
 
+  def self.collections
+    [ :confirmed, :unviewed, :on_vote, :declined ]
+  end
+
   alias name short_name
 end

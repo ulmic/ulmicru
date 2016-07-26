@@ -20,9 +20,15 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
-    resources :remind_password, only: [ :index, :create, :edit, :update ]
-    resources :teams, only: [ :show ]
     resources :remind_passwords, only: [ :new, :create ]
+    resources :remind_password, only: [ :new, :create ] do
+      collection do
+        get :edit
+        patch :update
+      end
+    end
+    get 'unsubscribe/:token' => 'subscriptions#destroy', as: :unsubscribe
+    resources :teams, only: :show
     resource :page, only: [] do
       get '/:slug' => 'pages#show', as: :page
     end
@@ -49,7 +55,7 @@ Rails.application.routes.draw do
       resources :articles
       resources :categories
       resources :activity_lines, except: [:show]
-      resources :banners, except: [:show]
+      resources :banners
       resources :feedbacks, except: [:show]
       resources :events
       resources :questionaries
@@ -59,6 +65,9 @@ Rails.application.routes.draw do
       resources :comments, except: :show
       resources :letters, except: :show
       resources :positions, only: [ :update, :destroy ]
+      resources :logged_actions, only: [ :index, :show ]
+      resources :redirect_rules, except: :show
+      resources :images, except: :show
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type
@@ -75,7 +84,13 @@ Rails.application.routes.draw do
       end
       namespace :delivery do
 	resources :campaigns
+<<<<<<< HEAD
 	resources :sessions, only: [ :create, :destroy ]
+=======
+        resources :audiences, only: [ :create, :destroy ]
+	resources :sessions, only: [ :create, :destroy ]
+        resources :contact_emails, only: [ :index, :update, :destroy ]
+>>>>>>> develop
       end
     end
     namespace :users do
@@ -142,9 +157,18 @@ Rails.application.routes.draw do
       resources :news, only: :index
     end
   end
+
+  scope module: :files do
+    resources :images, only: [] do
+      collection do
+        get '/:slug' => 'images#show', as: :image
+      end
+    end
+  end
+
   get '/:ticket' => 'web/members#show', constraints: { ticket: /\d*/ }, as: :member
 
   #FIXME  Not reacted for '/rails/mailers/user_mailer/after_create'
   #TODO Maybe add some checks for environment for this line? Like this?
-  get '*unmatched_route', to: 'web/pages#show', slug: :not_found if Rails.env == "production"
+  get '*unmatched_route', to: 'web/pages#show' if Rails.env == "production"
 end

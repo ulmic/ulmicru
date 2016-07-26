@@ -1,0 +1,61 @@
+ru:
+  enumerize:
+    user:
+      role:
+        admin: Администратор
+        user: Пользователь
+        author: Автор
+        tech_admin: Технический администратор
+    activity_line:
+      activity_type:
+        central_program: Центральная программа
+        local_project: Областной проект
+        corporative: Корпоративные проекты
+        event_line: Набор мероприятий
+    event/registration:
+      role:
+        participant: Участник
+        organizer: Организатор
+    team:
+      publicity:
+        hidden: Скрытая
+        visible: Публичная
+    activity_lines/corporative/confession:
+      nomination:
+        debut: Дебют года
+        number_one: Номер один
+    activity_lines/corporative/argument:
+      argument_type:
+        honors: 'Опишите достижения (НЕ участие в мероприятиях) кандидата в деятельности МИЦ'
+        reason: 'Почему этот кандидат достоин получить премию (максимально подробно, аргументированно)?'
+        out_ulmic_honors: 'Расскажите о достижениях кандидата вне МИЦ (победы в значимых конкурсах, должности, размещения на досках почёта и т.д.)'
+        hobby: 'Чем увлекается (хобби, любимые занятия) кандидат в свободное время?'
+    delivery/audience:
+      audience_type:
+        users: Все пользователи сайта
+        contact_emails: На все имеющиеся почтовые адреса
+        team: На команду
+        event_registrations: Участников мероприятия
+    logged_action:
+      action_type:
+        update: Обновил
+        create: Создал
+        sign_in: Залогинился
+        sign_out: Разлогинился
+        destroy: Удалил в корзину
+        restore: Восстановил из корзины
+        delete: Удалил из базы
+    redirect_rule:
+      status:
+        moved_permanently: Перемещено навсегда
+        moved_temporarily: Перемещено временно
+    image:
+      image_type:
+        photo: Фото
+        just_image: Картинка
+        logo: Логотип
+    article:
+      publicity:
+        visible: Для всех
+        access_on_link: Доступ по ссылке
+        hidden: Скрытая

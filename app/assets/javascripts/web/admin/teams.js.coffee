@@ -26,7 +26,7 @@ $ ->
     return
 
   show_or_hide_title_input = ($element) ->
-    if $element.val() in ['Team::Administration', 'Team::Subdivision']
+    if $element.val() in ['Team::Administration', 'Team::Subdivision', 'Team::Committee']
       $title_input.slideDown()
     else if $element.val() != undefined
       $title_input.slideUp()

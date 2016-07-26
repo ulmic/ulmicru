@@ -1,0 +1,11 @@
+- model_class = Delivery::Audience
+.row
+  .col-lg-12
+    = simple_form_for @audience_form, url: admin_delivery_audiences_path, method: :post, input_html: { class: 'form-horizontal' } do |f|
+      = f.input :campaign_id, as: :hidden, input_html: { value: campaign.id }
+      .row
+        .col-md-6
+          = f.input :audience_type, label: false, collection: audience_types_collection(campaign)
+        .col-md-6
+          = f.input :audience_id, as: :select, label: false
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'

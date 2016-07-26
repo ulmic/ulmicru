@@ -28,6 +28,7 @@ class Questionary < Member
     state :unviewed
     state :confirmed
     state :on_the_trial
+    state :trial_passed
     state :declined
 
     event :confirm do
@@ -42,9 +43,10 @@ class Questionary < Member
     event :put_on_the_trial do
       transition all => :on_the_trial
     end
+    event :pass_trial do
+      transition all => :trial_passed
+    end
   end
-
-  include QuestionaryScopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name, :patronymic, :motto, :ticket, :mobile_phone, :home_adress, :municipality, :locality, :experience, :want_to_do, :school ]

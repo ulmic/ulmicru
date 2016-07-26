@@ -41,6 +41,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
 
   test 'should patch update' do
     attributes = attributes_for :user
+    attributes[:first_name] = 'Dima'
     patch :update, user: attributes, id: @user
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_user_path @user

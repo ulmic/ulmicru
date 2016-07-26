@@ -1,12 +1,11 @@
-- if object.errors.any?
+- if object.errors.any? || object.model.errors.any?
   .alert.alert-dismissible.alert-danger
     %h4= t('.some_errors_was_found')
     %ul
       - object.errors.full_messages.each do |message|
         %li= message
-- elsif form_after_save? && object_updated_less_minute_ago?(object)
-  .alert.alert-dismissible.alert-success
-    %h4= t('messages.record_saved_success')
+      - object.model.errors.full_messages.each do |message|
+        %li= message
 - if params[:message]
   .alert.alert-dismissible.alert-info
     %h4= t("messages.#{params[:message]}")

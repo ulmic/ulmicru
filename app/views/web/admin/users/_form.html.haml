@@ -16,6 +16,8 @@
       = f.input :email, as: :string, required: true
       = f.input :password, as: :string
       = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      - if current_user.role.tech_admin?
+        = f.input :role
       = f.hint t('hints.admin.user.role')
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_users_path, class: 'btn btn-default'

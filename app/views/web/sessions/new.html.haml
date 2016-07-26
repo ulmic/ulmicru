@@ -6,33 +6,50 @@
         %span.label.success
           %i.fa.fa-exclamation-circle
             = t ".#{flash[:remind_password_notification]}"
-      - if @user.email.present?
+      - if @user.email.present? && @user.has_access?
         %span.label.alert
           %i.fa.fa-exclamation-circle
           = t('.wrong_email_or_password')
         %span.label.info
           %i.fa.fa-info-circle
           = t('.may_be_you_have_auth_via_social_network')
-      = simple_form_for @user, url: { controller: 'web/sessions', action: :create }, method: :post do |f|
+      - if params[:notification].present?
+        %span.label.info
+          = fa_icon 'info-circle'
+          = t("notifications.web.sessions.new.#{params[:notification]}")
+      = simple_form_for @user, url: { controller: 'web/sessions', action: :create, url: params[:url] }, method: :post do |f|
         = f.input :email, as: :string
         = f.input :password, required: true
         = f.button :submit, t('helpers.enter'), class: "mic-flat-button"
-      .row
-        .small-3.columns
-          = link_to auth_path(:vkontakte) do
-            %span.icon-vkontakte.min-icon
-            = t('social_networks.vkontakte')
-        .small-3.columns
-          = link_to auth_path(:facebook) do
-            %span.icon-facebook.min-icon
-            = t('social_networks.facebook')
-        .small-3.columns
-          = link_to auth_path(:twitter) do
-            %span.icon-twitter.min-icon
-            = t('social_networks.twitter')
-        .small-3.columns
-          = link_to auth_path(:google) do
-            %span.icon-google.min-icon
-      = link_to t('.register'), new_user_path
-      %br
-      = link_to t('.remind_password'), new_remind_password_path
+      .panel
+        .row
+          .small-12.columns
+            %h5
+              = t('.sign_in_with')
+        .row
+          .small-3.columns
+            = link_to auth_path(:vkontakte, url: params[:url]) do
+              %span.icon-vkontakte.min-icon
+              = t('social_networks.vkontakte')
+          .small-3.columns
+            = link_to auth_path(:facebook, url: params[:url]) do
+              %span.icon-facebook.min-icon
+              = t('social_networks.facebook')
+          .small-3.columns
+            = link_to auth_path(:twitter, url: params[:url]) do
+              %span.icon-twitter.min-icon
+              = t('social_networks.twitter')
+          .small-3.columns
+            = link_to auth_path(:google, url: params[:url]) do
+              %span.icon-google.min-icon
+              = t('social_networks.google')
+      .panel
+        .row
+          .small-6.columns
+            = link_to new_user_path do
+              = fa_icon 'user-plus'
+              = t('.register')
+          .small-6.columns
+            = link_to new_remind_password_path do
+              = fa_icon 'unlock-alt'
+              = t('.remind_password')

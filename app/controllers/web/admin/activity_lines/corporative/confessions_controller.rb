@@ -2,12 +2,12 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
   before_filter :choose_members, only: [ :new, :edit ]
 
   def index
-    @confessions = {}
-    @confessions[:confirmed] = ::ActivityLines::Corporative::Confession.confirmed.page(params[:page]).decorate
-    @confessions[:unviewed] = ActivityLines::Corporative::Confession.unviewed.page(params[:page]).decorate
-    @confessions[:on_vote] = ActivityLines::Corporative::Confession.on_vote.page(params[:page]).decorate
-    @confessions[:declined] = ActivityLines::Corporative::Confession.declined.page(params[:page]).decorate
-    @confessions[:search] = ActivityLines::Corporative::Confession.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      confessions = ActivityLines::Corporative::Confession.search_everywhere params[:search]
+    else
+      confessions = ActivityLines::Corporative::Confession.send params[:scope]
+    end
+    @confessions = confessions.page(params[:page]).decorate
   end
 
   def new

@@ -30,7 +30,9 @@ class Article < ActiveRecord::Base
     end
   end
 
-  include ArticleScopes
+  extend Enumerize
+  enumerize :publicity, in: [ :visible, :access_on_link ], default: :visible
+
   include Concerns::ViewsManagment
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :view]

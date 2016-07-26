@@ -8,7 +8,7 @@
       = t('application.name')
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
-      - if current_user.role.admin?
+      - if current_user.role.in? ['admin', 'tech_admin']
         = admin_menu_item Event, admin_events_path, :calendar
         = admin_menu_item News, admin_news_index_path, 'list-alt'
         = dropdown t('.people') do
@@ -32,17 +32,23 @@
           = admin_menu_item Banner, admin_banners_path
           = admin_menu_item Document, admin_documents_path
           = admin_menu_item Comment, admin_comments_path
+          = admin_menu_item RedirectRule, admin_redirect_rules_path
+          - if current_user.role.tech_admin?
+            = admin_menu_item LoggedAction, admin_logged_actions_path
+            = admin_menu_item Image, admin_images_path
         = admin_menu_item Feedback, admin_feedbacks_path, :share
         = dropdown "#{t('.delivery')} (Beta)" do
           = admin_menu_item Delivery::Campaign, admin_delivery_campaigns_path, :send
+          = admin_menu_item Delivery::ContactEmail, admin_delivery_contact_emails_path, 'hand-pointer-o'
       - elsif current_user.role.author?
         = admin_menu_item Event, admin_events_path, :calendar
         = admin_menu_item News, admin_news_index_path, 'list-alt'
         = admin_menu_item Article, admin_articles_path
         = admin_menu_item Category, admin_categories_path
         = admin_menu_item Letter, admin_letters_path, :envelope
-    - if current_user.role.admin?
+    - if current_user.role.in? ['admin', 'tech_admin']
       %ul.nav.navbar-nav.navbar-right
+        = admin_menu_item '', admin_path, :home
         = admin_menu_item @notification_count, admin_unviewed_index_path, 'info-sign'
         = dropdown t('web.admin.trash.title'), :trash do
           = admin_trash_menu_item User

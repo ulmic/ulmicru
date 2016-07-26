@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :delivery_campaign, class: 'Delivery::Campaign' do
     title { generate :string }
     body { generate :string }
-    image
+    image { generate :image_as_file }
     link { generate :url }
     creator_id { Member.last ? Member.last.id : create(:member).id }
     mailing_date { DateTime.now }

@@ -11,16 +11,14 @@
 #= require tabs
 #= require localities
 #= require ckeditor/init
-#= require web/admin/tags
-#= require web/admin/delivery/campaigns
 #= require web/admin/popup
 #= require web/admin/places
 #= require select2
 #= require jasny-bootstrap
 #= require jasny_file_uploader
 #= require placeholders
-#= require react
-#= require react_ujs
+#= require react_integration
+#= require react_bundle
 
 $.extend String.prototype, camelize: ->
   @replace /(?:^|[-_])(\w)/g, (_, c) ->

@@ -1,13 +1,19 @@
 class Web::Admin::TeamsController < Web::Admin::ApplicationController
+  # NOTE we need it to edit params before save object
+  skip_before_action :save_object, only: :update
+  before_action :edit_params, only: :update
+  before_action :save_object, only: :update
+
   before_filter :choose_members, only: [ :new, :edit ]
   before_filter :choose_departaments, only: [ :new, :edit ]
 
   def index
-    @teams = {}
-    @teams[:active] = Team.active.page(params[:page]).decorate
-    @teams[:unviewed] = Team.unviewed.page(params[:page]).decorate
-    @teams[:removed] = Team.removed.page(params[:page]).decorate
-    @teams[:search] = Team.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      teams = Team.presented.search_everywhere params[:search]
+    else
+      teams = Team.send params[:scope]
+    end
+    @teams = teams.page(params[:page]).decorate
   end
 
   def new
@@ -34,17 +40,10 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
   end
 
   def update
-    #FIXME refactoring
-    [:team_departament, :team_subdivision, :team_administration, :team_primary].each do |type|
-      if params[type]
-        params[:team] = params[type]
-        break
-      end
-    end
     @team_form = TeamForm.find_with_model params[:id]
     @team_form.submit params[:team]
     if @team_form.save
-      redirect_to edit_admin_team_path @team_form.model
+      redirect_to admin_teams_path
     else
       choose_members
       choose_departaments
@@ -62,5 +61,15 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   def choose_departaments
     @departaments = TeamDecorator.decorate_collection Team::Departament.active
+  end
+
+  def edit_params
+    #FIXME refactoring
+    [:team_departament, :team_subdivision, :team_administration, :team_primary, :team_committee].each do |type|
+      if params[type]
+        params[:team] = params[type]
+        break
+      end
+    end
   end
 end

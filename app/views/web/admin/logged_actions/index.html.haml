@@ -1,0 +1,26 @@
+- model_class = LoggedAction
+- title model_class.model_name.human.pluralize(:ru), :admin
+.page-header
+  .row
+    .col-md-6
+      %h1
+        = model_class.model_name.human.pluralize(:ru)
+    = render 'web/admin/default/search', model_class: model_class
+= paginate @logged_actions, theme: 'twitter-bootstrap-3'
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:record)
+      %th= model_class.human_attribute_name(:action_type)
+      %th= model_class.human_attribute_name(:created_at)
+  %tbody
+    - @logged_actions.each do |logged_action|
+      %tr
+        %td= link_to logged_action.id, admin_logged_action_path(logged_action.id)
+        %td= link_to logged_action.user_short_name, admin_member_path(logged_action.user_id)
+        %td= link_to record_title(logged_action), admin_record_path(logged_action)
+        %td= enumerize_locales_value logged_action, :action_type
+        %td=l logged_action.created_at, format: "%d %b %Y %H:%m"
+= paginate @logged_actions, theme: 'twitter-bootstrap-3'

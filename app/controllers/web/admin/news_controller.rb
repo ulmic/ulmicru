@@ -1,23 +1,23 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
+  before_filter :choose_members, only: [ :new, :edit ]
+
   def index
-    @news = {}
-    @news[:published] = News.published.page(params[:page]).decorate
-    @news[:unpublished] = News.unpublished.page(params[:page]).decorate
-    @news[:unviewed] = News.unviewed.order('published_at DESC').page(params[:page]).decorate
-    @news[:main] = News.main.page(params[:page]).decorate
-    @news[:search] = News.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      news = News.search_everywhere params[:search]
+    else
+      news = News.send params[:scope]
+    end
+    @news = news.page(params[:page]).decorate
   end
 
   def create
     @news_form = NewsForm.new_with_model
-
-    # FIXME because sessions work wrong
-    params[:news][:user_id] = current_user.id if current_user.present?
-
     @news_form.submit params[:news]
     if @news_form.save
+      send_notification press_center_lead, @news_form.model, :create
       redirect_to admin_news_index_path
     else
+      choose_members
       render action: :new
     end
   end
@@ -39,6 +39,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     if @news_form.save
       redirect_to edit_admin_news_path @news_form.model
     else
+      choose_members
       render action: :edit
     end
   end

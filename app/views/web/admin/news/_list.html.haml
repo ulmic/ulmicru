@@ -9,6 +9,8 @@
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:published_at)
       %th= model_class.human_attribute_name(:views)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= model_class.human_attribute_name(:tags)
       %th=t 'helpers.links.actions'
   %tbody
@@ -17,13 +19,15 @@
         %td{ width: '67px' }
           = link_to news.id, edit_admin_news_path(news)
           = link_to news_path(news) do
-            %span.glyphicon.glyphicon-share
+            = fa_icon 'share-square-o'
         %td= news.author_name
         %td
           = link_to news.title, edit_admin_news_path(news)
         %td= news.lead
         %td=l news.published_at
         %td= news.views
+        - if searching?
+          %td= news.human_state_name
         %td{ style: 'width: 200px' }
           = react_component 'TagsForm', record: news, record_type: 'news', tags: TagCollectionDecorator.new(news.tags.active).with_just_text
         %td.actions

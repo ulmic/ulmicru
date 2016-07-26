@@ -1,10 +1,18 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
+  include Concerns::RegistrationWithLogs
+
   def index
-    @questionaries = {}
-    @questionaries[:on_the_trial] = Questionary.on_the_trial.page(params[:page]).decorate
-    @questionaries[:unviewed] = Questionary.unviewed.page(params[:page]).decorate
-    @questionaries[:declined] = Questionary.declined.page(params[:page]).decorate
-    @questionaries[:search] = Questionary.presented.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      questionaries = Questionary.search_everywhere(params[:search])
+    else
+      questionaries = Questionary.send params[:scope]
+    end
+    @questionaries = questionaries.page(params[:page]).decorate
+  end
+
+  def show
+    @questionary = Questionary.find(params[:id]).decorate
+    get_registrations_with_logs @questionary.registrations
   end
 
   def new
@@ -19,6 +27,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form = QuestionaryForm.new_with_model
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
+      send_notification corporative_lead, @questionary_form.model, :create
       redirect_to admin_questionaries_path
     else
       render action: :new

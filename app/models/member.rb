@@ -14,6 +14,7 @@ class Member < User
   has_many :confessions, class_name: 'ActivityLines::Corporative::Confession',
                          dependent: :destroy
 
+  validates :email, uniqueness: true
   validates :first_name, human_name: true,
                          allow_blank: true
   validates :last_name, human_name: true,
@@ -59,6 +60,9 @@ class Member < User
     event :restore do
       transition removed: :unviewed
     end
+    event :state_renew do
+      transition all => :unviewed
+    end
   end
 
   state_machine :member_state, initial: :unviewed, namespace: :member do
@@ -77,7 +81,6 @@ class Member < User
     end
   end
 
-  include MemberScopes
   include TagsHelper
 
   def has_auth_provider?(provider)

@@ -7,11 +7,11 @@ class Delivery::CampaignDecorator < ApplicationDecorator
     "#{model.body.first(200)}..."
   end
 
-  def contacts
-    contacts = []
-    object.audiences.each do |audience|
-      contacts += audience.decorate.contacts
-    end
-    contacts
+  def self.collections
+    [ :ready, :done, :removed, :during_mailing, :declined ]
+  end
+
+  def name
+    model.title
   end
 end

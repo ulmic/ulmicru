@@ -8,13 +8,13 @@ FactoryGirl.define do
     ticket { generate :integer }
     parent_id { Member.last ? Member.last.id : nil }
     mobile_phone { generate :phone }
-    birth_date { generate :date }
+    birth_date { generate :datetime }
     home_adress { generate :string }
-    avatar { generate :image }
+    avatar { generate :image_as_file }
     password { generate :password }
     password_confirmation { password }
-    municipality 'г. Ульяновск'
-    locality 'г. Ульяновск'
+    municipality { Member.municipality.values.first } 
+    locality { Member.locality.values.first }
     state { Member.state_machines[:state].states.map(&:name).first.to_s }
     member_state { Member.state_machines[:member_state].states.map(&:name).first.to_s }
     role 'user'

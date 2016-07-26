@@ -11,6 +11,7 @@ class UserMailerPreview
     @subject ||= 'EmailPreview'
     @message ||= 'An OpenStruct is a data structure, similar to a Hash, that allows the definition of arbitrary attributes with their accompanying values. This is accomplished by using Ruby’s metaprogramming to define methods on the class itself.'
     @image ||= ActionController::Base.helpers.image_path('pages/contacts/card_background.jpg')
-    UserMailer.just_message user, @subject, @message, @link, @image
+    @subscription_token = '12123456'
+    UserMailer.just_message user, @subject, @message, @link, @image, @subscription_token
   end
 end

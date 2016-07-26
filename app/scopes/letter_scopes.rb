@@ -1,6 +1,8 @@
+require 'scopes_rails/state_machine/scopes'
+
 module LetterScopes
   extend ActiveSupport::Concern
-  include Concerns::StateMachine
+  include StateMachine::Scopes
 
   included do
     scope :unviewed, -> { where(state: :unviewed).order('number DESC') }

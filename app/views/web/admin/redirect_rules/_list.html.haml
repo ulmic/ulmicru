@@ -1,0 +1,32 @@
+= paginate redirect_rules, theme: 'twitter-bootstrap-3'
+- model_class = RedirectRule
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:old_path)
+      %th= model_class.human_attribute_name(:redirect_to)
+      %th= model_class.human_attribute_name(:status)
+      %th= model_class.human_attribute_name(:reason)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - redirect_rules.each do |redirect_rule|
+      %tr.link{ class: state_color(redirect_rule), data: { href: edit_admin_redirect_rule_path(redirect_rule) } }
+        %td
+          = redirect_rule.id
+          = link_to "http://ulmic.ru#{redirect_rule.old_path}" do
+            %span.glyphicon.glyphicon-share
+        %td= redirect_rule.old_path
+        %td= redirect_rule.redirect_to
+        %td= enumerize_locales_value redirect_rule, :status
+        %td= redirect_rule.reason
+        - if searching?
+          %td= redirect_rule.human_state_name
+        %td.actions
+          = link_to edit_admin_redirect_rule_path(redirect_rule), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_redirect_rule_path(redirect_rule), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+= paginate redirect_rules, theme: 'twitter-bootstrap-3'

@@ -21,6 +21,7 @@ class Web::OmniauthController < Web::ApplicationController
         authentication.save
       else
         sign_in authentication.user
+	log_action :sign_in
       end
     else
       unless signed_in?
@@ -28,12 +29,14 @@ class Web::OmniauthController < Web::ApplicationController
         unless user
           password = SecureRandom.hex 8
           user = User.create email: email, first_name: first_name, last_name: last_name, password: password, password_confirmation: password, state: :confirmed
+          initialize_subscriptions user
         end
         sign_in user
+	log_action :sign_in
       end
       Authentication.create user_id: current_user.id, provider: provider, uid: uid
     end
-    redirect_to account_path
+    redirect_to session[:redirect_url] || account_path
   end
 
   alias :google :callback

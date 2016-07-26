@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :letter do
     subdivision_code { generate :string }
     number { generate :integer }
-    send_date { generate :date }
+    send_date { generate :datetime }
     receiver { generate :string }
     title { generate :string }
     list_number { generate :integer }

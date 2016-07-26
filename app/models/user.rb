@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :registrations, class_name: 'Event::Registration',
                            foreign_key: :user_id,
                            dependent: :destroy
+  has_many :logged_actions
+  has_many :subscriptions, as: :receiver, dependent: :destroy
 
   validates :email, email: true,
                     allow_blank: true
@@ -22,16 +24,18 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   extend Enumerize
-  enumerize :role, in: [ :user, :admin, :author ], default: :user
+  enumerize :role, in: [ :user, :admin, :author, :tech_admin ], default: :user
 
   include AvatarManagment
   include Concerns::SexManagment
+  include Concerns::ActionLoggerManagment
 
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
     state :declined
     state :removed
+    state :unavailable
 
     event :renew do
       transition all => :unviewed
@@ -50,8 +54,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  include UserScopes
-
   def is_member?
     model_name == 'Member'
   end
@@ -68,12 +70,25 @@ class User < ActiveRecord::Base
     state == 'confirmed'
   end
 
+  def admin?
+    role.admin? || role.tech_admin?
+  end
+
+  def has_access?
+    !removed? && !declined?
+  end
+
   def can_reset_password?
-    state != 'removed'
+    has_access?
   end
 
   def generate_token
     self.token = SecureHelper.generate_token
+  end
+
+  def subscribe_token(subscription = nil)
+    subscription ||= :deliveries
+    subscriptions.where(subscription_type: subscription).first.token
   end
 
   include PgSearch

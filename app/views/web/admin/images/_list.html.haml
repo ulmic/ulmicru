@@ -1,0 +1,31 @@
+= paginate images, theme: 'twitter-bootstrap-3'
+- model_class = Image
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:file)
+      %th= model_class.human_attribute_name(:date)
+      %th= model_class.human_attribute_name(:author)
+      %th= model_class.human_attribute_name(:image_type)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - images.each do |image|
+      %tr.link{ class: state_color(image), data: { href: edit_admin_image_path(image) } }
+        %td= image.id
+        %td= image_tag image.file.small
+        %td= l(image.date, format: '%d.%m.%Y') if image.date.present?
+        %td= image.present_author
+        %td= enumerize_locales_value image, :image_type
+        - if searching?
+          %td= image.human_state_name
+        %td.actions
+          = link_to new_admin_redirect_rule_path(redirect_to: image.file.url), class: 'btn btn-primary btn-xs' do
+            %span.glyphicon.glyphicon-tower
+          = link_to edit_admin_image_path(image), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_image_path(image), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+= paginate images, theme: 'twitter-bootstrap-3'

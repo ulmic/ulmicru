@@ -7,6 +7,8 @@ class Delivery::Campaign < ActiveRecord::Base
   validates :image, presence: true
   validates :creator_id, presence: true
 
+  accepts_nested_attributes_for :audiences
+
   mount_uploader :image, PhotoUploader
 
   state_machine :state, initial: :ready do
@@ -31,9 +33,22 @@ class Delivery::Campaign < ActiveRecord::Base
     event :start_mailing do
       transition all => :during_mailing
     end
+
+    event :make_done do
+      transition all => :done
+    end
   end
 
-  include Delivery::CampaignScopes
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :body, :link, :mailing_date ]
+
+  def fill_audiences?
+    audiences.any? && audiences.first.audience_type.in?([ 'users', 'contacts_emails' ])
+  end
+
+  def contacts
+    audiences.reduce([]) do |arr, audience|
+      arr += audience.contacts
+    end.uniq
+  end
 end

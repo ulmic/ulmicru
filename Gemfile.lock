@@ -6,12 +6,27 @@ GIT
       railties (>= 3.1)
 
 GIT
+  remote: git://github.com/fnando/i18n-js.git
+  revision: 1cd5e54c84aadaab9c331fb8b43fbea694c8c547
+  specs:
+    i18n-js (3.0.0.rc12)
+      i18n (~> 0.6, >= 0.6.6)
+
+GIT
   remote: git://github.com/galetahub/ckeditor.git
   revision: 0ebc23b5c512b1ceb6de58a2616cacf25ec5c2f6
   specs:
     ckeditor (4.1.5)
       cocaine
       orm_adapter (~> 0.5.0)
+
+GIT
+  remote: git://github.com/kalashnikovisme/scopes_rails.git
+  revision: bc9281cb5346eaab3106e909b1d3ad39bb99c327
+  branch: list_of_scopes
+  specs:
+    scopes_rails (0.0.3)
+      rails (~> 4)
 
 GIT
   remote: git://github.com/nitinstp23/foursquare2.git
@@ -32,6 +47,12 @@ GIT
       rails (~> 4.1)
 
 GIT
+  remote: git://github.com/seuros/state_machine.git
+  revision: 95ba53f03e5657a5873343c2b1dc6a148ea3542e
+  specs:
+    state_machine (1.2.0)
+
+GIT
   remote: git://github.com/ulmic/tconsole.git
   revision: daccf66423f2c2d222b27cced463762e08de56b6
   branch: rails4
@@ -40,19 +61,6 @@ GIT
       ansi
       chattyproc (~> 1.0.0)
       term-ansicolor (~> 1.0.7)
-
-GIT
-  remote: https://github.com/fnando/i18n-js
-  revision: 00bef042ae819eb772f2b552ad6b7c971e9b1e75
-  specs:
-    i18n-js (3.0.0.rc11)
-      i18n (~> 0.6, >= 0.6.6)
-
-GIT
-  remote: https://github.com/seuros/state_machine.git
-  revision: 95ba53f03e5657a5873343c2b1dc6a148ea3542e
-  specs:
-    state_machine (1.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -93,6 +101,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    airbrake (4.0.0)
+      builder
+      multi_json
     ansi (1.5.0)
     arel (6.0.3)
     authority (3.1.0)
@@ -102,10 +113,6 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
-    babel-source (5.8.34)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -123,35 +130,6 @@ GEM
       rails (> 3.1)
     builder (3.2.2)
     byebug (8.2.1)
-    capistrano (3.4.0)
-      i18n
-      rake (>= 10.0.0)
-      sshkit (~> 1.3)
-    capistrano-bundler (1.1.4)
-      capistrano (~> 3.1)
-      sshkit (~> 1.2)
-    capistrano-faster-assets (1.0.2)
-      capistrano (>= 3.1)
-    capistrano-rails (1.1.3)
-      capistrano (~> 3.1)
-      capistrano-bundler (~> 1.1)
-    capistrano-rails-collection (0.0.3)
-      capistrano-rails (~> 1.1.0)
-    capistrano-rails-console (1.0.2)
-      capistrano (>= 3.1.0, < 4.0.0)
-    capistrano-rails-tail-log (0.1.0)
-      capistrano (>= 3.0)
-      capistrano-rails
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-    capistrano-sidekiq (0.5.4)
-      capistrano
-      sidekiq (>= 3.4)
-    capistrano-ssh-doctor (1.0.0)
-      capistrano (>= 3.1)
-    capistrano3-unicorn (0.2.1)
-      capistrano (~> 3.1, >= 3.1.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -302,13 +280,11 @@ GEM
     mini_magick (4.3.6)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    more_html_tags (0.1.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.2.0)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (3.0.1)
     netrc (0.11.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
@@ -356,11 +332,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
-      pry (~> 0.10)
-    pry-rails (0.3.4)
-      pry (>= 0.9.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -407,13 +378,8 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
-    react-rails (1.3.3)
-      babel-transpiler (>= 0.7.0)
-      coffee-script-source (~> 1.8)
-      connection_pool
-      execjs
+    react_webpack_rails (0.4.1)
       rails (>= 3.2)
-      tilt
     redis (3.2.2)
     ref (2.0.0)
     reform (2.1.0)
@@ -436,8 +402,8 @@ GEM
       i18n (>= 0.5.0)
     russian_sex (0.0.1)
       unicode_utils (>= 1.4.0)
-    rvm-capistrano (1.5.0)
-      capistrano (>= 2.15.4)
+    rwr-redux (0.2.0)
+      react_webpack_rails (>= 0.1.0)
     safe_yaml (1.0.4)
     sass (3.4.19)
     sass-rails (5.0.4)
@@ -481,16 +447,13 @@ GEM
       slim (~> 3.0)
     slop (3.6.0)
     spring (1.3.4)
-    sprockets (3.5.1)
+    sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sshkit (1.8.1)
-      net-scp (>= 1.1.2)
-      net-ssh (>= 2.8.0)
     temple (0.7.6)
     term-ansicolor (1.0.7)
     therubyracer (0.12.2)
@@ -499,14 +462,14 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    trap (1.0.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uber (0.0.15)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
@@ -536,6 +499,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_form!
+  airbrake (~> 4.0.0)
   authority
   autoprefixer-rails
   awesome_print
@@ -545,17 +509,6 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap_glyphicons-rails
   byebug
-  capistrano
-  capistrano-bundler
-  capistrano-faster-assets (~> 1.0)
-  capistrano-rails (= 1.1.3)
-  capistrano-rails-collection
-  capistrano-rails-console
-  capistrano-rails-tail-log
-  capistrano-rvm
-  capistrano-sidekiq
-  capistrano-ssh-doctor (~> 1.0)
-  capistrano3-unicorn
   carrierwave
   ckeditor!
   coffee-rails (~> 4.1.0)
@@ -572,6 +525,7 @@ DEPENDENCIES
   github_api
   guard-livereload (~> 2.4)
   haml-rails
+  hashdiff
   i18n-js!
   jasny_bootstrap_extension_rails
   jbuilder (~> 2.0)
@@ -582,27 +536,28 @@ DEPENDENCIES
   libv8 (= 3.16.14.7)
   mini_magick
   momentjs-rails (>= 2.9)!
+  more_html_tags
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
   omniauth-vkontakte
   pg
   pg_search
-  pry-byebug
-  pry-rails
+  pry
   quiet_assets
   rack-livereload
   railroady
   rails (= 4.2.1)
   rails_email_preview (~> 0.2.29)
-  react-rails (~> 1.3.0)
+  react_webpack_rails
   reform
   rmagick (= 2.15.3)
   russia_regions (>= 0.0.4)
   russian
   russian_sex
-  rvm-capistrano
+  rwr-redux
   sass-rails (~> 5.0)
+  scopes_rails!
   sdoc (~> 0.4.0)
   select2-rails
   sidekiq
@@ -613,6 +568,7 @@ DEPENDENCIES
   state_machine!
   tconsole!
   therubyracer
+  trap (~> 1)
   uglifier (>= 1.3.0)
   unicorn-rails
   validates
@@ -620,4 +576,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.11.2
+   1.12.3

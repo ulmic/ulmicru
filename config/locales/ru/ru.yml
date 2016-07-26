@@ -4,6 +4,7 @@ ru:
   organization:
     full_name: "Ульяновская областная молодёжная общественная организация «Молодёжный инициативный центр»"
     short_name: "УОМОО «МИЦ»"
+    title: Молодёжный инициативный центр
     send_request: Подать заявку на вступление в МИЦ
     name: Сайт МИЦ
     floors_growth: Этажи роста
@@ -11,6 +12,7 @@ ru:
       ul_lider: "Конкурс «Я-лидер!»"
       international_volunteer_school: Международная школа волонтёров
       it_way: IT Way
+      i_am_lider: "Я - лидер!"
   date:
     order:
       - :day
@@ -49,6 +51,11 @@ ru:
             not_changed: Доступ к этому аттрибуту не изменён
           email:
             empty: Для подтверждения аккаунта введите ваш email
+      sessions:
+        new:
+          need_auth: Для выполнения этого действия требуется авторизация
+        create:
+          your_account_is_not_active: Ваш аккаунт заблокирован
   state_machines:
     member:
       state:
@@ -159,6 +166,7 @@ ru:
         wrong_email_or_password: 'Неверный e-mail или пароль'
         may_be_you_have_auth_via_social_network: Возможно вы авторизовывались через социальные сети
         remind_password_notification_sended: Вам было отправлено письмо с инструкциями для восстановления пароля
+        sign_in_with: Авторизуйтесь через социальную сеть
     remind_password:
       new:
         title: Восстановление пароля
@@ -175,8 +183,11 @@ ru:
           not_found_page: Страница не найдена
           this_is_404_error_page: 'Ошибка 404. Запрашиваемая вами страница не существует.'
         server_error:
+          title: Серверная ошибка
           server_error: Серверная ошибка
           something_went_wrong: 'Что-то пошло не так. Сообщите о проблеме администраторам ресурса или по кнопке "Нашли ошибку?"'
+        unsubscribe_successful:
+          title: Вы успешно отписались от рассылки Молодёжного инициативного центра.
         mr_and_mrs:
           this_is_mr_and_mrs_mic_2012: 'А это Иван Карпов и Ксения Фомина. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2012"'
           this_is_mr_and_mrs_mic_2013: 'А это Сергей Белаклоков и Елена Скворцова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2013"'
@@ -245,3 +256,6 @@ ru:
   validations:
     errors:
       email_presents_in_application: присутствует в приложении
+      there_is_not_such_ticket_or_your_account_still_out_of_database: 'Такого членского билета не существует в базе данных членов МИЦ, либо он ещё не был туда занесён. Если номер вашего членского билета верный, в течение суток он станет активным на сайте МИЦ'
+      you_already_have_an_member_account: У вас уже есть аккаунт члена МИЦ
+      wrong_ticket_or_member_not_exists: Неверный номер членского билета

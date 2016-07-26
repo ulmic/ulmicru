@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+#
+# USE bin/prod get_db server_user_name database_name
+if ARGV[0] == 'get_db'
+  at = Time.now.strftime("%Y-%m-%d--%H-%M")
+  dump = "ulmicru--#{at}.dump"
+  system "ssh -t #{ARGV[1]}@ulmic.ru 'pg_dump -Fc --no-acl --no-owner -v #{ARGV[2]} > #{dump}'"
+  system "scp #{ARGV[1]}@ulmic.ru:#{dump} /tmp/"
+  system "ssh -t #{ARGV[1]}@ulmic.ru 'rm -f #{dump}'"
+  system "dropdb ulmic_development --if-exists && createdb ulmic_development && pg_restore -d ulmic_development /tmp/#{dump}"
+end

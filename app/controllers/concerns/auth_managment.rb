@@ -14,7 +14,7 @@ module Concerns
     end
 
     def signed_as_admin?
-      signed_in? && (current_user.role.admin? || current_user.role.author?)
+      signed_in? && current_user.role.in?(['admin', 'author', 'tech_admin'])
     end
 
     def authenticate_admin!
@@ -22,11 +22,11 @@ module Concerns
     end
 
     def authenticate_user!
-      redirect_to new_session_path unless signed_in?
+      redirect_to new_session_path(notification: :need_auth) unless signed_in?
     end
 
     def authenticate_confirmed_user!
-      redirect_to account_path if current_user.unviewed? && request.fullpath != account_path
+      redirect_to account_path(notification: :need_auth) if current_user.unviewed? && request.fullpath != account_path
     end
 
     def authenticate_member!

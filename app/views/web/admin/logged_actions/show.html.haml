@@ -1,0 +1,29 @@
+- model_class = LoggedAction
+- title [t("activerecord.models.#{LoggedAction.model_name.name.underscore}"), @logged_action.id].join(': ')
+.page-header
+  %h1
+    = [t("activerecord.models.#{LoggedAction.model_name.name.underscore}"), @logged_action.id].join(': ')
+%table.table
+  %tr
+    %th= model_class.human_attribute_name(:id)
+    %td= @logged_action.id
+  %tr
+    %th= model_class.human_attribute_name(:user)
+    %td= link_to @logged_action.user_short_name, admin_member_path(@logged_action.user_id)
+  %tr
+    %th= model_class.human_attribute_name(:record)
+    %td= link_to record_title(@logged_action), admin_record_path(@logged_action)
+  %tr
+    %th= model_class.human_attribute_name(:action_type)
+    %td= enumerize_locales_value @logged_action, :action_type
+  %tr
+    %th= model_class.human_attribute_name(:params)
+    %td
+      %table.table
+        - @logged_action.parsed_params.each do |key, value|
+          %tr
+            %td= key
+            %td= value
+  %tr
+    %th= model_class.human_attribute_name(:created_at)
+    %td=l @logged_action.created_at, format: "%d %b %Y %H:%m"

@@ -5,10 +5,6 @@ module Web::ApplicationHelper
     PositionList.list
   end
 
-  def tel_tag(telephone, html_options = nil, &block)
-    link_to telephone, "tel:#{telephone}", html_options, &block
-  end
-
   def image_input(form, form_instance, image_attribute_name)
     concat form.label image_attribute_name
     concat(content_tag(:div, class: :preview) do
@@ -16,5 +12,13 @@ module Web::ApplicationHelper
     end)
     concat form.input image_attribute_name, as: :file, label: false, input_html: { style: 'display: none' }
     concat form.input image_attribute_name, label: false, as: :jasny_file_preview_upload
+  end
+
+  def stylesheet_link_tag_if_exists(link)
+    stylesheet_link_tag link if Ulmicru::Application.assets.find_asset link
+  end
+
+  def javascript_include_tag_if_exists(link)
+    javascript_include_tag link if Ulmicru::Application.assets.find_asset link
   end
 end

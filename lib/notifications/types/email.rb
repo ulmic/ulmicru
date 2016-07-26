@@ -3,7 +3,14 @@ module Notifications
 
     class Email
       def self.to_send(params)
-        UserMailer.delay.send(params[:theme], params[:object], params[:user])
+        case params[:object].class.name
+        when 'News'
+          NewsMailer.delay.send(params[:theme], params[:object], params[:user])
+        when 'Questionary'
+          QuestionaryMailer.delay.send(params[:theme], params[:object], params[:user])
+        else
+          UserMailer.delay.send(params[:theme], params[:object], params[:user])
+        end
       end
     end
   end

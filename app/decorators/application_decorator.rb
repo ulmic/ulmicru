@@ -3,6 +3,9 @@ class ApplicationDecorator < Draper::Decorator
   include ActionView::Helpers
   include RussianCases
 
+  # FIXME add to more_html_tags including to draper
+  include HTMLTagsHelpers
+
   def decorated_to_json(options = {})
     hash = object.as_json options
     if options[:only].is_a? Array

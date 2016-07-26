@@ -4,9 +4,9 @@
       .container-big
         %ul.right
           - if signed_in?
-            - if current_user.role.admin?
+            - if current_user.role.in? [ 'admin', 'tech_admin' ]
               %li
-                = link_to admin_unviewed_index_path do
+                = link_to admin_path do
                   .inner
                     %i.fa.fa-info-circle
                     = @notification_count
@@ -21,13 +21,13 @@
               .sign-in
                 = t('helpers.sign_in')
               .icons
-                = link_to auth_path(:vkontakte) do
+                = link_to auth_path(:vkontakte, url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-vkontakte.min-icon
-                = link_to auth_path(:twitter) do
+                = link_to auth_path(:twitter, url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-twitter.min-icon
-                = link_to auth_path(:facebook) do
+                = link_to auth_path(:facebook, url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-facebook.min-icon
-                = link_to new_session_path do
+                = link_to new_session_path(url: request.env['ORIGINAL_FULLPATH']) do
                   .icon-door.min-icon
           %li.banner-container
             - if signed_in?
@@ -44,7 +44,7 @@
                           - else
                             .icon-woman.min-icon
                     .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
-                    = link_to session_path, method: :delete, title: t('helpers.sign_out') do
+                    = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
                       .icon-log-out.min-icon.link
             - else
               .banner
@@ -71,19 +71,19 @@
                   .category-column
                     .menu-title
                       = @first_category.name
-                    - @first_category.articles.confirmed.each do |article|
+                    - @first_category.articles.visible.confirmed.each do |article|
                       = link_to article.title, article_path(article)
                 - if @about_site_category.present?
                   .category-column
                     .menu-title
                       = @about_site_category.name
-                    - @about_site_category.articles.confirmed.each do |article|
+                    - @about_site_category.articles.visible.confirmed.each do |article|
                       = link_to article.title, article_path(article)
                 - if @corporative_category.present?
                   .category-column
                     .menu-title
                       = @corporative_category.name
-                    - @corporative_category.articles.confirmed.each do |article|
+                    - @corporative_category.articles.visible.confirmed.each do |article|
                       = link_to article.title, article_path(article)
           %li{ style: 'margin-right: 15px' }
             - if signed_in? && current_user.state == 'confirmed'
@@ -102,7 +102,4 @@
                   = image_tag 'organization/activity_lines/corporative/confession/number_one.png', class: 'custom-icon'
                   Признание
           %li
-            = link_to configus.it_projects.ul_lider.url, class: :blank do
-              .inner
-                = image_tag 'organization/activity_lines/lider/ya-lider.png', class: 'custom-icon'
-                Я - лидер!
+            = ulmic_project_link :it_way

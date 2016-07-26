@@ -17,15 +17,16 @@ class Web::Admin::UnviewedControllerTest < ActionController::TestCase
   test 'should get index' do
     @types.each do |type|
       get :index
-      assert_response :success, @response.body
+      assert_response :redirect, @response.body
+      assert_redirected_to admin_unviewed_index_path items: :member
     end
   end
 
   test 'should get index without instances' do
     @types.each do |type|
-      type.to_s.camelize.constantize.all.map &:destroy
-      get :index
-      assert_response :success, @response.body
+      type.to_s.camelize.constantize.destroy_all
     end
+    get :index
+    assert_response :success, @response.body
   end
 end

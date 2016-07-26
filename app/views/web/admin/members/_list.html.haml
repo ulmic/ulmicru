@@ -6,12 +6,14 @@
       %th №
       %th= model_class.human_attribute_name(:avatar)
       %th= model_class.human_attribute_name(:full_name)
-      -#%th= model_class.human_attribute_name(:main_position)
+      %th= model_class.human_attribute_name(:main_position_title)
       %th= model_class.human_attribute_name(:place)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - members.each do |member|
-      %tr.link{ class: state_color(member), data: { href: edit_admin_member_path(member) } }
+      %tr.link{ class: state_color(member), data: { href: admin_member_path(member) } }
         %td
           = member.ticket
           - if member.ticket
@@ -19,8 +21,10 @@
               %span.glyphicon.glyphicon-share
         %td= image_tag member.avatar.small
         %td= member.full_name
-        -#%td= member.main_position_title
+        %td= member.main_position_title
         %td= member.place
+        - if searching?
+          %td= member.human_state_name
         %td.actions
           - unless member.member_confirmed?
             = link_to admin_member_path(member, member: { state: :confirmed, member_state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do

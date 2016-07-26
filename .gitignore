@@ -51,10 +51,14 @@ Gemfile.lock
 !public/1.pdf
 vendor/assets/bower*
 vendor/assets/.bower*
-
+node_modules/
+app/assets/javascripts/react_bundle.js
 
 \#*\#
 .\#*
 
 *~
 cm/roles
+/node_modules
+/app/assets/javascripts/react_bundle.js
+/app/assets/stylesheets/react_bundle.css

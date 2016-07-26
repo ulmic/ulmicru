@@ -8,6 +8,8 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:duration)
       %th= model_class.human_attribute_name(:place)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - events.each do |event|
@@ -21,8 +23,10 @@
         %td= event.full_duration
         %td= event.place
         %td= link_to event.creator.short_name, member_path(event.creator.ticket) if event.creator
+        - if searching?
+          %td= event.human_state_name
         %td.actions
-          - if current_user.role.admin?
+          - if current_user.admin?
             - unless event.confirmed?
               = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
                 %span.glyphicon.glyphicon-ok

@@ -3,6 +3,7 @@ ru:
   messages:
     record_saved_success: Сохранено
     fill_member_form: Вставьте номер членского билета, имя крёстного и дату вступления в МИЦ
+    technical_works: На сайте ведутся технические работы. Использование этого функционала временно недоступно
     events:
       enter_organizers_also: В поле участники сразу добавляйте организаторов мероприятия
   web:
@@ -10,6 +11,12 @@ ru:
       welcome:
         index:
           title: Админка
+          users_count: Общее количество пользователей
+          event_registrations_count: Количество участий в мероприятиях
+          uniq_logged_users_for_month_count: Количество уникальных авторизовавшихся на сайте пользователей за месяц
+          new_users_count: Количество новых пользователей за месяц
+          news_views: Всего просмотров новостей
+          uniq_users_event_registrations_count: Количество уникальных пользователей, участвоваших в мероприятиях
       unviewed:
         index:
           title: Непросмотренные
@@ -21,12 +28,18 @@ ru:
       article:
         push_into: Добавить в категорию '%{category}'
       members:
+        show:
+          positions_history: История должностей
+          event_attendings: Участие в мероприятиях
         form:
           add_position: Добавить должность
           resume: Резюме
         position_fields:
           for_now: до настоящего момента
           remove_position: Убрать должность
+      questionaries:
+        show: 
+          event_attendings: Участие в мероприятиях
       tags:
         form:
           add_tag: Добавить тег
@@ -73,8 +86,9 @@ ru:
       letter:
         executor: 'Найдите исполнителя среди членов МИЦ. Если исполнитель не является членом МИЦ, просто введите его фамилию и инициалы в поле ввода ниже.'
         file: 'Загружать можно только файлы с расширением PDF, DOC, DOCX'
+      image:
+        author: 'Найдите автора среди пользователя сайта. Если автор не зарегистрирован на сайте, просто введите его имя в поле ввода ниже.'
       document:
-        file: 'Загружать можно только файлы с расширением PDF, DOC, DOCX'
       delivery/campaign:
         mailing_date: 'Если вы не хотите делать отложенную рассылку, оставьте пустым'
   notices:

@@ -1,4 +1,5 @@
 class News < ActiveRecord::Base
+  belongs_to :member, foreign_key: :user_id
   has_many :tags, as: :record,
                   dependent: :destroy
   has_many :comments, as: :record,
@@ -12,7 +13,6 @@ class News < ActiveRecord::Base
   validates :user_id,       presence: true
   validates :lead,          presence: false
   validates :state,         presence: true
-  belongs_to :member, foreign_key: :user_id
 
   def is_published?
     published_at <= DateTime.now && state != 'removed'
@@ -44,7 +44,6 @@ class News < ActiveRecord::Base
     end
   end
 
-  include NewsScopes
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :lead]
 

@@ -1,20 +1,24 @@
 class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::ApplicationController
   def index
-    @campaigns = {}
-    @campaigns[:ready] = ::Delivery::Campaign.ready.page(params[:page]).decorate
-    @campaigns[:done] = ::Delivery::Campaign.done.page(params[:page]).decorate
-    @campaigns[:removed] = ::Delivery::Campaign.removed.page(params[:page]).decorate
-    @campaigns[:declined] = ::Delivery::Campaign.declined.page(params[:page]).decorate
-    @campaigns[:search] = ::Delivery::Campaign.search_everywhere(params[:search]).page(params[:page]).decorate if params[:search]
+    if params[:search]
+      campaigns = ::Delivery::Campaign.search_everywhere params[:search]
+    else
+      campaigns = ::Delivery::Campaign.send params[:scope]
+    end
+    @campaigns = campaigns.page(params[:page]).decorate
   end
 
   def new
     @campaign_form = ::Delivery::CampaignForm.new_with_model
-    @campaign_form.build_audiences
   end
 
   def edit
     @campaign_form = ::Delivery::CampaignForm.find_with_model params[:id]
+  end
+
+  def show
+    @campaign = ::Delivery::Campaign.includes(:audiences).find(params[:id]).decorate
+    @audience_form = ::Delivery::AudienceForm.new_with_model
   end
 
   def create
@@ -22,7 +26,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.new_with_model
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
-      redirect_to admin_delivery_campaigns_path
+      redirect_to admin_delivery_campaign_path(@campaign_form.model)
     else
       render action: :new
     end
@@ -33,7 +37,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.find_with_model params[:id]
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
-      redirect_to edit_admin_delivery_campaign_path @campaign_form
+      redirect_to admin_delivery_campaign_path(@campaign_form.model)
     else
       render action: :edit
     end

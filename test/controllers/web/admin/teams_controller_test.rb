@@ -19,7 +19,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    Team.all.map &:destroy
+    Team.destroy_all
     get :index
     assert_response :success, @response.body
   end
@@ -55,7 +55,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     attributes = attributes_for :departament
     put :update, id: @team, team: attributes
     assert_response :redirect
-    assert_redirected_to edit_admin_team_path @team
+    assert_redirected_to admin_teams_path
     @team.reload
     @team.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @team.send(key), key

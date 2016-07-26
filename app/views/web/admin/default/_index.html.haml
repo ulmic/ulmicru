@@ -1,29 +1,29 @@
-- tabs = items.keys.except(:search)
 - default_page_title ||= nil; on_site_link ||= nil
 - current_title = default_page_title || model_class.model_name.human.pluralize(:ru)
 - title current_title, :admin
+- state_method ||= :state
+- tabs = get_collection model_class
+- new_path = "new_admin_#{to_path(model_class)}_path"
 .page-header
   .row
     .col-md-6
       %h1
         = current_title
-        = link_to "#{t 'helpers.links.new'}", send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
+        - if respond_to?(new_path)
+          = link_to "#{t 'helpers.links.new'}", send(new_path), class: 'btn btn-primary'
         - if on_site_link
           = link_to on_site_link do
             %span.glyphicon.glyphicon-share
     = render 'web/admin/default/search', model_class: model_class
-#tabs
+.tabs
   %ul.nav.nav-tabs{ role: :tablist }
     - if params[:search]
-      %li
-        = link_to search_tab_title(items[:search].total_count), "##{:search}"
+      %li.active
+        = link_to search_tab_title(items.total_count), '#'
     - tabs.each do |tab|
-      %li
-        = link_to tab_title(model_class, tab, items[tab].total_count), "##{tab}"
-  - if params[:search]
-    #search
-      = render 'list', to_path(model_class).pluralize(:en).to_sym => items[:search]
-  - tabs.each do |tab|
-    %div{ id: tab }
-      = render 'list', to_path(model_class).pluralize(:en).to_sym => items[tab]
-= link_to t('.new', default: t('helpers.links.new')), send("new_admin_#{to_path(model_class)}_path"), class: 'btn btn-primary'
+      %li{ class: (params[:search].nil? && params[:scope].to_s == tab.to_s ? :active : '') }
+        = link_to tab_title(model_class, tab, @counts[tab], state_method), admin_index_path_of_model(model_class, tab) 
+  %div{ id: (params[:search] ? :search : params[:scope]) }
+    = render 'list', to_path(model_class).pluralize(:en).to_sym => items
+- if respond_to?(new_path)
+  = link_to "#{t 'helpers.links.new'}", send(new_path), class: 'btn btn-primary'

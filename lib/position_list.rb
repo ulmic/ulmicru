@@ -12,6 +12,7 @@ module PositionList
         positions = positions_structure[branch]
         collection = branch.camelize.constantize.active
         # FIXME any idea?
+        collection = collection.ulmic if branch.camelize.constantize == ActivityLine
         collection = collection.visible if branch.camelize.constantize == Team
         if positions.is_a? Array
           positions.each do |p|

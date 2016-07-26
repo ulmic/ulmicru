@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214140733) do
+ActiveRecord::Schema.define(version: 20160704220242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.string   "activity_type"
     t.string   "description"
     t.integer  "member_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "state"
     t.text     "logo"
+    t.text     "organization_type"
   end
 
   create_table "activity_lines_corporative_arguments", force: :cascade do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "views",       default: 0
+    t.text     "publicity"
   end
 
   create_table "articles_documents", id: false, force: :cascade do |t|
@@ -155,8 +157,9 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.text     "email"
     t.text     "first_name"
     t.text     "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.text     "state",      default: "subscribed"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -209,6 +212,17 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.text     "file"
+    t.datetime "date"
+    t.integer  "author_id"
+    t.text     "author_name"
+    t.text     "image_type"
+    t.text     "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "letters", force: :cascade do |t|
     t.text     "subdivision_code"
     t.integer  "number"
@@ -225,6 +239,16 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.text     "file"
+  end
+
+  create_table "logged_actions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "action_type"
+    t.text     "record_type"
+    t.integer  "record_id"
+    t.text     "params"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "news", force: :cascade do |t|
@@ -259,6 +283,24 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.datetime "end_date"
     t.text     "for_now"
     t.text     "state"
+  end
+
+  create_table "redirect_rules", force: :cascade do |t|
+    t.text     "old_path"
+    t.text     "redirect_to"
+    t.text     "status"
+    t.text     "reason"
+    t.text     "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "receiver_id"
+    t.text     "subscription_type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "receiver_type"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -311,8 +353,13 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.integer "user_id"
   end
 
-  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
-  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
+  create_table "tokens", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "record_id"
+    t.text     "record_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.text     "email"
@@ -341,6 +388,7 @@ ActiveRecord::Schema.define(version: 20160214140733) do
     t.text     "token"
     t.text     "school"
     t.text     "member_state",    default: "unviewed"
+    t.datetime "request_date"
   end
 
   create_table "votes", force: :cascade do |t|

@@ -29,10 +29,18 @@ class UserDecorator < ApplicationDecorator
 
   def select_presentation(options = {})
     if options[:names] == :official
-      "#{ticket_or_question} #{last_name} #{first_name.first}.#{patronymic.first if patronymic}."
+      "#{ticket_or_question} #{last_name} #{first_name&.first}.#{patronymic&.first}."
     else
       "#{ticket_or_question} #{first_name} #{last_name}"
     end
+  end
+
+  def human_type_name
+    I18n.t("activerecord.attributes.user.types.#{object.type&.underscore || :user}")
+  end
+
+  def self.collections
+    [ :confirmed, :unviewed, :declined ]
   end
 
   private
