@@ -38,7 +38,9 @@
                   .icons
                     - if current_user.is_member?
                       - if current_user.confirmed?
-                        = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
+                        = link_to '#', data: { dropdown: :drop1 }, aria: { controls: :drop1, expanded: false }, class: 'icon-bars min-icon fa-icon' do
+                          = fa_icon :bars
+                        -#= link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
                           - if current_user.is_man?
                             .icon-man.min-icon
                           - else

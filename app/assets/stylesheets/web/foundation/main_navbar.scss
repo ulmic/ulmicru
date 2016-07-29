@@ -95,9 +95,19 @@
         background-position: 1px;
       }
     }
-    .icon-cogwheel, .icon-log-out, .icon-woman, .icon-man {
+    .icon-cogwheel, .icon-log-out, .icon-woman, .icon-man, .icon-bars {
       height: 24px;
       width: 24px;
+      text-align: center;
+      &.fa-icon {
+        padding-left: 0px !important;
+        padding-top: 1px !important;
+        background-color: rgb(241, 121, 15) !important;
+        color: white;
+        i {
+          font-size: 24px;
+        }
+      }
       &:hover {
         opacity: 0.5;
       }
