@@ -124,6 +124,12 @@
     .icon-man {
       background: asset-url('man-icon.png');
     }
+    .icon-woman-black {
+      background: asset-url('woman-icon-#333.png');
+    }
+    .icon-man-black {
+      background: asset-url('man-icon-333.png');
+    }
   }
   .banner-container {
     $el-width: rem-calc(94);
@@ -204,5 +210,12 @@
     img.custom-icon {
       background-color: #f45c10;
     }
+  }
+}
+
+#member-dropdown {
+  width: 200px;
+  .icon-man, .icon-woman {
+    background-color: black;
   }
 }

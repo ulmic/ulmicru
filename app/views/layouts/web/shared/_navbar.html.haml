@@ -38,15 +38,15 @@
                   .icons
                     - if current_user.is_member?
                       - if current_user.confirmed?
-                        = link_to '#', data: { dropdown: :drop1 }, aria: { controls: :drop1, expanded: false }, class: 'icon-bars min-icon fa-icon' do
+                        = link_to '#', data: { dropdown: 'member-dropdown' }, aria: { controls: 'member-dropdown', expanded: false }, class: 'icon-bars min-icon fa-icon' do
                           = fa_icon :bars
-                        %ul#drop1.f-dropdown{ 'data-dropdown-content' => true, 'aria-hidden' => "true",  tabindex: "-1"  }
+                        %ul#member-dropdown.f-dropdown{ 'data-dropdown-content' => true, 'aria-hidden' => "true",  tabindex: "-1"  }
                           %li
                             = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
                               - if current_user.is_man?
-                                .icon-man.min-icon
+                                .icon-man-black.min-icon
                               - else
-                                .icon-woman.min-icon
+                                .icon-woman-black.min-icon
                               Профиль члена МИЦ
                     .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
                     = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
