@@ -3,18 +3,21 @@
   %h1.title
     = @article.title
   .row.contacts-people
-    %table
-      %thead
-        - attributes.each do |attr|
+    - Organization::ContactList.list.each do |team|
+      %h3
+        = team.title
+      %table
+        %thead
+          - attributes.each do |attr|
+            %th
+              = t("activerecord.attributes.member.#{attr}")
           %th
-            = t("activerecord.attributes.member.#{attr}")
-        %th
-          = t('.social_links')
-        %tbody
-          - Organization::ContactList.list.each do |member|
-            %tr
-              - attributes.each do |attr|
+            = t('.social_links')
+          %tbody
+            - team.members.each do |member|
+              %tr
+                - attributes.each do |attr|
+                  %td
+                    = member.send attr
                 %td
-                  = member.send attr
-              %td
-                social_links
+                  social_links
