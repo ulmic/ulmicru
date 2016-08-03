@@ -117,7 +117,25 @@ class MemberDecorator < UserDecorator
   end
 
   def avatar_small_img
-    h.content_tag :img, src: object.avatar.small do
+    h.content_tag :a, href: member_path(object.ticket) do
+      h.content_tag :img, src: object.avatar.small do
+      end
+    end
+  end
+
+  def mobile_phone_link
+    h.content_tag :a, href: "tel:#{object.mobile_phone}" do
+      h.concat fa_icon :phone
+      h.concat ' '
+      h.concat object.mobile_phone
+    end
+  end
+
+  def email_link
+    h.content_tag :a, href: "mail:#{object.email}" do
+      h.concat fa_icon :envelope
+      h.concat ' '
+      h.concat object.email
     end
   end
 end

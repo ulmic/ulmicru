@@ -1,4 +1,4 @@
-- attributes = [ :ticket_number, :avatar_small_img, :short_name_link, :main_position_title, :mobile_phone, :email ]
+- attributes = [ :ticket_number, :avatar_small_img, :short_name_link, :main_position_title, :mobile_phone_link, :email_link ]
 .news.articles.container-big
   %h1.title
     = @article.title
@@ -6,7 +6,7 @@
     - Organization::ContactList.list.each do |team|
       %h3
         = team.title
-      %table
+      %table.contact-list-team-table
         %thead
           - attributes.each do |attr|
             %th
