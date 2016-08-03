@@ -1,7 +1,17 @@
 #!/usr/bin/env ruby
 #
 # USE bin/prod get_db server_user_name database_name
+
+require 'colorize'
+
 if ARGV[0] == 'get_db'
+  if ARGV[1].nil?
+    puts "You should add username on server".red
+  end
+  if ARGV[2].nil?
+    puts "You should add database name on server".red
+    exit
+  end
   at = Time.now.strftime("%Y-%m-%d--%H-%M")
   dump = "ulmicru--#{at}.dump"
   system "ssh -t #{ARGV[1]}@ulmic.ru 'pg_dump -Fc --no-acl --no-owner -v #{ARGV[2]} > #{dump}'"
