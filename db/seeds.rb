@@ -1,3 +1,4 @@
+puts "Create pages..".green
 pages = {
           not_found: '404',
           server_error: '500',
@@ -11,12 +12,14 @@ pages.each do |slug, title|
   Page.create slug: slug, view: slug, title: title unless page
 end
 
+puts "Create categories...".green
 categories = { who_we_are: 'Кто мы такие', contacts: 'Контакты' , site_mic: 'Сайт МИЦ' }
 categories.each do |category, name|
   c = Category.find configus.categories.send category
   Category.create id: configus.categories.send(category), name: name unless c
 end
 
+puts "Create articles...".green
 contact_category = Category.find_by_name 'Контакты'
 articles = { contacts: 'Контакты', contact_list: 'Контакт-лист' }
 articles.each do |article, name|
@@ -26,6 +29,7 @@ end
 
 unless Rails.env.production?
   # Create month article
+  puts "Create month article".green
   month_article_id = 21
   about_site_category = Category.find_by_name 'Сайт МИЦ'
   article = Article.where(id: month_article_id).first
@@ -34,6 +38,7 @@ unless Rails.env.production?
 end
 
 # Create activity lines
+puts "Create activity lines..".green
 activity_lines = ['Лидер', 'Inформация', 'Право', 'Добро', 'Информационные технологии', 'Диалог культур', 'Корпоративные проекты']
 activity_lines.each do |activity_line|
   a = ActivityLine.find_by_title activity_line
@@ -41,6 +46,7 @@ activity_lines.each do |activity_line|
 end
 
 # Create departaments
+puts "Create departaments...".green
 municipalities = ['г.Ульяновск', 'г.Димитровград', 'г.Новоульяновск', 'Чердаклинский район', 'Тереньгульский район', 'Базарносызганский район', 'Радищевский район', 'Новоспасский район']
 municipalities.each do |municipality|
   t = Team::Departament.find_by_municipality municipality

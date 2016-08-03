@@ -215,11 +215,13 @@
 
 #member-dropdown {
   width: 211px;
+  text-align: left;
   a {
     line-height: 2.5rem;
     height: 42px;
-    span {
-      margin-left: 5px;
-    }
+  }
+  span.icon {
+    width: 18px;
+    text-align: center;
   }
 }

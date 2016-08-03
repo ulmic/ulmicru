@@ -42,13 +42,18 @@
                           = fa_icon :bars
                         %ul#member-dropdown.f-dropdown.medium{ 'data-dropdown-content' => true, 'aria-hidden' => "true",  tabindex: "-1"  }
                           = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
-                            - if current_user.is_man?
-                              = fa_icon :male
-                            - else
-                              = fa_icon :female
+                            %span.icon{ style: 'font-size: 20px; margin-top: 5px' }
+                              - if current_user.is_man?
+                                = fa_icon :male
+                              - else
+                                = fa_icon :female
                             %span
                               = t('layouts.web.shared.navbar.member_profile')
-                          = link_to article_path(configus.articles.contact_list), title: t('layouts.web.shared.contact_list')
+                          = link_to article_path(configus.articles.contact_list), title: t('layouts.web.shared.navbar.contact_list') do
+                            %span.icon
+                              = fa_icon 'th-list'
+                            %span
+                              = t('layouts.web.shared.navbar.contact_list')
                     .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
                     = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
                       .icon-log-out.min-icon.link
