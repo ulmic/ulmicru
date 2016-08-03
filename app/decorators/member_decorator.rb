@@ -16,6 +16,12 @@ class MemberDecorator < UserDecorator
     "#{first_name} #{last_name}"
   end
 
+  def short_name_link
+    h.content_tag :a, href: member_path(object.ticket) do
+      "#{first_name} #{last_name}"
+    end
+  end
+
   def place
     if municipality.include? 'г.'
       locality
@@ -108,5 +114,10 @@ class MemberDecorator < UserDecorator
 
   def self.collections
     [ :confirmed, :unviewed, :declined, :unavailable ]
+  end
+
+  def avatar_small_img
+    h.content_tag :img, src: object.avatar.small do
+    end
   end
 end

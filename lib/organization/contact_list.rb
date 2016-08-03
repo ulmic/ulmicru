@@ -5,7 +5,7 @@ module Organization
         members += MemberDecorator.decorate_collection(team.members.includes(:positions).map do |member|
           member if member.positions.current_positions.any?
         end.compact)
-      end
+      end.uniq
     end
 
     private
