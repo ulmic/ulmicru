@@ -27,13 +27,13 @@ class Web::ApplicationController < ApplicationController
   end
 
   def load_categories_tree
-    @first_category = Category.includes(:articles).find_by_name 'Кто мы такие'
-    @about_site_category = Category.includes(:articles).find_by_name 'Сайт МИЦ'
-    @corporative_category = Category.includes(:articles).find_by_name 'Корпоративные проекты'
-    contact_category = Category.includes(:articles).find_by_name 'Контакты'
-    @contact_article = contact_category.articles.first if contact_category
+    @first_category = Category.includes(:articles).find configus.categories.who_we_are
+    @about_site_category = Category.includes(:articles).find configus.categories.site_mic
+    @corporative_category = Category.includes(:articles).find configus.categories.corporative_projects
+    @contact_article = Article.find configus.articles.contacts
+    @contact_list_article = Article.find configus.articles.contact_list
     if signed_in?
-      @korporative_category = Category.find_by_name 'Корпоративные проекты'
+      @korporative_category = Category.find configus.categories.corporative_projects
     end
     @feedback = FeedbackForm.new_with_model
     @rss_article_id = 19

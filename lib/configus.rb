@@ -61,6 +61,15 @@ Configus.build Rails.env do
         corporative 238
       end
     end
+    categories do
+      who_we_are 2
+      site_mic 12
+      corporative_projects 14
+    end
+    articles do
+      contacts 16
+      contact_list 78
+    end
   end
 
   env :staging, parent: :production do

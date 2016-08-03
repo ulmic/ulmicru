@@ -214,8 +214,12 @@
 }
 
 #member-dropdown {
-  width: 180px;
-  span {
-    margin-left: 5px;
+  width: 211px;
+  a {
+    line-height: 2.5rem;
+    height: 42px;
+    span {
+      margin-left: 5px;
+    }
   }
 }
