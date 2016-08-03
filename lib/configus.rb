@@ -65,6 +65,7 @@ Configus.build Rails.env do
       who_we_are 2
       site_mic 12
       corporative_projects 14
+      contacts 3
     end
     articles do
       contacts 16

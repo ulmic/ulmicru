@@ -47,7 +47,8 @@
                             - else
                               = fa_icon :female
                             %span
-                              Профиль члена МИЦ
+                              = t('layouts.web.shared.navbar.member_profile')
+                          = link_to article_path(configus.articles.contact_list), title: t('layouts.web.shared.contact_list')
                     .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
                     = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
                       .icon-log-out.min-icon.link
@@ -58,10 +59,9 @@
                   %br
                   в стиле миц
           %li
-            - if @contact_article.present?
-              = link_to article_path(@contact_article) do
-                .inner
-                  = t('helpers.contacts')
+            = link_to article_path(configus.articles.contacts) do
+              .inner
+                = t('helpers.contacts')
           %li
             %a{ href: "#" }
         %a.site-logo{ href: root_path }

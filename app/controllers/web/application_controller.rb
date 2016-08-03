@@ -30,8 +30,6 @@ class Web::ApplicationController < ApplicationController
     @first_category = Category.includes(:articles).find configus.categories.who_we_are
     @about_site_category = Category.includes(:articles).find configus.categories.site_mic
     @corporative_category = Category.includes(:articles).find configus.categories.corporative_projects
-    @contact_article = Article.find configus.articles.contacts
-    @contact_list_article = Article.find configus.articles.contact_list
     if signed_in?
       @korporative_category = Category.find configus.categories.corporative_projects
     end

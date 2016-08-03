@@ -11,13 +11,18 @@ pages.each do |slug, title|
   Page.create slug: slug, view: slug, title: title unless page
 end
 
-['Кто мы такие', 'Контакты', 'Сайт МИЦ'].each do |name|
-  category = Category.find_by_name name
-  Category.create name: name unless category
+categories = { who_we_are: 'Кто мы такие', contacts: 'Контакты' , site_mic: 'Сайт МИЦ' }
+categories.each do |category, name|
+  c = Category.find configus.categories.send category
+  Category.create id: configus.categories.send(category), name: name unless c
 end
+
 contact_category = Category.find_by_name 'Контакты'
-contact_article = contact_category.articles.first
-Article.create title: 'Контакты', view: 'contacts', category_id: contact_category.id, user_id: 1 unless contact_article
+articles = { contacts: 'Контакты', contact_list: 'Контакт-лист' }
+articles.each do |article, name|
+  a = Article.find configus.articles.send article
+  Article.create id: configus.articles.send(article), title: name, view: article, category_id: contact_category.id, user_id: 1 unless a
+end
 
 unless Rails.env.production?
   # Create month article
