@@ -1,0 +1,20 @@
+- attributes = [ :short_name, :main_position_title, :mobile_phone, :email ]
+.news.articles.container-big
+  %h1.title
+    = @article.title
+  .row.contacts-people
+    %table
+      %thead
+        - attributes.each do |attr|
+          %th
+            = t("activerecord.attributes.member.#{attr}")
+        %th
+          = t('.social_links')
+        %tbody
+          - Organization::ContactList.list.each do |member|
+            %tr
+              - attributes.each do |attr|
+                %td
+                  = member.send attr
+              %td
+                social_links
