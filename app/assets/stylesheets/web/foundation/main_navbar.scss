@@ -214,8 +214,8 @@
 }
 
 #member-dropdown {
-  width: 200px;
-  .icon-man, .icon-woman {
-    background-color: black;
+  width: 180px;
+  span {
+    margin-left: 5px;
   }
 }
