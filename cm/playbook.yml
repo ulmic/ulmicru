@@ -1,6 +1,6 @@
 - hosts: develop
   vars:
-    pg_version: 9.4
+    pg_version: 9.5
     pg_user: ulmicru
     sudo: yes
   roles:

@@ -43,6 +43,22 @@
                             .icon-man.min-icon
                           - else
                             .icon-woman.min-icon
+                        -#= link_to '#', data: { dropdown: 'member-dropdown', options: 'align:left;is_hover:true' }, aria: { controls: 'member-dropdown', expanded: false }, class: 'icon-bars min-icon fa-icon' do
+                          = fa_icon :bars
+                        -#%ul#member-dropdown.f-dropdown.medium{ 'data-dropdown-content' => true, 'aria-hidden' => "true",  tabindex: "-1"  }
+                          = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
+                            %span.icon{ style: 'font-size: 20px; margin-top: 5px' }
+                              - if current_user.is_man?
+                                = fa_icon :male
+                              - else
+                                = fa_icon :female
+                            %span
+                              = t('layouts.web.shared.navbar.member_profile')
+                          = link_to article_path(configus.articles.contact_list), title: t('layouts.web.shared.navbar.contact_list') do
+                            %span.icon
+                              = fa_icon 'th-list'
+                            %span
+                              = t('layouts.web.shared.navbar.contact_list')
                     .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
                     = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
                       .icon-log-out.min-icon.link
@@ -53,10 +69,9 @@
                   %br
                   в стиле миц
           %li
-            - if @contact_article.present?
-              = link_to article_path(@contact_article) do
-                .inner
-                  = t('helpers.contacts')
+            = link_to article_path(configus.articles.contacts) do
+              .inner
+                = t('helpers.contacts')
           %li
             %a{ href: "#" }
         %a.site-logo{ href: root_path }

@@ -44,6 +44,8 @@ class Team < ActiveRecord::Base
     model_name == 'Team::Primary'
   end
 
+  alias members users
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description, :municipality, :school]
 end

@@ -16,6 +16,12 @@ class MemberDecorator < UserDecorator
     "#{first_name} #{last_name}"
   end
 
+  def short_name_link
+    h.content_tag :a, href: member_path(object.ticket) do
+      "#{first_name} #{last_name}"
+    end
+  end
+
   def place
     if municipality.include? 'г.'
       locality
@@ -108,5 +114,52 @@ class MemberDecorator < UserDecorator
 
   def self.collections
     [ :confirmed, :unviewed, :declined, :unavailable ]
+  end
+
+  def avatar_small_img
+    h.content_tag :a, href: member_path(object.ticket) do
+      h.content_tag :img, src: object.avatar.small do
+      end
+    end
+  end
+
+  def mobile_phone_link
+    h.content_tag :a, href: "tel:#{object.mobile_phone}" do
+      h.concat fa_icon :phone
+      h.concat ' '
+      h.concat object.mobile_phone
+    end
+  end
+
+  def email_link
+    h.content_tag :a, href: "mail:#{object.email}" do
+      h.concat fa_icon :envelope
+      h.concat ' '
+      h.concat object.email
+    end
+  end
+
+  include SocialNetworksUrlHelper
+
+  def social_links
+    h.content_tag :div, class: :row do
+      SocialNetworks.list.each do |s_network|
+        h.concat(h.content_tag(:div, class: "small-3 columns social_links #{s_network}") do
+          auth = object.has_auth_provider? s_network
+          if auth && attribute_visible?(object.attribute_accesses, s_network)
+            h.content_tag :a, href: profile_url(auth) do
+              fa_icon "#{s_network} 2x"
+            end
+          end
+        end)
+      end
+    end
+  end
+
+  private
+
+  def attribute_visible?(accesses, attribute)
+    attr_access = accesses.find_by_member_attribute attribute
+    attr_access.access.visible? if attr_access
   end
 end

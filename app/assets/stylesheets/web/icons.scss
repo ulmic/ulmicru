@@ -2,6 +2,11 @@
 @import "pictonic";
 @import "font-awesome";
 
+$twitter-color: #55acee;
+$facebook-color: #3b5998;
+$vkontakte-color: #45668e;
+$google-color: #db4437;
+
 .big-icon {
   font-size: 46px;
   color: white;
@@ -28,25 +33,25 @@
   display: inline-block;
   @extend .icon-rus-vk-01;
   &.colored {
-    color: #45668e;
+    color: $vkontakte-color;
   }
 }
 .icon-facebook {
   @include fa-rounded-icon(".fa-facebook-official");
   &.colored {
-    color: #3b5998;
+    color: $facebook-color;
   }
 }
 .icon-twitter {
   @include fa-rounded-icon(".fa-twitter-square");
   &.colored {
-    color: #55acee;
+    color: $twitter-color;
   }
 }
 .icon-google {
   @include fa-rounded-icon(".fa-google-plus-square");
   &.colored {
-    color: #db4437;
+    color: $google-color; 
   }
 }
 .icon-rss {

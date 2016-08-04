@@ -50,8 +50,13 @@ ru:
         patronymic: Отчество
         last_name: Фамилия
         avatar: Аватар
+        avatar_small_img: Аватар
         full_name: "Ф.И.О."
         ticket: Номер членского билета
+        ticket_number: Номер членского билета
+        short_name: Имя
+        short_name_link: Имя
+        social_links: Профили в соц. сетях
         place: Место проживания
         motto: Девиз по жизни
         mobile_phone: Мобильный телефон
@@ -66,7 +71,7 @@ ru:
         teams: Мои команды
         state_event: Статус на сайте
         school: Учебное заведение
-        main_position_title: Текущая должность
+        main_position_title: Должность
         join_date: Дата вступления
         want_to_do: "Чем хочешь заниматься в МИЦ?"
         experience: Опыт и навыки

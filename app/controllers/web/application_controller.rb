@@ -12,28 +12,26 @@ class Web::ApplicationController < ApplicationController
 
   if Rails.env.production?
     rescue_from ActionController::RoutingError,
-                ActionView::MissingTemplate,
-                ActiveRecord::RecordNotFound,
-                NoMethodError do |exception|
-      Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
-      Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-      redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
-      if redirect_rule.present?
-	redirect_to redirect_rule.redirect_to
-      else
-	render '/web/pages/shared/_server_error', status: 500
+      ActionView::MissingTemplate,
+      ActiveRecord::RecordNotFound,
+      NoMethodError do |exception|
+        Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
+        Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
+        redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
+        if redirect_rule.present?
+          redirect_to redirect_rule.redirect_to
+        else
+          render '/web/pages/shared/_server_error', status: 500
+        end
       end
-    end
   end
 
   def load_categories_tree
-    @first_category = Category.includes(:articles).find_by_name 'Кто мы такие'
-    @about_site_category = Category.includes(:articles).find_by_name 'Сайт МИЦ'
-    @corporative_category = Category.includes(:articles).find_by_name 'Корпоративные проекты'
-    contact_category = Category.includes(:articles).find_by_name 'Контакты'
-    @contact_article = contact_category.articles.first if contact_category
+    @first_category = Category.includes(:articles).find configus.categories.who_we_are
+    @about_site_category = Category.includes(:articles).find configus.categories.site_mic
+    @corporative_category = Category.includes(:articles).find configus.categories.corporative_projects
     if signed_in?
-      @korporative_category = Category.find_by_name 'Корпоративные проекты'
+      @korporative_category = Category.find configus.categories.corporative_projects
     end
     @feedback = FeedbackForm.new_with_model
     @rss_article_id = 19

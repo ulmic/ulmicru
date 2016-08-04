@@ -5,6 +5,7 @@ class ApplicationDecorator < Draper::Decorator
 
   # FIXME add to more_html_tags including to draper
   include HTMLTagsHelpers
+  include FontAwesome::Rails::IconHelper
 
   def decorated_to_json(options = {})
     hash = object.as_json options
