@@ -9,7 +9,7 @@
       %table.contact-list-team-table
         %thead
           - attributes.each do |attr|
-            %th
+            %th{ class: attr }
               = t("activerecord.attributes.member.#{attr}")
           %tbody
             - team.members.each do |member|
