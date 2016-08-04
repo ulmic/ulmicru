@@ -148,7 +148,7 @@ class MemberDecorator < UserDecorator
           auth = object.has_auth_provider? s_network
           if auth && attribute_visible?(object.attribute_accesses, s_network)
             h.content_tag :a, href: profile_url(auth) do
-              fa_icon "#{s_network} 2x"
+              fa_icon "#{s_network == 'vkontakte' ? :vk : s_network} 2x"
             end
           end
         end)
