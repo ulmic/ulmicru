@@ -5,7 +5,7 @@ module Organization
 
     def self.list
       teams.reduce([]) do |arr, team|
-        members = MemberDecorator.decorate_collection(team.members.order(:ticket).includes(:positions).map do |member|
+        members = MemberDecorator.decorate_collection(team.members.order(:ticket).includes(:positions, :attribute_accesses).map do |member|
           member if member.positions.current_positions.any? && !arr.map(&:members).flatten.include?(member)
         end.compact)
         arr << ContactList::Team.new(team.decorate.full_title, members)

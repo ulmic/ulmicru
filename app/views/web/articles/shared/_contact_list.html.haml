@@ -1,4 +1,4 @@
-- attributes = [ :ticket_number, :avatar_small_img, :short_name_link, :main_position_title, :mobile_phone_link, :email_link ]
+- attributes = [ :ticket_number, :avatar_small_img, :short_name_link, :main_position_title, :mobile_phone_link, :email_link, :social_links ]
 .news.articles.container-big
   %h1.title
     = @article.title
@@ -11,13 +11,9 @@
           - attributes.each do |attr|
             %th
               = t("activerecord.attributes.member.#{attr}")
-          %th
-            = t('.social_links')
           %tbody
             - team.members.each do |member|
               %tr
                 - attributes.each do |attr|
                   %td
                     = member.send attr
-                %td
-                  social_links
