@@ -28,6 +28,8 @@ ru:
           member_profile: Профиль члена МИЦ
           your_account_is_not_active: Аккаунт неактивен
           contact_list: Контакт-лист
+          my_profile: Мой профиль
+          i_am_header_of: Я руковожу
         activity_lines:
           corporative:
             confession:

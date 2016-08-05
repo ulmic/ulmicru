@@ -8,11 +8,14 @@ class Member < User
                   foreign_key: :target_id,
                   dependent: :destroy
   has_and_belongs_to_many :teams, foreign_key: :user_id
+  has_many :led_teams, class_name: 'Team',
+                       foreign_key: :member_id
   has_many :events, as: :organizer,
                     foreign_key: :organizer_id
   has_many :news, foreign_key: :user_id
   has_many :confessions, class_name: 'ActivityLines::Corporative::Confession',
                          dependent: :destroy
+
 
   validates :email, uniqueness: true
   validates :first_name, human_name: true,
@@ -101,6 +104,10 @@ class Member < User
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name, :patronymic, :motto, :ticket, :mobile_phone, :home_adress, :municipality, :locality, :experience, :want_to_do, :school ]
+
+  def is_header?
+    Team.where(member_id: id).any?
+  end
 
   private
 

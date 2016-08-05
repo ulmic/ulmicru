@@ -38,27 +38,47 @@
                   .icons
                     - if current_user.is_member?
                       - if current_user.confirmed?
-                        = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
+                        -#= link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
                           - if current_user.is_man?
                             .icon-man.min-icon
                           - else
                             .icon-woman.min-icon
-                        -#= link_to '#', data: { dropdown: 'member-dropdown', options: 'align:left;is_hover:true' }, aria: { controls: 'member-dropdown', expanded: false }, class: 'icon-bars min-icon fa-icon' do
+                        = link_to '#', data: { dropdown: 'member-dropdown', options: 'align:left;is_hover:true' }, aria: { controls: 'member-dropdown', expanded: false }, class: 'icon-bars min-icon fa-icon' do
                           = fa_icon :bars
-                        -#%ul#member-dropdown.f-dropdown.medium{ 'data-dropdown-content' => true, 'aria-hidden' => "true",  tabindex: "-1"  }
-                          = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.member_profile') do
-                            %span.icon{ style: 'font-size: 20px; margin-top: 5px' }
-                              - if current_user.is_man?
-                                = fa_icon :male
-                              - else
-                                = fa_icon :female
-                            %span
-                              = t('layouts.web.shared.navbar.member_profile')
-                          = link_to article_path(configus.articles.contact_list), title: t('layouts.web.shared.navbar.contact_list') do
-                            %span.icon
-                              = fa_icon 'th-list'
-                            %span
-                              = t('layouts.web.shared.navbar.contact_list')
+                        %ul#member-dropdown.f-dropdown.medium{ 'data-dropdown-content' => true, 'aria-hidden' => "true",  tabindex: "-1"  }
+                          %li
+                            = link_to member_path(current_user.ticket), title: t('layouts.web.shared.navbar.my_profile') do
+                              %span.icon{ style: 'font-size: 20px; margin-top: 5px' }
+                                - if current_user.is_man?
+                                  = fa_icon :male
+                                - else
+                                  = fa_icon :female
+                              %span
+                                = t('layouts.web.shared.navbar.my_profile')
+                          %li
+                            = link_to article_path(configus.articles.contact_list), title: t('layouts.web.shared.navbar.contact_list') do
+                              %span.icon
+                                = fa_icon 'th-list'
+                              %span
+                                = t('layouts.web.shared.navbar.contact_list')
+                          - if @led_teams.any?
+                            %li
+                              %h6
+                                %span.icon
+                                  = fa_icon :legal
+                                %span
+                                  = t('.i_am_header_of')
+                            %hr
+                            - @led_teams.each_with_index do |team, index|
+                              %li.team{ style: "#{'margin-top: 10px;' if index == 0 }"}
+                                = link_to edit_members_team_path(team) do
+                                  %span.icon
+                                    - if team.publicity.visible?
+                                      = fa_icon :eye
+                                    - else
+                                      = fa_icon 'eye-slash'
+                                  %span
+                                    = team.full_title
                     .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
                     = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
                       .icon-log-out.min-icon.link
