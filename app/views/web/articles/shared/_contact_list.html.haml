@@ -6,14 +6,20 @@
     - Organization::ContactList.list.each do |team|
       %h3
         = team.title
-      %table.contact-list-team-table
-        %thead
-          - attributes.each do |attr|
-            %th{ class: attr }
-              = t("activerecord.attributes.member.#{attr}")
-          %tbody
-            - team.members.each do |member|
-              %tr
-                - attributes.each do |attr|
-                  %td
-                    = member.send attr
+      - if team.members.any?
+        %table.contact-list-team-table
+          %thead
+            - attributes.each do |attr|
+              %th{ class: attr }
+                = t("activerecord.attributes.member.#{attr}")
+            %tbody
+              - team.members.each do |member|
+                %tr
+                  - attributes.each do |attr|
+                    %td
+                      = member.send attr
+      - else
+        .panel.panel-info
+          %h5
+            = fa_icon 'meh-o'
+            = t('.there_is_no_any_member_with_current_position')
