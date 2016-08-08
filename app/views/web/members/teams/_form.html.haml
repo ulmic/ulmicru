@@ -1,0 +1,3 @@
+= simple_form_for @team, url: { controller: 'web/members/teams', action: :update } do |f|
+  = f.input :description
+  = f.button :submit, t('helpers.links.save')

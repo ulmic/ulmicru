@@ -1,5 +1,3 @@
-class TeamForm < ApplicationForm
-  self.main_model = :team
-
-  attributes :title, :member_id, :description, :state
+class TeamForm < ApplicationReform
+  properties :title, :member_id, :description, :state
 end

@@ -6,6 +6,7 @@ class Web::ApplicationController < ApplicationController
   include Concerns::NotificationManagment
   include Concerns::NotificatableItems
   include Organization::PeopleHelper
+  include Concerns::TeamsParamsHelper
 
   if Rails.env.staging?
     before_filter :required_basic_auth!

@@ -1,5 +1,6 @@
 class Web::Members::TeamsController < Web::Members::ApplicationController
   before_filter :authenticate_team_header!
+  before_filter :edit_params, only: :update
 
   def edit
     @team = TeamForm.find_with_model params[:id]

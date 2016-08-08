@@ -156,6 +156,9 @@ ru:
             title: Подать ходатайство на получение корпоративной премии «Признание» %{year} года
           form:
             submit_petition: Подать ходатайство
+      teams:
+        edit:
+          title: Редактировать команду
     activity_lines:
       corporative:
         petitions:
