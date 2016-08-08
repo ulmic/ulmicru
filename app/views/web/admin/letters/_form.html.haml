@@ -25,7 +25,7 @@
       = f.input :executor_name, as: :string
       = f.input :stamp_of_receipt, as: :string
       = f.input :note, as: :string
-      = hint :letter, :file
+      = hint :letter, :file, place: :admin
       = f.input :file, as: :attachment_preview
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_letters_path, class: 'btn btn-default'

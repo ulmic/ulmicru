@@ -1,5 +1,6 @@
-- title
+- current_title = "#{t('.title')} | #{@team.decorate.full_title}"
+- title current_title
 .container
-  %h2.title
-    = t('.title')
+  %h3.title
+    = current_title
   = render partial: 'form'
