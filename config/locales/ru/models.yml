@@ -60,6 +60,8 @@ ru:
         place: Место проживания
         motto: Девиз по жизни
         mobile_phone: Мобильный телефон
+        mobile_phone_link: Мобильный телефон
+        email_link: Email
         birth_date: Дата рождения
         home_adress: Домашний адрес
         municipality: Муниципальное образование

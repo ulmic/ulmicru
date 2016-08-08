@@ -2,11 +2,11 @@ class Web::Members::TeamsController < Web::Members::ApplicationController
   before_filter :authenticate_team_header!
 
   def edit
-    @team = Members::TeamForm.find_with_model params[:id]
+    @team = TeamForm.find_with_model params[:id]
   end
 
   def update
-    @team = Members::TeamForm.find_with_model params[:id]
+    @team = TeamForm.find_with_model params[:id]
     if @team.submit params[:team]
       redirect_to edit_members_team_path @team.model
     else
