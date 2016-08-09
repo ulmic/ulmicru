@@ -159,6 +159,9 @@ ru:
       teams:
         edit:
           title: Редактировать команду
+      positions:
+        edit:
+          title: Редактировать должность
     activity_lines:
       corporative:
         petitions:

@@ -1,0 +1,10 @@
+- current_title = "#{t('.title')} | #{@position.member.decorate.short_name}"
+- title current_title
+.container
+  %h3.title
+    = current_title
+  .row
+    .small-2.columns
+      = @position.member.decorate.avatar_small_img
+    .small-10.columns
+      = render partial: 'form'
