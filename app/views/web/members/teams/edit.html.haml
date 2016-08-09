@@ -15,7 +15,7 @@
           = user.short_name
         %td
           %table.grid
-            - positions_associate_with_team(user.positions, @team).decorate.each do |position|
+            - positions_associate_with_team(user.positions.active, @team).decorate.each do |position|
               %tr
                 %td
                   - if position.for_now
@@ -26,4 +26,4 @@
                   = position.duration
                 %td.actions
                   = link_to fa_icon('pencil 2x'), edit_members_position_path(position, back: edit_members_team_path(@team)), class: 'button tiny'
-                  = link_to fa_icon('trash 2x'), members_position_path(position, back: edit_members_team_path(@team)), method: :delete, class: 'button tiny alert'
+                  = link_to fa_icon('trash 2x'), members_position_path(position), method: :delete, class: 'button tiny alert'

@@ -14,6 +14,12 @@ class Web::Members::PositionsController < Web::Members::ApplicationController
     end
   end
 
+  def destroy
+    @position = Position.find params[:id]
+    @position.remove
+    redirect_to :back
+  end
+
   private
 
   def set_position
