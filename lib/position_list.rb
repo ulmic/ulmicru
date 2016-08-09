@@ -58,11 +58,16 @@ module PositionList
           end
         end
       end
-      @positions_list ||= positions_list
+      @positions_list ||= order_positions positions_list
     end
 
     def load_positions_yml
       @_cache_positions_yml ||= YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access
+    end
+
+    def order_positions(positions)
+      order = load_positions_yml[:order]
+      positions.sort_by { |p| order.include?(p) ? [order.index(p), p] : [order.index(p.split(' ')[0]), p] }
     end
   end
 end

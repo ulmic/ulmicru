@@ -5,9 +5,13 @@ module Organization
 
     def self.list
       teams.reduce([]) do |arr, team|
-        members = team.users.decorate.map(&:main_current_position).compact.sort_by { |p| PositionList.list.index(p.title) }.map &:member
+        if team.is_presidium?
+          members = team.users.decorate.map(&:main_current_position).sort_by { |p| PositionList.list.index(p.title) }.map(&:member)
+        else
+          members = team.users.decorate.map(&:main_current_position).compact.sort_by { |p| PositionList.list.index(p.title) }.map(&:member)
+        end
         users = MemberDecorator.decorate_collection(members.map do |member|
-          member if !arr.map(&:users).map(&:object).flatten.map(&:id).include?(member.id) && !presidium.users.map(&:id).include?(member.id)
+          member if !arr.map(&:users).map(&:object).flatten.map(&:id).include?(member.id)
         end.compact)
         arr << ContactList::Team.new(team.decorate.full_title, users)
       end
@@ -19,7 +23,7 @@ module Organization
       include Organization::Teams
 
       def teams
-        [ area_headers ] + ::Team::Departament.presented
+        [ presidium, area_headers ] + ::Team::Departament.presented
       end
     end
   end

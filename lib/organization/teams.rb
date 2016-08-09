@@ -1,5 +1,7 @@
 module Organization
   module Teams
+    include PositionList
+
     def presidium
       @presidium ||= Team.includes(:users).find_by_title 'Президиум'
     end
@@ -32,7 +34,7 @@ module Organization
           end
         end
       end
-      team_positions.flatten
+      order_positions team_positions.flatten
     end
 
     def positions_associate_with_team(positions, team)

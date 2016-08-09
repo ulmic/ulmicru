@@ -45,7 +45,9 @@ class MemberDecorator < UserDecorator
   end
 
   def main_current_position
-    object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first
+    if object.positions.current_positions.any?
+      object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first
+    end
   end
 
   def ticket_number
