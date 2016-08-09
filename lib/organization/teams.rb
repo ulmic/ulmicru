@@ -1,6 +1,6 @@
 module Organization
   module Teams
-    include PositionList
+    include Positions
 
     def presidium
       @presidium ||= Team.includes(:users).find_by_title 'Президиум'

@@ -2,6 +2,7 @@
 module PositionList
   class << self
     include RussianCases
+    include Organization::Positions
     # FIXME слишком большая функция
     def list
       positions_structure = load_positions_yml[:positions]
@@ -63,11 +64,6 @@ module PositionList
 
     def load_positions_yml
       @_cache_positions_yml ||= YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access
-    end
-
-    def order_positions(positions)
-      order = load_positions_yml[:order]
-      positions.sort_by { |p| order.include?(p) ? [order.index(p), p] : [order.index(p.split(' ')[0]), p] }
     end
   end
 end
