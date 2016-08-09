@@ -20,6 +20,18 @@ module Organization
           end
         end
       end
+      team_type_structure = 'team/departament' if team.is_a? Team::Departament
+      team_type_structure = 'team/primary' if team.is_a? Team::Primary
+      if team_type_structure.present?
+        structure = positions_structure[:positions][team_type_structure]
+        if structure[:activity_line].present?
+          structure[:activity_line].each do |p|
+            team_positions += ActivityLine.active.has_curators.decorate.map do |a_l|
+              "#{p.mb_chars.capitalize.to_s} #{a_l.full_title(:genitive)} в #{team.full_title(:dative)}"
+            end
+          end
+        end
+      end
       positions.where title: team_positions
     end
   end
