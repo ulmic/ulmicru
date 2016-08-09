@@ -14,7 +14,12 @@
         %td
           = user.short_name
         %td
-          %ul
-            - positions_associate_with_team(user.positions, @team).each do |position|
-              %li
-                = position.title
+          %table.grid
+            - positions_associate_with_team(user.positions, @team).decorate.each do |position|
+              %tr
+                %td
+                  = position.title
+                  = position.duration
+                %td.actions
+                  = link_to fa_icon('pencil 2x'), edit_members_position_path(position), class: 'button tiny'
+                  = link_to fa_icon('trash 2x'), members_position_path(position), method: :delete, class: 'button tiny alert'

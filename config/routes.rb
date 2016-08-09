@@ -41,6 +41,7 @@ Rails.application.routes.draw do
         resources :petitions, except: [ :index, :show, :destroy ]
       end
       resources :teams, only: [ :edit, :update ]
+      resources :positions, only: [ :edit, :update, :destroy ]
     end
     namespace :activity_lines do
       namespace :corporative do
