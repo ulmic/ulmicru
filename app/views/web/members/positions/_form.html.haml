@@ -5,4 +5,5 @@
   = f.label :for_now
   = f.input :for_now, label: false, as: :boolean, value: 1
   = f.input :state, as: :hidden, input_html: { value: :unviewed }
+  = hidden_field_tag :back, params[:back]
   = f.button :submit, t('helpers.links.save')
