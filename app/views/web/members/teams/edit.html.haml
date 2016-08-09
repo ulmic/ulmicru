@@ -1,6 +1,20 @@
-- current_title = "#{t('.title')} | #{@team.decorate.full_title}"
+- current_title = "#{t('.title')} | #{@team.full_title}"
 - title current_title
 .container
   %h3.title
     = current_title
   = render partial: 'form'
+  %table.table
+    - @team.users.each do |user|
+      %tr
+        %td
+          = user.ticket_number
+        %td
+          = user.avatar_small_img
+        %td
+          = user.short_name
+        %td
+          %ul
+            - positions_associate_with_team(user.positions, @team).each do |position|
+              %li
+                = position.title

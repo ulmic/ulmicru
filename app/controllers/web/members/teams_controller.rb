@@ -3,7 +3,8 @@ class Web::Members::TeamsController < Web::Members::ApplicationController
   before_filter :edit_params, only: :update
 
   def edit
-    @team = TeamForm.find_with_model params[:id]
+    @team = Team.includes(users: :positions).find(params[:id]).decorate
+    @team_form = TeamForm.find_with_model params[:id]
   end
 
   def update
