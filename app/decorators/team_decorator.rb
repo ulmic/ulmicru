@@ -1,6 +1,8 @@
 class TeamDecorator < ApplicationDecorator
   delegate_all
 
+  decorates_association :users
+
   def short_description
     "#{strip_tags(model.description)[0..50]}..."
   end

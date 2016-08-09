@@ -40,6 +40,8 @@ Rails.application.routes.draw do
       namespace :corporative do
         resources :petitions, except: [ :index, :show, :destroy ]
       end
+      resources :teams, only: [ :edit, :update ]
+      resources :positions, except: [ :index, :show ]
     end
     namespace :activity_lines do
       namespace :corporative do

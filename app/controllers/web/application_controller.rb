@@ -1,10 +1,12 @@
 class Web::ApplicationController < ApplicationController
   before_filter :load_categories_tree
   before_filter :notification_count
+  before_filter :load_members_menu
 
   include Concerns::NotificationManagment
   include Concerns::NotificatableItems
   include Organization::PeopleHelper
+  include Concerns::TeamsParamsHelper
 
   if Rails.env.staging?
     before_filter :required_basic_auth!
@@ -37,6 +39,12 @@ class Web::ApplicationController < ApplicationController
     @rss_article_id = 19
     # @month_article статья месяца
     #@month_article = Article.where(id: 22).first
+  end
+
+  def load_members_menu
+    if current_user&.is_member? && current_user&.is_header?
+      @led_teams = current_user.led_teams.decorate
+    end
   end
 
   def notification_count

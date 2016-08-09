@@ -31,7 +31,7 @@
       - else
         = f.input :state, as: :hidden, input_html: { value: :unviewed }
       %hr
-      = hint :event, :place
+      = hint :event, :place, place: :admin
       %br
       = f.label :place
       .form-group.text.required

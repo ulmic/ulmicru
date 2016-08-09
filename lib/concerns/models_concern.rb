@@ -10,7 +10,10 @@ module ModelsConcern
   end
 
   def model_name
-    controller_path.sub('web/admin/', '').classify
+    namespaces = ['web/admin/', 'web/members/']
+    namespaces.reduce(controller_path) do |name, namespace|
+      name = name.sub namespace, ''
+    end.classify
   end
 
   def model_class

@@ -118,7 +118,7 @@ class MemberDecorator < UserDecorator
 
   def avatar_small_img
     h.content_tag :a, href: member_path(object.ticket) do
-      h.content_tag :img, src: object.avatar.small do
+      h.content_tag :img, class: :avatar, src: object.avatar.small do
       end
     end
   end

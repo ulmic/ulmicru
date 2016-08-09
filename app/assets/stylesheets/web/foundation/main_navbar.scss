@@ -214,14 +214,27 @@
 }
 
 #member-dropdown {
-  width: 211px;
+  width: 300px;
   text-align: left;
   a {
     line-height: 2.5rem;
     height: 42px;
   }
+  h6 {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 100%;
+  }
   span.icon {
     width: 18px;
     text-align: center;
+  }
+  li.team {
+    &:first-child {
+      margin-top: 10px;
+    }
+    a {
+      line-height: 1rem;
+    }
   }
 }

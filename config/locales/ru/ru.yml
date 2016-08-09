@@ -28,6 +28,8 @@ ru:
           member_profile: Профиль члена МИЦ
           your_account_is_not_active: Аккаунт неактивен
           contact_list: Контакт-лист
+          my_profile: Мой профиль
+          i_am_header_of: Я руковожу
         activity_lines:
           corporative:
             confession:
@@ -127,6 +129,8 @@ ru:
         default_show:
           same_articles: Похожие статьи
           popular_articles: Популярные статьи
+        contact_list:
+          there_is_no_any_member_with_current_position: Ни один из членов команды не заполнил данные о должности...
     events:
       show:
         where: 'Где'
@@ -152,6 +156,15 @@ ru:
             title: Подать ходатайство на получение корпоративной премии «Признание» %{year} года
           form:
             submit_petition: Подать ходатайство
+      teams:
+        edit:
+          title: Редактировать команду
+          its_contact_list_of_your_team: Члены вашей команды, у которых есть текущая должность будут показаны в Контакт-листе Молодёжного инициативного центра
+      positions:
+        new:
+          title: Добавить должность
+        edit:
+          title: Редактировать должность
     activity_lines:
       corporative:
         petitions:

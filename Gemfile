@@ -63,6 +63,7 @@ gem 'more_html_tags'
 gem 'hashdiff'
 gem 'react_webpack_rails'
 gem 'rwr-redux'
+gem 'virtus'
 
 group :production do
   gem 'unicorn-rails'

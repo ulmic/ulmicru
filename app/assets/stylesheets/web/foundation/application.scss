@@ -29,5 +29,31 @@ span {
 .container {
   table {
     width: 100%;
+    &.grid {
+      border: none;
+    }
+    td.actions {
+      width: 137px;
+      a.button {
+        float: left;
+      }
+    }
+    td.labels {
+      width: 88px;
+      span {
+        margin: 0; 
+      }
+    }
+  }
+  .add {
+    width: 100%;
+    text-align: right;
+    padding-right: 13px;
+  }
+}
+
+a, button, input[type=submit] {
+  &.button:hover {
+    background-color: #e28722;
   }
 }

@@ -20,7 +20,7 @@
         = f.input :title, as: :string
       .team_input
         = f.input :team_id, as: :select, collection: teams_hash(@departaments), input_html: { class: :select2 }
-      = f.input :description, as: :ckeditor
+      = f.input :description, as: :text
       = f.input :state, as: :hidden, input_html: { value: :active }
       = f.input :publicity
       = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
