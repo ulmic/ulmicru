@@ -1,14 +1,16 @@
 module Organization
   module ContactList
-    class ContactList::Team < Struct.new(:title, :members)
+    class ContactList::Team < Struct.new(:title, :users)
     end
 
     def self.list
       teams.reduce([]) do |arr, team|
-        members = MemberDecorator.decorate_collection(team.members.order(:ticket).includes(:positions, :attribute_accesses).map do |member|
-          member if member.positions.current_positions.any? && !arr.map(&:members).flatten.include?(member)
+        members = team.users.decorate.map(&:main_current_position).compact.sort_by { |p| PositionList.list.index(p.title) }.map(&:member)
+        members += team.users.without_current_positions if team.is_presidium?
+        users = MemberDecorator.decorate_collection(members.map do |member|
+          member if !arr.map(&:users).map(&:object).flatten.map(&:id).include?(member.id)
         end.compact)
-        arr << ContactList::Team.new(team.decorate.full_title, members)
+        arr << ContactList::Team.new(team.decorate.full_title, users)
       end
     end
 

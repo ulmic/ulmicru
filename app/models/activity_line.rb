@@ -1,6 +1,8 @@
 class ActivityLine < ActiveRecord::Base
   extend Enumerize
 
+  validates :activity_type, presence: true
+
   belongs_to :member
   has_many :events
   has_many :tags, as: :target, dependent: :destroy
