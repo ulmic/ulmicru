@@ -9,7 +9,8 @@
     - @team.users.each do |user|
       %tr
         %td
-          = user.ticket_number
+          %h5{ style: 'width: 55px' }
+            = user.ticket_number
         %td
           = user.avatar_small_img
         %td
@@ -18,7 +19,10 @@
           %table.grid
             - positions_associate_with_team(user.positions.active, @team).decorate.each do |position|
               %tr
-                %td
+                %td.labels
+                  - if position.unviewed?
+                    %span.label.alert{ title: t('hints.unviewed')}
+                      = fa_icon 'eye-slash'
                   - if position.for_now
                     %span.label.success{ title: t('hints.position.for_now', name: position.member.first_name)}
                       = fa_icon 'check'
@@ -26,5 +30,7 @@
                   = position.title
                   = position.duration
                 %td.actions
-                  = link_to fa_icon('pencil 2x'), edit_members_position_path(position, back: edit_members_team_path(@team)), class: 'button tiny'
+                  = link_to fa_icon('pencil 2x'), edit_members_position_path(position, team_id: @team.id), class: 'button tiny'
                   = link_to fa_icon('trash 2x'), members_position_path(position), method: :delete, class: 'button tiny alert'
+          .add{ colspan: 3 }
+            = link_to fa_icon('plus 2x'), new_members_position_path(id: user.id, team_id: @team.id), class: 'button tiny success'

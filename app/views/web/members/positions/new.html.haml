@@ -1,0 +1,11 @@
+- member = @member || @position_form.member.decorate
+- current_title = "#{t('.title')} | #{member.short_name}"
+- title current_title
+.container
+  %h3.title
+    = current_title
+  .row
+    .small-2.columns
+      = member.avatar_small_img
+    .small-10.columns
+      = render partial: 'form', locals: { action: :create }

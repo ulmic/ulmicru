@@ -38,6 +38,17 @@ span {
         float: left;
       }
     }
+    td.labels {
+      width: 88px;
+      span {
+        margin: 0; 
+      }
+    }
+  }
+  .add {
+    width: 100%;
+    text-align: right;
+    padding-right: 13px;
   }
 }
 

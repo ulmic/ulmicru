@@ -7,4 +7,4 @@
     .small-2.columns
       = @position.member.decorate.avatar_small_img
     .small-10.columns
-      = render partial: 'form'
+      = render partial: 'form', locals: { action: :update }
