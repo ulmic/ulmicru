@@ -1,25 +1,7 @@
-- attributes = [ :ticket_number, :avatar_small_img, :short_name_link, :main_position_title, :mobile_phone_link, :email_link, :social_links ]
 .news.articles.container-big
   %h1.title
     = @article.title
   .row.contacts-people
+    = render 'web/articles/shared/contact_list/team', team: presidium
     - Organization::ContactList.list.each do |team|
-      %h3
-        = team.title
-      - if team.members.any?
-        %table.contact-list-team-table
-          %thead
-            - attributes.each do |attr|
-              %th{ class: attr }
-                = t("activerecord.attributes.member.#{attr}")
-            %tbody
-              - team.members.each do |member|
-                %tr
-                  - attributes.each do |attr|
-                    %td
-                      = member.send attr
-      - else
-        .panel.panel-info
-          %h5
-            = fa_icon 'meh-o'
-            = t('.there_is_no_any_member_with_current_position')
+      = render 'web/articles/shared/contact_list/team', team: team

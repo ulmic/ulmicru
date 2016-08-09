@@ -1,11 +1,11 @@
 module Organization
   module Teams
     def presidium
-      Team.find_by_title 'Президиум'
+      @presidium ||= Team.includes(:users).find_by_title 'Президиум'
     end
 
     def area_headers
-      Team.find_by_title 'Руководители областных программ и проектов МИЦ'
+      @area_headers ||= Team.find_by_title 'Руководители областных программ и проектов МИЦ'
     end
 
     def team_positions(team)

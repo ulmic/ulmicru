@@ -1,0 +1,20 @@
+- attributes = [ :ticket_number, :avatar_small_img, :short_name_link, :main_position_title, :mobile_phone_link, :email_link, :social_links ]
+%h3
+  = team.title
+- if team.users.any?
+  %table.contact-list-team-table
+    %thead
+      - attributes.each do |attr|
+        %th{ class: attr }
+          = t("activerecord.attributes.member.#{attr}")
+      %tbody
+        - team.users.each do |member|
+          %tr
+            - attributes.each do |attr|
+              %td
+                = member.decorate.send attr
+- else
+  .panel.panel-info
+    %h5
+      = fa_icon 'meh-o'
+      = t('.there_is_no_any_member_with_current_position')
