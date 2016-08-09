@@ -3,7 +3,7 @@ class MemberDecorator < UserDecorator
 
   decorates_association :teams
   decorates_association :parent
-
+  
   def full_name
     "#{first_name} #{patronymic} #{last_name}"
   end
@@ -42,6 +42,10 @@ class MemberDecorator < UserDecorator
     unless last_held_position == []
       last_held_position.title if last_held_position
     end
+  end
+
+  def main_current_position
+    object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first
   end
 
   def ticket_number
