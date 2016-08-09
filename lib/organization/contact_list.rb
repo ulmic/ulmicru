@@ -5,11 +5,8 @@ module Organization
 
     def self.list
       teams.reduce([]) do |arr, team|
-        if team.is_presidium?
-          members = team.users.decorate.map(&:main_current_position).sort_by { |p| PositionList.list.index(p.title) }.map(&:member)
-        else
-          members = team.users.decorate.map(&:main_current_position).compact.sort_by { |p| PositionList.list.index(p.title) }.map(&:member)
-        end
+        members = team.users.decorate.map(&:main_current_position).compact.sort_by { |p| PositionList.list.index(p.title) }.map(&:member)
+        members += team.users.without_current_positions if team.is_presidium?
         users = MemberDecorator.decorate_collection(members.map do |member|
           member if !arr.map(&:users).map(&:object).flatten.map(&:id).include?(member.id)
         end.compact)

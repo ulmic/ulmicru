@@ -10,5 +10,8 @@ module UserScopes
     scope :unviewed, -> { where(state: :unviewed, type: nil).where.not(email: nil).order('id DESC') }
     scope :subscribed_to_deliveries, -> { joins(:subscriptions).where 'subscriptions.subscription_type = ?', :deliveries }
     scope :with_email, -> { where.not email: nil }
+    scope :without_current_positions, -> {
+      where.not(id: Position.current_positions.map(&:member_id).uniq)
+    }
   end
 end

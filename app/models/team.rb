@@ -44,6 +44,10 @@ class Team < ActiveRecord::Base
     model_name == 'Team::Primary'
   end
 
+  def is_presidium?
+    title == 'Президиум'
+  end
+
   alias members users
 
   include PgSearch
