@@ -130,7 +130,8 @@ ru:
           same_articles: Похожие статьи
           popular_articles: Популярные статьи
         contact_list:
-          there_is_no_any_member_with_current_position: Ни один из членов команды не заполнил данные о должности...
+          team:
+            there_is_no_any_member_with_current_position: Ни один из членов команды не заполнил данные о должности...
     events:
       show:
         where: 'Где'
