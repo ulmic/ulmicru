@@ -25,16 +25,25 @@ module Web::ApplicationHelper
   def hint(model_name, attribute_name, place:)
     case place
     when :admin
+      text_hint t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}"), place: place
+    when :face
+      text_hint t("hints.#{model_name.to_s.underscore}.#{attribute_name}"), place: place
+    end
+  end
+
+  def text_hint(text, place:)
+    case place
+    when :admin
       content_tag :div, class: 'alert alert-dissmissible alert-info' do
         concat fa_icon 'info-circle'
         concat ' '
-        concat t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}")
+        concat text
       end
     when :face
       content_tag :div, class: 'panel panel-info' do
         concat fa_icon 'info-circle'
         concat ' '
-        concat t("hints.#{model_name.to_s.underscore}.#{attribute_name}")
+        concat text
       end
     end
   end

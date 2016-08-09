@@ -4,6 +4,7 @@
   %h3.title
     = current_title
   = render partial: 'form'
+  = text_hint t('.its_contact_list_of_your_team'), place: :face
   %table.table
     - @team.users.each do |user|
       %tr
