@@ -18,6 +18,10 @@
             - positions_associate_with_team(user.positions, @team).decorate.each do |position|
               %tr
                 %td
+                  - if position.for_now
+                    %span.label.success{ title: t('hints.position.for_now', name: position.member.first_name)}
+                      = fa_icon 'check'
+                %td
                   = position.title
                   = position.duration
                 %td.actions
