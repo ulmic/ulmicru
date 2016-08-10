@@ -30,8 +30,7 @@ module Concerns
     end
 
     def authenticate_member!
-      authenticate_user!
-      unless current_user.is_member? && current_user.member_confirmed?
+      unless current_user&.is_member? && current_user.member_confirmed?
         redirect_to not_found_page_path
       end
     end
