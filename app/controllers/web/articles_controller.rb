@@ -3,6 +3,10 @@ class Web::ArticlesController < Web::ApplicationController
 
   def show
     @article = Article.find(params[:id]).decorate
+    if @article.access.members?
+      authenticate_member!
+      return
+    end
     @article.increase_views
     @topic_articles = Article.broadcasted.same_articles(@article).last 3
     @strings = @article.tags.active.string

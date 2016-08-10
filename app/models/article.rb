@@ -32,6 +32,7 @@ class Article < ActiveRecord::Base
 
   extend Enumerize
   enumerize :publicity, in: [ :visible, :access_on_link ], default: :visible
+  enumerize :access, in: [ :all, :members ], default: :all
 
   include Concerns::ViewsManagment
   include PgSearch

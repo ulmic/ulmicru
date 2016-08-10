@@ -16,6 +16,7 @@
       = f.input :state_event, as: :state_event
       = f.input :publicity
       = f.input :view
+      = f.input :access
       = f.association :category, collection: @categories, prompt: t('helpers.links.select'), label: t(model_class.human_attribute_name :category_id)
       = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')

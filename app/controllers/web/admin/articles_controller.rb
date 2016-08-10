@@ -5,7 +5,7 @@ class Web::Admin::ArticlesController < Web::Admin::ApplicationController
     else 
       articles = Article.send params[:scope]
     end
-    @articles = articles.page(params[:page]).decorate
+    @articles = articles.order('id DESC').page(params[:page]).decorate
     @tag = Tag.new
   end
 

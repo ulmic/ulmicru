@@ -59,7 +59,7 @@ module PositionList
           end
         end
       end
-      @positions_list ||= order_positions positions_list
+      @positions_list ||= order_positions(positions_list + load_positions_yml[:additions])
     end
 
     def load_positions_yml

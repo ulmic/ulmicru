@@ -4,6 +4,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
+      %th
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:category_id)
@@ -19,6 +20,9 @@
           = link_to article.id, edit_admin_article_path(article)
           = link_to article_path(article) do
             %span.glyphicon.glyphicon-share
+        %td{ style: 'width: 48px'}
+          = article.publicity_icon
+          = article.access_icon
         %td= link_to article.title, edit_admin_article_path(article)
         %td= article.short_body
         %td= (article.category.present? ? article.category.name : "")

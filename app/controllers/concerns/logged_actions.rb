@@ -1,7 +1,7 @@
 module Concerns
   module LoggedActions
     include ::ModelsConcern
-    include Concerns::ParamsComparingConcern
+    include ParamsComparingConcern
     def nested_params_contains?(logged_action, association, **attributes)
       logged_action.parsed_params["#{association}_attributes"]&.values&.map do |hash|
         (attributes.to_a - hash.to_a).empty?
