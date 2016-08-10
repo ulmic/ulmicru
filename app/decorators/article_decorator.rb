@@ -18,4 +18,25 @@ class ArticleDecorator < ApplicationDecorator
   def self.collections
     [ :confirmed, :inactive, :unviewed ]
   end
+
+  def publicity_icon
+    case object.publicity
+    when 'visible'
+      fa_icon :eye
+    when 'access_on_link'
+      fa_icon :link
+    when 'hidden'
+      fa_icon 'eye-slash'
+    end
+  end
+
+  def access_icon
+    case object.access
+    when 'all'
+      fa_icon :users
+    when 'members'
+      image_tag configus.organization.logo_transparent, class: 'my-glyphicon' do
+      end
+    end
+  end
 end

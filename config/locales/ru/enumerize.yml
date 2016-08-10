@@ -59,3 +59,6 @@ ru:
         visible: Для всех
         access_on_link: Доступ по ссылке
         hidden: Скрытая
+      access:
+        all: Для всех
+        members: Только членов МИЦ

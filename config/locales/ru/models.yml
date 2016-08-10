@@ -122,6 +122,7 @@ ru:
         attachments: Приложения
         state: Статус
         publicity: Доступ
+        access: Целевая аудитория
       category:
         name: Название
         parent: Родитель
