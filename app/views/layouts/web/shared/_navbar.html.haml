@@ -61,7 +61,7 @@
                                 = fa_icon 'th-list'
                               %span
                                 = t('layouts.web.shared.navbar.contact_list')
-                          - if @led_teams.any?
+                          - if @led_teams&.any?
                             %li
                               %h6
                                 %span.icon
