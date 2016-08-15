@@ -5,6 +5,17 @@ ru:
         closed: Закрытые
         active: Активные
         removed: Удалённые
+        unviewed: Непросмотренные
+      events: &default_events
+        confirm: Подтвердить
+        remove: Удалить
+        restore: Восстановить
+      team:
+        state:
+          states:
+            <<: *default
+          events:
+            <<: *default_events
       user:
         state:
           states:
@@ -110,11 +121,6 @@ ru:
             active: Активные
             removed: Удалённые
             actual: Актуальные
-      team:
-        state:
-          states:
-            unviewed: Непросмотренные
-            active: Активные
             removed: Удалённые
       activity_line:
         state:

@@ -25,7 +25,7 @@
           %td= team.human_state_name
         %td.actions
           - if team.unviewed?
-            = link_to admin_team_path(team, team: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do
+            = link_to admin_team_path(team, team: { state: :active }), method: :patch, class: 'btn btn-xs btn-success' do
               %span.glyphicon.glyphicon-ok
           = link_to edit_admin_team_path(team), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
