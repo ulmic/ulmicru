@@ -8,7 +8,7 @@ $ ->
 
   $('.see_coordinates').click (e) ->
     e.preventDefault()
-    url = "http://geocode-maps.yandex.ru/1.x/?geocode=#{$('#places_place_state').val()}+#{$('#places_place_city').val()}+#{$('#places_place_address').val()}&format=json"
+    url = "https://geocode-maps.yandex.ru/1.x/?geocode=#{$('#places_place_state').val()}+#{$('#places_place_city').val()}+#{$('#places_place_address').val()}&format=json"
     $.ajax {
       url: url
       dataType: 'json'
