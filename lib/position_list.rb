@@ -12,7 +12,7 @@ module PositionList
         positions_list = []
         positions_structure.keys.each do |branch|
           positions = positions_structure[branch]
-          collection = branch.camelize.constantize.active
+          collection = branch.camelize.constantize.presented
           # FIXME any idea?
           collection = collection.ulmic if branch.camelize.constantize == ActivityLine
           collection = collection.visible if branch.camelize.constantize == Team

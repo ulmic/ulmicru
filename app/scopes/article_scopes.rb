@@ -10,5 +10,6 @@ module ArticleScopes
     scope :same_articles, -> (article) { article.category.articles.where.not(id: article.id) }
     scope :popular, -> { order('views DESC') }
     scope :visible, -> { where publicity: :visible }
+    scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
   end
 end

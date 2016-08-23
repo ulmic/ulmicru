@@ -14,6 +14,7 @@ class Team < ActiveRecord::Base
     state :unviewed
     state :active
     state :removed
+    state :updated
 
     event :confirm do
       transition all => :active

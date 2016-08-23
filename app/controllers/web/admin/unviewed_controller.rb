@@ -6,7 +6,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
 
   def index
     if params[:items].present?
-      @unviewed = params[:items].to_s.classify.constantize.unviewed.page(params[:page]).decorate
+      @unviewed = params[:items].to_s.classify.constantize.need_to_review.page(params[:page]).decorate
       @tag = Tag.new
     end
   end

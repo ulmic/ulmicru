@@ -48,11 +48,10 @@ class Web::ApplicationController < ApplicationController
   end
 
   def notification_count
-    if signed_in? && current_user.role.in?([ 'admin', 'tech_admin' ])
-      @notification_count = 0
-      Concerns::NotificatableItems.items.each do |collection_type|
-        @notification_count += collection_type.to_s.capitalize.constantize.unviewed.count
-      end
+    if signed_in? && current_user.admin?
+      @notification_count = Concerns::NotificatableItems.items.map do |collection_type|
+        collection_type.to_s.capitalize.constantize.need_to_review.count
+      end.sum
     end
   end
 

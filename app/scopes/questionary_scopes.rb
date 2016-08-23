@@ -9,5 +9,6 @@ module QuestionaryScopes
     scope :presented, -> { where.not(state: :removed) }
     scope :member_on_the_trial, -> { where member_state: :on_the_trial }
     scope :member_trial_passed, -> { where member_state: :trial_passed }
+    scope :need_to_review, -> { where 'member_state = \'unviewed\' OR member_state = \'updated\'' }
   end
 end

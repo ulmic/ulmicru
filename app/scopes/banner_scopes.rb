@@ -10,5 +10,6 @@ module BannerScopes
     scope :with_vertical, -> { where.not(vertical: nil) }
     scope :with_horizontal, -> { where.not(horizontal: nil) }
     scope :actual, -> { where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now) }
+    scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
   end
 end
