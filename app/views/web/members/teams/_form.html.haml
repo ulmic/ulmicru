@@ -1,6 +1,6 @@
 = simple_form_for @team_form, url: { controller: 'web/members/teams', action: :update } do |f|
   = hint :team, :description, place: :face
   = f.input :description, as: :text
-  = f.input :state, as: :hidden, input_html: { value: :unviewed }
+  = f.input :state, as: :hidden, input_html: { value: :updated }
   = f.association :users, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, input_html: { class: :select2 }
   = f.button :submit, t('helpers.links.save')

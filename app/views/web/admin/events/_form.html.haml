@@ -29,7 +29,7 @@
       - if current_user.role.admin?
         = f.input :state, as: :hidden, input_html: { value: :confirmed }
       - else
-        = f.input :state, as: :hidden, input_html: { value: :unviewed }
+        = f.input :state, as: :hidden, input_html: { value: :updated }
       %hr
       = hint :event, :place, place: :admin
       %br

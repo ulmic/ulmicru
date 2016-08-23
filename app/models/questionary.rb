@@ -30,6 +30,7 @@ class Questionary < Member
     state :on_the_trial
     state :trial_passed
     state :declined
+    state :updated
 
     event :confirm do
       transition all => :confirmed

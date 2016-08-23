@@ -13,5 +13,6 @@ module UserScopes
     scope :without_current_positions, -> {
       where.not(id: Position.current_positions.map(&:member_id).uniq)
     }
+    scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
   end
 end
