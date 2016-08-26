@@ -26,10 +26,13 @@
       = f.input :main_photo, label: false, as: :jasny_file_preview_upload
       = f.input :begin_date, as: :datetime_picker
       = f.input :end_date, as: :datetime_picker
-      - if current_user.role.admin?
+      - if current_user.admin?
         = f.input :state, as: :hidden, input_html: { value: :confirmed }
       - else
-        = f.input :state, as: :hidden, input_html: { value: :updated }
+        - if @event_form.model.created_at.present?
+          = f.input :state, as: :hidden, input_html: { value: :updated }
+        - else
+          = f.input :state, as: :hidden, input_html: { value: :unviewed }
       %hr
       = hint :event, :place, place: :admin
       %br
