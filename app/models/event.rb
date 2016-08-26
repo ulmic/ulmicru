@@ -17,6 +17,7 @@ class Event < ActiveRecord::Base
     state :declined
     state :confirmed
     state :removed
+    state :updated
 
     event :confirm do
       transition all => :confirmed
