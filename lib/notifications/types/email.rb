@@ -7,7 +7,11 @@ module Notifications
         when 'News'
           NewsMailer.delay.send(params[:theme], params[:object], params[:user])
         when 'Questionary'
-          QuestionaryMailer.delay.send(params[:theme], params[:object], params[:user])
+          if QuestionaryMailer.respond_to? params[:theme]
+            QuestionaryMailer.delay.send(params[:theme], params[:object], params[:user])
+          else
+            UserMailer.delay.send(params[:theme], params[:object], params[:user])
+          end
         else
           UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end
