@@ -2,10 +2,6 @@
   vars:
     app_path: "/srv/ulmicru"
     shared_path: "{{ app_path }}/shared"
-  vars_prompt:
-    - name: branch
-      prompt: Choose branch
-      default: master
 
   tasks:
     - name: Ping to server
@@ -28,7 +24,7 @@
     - name: Checking out repo
       git: repo=https://github.com/ulmic/ulmicru.git
            dest={{ release_path }}
-           version={{ branch }}
+           version=master
 
     - name: Linking config files
       file:
