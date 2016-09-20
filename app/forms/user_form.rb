@@ -1,6 +1,3 @@
-class UserForm < ApplicationForm
-  self.main_model = :user
-
-  attributes :role, :email, :first_name, :last_name, required: true
-  attributes :patronymic, :password
+class UserForm < ApplicationReform
+  properties :role, :email, :first_name, :last_name, :patronymic, :password, :team_ids
 end
