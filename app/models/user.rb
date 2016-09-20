@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
                            dependent: :destroy
   has_many :logged_actions
   has_many :subscriptions, as: :receiver, dependent: :destroy
+  has_and_belongs_to_many :teams
 
   validates :email, email: true,
                     allow_blank: true

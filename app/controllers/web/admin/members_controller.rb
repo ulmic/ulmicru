@@ -12,7 +12,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   end
 
   def show
-    @member = Member.includes(:positions).find(params[:id]).decorate
+    @member = Member.includes(:positions, :teams).find(params[:id]).decorate
     get_registrations_with_logs @member.registrations
   end
 
@@ -38,7 +38,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
       if member.unavailable?
         @member_form = MemberForm.find_with_model member.id
       else
-        redirect_to admin_members_path
+        redirect_to admin_member_path @member_form.model
       end
     else
       @member_form = MemberForm.new_with_model
@@ -57,7 +57,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     @member_form = member_form(member).new member
     @member_form.submit params[:member]
     if @member_form.save
-      redirect_to edit_admin_member_path @member_form.model
+      redirect_to admin_member_path @member_form.model
     else
       choose_members
       render action: :edit

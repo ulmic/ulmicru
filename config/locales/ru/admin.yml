@@ -8,6 +8,11 @@ ru:
       enter_organizers_also: В поле участники сразу добавляйте организаторов мероприятия
   web:
     admin:
+      default:
+        user_show:
+          positions_history: История должностей
+          event_attendings: Участие в мероприятиях
+          teams: Команды
       welcome:
         index:
           title: Админка
@@ -28,9 +33,6 @@ ru:
       article:
         push_into: Добавить в категорию '%{category}'
       members:
-        show:
-          positions_history: История должностей
-          event_attendings: Участие в мероприятиях
         form:
           add_position: Добавить должность
           resume: Резюме

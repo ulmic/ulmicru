@@ -39,6 +39,14 @@
             %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
             %td= position.end_date_datetime
     %hr
+    - if item.teams.any?
+      %h4
+        = t('.teams')
+      %table.table.attributes-table
+        - item.teams.each do |team|
+          %tr
+            %td= team.decorate.full_title
+    %hr
     - if @registrations.any?
       %h4
         = t('.event_attendings')

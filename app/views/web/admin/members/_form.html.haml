@@ -35,6 +35,7 @@
       - else
         = f.input :role, collection: roles_without_tech_admin
       = f.input :parent_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
+      = f.association :teams, label_method: lambda { |team| team.decorate.full_title }, input_html: { class: :select2 }
       %h4
         = t('.resume')
       = f.simple_fields_for :positions do |position_form|
