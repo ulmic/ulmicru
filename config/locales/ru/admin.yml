@@ -13,6 +13,7 @@ ru:
           positions_history: История должностей
           event_attendings: Участие в мероприятиях
           teams: Команды
+          contact_list: Контакт-лист
       welcome:
         index:
           title: Админка

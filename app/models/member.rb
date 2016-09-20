@@ -109,6 +109,10 @@ class Member < User
     Team.where(member_id: id).any?
   end
 
+  def in_contact_list?
+    positions.current_positions.any? && teams.any?
+  end
+
   private
 
   def remove_empty_positions
