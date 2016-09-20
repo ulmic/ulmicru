@@ -20,10 +20,6 @@
         .label.label-success
           = fa_icon :check
           = t('.contact_list')
-      - else
-        .label.label-danger
-          = fa_icon :remove
-          = t('.contact_list')
     %hr
     - if item.is_questionary?
       = render 'web/admin/questionaries/buttons', instance: item.object
