@@ -44,6 +44,11 @@ class MemberDecorator < UserDecorator
     end
   end
 
+  def main_current_position_title
+    for_now_positions = positions.current_positions
+    for_now_positions.first.title if for_now_positions.any?
+  end
+
   def main_current_position
     if object.positions.current_positions.any?
       object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first
