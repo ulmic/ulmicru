@@ -11,7 +11,7 @@
         - team.users.each do |member|
           %tr
             - attributes.each do |attr|
-              %td
+              %td{ class: attr }
                 = member.decorate.send attr
 - else
   .panel.panel-info

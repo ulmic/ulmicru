@@ -5,7 +5,7 @@ class MemberForm < ApplicationForm
   attributes :state_event, :parent_id, :school, :password
 
   association :positions do
-    attributes :title, :begin_date, :member_id, :state, :end_date, :for_now
+    attributes :title, :begin_date, :member_id, :state, :end_date, :for_now, :status
   end
 
   def check_complies(params)

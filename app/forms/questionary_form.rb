@@ -5,6 +5,6 @@ class QuestionaryForm < ApplicationForm
   attributes :request_date
 
   association :positions do
-    attributes :title, :begin_date, :member_id, :state, :end_date, :for_now
+    attributes :title, :begin_date, :member_id, :state, :end_date, :for_now, :status
   end
 end

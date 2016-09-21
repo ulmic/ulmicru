@@ -62,3 +62,7 @@ ru:
       access:
         all: Для всех
         members: Только членов МИЦ
+    position:
+      status:
+        confirmed: Утверждённый
+        acting: Исполняющий обязанности

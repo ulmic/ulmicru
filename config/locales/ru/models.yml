@@ -74,6 +74,7 @@ ru:
         state_event: Статус на сайте
         school: Учебное заведение
         main_position_title: Должность
+        main_current_position_title: Должность
         join_date: Дата вступления
         want_to_do: "Чем хочешь заниматься в МИЦ?"
         experience: Опыт и навыки
@@ -132,6 +133,7 @@ ru:
         begin_date: Дата вступления в должность
         end_date: Дата ухода с должности
         for_now: До настоящего времени
+        status: Статус
       event:
         title: Название
         description: Описание

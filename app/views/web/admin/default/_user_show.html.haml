@@ -39,9 +39,9 @@
       %h4
         = t('.positions_history')
       %table.table.attributes-table
-        - item.positions.decorate.each do |position|
+        - item.positions.each do |position|
           %tr
-            %td= position.title
+            %td= position.full_title
             %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
             %td= position.end_date_datetime
     %hr

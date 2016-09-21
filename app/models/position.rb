@@ -5,6 +5,9 @@ class Position < ActiveRecord::Base
 
   include DurationManagment
 
+  extend Enumerize
+  enumerize :status, in: [ :confirmed, :acting ], default: :confirmed
+
   state_machine :state, initial: :confirmed do
     state :unviewed
     state :confirmed

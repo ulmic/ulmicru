@@ -40,13 +40,13 @@ class MemberDecorator < UserDecorator
     return position if position.present?
     last_held_position = positions.last_held_position
     unless last_held_position == []
-      last_held_position.title if last_held_position
+      last_held_position.decorate.full_title if last_held_position
     end
   end
 
   def main_current_position_title
     if object.positions.current_positions.any?
-      return object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first.title
+      return object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first.decorate.full_title
     end
   end
 
