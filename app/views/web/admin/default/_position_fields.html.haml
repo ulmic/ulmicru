@@ -12,6 +12,9 @@
       = link_to_remove_association fa_icon(:remove), f, class: 'btn btn-danger', data: { 'wrapper-class' => 'position_fields' }
   .row
     .col-md-5
-      = f.input :status
+      - if type == :member
+        = f.input :status
+      - else
+        = f.input :status, disabled: true, selected: :acting
     .col-md-6
       = f.input :for_now, as: :boolean
