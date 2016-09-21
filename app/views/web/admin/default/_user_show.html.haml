@@ -41,6 +41,10 @@
       %table.table.attributes-table
         - item.positions.decorate.each do |position|
           %tr
+            %td
+              - if position.status.acting?
+                %span{ style: 'font-size: 20px' }
+                  = fa_icon 'clock-o'
             %td= position.title
             %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
             %td= position.end_date_datetime
