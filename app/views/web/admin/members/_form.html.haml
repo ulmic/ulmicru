@@ -40,7 +40,7 @@
         = t('.resume')
       = f.simple_fields_for :positions do |position_form|
         = render 'position_fields', f: position_form
-      = link_to_add_association t('.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
+      = link_to_add_association t('helpers.links.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
       .actions
         = f.button :submit, t('helpers.links.save'), class: 'btn-success'
         = link_to t('helpers.links.back'), admin_members_path, class: 'btn btn-default'

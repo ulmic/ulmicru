@@ -8,9 +8,9 @@
       = link_to member_path(@member.ticket), class: 'btn btn-primary' do
         %span.glyphicon.glyphicon-share
     = link_to send("edit_admin_#{model_class_underscore}_path", item), class: 'btn btn-warning' do
-      %span.glyphicon.glyphicon-pencil
+      = fa_icon :pencil
     = link_to send("admin_#{model_class_underscore}_path", item), method: :delete, class: 'btn btn-danger' do
-      %span.glyphicon.glyphicon-remove
+      = fa_icon :remove
 .row
   .col-lg-3
     = image_tag item.avatar.medium, style: 'width: 100%'

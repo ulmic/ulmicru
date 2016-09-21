@@ -28,7 +28,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
       send_notification corporative_lead, @questionary_form.model, :create
-      redirect_to admin_questionaries_path
+      redirect_to admin_questionarie_path @questionary_form.model
     else
       render action: :new
     end
@@ -43,7 +43,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
         #FIXME message in controller
         redirect_to edit_admin_member_path(params[:id], message: :fill_member_form)
       else
-        redirect_to edit_admin_questionary_path @questionary_form.model
+        redirect_to admin_questionary_path @questionary_form.model
       end
     else
       render action: :edit
