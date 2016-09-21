@@ -4,7 +4,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
 
   def index
     if params[:search]
-      members = Member.presented.search_everywhere params[:search]
+      members = Member.presented.just_members.search_everywhere params[:search]
     else
       members = Member.send params[:scope]
     end
