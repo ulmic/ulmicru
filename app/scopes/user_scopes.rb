@@ -14,5 +14,8 @@ module UserScopes
       where.not(id: Position.current_positions.map(&:member_id).uniq)
     }
     scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+    scope :just_users, -> { where type: nil }
+    scope :just_members, -> { where type: 'Member' }
+    scope :just_questionaries, -> { where type: 'Questionary' }
   end
 end
