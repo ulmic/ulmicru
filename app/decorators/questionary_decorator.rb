@@ -13,6 +13,21 @@ class QuestionaryDecorator < MemberDecorator
     [:id, :request_date, :member_state, :state, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }]
   end
 
+  def short_name_link
+    short_name
+  end
+
+  def avatar_small_img
+    h.content_tag :img, class: :avatar, src: object.avatar.small do
+    end
+  end
+
+  def ticket_number
+    h.content_tag :span, 'data-tooltip' => true, 'aria-haspopup' => true, class: 'has-tip', title: t('tooltip.questionary.ticket_number') do 
+      fa_icon 'question-circle 2x'
+    end
+  end
+
   def self.collections
     [ :member_on_the_trial, :unviewed, :declined, :member_trial_passed ]
   end

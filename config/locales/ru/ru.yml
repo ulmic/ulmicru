@@ -250,6 +250,11 @@ ru:
     flash:
       petition_updated: Ходатайство обновлено
   tooltip:
+    position:
+      status:
+        acting: 'Исполняющий обязанности'
+    questionary:
+      ticket_number: 'Кандидат на вступление в Молодёжный инициативный центр'
     web:
       welcome:
         index:
