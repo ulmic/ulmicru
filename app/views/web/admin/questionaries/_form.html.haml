@@ -31,6 +31,7 @@
       = f.input :experience
       = f.input :state_event, as: :state_event
       = f.input :member_state_event, as: :state_event
+      = f.association :teams, label_method: lambda { |team| team.decorate.full_title }, input_html: { class: :select2 }
       = f.simple_fields_for :positions do |position_form|
         = render 'position_fields', f: position_form
       = link_to_add_association t('helpers.links.add_position'), f, :positions, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
