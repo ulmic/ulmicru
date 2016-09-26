@@ -28,6 +28,7 @@ class Team < ActiveRecord::Base
   end
 
   include TagsHelper
+  include Concerns::ReviewManagment
 
   def is_departament?
     model_name == 'Team::Departament'
