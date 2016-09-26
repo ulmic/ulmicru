@@ -36,6 +36,7 @@ ru:
         contact_emails: На все имеющиеся почтовые адреса
         team: На команду
         event_registrations: Участников мероприятия
+        members: Члены организации
     logged_action:
       action_type:
         update: Обновил
