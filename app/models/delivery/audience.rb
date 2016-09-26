@@ -4,13 +4,15 @@ class Delivery::Audience < ActiveRecord::Base
 
   validates :audience_type, presence: true
 
-  enumerize :audience_type, in: [ :team, :users, :contact_emails, :event_registrations ], default: :users
+  enumerize :audience_type, in: [ :team, :users, :contact_emails, :event_registrations, :members ], default: :users
 
   def contacts
     contacts = []
     case audience_type
     when 'users'
       contacts = User.subscribed_to_deliveries.with_email
+    when 'members'
+      contacts = Member.subscribed_to_deliveries.with_email
     when 'contacts_emails'
       [User, ContactEmail].each do |type|
         type.subscribed_to_deliveries.with_email.find_each(batch_size: 1000) do |instance|
