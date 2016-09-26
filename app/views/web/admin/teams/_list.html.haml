@@ -24,7 +24,7 @@
         - if searching?
           %td= team.human_state_name
         %td.actions
-          - if team.unviewed?
+          - if team.need_to_review?
             = link_to admin_team_path(team, team: { state: :active }), method: :patch, class: 'btn btn-xs btn-success' do
               %span.glyphicon.glyphicon-ok
           = link_to edit_admin_team_path(team), class: 'btn btn-warning btn-xs' do
