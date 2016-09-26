@@ -29,7 +29,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
   def unviewed_counts
     @counts = {}
     Concerns::NotificatableItems.items.each do |item|
-      @counts[item] = item.to_s.classify.constantize.unviewed.count 
+      @counts[item] = item.to_s.classify.constantize.need_to_review.count
     end
   end
 end
