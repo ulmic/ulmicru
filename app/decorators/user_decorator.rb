@@ -2,7 +2,7 @@ class UserDecorator < ApplicationDecorator
   delegate_all
 
   def name
-    "#{first_name} #{last_name}"
+    "#{object.first_name} #{object.last_name}"
   end
 
   def has_confirmed_member?
@@ -41,6 +41,10 @@ class UserDecorator < ApplicationDecorator
 
   def self.collections
     [ :confirmed, :unviewed, :declined ]
+  end
+
+  def main_current_position
+    nil
   end
 
   private
