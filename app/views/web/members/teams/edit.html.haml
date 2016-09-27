@@ -16,21 +16,22 @@
         %td
           = user.short_name
         %td
-          %table.grid
-            - positions_associate_with_team(user.positions.active, @team).decorate.each do |position|
-              %tr
-                %td.labels
-                  - if position.unviewed?
-                    %span.label.alert{ title: t('hints.unviewed')}
-                      = fa_icon 'eye-slash'
-                  - if position.for_now
-                    %span.label.success{ title: t('hints.position.for_now', name: position.member.first_name)}
-                      = fa_icon 'check'
-                %td
-                  = position.title
-                  = position.duration
-                %td.actions
-                  = link_to fa_icon('pencil 2x'), edit_members_position_path(position, team_id: @team.id), class: 'button tiny'
-                  = link_to fa_icon('trash 2x'), members_position_path(position), method: :delete, class: 'button tiny alert'
+          - unless user.is_user?
+            %table.grid
+              - positions_associate_with_team(user.positions.active, @team).decorate.each do |position|
+                %tr
+                  %td.labels
+                    - if position.unviewed?
+                      %span.label.alert{ title: t('hints.unviewed')}
+                        = fa_icon 'eye-slash'
+                    - if position.for_now
+                      %span.label.success{ title: t('hints.position.for_now', name: position.member.first_name)}
+                        = fa_icon 'check'
+                  %td
+                    = position.title
+                    = position.duration
+                  %td.actions
+                    = link_to fa_icon('pencil 2x'), edit_members_position_path(position, team_id: @team.id), class: 'button tiny'
+                    = link_to fa_icon('trash 2x'), members_position_path(position), method: :delete, class: 'button tiny alert'
           .add{ colspan: 3 }
             = link_to fa_icon('plus 2x'), new_members_position_path(id: user.id, team_id: @team.id), class: 'button tiny success'
