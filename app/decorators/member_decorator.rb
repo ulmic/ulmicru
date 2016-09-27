@@ -106,7 +106,7 @@ class MemberDecorator < UserDecorator
       when :role
 	send "#{attribute}_text"
       when :member_state, :state
-	human_state_name send attribute
+	object.send "human_#{attribute}_name"
       else
 	send attribute
       end
