@@ -10,7 +10,7 @@ class PositionDecorator < ApplicationDecorator
   def full_title
     if object.status.acting?
       h.content_tag :span do
-        h.concat(h.content_tag(:span, 'data-tooltip' => 'data-tooltip', 'aria-haspopup' => true, class: 'has-tip', title: t('tooltip.position.status.acting'), name: :fuck) do 
+        h.concat(h.content_tag(:span, 'data-tooltip' => 'data-tooltip', 'aria-haspopup' => true, class: 'has-tip', title: t('tooltip.position.status.acting')) do 
           fa_icon 'clock-o' 
         end)
         h.concat ' '
