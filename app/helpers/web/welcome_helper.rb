@@ -6,7 +6,7 @@ module Web::WelcomeHelper
       [ 'Право', 'ActivityLine', 'ПРАВО'],
       [ 'Добро', 'ActivityLine',  'ВОЛОНТЁРСТВО' ],
       [ 'Корпоративные проекты', 'ActivityLine', 'КОРПОРАТИВНЫЕ ПРОЕКТЫ' ],
-      [ 'НКО', 'string', 'НКО' ]
+      [ 'НКО', 'ActivityLine', 'НКО' ]
     ]
   end
 
