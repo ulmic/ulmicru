@@ -66,7 +66,11 @@ module Concerns
     end
 
     def to_param(model_class_name)
-      model_class_name.underscore.gsub '/', '_'
+      if take_member_action?
+        'questionary'
+      else
+        model_class_name.underscore.gsub '/', '_'
+      end
     end
 
     # FIXME remove when PG 9.4 with JSONB
@@ -76,5 +80,6 @@ module Concerns
       end
       hash
     end
+
   end
 end

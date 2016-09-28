@@ -17,7 +17,11 @@ module ModelsConcern
   end
 
   def model_class
-    model_name.constantize
+    if take_member_action?
+      Member
+    else
+      model_name.constantize
+    end
   end
 
   def not_logged_controllers
@@ -26,5 +30,10 @@ module ModelsConcern
 
   def not_logged_attributes
     [:horizontal, :vertical, :avatar, :file, :photo, :main_photo, :image, :created_at, :updated_at, :google_calendar_event_id, :_destroy].map &:to_s
+  end
+
+  # Принять в организацию
+  def take_member_action?
+    model_name == 'Questionary' && params[:questionary] == {"member_state"=>"confirmed"}
   end
 end
