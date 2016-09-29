@@ -15,6 +15,8 @@
 //= require jasny-bootstrap
 
 @import "foundation/functions";
+@import "icons";
+
 
 $orange: #f45c10;
 
@@ -272,4 +274,28 @@ form {
 
 textarea {
   height: 100px;
+}
+
+.columns.social_links {
+  text-align: center;
+  &.twitter {
+    i {
+      color: $twitter-color;
+    }
+  }
+  &.vkontakte {
+    i {
+      color: $vkontakte-color;
+    }
+  }
+  &.facebook {
+    i {
+      color: $facebook-color;
+    }
+  }
+  &.google {
+    i {
+      color: $google-color;
+    }
+  }
 }
