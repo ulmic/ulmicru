@@ -11,5 +11,9 @@ module Organization
     def deputy_corporative_lead
       Position.current_positions.where(title: 'Заместитель руководителя корпоративных проектов').first.member
     end
+
+    def departaments_curators
+      Position.current_positions.where(title: 'Куратор местных отделений').map &:member
+    end
   end
 end
