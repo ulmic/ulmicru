@@ -15,6 +15,9 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news_form.submit params[:news]
     if @news_form.save
       send_notification press_center_lead, @news_form.model, :create
+      departaments_curators.each do |curator|
+        send_notification curator, @news_form.model, :create
+      end
       redirect_to admin_news_index_path
     else
       choose_members
