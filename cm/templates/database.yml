@@ -1,5 +1,4 @@
 default: &default
-  username: ulmic
   adapter: postgresql
   encoding: unicode
   pool: 5
