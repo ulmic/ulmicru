@@ -2,7 +2,7 @@ class UserDecorator < ApplicationDecorator
   delegate_all
 
   def name
-    "#{object.first_name} #{object.last_name}"
+    "#{object&.first_name} #{object&.last_name}"
   end
 
   def has_confirmed_member?
