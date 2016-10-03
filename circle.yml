@@ -1,5 +1,0 @@
-machine:
-  timezone:
-    Europe/Moscow
-  ruby:
-    version: 2.3.0
