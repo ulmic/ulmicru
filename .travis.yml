@@ -12,6 +12,7 @@ script:
   - make deps
   - cp cm/templates/database.yml config/database.yml
   - cp cm/templates/oauth.yml config/oauth.yml
+  - cp cm/templates/secrets.yml config/secrets.yml
   - ansible-playbook -i cm/inventory cm/playbook.yml --tags 'test'
   - RAILS_ENV=test bundle exec rake db:create db:migrate test
 services:
