@@ -13,9 +13,14 @@ pages.each do |slug, title|
 end
 
 puts "Create categories...".green
-categories = { who_we_are: 'Кто мы такие', contacts: 'Контакты' , site_mic: 'Сайт МИЦ' }
+categories = { 
+  who_we_are: 'Кто мы такие',
+  contacts: 'Контакты' ,
+  site_mic: 'Сайт МИЦ',
+  corporative_projects: 'Корпоративные проекты'
+}
 categories.each do |category, name|
-  c = Category.find configus.categories.send category
+  c = Category.where(id: configus.categories.send(category)).first
   Category.create id: configus.categories.send(category), name: name unless c
 end
 
@@ -23,7 +28,7 @@ puts "Create articles...".green
 contact_category = Category.find_by_name 'Контакты'
 articles = { contacts: 'Контакты', contact_list: 'Контакт-лист' }
 articles.each do |article, name|
-  a = Article.find configus.articles.send article
+  a = Article.where(id: configus.articles.send(article)).first
   Article.create id: configus.articles.send(article), title: name, view: article, category_id: contact_category.id, user_id: 1 unless a
 end
 

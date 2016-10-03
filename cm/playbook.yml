@@ -17,14 +17,5 @@
 
     - name: Create postgresql user
       postgresql_user: name={{ pg_user }} role_attr_flags=CREATEDB,NOSUPERUSER
-
-    - name: Copy config files
-      template: src=templates/{{ item }}.yml.j2 dest=config/{{ item }}.yml
-      with_items:
-        - database
-        - oauth
-        - secrets
-      tags:
-        - test
     - command: aptitude install libgmp-dev
       sudo: yes

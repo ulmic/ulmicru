@@ -20,6 +20,7 @@ class ActiveSupport::TestCase
   include ModelsConcern
   include Concerns::TechinalPagesManagment
   ScopesRailsIncluding.initialize_scopes
+  load "#{Rails.root}/db/seeds.rb"
 
   def load_fixture(filename)
     template = ERB.new(File.read(File.dirname(__FILE__) + '/fixtures/#{filename}'), nil, '%')

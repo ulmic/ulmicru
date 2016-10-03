@@ -1,0 +1,73 @@
+development:
+  google:
+    client_id: GOOGLE_CLIENT_ID
+    client_secret: GOOGLE_CLIENT_SECRET
+    api_key: GOOGLE_API_KEY
+  vk:
+    client_id: VK_CLIENT_ID
+    client_secret: VK_CLIENT_SECRET
+  twitter:
+    client_id: TWITTER_CLIENT_ID
+    client_secret: TWITTER_CLIENT_SECRET
+  facebook:
+    client_id: FACEBOOK_CLIENT_ID
+    client_secret: FACEBOOK_CLIENT_SECRET
+  foursquare:
+    client_id: FOURSQUARE_CLIENT_ID
+    client_secret: FOURSQUARE_CLIENT_SECRET
+    # access token of this user https://foursquare.com/user/130892631
+    organization_account_access_token: ORGANIZATION_ACCOUNT_ACCESS_TOKEN
+test:
+  google:
+    client_id: GOOGLE_CLIENT_ID
+    client_secret: GOOGLE_CLIENT_SECRET
+  vk:
+    client_id: VK_CLIENT_ID
+    client_secret: VK_CLIENT_SECRET
+  twitter:
+    client_id: TWITTER_CLIENT_ID
+    client_secret: TWITTER_CLIENT_SECRET
+  facebook:
+    client_id: FACEBOOK_CLIENT_ID
+    client_secret: FACEBOOK_CLIENT_SECRET
+  foursquare:
+    client_id: FOURSQUARE_CLIENT_ID
+    client_secret: FOURSQUARE_CLIENT_SECRET
+    # access token of this user https://foursquare.com/user/130892631
+    organization_account_access_token: ORGANIZATION_ACCOUNT_ACCESS_TOKEN
+staging:
+  google:
+    client_id: GOOGLE_CLIENT_ID
+    client_secret: GOOGLE_CLIENT_SECRET
+  vk:
+    client_id: VK_CLIENT_ID
+    client_secret: VK_CLIENT_SECRET
+  twitter:
+    client_id: TWITTER_CLIENT_ID
+    client_secret: TWITTER_CLIENT_SECRET
+  facebook:
+    client_id: FACEBOOK_CLIENT_ID
+    client_secret: FACEBOOK_CLIENT_SECRET
+  foursquare:
+    client_id: FOURSQUARE_CLIENT_ID
+    client_secret: FOURSQUARE_CLIENT_SECRET
+    # access token of this user https://foursquare.com/user/130892631
+    organization_account_access_token: ORGANIZATION_ACCOUNT_ACCESS_TOKEN
+production:
+  google:
+    client_id: GOOGLE_CLIENT_ID
+    client_secret: GOOGLE_CLIENT_SECRET
+  vk:
+    client_id: VK_CLIENT_ID
+    client_secret: VK_CLIENT_SECRET
+  twitter:
+    client_id: TWITTER_CLIENT_ID
+    client_secret: TWITTER_CLIENT_SECRET
+  facebook:
+    client_id: FACEBOOK_CLIENT_ID
+    client_secret: FACEBOOK_CLIENT_SECRET
+  foursquare:
+    client_id: FOURSQUARE_CLIENT_ID
+    client_secret: FOURSQUARE_CLIENT_SECRET
+    # access token of this user https://foursquare.com/user/130892631
+    organization_account_access_token: ORGANIZATION_ACCOUNT_ACCESS_TOKEN
