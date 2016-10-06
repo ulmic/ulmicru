@@ -13,12 +13,13 @@
           .text
         .user-info
           .info
-            -#.learn
-              .icon-container
-                .icon-learn
-              = t('.learn_or_work')
-              %span
-                МБОУ Гимназия №79
+            - if @member.school.present?
+              .learn
+                .icon-container
+                  .icon-learn
+                = "#{t('.learn')}:"
+                %span
+                  = @member.school
             .live
               .icon-container
                 .icon-pointer
