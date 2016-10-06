@@ -13,13 +13,14 @@
           .text
         .user-info
           .info
-            -# if @member.school.present?
-              .learn
-                .icon-container
-                  .icon-learn
-                = "#{t('.learn')}:"
-                %span
-                  = @member.school
+            - if current_user.is_member?
+              - if @member.school.present?
+                .learn
+                  .icon-container
+                    .icon-learn
+                  = "#{t('.learn')}:"
+                  %span
+                    = @member.school
             .live
               .icon-container
                 .icon-pointer

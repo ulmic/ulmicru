@@ -46,7 +46,9 @@
       .learn, .live {
         font-family: mic;
         font-size: 18px;
-        height: 48px;
+        height: auto;
+        line-height: 20px;
+        margin-bottom: 5px;
         span {
           font-size: 17px;
         }
