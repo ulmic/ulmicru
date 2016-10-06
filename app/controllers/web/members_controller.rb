@@ -38,7 +38,7 @@ class Web::MembersController < Web::ApplicationController
   end
 
   def show
-    member = Member.find_by_ticket(params[:ticket])
+    member = Member.includes(:attribute_accesses).find_by_ticket(params[:ticket])
     if member.member_confirmed?
       @member = member.decorate
       @children = MemberDecorator.decorate_collection member.children.shuffle
@@ -46,7 +46,6 @@ class Web::MembersController < Web::ApplicationController
       @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.date_order
       @news = NewsDecorator.decorate_collection member.tags.active.news.map &:record
       @articles = member.tags.active.articles.map &:record
-      @attribute_accesses = member.attribute_accesses
       @teams = member.teams.active.visible.decorate
     end
   end

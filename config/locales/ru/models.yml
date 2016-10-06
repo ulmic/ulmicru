@@ -241,6 +241,8 @@ ru:
       models:
         member:
           attributes:
+            corporate_email:
+              corporate_email: имеет неверный формат. Корпоративная почта должна иметь домен @ulmic.ru
             motto:
               taken: уже занят другим пользователем
         user:
