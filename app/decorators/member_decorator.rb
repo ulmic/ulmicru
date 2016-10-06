@@ -85,14 +85,14 @@ class MemberDecorator < UserDecorator
   end
 
   def real_attributes
-    [:ticket, :email, :motto, :parent, :mobile_phone, :birth_date, :municipality, :locality, 
+    [:ticket, :email, :corporate_email, :motto, :parent, :mobile_phone, :birth_date, :municipality, :locality, 
      :join_date, :school, :main_position_title]
   end
 
   def show_attribute(attribute)
     if attribute.is_a? Symbol
       case attribute
-      when :email
+      when :email, :corporate_email
 	mail_to send attribute
       when :mobile_phone
 	tel_tag send attribute
@@ -144,11 +144,11 @@ class MemberDecorator < UserDecorator
   end
 
   def email_link
-    h.content_tag :a, href: "mail:#{object.email}" do
-      h.concat fa_icon :envelope
-      h.concat ' '
-      h.concat object.email
-    end
+    default_email_link :email
+  end
+
+  def corporate_email_link
+    default_email_link :corporate_email
   end
 
   include SocialNetworksUrlHelper
@@ -173,5 +173,13 @@ class MemberDecorator < UserDecorator
   def attribute_visible?(accesses, attribute)
     attr_access = accesses.find_by_member_attribute attribute
     attr_access.access.visible? if attr_access
+  end
+
+  def default_email_link(attribute)
+    h.content_tag :a, href: "mail:#{object.send(attribute)}" do
+      h.concat fa_icon :envelope
+      h.concat ' '
+      h.concat object.email
+    end
   end
 end

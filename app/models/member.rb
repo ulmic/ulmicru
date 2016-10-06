@@ -31,6 +31,9 @@ class Member < User
   validates :motto, uniqueness: true,
                     allow_blank: true
   validates :avatar, presence: true, if: Proc.new { state != :unavailable }
+  validates :corporate_email, ulmic_email: true,
+                              email: true,
+                              uniqueness: true
 
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
   enumerize :locality, in: Localities.list, default: Localities.list.first
@@ -91,6 +94,12 @@ class Member < User
       return authentication if authentication.provider == provider
     end
     nil
+  end
+
+  def visible_auth_of(provider)
+    if attribute_accesses.where(member_attribute: provider, access: :visible).any?
+      authentications.where(provider: provider).first
+    end
   end
 
   def has_confession?(nomination)

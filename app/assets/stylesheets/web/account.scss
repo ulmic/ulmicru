@@ -1,3 +1,5 @@
+@import "icons";
+
 .account.container {
   font-family: mic-square-reg;
   margin-top: 48px;
@@ -71,11 +73,44 @@
       }
       .social {
         position: absolute;
-        width: 53%;
+        width: 58%;
         right: 12px;
         bottom: 24px;
         .big-icon {
-          margin-left: 3%;
+          background-color: white;
+          box-sizing: border-box;
+          width: 47px;
+          height: 53px;
+          float: left;
+          text-align: center;
+          margin-right: 5px;
+          font-size: 40px;
+          border-radius: 14px;
+          &:hover {
+            opacity: 0.8;
+          }
+          a {
+            &.vkontakte {
+              i.fa {
+                color: $vkontakte-color;
+              }
+            }
+            &.facebook {
+              i.fa {
+                color: $facebook-color;
+              }
+            }
+            &.twitter {
+              i.fa {
+                color: $twitter-color;
+              }
+            }
+            &.google {
+              i.fa {
+                color: $google-color;
+              }
+            }
+          }
         }
       }
     }

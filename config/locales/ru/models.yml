@@ -30,7 +30,7 @@ ru:
         creator_id: Создатель
         state: Статус
         image: Изображение
-      user:
+      user_default: &user_default
         first_name: Имя
         patronymic: Отчество
         last_name: Фамилия
@@ -38,22 +38,10 @@ ru:
         email: E-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
-        type: Тип
-        sign_in_count: Количество авторизаций
-        types:
-          user: Пользователь
-          member: Член МИЦ
-          questionary: Кандидат на вступление в МИЦ
-        request_date: Дата подачи
-      member:
-        first_name: Имя
-        patronymic: Отчество
-        last_name: Фамилия
+      member_default: &member_default
         avatar: Аватар
         avatar_small_img: Аватар
         full_name: "Ф.И.О."
-        ticket: Номер членского билета
-        ticket_number: Номер членского билета
         short_name: Имя
         short_name_link: Имя
         social_links: Профили в соц. сетях
@@ -66,36 +54,38 @@ ru:
         home_adress: Домашний адрес
         municipality: Муниципальное образование
         locality: Населённый пункт
-        parent: Крёстный
-        parent_id: Крёстный
-        children: Крестники
         state: Статус на сайте
         teams: Мои команды
         state_event: Статус на сайте
         school: Учебное заведение
         main_position_title: Должность
         main_current_position_title: Должность
-        join_date: Дата вступления
         want_to_do: "Чем хочешь заниматься в МИЦ?"
         experience: Опыт и навыки
         departament: Местное отделение
         departament_title: Местное отделение
+        corporate_email: Корпоративная почта
+      user:
+        <<: *user_default
+        type: Тип
+        sign_in_count: Количество авторизаций
+        types:
+          user: Пользователь
+          member: Член МИЦ
+          questionary: Кандидат на вступление в МИЦ
+        request_date: Дата подачи
+      member:
+        <<: *user_default
+        <<: *member_default
+        ticket: Номер членского билета
+        ticket_number: Номер членского билета
+        parent: Крёстный
+        parent_id: Крёстный
+        children: Крестники
+        join_date: Дата вступления
       questionary:
-        first_name: Имя
-        patronymic: Отчество
-        last_name: Фамилия
-        avatar: Аватар
-        full_name: "Ф.И.О."
-        place: Место проживания
-        motto: Девиз по жизни
-        mobile_phone: Мобильный телефон
-        birth_date: Дата рождения
-        home_adress: Домашний адрес
-        municipality: Муниципальное образование
-        want_to_do: "Чем хочешь заниматься в МИЦ?"
-        experience: Опыт и навыки
-        locality: Населённый пункт
-        school: Учебное заведение
+        <<: *user_default
+        <<: *member_default
         member_state: Статус заявки на вступление
         member_state_event: Статус заявки на вступление
       news:
@@ -251,6 +241,8 @@ ru:
       models:
         member:
           attributes:
+            corporate_email:
+              corporate_email: имеет неверный формат. Корпоративная почта должна иметь домен @ulmic.ru
             motto:
               taken: уже занят другим пользователем
         user:
