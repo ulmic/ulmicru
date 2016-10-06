@@ -33,7 +33,8 @@ class Member < User
   validates :avatar, presence: true, if: Proc.new { state != :unavailable }
   validates :corporate_email, ulmic_email: true,
                               email: true,
-                              uniqueness: true
+                              uniqueness: true,
+                              allow_blank: true
 
   enumerize :municipality, in: Municipalities.list, default: Municipalities.list.first
   enumerize :locality, in: Localities.list, default: Localities.list.first
