@@ -13,7 +13,7 @@
           .text
         .user-info
           .info
-            - if current_user.is_member?
+            - if current_user&.is_member?
               - if @member.school.present?
                 .learn
                   .icon-container
