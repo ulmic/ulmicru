@@ -10,6 +10,7 @@ ru:
         confirm: Подтвердить
         remove: Удалить
         restore: Восстановить
+        close: Закрыть
       team:
         state:
           states:

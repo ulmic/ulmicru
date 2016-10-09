@@ -26,9 +26,15 @@
         %td.actions
           - if team.need_to_review?
             = link_to admin_team_path(team, team: { state: :active }), method: :patch, class: 'btn btn-xs btn-success' do
-              %span.glyphicon.glyphicon-ok
+              = fa_icon :check
           = link_to edit_admin_team_path(team), class: 'btn btn-warning btn-xs' do
-            %span.glyphicon.glyphicon-pencil
+            = fa_icon :pencil
+          - if team.closed?
+            = link_to admin_team_path(team, team: { state: :active }), method: :patch, class: 'btn btn-success btn-xs' do
+              = fa_icon :unlock
+          - else
+            = link_to admin_team_path(team, team: { state: :closed }), method: :patch, class: 'btn btn-danger btn-xs' do
+              = fa_icon :lock
           = link_to admin_team_path(team), method: :delete, class: 'btn btn-xs btn-danger' do
-            %span.glyphicon.glyphicon-remove
+            = fa_icon :remove
 = paginate teams, theme: 'twitter-bootstrap-3'
