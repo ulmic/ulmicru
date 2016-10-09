@@ -31,13 +31,13 @@
         %td{ style: 'width: 200px' }
           = react_component 'TagsForm', record: news, record_type: 'news', tags: TagCollectionDecorator.new(news.tags.active).with_just_text
         %td.actions
-          - if current_user.role.admin?
+          - if current_user.admin?
             - if news.main?
               = link_to admin_news_path(news, news: { state: :confirmed }), method: :patch, class: 'btn btn-danger btn-xs' do
-                %span.glyphicon.glyphicon-pushpin
+                = fa_icon :fire
             - else
               = link_to admin_news_path(news, news: { state: :main }), method: :patch, class: 'btn btn-success btn-xs' do
-                %span.glyphicon.glyphicon-pushpin
+                = fa_icon :fire
             - if news.unviewed?
               = link_to admin_news_path(news, news: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
                 %span.glyphicon.glyphicon-ok
