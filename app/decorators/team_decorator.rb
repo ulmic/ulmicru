@@ -27,6 +27,6 @@ class TeamDecorator < ApplicationDecorator
   end
 
   def self.collections
-    [ :active, :unviewed, :removed ]
+    [ :active, :unviewed, :closed, :removed ]
   end
 end

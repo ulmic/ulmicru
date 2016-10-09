@@ -15,6 +15,7 @@ class Team < ActiveRecord::Base
     state :active
     state :removed
     state :updated
+    state :closed
 
     event :confirm do
       transition all => :active
@@ -24,6 +25,9 @@ class Team < ActiveRecord::Base
     end
     event :restore do
       transition all => :unviewed
+    end
+    event :close do
+      transition all => :closed
     end
   end
 
