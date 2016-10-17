@@ -4,7 +4,7 @@ class Web::Members::TeamsControllerTest < ActionController::TestCase
   setup do
     member = create :member, member_state: :confirmed
     sign_in member
-    @team = create :team, member: member
+    @team = create :departament, member: member
   end
 
   test 'should get edit' do
