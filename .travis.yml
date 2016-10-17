@@ -11,6 +11,7 @@ before_script:
   - cp cm/templates/oauth.yml config/oauth.yml
   - cp cm/templates/secrets.yml config/secrets.yml
   - RAILS_ENV=test rake db:create db:migrate
+  - npm run build
 before_install:
   - gem install bundler
 services:
