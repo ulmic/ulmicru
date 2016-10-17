@@ -41,7 +41,8 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     current_collection = @news_form.model.decorate.collection
     @news_form.submit params[:news]
     if @news_form.save
-      redirect_to admin_news_index_path scope: current_collection
+      redirect_to admin_news_index_path scope: current_collection,
+        page: collection_page(@news_form.model, current_collection)
     else
       choose_members
       render action: :edit

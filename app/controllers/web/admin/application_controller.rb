@@ -11,6 +11,8 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   include Concerns::DecoratorsConcern
   include Concerns::LoggedActions
 
+  RECORDS_PER_PAGE = 25
+
   protected
 
   def choose_users
@@ -32,5 +34,10 @@ class Web::Admin::ApplicationController < Web::ApplicationController
     decorator_class.collections.each do |collection|
       @counts[collection] = model_class.send(collection).count
     end
+  end
+
+  def collection_page(record, current_collection)
+    index = record.class.send(current_collection).map(&:id).index(record.id)
+    index % RECORDS_PER_PAGE == 0 ? index / RECORDS_PER_PAGE : index / RECORDS_PER_PAGE + 1
   end
 end
