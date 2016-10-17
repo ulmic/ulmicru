@@ -7,7 +7,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     create :member
     @questionary = create :questionary
     @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'birth_date', 'avatar']
-    create :position, title: 'Руководитель корпоративных проектов', for_now: 1
+    create :position_corporative_lead
   end
 
   test 'should get index' do

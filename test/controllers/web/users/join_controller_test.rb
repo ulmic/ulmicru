@@ -7,6 +7,8 @@ class Web::Users::JoinControllerTest < ActionController::TestCase
     @questionary = create :questionary
     create :article, :contacts
     create :article, :charter
+    create :position_corporative_lead
+    create :position_deputy_corporative_lead
   end
 
   test 'should get new' do
