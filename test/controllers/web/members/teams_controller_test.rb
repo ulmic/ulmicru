@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Web::Members::TeamsControllerTest < ActionController::TestCase
   setup do
-    member = create :member
+    member = create :member, member_state: :confirmed
     sign_in member
-    @team = create :team, member: @member
+    @team = create :team, member: member
   end
 
   test 'should get edit' do
