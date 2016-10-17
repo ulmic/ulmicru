@@ -35,7 +35,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     attributes = attributes_for :questionary
     post :create, questionary: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to admin_questionaries_path
+    assert_redirected_to admin_questionary_path Questionary.last
     questionary = Questionary.last
     questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], questionary.send(key), key
@@ -51,7 +51,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     attributes = attributes_for :questionary
     patch :update, questionary: attributes, id: @questionary
     assert_response :redirect, @response.body
-    assert_redirected_to edit_admin_questionary_path @questionary
+    assert_redirected_to admin_questionary_path @questionary
     @questionary.reload
     @questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @questionary.send(key), key

@@ -28,7 +28,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
       send_notification corporative_lead, @questionary_form.model, :create
-      redirect_to admin_questionaries_path
+      redirect_to admin_questionary_path @questionary_form.model
     else
       render action: :new
     end
