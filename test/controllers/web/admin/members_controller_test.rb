@@ -60,7 +60,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     attributes[:positions_attributes] ||= {}
     attributes[:positions_attributes]['0'] = attributes_for :position
     patch :update, member: attributes, id: @member
-    assert_redirected_to edit_admin_member_path @member
+    assert_redirected_to admin_member_path @member
     @member.reload
     @member.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @member.send(key), key
