@@ -38,9 +38,11 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
 
   def update
     @news_form = NewsForm.find_with_model params[:id]
+    current_collection = @news_form.model.decorate.collection
     @news_form.submit params[:news]
     if @news_form.save
-      redirect_to edit_admin_news_path @news_form.model
+      redirect_to admin_news_index_path scope: current_collection,
+        page: collection_page(@news_form.model, current_collection)
     else
       choose_members
       render action: :edit

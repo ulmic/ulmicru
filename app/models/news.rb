@@ -18,6 +18,10 @@ class News < ActiveRecord::Base
     published_at <= DateTime.now && state != 'removed'
   end
 
+  def is_not_published?
+    not is_published?
+  end
+
   include Concerns::ViewsManagment
 
   class << self
