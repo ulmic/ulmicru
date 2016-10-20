@@ -13,6 +13,9 @@ ru:
       international_volunteer_school: Международная школа волонтёров
       it_way: IT Way
       i_am_lider: "Я - лидер!"
+      karamzin:
+        full_name: Пришло время расставить все точки на Ё
+        short_name: Ё-приложение (beta)
   date:
     order:
       - :day
