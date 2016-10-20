@@ -6,6 +6,7 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
     sign_in admin
     @news = create :news
     @exceptions_attributes = ['id', 'created_at', 'updated_at', 'published_at', 'photo', 'user_id']
+    create :position_press_center_head
   end
 
   test 'should get index' do
@@ -54,9 +55,10 @@ class Web::Admin::NewsControllerTest < ActionController::TestCase
 
   test 'should update news by admin' do
     attributes = attributes_for :news
+    attributes[:state] = 'unviewed'
     put :update, id: @news, news: attributes
     assert_response :redirect
-    assert_redirected_to edit_admin_news_path @news
+    assert_redirected_to admin_news_index_path scope: :unviewed, page: 1
     @news.reload
     @news.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @news.send(key), key

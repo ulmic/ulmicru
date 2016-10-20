@@ -32,6 +32,11 @@ Configus.build Rails.env do
         url 'http://it-way.pro'
         ico 'organization/activity_lines/it/it_way.png'
       end
+      karamzin do
+        full_name 'organization.projects.karamzin.full_name'
+        short_name 'organization.projects.karamzin.short_name'
+        url 'https://karamzin.herokuapp.com'
+      end
     end
     organization do
       logo 'http://ulmic.ru/assets/apps/logo-mic-square.png'

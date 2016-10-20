@@ -20,7 +20,12 @@ module ModelsConcern
     if take_member_action?
       Member
     else
-      model_name.constantize
+      case model_name
+      when 'Corporative::Petition'
+        ActivityLines::Corporative::Confession
+      else
+        model_name.constantize
+      end
     end
   end
 
