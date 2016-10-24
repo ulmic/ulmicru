@@ -23,7 +23,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
     any_items_key = @counts.keys.select { |k| @counts[k] != 0 }.first
     if any_items_key
       if params[:items].present?
-        unless Concerns::NotificatableItems.items.include? params[:items].to_sym
+        unless Concerns::NotificatableItems.items(current_user.id).include? params[:items].to_sym
           redirect_to params.except(:items)
         end
       else
@@ -34,7 +34,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
 
   def unviewed_counts
     @counts = {}
-    Concerns::NotificatableItems.items.each do |item|
+    Concerns::NotificatableItems.items(current_user.id).each do |item|
       @counts[item] = item.to_s.classify.constantize.need_to_review.count
     end
   end
