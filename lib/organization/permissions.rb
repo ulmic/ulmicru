@@ -1,9 +1,11 @@
-module Organization::Permissions
-  class << self
-    include Organization::PeopleHelper
+module Organization
+  module Permissions
+    class << self
+      include Organization::PeopleHelper
 
-    def news_confirm_members
-      press_center_lead + departaments_curators
+      def news
+        { need_to_review: (press_center_lead + departaments_curators + User.tech_admins).uniq }
+      end
     end
   end
 end

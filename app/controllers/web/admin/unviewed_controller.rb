@@ -6,8 +6,14 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
 
   def index
     if params[:items].present?
-      @unviewed = params[:items].to_s.classify.constantize.need_to_review.page(params[:page]).decorate
-      @tag = Tag.new
+      items_class = params[:items].to_s
+      permitted_users_id = Organization::Permissions.send(items_class)[:need_to_review].map(&:id)
+      if permitted_users_id.include? current_user.id
+        @unviewed = items_class.classify.constantize.need_to_review.page(params[:page]).decorate
+        @tag = Tag.new
+      else
+        redirect_to not_found_page_path
+      end
     end
   end
 
