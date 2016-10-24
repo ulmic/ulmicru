@@ -6,8 +6,14 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
 
   def index
     if params[:items].present?
-      @unviewed = params[:items].to_s.classify.constantize.need_to_review.page(params[:page]).decorate
-      @tag = Tag.new
+      items_class = params[:items].to_s
+      permitted_users_id = Organization::Permissions.send(items_class)[:review].map(&:id)
+      if permitted_users_id.include? current_user.id
+        @unviewed = items_class.classify.constantize.need_to_review.page(params[:page]).decorate
+        @tag = Tag.new
+      else
+        redirect_to not_found_page_path
+      end
     end
   end
 
@@ -17,19 +23,20 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
     any_items_key = @counts.keys.select { |k| @counts[k] != 0 }.first
     if any_items_key
       if params[:items].present?
-        unless Concerns::NotificatableItems.items.include? params[:items].to_sym
+        unless Concerns::NotificatableItems.items(current_user.id).include? params[:items].to_sym
           redirect_to params.except(:items)
         end
       else
         redirect_to admin_unviewed_index_path items: any_items_key
       end
+    else
+      redirect_to not_found_page_path
     end
   end
 
   def unviewed_counts
-    @counts = {}
-    Concerns::NotificatableItems.items.each do |item|
-      @counts[item] = item.to_s.classify.constantize.need_to_review.count
+    @counts = Concerns::NotificatableItems.items(current_user.id).reduce({}) do |counts, item|
+      counts.merge! item => item.to_s.classify.constantize.need_to_review.count
     end
   end
 end

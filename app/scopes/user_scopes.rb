@@ -17,5 +17,6 @@ module UserScopes
     scope :just_users, -> { where type: nil }
     scope :just_members, -> { where type: 'Member' }
     scope :just_questionaries, -> { where type: 'Questionary' }
+    scope :tech_admins, -> { where role: :tech_admin }
   end
 end

@@ -27,7 +27,9 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form = QuestionaryForm.new_with_model
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
-      send_notification corporative_lead, @questionary_form.model, :create
+      Organization::Permissions.questionary[:review].each do |member|
+        send_notification member, @questionary_form.model, :create
+      end
       redirect_to admin_questionary_path @questionary_form.model
     else
       render action: :new
