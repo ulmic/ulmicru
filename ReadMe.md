@@ -15,3 +15,9 @@ rails generate react_webpack_rails:install --no-example --no-hot-reload --no-ser
 make develop
 ```
 
+
+Fill avatars on localhost via console
+
+```ruby
+Member.find_each.with_index { |m, index| m.update_attributes!(avatar: File.open("#{Rails.root}/public/logo.png")); print "#{index}\r" };
+```
