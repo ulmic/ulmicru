@@ -18,7 +18,6 @@ class Web::Admin::UnviewedControllerTest < ActionController::TestCase
     @types.each do |type|
       get :index
       assert_response :redirect, @response.body
-      assert_redirected_to admin_unviewed_index_path items: :member
     end
   end
 
@@ -27,6 +26,10 @@ class Web::Admin::UnviewedControllerTest < ActionController::TestCase
       type.to_s.camelize.constantize.destroy_all
     end
     get :index
-    assert_response :success, @response.body
+    if @member.role.tech_admin?
+      assert_response :success, @response.body
+    else
+      assert_response :redirect, @response.body
+    end
   end
 end
