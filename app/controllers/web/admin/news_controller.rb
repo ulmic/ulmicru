@@ -14,7 +14,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news_form = NewsForm.new_with_model
     @news_form.submit params[:news]
     if @news_form.save
-      Organization::Permissions.news_confirm_members.each do |member|
+      Organization::Permissions.news[:need_to_review].each do |member|
         send_notification member, @news_form.model, :create
       end
       redirect_to admin_news_index_path
