@@ -32,6 +32,10 @@
       = f.input :want_to_do
       = f.input :experience
       = f.input :state_event, as: :state_event
+      - if current_user.role.tech_admin?
+        = f.input :role
+      - else
+        = f.input :role, collection: roles_without_tech_admin
       = f.input :member_state_event, as: :state_event
       = f.association :teams, label_method: lambda { |team| team.decorate.full_title }, input_html: { class: :select2 }
       = f.simple_fields_for :positions do |position_form|
