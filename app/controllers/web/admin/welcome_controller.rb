@@ -20,6 +20,8 @@ class Web::Admin::WelcomeController < Web::Admin::ApplicationController
   private
 
   def redirect_to_unviewed
-    redirect_to admin_unviewed_index_path unless @notification_count == 0
+    unless current_user.admin?
+      redirect_to admin_events_path
+    end
   end
 end

@@ -10,6 +10,11 @@
                   .inner
                     %i.fa.fa-info-circle
                     = @notification_count
+            - if current_user.role.author?
+              %li
+                = link_to admin_path do
+                  .inner
+                    Админка
             - if current_user.is_user? && current_user.unviewed? && !current_user.email.present?
               %li
                 = link_to account_path do
