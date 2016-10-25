@@ -31,7 +31,7 @@
         = image_tag @news_form.model.photo if @news_form.model.photo.present?
       = f.input :photo, as: :file, label: false, input_html: { style: 'display: none' }
       = f.input :photo, label: false, as: :jasny_file_preview_upload
-      - if current_user.role.admin? && !@news_form.title.present?
+      - if current_user.has_permission_to?(:review, :news) && !@news_form.title.present?
         = f.input :state, as: :hidden, input_html: { value: :confirmed }
       - if @news_form.title.present?
         = f.input :state_event, as: :state_event

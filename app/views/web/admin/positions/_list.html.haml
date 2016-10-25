@@ -22,7 +22,7 @@
         - if searching?
           %td= activity_line.human_state_name
         %td.actions
-          - if position.unviewed?
+          - if position.unviewed? && current_user.has_permission_to?(:review, :position)
             = link_to admin_position_path(position, position: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
               %span.glyphicon.glyphicon-ok
           = link_to edit_admin_member_path(position.member), class: 'btn btn-warning btn-xs' do
