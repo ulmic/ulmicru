@@ -13,7 +13,8 @@
       = link_to t('helpers.links.back'), admin_articles_path, class: 'btn btn-default'
       = f.input :title, as: :string
       = f.input :body, as: :ckeditor
-      = f.input :state_event, as: :state_event
+      - if current_user.has_permission_to? :review, :article
+        = f.input :state_event, as: :state_event
       = f.input :publicity
       = f.input :view
       = f.input :access

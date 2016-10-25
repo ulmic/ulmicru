@@ -34,7 +34,7 @@
           = render 'web/admin/tags/list', record: article
           = render 'web/admin/tags/form', record_type: 'Article', record_id: article.id, index: article.id
         %td.actions
-          - if article.unviewed?
+          - if article.unviewed? && current_user.has_permission_to?(:review, :article)
             = link_to admin_article_path(article, article: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do
               %span.glyphicon.glyphicon-ok
           = link_to edit_admin_article_path(article), class: 'btn btn-warning btn-xs' do

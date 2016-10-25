@@ -38,7 +38,7 @@
             - else
               = link_to admin_news_path(news, news: { state: :main }), method: :patch, class: 'btn btn-success btn-xs' do
                 = fa_icon :fire
-            - if news.unviewed?
+            - if news.unviewed? && current_user.has_permission_to?(:review, :news)
               = link_to admin_news_path(news, news: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do
                 %span.glyphicon.glyphicon-ok
           = link_to edit_admin_news_path(news), class: 'btn btn-warning btn-xs' do

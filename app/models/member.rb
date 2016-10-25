@@ -123,10 +123,6 @@ class Member < User
     positions.current_positions.any? && teams.any?
   end
 
-  def has_permission_to?(action, type)
-    Organization::Permissions.send(type)[action].map(&:id).include? self.id
-  end
-
   private
 
   def remove_empty_positions

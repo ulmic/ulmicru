@@ -94,4 +94,8 @@ class User < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name]
+
+  def has_permission_to?(action, type)
+    Organization::Permissions.send(type)[action].map(&:id).include? self.id
+  end
 end

@@ -22,7 +22,8 @@
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
-      = f.input :state, as: :hidden, input_html: { value: :confirmed }
+      - if current_user.has_permission_to? :review, :questionary
+        = f.input :state, as: :hidden, input_html: { value: :confirmed }
       = f.label :avatar
       .preview
         = image_tag @questionary_form.model.avatar if @questionary_form.model.avatar.present?

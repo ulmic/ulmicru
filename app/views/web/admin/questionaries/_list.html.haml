@@ -22,18 +22,19 @@
         - if searching?
           %td= questionary.human_state_name
         %td.actions{ style: 'width: 152px' }
-          .btn-group
-            = link_to '#', class: 'btn btn-xs btn-success' do
-              %span.glyphicon.glyphicon-ok
-            = link_to '#', class: 'btn btn-xs btn-success dropdown-toggle', data: { toggle: :dropdown }, aria: { expanded: false } do
-              %span.glyphicon.glyphicon-triangle-bottom
-            %ul.dropdown-menu
-              - if questionary.member_unviewed?
-                %li
-                  = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(questionary, questionary: { member_state: :on_the_trial }), method: :put
-              - unless questionary.member_confirmed?
-                %li
-                  = link_to t('state_machines.questionary.state.events.confirm'), admin_questionary_path(questionary, questionary: { member_state: :confirmed }), method: :put
+          - if current_user.has_permission_to? :review, :questionary
+            .btn-group
+              = link_to '#', class: 'btn btn-xs btn-success' do
+                %span.glyphicon.glyphicon-ok
+              = link_to '#', class: 'btn btn-xs btn-success dropdown-toggle', data: { toggle: :dropdown }, aria: { expanded: false } do
+                %span.glyphicon.glyphicon-triangle-bottom
+              %ul.dropdown-menu
+                - if questionary.member_unviewed?
+                  %li
+                    = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(questionary, questionary: { member_state: :on_the_trial }), method: :put
+                - unless questionary.member_confirmed?
+                  %li
+                    = link_to t('state_machines.questionary.state.events.confirm'), admin_questionary_path(questionary, questionary: { member_state: :confirmed }), method: :put
           = link_to edit_admin_questionary_path(questionary), class: 'btn btn-warning btn-xs' do
             %span.glyphicon.glyphicon-pencil
           .btn-group
