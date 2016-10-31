@@ -19,6 +19,7 @@
 #= require placeholders
 #= require react_integration
 #= require react_bundle
+#= reuqire yofication
 
 $.extend String.prototype, camelize: ->
   @replace /(?:^|[-_])(\w)/g, (_, c) ->

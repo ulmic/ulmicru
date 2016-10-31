@@ -145,6 +145,7 @@ Rails.application.routes.draw do
         resources :arguments, only: :create
       end
     end
+    resources :yofications, only: [ :create, :update ]
   end
   namespace :rss do
     resources :news, only: :index
