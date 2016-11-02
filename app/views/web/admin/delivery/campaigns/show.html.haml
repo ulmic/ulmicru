@@ -15,14 +15,10 @@
 .row
   .col-lg-6
     %table.table.attributes-table
-      - @campaign.attributes.each do |name, value|
+      - @campaign.view_attributes.each do |name, value|
         %tr
           %td= model_class.human_attribute_name name
           %td= value
-      %tr
-        %td= model_class.human_attribute_name :contacts_count
-        %td= @campaign.contacts.count
-
   .col-lg-6
     %h4
       %b
