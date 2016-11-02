@@ -24,7 +24,7 @@ class Delivery::CampaignDecorator < ApplicationDecorator
   end
 
   def image_tag
-    h.image_tag image
+    h.image_tag image.medium
   end
 
   def link_to
