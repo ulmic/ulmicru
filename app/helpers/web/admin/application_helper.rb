@@ -20,7 +20,7 @@ module Web::Admin::ApplicationHelper
   end
 
   def searchable_model?(model_class)
-    model_class.methods.include? :search_everywhere
+    model_class.methods.include?(:search) || model_class.methods.include?(:search_everywhere)
   end
 
   def object_updated_less_minute_ago?(object)

@@ -1,7 +1,7 @@
 class Web::Admin::UsersController < Web::Admin::ApplicationController
   def index
     if params[:search]
-      users = User.presented.search_everywhere params[:search]
+      users = User.presented.search params[:search]
     else
       users = User.send params[:scope]
     end
