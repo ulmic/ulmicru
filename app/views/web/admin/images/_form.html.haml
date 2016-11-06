@@ -32,3 +32,5 @@
           URL
         %td
           = @image_form.file.url
+        %td
+          = link_to fa_icon(:link), new_admin_redirect_rule_path(redirect_rule: { redirect_to: @image_form.file.url }), class: 'btn btn-success'
