@@ -28,7 +28,7 @@ class Delivery::CampaignDecorator < ApplicationDecorator
   end
 
   def link_to
-    h.link_to link, link
+    h.link_to link.first(50), link
   end
 
   def creator_link
