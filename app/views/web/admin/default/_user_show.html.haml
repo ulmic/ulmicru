@@ -16,6 +16,7 @@
     = image_tag item.avatar.medium, style: 'width: 100%'
     %hr
     %h4
+      = link_to fa_icon(:link), new_redirect_rule_by_photo_path(item.avatar), class: 'btn btn-xs btn-success'
       - if item.in_contact_list?
         .label.label-success
           = fa_icon :check
