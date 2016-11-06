@@ -16,13 +16,13 @@
         = image_tag @image_form.model.file if @image_form.model.file.present?
       = f.input :file, as: :file, label: false, input_html: { style: 'display: none' }
       = f.input :file, label: false, as: :jasny_file_preview_upload
+      = f.input :image_type
       = f.input :date, as: :datetime_picker
       .alert.alert-dissmissible.alert-info
         %span.glyphicon.glyphicon-info-sign
         = t('hints.admin.image.author')
       = f.input :author_id, as: :select, collection: users_hash(@users), input_html: { class: :select2 }
       = f.input :author_name, as: :string
-      = f.input :image_type
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_images_path, class: 'btn btn-default'
   .col-lg-6
