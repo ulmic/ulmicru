@@ -25,12 +25,13 @@
       = f.input :author_name, as: :string
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_images_path, class: 'btn btn-default'
-  .col-lg-6
-    %table.table
-      %tr
-        %td
-          URL
-        %td
-          = @image_form.file.url
-        %td
-          = link_to fa_icon(:link), new_redirect_rule_by_image_path(@image_form), class: 'btn btn-success'
+  - if @image_form.file.present?
+    .col-lg-6
+      %table.table
+        %tr
+          %td
+            URL
+          %td
+            = @image_form.file.url
+          %td
+            = link_to fa_icon(:link), new_redirect_rule_by_image_path(@image_form), class: 'btn btn-success'

@@ -28,6 +28,7 @@
         = f.input :user_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }, selected: current_user.id
       = f.input :published_at, as: :datetime_picker
       = f.label :photo
+      = link_to fa_icon(:link), new_redirect_rule_by_photo_path(@news_form.photo), class: 'btn btn-xs btn-success'
       .preview
         = image_tag @news_form.model.photo if @news_form.model.photo.present?
       = f.input :photo, as: :file, label: false, input_html: { style: 'display: none' }
