@@ -5,7 +5,7 @@ class Web::Admin::ImagesController < Web::Admin::ApplicationController
     if params[:search]
       images = Image.active.search_everywhere params[:search]
     else
-      images = Image.send params[:scope]
+      images = Image.order(id: :desc).send params[:scope]
     end
     @images = images.page(params[:page]).decorate
   end

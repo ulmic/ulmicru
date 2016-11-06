@@ -3,7 +3,7 @@ class Web::Admin::RedirectRulesController < Web::Admin::ApplicationController
     if params[:search]
       redirect_rules = RedirectRule.active.search_everywhere params[:search]
     else
-      redirect_rules = RedirectRule.send params[:scope]
+      redirect_rules = RedirectRule.order(id: :desc).send params[:scope]
     end
     @redirect_rules = redirect_rules.page(params[:page]).decorate
   end
