@@ -22,7 +22,7 @@
         - if searching?
           %td= image.human_state_name
         %td.actions
-          = link_to fa_icon(:link), new_admin_redirect_rule_path(redirect_rule: { redirect_to: @image_form.file.url }), class: 'btn btn-success'
+          = link_to fa_icon(:link), new_admin_redirect_rule_path(redirect_rule: { redirect_to: image.file.url }), class: 'btn btn-success'
           = link_to fa_icon(:pencil), edit_admin_image_path(image), class: 'btn btn-warning btn-xs'
           = link_to fa_icon(:remove), admin_image_path(image), method: :delete, class: 'btn btn-xs btn-danger'
 = paginate images, theme: 'twitter-bootstrap-3'
