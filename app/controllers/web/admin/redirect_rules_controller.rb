@@ -10,7 +10,7 @@ class Web::Admin::RedirectRulesController < Web::Admin::ApplicationController
 
   def new
     @redirect_rule_form = RedirectRuleForm.new_with_model
-    params[:redirect_rule].each do |attr, value|
+    params[:redirect_rule]&.each do |attr, value|
       @redirect_rule_form.send "#{attr}=", value
     end
   end
@@ -33,7 +33,7 @@ class Web::Admin::RedirectRulesController < Web::Admin::ApplicationController
     @redirect_rule_form = RedirectRuleForm.find_with_model params[:id]
     @redirect_rule_form.submit(params[:redirect_rule])
     if @redirect_rule_form.save
-      redirect_to edit_admin_redirect_rule_path @redirect_rule_form.model
+      redirect_to admin_redirect_rules_path
     else
       render action: :edit
     end
