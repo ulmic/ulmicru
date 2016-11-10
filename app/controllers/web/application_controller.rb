@@ -23,7 +23,7 @@ class Web::ApplicationController < ApplicationController
         if redirect_rule.present?
           redirect_to redirect_rule.redirect_to
         else
-          render '/web/pages/shared/_server_error', status: 500
+          render 'web/pages/shared/server_error', status: 500
         end
       end
   end
