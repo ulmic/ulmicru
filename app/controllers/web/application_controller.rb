@@ -12,21 +12,21 @@ class Web::ApplicationController < ApplicationController
     before_filter :required_basic_auth!
   end
 
-#  if Rails.env.production?
-#    rescue_from ActionController::RoutingError,
-#      ActionView::MissingTemplate,
-#      ActiveRecord::RecordNotFound,
-#      NoMethodError do |exception|
-#        Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
-#        Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-#        redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
-#        if redirect_rule.present?
-#          redirect_to redirect_rule.redirect_to
-#        else
-#          render 'web/pages/shared/server_error', status: 500
-#        end
-#      end
-#  end
+  if Rails.env.production?
+    rescue_from ActionController::RoutingError,
+      ActionView::MissingTemplate,
+      ActiveRecord::RecordNotFound,
+      NoMethodError do |exception|
+        Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
+        Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
+        redirect_rule = RedirectRule.find_by_old_path(request.env['PATH_INFO'])
+        if redirect_rule.present?
+          redirect_to redirect_rule.redirect_to
+        else
+          render 'web/pages/shared/server_error', status: 500
+        end
+      end
+  end
 
   def load_categories_tree
     @first_category = Category.includes(:articles).find configus.categories.who_we_are
