@@ -3,3 +3,6 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+
+User-agent: *
+Disallow: /assets/application-48988af3f256de1464bff9d645df26f7851179ec6c17a3ddbd37e4408423a334.js
