@@ -6,3 +6,4 @@
 
 User-agent: *
 Disallow: /assets/application-48988af3f256de1464bff9d645df26f7851179ec6c17a3ddbd37e4408423a334.js
+Disallow: /assets/web/application-b76d35e6723e474df3d2ff3721bd897d32f9320e52e9bd23bd30077e5181e8ab.css

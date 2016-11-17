@@ -22,6 +22,10 @@
   border-bottom: 1px solid #ddd;
   box-shadow: 0 0 4px rgba(0,0,0,0.5);
 
+  .container-big {
+    margin-left: 0;
+  }
+
   .dropdown-category-menu {
     position: relative;
   }
@@ -39,7 +43,7 @@
     position: absolute;
     display: block !important;
     z-index: 5;
-    top: -10px;
+    top: 0px;
     width: 740px;
     background: $topbar-bg-color;
     padding: 0 rem-calc(30) rem-calc(30);
@@ -198,10 +202,15 @@
     height: $topbar-height;
     border-top: 3px solid #fff;
     transition: border-color 0.2s ease,color 0.2s ease;
-    img.custom-icon {
-      background-color: black;
-      width: 35px;
+    img {
       margin-top: -2px;
+      &.custom-icon {
+        width: 35px;
+        background-color: black;
+      }
+      &.logo-icon {
+        height: 100%;
+      }
     }
   }
   a:hover>.inner {
