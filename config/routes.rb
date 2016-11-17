@@ -141,6 +141,7 @@ Rails.application.routes.draw do
       resources :tags, only: [ :create, :destroy, :index ]
     end
     namespace :members do
+      resources :members, only: :index
       namespace :corporative do
         resources :arguments, only: :create
       end

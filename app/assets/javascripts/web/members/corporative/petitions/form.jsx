@@ -17,8 +17,7 @@ var checkedValue = function(component, nomination) {
 var init_select2 = function(component) {
   $(".select2-petition#activity_lines_corporative_confession_member_id").select2({
     ajax: {
-      //FIXME don't get from admin namespace
-      url: Routes.api_admin_members_path(),
+      url: Routes.api_members_members_path(),
       data: function(term, page) {
         return({
           condition: `without_${component.state.nomination}`,
