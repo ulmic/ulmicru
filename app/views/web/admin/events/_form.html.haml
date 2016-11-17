@@ -20,6 +20,7 @@
       = f.input :title, as: :string
       = f.input :description, as: :ckeditor
       = f.label :main_photo
+      = link_to fa_icon(:link), new_redirect_rule_by_photo_path(@event_form.main_photo), class: 'btn btn-xs btn-success'
       .preview
         = image_tag @event_form.model.main_photo if @event_form.model.main_photo.present?
       = f.input :main_photo, as: :file, label: false, input_html: { style: 'display: none' }
