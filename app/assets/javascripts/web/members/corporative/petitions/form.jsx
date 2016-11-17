@@ -62,23 +62,24 @@ class PetitionInputs extends React.Component {
                </label>
                <div className="radio inline">
                  <label htmlFor="activity_lines_corporative_confession_nomination_debut">
-                   <input className="radio_buttons required" type="radio" value="debut"
-                          name="activity_lines_corporative_confession[nomination]"
-                          id="activity_lines_corporative_confession_nomination_debut"
-                          checked={checkedValue(this, 'debut')}
-                          onClick={this.changeNomination.bind(null, 'debut')} />
-                     Дебют года
+                   Дебют года
                  </label>
+                 <input className="radio_buttons required" type="radio" value="debut"
+                        name="activity_lines_corporative_confession[nomination]"
+                        id="activity_lines_corporative_confession_nomination_debut"
+                        checked={checkedValue(this, 'debut')}
+                        defaultChecked='checked'
+                        onClick={this.changeNomination.bind(null, 'debut')} />
                </div>
                <div className="radio inline">
                  <label htmlFor="activity_lines_corporative_confession_nomination_number_one">
-                   <input className="radio_buttons required" type="radio" value="number_one"
-                          name="activity_lines_corporative_confession[nomination]"
-                          id="activity_lines_corporative_confession_nomination_number_one"
-                          checked={checkedValue(this, 'number_one')}
-                          onClick={this.changeNomination.bind(null, 'number_one')} />
                    Номер один
                  </label>
+                 <input className="radio_buttons required" type="radio" value="number_one"
+                        name="activity_lines_corporative_confession[nomination]"
+                        id="activity_lines_corporative_confession_nomination_number_one"
+                        checked={checkedValue(this, 'number_one')}
+                        onClick={this.changeNomination.bind(null, 'number_one')} />
                </div>
              </div>
              <div className="input select required activity_lines_corporative_confession_member_id">
