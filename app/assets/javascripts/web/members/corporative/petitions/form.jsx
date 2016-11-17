@@ -39,9 +39,11 @@ var init_select2 = function(component) {
     minimumInputLength: 2
   })
 }
+
 class PetitionInputs extends React.Component {
-  getInitialState() {
-    return { nomination: initial_nomination(this) }
+  constructor(props) {
+    super(props)
+    this.state = { nomination: initial_nomination(this) }
   }
   componentDidMount() {
     init_select2(this)
@@ -59,7 +61,7 @@ class PetitionInputs extends React.Component {
                  <abbr title="required">*</abbr> Номинация
                </label>
                <div className="radio inline">
-                 <label for="activity_lines_corporative_confession_nomination_debut">
+                 <label htmlFor="activity_lines_corporative_confession_nomination_debut">
                    <input className="radio_buttons required" type="radio" value="debut"
                           name="activity_lines_corporative_confession[nomination]"
                           id="activity_lines_corporative_confession_nomination_debut"
@@ -69,7 +71,7 @@ class PetitionInputs extends React.Component {
                  </label>
                </div>
                <div className="radio inline">
-                 <label for="activity_lines_corporative_confession_nomination_number_one">
+                 <label htmlFor="activity_lines_corporative_confession_nomination_number_one">
                    <input className="radio_buttons required" type="radio" value="number_one"
                           name="activity_lines_corporative_confession[nomination]"
                           id="activity_lines_corporative_confession_nomination_number_one"
@@ -80,7 +82,7 @@ class PetitionInputs extends React.Component {
                </div>
              </div>
              <div className="input select required activity_lines_corporative_confession_member_id">
-               <label className="select required" for="activity_lines_corporative_confession_member_id">
+               <label className="select required" htmlFor="activity_lines_corporative_confession_member_id">
                  <abbr title="required">*</abbr> Член МИЦ
                </label>
                <select className="select required select2-petition"
@@ -91,3 +93,5 @@ class PetitionInputs extends React.Component {
            </div>)
   }
 }
+
+export default PetitionInputs
