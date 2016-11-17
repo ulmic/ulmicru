@@ -1,7 +1,7 @@
 import React from 'react'
 
 var initial_nomination = function(component) {
-  if (component.props.nomination == undefined) {
+  if (component.props.nomination != null) {
     return component.props.nomination
   } else {
     return 'debut'
@@ -43,6 +43,9 @@ class PetitionInputs extends React.Component {
   constructor(props) {
     super(props)
     this.state = { nomination: initial_nomination(this) }
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentDidUpdate = this.componentDidUpdate.bind(this)
+    this.changeNomination = this.changeNomination.bind(this)
   }
   componentDidMount() {
     init_select2(this)
