@@ -8,7 +8,7 @@ class Api::Members::MembersController < Api::Members::ApplicationController
       @members = Member.tag_available
     end
     if params[:condition].present? && params[:condition].in?(AVAILABLE_CONDITIONS)
-      conditional_members = Member.send params[:condition]
+      conditional_members = Member.just_members.send params[:condition]
       @members = @members & conditional_members
     end
     render json: @members.to_json(only: [:id, :ticket, :first_name, :last_name])
