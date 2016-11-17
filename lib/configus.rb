@@ -47,10 +47,10 @@ Configus.build Rails.env do
       activity_lines do
         corporative do
           confession do
-            begining_submissions_petitions '21/12/2015'.to_datetime
-            ending_submissions_petitions '15/01/2016'.to_datetime
-            begining_voting '15/01/2016'.to_datetime
-            ending_voting '21/01/2016'.to_datetime
+            begining_submissions_petitions '21/10/2016'.to_datetime
+            ending_submissions_petitions '15/01/2017'.to_datetime
+            begining_voting '15/01/2017'.to_datetime
+            ending_voting '21/01/2017'.to_datetime
           end
         end
       end
