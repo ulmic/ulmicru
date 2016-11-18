@@ -8,4 +8,13 @@ class ActivityLines::Corporative::Argument < ActiveRecord::Base
 
   extend Enumerize
   enumerize :argument_type, in: [ :reason, :honors, :out_ulmic_honors, :hobby ]
+
+  state_machine :state, initial: :active do
+    state :active
+    state :removed
+
+    event :remove do
+      transition all => :removed
+    end
+  end
 end

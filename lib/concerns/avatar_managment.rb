@@ -16,6 +16,6 @@ module AvatarManagment
         image_url = 'default-woman-icon.png'
       end
     end
-    target == :image_url ? image_url : ActionController::Base.helpers.asset_path(image_url)
+    target == :image_url ? image_url : ActionController::Base.helpers.asset_path(image_url).gsub('/assets/')
   end
 end

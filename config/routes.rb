@@ -81,6 +81,7 @@ Rails.application.routes.draw do
       namespace :activity_lines do
         namespace :corporative do
           resources :confessions
+          resources :arguments, only: :destroy
         end
       end
       namespace :delivery do
