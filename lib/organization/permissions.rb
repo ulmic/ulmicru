@@ -2,6 +2,7 @@ module Organization
   module Permissions
     class << self
       include Organization::PeopleHelper
+      include Organization::Teams
 
       def news
         { review: (press_center_lead + departaments_curators + User.tech_admins).uniq }
@@ -37,6 +38,10 @@ module Organization
 
       def team
         { review: (departaments_curators + corporative_lead + deputy_corporative_lead + User.tech_admins).uniq }
+      end
+
+      def activity_lines_corporative_confession
+        { review: (presidium.users + vice_chairmen).uniq }
       end
     end
   end
