@@ -11,7 +11,6 @@ get_view = (hash) ->
     '#view_3': '#edcfdb'
     '#view_4': '#496e9b'
   }
-  $(hash).show()
   set_background_color colors[hash]
   if hash == '#view_2'
     $('h3').css('color', '#f0eff4')
@@ -21,13 +20,5 @@ get_view = (hash) ->
     $('h3').css('color', 'white')
   return
 
-$(document).ready ->
-  $('.mr_mrs').hide()
-  if window.location.hash != ''
-    get_view(window.location.hash)
-    return
-  else
-    i = Math.floor(Math.random() * 4) + 1
-    hash = "#view_#{i}"
-    get_view(hash)
-    return
+$ ->
+  get_view "##{$('.row.mr_mrs').prop('id')}"
