@@ -1,4 +1,3 @@
-= render 'web/pages/shared/mr_and_mrs', i: 1, message: t('.this_is_404_error_page')
-= render 'web/pages/shared/mr_and_mrs', i: 2, message: t('.this_is_404_error_page')
-= render 'web/pages/shared/mr_and_mrs', i: 3, message: t('.this_is_404_error_page')
-= render 'web/pages/shared/mr_and_mrs', i: 4, message: t('.this_is_404_error_page')
+- i = Random.rand(1..4)
+- title
+= render 'web/pages/shared/mr_and_mrs', i: i, message: t('.this_is_404_error_page')
