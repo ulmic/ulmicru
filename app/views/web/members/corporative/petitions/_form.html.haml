@@ -1,4 +1,6 @@
 - argument_types = ::ActivityLines::Corporative::Argument.argument_type.values
+.errors
+  = render 'layouts/web/shared/errors', object: @petition_form
 = simple_form_for @petition_form, url: { controller: 'web/members/corporative/petitions', action: action } do |f|
   = react_component 'PetitionInputs', nomination: @petition_form.nomination
   = f.simple_fields_for :arguments do |a|
