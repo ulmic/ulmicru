@@ -81,6 +81,7 @@ Rails.application.routes.draw do
       namespace :activity_lines do
         namespace :corporative do
           resources :confessions
+          resources :arguments, only: :destroy
         end
       end
       namespace :delivery do
@@ -141,6 +142,7 @@ Rails.application.routes.draw do
       resources :tags, only: [ :create, :destroy, :index ]
     end
     namespace :members do
+      resources :members, only: :index
       namespace :corporative do
         resources :arguments, only: :create
       end

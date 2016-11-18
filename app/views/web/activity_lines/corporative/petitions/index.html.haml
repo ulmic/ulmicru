@@ -4,7 +4,7 @@
 = stylesheet_link_tag 'web/articles/confessions'
 = javascript_include_tag 'web/articles/confessions'
 = javascript_include_tag 'web/activity_lines/corporative/petitions'
-.container
+.container.mic-form-container
   %h1.title
     = t('.title', year: current_confession_year)
   .text
@@ -57,6 +57,7 @@
         number_one_of_the_year: @number_one_of_the_year,
         vote: true
     - else
-      .panel.info
-        Пока не подано ни одного ходатайства
+      .container
+        .panel.info
+          Пока не подано ни одного ходатайства
 = render 'arguments_modal'

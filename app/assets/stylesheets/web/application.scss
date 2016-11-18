@@ -299,3 +299,17 @@ textarea {
     }
   }
 }
+
+.radio {
+  label {
+    font-size: 20px;
+  }
+  input[type="radio"] {
+    &.radio_buttons {
+      margin-left: 48px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+

@@ -1,8 +1,12 @@
 class ActivityLines::Corporative::ConfessionForm < ApplicationReform
   properties :year, :member_id, :state, :nomination, :creator_id, :state_event
 
+  validates :member_id, presence: true
+
   collection :arguments, populate_if_empty: ActivityLines::Corporative::Argument do
     properties :id, :argument_type, :text, :member_id, :confession_id
+
+    validates :text, presence: true
   end
 
   def build_arguments_for_petition

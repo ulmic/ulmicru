@@ -18,6 +18,8 @@
             = argument.member.short_name
           %td= enumerize_locales_value argument, :argument_type
           %td= argument.text
+          %td
+            = link_to fa_icon(:remove), admin_activity_lines_corporative_argument_path(argument), method: :delete, class: 'btn btn-danger'
   .panel-body
     %table.table.table-bordered.table-striped
       - @comments.each do |comment|

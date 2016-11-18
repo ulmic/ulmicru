@@ -1,7 +1,7 @@
 import React from 'react'
 
 var initial_nomination = function(component) {
-  if (component.props.nomination == undefined) {
+  if (component.props.nomination != null) {
     return component.props.nomination
   } else {
     return 'debut'
@@ -17,8 +17,7 @@ var checkedValue = function(component, nomination) {
 var init_select2 = function(component) {
   $(".select2-petition#activity_lines_corporative_confession_member_id").select2({
     ajax: {
-      //FIXME don't get from admin namespace
-      url: Routes.api_admin_members_path(),
+      url: Routes.api_members_members_path(),
       data: function(term, page) {
         return({
           condition: `without_${component.state.nomination}`,
@@ -39,9 +38,14 @@ var init_select2 = function(component) {
     minimumInputLength: 2
   })
 }
+
 class PetitionInputs extends React.Component {
-  getInitialState() {
-    return { nomination: initial_nomination(this) }
+  constructor(props) {
+    super(props)
+    this.state = { nomination: initial_nomination(this) }
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentDidUpdate = this.componentDidUpdate.bind(this)
+    this.changeNomination = this.changeNomination.bind(this)
   }
   componentDidMount() {
     init_select2(this)
@@ -59,28 +63,29 @@ class PetitionInputs extends React.Component {
                  <abbr title="required">*</abbr> Номинация
                </label>
                <div className="radio inline">
-                 <label for="activity_lines_corporative_confession_nomination_debut">
-                   <input className="radio_buttons required" type="radio" value="debut"
-                          name="activity_lines_corporative_confession[nomination]"
-                          id="activity_lines_corporative_confession_nomination_debut"
-                          checked={checkedValue(this, 'debut')}
-                          onClick={this.changeNomination.bind(null, 'debut')} />
-                     Дебют года
+                 <label htmlFor="activity_lines_corporative_confession_nomination_debut">
+                   Дебют года
                  </label>
+                 <input className="radio_buttons required" type="radio" value="debut"
+                        name="activity_lines_corporative_confession[nomination]"
+                        id="activity_lines_corporative_confession_nomination_debut"
+                        checked={checkedValue(this, 'debut')}
+                        defaultChecked='checked'
+                        onClick={this.changeNomination.bind(null, 'debut')} />
                </div>
                <div className="radio inline">
-                 <label for="activity_lines_corporative_confession_nomination_number_one">
-                   <input className="radio_buttons required" type="radio" value="number_one"
-                          name="activity_lines_corporative_confession[nomination]"
-                          id="activity_lines_corporative_confession_nomination_number_one"
-                          checked={checkedValue(this, 'number_one')}
-                          onClick={this.changeNomination.bind(null, 'number_one')} />
+                 <label htmlFor="activity_lines_corporative_confession_nomination_number_one">
                    Номер один
                  </label>
+                 <input className="radio_buttons required" type="radio" value="number_one"
+                        name="activity_lines_corporative_confession[nomination]"
+                        id="activity_lines_corporative_confession_nomination_number_one"
+                        checked={checkedValue(this, 'number_one')}
+                        onClick={this.changeNomination.bind(null, 'number_one')} />
                </div>
              </div>
              <div className="input select required activity_lines_corporative_confession_member_id">
-               <label className="select required" for="activity_lines_corporative_confession_member_id">
+               <label className="select required" htmlFor="activity_lines_corporative_confession_member_id">
                  <abbr title="required">*</abbr> Член МИЦ
                </label>
                <select className="select required select2-petition"
@@ -91,3 +96,5 @@ class PetitionInputs extends React.Component {
            </div>)
   }
 }
+
+export default PetitionInputs

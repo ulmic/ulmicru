@@ -14,11 +14,13 @@ module MemberScopes
       where.not(id: ::ActivityLines::Corporative::Confession.all.map(&:member_id).uniq)
     }
     scope :cannot_get_confession, -> { where('join_date > ?', DateTime.now - 3.month) }
+    scope :with_debut, -> { where(id: ::ActivityLines::Corporative::Confession.where(nomination: :debut).map(&:member_id)) }
     scope :without_debut, -> {
-      includes(:confessions).references(:confessions).where('activity_lines_corporative_confessions.nomination != \'debut\'') + Member.without_confessions - Member.cannot_get_confession
+      where.not(id: with_debut) + Member.without_confessions - Member.cannot_get_confession
     }
+    scope :with_number_one, -> { where(id: ::ActivityLines::Corporative::Confession.where(nomination: :number_one).map(&:member_id)) }
     scope :without_number_one, -> {
-      includes(:confessions).references(:confessions).where('activity_lines_corporative_confessions.nomination != \'number_one\'') + Member.without_confessions - Member.cannot_get_confession
+      where.not(id: with_number_one) + Member.without_confessions - Member.cannot_get_confession
     }
     scope :need_to_review, -> { where(member_state: :unviewed, type: 'Member').where.not(state: :unavailable).order('id ASC') }
   end

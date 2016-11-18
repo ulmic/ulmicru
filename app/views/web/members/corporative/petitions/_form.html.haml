@@ -1,8 +1,10 @@
 - argument_types = ::ActivityLines::Corporative::Argument.argument_type.values
+.errors
+  = render 'layouts/web/shared/errors', object: @petition_form
 = simple_form_for @petition_form, url: { controller: 'web/members/corporative/petitions', action: action } do |f|
   = react_component 'PetitionInputs', nomination: @petition_form.nomination
   = f.simple_fields_for :arguments do |a|
     = a.input :argument_type, as: :hidden
-    = label :text, t("enumerize.activity_lines/corporative/argument.argument_type.#{argument_types[a.index]}")
+    = label :text, "* #{t("enumerize.activity_lines/corporative/argument.argument_type.#{argument_types[a.index]}")}"
     = a.input :text, label: false
   = f.button :submit, value: t('.submit_petition')
