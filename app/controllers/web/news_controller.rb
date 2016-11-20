@@ -10,6 +10,7 @@ class Web::NewsController < Web::ApplicationController
     unless @news.is_published?
       redirect_to not_found_page_path
     end
+    @news.increase_views
     topic_news_tags = @news.tags
     topic_news = []
     topic_news_tags.each do |tag|
@@ -17,11 +18,10 @@ class Web::NewsController < Web::ApplicationController
       topic_news << NewsDecorator.decorate(news_tag.record) if news_tag && news_tag.record.is_published?
     end
     @topic_news = topic_news.last 2
-    @last_news = NewsDecorator.decorate_collection News.published.first 3
+    @last_news = NewsDecorator.decorate_collection News.feed @news.id
     @members = @news.tags.active.members.map &:target
     @strings = @news.tags.active.string
     @not_strings = @news.tags.active.events + @news.tags.active.activity_lines + @news.tags.active.teams
-    @news.increase_views
     @previous_news = News.previous @news.id, on: :published
     @next_news = News.next @news.id, on: :published
     @same_events = ::EventDecorator.decorate_collection same_events
