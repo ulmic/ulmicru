@@ -16,7 +16,7 @@ module NewsScopes
       order('published_at DESC')
     }
     scope :popular, -> {
-      where('published_at <= ?', DateTime.now).
+      where('published_at <= ? AND published_at >= ?', DateTime.now, DateTime.now - 1.month).
       order('views DESC')
     }
     scope :actual, -> { where("published_at > CURRENT_DATE - INTERVAL'6 days'") }
