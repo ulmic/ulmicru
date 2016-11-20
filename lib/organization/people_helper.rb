@@ -15,5 +15,9 @@ module Organization
     def departaments_curators
       Position.current_positions.where(title: 'Куратор местных отделений').map &:member
     end
+
+    def vice_chairmen
+      @vice_chairmen ||= Member.where(id: Position.current_positions.where(title: 'Заместитель председателя').map(&:id))
+    end
   end
 end
