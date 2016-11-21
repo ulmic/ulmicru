@@ -12,6 +12,8 @@ module Notifications
           else
             UserMailer.delay.send(params[:theme], params[:object], params[:user])
           end
+        when 'Feedback'
+          FeedbackMailer.delay.send(params[:theme], params[:object], params[:user])
         else
           UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end
