@@ -10,7 +10,7 @@ class Web::UsersController < Web::ApplicationController
       redirect_to account_path
     else
       if @user_form.save
-        send_notification @user_form.model, @user_form.model, :after_create
+        send_notification @user_form.model, @user_form.model, :after_create, token: true
 
         sign_in @user_form.model
         initialize_subscriptions @user_form.model

@@ -10,3 +10,6 @@ messages:
   questionary:
     create:
       subject: 'Добавлена анкета на вступление на сайте МИЦ'
+  feedback:
+    finish:
+      subject: 'Найденная вами ошибка исправлена'

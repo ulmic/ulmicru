@@ -25,6 +25,7 @@ class Web::Admin::FeedbacksController < Web::Admin::ApplicationController
     @feedback_form = FeedbackForm.find_with_model params[:id]
     @feedback_form.submit(params[:feedback])
     if @feedback_form.save
+      send_notification @feedback_form.user, @feedback_form.model, :finish if feedback_finished?
       redirect_to edit_admin_feedback_path @feedback_form.model
     else
       render action: :edit
@@ -35,5 +36,11 @@ class Web::Admin::FeedbacksController < Web::Admin::ApplicationController
     @feedback = Feedback.find params[:id]
     @feedback.destroy
     redirect_to admin_feedbacks_path
+  end
+
+  private
+
+  def feedback_finished?
+    params[:feedback][:state_event] == 'finish' && @prev_object_attributes[:state] != 'done'
   end
 end
