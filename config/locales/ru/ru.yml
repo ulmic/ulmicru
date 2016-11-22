@@ -62,30 +62,6 @@ ru:
           need_auth: Для выполнения этого действия требуется авторизация
         create:
           your_account_is_not_active: Ваш аккаунт заблокирован
-  state_machines:
-    member:
-      state:
-        states:
-          unviewed: Новые
-          confirmed: Подтверждённые
-          declined: Отклонённые
-          unavailable: Отсутствуют на сайте
-    news:
-      state:
-        states:
-          published: Опубликованное
-          unpublished: Неопубликованное
-          main: Главные новости
-          unviewed: Неподтверждённые новости
-    questionary:
-      state:
-        states:
-          on_the_trial: Испытательный срок
-          unviewed: Новые
-          declined: Отклонённые
-        events:
-          put_on_the_trial: Поставить на испытательный срок
-          confirm: Принять в организацию
   web:
     welcome:
       index:

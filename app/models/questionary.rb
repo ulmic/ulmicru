@@ -13,12 +13,15 @@ class Questionary < Member
     event :confirm do
       transition all => :confirmed
     end
+
     event :decline do
       transition all => :declined
     end
+
     event :remove do
       transition all => :removed
     end
+
     event :restore do
       transition removed: :unviewed
     end
@@ -31,21 +34,30 @@ class Questionary < Member
     state :trial_passed
     state :declined
     state :updated
+    state :changes_expectation
 
     event :confirm do
       transition all => :confirmed
     end
+
     event :decline do
       transition all => :declined
     end
+
     event :renew do
       transition all => :unviewed
     end
+
     event :put_on_the_trial do
       transition all => :on_the_trial
     end
+    
     event :pass_trial do
       transition all => :trial_passed
+    end
+
+    event :change_expect do
+      transition all => :changes_expectation
     end
   end
 

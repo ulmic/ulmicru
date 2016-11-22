@@ -3,7 +3,7 @@ class MemberDecorator < UserDecorator
 
   decorates_association :teams
   decorates_association :parent
-  
+
   def full_name
     "#{first_name} #{patronymic} #{last_name}"
   end
@@ -93,22 +93,22 @@ class MemberDecorator < UserDecorator
     if attribute.is_a? Symbol
       case attribute
       when :email, :corporate_email
-	mail_to send attribute
+        mail_to send attribute
       when :mobile_phone
-	tel_tag send attribute
+        tel_tag send attribute
       when :birth_date, :join_date, :request_date
-	date = send attribute
-	I18n.l date, format: '%d %B %Y' if date.present?
+        date = send attribute
+        I18n.l date, format: '%d %B %Y' if date.present?
       when :municipality, :locality, :join_date, :school
-	h.content_tag :a, href: admin_members_path(search: send(attribute)) do
-	  send attribute
-	end
+        h.content_tag :a, href: admin_members_path(search: send(attribute)) do
+          send attribute
+        end
       when :role
-	send "#{attribute}_text"
+        send "#{attribute}_text"
       when :member_state, :state
-	object.send "human_#{attribute}_name"
+        object.send "human_#{attribute}_name"
       else
-	send attribute
+        send attribute
       end
     else
       instance_exec(&attribute.values.first)
