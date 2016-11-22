@@ -56,12 +56,14 @@ ru:
             trial_passed: Испытательный срок пройден
             member_trial_passed: Испытательный срок пройден
             member_on_the_trial: Испытательный срок
+            changes_expectation: Ожидание изменений
           events:
             confirm: Принять в организацию
             decline: Отклонить заявку на вступление
             renew: Сделать заявку непросмотренной
             put_on_the_trial: Поставить на испатательный срок
             pass_trial: Подготовить к принятию в организацию
+            changes_expect: Ожидание изменений
       news:
         state:
           states:

@@ -1,2 +1,4 @@
+- if (instance.member_unviewed? || instance.member_changes_expectation?) && instance.first_name.present?
+  = link_to t('activerecord.state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(instance, questionary: { member_state: :on_the_trial }), method: :patch, class: 'btn btn-success'
 - if instance.member_unviewed? && instance.first_name.present?
-  = link_to t('state_machines.questionary.state.events.put_on_the_trial'), admin_questionary_path(instance, questionary: { member_state: :on_the_trial }), method: :patch, class: 'btn btn-success'
+  = link_to t('activerecord.state_machines.questionary.member_state.events.changes_expect'), admin_questionary_path(instance, questionary: { member_state: :changes_expectation }), method: :patch, class: 'btn btn-success'
