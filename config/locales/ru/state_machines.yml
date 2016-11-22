@@ -57,6 +57,7 @@ ru:
             member_trial_passed: Испытательный срок пройден
             member_on_the_trial: Испытательный срок
             changes_expectation: Ожидание изменений
+            member_changes_expectation: Ожидание изменений
           events:
             confirm: Принять в организацию
             decline: Отклонить заявку на вступление

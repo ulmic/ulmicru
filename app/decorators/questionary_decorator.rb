@@ -29,6 +29,6 @@ class QuestionaryDecorator < MemberDecorator
   end
 
   def self.collections
-    [ :member_on_the_trial, :unviewed, :declined, :member_trial_passed ]
+    [ :member_on_the_trial, :member_changes_expectation,  :unviewed, :declined, :member_trial_passed ]
   end
 end
