@@ -4,6 +4,7 @@ class News < ActiveRecord::Base
                   dependent: :destroy
   has_many :comments, as: :record,
                       dependent: :destroy
+  has_many :logged_actions, as: :record
   has_and_belongs_to_many :attachments, class_name: 'Document'
 
   mount_uploader :photo,    PhotoUploader
