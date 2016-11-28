@@ -33,6 +33,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
     @news_form = NewsForm.find_with_model params[:id]
     @previous_news = News.where('id < ? AND state = ?', @news_form.model.id, @news_form.model.state).last
     @next_news = News.where('id > ? AND state = ?', @news_form.model.id, @news_form.model.state).first
+    @logged_actions = @news_form.model.logged_actions
   end
 
   def update
