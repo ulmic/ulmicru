@@ -90,6 +90,9 @@ Rails.application.routes.draw do
 	resources :sessions, only: [ :create, :destroy ]
         resources :contact_emails, only: [ :index, :update, :destroy ]
       end
+      namespace :events do
+        resources :online_conferences
+      end
     end
     namespace :users do
       resources :account, only: :update

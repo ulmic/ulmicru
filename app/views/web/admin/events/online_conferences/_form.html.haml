@@ -1,0 +1,29 @@
+- model_class = Banner
+- current_title = page_title(action, model_class.model_name.human)
+- title current_title, :admin
+.page-header
+  %h1= page_title(action, Banner.model_name.human)
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/messages', object: @banner_form
+.row
+  .col-lg-6
+    = simple_form_for [:admin, @banner_form], input_html: { class: 'form-horizontal' } do |f|
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'
+      %br
+      = f.label :vertical
+      .preview
+        = image_tag @banner_form.model.vertical if @banner_form.model.vertical.present?
+      = f.input :vertical, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :vertical, label: false, as: :jasny_file_preview_upload
+      = f.label :horizontal
+      .preview
+        = image_tag @banner_form.model.horizontal if @banner_form.model.horizontal.present?
+      = f.input :horizontal, as: :file, label: false, input_html: { style: 'display: none' }
+      = f.input :horizontal, label: false, as: :jasny_file_preview_upload
+      = f.input :link, as: :string
+      = f.input :begin_date, as: :datetime_picker
+      = f.input :end_date, as: :datetime_picker
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+      = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'
