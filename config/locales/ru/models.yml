@@ -206,6 +206,10 @@ ru:
         member: Автор
         text: Текст аргумента
         argument_type: Типа аргумента
+      activity_lines/corporative/online_conference:
+        title: Название
+        date: Дата
+        video_link: Ссылка на видео
       vote:
         rating: Рейтинг
       delivery/campaign:

@@ -10,17 +10,17 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesController <
   end
 
   def new
-    @activity_lines_corporative_online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.new_with_model
+    @online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.new_with_model
   end
 
   def edit
-    @activity_lines_corporative_online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.find_with_model params[:id]
+    @online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.find_with_model params[:id]
   end
 
   def create
-    @activity_lines_corporative_online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.new_with_model
-    @activity_lines_corporative_online_conference_form.submit params[:activity_lines_corporative_online_conference]
-    if @activity_lines_corporative_online_conference_form.save
+    @online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.new_with_model
+    @online_conference_form.submit params[:activity_lines_corporative_online_conference]
+    if @online_conference_form.save
       redirect_to admin_activity_lines_corporative_online_conferences_path
     else
       render action: :new
@@ -28,18 +28,18 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesController <
   end
 
   def update
-    @activity_lines_corporative_online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.find_with_model params[:id]
-    @activity_lines_corporative_online_conference_form.submit params[:activity_lines_corporative_online_conference]
-    if @activity_lines_corporative_online_conference_form.save
-      redirect_to edit_admin_activity_lines_corporative_online_conference_path @activity_lines_corporative_online_conference_form.model
+    @online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.find_with_model params[:id]
+    @online_conference_form.submit params[:activity_lines_corporative_online_conference]
+    if @online_conference_form.save
+      redirect_to admin_activity_lines_corporative_online_conferences_path
     else
       render action: :edit
     end
   end
 
   def destroy
-    @activity_lines_corporative_online_conference = ::ActivityLines::Corporative::OnlineConference.find params[:id]
-    @activity_lines_corporative_online_conference.remove
+    @online_conference = ::ActivityLines::Corporative::OnlineConference.find params[:id]
+    @online_conference.remove
     redirect_to admin_activity_lines_corporative_online_conferences_path
   end
 end

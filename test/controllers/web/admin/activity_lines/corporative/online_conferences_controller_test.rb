@@ -49,7 +49,7 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesControllerTest < 
     attributes = attributes_for :activity_lines_corporative_online_conference
     patch :update, activity_lines_corporative_online_conference: attributes, id: @online_conference
     assert_response :redirect, @response.body
-    assert_redirected_to edit_admin_activity_lines_corporative_online_conference_path @online_conference
+    assert_redirected_to admin_activity_lines_corporative_online_conferences_path
     @online_conference.reload
     @online_conference.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @online_conference.send(key), key

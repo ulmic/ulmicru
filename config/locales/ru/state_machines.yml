@@ -89,6 +89,13 @@ ru:
             to_vote: Поставить на голосование
             renew: Сделать непросмотренным
             declined: Отклонённые
+      activity_lines/corporative/online_conference:
+        state:
+          states:
+            active: Активные
+            future: Предстоящие
+            past: Прошедшие
+            removed: Удалённые
       event:
         state:
           states:
