@@ -12,4 +12,7 @@ class Events::OnlineConference < ActiveRecord::Base
   end
 
   include Events::OnlineConferenceScopes
+
+  include PgSearch
+  pg_search_scope :search_everywhere, against: [ :title, :video_link ]
 end

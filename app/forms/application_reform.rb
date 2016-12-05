@@ -35,6 +35,7 @@ class ApplicationReform < Reform::Form
   end
 
   def submit(params)
+    raise 'ApplicationForm::Params should not be nil' unless params
     save if validate params
   end
 end
