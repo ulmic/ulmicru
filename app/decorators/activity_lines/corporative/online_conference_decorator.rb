@@ -8,4 +8,8 @@ class ActivityLines::Corporative::OnlineConferenceDecorator < ApplicationDecorat
   def self.collections
     [ :future, :past, :removed ]
   end
+
+  def event_title
+    "Онлайн-конференция «#{object.title}»"
+  end
 end

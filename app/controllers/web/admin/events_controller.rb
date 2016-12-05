@@ -13,7 +13,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
   end
 
   def new
-    @event_form = EventForm.new_with_model
+    @event_form = pre_build_record EventForm.new_with_model
   end
 
   def edit
