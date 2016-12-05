@@ -36,9 +36,11 @@ class EventDecorator < ApplicationDecorator
   def place_link_to_4sq
     @client ||= Places::FoursquareClient.new
     venue = @client.venue_by_id object.place
-    h.content_tag :a, href: venue[:canonicalUrl],
-                      target: '_blank' do
-      venue[:name]
+    if venue.present?
+      h.content_tag :a, href: venue[:canonicalUrl],
+        target: '_blank' do
+        venue[:name]
+      end
     end
   end
 
