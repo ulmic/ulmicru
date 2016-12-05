@@ -174,13 +174,15 @@ $slopy-height: 140px;
 }
 
 .event-content {
-  .participans-container {
+  .questions-container, .participans-container {
     .title {
       font-family: mic-square-reg;
       font-size: rem-calc(36);
       color: #F45C10;
-      //color: #333; // может черный лучше?
     }
+
+  }
+  .participans-container {
     .participants {
       margin-top: 24px;
     }

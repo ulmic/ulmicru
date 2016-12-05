@@ -4,7 +4,7 @@ class Web::EventsController < Web::ApplicationController
   end
 
   def show
-    @event = ::Event.find(params[:id]).decorate
+    @event = ::Event.includes(:online_conference).find(params[:id]).decorate
     organizers = @event.registrations.organizers
     attenders = @event.registrations.attenders
     @all_registrations = Event::RegistrationDecorator.decorate_collection(organizers + attenders)

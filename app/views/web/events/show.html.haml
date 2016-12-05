@@ -71,6 +71,11 @@
       .more-lead-info-content
         != @event.description
 .event-content.container
+  .questions-container
+    %h3.title
+      = t('.questions')
+      = "(#{@event.online_conference.questions.count})"
+.event-content.container
   .participans-container
     %h3.title
       = t('.attenders')

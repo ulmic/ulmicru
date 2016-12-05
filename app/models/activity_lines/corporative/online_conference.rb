@@ -1,4 +1,6 @@
 class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
+  has_many :questions, class_name: 'ActivityLines::Corporative::OnlineConference::Question'
+
   validates :title, uniqueness: true
 
   state_machine :state, initial: :active do

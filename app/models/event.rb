@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   has_many :registrations, class_name: 'Event::Registration'
   has_many :tags, as: :target, dependent: :destroy
   has_many :logged_actions, as: :record
+  has_one :online_conference, class_name: 'ActivityLines::Corporative::OnlineConference'
 
   mount_uploader :main_photo, PhotoUploader
 
