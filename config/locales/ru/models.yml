@@ -17,13 +17,13 @@ ru:
       comment: Комментарий
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
+      activity_lines/corporative/online_conference: Онлайн-конференция
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение
       delivery/campaign: Кампания
       delivery/audience: Целевая аудитория
       delivery/contact_email: Электронная почта
-      events/online_conference: Онлайн-конференция
     attributes:
       default: &default
         created_at: Дата создания

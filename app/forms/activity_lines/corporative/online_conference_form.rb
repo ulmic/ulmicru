@@ -1,4 +1,4 @@
-class ::Events::OnlineConferenceForm < ApplicationReform
+class ::ActivityLines::Corporative::OnlineConferenceForm < ApplicationReform
   properties :title, :date, :video_link, :state
 
   validates :title, presence: true

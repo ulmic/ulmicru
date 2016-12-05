@@ -1,6 +1,6 @@
-class CreateEventsOnlineConferences < ActiveRecord::Migration
+class CreateActivityLinesCorporativeOnlineConferences < ActiveRecord::Migration
   def change
-    create_table :events_online_conferences do |t|
+    create_table :activity_lines_corporative_online_conferences do |t|
       t.text :title
       t.datetime :date
       t.text :video_link

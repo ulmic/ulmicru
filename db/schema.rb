@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 20161205025546) do
     t.integer  "creator_id"
   end
 
+  create_table "activity_lines_corporative_online_conferences", force: :cascade do |t|
+    t.text     "title"
+    t.datetime "date"
+    t.text     "video_link"
+    t.text     "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -203,15 +212,6 @@ ActiveRecord::Schema.define(version: 20161205025546) do
     t.integer  "activity_line_id"
     t.integer  "organizer_id"
     t.text     "organizer_type"
-  end
-
-  create_table "events_online_conferences", force: :cascade do |t|
-    t.text     "title"
-    t.datetime "date"
-    t.text     "video_link"
-    t.text     "state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|

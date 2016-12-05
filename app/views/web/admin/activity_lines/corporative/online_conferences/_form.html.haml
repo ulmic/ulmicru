@@ -1,14 +1,14 @@
-- model_class = Events::OnlineConference
+- model_class = ActivityLines::Corporative::OnlineConference
 - current_title = page_title(action, model_class.model_name.human)
 - title current_title, :admin
 .page-header
-  %h1= page_title(action, Events::OnlineConference.model_name.human)
+  %h1= page_title(action, ActivityLines::Corporative::OnlineConference.model_name.human)
 .row
   .col-lg-12
-    = render 'layouts/web/admin/shared/messages', object: @events_online_conference_form
+    = render 'layouts/web/admin/shared/messages', object: @activity_lines_corporative_online_conference_form
 .row
   .col-lg-6
-    = simple_form_for [:admin, @events_online_conference_form], input_html: { class: 'form-horizontal' } do |f|
+    = simple_form_for [:admin, @activity_lines_corporative_online_conference_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'
       %br

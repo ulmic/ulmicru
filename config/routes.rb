@@ -82,6 +82,7 @@ Rails.application.routes.draw do
         namespace :corporative do
           resources :confessions
           resources :arguments, only: :destroy
+          resources :online_conferences
         end
       end
       namespace :delivery do
@@ -89,9 +90,6 @@ Rails.application.routes.draw do
         resources :audiences, only: [ :create, :destroy ]
 	resources :sessions, only: [ :create, :destroy ]
         resources :contact_emails, only: [ :index, :update, :destroy ]
-      end
-      namespace :events do
-        resources :online_conferences
       end
     end
     namespace :users do

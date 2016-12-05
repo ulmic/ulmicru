@@ -1,4 +1,4 @@
-class Events::OnlineConference < ActiveRecord::Base
+class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
   state_machine :state, initial: :active do
     state :active
     state :removed
@@ -11,7 +11,7 @@ class Events::OnlineConference < ActiveRecord::Base
     end
   end
 
-  include Events::OnlineConferenceScopes
+  include ActivityLines::Corporative::OnlineConferenceScopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :video_link ]
