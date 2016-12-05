@@ -10,6 +10,6 @@ class ActivityLines::Corporative::OnlineConferenceDecorator < ApplicationDecorat
   end
 
   def event_title
-    "Онлайн-конференция «#{object.title}»"
+    "#{I18n.t('activerecord.attributes.activity_lines/corporative/online_conference.event_title')} «#{object.title}»"
   end
 end

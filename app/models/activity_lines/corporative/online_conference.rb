@@ -1,4 +1,6 @@
 class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
+  validates :title, uniqueness: true
+
   state_machine :state, initial: :active do
     state :active
     state :removed

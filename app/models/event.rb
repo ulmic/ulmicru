@@ -41,6 +41,10 @@ class Event < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description]
 
+  def is_online_conference?
+    title&.include? I18n.t('activerecord.attributes.activity_lines/corporative/online_conference.event_title')
+  end
+
   private
 
   def remove_empty_registrations
