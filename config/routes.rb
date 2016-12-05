@@ -130,6 +130,13 @@ Rails.application.routes.draw do
     namespace :events do
       resources :registrations, only: [ :create, :destroy, :update ]
     end
+    namespace :activity_lines do
+      namespace :corporative do
+        namespace :online_conference do
+          resources :questions, only: :create
+        end
+      end
+    end
     namespace :admin do
       resources :places, only: [:create] do
         collection do

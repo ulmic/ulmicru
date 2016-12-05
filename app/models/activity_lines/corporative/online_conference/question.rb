@@ -1,6 +1,8 @@
 class ActivityLines::Corporative::OnlineConference::Question < ActiveRecord::Base
   belongs_to :online_conference, class_name: 'ActivityLines::Corporative::OnlineConference'
 
+  validates :text, uniqueness: true
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active

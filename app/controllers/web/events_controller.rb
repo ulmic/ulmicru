@@ -10,5 +10,8 @@ class Web::EventsController < Web::ApplicationController
     @all_registrations = Event::RegistrationDecorator.decorate_collection(organizers + attenders)
     @registrations = @all_registrations.first 10
     @other_registrations = @all_registrations.drop 10
+    if @event.is_online_conference?
+      @question_form = ::ActivityLines::Corporative::OnlineConference::QuestionForm.new_with_model
+    end
   end
 end
