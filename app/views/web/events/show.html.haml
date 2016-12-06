@@ -76,6 +76,12 @@
     %h3.title
       = t('.questions')
       = "(#{@event.online_conference.questions.count})"
+    %ul.questions
+      - @event.online_conference.questions.each do |question|
+        %li
+          = image_tag question.user&.decorate&.small_avatar_url
+          = fa_icon 'question-circle'
+          = question.text
 .event-content.container
   .participans-container
     %h3.title
