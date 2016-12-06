@@ -139,6 +139,10 @@ $slopy-height: 140px;
 }
 .event-content.container {
   margin-bottom: 100px;
+  ul.questions {
+    list-style-image: none;
+    list-style-type: none;
+  }
   ul.other {
     display: none;
   }
