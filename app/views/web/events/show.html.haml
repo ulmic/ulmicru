@@ -86,7 +86,11 @@
         - @event.online_conference.questions.each do |question|
           %li
             - if question.user_id.present?
-              = image_tag question.user&.decorate&.small_avatar_url
+              - if question.user.is_member?
+                = link_to member_path(question.user.ticket) do
+                  = image_tag question.user.decorate.small_avatar_url
+              - else
+                = image_tag question.user.decorate.small_avatar_url
             - else
               %span{ style: 'font-size: 25px' }
                 = fa_icon 'user-secret 2x'
