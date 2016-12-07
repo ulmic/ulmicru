@@ -13,7 +13,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
   end
 
   def new
-    @event_form = EventForm.new_with_model
+    @event_form = pre_build_record EventForm.new_with_model
   end
 
   def edit
@@ -24,6 +24,9 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     @event_form = EventForm.new_with_model
     @event_form.submit params[:event]
     if @event_form.save
+      if @event_form.model.is_online_conference?
+        set_event_to_online_conference
+      end
       redirect_to admin_events_path
     else
       choose_teams
@@ -50,5 +53,12 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     @event = Event.find params[:id]
     @event.remove
     redirect_to admin_events_path
+  end
+
+  private
+
+  def set_event_to_online_conference
+    online_conference = ::ActivityLines::Corporative::OnlineConference.where(title: @event_form.model.decorate.online_conference_title).first
+    online_conference.update_attributes! event_id: @event_form.id
   end
 end

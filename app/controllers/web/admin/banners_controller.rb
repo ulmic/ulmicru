@@ -30,7 +30,7 @@ class Web::Admin::BannersController < Web::Admin::ApplicationController
     @banner_form = BannerForm.find_with_model params[:id]
     @banner_form.submit(params[:banner])
     if @banner_form.save
-      redirect_to edit_admin_banner_path @banner_form.model
+      redirect_to admin_banners_path
     else
       render action: :edit
     end

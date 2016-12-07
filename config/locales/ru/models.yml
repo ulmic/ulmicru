@@ -17,6 +17,8 @@ ru:
       comment: Комментарий
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
+      activity_lines/corporative/online_conference: Онлайн-конференция
+      activity_lines/corporative/online_conference/question: Вопросы на онлайн-конференцию
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение
@@ -205,6 +207,16 @@ ru:
         member: Автор
         text: Текст аргумента
         argument_type: Типа аргумента
+      activity_lines/corporative/online_conference:
+        title: Название
+        date: Дата
+        video_link: Ссылка на видео
+        event_title: 'Онлайн-конференция'
+      activity_lines/corporative/online_conference/question:
+        text: Текст вопроса
+        answer_link: Ссылка на ответ
+        user: Автор
+        answer_timestamp: Время ответа в видео
       vote:
         rating: Рейтинг
       delivery/campaign:

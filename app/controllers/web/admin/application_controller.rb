@@ -44,4 +44,11 @@ class Web::Admin::ApplicationController < Web::ApplicationController
       1
     end
   end
+
+  def pre_build_record(record)
+    params[model_name.underscore]&.each do |attr, value|
+      record.send "#{attr}=", value
+    end
+    record
+  end
 end

@@ -15,6 +15,7 @@ module Concerns
     def added_nested_attribute_id(param)
       param[1].split('.')[1].to_i
     end
+
     def save_object
       @prev_object_attributes = object_attributes_with_associations model_class.find(params[:id]), params[to_param(model_class.name)]
     end

@@ -17,7 +17,11 @@
     = simple_form_for [:admin, @event_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), events_path, class: 'btn btn-default'
-      = f.input :title, as: :string
+      - if @event_form.model.is_online_conference?
+        = f.input :title, as: :string, disabled: true
+        = f.input :title, as: :hidden
+      - else
+        = f.input :title, as: :string
       = f.input :description, as: :ckeditor
       = f.label :main_photo
       = link_to fa_icon(:link), new_redirect_rule_by_photo_path(@event_form.main_photo), class: 'btn btn-xs btn-success'

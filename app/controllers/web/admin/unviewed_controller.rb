@@ -7,7 +7,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
   def index
     if params[:items].present?
       items_class = params[:items].to_s
-      permitted_users_id = Organization::Permissions.send(items_class)[:review].map(&:id)
+      permitted_users_id = Organization::Permissions.send(items_class.gsub('/', '_'))[:review].map(&:id)
       if permitted_users_id.include? current_user.id
         @unviewed = items_class.classify.constantize.need_to_review.page(params[:page]).decorate
         @tag = Tag.new
@@ -23,7 +23,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
     any_items_key = @counts.keys.select { |k| @counts[k] != 0 }.first
     if any_items_key
       if params[:items].present?
-        unless Concerns::NotificatableItems.items(current_user.id).include? params[:items].to_sym
+        unless Concerns::NotificatableItems.items(current_user.id).map(&:to_s).include? params[:items]
           redirect_to params.except(:items)
         end
       else

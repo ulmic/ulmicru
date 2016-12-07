@@ -1,0 +1,14 @@
+= javascript_include_tag 'web/admin/activity_lines/corporative/online_conference/questions'
+- model_class = ActivityLines::Corporative::OnlineConference::Question
+- current_title = page_title(:update, model_class.model_name.human)
+- title current_title, :admin
+.page-header
+  %h1= page_title(:update, ActivityLines::Corporative::OnlineConference::Question.model_name.human)
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/messages', object: @question_form
+.row
+  .col-lg-6
+    = simple_form_for @question_form, url: { controller: 'web/admin/activity_lines/corporative/online_conference/questions', action: :update }, input_html: { class: 'form-horizontal' } do |f|
+      = f.input :answer_timestamp, as: :string, input_html: { value: ':' }
+      = f.button :submit, t('helpers.links.save'), class: 'btn-success'

@@ -2,7 +2,7 @@ module ModelsConcern
   #хорошие имена функций, правда!)) Цените!!
   def trash_models
     [ :user, :member, :questionary, :news, :category, :article,
-      :activity_line, :banner, :document, :team ]
+      :activity_line, :banner, :document, :team, :online_conference ]
   end
 
   def trash_modules

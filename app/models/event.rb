@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   has_many :registrations, class_name: 'Event::Registration'
   has_many :tags, as: :target, dependent: :destroy
   has_many :logged_actions, as: :record
+  has_one :online_conference, class_name: 'ActivityLines::Corporative::OnlineConference'
 
   mount_uploader :main_photo, PhotoUploader
 
@@ -40,6 +41,10 @@ class Event < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description]
+
+  def is_online_conference?
+    title&.include? I18n.t('activerecord.attributes.activity_lines/corporative/online_conference.event_title')
+  end
 
   private
 

@@ -26,6 +26,10 @@
             %a{ href: admin_activity_lines_corporative_confessions_path }
               = image_tag 'organization/activity_lines/corporative/confession/number_one.png', class: 'my-glyphicon'
               = ActivityLines::Corporative::Confession.model_name.human
+          %li
+            %a{ href: admin_activity_lines_corporative_online_conferences_path }
+              = fa_icon :wifi
+              = ActivityLines::Corporative::OnlineConference.model_name.human.pluralize(:ru)
         = dropdown t('.content') do
           = admin_menu_item Article, admin_articles_path
           = admin_menu_item Category, admin_categories_path
@@ -63,3 +67,4 @@
           = admin_trash_menu_item Team
           = admin_trash_menu_item Document
           = admin_trash_menu_item ActivityLines::Corporative::Confession
+          = admin_trash_menu_item ActivityLines::Corporative::OnlineConference

@@ -26,11 +26,13 @@
             .where
               .event-label-text
                 %i.fa.fa-foursquare
-                = @event.place_link_to_4sq
+                -# FIXME 4sq stub
+                - unless Rails.env.development?
+                  = @event.place_link_to_4sq
         .event-lead
           != strip_tags @event.lead
         .event-more-info
-          %a.more-info#event-lead-more-info{ href:"#" }
+          %a.more-info#event-lead-more-info{ href: "#" }
             .show-all
               = t('helpers.more_info')
             .hide-all.hide
@@ -43,20 +45,24 @@
             .organizer
               = @event.organizer_link
         .join
-          -#%a.join-button.mic-press-button{ href: "#" }
-          - if current_user_have_attended?(@all_registrations)
-            %button.join-button.mic-press-button{ value: 'out', data: { event: @event.decorated_to_json(only: [:id, :title, :strip_tags_description, :begin_date, :end_date]), user_id: current_user.id, google_id: google_id, registration: current_registration(@all_registrations).to_json(only: [:id, :google_calendar_event_id])} }
-              = t('.i_attend')
+          - if @event.is_online_conference?
+            - if @event.end_date > DateTime.now
+              %button.join-button.mic-press-button#ask-question
+                = t('.ask_question')
           - else
-            - if signed_in? && current_user.is_active?
-              %button.join-button.mic-press-button{ value: 'join', data: { event: @event.to_json(only: [:id, :title, :description, :begin_date, :end_date]), user_id: current_user.id, google_id: google_id } }
-                = t('.attend')
-            - elsif signed_in? && current_user.is_user? && current_user.unviewed?
-              %a.join-button.mic-press-button{ href: account_path }
-                = t('.attend')
+            - if current_user_have_attended?(@all_registrations)
+              %button.join-button.mic-press-button{ value: 'out', data: { event: @event.decorated_to_json(only: [:id, :title, :strip_tags_description, :begin_date, :end_date]), user_id: current_user.id, google_id: google_id, registration: current_registration(@all_registrations).to_json(only: [:id, :google_calendar_event_id])} }
+                = t('.i_attend')
             - else
-              %a.join-button.mic-press-button{ href: new_session_path }
-                = t('.attend')
+              - if signed_in? && current_user.is_active?
+                %button.join-button.mic-press-button{ value: 'join', data: { event: @event.to_json(only: [:id, :title, :description, :begin_date, :end_date]), user_id: current_user.id, google_id: google_id } }
+                  = t('.attend')
+              - elsif signed_in? && current_user.is_user? && current_user.unviewed?
+                %a.join-button.mic-press-button{ href: account_path }
+                  = t('.attend')
+              - else
+                %a.join-button.mic-press-button{ href: new_session_path }
+                  = t('.attend')
         .share
           %span
             = t('helpers.share')
@@ -67,6 +73,37 @@
     .small-8.columns
       .more-lead-info-content
         != @event.description
+- if @event.is_online_conference?
+  .event-content.container.ask-question
+    .row
+      .small-6.columns
+        = render 'web/activity_lines/corporative/online_conferences/questions/form'
+  .event-content.container
+    .questions-container
+      - if params[:notice].present?
+        .panel
+          = t("notices.#{params[:notice]}")
+      %h3.title
+        = t('.questions')
+        = "(#{@questions.count})"
+      %ul.questions
+        - @questions.each do |question|
+          %li.row
+            .small-1.columns{ style: 'text-align: center' }
+              - if question.user_id.present?
+                - if question.user.is_member?
+                  = link_to member_path(question.user.ticket) do
+                    = image_tag question.user.decorate.small_avatar_url
+                - else
+                  = image_tag question.user.decorate.small_avatar_url
+              - else
+                %span{ style: 'font-size: 25px' }
+                  = fa_icon 'user-secret 2x'
+            .small-9.columns
+              = fa_icon 'question-circle'
+              = question.text
+            .small-2.columns
+              = link_to fa_icon(:link), question.decorate.answer_link, class: 'button blank'
 .event-content.container
   .participans-container
     %h3.title

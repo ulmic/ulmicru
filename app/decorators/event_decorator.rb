@@ -36,9 +36,11 @@ class EventDecorator < ApplicationDecorator
   def place_link_to_4sq
     @client ||= Places::FoursquareClient.new
     venue = @client.venue_by_id object.place
-    h.content_tag :a, href: venue[:canonicalUrl],
-                      target: '_blank' do
-      venue[:name]
+    if venue.present?
+      h.content_tag :a, href: venue[:canonicalUrl],
+        target: '_blank' do
+        venue[:name]
+      end
     end
   end
 
@@ -58,6 +60,10 @@ class EventDecorator < ApplicationDecorator
       object.organizer.decorate.full_title
       #end
     end
+  end
+
+  def online_conference_title
+    object.title.gsub("#{I18n.t('activerecord.attributes.activity_lines/corporative/online_conference.event_title')} «", '')[0..-2]
   end
 
   def self.collections

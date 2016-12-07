@@ -8,5 +8,6 @@ module ActivityLines::Corporative::ConfessionScopes
     scope :debut, -> { where nomination: :debut }
     scope :number_one, -> { where nomination: :number_one }
     scope :of_the_year, -> (year) { where year: year }
+    scope :need_to_review, -> { unviewed }
   end
 end
