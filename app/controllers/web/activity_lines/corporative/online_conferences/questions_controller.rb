@@ -6,7 +6,8 @@ class Web::ActivityLines::Corporative::OnlineConferences::QuestionsController <
   def create
     question = ::ActivityLines::Corporative::OnlineConference::QuestionForm.new_with_model
     if question.submit params[:activity_lines_corporative_online_conference_question]
-      redirect_to question.online_conference.event
+      redirect_to event_path question.online_conference.event, 
+        notice: (question.user_id.present? ? :your_question_will_reviewed : :your_question_will_reviewed_anonym)
     else
       redirect_to question.online_conference.event
     end

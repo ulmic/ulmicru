@@ -6,7 +6,7 @@
     = link_to fa_icon(:pencil), edit_admin_activity_lines_corporative_online_conference_path(@online_conference), class: 'btn btn-warning'
     = link_to fa_icon(:remove), admin_activity_lines_corporative_online_conference_path(@online_conference), method: :delete, class: 'btn btn-danger'
 .row
-  .col-lg-9
+  .col-lg-12
     %table.table.attributes-table
       - @online_conference.attributes.each do |key, value|
         %tr
