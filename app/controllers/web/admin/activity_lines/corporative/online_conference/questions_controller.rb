@@ -11,7 +11,8 @@ class Web::Admin::ActivityLines::Corporative::OnlineConference::QuestionsControl
   def update
     @question = ::ActivityLines::Corporative::OnlineConference::QuestionForm.find_with_model params[:id]
     if @question.submit params[:activity_lines_corporative_online_conference_question]
-      send_notification @question.user, @question.model, :confirm if question_confirmed? && question.user_id.present?
+      send_notification @question.user, @question.model, :confirm if question_confirmed? && @question.user_id.present?
+      send_notification @question.user, @question.model, :answer if question_answered? && @question.user_id.present?
       redirect_to :back
     end
   end
@@ -26,5 +27,9 @@ class Web::Admin::ActivityLines::Corporative::OnlineConference::QuestionsControl
 
   def question_confirmed?
     params[:activity_lines_corporative_online_conference_question][:state] == 'active' && @prev_object_attributes[:state] != 'active'
+  end
+
+  def question_answered?
+    params[:activity_lines_corporative_online_conference_question][:answer_timestamp].present? && @prev_object_attributes[:answer_timestamp].nil?
   end
 end
