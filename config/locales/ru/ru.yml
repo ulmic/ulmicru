@@ -199,6 +199,12 @@ ru:
       index:
         only_confirmed_users_can_leave_comments: Только подтверждённые пользователи могут оставлять комментарии
         auth_before_leave_comment: Авторизуйтесь перед тем, как оставить комментарий
+    activity_lines:
+      corporative:
+        online_conferences:
+          questions:
+            form:
+              ask_your_question: Задайте свой вопрос
   forms:
     placeholders:
       web:

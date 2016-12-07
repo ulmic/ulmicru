@@ -211,6 +211,8 @@ ru:
         date: Дата
         video_link: Ссылка на видео
         event_title: 'Онлайн-конференция'
+      activity_lines/corporative/online_conference/question:
+        text: Текст вопроса
       vote:
         rating: Рейтинг
       delivery/campaign:

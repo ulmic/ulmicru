@@ -74,7 +74,9 @@
         != @event.description
 - if @event.is_online_conference?
   .event-content.container.ask-question
-    = render 'web/activity_lines/corporative/online_conferences/questions/form'
+    .row
+      .small-6.columns
+        = render 'web/activity_lines/corporative/online_conferences/questions/form'
   .event-content.container
     .questions-container
       %h3.title

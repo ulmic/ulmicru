@@ -1,4 +1,5 @@
 = simple_form_for @question_form, remote: true, url: { controller: 'api/activity_lines/corporative/online_conference/questions', action: :create } do |f|
-  = f.input :text, as: :string
+  = t('.ask_your_question')
+  = f.input :text, as: :string, label: false
   = f.input :online_conference_id, as: :hidden, input_html: { value: @event.online_conference.id }
-  = f.submit
+  = f.button :submit, t('helpers.links.send')
