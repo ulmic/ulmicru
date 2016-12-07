@@ -45,7 +45,7 @@ module Organization
       end
 
       def activity_lines_corporative_online_conference_question
-        { review: area_headers }
+        { review: area_headers.users }
       end
     end
   end
