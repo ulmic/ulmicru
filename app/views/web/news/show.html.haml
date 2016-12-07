@@ -42,21 +42,38 @@
         -#.slider-arrow.left
         -#.slider-arrow.right
       .row
-        %section.author.columns.small-5.link{ data: { href: member_path(@news.member.ticket) } }
-          = image_tag  @news.member.avatar.small, class: 'human-photo'
-          .author-name
-            = "#{t('activerecord.attributes.news.user_id')}:"
-            = @news.member.short_name
-          .date-text
-            = @news.publish_date_time
-          .row
-            .comments-views
-              %span.icon-eye
-              %span.view-text
-                = @news.views
-              -#%span.icon-comment.fa.fa-comment
-              -#%span.comment-text
-                5
+        - if @news.member.is_member?
+          %section.author.columns.small-5.link{ data: { href: member_path(@news.member.ticket) } }
+            = image_tag  @news.member.avatar.small, class: 'human-photo'
+            .author-name
+              = "#{t('activerecord.attributes.news.user_id')}:"
+              = @news.member.short_name
+            .date-text
+              = @news.publish_date_time
+            .row
+              .comments-views
+                %span.icon-eye
+                %span.view-text
+                  = @news.views
+                -#%span.icon-comment.fa.fa-comment
+                -#%span.comment-text
+                  5
+        - else
+          %section.author.columns.small-5
+            = image_tag  @news.member.avatar.small, class: 'human-photo'
+            .author-name
+              = "#{t('activerecord.attributes.news.user_id')}:"
+              = @news.member.short_name
+            .date-text
+              = @news.publish_date_time
+            .row
+              .comments-views
+                %span.icon-eye
+                %span.view-text
+                  = @news.views
+                -#%span.icon-comment.fa.fa-comment
+                -#%span.comment-text
+                  5
       %article.news-info
         %h1
           = @news.title
