@@ -1,6 +1,10 @@
 class ActivityLines::Corporative::OnlineConference::QuestionDecorator < ApplicationDecorator
   delegate_all
 
+  def name
+    object.text
+  end
+
   def answer_link
     if object.answer_timestamp.present?
       minute = object.answer_timestamp.match(/\d+:/).to_s[0..-2]
