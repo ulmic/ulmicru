@@ -3,6 +3,9 @@ class Web::Admin::ActivityLines::Corporative::OnlineConference::QuestionsControl
 
   def edit
     @question_form = ::ActivityLines::Corporative::OnlineConference::QuestionForm.find_with_model params[:id]
+    if @question_form.model.answer_timestamp.present?
+      redirect_to admin_activity_lines_corporative_online_conference_path @question_form.online_conference
+    end
   end
 
   def update
