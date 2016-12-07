@@ -27,6 +27,6 @@
             %td= question.text 
             %td
               - if question.is_answered?
-                = question.answer_link
+                = link_to question.answer_link, question.answer_link
               - else
                 = link_to fa_icon('plus-square'), edit_admin_activity_lines_corporative_online_conference_question_path(question), class: 'btn btn-warning btn-xs'

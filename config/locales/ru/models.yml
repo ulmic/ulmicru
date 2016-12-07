@@ -216,6 +216,7 @@ ru:
         text: Текст вопроса
         answer_link: Ссылка на ответ
         user: Автор
+        answer_timestamp: Время ответа в видео
       vote:
         rating: Рейтинг
       delivery/campaign:
