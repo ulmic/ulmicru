@@ -131,6 +131,6 @@
                                   %td{ align: "center", height: "30", style: "padding-left:18px; padding-right:18px;font-family:Helvetica, arial, sans-serif; text-align:center;  color:#ffffff; font-weight: 300;", valign: "middle", width: "auto" }
                                     %p{ align: "center" }
                                       %span{ style: "color: rgb(255, 255, 255); font-weight: 300; font-size: 20pt;" }
-                                        %a{ href: @feedback.url, style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" }= t('.read_more')
+                                        %a{ href: event_path(@question.online_conference.event), style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" }= t('helpers.more_info')
                         %tr
                           %td{ height: "20", width: "100%" }
