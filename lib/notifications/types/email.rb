@@ -14,6 +14,8 @@ module Notifications
           end
         when 'Feedback'
           FeedbackMailer.delay.send(params[:theme], params[:object], params[:user])
+        when 'ActivityLines::Corporative::OnlineConference::Question'
+          ActivityLines::Corporative::OnlineConference::QuestionMailer.delay.send(params[:theme], params[:object], params[:user])
         else
           UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end
