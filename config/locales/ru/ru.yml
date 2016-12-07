@@ -205,6 +205,7 @@ ru:
           questions:
             form:
               ask_your_question: Задайте свой вопрос
+              anonym: Анонимно?
   forms:
     placeholders:
       web:
