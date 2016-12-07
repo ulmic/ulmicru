@@ -41,7 +41,7 @@ module Organization
       end
 
       def activity_lines_corporative_confession
-        { review: (presidium.users + vice_chairmen).uniq }
+        { review: (presidium.users + vice_chairmen + User.tech_admins + corporative_lead).uniq }
       end
     end
   end

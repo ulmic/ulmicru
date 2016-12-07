@@ -81,9 +81,9 @@
     .questions-container
       %h3.title
         = t('.questions')
-        = "(#{@event.online_conference.questions.count})"
+        = "(#{@questions.count})"
       %ul.questions
-        - @event.online_conference.questions.each do |question|
+        - @questions.each do |question|
           %li
             - if question.user_id.present?
               - if question.user.is_member?

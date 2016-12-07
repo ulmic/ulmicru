@@ -11,6 +11,7 @@ class Web::EventsController < Web::ApplicationController
     @registrations = @all_registrations.first 10
     @other_registrations = @all_registrations.drop 10
     if @event.is_online_conference?
+      @questions = ::ActivityLines::Corporative::OnlineConference::Question.active
       @question_form = ::ActivityLines::Corporative::OnlineConference::QuestionForm.new_with_model
     end
   end
