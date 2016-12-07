@@ -3,14 +3,14 @@ class ActivityLines::Corporative::OnlineConference::QuestionMailer < Application
 
   def confirm(question, user)
     @user = user
-    @feedback = question
+    @question = question
     @subject = subject(question.class, :confirm)
     mail from: sender_name, to: user.email, subject: @subject
   end
 
   def answer(question, user)
     @user = user
-    @feedback = question
+    @question = question
     @subject = subject(question.class, :answer)
     mail from: sender_name, to: user.email, subject: @subject
   end
