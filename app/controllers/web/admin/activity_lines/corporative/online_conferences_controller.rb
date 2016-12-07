@@ -9,6 +9,10 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesController <
     @activity_lines_corporative_online_conferences = online_conferences.page(params[:page]).decorate
   end
 
+  def show
+    @online_conference = ::ActivityLines::Corporative::OnlineConference.find params[:id]
+  end
+
   def new
     @online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.new_with_model
   end

@@ -12,9 +12,9 @@
       %th= t 'helpers.video_links.actions'
   %tbody
     - activity_lines_corporative_online_conferences.each do |activity_lines_corporative_online_conference|
-      %tr.video_link{ class: state_color(activity_lines_corporative_online_conference), data: { href: edit_admin_activity_lines_corporative_online_conference_path(activity_lines_corporative_online_conference) } }
+      %tr.video_link{ class: state_color(activity_lines_corporative_online_conference) }
         %td= activity_lines_corporative_online_conference.id
-        %td= activity_lines_corporative_online_conference.title
+        %td= link_to activity_lines_corporative_online_conference.title, admin_activity_lines_corporative_online_conference_path(activity_lines_corporative_online_conference)
         %td=l activity_lines_corporative_online_conference.date
         %td= link_to activity_lines_corporative_online_conference.video_link, activity_lines_corporative_online_conference.video_link
         - if searching?

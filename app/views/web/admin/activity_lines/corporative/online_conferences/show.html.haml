@@ -1,0 +1,32 @@
+- title @online_conference.title, :admin
+- model_class = ::ActivityLines::Corporative::OnlineConference
+.page-header
+  %h1
+    = @online_conference.title
+    = link_to fa_icon(:pencil), edit_admin_activity_lines_corporative_online_conference_path(@online_conference), class: 'btn btn-warning'
+    = link_to fa_icon(:remove), admin_activity_lines_corporative_online_conference_path(@online_conference), method: :delete, class: 'btn btn-danger'
+.row
+  .col-lg-9
+    %table.table.attributes-table
+      - @online_conference.attributes.each do |key, value|
+        %tr
+          %td= model_class.human_attribute_name key
+          %td= value
+    %hr
+    - if @online_conference.questions.any?
+      %h4
+        = t('.questions')
+      %table.table.attributes-table
+        - @online_conference.questions.decorate.each do |question|
+          %tr
+            %td
+              - if question.user_id.present?
+                = question.user.decorate.short_name
+              - else
+                = fa_icon 'user-secret'
+            %td= question.text 
+            %td
+              - if question.is_answered?
+                = question.answer_link
+              - else
+                = link_to fa_icon('plus-square'), edit_admin_activity_lines_corporative_online_conference_question_path(question), class: 'btn btn-warning btn-xs'

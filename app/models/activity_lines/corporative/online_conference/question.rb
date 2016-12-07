@@ -16,4 +16,8 @@ class ActivityLines::Corporative::OnlineConference::Question < ActiveRecord::Bas
       transition all => :active
     end
   end
+
+  def is_answered?
+    answer_timestamp.present?
+  end
 end

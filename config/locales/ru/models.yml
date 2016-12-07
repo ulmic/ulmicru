@@ -214,6 +214,8 @@ ru:
         event_title: 'Онлайн-конференция'
       activity_lines/corporative/online_conference/question:
         text: Текст вопроса
+        answer_link: Ссылка на ответ
+        user: Автор
       vote:
         rating: Рейтинг
       delivery/campaign:
