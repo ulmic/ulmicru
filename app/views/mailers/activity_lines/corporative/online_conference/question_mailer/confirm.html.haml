@@ -116,7 +116,7 @@
                               = "\"#{@question.text}\""
                             %p
                               Доводим до Вашего сведения, что ответ на вопрос прозвучал в прямом эфире. Посмотреть его вы можете
-                              = link_to ' здесь', event_path(@question.online_conference.event)
+                              = link_to ' здесь', event_url(@question.online_conference.event)
                             %p
                               Спасибо за участие, ваш МИЦ!
 
@@ -131,6 +131,6 @@
                                   %td{ align: "center", height: "30", style: "padding-left:18px; padding-right:18px;font-family:Helvetica, arial, sans-serif; text-align:center;  color:#ffffff; font-weight: 300;", valign: "middle", width: "auto" }
                                     %p{ align: "center" }
                                       %span{ style: "color: rgb(255, 255, 255); font-weight: 300; font-size: 20pt;" }
-                                        %a{ href: event_path(@question.online_conference.event), style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" }= t('helpers.more_info')
+                                        %a{ href: event_url(@question.online_conference.event), style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" }= t('helpers.more_info')
                         %tr
                           %td{ height: "20", width: "100%" }
