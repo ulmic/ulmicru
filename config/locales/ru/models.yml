@@ -18,6 +18,7 @@ ru:
       letter: Письмо
       activity_lines/corporative/confession: Премия Признание
       activity_lines/corporative/online_conference: Онлайн-конференция
+      activity_lines/corporative/online_conference/question: Вопросы на онлайн-конференцию
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение

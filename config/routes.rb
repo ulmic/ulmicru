@@ -86,6 +86,9 @@ Rails.application.routes.draw do
           resources :confessions
           resources :arguments, only: :destroy
           resources :online_conferences
+          namespace :online_conferences do
+            resources :questions, except: :show
+          end
         end
       end
       namespace :delivery do

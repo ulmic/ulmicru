@@ -1,0 +1,30 @@
+= paginate activity_lines_corporative_online_conference_questions, theme: 'twitter-bootstrap-3'
+- model_class = ActivityLines::Corporative::Confession
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:text)
+      %th= model_class.human_attribute_name(:answer_link)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - activity_lines_corporative_online_conference_questions.each do |question|
+      %tr{ class: state_color(question) }
+        %td{ width: '67px' }= question.id
+        %td
+          - if question.user_id.present?
+            = link_to question.user.decorate.short_name, admin_user_path(question.user)
+          - else
+            = fa_icon 'user-secret'
+        %td= question.text
+        %td= enumerize_locales_value question, :answer_link
+        - if searching?
+          %td= question.human_state_name
+        %td.actions
+          - if question.unviewed?
+            = link_to fa_icon(:check), admin_activity_lines_corporative_online_conferences_question_path(question, activity_lines_corporative_online_conference_question: { state: :active }), method: :patch, class: 'btn btn-xs btn-success'
+          = link_to fa_icon(:remove), admin_activity_lines_corporative_online_conferences_question_path(question), method: :delete, class: 'btn btn-xs btn-danger'
+= paginate activity_lines_corporative_online_conference_questions, theme: 'twitter-bootstrap-3'
