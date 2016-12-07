@@ -102,8 +102,9 @@
             .small-9.columns
               = fa_icon 'question-circle'
               = question.text
-            .small-2.columns
-              = link_to fa_icon(:link), question.decorate.answer_link, class: 'button blank'
+            - if question.answer_timestamp.present?
+              .small-2.columns
+                = link_to fa_icon(:link), question.decorate.answer_link, class: 'button blank'
 .event-content.container
   .participans-container
     %h3.title
