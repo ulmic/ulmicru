@@ -43,6 +43,10 @@ module Organization
       def activity_lines_corporative_confession
         { review: (presidium.users + vice_chairmen + User.tech_admins + corporative_lead).uniq }
       end
+
+      def activity_lines_corporative_online_conference_question
+        { review: area_headers }
+      end
     end
   end
 end
