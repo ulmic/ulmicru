@@ -13,3 +13,8 @@ messages:
   feedback:
     finish:
       subject: 'Найденная вами ошибка исправлена'
+  activity_lines/corporative/online_conference/question:
+    confirm:
+      subject: 'Отправленный вами вопрос на онлайн-конферерцию опубликован'
+    answer:
+      subject: 'Заданный вами вопрос на онлайн-конференцию получил ответ'
