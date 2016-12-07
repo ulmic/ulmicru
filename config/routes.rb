@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     namespace :activity_lines do
       namespace :corporative do
         resources :petitions, only: :index
+        namespace :online_conferences do
+          resources :questions, only: :create
+        end
       end
     end
     namespace :admin do
@@ -129,13 +132,6 @@ Rails.application.routes.draw do
     end
     namespace :events do
       resources :registrations, only: [ :create, :destroy, :update ]
-    end
-    namespace :activity_lines do
-      namespace :corporative do
-        namespace :online_conference do
-          resources :questions, only: :create
-        end
-      end
     end
     namespace :admin do
       resources :places, only: [:create] do

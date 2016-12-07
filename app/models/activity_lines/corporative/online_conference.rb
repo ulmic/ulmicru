@@ -1,5 +1,6 @@
 class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
   has_many :questions, class_name: 'ActivityLines::Corporative::OnlineConference::Question'
+  belongs_to :event
 
   validates :title, uniqueness: true
 
