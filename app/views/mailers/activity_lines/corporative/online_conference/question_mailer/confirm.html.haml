@@ -111,15 +111,27 @@
                         %tr
                           %td{ style: "font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #333333; text-align:left;line-height: 24px;" }
                             %p
-                              Вы опубликовали вопрос на онлайн-конференцию МИЦ с текстом:
+                              Доброго времени суток!
+                            %p
+                              Спешим сообщить, что ваш вопрос на онлайн конференцию МИЦ опубликован! Его текст: 
                             %p{ style: 'color: black' }
                               = "\"#{@question.text}\""
                             %p
-                              Доводим до Вашего сведения, что ответ на вопрос прозвучал в прямом эфире. Посмотреть его вы можете
-                              = link_to ' здесь', event_url(@question.online_conference.event)
+                              Ответ на вопрос можно будет увидеть в прямом эфире 
+                              = link_to ' здесь.', @question.online_conference.video_link
+                              Онлайн трансляция начнётся 
+                              =l @question.online_conference.date, format: '%d %B в %H:%m'
+                            %p
+                              По окончании live-трансляции с ответом также можно будет познакомиться на сайте 
+                              = link_to event_url(@question.online_conference.event), event_url(@question.online_conference.event)
                             %p
                               Спасибо за участие, ваш МИЦ!
 
+                        %tr
+                          - SocialNetworks.list.each do |sn|
+                            %td{ height: 50, width: 50 }
+                              - icon = sn == 'vkontakte' ? :vk : sn
+                              = link_to fa_icon(icon), configus.social_networks_pages.send sn
                         %tr
                           %td{ height: "10", width: "100%" }
                         %tr
