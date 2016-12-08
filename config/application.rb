@@ -21,6 +21,7 @@ module Ulmicru
     config.assets.version = '1.0'
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join("app", "assets", "*.ico")
+    config.assets.paths << Rails.root.join("node_modules")
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.generators do |g|
       g.template_engine :haml
