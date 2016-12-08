@@ -8,7 +8,7 @@ div
     background-position: center left
     background-image: asset-url('articles/presentation/logos/logo-mic-square.png')
 
-  @for $i from 1 through 23
+  @for $i from 1 through 24
     &#background-#{$i}
       background-image: asset-url('articles/presentation/#{$i}.jpg')
       width: 100%
@@ -20,6 +20,8 @@ div
   &.theme-button
     width: 20%
     cursor: pointer
+    background-size: cover
+    background-position: center bottom
     .title
       width: 100%
       height: 30%
@@ -34,17 +36,21 @@ div
       display: none
     &#activity_lines
       background-color: lightblue
+      background-image: asset-url('articles/presentation/24.jpg')
       top: 15%
       left: 75%
     &#mission
       background-color: lightgreen
+      background-image: asset-url('articles/presentation/22.jpg')
       top: 55%
       left: 50%
     &#info
       background-color: aqua
+      background-image: asset-url('articles/presentation/25.jpg')
       top: 55%
       left: 75%
     &#mic_is
       background-color: orange
+      background-image: asset-url('articles/presentation/12.jpg')
       top: 15%
       left: 50%

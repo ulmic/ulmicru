@@ -2,14 +2,21 @@ $ ->
   $('.main-navbar-container').hide()
   $('.footer').hide()
   $('.full-page-logo').hide()
+  $('.theme-button').hide()
   $('.theme-button').each ->
     $(this).height $(this).width()
-    $(this).mouseover ->
-      $(this).children('.title').slideDown()
+    $(this).mouseenter ->
+      $(this).children('.title').slideDown 300
     $(this).mouseout ->
-      $(this).children('.title').slideUp()
+      $(this).children('.title').slideUp 200
 
-  setInterval (->
-    $('.full-page-logo').fadeIn(1500)
+  setTimeout (->
+    $('.full-page-logo').fadeIn(1500, (->
+      $('.theme-button').each (index) ->
+        $this = $(this)
+        setTimeout (->
+          $this.fadeIn()
+        ), index * 300
+    ))
   ), 500
 

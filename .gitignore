@@ -63,3 +63,4 @@ cm/roles
 /app/assets/javascripts/react_bundle.js
 /app/assets/stylesheets/react_bundle.css
 *.rdb
+npm-debug.log
