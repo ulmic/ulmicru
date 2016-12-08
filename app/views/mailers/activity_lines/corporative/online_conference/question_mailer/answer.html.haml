@@ -123,8 +123,7 @@
                         %tr
                           - SocialNetworks.list.each do |sn|
                             %td{ height: 50, width: 50 }
-                              - icon = sn == 'vkontakte' ? :vk : sn
-                              = link_to fa_icon(icon), configus.social_networks_pages.send sn
+                              = link_to fa_icon(sn == 'vkontakte' ? :vk : sn), configus.social_networks_pages.send sn
                         %tr
                           %td{ height: "10", width: "100%" }
                         %tr
