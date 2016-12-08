@@ -1,3 +1,8 @@
+vertical_align = ($element) ->
+  parent_height = $element.parents().first().height()
+  margin_top =(parent_height - $element.height()) / 2
+  $element.css('margin-top', margin_top)
+
 $ ->
   $('.main-navbar-container').hide()
   $('.footer').hide()
@@ -20,3 +25,5 @@ $ ->
     ))
   ), 500
 
+  vertical_align $('section#mic_is_content .h3_text')
+  vertical_align $('section#mic_is_content .year_text')
