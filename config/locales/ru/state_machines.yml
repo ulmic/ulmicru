@@ -64,7 +64,7 @@ ru:
             renew: Сделать заявку непросмотренной
             put_on_the_trial: Поставить на испатательный срок
             pass_trial: Подготовить к принятию в организацию
-            changes_expect: Ожидание изменений
+            change_expect: Ожидание изменений
       news:
         state:
           states:
