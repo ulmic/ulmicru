@@ -1,13 +1,6 @@
 require 'test_helper'
 
 class Web::Admin::WelcomeControllerTest < ActionController::TestCase
-  setup do
-    @types = [ :member, :questionary, :news, :article, :event, :feedback, :comment, :position, :team ]
-    @types.each do |type|
-      type.to_s.camelize.constantize.delete_all
-    end
-  end
-
   test 'should get index' do
     admin = create :admin
     sign_in admin

@@ -9,6 +9,7 @@ class Web::NewsController < Web::ApplicationController
     @news = News.find(params[:id]).decorate
     unless @news.is_published?
       redirect_to not_found_page_path
+      return
     end
     @news.increase_views
     topic_news_tags = @news.tags

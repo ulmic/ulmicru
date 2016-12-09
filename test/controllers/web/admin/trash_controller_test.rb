@@ -4,9 +4,11 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
-    @types = trash_models
+    exceptions = [ :article, :category, :online_conference ]
+    @types = trash_models.except(*exceptions)
     @hard_types = {
-      'activity_lines/corporative/confession' =>  'activity_lines-corporative-confession'
+      'activity_lines/corporative/confession' =>  'activity_lines-corporative-confession',
+      'activity_lines/corporative/online_conference' =>  'activity_lines-corporative-online_conference'
     }
     @instances = {}
     @types.each do |type|
@@ -21,14 +23,6 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
       assert_response :success, @response.body
     end
   end
-
-#  test 'should get index without instances' do
-#    @types.each do |type|
-#      type.to_s.camelize.constantize.all.map &:destroy
-#      get :index, type: type
-#      assert_response :success, [type, @response.body]
-#    end
-#  end
 
   test 'should get index with hard types' do
     @hard_types.values.each do |value|

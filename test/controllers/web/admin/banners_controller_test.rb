@@ -49,7 +49,7 @@ class Web::Admin::BannersControllerTest < ActionController::TestCase
     attributes = attributes_for :banner
     patch :update, banner: attributes, id: @banner
     assert_response :redirect, @response.body
-    assert_redirected_to edit_admin_banner_path @banner
+    assert_redirected_to admin_banners_path
     @banner.reload
     @banner.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @banner.send(key), key

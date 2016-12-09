@@ -55,7 +55,7 @@ puts "Create teams..".green
 teams = ['Президиум', 'Руководители областных программ и проектов МИЦ']
 teams.each do |team|
   t = Team.find_by_title team
-  Team.create! title: team, description: 'Лучшая команда в мире' unless t
+  Team::Administration.create! title: team, description: 'Лучшая команда в мире', type: 'Team::Administration' unless t
 end
 
 # Create departaments

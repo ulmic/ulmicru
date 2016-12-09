@@ -32,8 +32,13 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesControllerTest < 
   test 'should create online_conference' do
     attributes = attributes_for :activity_lines_corporative_online_conference
     post :create, activity_lines_corporative_online_conference: attributes
+    online_conference = ::ActivityLines::Corporative::OnlineConference.last
+    event_attributes = { title: online_conference.decorate.event_title,
+      begin_date: online_conference.date,
+      end_date: online_conference.date + 3.hours,
+      creator_id: current_user.id }
     assert_response :redirect, @response.body
-    assert_redirected_to admin_activity_lines_corporative_online_conferences_path
+    assert_redirected_to new_admin_event_path event: event_attributes
     online_conference = ::ActivityLines::Corporative::OnlineConference.last
     online_conference.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], online_conference.send(key), key

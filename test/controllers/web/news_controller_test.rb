@@ -3,7 +3,7 @@ require 'test_helper'
 class Web::NewsControllerTest < ActionController::TestCase
   setup do
     create :member
-    @news = create :news
+    @news = create :news, state: :confirmed, published_at: DateTime.now - 1.day
     create :article, :contacts
   end
 

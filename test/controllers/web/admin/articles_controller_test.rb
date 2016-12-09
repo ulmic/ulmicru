@@ -36,7 +36,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     post :create, article: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_articles_path
-    article = Article.last
+    article = Article.where(title: attributes[:title]).first
     article.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], article.send(key), key
     end
