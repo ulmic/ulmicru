@@ -4,6 +4,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
+    @article = Article.last
     @exceptions_attributes = ['id', 'created_at', 'updated_at']
   end
 

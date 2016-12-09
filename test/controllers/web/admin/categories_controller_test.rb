@@ -4,7 +4,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
-    @category = create :category
+    @category = Category.last
     @exceptions_attributes = ['id', 'created_at', 'updated_at', 'is_last']
   end
 
