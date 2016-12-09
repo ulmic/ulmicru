@@ -1,6 +1,7 @@
 class Questionary < Member
   validates :experience, presence: true
   validates :want_to_do, presence: true
+  validates :request_date, presence: true
 
   mount_uploader :avatar, AvatarUploader
 
