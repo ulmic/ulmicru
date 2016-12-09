@@ -26,7 +26,7 @@ end
 
 puts "Create articles...".green
 contact_category = Category.find_by_name 'Контакты'
-articles = { contacts: 'Контакты', contact_list: 'Контакт-лист' }
+articles = { contacts: 'Контакты', contact_list: 'Контакт-лист', charter: 'Устав' }
 articles.each do |article, name|
   a = Article.where(id: configus.articles.send(article)).first
   Article.create id: configus.articles.send(article), title: name, view: article, category_id: contact_category.id, user_id: 1 unless a

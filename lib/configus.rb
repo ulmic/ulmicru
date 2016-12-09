@@ -76,6 +76,7 @@ Configus.build Rails.env do
     articles do
       contacts 16
       contact_list 78
+      charter 20
     end
   end
 

@@ -23,7 +23,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
     post :create, category: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_categories_path
-    category = Category.last
+    category = Category.where(name: attributes[:name]).first
     category.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], category.send(key), key
     end
