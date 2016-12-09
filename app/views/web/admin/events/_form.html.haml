@@ -32,7 +32,7 @@
       = f.input :begin_date, as: :datetime_picker
       = f.input :end_date, as: :datetime_picker
       - if current_user.has_permission_to? :review, :event
-        = f.input :state_event, as: :state_event, input_html: { value: :confirmed }
+        = f.input :state_event, as: :state_event, input_html: { value: :confirm }
       - else
         - if @event_form.model.created_at.present?
           = f.input :state, as: :hidden, input_html: { value: :updated }
