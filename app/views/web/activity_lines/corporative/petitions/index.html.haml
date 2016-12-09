@@ -48,6 +48,10 @@
       по
       =l configus.dates.activity_lines.corporative.confession.ending_voting, format: '%d %B %Y'
       года вы можете поставить лайк или дизлайк, прокомментировать конкретную кандидатуру, нажав на аватарку номинанта. Только авторизованные пользователи могут оставлять своё мнение о кандидатах. Ждём подробных и дельных комментариев, а также объективной оценки личных и деловых качеств номинантов.
+- if params[:notice].present?
+  .container
+    .panel
+      = t("notices.#{params[:notice]}")
 .confessions
   .confessions_people
     - if @debut_of_the_year.any? || @number_one_of_the_year.any?

@@ -19,7 +19,7 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
     params[:activity_lines_corporative_confession] = confession_params
     @petition_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
     if @petition_form.submit params[:activity_lines_corporative_confession]
-      redirect_to activity_lines_corporative_petitions_path
+      redirect_to activity_lines_corporative_petitions_path notice: :your_petition_will_be_reviewed
     else
       choose_members
       render :new
