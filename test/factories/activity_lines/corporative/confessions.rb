@@ -7,6 +7,6 @@ FactoryGirl.define do
   end
 
   factory :petition, parent: :confession do
-    year 2015
+    year 2016
   end
 end

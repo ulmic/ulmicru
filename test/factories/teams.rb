@@ -23,4 +23,10 @@ FactoryGirl.define do
   factory :team_with_teammates, parent: :team do
     users { create_list :user, 5 }
   end
+  factory :presidium, parent: :administration do
+    title 'Президиум'
+  end
+  factory :area_headers, parent: :team do
+    title 'Руководители областных программ и проектов МИЦ'
+  end
 end

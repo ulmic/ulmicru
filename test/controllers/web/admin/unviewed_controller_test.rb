@@ -5,7 +5,7 @@ class Web::Admin::UnviewedControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @member = create :member
-    @types = [ :member, :questionary, :news, :article, :event, :feedback, :comment, :position, :team ]
+    @types = [ :member, :questionary, :news, :event, :feedback, :comment, :position, :team ]
     @instances = {}
     @types.each do |type|
       @instances[type] = create type

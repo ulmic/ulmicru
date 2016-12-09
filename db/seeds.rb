@@ -26,7 +26,7 @@ end
 
 puts "Create articles...".green
 contact_category = Category.find_by_name 'Контакты'
-articles = { contacts: 'Контакты', contact_list: 'Контакт-лист' }
+articles = { contacts: 'Контакты', contact_list: 'Контакт-лист', charter: 'Устав' }
 articles.each do |article, name|
   a = Article.where(id: configus.articles.send(article)).first
   Article.create id: configus.articles.send(article), title: name, view: article, category_id: contact_category.id, user_id: 1 unless a
@@ -48,6 +48,14 @@ activity_lines = ['Лидер', 'Inформация', 'Право', 'Добро'
 activity_lines.each do |activity_line|
   a = ActivityLine.find_by_title activity_line
   ActivityLine.create title: activity_line unless a
+end
+
+#Create teams
+puts "Create teams..".green
+teams = ['Президиум', 'Руководители областных программ и проектов МИЦ']
+teams.each do |team|
+  t = Team.find_by_title team
+  Team::Administration.create! title: team, description: 'Лучшая команда в мире', type: 'Team::Administration' unless t
 end
 
 # Create departaments

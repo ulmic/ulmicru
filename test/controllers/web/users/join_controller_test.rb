@@ -5,8 +5,6 @@ class Web::Users::JoinControllerTest < ActionController::TestCase
     user = create :user
     sign_in user
     @questionary = create :questionary
-    create :article, :contacts
-    create :article, :charter
     create :position_corporative_lead
     create :position_deputy_corporative_lead
   end

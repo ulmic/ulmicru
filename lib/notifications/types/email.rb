@@ -1,6 +1,5 @@
 module Notifications
   module Types
-
     class Email
       def self.to_send(params)
         case params[:object].class.name
@@ -16,6 +15,8 @@ module Notifications
           FeedbackMailer.delay.send(params[:theme], params[:object], params[:user])
         when 'ActivityLines::Corporative::OnlineConference::Question'
           ActivityLines::Corporative::OnlineConference::QuestionMailer.delay.send(params[:theme], params[:object], params[:user])
+        when 'ActivityLines::Corporative::Confession'
+          ActivityLines::Corporative::ConfessionMailer.delay.send(params[:theme], params[:object], params[:user])
         else
           UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end

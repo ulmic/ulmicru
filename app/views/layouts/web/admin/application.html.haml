@@ -6,6 +6,8 @@
     = render 'layouts/web/shared/head'
     = stylesheet_link_tag 'web/admin/application'
     = stylesheet_link_tag_if_exists stylesheet_link
+    - unless Rails.env.test?
+      = javascript_include_tag 'react_bundle'
     = javascript_include_tag 'web/admin/application'
     = javascript_include_tag_if_exists javascript_link
   %body

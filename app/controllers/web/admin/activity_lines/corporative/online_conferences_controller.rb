@@ -25,8 +25,7 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesController <
     @online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.new_with_model
     @online_conference_form.submit params[:activity_lines_corporative_online_conference]
     if @online_conference_form.save
-      build_event
-      redirect_to new_admin_event_path(event: @event.attributes)
+      redirect_to new_admin_event_path event: build_event
     else
       render action: :new
     end
@@ -51,9 +50,9 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesController <
   private
 
   def build_event
-    @event = Event.new title: @online_conference_form.model.decorate.event_title,
+    { title: @online_conference_form.model.decorate.event_title,
       begin_date: @online_conference_form.model.date,
       end_date: @online_conference_form.model.date + 3.hours,
-      creator_id: current_user.id
+      creator_id: current_user.id }
   end
 end

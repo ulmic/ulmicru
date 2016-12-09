@@ -4,8 +4,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
-    @article = create :article
-    @article = create :article
+    @article = Article.last
     @exceptions_attributes = ['id', 'created_at', 'updated_at']
   end
 
@@ -36,7 +35,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
     post :create, article: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_articles_path
-    article = Article.last
+    article = Article.where(title: attributes[:title]).first
     article.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], article.send(key), key
     end

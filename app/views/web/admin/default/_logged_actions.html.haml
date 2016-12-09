@@ -2,7 +2,7 @@
   %h3
     = t('activerecord.models.logged_action').pluralize :ru
   %table.table.table-bordered.table-striped
-    - @logged_actions.each do |l|
+    - logged_actions.each do |l|
       %tr
         %td
           = l.user.decorate.short_name
