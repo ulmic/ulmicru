@@ -50,6 +50,14 @@ activity_lines.each do |activity_line|
   ActivityLine.create title: activity_line unless a
 end
 
+#Create teams
+puts "Create teams..".green
+teams = ['Президиум', 'Руководители областных программ и проектов МИЦ']
+teams.each do |team|
+  t = Team.find_by_title team
+  Team.create! title: team, description: 'Лучшая команда в мире' unless t
+end
+
 # Create departaments
 puts "Create departaments...".green
 municipalities = ['г.Ульяновск', 'г.Димитровград', 'г.Новоульяновск', 'Чердаклинский район', 'Тереньгульский район', 'Базарносызганский район', 'Радищевский район', 'Новоспасский район']

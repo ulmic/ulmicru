@@ -49,7 +49,7 @@ class Web::Admin::RedirectRulesControllerTest < ActionController::TestCase
     attributes = attributes_for :redirect_rule
     patch :update, redirect_rule: attributes, id: @redirect_rule
     assert_response :redirect, @response.body
-    assert_redirected_to edit_admin_redirect_rule_path @redirect_rule
+    assert_redirected_to admin_redirect_rules_path
     @redirect_rule.reload
     @redirect_rule.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @redirect_rule.send(key), key
