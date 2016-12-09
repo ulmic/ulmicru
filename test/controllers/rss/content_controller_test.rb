@@ -4,7 +4,6 @@ class Rss::ContentControllerTest < ActionController::TestCase
   setup do
     create :user
     create :member
-    create :article
     create :news
   end
 
