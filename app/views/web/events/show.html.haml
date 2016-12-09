@@ -85,9 +85,9 @@
           = t("notices.#{params[:notice]}")
       %h3.title
         = t('.questions')
-        = "(#{@questions.count})"
+        = "(#{@event.online_conference.questions.count})"
       %ul.questions
-        - @questions.each do |question|
+        - @event.online_conference.questions.each do |question|
           %li.row
             .small-1.columns{ style: 'text-align: center' }
               - if question.user_id.present?
