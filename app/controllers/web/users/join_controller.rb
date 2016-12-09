@@ -16,7 +16,7 @@ class Web::Users::JoinController < Web::Users::ApplicationController
       Organization::Permissions.questionary[:review].each do |member|
         send_notification member, @questionary_form.model, :create
       end
-      @questionary_form.update_attributes request_date: DateTime.now
+      @questionary_form.update_attributes! request_date: DateTime.now
       redirect_to account_path
     else
       # FIXME fix this shiiiiit!!!!
