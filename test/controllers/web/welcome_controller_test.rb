@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class Web::WelcomeControllerTest < ActionController::TestCase
-  setup do
-    create :article, :contacts
-  end
-
   test 'should get index' do
     get :index
     assert_response :success, @response.body
