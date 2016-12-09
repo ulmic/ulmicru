@@ -56,6 +56,7 @@ ru:
             trial_passed: Испытательный срок пройден
             member_trial_passed: Испытательный срок пройден
             member_on_the_trial: Испытательный срок
+            member_declined: Отклонённые
             changes_expectation: Ожидание изменений
             member_changes_expectation: Ожидание изменений
           events:
