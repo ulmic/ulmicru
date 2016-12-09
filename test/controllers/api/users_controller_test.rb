@@ -9,7 +9,7 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test 'should confirm user' do
-    get :confirm, :token => @user.token, :id => @user.id
+    get :confirm, token: @user.token, id: @user.id
     @user.reload
     assert_response :redirect, @response.body
     assert_equal 'confirmed', @user.state
@@ -17,7 +17,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test 'should resent email instructions' do
     old_user_token = @user.token
-    get :resent_email_instructions, :token => @user.token, :id => @user.id
+    get :resent_email_instructions, token: @user.token, id: @user.id
     @user.reload
     assert_response :redirect, @response.body
     assert_not_equal old_user_token, @user.token
