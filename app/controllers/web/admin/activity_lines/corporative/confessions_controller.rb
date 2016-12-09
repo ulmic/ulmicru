@@ -39,7 +39,8 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
     @confession_form = ::ActivityLines::Corporative::ConfessionForm.find_with_model params[:id]
     if @confession_form.submit params[:activity_lines_corporative_confession]
       create_tag
-      send_notification @confession_form.member, @confession_form.model, :confirm if confession_confirmed?
+      send_notification @confession_form.member, @confession_form.model, :nominated if confession_confirmed?
+      send_notification @confession_form.creator, @confession_form.model, :confirm if confession_confirmed?
       redirect_to edit_admin_activity_lines_corporative_confession_path @confession_form.model
     else
       choose_members

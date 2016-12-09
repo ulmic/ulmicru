@@ -99,33 +99,30 @@
                                   .img_upload
                                   .img_edit{ style: "visibility: visible;" }
                               %a{ href: "#" }
-                                %img{ src: 'https://ulmic.ru/assets/mailers/feedback/finish.jpg', alt: '', border: '0', height: 'auto', style: 'display:block; border:none; outline:none; text-decoration:none;', width: '540' }
+                                %img{ src: 'https://ulmic.ru/assets/mailers/confession/confirm.jpg', alt: '', border: '0', height: 'auto', style: 'display:block; border:none; outline:none; text-decoration:none;', width: '540' }
                         %tr
                           %td{ height: "20", width: "100%" }
                         %tr
                           %td{ style: "font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333; text-align:left;line-height: 20px;" }
                             %p
-                              = @subject
+                              Твоё ходатайство опубликовано
                         %tr
                           %td{ height: "20", width: "100%" }
                         %tr
                           %td{ style: "font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #333333; text-align:left;line-height: 24px;" }
                             %p
-                              Доброго времени суток!
+                              Ранее Ты выдвинул на Премию "Признание" 
+                              = @confession.member.decorate.short_name
+                              в номинации 
+                              = enumerize_locales_value @confession, :nomination
                             %p
-                              Спешим сообщить, что ваш вопрос на онлайн конференцию МИЦ опубликован! Его текст: 
-                            %p{ style: 'color: black' }
-                              = "\"#{@question.text}\""
+                              Сообщаем тебе, что Твоё ходатайство принято руководителями МИЦ и Твой кандидат выдвинут на голосование за номинантов Премии "Признание". Голование начнётся 
+                              =l configus.dates.activity_lines.corporative.confession.begining_voting, format: '%d %M'
                             %p
-                              Ответ на вопрос можно будет увидеть в прямом эфире 
-                              = link_to ' здесь.', @question.online_conference.video_link
-                              Онлайн трансляция начнётся 
-                              =l @question.online_conference.date, format: '%d %B в %H:%m'
+                              Голосование будет проводиться на 
+                              = link_to ' сайте МИЦ.', activity_lines_corporative_petitions_path
                             %p
-                              По окончании live-трансляции с ответом также можно будет познакомиться на сайте 
-                              = link_to event_url(@question.online_conference.event), event_url(@question.online_conference.event)
-                            %p
-                              Спасибо за участие, ваш МИЦ!
+                              Следи за новостями, Твой МИЦ!
 
                         %tr
                           %td{ height: "10", width: "100%" }
@@ -138,6 +135,6 @@
                                   %td{ align: "center", height: "30", style: "padding-left:18px; padding-right:18px;font-family:Helvetica, arial, sans-serif; text-align:center;  color:#ffffff; font-weight: 300;", valign: "middle", width: "auto" }
                                     %p{ align: "center" }
                                       %span{ style: "color: rgb(255, 255, 255); font-weight: 300; font-size: 20pt;" }
-                                        %a{ href: event_url(@question.online_conference.event), style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" }= t('helpers.more_info')
+                                        %a{ href: activity_lines_corporative_petitions_path, style: "color: #ffffff; text-align:center;text-decoration: none;", tabindex: "-1" }= t('helpers.more_info')
                         %tr
                           %td{ height: "20", width: "100%" }

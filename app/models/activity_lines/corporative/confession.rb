@@ -1,5 +1,6 @@
 class ActivityLines::Corporative::Confession < ActiveRecord::Base
   belongs_to :member
+  belongs_to :creator, class_name: 'Member'
   has_many :arguments
   has_many :comments, as: :record,
                       dependent: :destroy
