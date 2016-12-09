@@ -154,6 +154,11 @@ ru:
             title: Номинанты корпоративной премии «Признание» %{year} года
           arguments_modal:
             renew_petition: Обновить ходатайство
+        online_conferences:
+          questions:
+            form:
+              ask_your_question: Задайте свой вопрос
+              anonym: Анонимно?
     sessions:
       new:
         title: Авторизация
@@ -199,13 +204,6 @@ ru:
       index:
         only_confirmed_users_can_leave_comments: Только подтверждённые пользователи могут оставлять комментарии
         auth_before_leave_comment: Авторизуйтесь перед тем, как оставить комментарий
-    activity_lines:
-      corporative:
-        online_conferences:
-          questions:
-            form:
-              ask_your_question: Задайте свой вопрос
-              anonym: Анонимно?
   forms:
     placeholders:
       web:
