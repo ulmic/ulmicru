@@ -7,6 +7,8 @@
     = stylesheet_link_tag    'application'
     = stylesheet_link_tag    'web/application'
     = javascript_include_tag 'vendor/modernizr'
+    - unless Rails.env.test?
+      = javascript_include_tag 'react_bundle'
     = javascript_include_tag 'application'
     = csrf_meta_tags
     = favicon_link_tag 'favicon.ico'

@@ -18,7 +18,6 @@
 #= require jasny_file_uploader
 #= require placeholders
 #= require react_integration
-#= require react_bundle
 #= reuqire yofication
 
 $.extend String.prototype, camelize: ->
