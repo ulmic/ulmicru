@@ -138,6 +138,11 @@
             = link_to configus.it_projects.karamzin.url, class: :blank do
               .inner
                 = t(configus.it_projects.karamzin.short_name)
+          %li
+            = link_to event_path(263) do
+              .inner
+                = fa_icon :wifi
+                Онлайн-конференция 24.12
           -# if confession_events_during?
             %li
               = link_to activity_lines_corporative_petitions_path do
