@@ -65,3 +65,12 @@ municipalities.each do |municipality|
   t = Team::Departament.find_by_municipality municipality
   Team::Departament.create municipality: municipality, title: municipality, state: :active unless t
 end
+
+# Create documents
+puts "Create documents...".green
+documents = { 4 => 'Положение Признания' }
+documents.each do |id, document|
+  Document.find_or_create_by title: document
+  d = Document.last
+  d.update_attributes id: id
+end

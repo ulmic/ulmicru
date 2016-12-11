@@ -23,6 +23,7 @@
       = f.input :municipality
       = f.input :locality, as: :grouped_select, collection: Localities.list_hash, group_method: :last
       = f.input :school, as: :grouped_select, collection: Schools.list_hash, group_method: :last, input_html: { class: :select2 }
+      = f.input :join_date, as: :date_picker
       = f.label :avatar
       .preview
         = image_tag @member_form.model.avatar if @member_form.model.avatar.present?
