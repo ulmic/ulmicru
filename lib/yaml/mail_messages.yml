@@ -4,6 +4,8 @@ messages:
       subject: 'Подтверждение адреса электронной почты'
     remind_password:
       subject: 'Восстановление утерянного пароля'
+    just_message:
+      subject: Письмо от Молодёжного инициативного центра
   news:
     create:
       subject: 'Добавлена новость на сайте МИЦ'

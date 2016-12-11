@@ -7,7 +7,7 @@ class ActivityLines::Corporative::Argument < ActiveRecord::Base
   validates :member_id, uniqueness: { scope: [ :confession_id, :argument_type ] }
 
   extend Enumerize
-  enumerize :argument_type, in: [ :reason, :honors, :out_ulmic_honors, :hobby ]
+  enumerize :argument_type, in: [ :reason, :honors, :out_ulmic_honors, :hobby, :note_text ]
 
   state_machine :state, initial: :active do
     state :active
