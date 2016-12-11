@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :tag do
     text { generate :string }
-    tag_type :link
+    tag_type 'link'
+    state { Tag.state_machines[:state].states.map(&:name).first.to_s }
     record_type ['News', 'Article'].sample
     record_id do
       create(record_type.underscore).id

@@ -72,6 +72,7 @@ Rails.application.routes.draw do
       resources :logged_actions, only: [ :index, :show ]
       resources :redirect_rules, except: :show
       resources :images, except: :show
+      resources :tags, except: :show
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

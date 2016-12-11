@@ -12,5 +12,6 @@ module TagScopes
     scope :teams, -> { where target_type: 'Team' }
     scope :news, -> { where record_type: 'News' }
     scope :articles, -> { where record_type: 'Article' }
+    scope :empty, -> { where tag_type: :link, target_id: nil }
   end
 end

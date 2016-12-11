@@ -1,0 +1,6 @@
+%ul.list-group
+  - record.tags.active.each do |tag|
+    %li.list-group-item
+      = link_to api_admin_tag_path(tag), method: :delete, remote: true, class: 'badge tag_destroy' do
+        X
+      = render 'web/admin/tags/tag_element', tag: tag

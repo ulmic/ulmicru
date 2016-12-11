@@ -1,6 +1,27 @@
-%ul.list-group
-  - record.tags.active.each do |tag|
-    %li.list-group-item
-      = link_to api_admin_tag_path(tag), method: :delete, remote: true, class: 'badge tag_destroy' do
-        X
-      = render 'web/admin/tags/tag_element', tag: tag
+= paginate tags, theme: 'twitter-bootstrap-3'
+- model_class = Tag
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:photo)
+      %th= model_class.human_attribute_name(:link)
+      %th= model_class.human_attribute_name(:duration)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - tags.each do |tag|
+      %tr.link{ class: state_color(tag), data: { href: edit_admin_tag_path(tag) } }
+        %td= tag.id
+        %td= image_tag tag.small_thumb
+        %td= link_to tag.link, tag.link
+        %td= "#{l(tag.begin_date)} - #{l(tag.end_date)}"
+        - if searching?
+          %td= tag.human_state_name
+        %td.actions
+          = link_to edit_admin_tag_path(tag), class: 'btn btn-warning btn-xs' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to admin_tag_path(tag), method: :delete, class: 'btn btn-xs btn-danger' do
+            %span.glyphicon.glyphicon-remove
+= paginate tags, theme: 'twitter-bootstrap-3'
