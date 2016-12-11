@@ -21,6 +21,10 @@ class TagDecorator < ApplicationDecorator
     end
   end
 
+  def name
+    "Tag ##{id}"
+  end
+
   def self.collections
     [:empty, :active, :removed]
   end

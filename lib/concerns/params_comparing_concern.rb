@@ -3,7 +3,8 @@ module Concerns
     def log_params
       case action_name
       when 'update'
-        object = model_class.find(params[:id])
+        current_model_class = get_current_model_class
+        object = current_model_class.find(params[:id])
         new_params = params[to_param(model_class.name)]
         attributes = object_attributes_with_associations object, new_params
         attributes_diff attributes.except(*not_logged_attributes), @prev_object_attributes
@@ -81,5 +82,8 @@ module Concerns
       hash
     end
 
+    def get_current_model_class
+      params[to_param(model_class.name)][:member_state] == 'confirmed' && model_class == Questionary ? Member : model_class
+    end
   end
 end
