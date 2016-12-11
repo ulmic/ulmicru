@@ -14,4 +14,11 @@ class ActivityLines::Corporative::ConfessionMailer < ApplicationMailer
     @subject = subject(confession.class, :confirm)
     mail from: sender_name, to: user.email, subject: @subject
   end
+
+  def nominated(confession, user)
+    @user = user
+    @confession = confession
+    @subject = subject(confession.class, :nominated)
+    mail from: sender_name, to: user.email, subject: @subject
+  end
 end
