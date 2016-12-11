@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Web::Admin::DocumentsControllerTest < ActionController::TestCase
   setup do
-    @document = create :document
+    @document = Document.last
     admin = create :admin
     sign_in admin
     @exceptions_attributes = ['id', 'created_at', 'updated_at', 'file']
