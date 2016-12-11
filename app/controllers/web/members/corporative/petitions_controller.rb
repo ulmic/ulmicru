@@ -20,7 +20,7 @@ class Web::Members::Corporative::PetitionsController < Web::Members::Corporative
     @petition_form = ::ActivityLines::Corporative::ConfessionForm.new_with_model
     if @petition_form.submit params[:activity_lines_corporative_confession]
       Organization::Permissions.confession[:review].each do |member|
-        send_notification @petition_form.model, member, :create
+        send_notification member, @petition_form.model, :create
       end
       redirect_to activity_lines_corporative_petitions_path notice: :your_petition_will_be_reviewed
     else
