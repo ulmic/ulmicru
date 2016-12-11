@@ -167,10 +167,9 @@
           %ul.news.small-block-grid-4
             - @articles.each do |article|
               %li.mic-one-news
-                = render_element 'mic_article',  link: article_path(article), |
-                                                 title: article.title, |
-                                                 views: article.views, |
-                                                 comments: article.comments.count
+                = render_element 'mic_one_article', link: article_path(article), |
+                                                    title: article.title, |
+                                                    views: article.views
             - @news.each do |news|
               %li.mic-one-news
                 = render_element 'mic_one_news', img_src: news.photo, |
@@ -190,7 +189,6 @@
                                                  views: news.views
             - @member.authored_articles.each do |article|
               %li.mic-one-news
-                = render_element 'mic_article',  link: article_path(article), |
-                                                 title: article.title, |
-                                                 views: article.views, |
-                                                 comments: article.comments.count
+                = render_element 'mic_one_article', link: article_path(article), |
+                                                    title: article.title, |
+                                                    views: article.views

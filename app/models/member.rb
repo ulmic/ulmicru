@@ -13,7 +13,7 @@ class Member < User
   has_many :events, as: :organizer,
                     foreign_key: :organizer_id
   has_many :news, foreign_key: :user_id
-  has_many :authored_news, foreign_key: :user_id, class_name: 'News'
+  has_many :authored_news, -> { published }, foreign_key: :user_id, class_name: 'News'
   has_many :authored_articles, foreign_key: :user_id, class_name: 'Article'
   has_many :confessions, class_name: 'ActivityLines::Corporative::Confession',
                          dependent: :destroy
