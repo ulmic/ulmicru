@@ -1,6 +1,5 @@
 module Concerns
   module MessageConstructor
-
     def create_message(type, theme)
       messages_hash[type][theme]
     end

@@ -40,6 +40,10 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
       transition all => :on_vote
     end
 
+    event :decline do
+      transition all => :declined
+    end
+
     event :renew do
       transition all => :unviewed
     end
