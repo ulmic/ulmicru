@@ -151,7 +151,7 @@ ru:
       corporative:
         petitions:
           index:
-            title: Номинанты корпоративной премии «Признание» %{year} года
+            title: «ПРИЗНАНИЕ»-%{year}. Выбираем достойных
           arguments_modal:
             renew_petition: Обновить ходатайство
         online_conferences:

@@ -6,11 +6,11 @@
   %h1.title
     = t('.title', year: current_confession_year)
   .text
-    Перед вами люди номинированные на корпоративную премию «Признание»
-    = current_confession_year
-    года.
-    %br
-
+    За 
+    = ulmic_age
+    лет существования МИЦ 
+    = link_to "премию «Признание» получили #{@all_nominates_count} #{Russian.p(@all_nominates_count, 'человек', 'человека', 'человек')}.", article_path(configus.articles.confession)
+    Часть из них переехали в другие регионы, часть занимают руководящие должности. Для большинства премия стала одной из первых общественных наград, которая подтвердила, что если долго и упорно работать, то твой труд обязательно будет вознаграждён.
     - if submissions_petitions_during?
       = render 'submissions_text'
     - elsif voting_petitions_during?

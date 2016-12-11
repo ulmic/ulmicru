@@ -78,6 +78,7 @@ Configus.build Rails.env do
       contacts 16
       contact_list 78
       charter 20
+      confession 25
     end
   end
 
