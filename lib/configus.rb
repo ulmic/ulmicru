@@ -51,7 +51,7 @@ Configus.build Rails.env do
             begining_submissions_petitions '10/12/2016'.to_datetime
             ending_submissions_petitions '30/12/2016'.to_datetime
             begining_voting '05/01/2017'.to_datetime
-            ending_voting '12/01/2017'.to_datetime
+            ending_voting '15/01/2017'.to_datetime
           end
         end
       end
