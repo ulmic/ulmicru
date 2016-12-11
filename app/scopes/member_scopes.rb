@@ -11,10 +11,10 @@ module MemberScopes
     scope :unavailable, -> { where(state: :unavailable).order('ticket ASC') }
     scope :tag_available, -> { where.not(state: :removed).where(member_state: :confirmed) }
     scope :without_confessions, -> {
-      where.not(id: ::ActivityLines::Corporative::Confession.all.map(&:member_id).uniq)
+      where.not(id: ::ActivityLines::Corporative::Confession.confirmed.map(&:member_id).uniq)
     }
     scope :cannot_get_confession, -> { where('join_date > ?', DateTime.now - 3.month) }
-    scope :with_debut, -> { where(id: ::ActivityLines::Corporative::Confession.where(nomination: :debut).map(&:member_id)) }
+    scope :with_debut, -> { where(id: ::ActivityLines::Corporative::Confession.confirmed.where(nomination: :debut).map(&:member_id)) }
     scope :without_debut, -> {
       where.not(id: with_debut) + Member.without_confessions - Member.cannot_get_confession
     }
