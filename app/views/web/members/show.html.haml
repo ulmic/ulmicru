@@ -133,12 +133,12 @@
             = fa_icon 'newspaper-o'
             = t('activerecord.models.news').pluralize(:ru)
             = "(#{@articles.count + @news.count})"
-      - if @member.authored_news.any?
+      - if @member.authored_news.any? || @member.authored_articles.any?
         %li.tab-title
           %a{ href: '#users-authored-news', tabindex: '0' }
             = fa_icon :pencil
             = t('activerecord.attributes.member.authored_news')
-            = "(#{@member.authored_news.count})"
+            = "(#{@member.authored_news.count + @member.authored_articles.count})"
     .tabs-content
       - if @registrations.any?
         #stages-of-grow.content.stages
@@ -178,7 +178,7 @@
                                                  title: news.title, |
                                                  date: news.publish_date, |
                                                  views: news.views
-      - if @member.authored_news.any?
+      - if @member.authored_news.any? || @member.authored_articles.any?
         #users-authored-news.content
           %ul.news.small-block-grid-4
             - @member.authored_news.decorate.each do |news|
@@ -188,3 +188,9 @@
                                                  title: news.title, |
                                                  date: news.publish_date, |
                                                  views: news.views
+            - @member.authored_articles.each do |article|
+              %li.mic-one-news
+                = render_element 'mic_article',  link: article_path(article), |
+                                                 title: article.title, |
+                                                 views: article.views, |
+                                                 comments: article.comments.count

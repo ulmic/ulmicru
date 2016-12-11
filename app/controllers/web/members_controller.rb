@@ -38,7 +38,7 @@ class Web::MembersController < Web::ApplicationController
   end
 
   def show
-    member = Member.includes(:attribute_accesses, :authored_news).find_by_ticket(params[:ticket])
+    member = Member.includes(:attribute_accesses, :authored_news, :authored_articles).find_by_ticket(params[:ticket])
     if member.member_confirmed?
       @member = member.decorate
       @children = MemberDecorator.decorate_collection member.children.shuffle
