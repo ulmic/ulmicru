@@ -124,13 +124,21 @@
       - if @registrations.any?
         %li.tab-title
           %a{ href: '#stages-of-grow', tabindex: '0' }
-            %i.fa.fa-signal
+            = fa_icon :signal
             = t('organization.floors_growth')
+            = "(#{@registrations.count})"
       - if @articles.any? || @news.any?
         %li.tab-title
           %a{ href: '#users-news', tabindex: '0' }
-            %i.fa.fa-newspaper-o
+            = fa_icon 'newspaper-o'
             = t('activerecord.models.news').pluralize(:ru)
+            = "(#{@articles.count + @news.count})"
+      - if @member.authored_news.any?
+        %li.tab-title
+          %a{ href: '#users-authored-news', tabindex: '0' }
+            = fa_icon :pencil
+            = t('activerecord.attributes.member.authored_news')
+            = "(#{@member.authored_news.count})"
     .tabs-content
       - if @registrations.any?
         #stages-of-grow.content.stages
@@ -164,6 +172,16 @@
                                                  views: article.views, |
                                                  comments: article.comments.count
             - @news.each do |news|
+              %li.mic-one-news
+                = render_element 'mic_one_news', img_src: news.photo, |
+                                                 link: news_path(news), |
+                                                 title: news.title, |
+                                                 date: news.publish_date, |
+                                                 views: news.views
+      - if @member.authored_news.any?
+        #users-authored-news.content
+          %ul.news.small-block-grid-4
+            - @member.authored_news.decorate.each do |news|
               %li.mic-one-news
                 = render_element 'mic_one_news', img_src: news.photo, |
                                                  link: news_path(news), |
