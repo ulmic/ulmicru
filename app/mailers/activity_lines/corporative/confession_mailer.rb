@@ -3,7 +3,7 @@ class ActivityLines::Corporative::ConfessionMailer < ApplicationMailer
 
   def create(confession, user)
     @user = user
-    @confession = confession
+    @member = confession.member.decorate
     @subject = subject(confession.class, :create)
     mail from: sender_name, to: user.email, subject: @subject
   end
