@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-
   attr_accessor :image_src
 
   include Concerns::MessageConstructor
