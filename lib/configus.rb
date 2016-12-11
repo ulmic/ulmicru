@@ -41,6 +41,7 @@ Configus.build Rails.env do
     organization do
       logo 'http://ulmic.ru/assets/apps/logo-mic-square.png'
       logo_transparent 'http://ulmic.ru/assets/logo-transparent.png'
+      found_date DateTime.new(2007, 02, 20)
     end
     #FIXME it will fixed on https://trello.com/c/MqBhJhpc/407-configus-dates ticket
     dates do

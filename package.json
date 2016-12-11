@@ -24,7 +24,8 @@
     "rwr-redux": "^0.2.0",
     "sass-loader": "^3.0.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.12.1"
+    "webpack": "^1.12.1",
+    "bounce.js": "latest"
   },
   "scripts": {
     "build": "webpack -p --config webpack/production.config.js",
