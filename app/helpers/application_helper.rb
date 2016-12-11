@@ -61,4 +61,8 @@ module ApplicationHelper
   def google_api_key
     YAML.load_file(Rails.root.join('config', 'oauth.yml'))[Rails.env].with_indifferent_access[:google][:api_key]
   end
+
+  def ulmic_age
+    DateTime.now.year - configus.organization.found_date.year
+  end
 end

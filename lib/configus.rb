@@ -41,6 +41,7 @@ Configus.build Rails.env do
     organization do
       logo 'http://ulmic.ru/assets/apps/logo-mic-square.png'
       logo_transparent 'http://ulmic.ru/assets/logo-transparent.png'
+      found_date DateTime.new(2007, 02, 20)
     end
     #FIXME it will fixed on https://trello.com/c/MqBhJhpc/407-configus-dates ticket
     dates do
@@ -48,9 +49,9 @@ Configus.build Rails.env do
         corporative do
           confession do
             begining_submissions_petitions '10/12/2016'.to_datetime
-            ending_submissions_petitions '05/01/2017'.to_datetime
+            ending_submissions_petitions '30/12/2016'.to_datetime
             begining_voting '05/01/2017'.to_datetime
-            ending_voting '12/01/2017'.to_datetime
+            ending_voting '15/01/2017'.to_datetime
           end
         end
       end
@@ -77,6 +78,10 @@ Configus.build Rails.env do
       contacts 16
       contact_list 78
       charter 20
+      confession 25
+    end
+    documents do
+      confession_position 4
     end
   end
 
