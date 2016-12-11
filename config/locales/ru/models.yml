@@ -85,6 +85,7 @@ ru:
         parent_id: Крёстный
         children: Крестники
         join_date: Дата вступления
+        authored_news: Авторские статьи
       questionary:
         <<: *user_default
         <<: *member_default
