@@ -20,8 +20,6 @@
         - if searching?
           %td= banner.human_state_name
         %td.actions
-          = link_to edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs' do
-            %span.glyphicon.glyphicon-pencil
-          = link_to admin_banner_path(banner), method: :delete, class: 'btn btn-xs btn-danger' do
-            %span.glyphicon.glyphicon-remove
+          = link_to fa_icon(:pencil), edit_admin_banner_path(banner), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove), admin_banner_path(banner), method: :delete, class: 'btn btn-xs btn-danger' 
 = paginate banners, theme: 'twitter-bootstrap-3'
