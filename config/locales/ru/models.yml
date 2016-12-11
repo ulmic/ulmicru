@@ -25,6 +25,7 @@ ru:
       delivery/campaign: Кампания
       delivery/audience: Целевая аудитория
       delivery/contact_email: Электронная почта
+      tag: Тег
     attributes:
       default: &default
         created_at: Дата создания

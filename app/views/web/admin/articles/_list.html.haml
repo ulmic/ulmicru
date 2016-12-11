@@ -31,7 +31,7 @@
           %td= article.human_state_name
         %td{ style: 'width: 200px' }
           = render 'web/admin/tags/buttons'
-          = render 'web/admin/tags/list', record: article
+          = render 'web/admin/tags/tags_list', record: article
           = render 'web/admin/tags/form', record_type: 'Article', record_id: article.id, index: article.id
         %td.actions
           - if article.unviewed? && current_user.has_permission_to?(:review, :article)

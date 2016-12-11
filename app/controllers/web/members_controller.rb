@@ -45,7 +45,7 @@ class Web::MembersController < Web::ApplicationController
       @parent = MemberDecorator.decorate member.parent
       @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.date_order
       @news = NewsDecorator.decorate_collection member.tags.active.news.map &:record
-      @articles = member.tags.active.articles.map &:record
+      @articles = member.tags.active.articles.map(&:record).uniq
       @teams = member.teams.active.visible.decorate
     end
   end

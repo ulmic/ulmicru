@@ -20,4 +20,8 @@ class TagDecorator < ApplicationDecorator
       end
     end
   end
+
+  def self.collections
+    [:empty, :active, :removed]
+  end
 end

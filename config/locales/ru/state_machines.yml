@@ -167,3 +167,8 @@ ru:
           states:
             active: Активные
             removed: Удалённые
+      tag:
+        state:
+          states:
+            <<: *default
+            empty: Пустые

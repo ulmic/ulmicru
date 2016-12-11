@@ -1,6 +1,27 @@
-%ul.list-group
-  - record.tags.active.each do |tag|
-    %li.list-group-item
-      = link_to api_admin_tag_path(tag), method: :delete, remote: true, class: 'badge tag_destroy' do
-        X
-      = render 'web/admin/tags/tag_element', tag: tag
+= paginate tags, theme: 'twitter-bootstrap-3'
+- model_class = Tag
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:tag_type)
+      %th= model_class.human_attribute_name(:text)
+      %th= model_class.human_attribute_name(:target_type)
+      %th= model_class.human_attribute_name(:target_id)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - tags.each do |tag|
+      %tr.link{ class: state_color(tag), data: { href: edit_admin_tag_path(tag) } }
+        %td= tag.id
+        %td= enumerize_locales_value tag, :tag_type
+        %td= tag.text
+        %td= enumerize_locales_value tag, :target_type
+        %td= (link_to tag.target.decorate.name, admin_tags_record_path(tag.target)) if tag.target.present?
+        - if searching?
+          %td= tag.human_state_name
+        %td.actions
+          = link_to fa_icon(:pencil), edit_admin_tag_path(tag), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove), admin_tag_path(tag), method: :delete, class: 'btn btn-xs btn-danger'
+= paginate tags, theme: 'twitter-bootstrap-3'

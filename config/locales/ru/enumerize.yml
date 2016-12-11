@@ -68,3 +68,12 @@ ru:
       status:
         confirmed: Утверждённый
         acting: Исполняющий обязанности
+    tag:
+      tag_type:
+        link: Ссылка
+        string: Текстовый
+      target_type:
+        Member: Член МИЦ
+        Event: Мероприятие
+        ActivityLine: Направление деятельности
+        Team: Команда
