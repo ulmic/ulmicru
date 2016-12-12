@@ -1,10 +1,5 @@
 #= require bounce.js/bounce.min.js
 
-vertical_align = ($element) ->
-  parent_height = $element.parents().first().height()
-  margin_top =(parent_height - $element.height()) / 2
-  $element.css('margin-top', margin_top)
-
 $ ->
   $('.main-navbar-container').hide()
   $('.footer').hide()
