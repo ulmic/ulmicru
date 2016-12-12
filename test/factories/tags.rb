@@ -5,7 +5,8 @@ FactoryGirl.define do
     state { Tag.state_machines[:state].states.map(&:name).first.to_s }
     record_type ['News', 'Article'].sample
     record_id do
-      create(record_type.underscore).id
+      record_class = record_type.constantize
+      record_class.last ? record_class.last.id : create(record_type.underscore).id
     end
     target_type ['Member', 'Team', 'ActivityLine', 'Event'].sample
     target_id do
