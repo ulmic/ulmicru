@@ -58,6 +58,19 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     end
   end
 
+  test 'should pass to organization' do
+    attributes = attributes_for :questionary
+    attributes[:member_state] = :confirmed
+    patch :update, questionary: attributes, id: @questionary
+    assert_response :redirect, @response.body
+    assert_redirected_to edit_admin_member_path @questionary, message: :fill_member_form
+    @questionary = Member.find @questionary.id
+    @questionary.attributes.keys.except(*@exceptions_attributes).except('type', 'member_state').each do |key|
+      assert_equal attributes[key.to_sym], @questionary.send(key), key
+    end
+    assert_equal @questionary.type, 'Member'
+  end
+
   test 'should delete destroy' do
     count = Questionary.count
     delete :destroy, id: @questionary

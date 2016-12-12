@@ -23,6 +23,10 @@ class Tag < ActiveRecord::Base
       transition removed: :active
     end
 
+    event :restore do
+      transition removed: :active
+    end
+
     event :remove do
       transition active: :removed
     end
