@@ -38,7 +38,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
 
   def collection_page(record, current_collection)
     index = record.class.send(current_collection).map(&:id).index(record.id)
-    if index > 25
+    if index && index > 25
       index % RECORDS_PER_PAGE == 0 ? index / RECORDS_PER_PAGE : index / RECORDS_PER_PAGE + 1
     else
       1
