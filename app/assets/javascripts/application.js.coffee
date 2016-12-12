@@ -26,6 +26,11 @@
 #= require web/welcome
 #= require feedback
 
+window.vertical_align = ($element) ->
+  parent_height = $element.parents().first().height()
+  margin_top =(parent_height - $element.height()) / 2
+  $element.css('margin-top', margin_top)
+
 
 $ ->
   $(document).foundation()
