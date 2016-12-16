@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 # -*- coding: utf-8 -*-
 Rails.application.routes.draw do
+  use_doorkeeper
   mount RailsEmailPreview::Engine, at: 'emails'
   mount Sidekiq::Web => '/sidekiq'
   mount Ckeditor::Engine => '/ckeditor'
@@ -154,6 +155,9 @@ Rails.application.routes.draw do
       namespace :corporative do
         resources :arguments, only: :create
       end
+    end
+    namespace :oauth do
+      resources :users, only: :show
     end
     resources :yofications, only: [ :create, :update ]
   end
