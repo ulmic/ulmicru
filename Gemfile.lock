@@ -178,6 +178,8 @@ GEM
     docile (1.1.5)
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
+    doorkeeper (4.2.0)
+      railties (>= 4.2)
     draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -493,6 +495,7 @@ DEPENDENCIES
   colorize (= 0.6.0)
   configus
   coveralls
+  doorkeeper
   draper
   enumerize
   factory_girl_rails
@@ -557,4 +560,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.12.5
+   1.13.1

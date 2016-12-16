@@ -65,6 +65,7 @@ gem 'react_webpack_rails'
 gem 'rwr-redux'
 gem 'virtus'
 gem 'karamzin'
+gem 'doorkeeper'
 
 group :production do
   gem 'unicorn-rails'
