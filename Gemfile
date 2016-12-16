@@ -66,6 +66,7 @@ gem 'rwr-redux'
 gem 'virtus'
 gem 'karamzin'
 gem 'doorkeeper'
+gem 'responders', '~> 2.0'
 
 group :production do
   gem 'unicorn-rails'

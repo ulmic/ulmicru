@@ -366,6 +366,8 @@ GEM
       declarative (~> 0.0.5)
       uber (~> 0.0.15)
     request_store (1.2.1)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -531,6 +533,7 @@ DEPENDENCIES
   rails_email_preview (~> 0.2.29)
   react_webpack_rails
   reform
+  responders (~> 2.0)
   rmagick (= 2.15.3)
   russia_regions (>= 0.0.4)
   russian
