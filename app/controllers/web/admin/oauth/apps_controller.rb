@@ -10,7 +10,7 @@ class Web::Admin::Oauth::AppsController < Web::Admin::ApplicationController
 
   def new
     @app_form = Oauth::AppForm.new_with_model
-    @app_form.model.client_id = (Oauth::App.order(:client_id).last&.client_id || 0) + 1
+    @app_form.model.client_id = (Oauth::App.order(:client_id).last&.client_id&.to_i || 0) + 1
   end
 
   def edit
