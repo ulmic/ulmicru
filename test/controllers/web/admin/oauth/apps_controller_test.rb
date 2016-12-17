@@ -31,7 +31,7 @@ class Web::Admin::Oauth::AppsControllerTest < ActionController::TestCase
 
   test 'should create app' do
     attributes = attributes_for :oauth_app
-    post :create, app: attributes
+    post :create, oauth_app: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_oauth_apps_path
     app = Oauth::App.last
