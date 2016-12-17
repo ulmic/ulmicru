@@ -14,6 +14,6 @@
       = f.input :title, as: :string
       = f.input :url, as: :string
       = f.input :client_id, as: :string
-      = f.input :client_secret, as: :string
+      = f.input :client_secret, as: :string, input_html: { value: (@app_form.client_secret || SecureRandom.hex(24)) }
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'

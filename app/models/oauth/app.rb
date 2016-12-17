@@ -1,4 +1,7 @@
 class Oauth::App < ActiveRecord::Base
+  validates :client_id, uniqueness: true
+  validates :url, uniqueness: true
+
   state_machine :state, initial: :unviewed do
     state :active
     state :removed

@@ -172,3 +172,7 @@ ru:
           states:
             <<: *default
             empty: Пустые
+      oauth/app:
+        state:
+          states:
+            <<: *default

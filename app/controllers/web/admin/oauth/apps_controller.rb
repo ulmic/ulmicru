@@ -10,6 +10,7 @@ class Web::Admin::Oauth::AppsController < Web::Admin::ApplicationController
 
   def new
     @app_form = Oauth::AppForm.new_with_model
+    @app_form.model.client_id = (Oauth::App.order(:client_id).last&.client_id || 0) + 1
   end
 
   def edit
@@ -18,7 +19,7 @@ class Web::Admin::Oauth::AppsController < Web::Admin::ApplicationController
 
   def create
     @app_form = Oauth::AppForm.new_with_model
-    @app_form.submit(params[:app])
+    @app_form.submit params[:oauth_app]
     if @app_form.save
       redirect_to admin_oauth_apps_path
     else
