@@ -41,6 +41,7 @@
           - if current_user.role.tech_admin?
             = admin_menu_item LoggedAction, admin_logged_actions_path
             = admin_menu_item Image, admin_images_path
+            = admin_menu_item Oauth::App, admin_oauth_apps_path
         = admin_menu_item Feedback, admin_feedbacks_path, :share
         = dropdown "#{t('.delivery')} (Beta)" do
           = admin_menu_item Delivery::Campaign, admin_delivery_campaigns_path, :send

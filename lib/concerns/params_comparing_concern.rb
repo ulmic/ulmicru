@@ -20,6 +20,9 @@ module Concerns
     def object_attributes_with_associations(object, params)
       attributes = object.attributes
       unless action_name == 'destroy'
+        if params.nil?
+          raise "Your params keys don't match model_name. Look at controller."
+        end
         params.keys.each do |key|
           if key.to_s.include? 'attributes'
             association_attributes_hash = {}

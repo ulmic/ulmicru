@@ -1,0 +1,27 @@
+= paginate oauth_apps, theme: 'twitter-bootstrap-3'
+- model_class = Oauth::App
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:client_id)
+      %th= model_class.human_attribute_name(:client_secret)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - oauth_apps.each do |app|
+      %tr.link{ class: state_color(app) }
+        %td= app.id
+        %td= app.title
+        %td= link_to app.url, app.url
+        %td= app.client_id
+        %td= app.client_secret
+        - if searching?
+          %td= app.human_state_name
+        %td.actions
+          = link_to fa_icon(:pencil), edit_admin_oauth_app_path(app), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove), admin_oauth_app_path(app), method: :delete, class: 'btn btn-xs btn-danger' 
+= paginate oauth_apps, theme: 'twitter-bootstrap-3'

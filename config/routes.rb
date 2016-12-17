@@ -99,6 +99,9 @@ Rails.application.routes.draw do
 	resources :sessions, only: [ :create, :destroy ]
         resources :contact_emails, only: [ :index, :update, :destroy ]
       end
+      namespace :oauth do
+        resources :apps
+      end
     end
     namespace :users do
       resources :account, only: :update
