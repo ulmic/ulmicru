@@ -18,7 +18,7 @@ module MemberScopes
     scope :without_debut, -> {
       where.not(id: with_debut) + Member.without_confessions - Member.cannot_get_confession
     }
-    scope :with_number_one, -> { where(id: ::ActivityLines::Corporative::Confession.where(nomination: :number_one).map(&:member_id)) }
+    scope :with_number_one, -> { where(id: ::ActivityLines::Corporative::Confession.confirmed.where(nomination: :number_one).map(&:member_id)) }
     scope :without_number_one, -> {
       where.not(id: with_number_one) + Member.without_confessions - Member.cannot_get_confession
     }

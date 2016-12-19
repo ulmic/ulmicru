@@ -13,7 +13,7 @@
       %th= t 'helpers.links.actions'
   %tbody
     - oauth_apps.each do |app|
-      %tr.link{ class: state_color(app) }
+      %tr{ class: state_color(app) }
         %td= app.id
         %td= app.title
         %td= link_to app.url, app.url
