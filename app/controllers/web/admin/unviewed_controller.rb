@@ -30,7 +30,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
         redirect_to admin_unviewed_index_path items: any_items_key
       end
     else
-      redirect_to not_found_page_path
+      redirect_to admin_path
     end
   end
 

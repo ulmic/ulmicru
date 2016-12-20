@@ -4,7 +4,7 @@ class Web::EventsController < Web::ApplicationController
   end
 
   def show
-    @event = ::Event.includes(online_conference: :questions).find(params[:id]).decorate
+    @event = ::Event.includes(:online_conference).find(params[:id]).decorate
     organizers = @event.registrations.organizers
     attenders = @event.registrations.attenders
     @all_registrations = Event::RegistrationDecorator.decorate_collection(organizers + attenders)
@@ -12,6 +12,7 @@ class Web::EventsController < Web::ApplicationController
     @other_registrations = @all_registrations.drop 10
     if @event.is_online_conference?
       @question_form = ::ActivityLines::Corporative::OnlineConference::QuestionForm.new_with_model
+      @confirmed_questions = @event.online_conference.questions.active
     end
   end
 end
