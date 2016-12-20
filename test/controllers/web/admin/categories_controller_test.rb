@@ -20,6 +20,9 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
 
   test 'should create category' do
     attributes = attributes_for :category
+    if Category.where(id: Category.count + 1).any?
+      attributes[:id] = Category.count + 2
+    end
     post :create, category: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_categories_path

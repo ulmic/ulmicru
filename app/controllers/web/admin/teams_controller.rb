@@ -6,6 +6,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   before_filter :choose_members, only: [ :new, :edit ]
   before_filter :choose_departaments, only: [ :new, :edit ]
+  before_filter :choose_teammates, only: [ :new, :edit ]
 
   def index
     if params[:search]
@@ -29,6 +30,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     else
       choose_members
       choose_departaments
+      choose_teammates
       @categories = Category.presented.decorate
       render action: :new
     end
@@ -47,6 +49,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     else
       choose_members
       choose_departaments
+      choose_teammates
       render action: :edit
     end
   end
