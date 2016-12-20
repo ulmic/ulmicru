@@ -2,6 +2,7 @@ class Web::Members::TeamsController < Web::Members::ApplicationController
   before_filter :authenticate_team_header!
   before_filter :edit_params, only: :update
   before_filter :set_team
+  before_filter :choose_teammates, only: :edit
 
   def edit
     @team_form = TeamForm.find_with_model params[:id]
@@ -12,6 +13,7 @@ class Web::Members::TeamsController < Web::Members::ApplicationController
     if @team_form.submit params[:team]
       redirect_to edit_members_team_path @team_form.model
     else
+      choose_teammates
       render :edit
     end
   end
@@ -25,6 +27,6 @@ class Web::Members::TeamsController < Web::Members::ApplicationController
   end
 
   def set_team
-    @team = Team.includes(users: :positions).find(params[:id]).decorate
+    @team = Team.includes(:users).find(params[:id]).decorate
   end
 end

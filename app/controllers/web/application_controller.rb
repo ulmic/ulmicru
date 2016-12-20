@@ -28,6 +28,8 @@ class Web::ApplicationController < ApplicationController
       end
   end
 
+  protected
+
   def load_categories_tree
     @first_category = Category.includes(:articles).find configus.categories.who_we_are
     @about_site_category = Category.includes(:articles).find configus.categories.site_mic
@@ -65,5 +67,9 @@ class Web::ApplicationController < ApplicationController
 
   def choose_teams
     @teams = Team.active.visible.decorate
+  end
+
+  def choose_teammates
+    @teammates = User.where.not(type: nil)
   end
 end
