@@ -4,7 +4,7 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
-    exceptions = [ :article, :category, :online_conference, :document ]
+    exceptions = [ :article, :category, :online_conference, :document, :tag ]
     @types = trash_models.except(*exceptions)
     @hard_types = {
       'activity_lines/corporative/confession' =>  'activity_lines-corporative-confession',
