@@ -91,7 +91,9 @@
           %li.row
             .small-1.columns{ style: 'text-align: center' }
               - if question.user_id.present?
-                - if question.user.is_member?
+                - if question.user.is_questionary?
+                  = image_tag question.user.avatar.small
+                - elsif question.user.is_member?
                   = link_to member_path(question.user.ticket) do
                     = image_tag question.user.decorate.small_avatar_url
                 - else
