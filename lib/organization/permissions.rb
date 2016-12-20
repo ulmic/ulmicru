@@ -45,7 +45,7 @@ module Organization
       end
 
       def activity_lines_corporative_online_conference_question
-        { review: area_headers.users }
+        { review: (area_headers.users + User.tech_admins).uniq }
       end
 
       def confession
