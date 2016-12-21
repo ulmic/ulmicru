@@ -22,7 +22,11 @@
         %td= event.title
         %td= event.full_duration
         %td= event.place
-        %td= link_to event.creator.short_name, member_path(event.creator.ticket) if event.creator
+        %td
+          - if event.creator.is_member?
+            = link_to event.creator.short_name, admin_member_path(event.creator)
+          - else
+            = link_to event.creator.short_name, admin_questionary_path(event.creator)
         - if searching?
           %td= event.human_state_name
         %td.actions
