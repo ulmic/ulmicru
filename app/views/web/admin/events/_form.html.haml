@@ -4,7 +4,10 @@
 .page-header
   %h1= page_title(action, Event.model_name.human)
   - if @event_form.model.creator.present?
-    = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", member_path(@event_form.model.creator.ticket), class: :blank
+    - if @event_form.model.creator.is_member?
+      = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", admin_member_path(@event_form.model.creator), class: :blank
+    - else
+      = link_to "Автор: #{@event_form.model.creator.decorate.short_name}", admin_questionary_path(@event_form.model.creator), class: :blank
   - else
     .alert.alert-dissmissible.alert-info
       %span.glyphicon.glyphicon-info-sign
@@ -41,18 +44,19 @@
       %hr
       = hint :event, :place, place: :admin
       %br
-      = f.label :place
-      .form-group.text.required
-        .input-group
-          - if @event_form.model.place.present?
-            = text_field :place, '', class: 'text required form-control', value: @event_form.model.decorate.place_name
-          - else
-            = text_field :place, '', class: 'text required form-control'
-          %span.input-group-btn
-            %button.btn.btn-default#update_list
-              %span.glyphicon.glyphicon-search
-      = f.input :place, as: :select, collection: [], label: false, input_html: { value: @event_form.model.place }
-      = f.input :place, as: :hidden, input_html: { value: @event_form.model.place }
+      - unless Rails.env.development?
+        = f.label :place
+        .form-group.text.required
+          .input-group
+            - if @event_form.model.place.present?
+              = text_field :place, '', class: 'text required form-control', value: @event_form.model.decorate.place_name
+            - else
+              = text_field :place, '', class: 'text required form-control'
+            %span.input-group-btn
+              %button.btn.btn-default#update_list
+                %span.glyphicon.glyphicon-search
+        = f.input :place, as: :select, collection: [], label: false, input_html: { value: @event_form.model.place }
+        = f.input :place, as: :hidden, input_html: { value: @event_form.model.place }
       .alert.alert-dissmissible.alert-info
         %span.glyphicon.glyphicon-info-sign
         = t('.did_not_find_anything_add_venue')
