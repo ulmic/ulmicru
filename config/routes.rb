@@ -92,6 +92,9 @@ Rails.application.routes.draw do
             resources :questions, except: :show
           end
         end
+        namespace :lider do
+          resources :ya_liders
+        end
       end
       namespace :delivery do
 	resources :campaigns
