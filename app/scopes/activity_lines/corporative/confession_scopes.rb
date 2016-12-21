@@ -9,5 +9,6 @@ module ActivityLines::Corporative::ConfessionScopes
     scope :number_one, -> { where nomination: :number_one }
     scope :of_the_year, -> (year) { where year: year }
     scope :need_to_review, -> { unviewed }
+    scope :active, -> { where(state: [:confirmed, :on_vote]) }
   end
 end
