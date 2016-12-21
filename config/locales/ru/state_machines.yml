@@ -6,6 +6,8 @@ ru:
         active: Активные
         removed: Удалённые
         unviewed: Непросмотренные
+        current: Текущий
+        past: Прошедший
       events: &default_events
         confirm: Подтвердить
         remove: Удалить
@@ -100,11 +102,9 @@ ru:
       event:
         state:
           states:
+            <<: *default
             confirmed: Подтверждённое
             future: Будущий
-            current: Текущий
-            past: Прошедший
-            unviewed: Новые
             declined: Отклонённые
       article:
         state:
@@ -176,3 +176,9 @@ ru:
         state:
           states:
             <<: *default
+      activity_lines/lider/ya_lider:
+        state:
+          states:
+            <<: *default
+          events:
+            <<: *default_events

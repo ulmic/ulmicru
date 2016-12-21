@@ -253,6 +253,9 @@ ru:
         author_name: Имя автора 
         slug: Адрес
         image_type: Тип изображения
+      activity_lines/lider/ya_lider:
+        contest_year: Год проведения конкурса
+        contest_number: Номер конкурса
     errors:
       models:
         member:
