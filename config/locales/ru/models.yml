@@ -19,6 +19,7 @@ ru:
       activity_lines/corporative/confession: Премия Признание
       activity_lines/corporative/online_conference: Онлайн-конференция
       activity_lines/corporative/online_conference/question: Вопросы на онлайн-конференцию
+      activity_lines/lider/ya_lider: Конкурс "Я-лидер!"
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение
@@ -252,6 +253,9 @@ ru:
         author_name: Имя автора 
         slug: Адрес
         image_type: Тип изображения
+      activity_lines/lider/ya_lider:
+        contest_year: Год проведения конкурса
+        contest_number: Номер конкурса
     errors:
       models:
         member:

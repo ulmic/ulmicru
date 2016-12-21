@@ -3,6 +3,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
   before_filter :check_declared_scopes, only: :index
   before_filter :collections_counts, only: :index
   before_action :save_object, only: [ :update, :destroy ]
+  before_filter :activity_lines_titles
   after_action :log_action, only: [ :create, :update, :destroy, :restore ]
 
   layout 'web/admin/application'
@@ -50,5 +51,9 @@ class Web::Admin::ApplicationController < Web::ApplicationController
       record.send "#{attr}=", value
     end
     record
+  end
+
+  def activity_lines_titles
+    @activity_lines_titles = { lider: ActivityLine.find(2).title }
   end
 end
