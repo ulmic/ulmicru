@@ -8,6 +8,10 @@ module Organization
       Position.current_positions.where(title: 'Руководитель корпоративных проектов').map &:member
     end
 
+    def lider_lead
+      Position.current_positions.where(title: 'Руководитель центральной программы «Лидер»').map &:member
+    end
+
     def deputy_corporative_lead
       Position.current_positions.where(title: 'Заместитель руководителя корпоративных проектов').map &:member
     end

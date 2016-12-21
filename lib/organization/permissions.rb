@@ -51,6 +51,10 @@ module Organization
       def confession
         { review: (corporative_lead + User.tech_admins).uniq }
       end
+
+      def activity_lines_lider_ya_lider
+        { show: (lider_lead + User.tech_admins).uniq }
+      end
     end
   end
 end
