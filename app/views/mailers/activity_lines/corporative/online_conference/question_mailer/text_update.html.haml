@@ -9,7 +9,16 @@
   %ul
     - @logged_actions.each do |logged_action|
       %li
-        = logged_action.user.decorate.short_name
+        %table
+          %tr
+            %td
+              = logged_action.user.decorate.short_name
+            %td
+              %table
+                - logged_action.updated_params.each do |line|
+                  %tr
+                    %td
+                      = line
 %p
   %b
     Спасибо! Твой МИЦ.
