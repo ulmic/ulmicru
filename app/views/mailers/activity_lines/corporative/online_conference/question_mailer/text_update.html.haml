@@ -1,0 +1,15 @@
+%p
+  Привет, 
+  = @user.first_name
+  \, довожу до Твоего сведения, что на сайте изменён текст вопроса на онлайн-конференцию 
+  = "'#{@question.online_conference.title}'"
+%p
+  Вот список людей, которые производили изменения с этим вопросом.
+%p
+  %ul
+    - @logged_actions.each do |logged_action|
+      %li
+        = logged_action.user.decorate.short_name
+%p
+  %b
+    Спасибо! Твой МИЦ.

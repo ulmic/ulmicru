@@ -14,4 +14,12 @@ class ActivityLines::Corporative::OnlineConference::QuestionMailer < Application
     @subject = subject(question.class, :answer)
     mail from: sender_name, to: user.email, subject: @subject
   end
+
+  def text_update(question, user)
+    @user = user
+    @question = question
+    @logged_actions = question.logged_actions.include(:user)
+    @subject = subject(question.class, :text_update)
+    mail from: sender_name, to: user.email, subject: @subject
+  end
 end
