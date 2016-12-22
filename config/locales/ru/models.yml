@@ -20,6 +20,7 @@ ru:
       activity_lines/corporative/online_conference: Онлайн-конференция
       activity_lines/corporative/online_conference/question: Вопросы на онлайн-конференцию
       activity_lines/lider/ya_lider: Конкурс "Я-лидер!"
+      activity_lines/lider/ya_lider/stage: Этап конкурса "Я-лидер!"
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение
@@ -256,6 +257,11 @@ ru:
       activity_lines/lider/ya_lider:
         contest_year: Год проведения конкурса
         contest_number: Номер конкурса
+      activity_lines/lider/ya_lider/stage:
+        number: Номер этапа
+        title: Название
+        begin_date: Дата начала
+        end_date: Дата окончания
     errors:
       models:
         member:

@@ -1,4 +1,6 @@
 class ActivityLines::Lider::YaLider < ActiveRecord::Base
+  has_many :stages, class_name: 'ActivityLines::Lider::YaLider::Stage'
+
   validates :contest_number, presence: true, uniqueness: true
   validates :contest_year, presence: true, uniqueness: true
 

@@ -3,3 +3,16 @@
   .panel-heading
     %h4
       = @ya_lider.full_title
+.row
+  .col-md-6
+    %h5
+      = t('activerecord.models.activity_lines/lider/ya_lider/stage').pluralize(:ru)
+    = link_to t('helpers.links.new'), new_admin_activity_lines_lider_ya_lider_stage_path(activity_lines_lider_ya_lider_stage: { ya_lider_id: @ya_lider.id }), class: 'btn btn-success'
+    %table.table
+      - @ya_lider.stages.each do |stage|
+        %tr
+          %td
+            = stage.title
+          %td
+            = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_stage_path(stage), class: 'btn btn-sm btn-warning'
+            = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_stage_path(stage), method: :delete, class: 'btn btn-sm btn-danger'

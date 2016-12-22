@@ -13,6 +13,9 @@ class Web::Admin::ActivityLines::Corporative::OnlineConference::QuestionsControl
     if @question.submit params[:activity_lines_corporative_online_conference_question]
       send_notification @question.user, @question.model, :confirm if question_confirmed? && @question.user_id.present?
       send_notification @question.user, @question.model, :answer if question_answered? && @question.user_id.present?
+      Organization::Permissions.activity_lines_corporative_online_conference_question.each do |member|
+        send_notification member, @question.model, :text_update if question_text_updated?
+      end
       redirect_to :back
     end
   end
@@ -31,5 +34,9 @@ class Web::Admin::ActivityLines::Corporative::OnlineConference::QuestionsControl
 
   def question_answered?
     params[:activity_lines_corporative_online_conference_question][:answer_timestamp].present? && @prev_object_attributes[:answer_timestamp].nil?
+  end
+
+  def question_text_updated?
+    params[:activity_lines_corporative_online_conference_question][:text] != @prev_object_attributes[:text]
   end
 end

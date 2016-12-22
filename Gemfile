@@ -67,6 +67,7 @@ gem 'virtus'
 gem 'karamzin'
 gem 'doorkeeper'
 gem 'responders', '~> 2.0'
+gem 'kabal', '>= 1.3'
 
 group :production do
   gem 'unicorn-rails'
