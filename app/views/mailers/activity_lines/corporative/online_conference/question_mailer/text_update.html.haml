@@ -15,7 +15,7 @@
               = logged_action.user.decorate.short_name
             %td
               %table
-                - logged_action.updated_params.each do |line|
+                - logged_action.decorate.updated_params.each do |line|
                   %tr
                     %td
                       = line
