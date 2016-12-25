@@ -17,7 +17,7 @@
       %h4
         = t('.questions')
       %table.table.attributes-table
-        - @online_conference.questions.decorate.each do |question|
+        - @online_conference.questions.active.decorate.each do |question|
           %tr
             %td
               - if question.user_id.present?
@@ -33,7 +33,8 @@
                   = link_to question.user.decorate.short_name, admin_questionary_path(question.user)
               - else
                 = fa_icon 'user-secret 2x'
-            %td= question.text 
+            %td
+              = question.text 
             %td
               - if question.answer_link.present?
                 = link_to question.answer_link, question.answer_link
