@@ -476,6 +476,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    youtube_addy (1.0.4)
 
 PLATFORMS
   ruby
@@ -560,6 +561,7 @@ DEPENDENCIES
   virtus
   web-console (= 2.0.0.beta2)
   webmock
+  youtube_addy
 
 RUBY VERSION
    ruby 2.3.0p0

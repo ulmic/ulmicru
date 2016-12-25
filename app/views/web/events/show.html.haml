@@ -74,6 +74,11 @@
       .more-lead-info-content
         != @event.description
 - if @event.is_online_conference?
+  .event-content.container
+    .row
+      .small-9.columns
+        .youtube_video
+          != YouTubeAddy.youtube_embed_url(@event.online_conference.video_link)
   .event-content.container.ask-question
     .row
       .small-6.columns
