@@ -68,7 +68,7 @@ gem 'karamzin'
 gem 'doorkeeper'
 gem 'responders', '~> 2.0'
 gem 'kabal', '>= 1.3'
-gem 'youtube_addy'
+gem 'youtube_rails'
 
 group :production do
   gem 'unicorn-rails'
