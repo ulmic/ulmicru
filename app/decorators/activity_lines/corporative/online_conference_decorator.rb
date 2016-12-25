@@ -28,8 +28,14 @@ class ActivityLines::Corporative::OnlineConferenceDecorator < ApplicationDecorat
   end
 
   def event_link
-    h.content_tag(:a, href: event_path(object.event)) do
-      object.event.title
+    h.content_tag :span do
+      h.concat(h.content_tag(:a, href: edit_admin_event_path(object.event)) do
+        object.event.title
+      end)
+      h.concat ' '
+      h.concat(h.content_tag(:a, href: event_path(object.event)) do
+        fa_icon :share
+      end)
     end
   end
 end
