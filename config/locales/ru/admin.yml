@@ -59,6 +59,9 @@ ru:
           confessions:
             index:
               title: Премия «Признание»
+          online_conferences:
+            show:
+              questions: Заданные вопросы
       delivery:
         campaigns:
           form:
