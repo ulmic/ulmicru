@@ -89,6 +89,9 @@
       %ul.questions
         - @confirmed_questions.each do |question|
           %li.row
+            .small-1.columns
+              - if question.answer_timestamp.present?
+                = link_to fa_icon(:link), question.decorate.answer_link, class: 'button blank'
             .small-1.columns{ style: 'text-align: center' }
               - if question.user_id.present?
                 - if question.user.is_questionary?
@@ -101,12 +104,9 @@
               - else
                 %span{ style: 'font-size: 25px' }
                   = fa_icon 'user-secret 2x'
-            .small-9.columns
+            .small-9.columns.end
               = fa_icon 'question-circle'
               = question.text
-            .small-2.columns
-              - if question.answer_timestamp.present?
-                = link_to fa_icon(:link), question.decorate.answer_link, class: 'button blank'
 .event-content.container
   .participans-container
     %h3.title
