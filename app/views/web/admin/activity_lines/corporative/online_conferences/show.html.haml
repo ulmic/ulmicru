@@ -35,7 +35,7 @@
                 = fa_icon 'user-secret 2x'
             %td= question.text 
             %td= link_to question.answer_link, question.answer_link
-            %td
+            %td{ width: '96px' }
               - unless question.is_answered?
-                = link_to fa_icon('plus-square'), edit_admin_activity_lines_corporative_online_conference_question_path(question, reason: :answer_timestamp), class: 'btn btn-warning btn-xs'
+                = link_to fa_icon('plus-square'), edit_admin_activity_lines_corporative_online_conference_question_path(question, reason: :answer_timestamp), class: 'btn btn-warning'
               = link_to fa_icon(:remove), admin_activity_lines_corporative_online_conference_question_path(question), method: :delete, class: 'btn tbtn-xs btn-danger pull-right'
