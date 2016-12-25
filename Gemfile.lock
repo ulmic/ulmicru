@@ -29,8 +29,9 @@ GIT
       rails (~> 4)
 
 GIT
-  remote: git://github.com/luizpicolo/youtube_rails.git
-  revision: 934fdb6305a9416ef8fafb8c2dcf82f6355b2503
+  remote: git://github.com/kalashnikovisme/youtube_rails.git
+  revision: 466e7bb2af3058885199b358c5c7f384c7a2275c
+  branch: ruby-way-arguments
   specs:
     youtube_rails (1.2.1)
 
