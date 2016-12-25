@@ -20,6 +20,7 @@
 #= require jasny-bootstrap
 #= require jasny_file_uploader
 #= require react_integration
+#= require youtube_embed_responsive
 # Views logic
 #= require web/members
 #= require web/events
