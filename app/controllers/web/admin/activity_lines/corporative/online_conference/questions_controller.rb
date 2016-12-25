@@ -13,7 +13,7 @@ class Web::Admin::ActivityLines::Corporative::OnlineConference::QuestionsControl
       Organization::Permissions.activity_lines_corporative_online_conference_question[:review].each do |member|
         send_notification member, @question.model, :text_update if question_text_updated?
       end
-      redirect_to :back
+      redirect_to admin_activity_lines_corporative_online_conference_path @question.model.online_conference
     end
   end
 
