@@ -3,6 +3,7 @@ class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
   belongs_to :event
 
   validates :title, uniqueness: true, presence: true
+  validates :video_link, youtu_dot_be_video_link: true
 
   state_machine :state, initial: :active do
     state :active

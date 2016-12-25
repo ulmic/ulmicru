@@ -10,7 +10,7 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesController <
   end
 
   def show
-    @online_conference = ::ActivityLines::Corporative::OnlineConference.find params[:id]
+    @online_conference = ::ActivityLines::Corporative::OnlineConference.find(params[:id]).decorate
   end
 
   def new
@@ -35,7 +35,7 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesController <
     @online_conference_form = ::ActivityLines::Corporative::OnlineConferenceForm.find_with_model params[:id]
     @online_conference_form.submit params[:activity_lines_corporative_online_conference]
     if @online_conference_form.save
-      redirect_to admin_activity_lines_corporative_online_conferences_path
+      redirect_to admin_activity_lines_corporative_online_conference_path @online_conference_form.model
     else
       render action: :edit
     end

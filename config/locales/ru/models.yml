@@ -215,8 +215,11 @@ ru:
       activity_lines/corporative/online_conference:
         title: Название
         date: Дата
+        formatted_date: Дата
         video_link: Ссылка на видео
+        video_link_to: Ссылка на видео
         event_title: 'Онлайн-конференция'
+        event_link: Ссылка на мероприятие
       activity_lines/corporative/online_conference/question:
         text: Текст вопроса
         answer_link: Ссылка на ответ
@@ -274,6 +277,10 @@ ru:
           attributes:
             mobile_phone:
               phone: имеет неверный формат
+        activity_lines/corporative/online_conference:
+          attributes:
+            video_link:
+              video_link: cледует добавить ссылку вида youtu.be. Её можно получить под видео на Youtube в разделе Поделиться.
   scopes:
     event:
       future: Грядущие
