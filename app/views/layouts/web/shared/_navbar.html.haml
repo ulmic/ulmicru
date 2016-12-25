@@ -134,18 +134,23 @@
               = link_to article_path(@month_article) do
                 .inner
                   Август 2015
-          %li
-            = link_to configus.it_projects.karamzin.url, class: :blank do
-              .inner
-                = t(configus.it_projects.karamzin.short_name)
-          %li
-            = link_to event_path(263) do
-              .inner
-                = fa_icon :wifi
-                Онлайн-конференция 24.12
           - if confession_events_during?
             %li
               = link_to activity_lines_corporative_petitions_path do
                 .inner
                   = image_tag 'organization/activity_lines/corporative/confession/number_one.png', class: 'custom-icon'
                   Признание
+          %li
+            = link_to configus.it_projects.ul_lider.url, class: :blank do
+              .inner
+                = image_tag 'organization/activity_lines/lider/ya-lider.png', class: 'custom-icon'
+                Я-лидер!
+          -#%li
+            = link_to configus.it_projects.karamzin.url, class: :blank do
+              .inner
+                = t(configus.it_projects.karamzin.short_name)
+          -#%li
+            = link_to event_path(263) do
+              .inner
+                = fa_icon :wifi
+                Онлайн-конференция 24.12
