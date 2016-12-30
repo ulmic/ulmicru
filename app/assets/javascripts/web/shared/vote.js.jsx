@@ -115,11 +115,14 @@ class Vote extends React.Component {
     this.componentDidMount = this.componentDidMount.bind(this)
   }
   componentDidMount() {
-    let target_id = $('.vote').data('targetId')
+    let target_id = $('#targetIdStore').data('targetId')
     setInterval(() => {
-      if ($('.vote').data('targetId') != target_id) {
+      if (target_id == void(0) && $('#targetIdStore').data('targetId') != void(0)) {
         current_vote_state(this)
-        let target_id = $('.vote').data('targetId')
+        target_id = $('#targetIdStore').data('targetId')
+      } else if (target_id != void(0) && $('#targetIdStore').data('targetId') != target_id) {
+        current_vote_state(this)
+        target_id = $('#targetIdStore').data('targetId')
       }
     }, 100)
   }
@@ -144,8 +147,7 @@ class Vote extends React.Component {
     let like_classes = `fa fa-thumbs-up fa-3x ${like_checked}`
     let dislike_classes = `fa fa-thumbs-down fa-3x ${dislike_checked}`
     return (
-      <div onMouseUp={this.updateStates} className='vote' data-target-type={this.props.target_type}
-                                                          data-target-id={this.props.target_id}>
+      <div className='vote' data-target-type={this.props.target_type} data-target-id={this.props.target_id}>
         <i onClick={this.vote.bind(null, 'like')} className={like_classes} style={{float: 'left'}}></i>
         <span className='vote_results' style={{display: results_display, float: 'left'}}>
           {this.state.likes}
