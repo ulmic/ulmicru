@@ -30,9 +30,7 @@
         - if searching?
           %td= article.human_state_name
         %td{ style: 'width: 200px' }
-          = render 'web/admin/tags/buttons'
-          = render 'web/admin/tags/tags_list', record: article
-          = render 'web/admin/tags/form', record_type: 'Article', record_id: article.id, index: article.id
+          = react_component 'TagsForm', record: article, record_type: 'article', tags: TagCollectionDecorator.new(article.tags.active).with_just_text
         %td.actions
           - if article.unviewed? && current_user.has_permission_to?(:review, :article)
             = link_to admin_article_path(article, article: { state: :confirmed }), method: :patch, class: 'btn btn-xs btn-success' do

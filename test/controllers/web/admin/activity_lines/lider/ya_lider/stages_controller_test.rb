@@ -5,7 +5,7 @@ class Web::Admin::ActivityLines::Lider::YaLider::StagesControllerTest < ActionCo
     admin = create :admin
     sign_in admin
     @stage = create :ya_lider_stage
-    @exceptions_attributes = ['id', 'created_at', 'updated_at']
+    @exceptions_attributes = ['id', 'begin_date', 'end_date', 'created_at', 'updated_at']
   end
 
   test 'should get new' do

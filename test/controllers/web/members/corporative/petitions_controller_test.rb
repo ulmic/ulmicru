@@ -25,7 +25,7 @@ class Web::Members::Corporative::PetitionsControllerTest < ActionController::Tes
         assert_equal attributes[key.to_sym], petition.send(key), key
       end
     else
-      assert_redirected_to page_page_path :not_found
+      assert_redirected_to page_page_path :confession_submissions_petitions_ends
     end
   end
 
@@ -48,14 +48,14 @@ class Web::Members::Corporative::PetitionsControllerTest < ActionController::Tes
     patch :update, activity_lines_corporative_confession: attributes, id: @petition
     if DateTime.now > CONFESSION_DATES.begining_submissions_petitions &&
       DateTime.now < CONFESSION_DATES.ending_submissions_petitions
-      assert_redirected_to members_corporative_petitions_path
+      assert_redirected_to page_page_path :not_found
       @petition.reload
       @petition.attributes.keys.except(*@exceptions_attributes).each do |key|
         assert_equal attributes[key.to_sym], @petition.send(key), key
       end
     else
       assert_response :redirect, @response.body
-      assert_redirected_to page_page_path :not_found
+      assert_redirected_to page_page_path :confession_submissions_petitions_ends
     end
   end
 end
