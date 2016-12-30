@@ -33,5 +33,5 @@ class Tag < ActiveRecord::Base
   end
 
   include PgSearch
-  pg_search_scope :search_everywhere, against: [ :text ]
+  pg_search_scope :search_everywhere, against: [ :text, :target_id, :record_id ]
 end

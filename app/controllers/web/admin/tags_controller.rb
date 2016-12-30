@@ -13,7 +13,11 @@ class Web::Admin::TagsController < Web::Admin::ApplicationController
   end
 
   def edit
-    @tag_form = TagForm.find_with_model params[:id]
+    if Tag.where(id: params[:id]).any?
+      @tag_form = TagForm.find_with_model params[:id]
+    else
+      redirect_to admin_tags_path
+    end
   end
 
   def create

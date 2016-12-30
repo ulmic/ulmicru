@@ -3,7 +3,7 @@ class Api::Admin::MembersController < Api::Admin::ApplicationController
 
   def index
     if params[:q].present?
-      @members = Member.search_everywhere params[:q][:term]
+      @members = Member.presented.search_everywhere params[:q][:term]
     else
       @members = Member.tag_available
     end
