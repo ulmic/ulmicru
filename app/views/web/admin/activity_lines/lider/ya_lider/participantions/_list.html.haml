@@ -1,0 +1,24 @@
+= paginate activity_lines_lider_ya_liders, theme: 'twitter-bootstrap-3'
+- model_class = ActivityLines::Lider::YaLider
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:contest_number)
+      %th= model_class.human_attribute_name(:contest_year)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - activity_lines_lider_ya_liders.each do |ya_lider|
+      %tr{ class: state_color(ya_lider) }
+        %td{ width: '67px' }
+          = link_to ya_lider.id, admin_activity_lines_lider_ya_lider_path(ya_lider)
+        %td= ya_lider.contest_number
+        %td= ya_lider.contest_year
+        - if searching?
+          %td= ya_lider.human_state_name
+        %td.actions
+          = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_path(ya_lider), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_path(ya_lider), method: :delete, class: 'btn btn-xs btn-danger' 
+= paginate activity_lines_lider_ya_liders, theme: 'twitter-bootstrap-3'

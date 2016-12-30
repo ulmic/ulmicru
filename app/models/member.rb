@@ -26,7 +26,7 @@ class Member < User
                         allow_blank: true
   validates :patronymic, human_name: true,
                          allow_blank: true
-  validates :ticket, uniqueness: true,
+  validates :ticket, uniqueness: { scope: :state },
                      allow_blank: true
   validates :mobile_phone, phone: true,
                            allow_blank: true

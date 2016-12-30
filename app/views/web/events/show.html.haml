@@ -78,7 +78,7 @@
     .row
       .small-9.columns
         .youtube_video
-          != YouTubeRails.youtube_embed_url(@event.online_conference.video_link, 420, 315, { ssl: true })
+          != YouTubeRails.youtube_embed_url(@event.online_conference.video_link, 420, 315, ssl: true)
   .event-content.container.ask-question
     .row
       .small-6.columns

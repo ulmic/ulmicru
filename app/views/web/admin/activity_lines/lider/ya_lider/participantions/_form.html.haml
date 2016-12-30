@@ -1,0 +1,18 @@
+- model_class = ActivityLines::Lider::YaLider::Participant
+- current_title = page_title(action, model_class.model_name.human)
+- title current_title, :admin
+.page-header
+  %h1=t current_title
+.row
+  .col-lg-12
+    = render 'layouts/web/admin/shared/messages', object: @participant_form
+.row
+  .col-lg-12
+    = simple_form_for [:admin, @participant_form], input_html: { class: 'form-horizontal' } do |f|
+      = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
+      -#= link_to t('helpers.links.back'), admin_activity_lines_lider_ya_lider_path(ya_lider_id), class: 'btn btn-default'
+      = f.input :contest_year, as: :string
+      = f.input :user_id, as: :select, collection: users_cache_hash(@users), input_html: { class: :select2 }, label: false
+      = f.input :state_event, as: :state_event
+      = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
+      -#= link_to t('helpers.links.back'), admin_activity_lines_lider_ya_lider_path(ya_lider_id), class: 'btn btn-default'

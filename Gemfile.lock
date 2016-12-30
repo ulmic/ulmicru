@@ -30,9 +30,9 @@ GIT
 
 GIT
   remote: git://github.com/luizpicolo/youtube_rails.git
-  revision: 934fdb6305a9416ef8fafb8c2dcf82f6355b2503
+  revision: 18d102bafaf9f837455b8f7c7726f1b4aad80d79
   specs:
-    youtube_rails (1.2.1)
+    youtube_rails (1.2.2)
 
 GIT
   remote: git://github.com/nitinstp23/foursquare2.git
