@@ -1,1 +1,2 @@
-= react_component('TagssForm')
+= react_component 'TagsForm', record: @tag_form.model.record, record_type: @tag_form.model.record_type, tags: TagCollectionDecorator.new(@tag_form.model.record.tags.active).with_just_text
+= link_to t('helpers.links.back'), admin_tags_path, class: 'btn btn-default'
