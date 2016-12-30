@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222123326) do
+ActiveRecord::Schema.define(version: 20161230101429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20161222123326) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.text     "state"
   end
 
   create_table "activity_lines_lider_ya_lider_participations", force: :cascade do |t|
@@ -468,6 +469,9 @@ ActiveRecord::Schema.define(version: 20161222123326) do
     t.integer "team_id"
     t.integer "user_id"
   end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "tokens", force: :cascade do |t|
     t.text     "content"
