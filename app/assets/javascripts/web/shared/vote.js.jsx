@@ -9,6 +9,7 @@ var init_results = function(component, vote, data) {
 }
 
 var voting = function(component, vote) {
+  let method
   if (component.state.vote == 'none') {
     method = 'POST'
   } else {
@@ -18,6 +19,8 @@ var voting = function(component, vote) {
       method = 'PATCH'
     }
   }
+
+  let difference
   if (vote == 'like') {
     difference = 1
   } else if (vote == 'dislike') {
@@ -37,6 +40,7 @@ var voting = function(component, vote) {
       }
     },
     success: () => {
+      let other_difference
       if (component.state.vote == vote) {
         component.setState({ vote: 'none' })
         difference = -1
@@ -47,8 +51,8 @@ var voting = function(component, vote) {
         }
         component.setState({ vote: vote })
       }
-      likes = component.state.likes
-      dislikes = component.state.dislikes
+      let likes = component.state.likes
+      let dislikes = component.state.dislikes
       switch (vote) {
         case 'like':
           component.setState({ likes: likes + difference })
@@ -71,16 +75,17 @@ var voting = function(component, vote) {
 }
 
 var current_vote_state = function(component) {
-  target_type = $('.vote').data('targetType')
-  target_id = $('.vote').data('targetId')
   $.ajax({
-    url: Routes.api_users_votes_path(vote: {
-                                             target_type: target_type,
-                                             target_id: target_id
-                                           }),
+    url: Routes.api_users_votes_path({ 
+      vote: {
+        target_type: $('.vote').data('targetType'),
+        target_id: $('.vote').data('targetId')
+      }
+    }),
     method: 'GET',
     dataType: 'JSON',
     success: (data) => {
+      let state
       if (data.difference == void(0)) {
         state = 'none'
       } else {
@@ -101,18 +106,20 @@ var current_vote_state = function(component) {
 class Vote extends React.Component {
   constructor(props) {
     super(props)
-    thos.state = {
+    this.state = {
       vote: 'none',
       likes: 0,
       dislikes: 0
     }
+    this.vote = this.vote.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
   }
   componentDidMount() {
     let target_id = $('.vote').data('targetId')
     setInterval(() => {
       if ($('.vote').data('targetId') != target_id) {
         current_vote_state(this)
-        target_id = $('.vote').data('targetId')
+        let target_id = $('.vote').data('targetId')
       }
     }, 100)
   }
@@ -120,6 +127,7 @@ class Vote extends React.Component {
     voting(this, type)
   }
   render() {
+    let results_display;
     if (this.props.mode == 'view_results') {
       results_display = 'block'
     } else {
@@ -133,8 +141,8 @@ class Vote extends React.Component {
     if (this.state.vote == 'dislike') {
       dislike_checked = 'checked'
     }
-    like_classes = `fa fa-thumbs-up fa-3x ${like_checked}`
-    dislike_classes = `fa fa-thumbs-down fa-3x ${dislike_checked}`
+    let like_classes = `fa fa-thumbs-up fa-3x ${like_checked}`
+    let dislike_classes = `fa fa-thumbs-down fa-3x ${dislike_checked}`
     return (
       <div onMouseUp={this.updateStates} className='vote' data-target-type={this.props.target_type}
                                                           data-target-id={this.props.target_id}>
@@ -149,3 +157,5 @@ class Vote extends React.Component {
       </div>)
   }
 }
+
+export default Vote
