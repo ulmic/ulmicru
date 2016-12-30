@@ -21,6 +21,7 @@ ru:
       activity_lines/corporative/online_conference/question: Вопросы на онлайн-конференцию
       activity_lines/lider/ya_lider: Конкурс "Я-лидер!"
       activity_lines/lider/ya_lider/stage: Этап конкурса "Я-лидер!"
+      activity_lines/lider/ya_lider/participant: Участник конкурса "Я-лидер!"
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение
