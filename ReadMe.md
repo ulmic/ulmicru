@@ -19,5 +19,5 @@ make develop
 Fill avatars on localhost via console
 
 ```ruby
-Member.find_each.with_index { |m, index| m.update_attributes!(avatar: File.open("#{Rails.root}/public/logo.png")); print "#{index}\r" };
+Member.update_all(avatar: File.open("#{Rails.root}/public/logo.png"))
 ```
