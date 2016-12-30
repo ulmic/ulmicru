@@ -38,15 +38,13 @@ class Web::MembersController < Web::ApplicationController
   end
 
   def show
-    member = Member.includes(:attribute_accesses, :authored_news, :authored_articles).find_by_ticket(params[:ticket])
-    if member.member_confirmed?
-      @member = member.decorate
-      @children = MemberDecorator.decorate_collection member.children.shuffle
-      @parent = MemberDecorator.decorate member.parent
-      @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.date_order
-      @news = NewsDecorator.decorate_collection member.tags.active.news.map &:record
-      @articles = member.tags.active.articles.map(&:record).uniq
-      @teams = member.teams.active.visible.decorate
-    end
+    member = Member.includes(:attribute_accesses, :authored_news, :authored_articles).presented.find_by_ticket(params[:ticket])
+    @member = member.decorate
+    @children = MemberDecorator.decorate_collection member.children.shuffle
+    @parent = MemberDecorator.decorate member.parent
+    @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.date_order
+    @news = NewsDecorator.decorate_collection member.tags.active.news.map &:record
+    @articles = member.tags.active.articles.map(&:record).uniq
+    @teams = member.teams.active.visible.decorate
   end
 end
