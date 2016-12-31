@@ -17,6 +17,6 @@
           = render 'layouts/web/shared/vote', target_type: 'ActivityLines::Corporative::Confession', target_id: nil, mode: :hide_results
         .columns.large-9.comments
           - petition = Struct.new(:id, :model_name).new nil, 'ActivityLines::Corporative::Confession'
-          = render 'web/comments/form', record: petition
+          = react_component 'StandaloneCommentsForm', currentUserAvatar: current_user.default_avatar, authenticity_token: form_authenticity_token, record_id: nil, record_type: 'ActivityLines::Corporative::Confession'
       #targetIdStore
     %a.close-reveal-modal{ aria: { label: 'Close' } } ×
