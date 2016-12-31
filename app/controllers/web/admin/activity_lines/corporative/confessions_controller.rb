@@ -18,6 +18,7 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsController < Web::Admin
     @confession = ::ActivityLines::Corporative::Confession.find(params[:id]).decorate
     @arguments = @confession.arguments.decorate
     @comments = @confession.comments.active.decorate
+    @member = Member.includes(:registrations, :positions).find @confession.member_id
   end
 
   def create

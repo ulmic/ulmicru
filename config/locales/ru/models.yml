@@ -228,6 +228,8 @@ ru:
         answer_timestamp: Время ответа в видео
       vote:
         rating: Рейтинг
+        member_rating: Рейтинг членов МИЦ
+        user_rating: Рейтинг пользователей
       delivery/campaign:
         title: Тема
         body: Текст

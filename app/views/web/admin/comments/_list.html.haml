@@ -13,7 +13,7 @@
       %tr.link{ class: state_color(comment), data: { href: edit_admin_comment_path(comment) } }
         %td= comment.id
         %td
-          = link_to comment.record do
+          = link_to admin_record_path(comment) do
             = comment.record.decorate.title
             = fa_icon 'share-square-o'
         %td= comment.user.short_name if comment.user_id
