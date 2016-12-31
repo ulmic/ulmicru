@@ -11,12 +11,16 @@ var hr = function(component) {
 class CommentsField extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { comments: [] }
+    this.state = { 
+      comments: [],
+      loading: false
+    }
     this.loadComments = this.loadComments.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
   }
   loadComments() {
+    this.setState({ loading: true })
     $.ajax({
       url: Routes.api_comments_path(),
       data: {
@@ -25,7 +29,7 @@ class CommentsField extends React.Component {
       },
       dataType: 'JSON',
       success: (function (data) {
-        this.setState({ comments: data })
+        this.setState({ comments: data, loading: false })
       }).bind(this)
     })
   }
@@ -33,6 +37,7 @@ class CommentsField extends React.Component {
     this.loadComments()
   }
   handleSubmit(text) {
+    this.setState({ loading: true })
     var component = this
     $.ajax({
       url: Routes.api_comments_path(),
@@ -49,6 +54,7 @@ class CommentsField extends React.Component {
         component.loadComments()
       }).bind(component),
       error: (function() {
+        component.setState({ loading: false })
         alert('error')
       }).bind(component)
     })
@@ -75,7 +81,8 @@ class CommentsField extends React.Component {
         <CommentsForm currentUser={this.props.current_user}
                       currentUserAvatar={this.props.current_user_avatar}
                       handleSubmit={this.handleSubmit}
-                      authenticity_token={this.props.authenticity_token}/>
+                      authenticity_token={this.props.authenticity_token}
+                      spinnerDisplay={this.state.loading}/>
       </div>)
   }
 }

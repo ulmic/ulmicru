@@ -59,7 +59,7 @@ body {
   color: #333333;
 }
 body#noresponsive {
-    min-width: 1100px;
+  min-width: 1100px;
 }
 .container-big {
   width: 95%;
@@ -75,14 +75,14 @@ body#noresponsive {
   }
 }
 .row {
-		max-width: 80rem;
+  max-width: 80rem;
 }
 .clear-fix:after {
-    display: block;
-    visibility: hidden;
-    clear: both;
-    height: 0;
-    content: '';
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  content: '';
 }
 
 
@@ -145,25 +145,25 @@ body#noresponsive {
     .contacts {
       margin-top: rem-calc(20);
       .mail, .phone {
-          display: inline-block;
-          min-width: 175px;
-				  &>span {
-						  white-space: nowrap;
-				  }
+        display: inline-block;
+        min-width: 175px;
+        &>span {
+          white-space: nowrap;
+        }
       }
       .mail {
         padding-right: 13%;
       }
     }
     .icon {
-        vertical-align: middle;
+      vertical-align: middle;
     }
   }
 
 }
 
 ul {
-		list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJElEQVQYV2NkIBIwIqv73MLwH10fbw0DWM2QU4gvAFA8Q1+FAM9iDwueLssPAAAAAElFTkSuQmCC");
+  list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJElEQVQYV2NkIBIwIqv73MLwH10fbw0DWM2QU4gvAFA8Q1+FAM9iDwueLssPAAAAAElFTkSuQmCC");
 }
 
 .select2-container {
@@ -312,4 +312,3 @@ textarea {
     }
   }
 }
-

@@ -1,27 +1,53 @@
 import React from 'react'
 
-class CommentsForm extends React.Component {
+class StandaloneCommentsForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { text: '' }
+    this.state = { text: '', formDisplay: 'show' }
     this.onTextChange = this.onTextChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSubmit(e) {
     e.preventDefault()
-    this.props.handleSubmit(this.state.text)
-    this.setState({ text: '' })
+    let record_id = this.props.record_id
+    if (record_id == void(0) || record_id == null) {
+      record_id = $('#targetIdStore').data('targetId')
+    }
+    var component = this
+    $.ajax({
+      url: Routes.api_comments_path(),
+      type: 'POST',
+      data: {
+        comment: {
+          text: text,
+          record_id: record_id,
+          record_type: this.props.record_type
+        }
+      },
+      dataType: 'JSON',
+      success: (function() {
+        alert('Ваш комментарий оставлен')
+        this.setState({ text: '', formDisplay: 'hide' })
+      }).bind(component),
+      error: (function() {
+        alert('error')
+      }).bind(component)
+    })
   }
   onTextChange(e) {
     this.setState({ text: e.target.value })
   }
   render() {
-    let display
-    if (this.props.loading) {
-      display = 'block'
+    let formDisplay
+    let messageDisplay
+    if (this.state.formDisplay == 'show') {
+      formDisplay = { display: 'block' }
+      messageDisplay = { display: 'none' }
     } else {
-      display = 'none'
+      formDisplay = { display: 'none' }
+      messageDisplay = { display: 'block' }
     }
+
     return(<div>
       <div className='comment-form'>
         <h4>
@@ -34,7 +60,7 @@ class CommentsForm extends React.Component {
           <div className='small-10 columns end'>
             <form noValidate="novalidate" className="simple_form new_comment" id="new_comment"
                   action="/api/comments" acceptCharset="UTF-8" method="post"
-                  onSubmit={this.handleSubmit}>
+                  onSubmit={this.handleSubmit} style={{formDisplay}}>
               <input name="utf8" type="hidden" value="&#x2713;" />
               <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
               <div className="input text required comment_text">
@@ -45,6 +71,9 @@ class CommentsForm extends React.Component {
               </div>
               <input type="submit" name="commit" value={I18n.t('helpers.submit')} className="button" />
             </form>
+            <span style={{messageDisplay}}>
+              Ваш комментарий отправлен
+            </span>
             <i className="fa-spinner fa fa-spin"/>
           </div>
         </div>
@@ -53,4 +82,4 @@ class CommentsForm extends React.Component {
   }
 }
 
-export default CommentsForm
+export default StandaloneCommentsForm
