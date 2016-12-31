@@ -59,6 +59,9 @@ ru:
           confessions:
             index:
               title: Премия «Признание»
+            show:
+              event_attendings: Участие в мероприятиях
+              positions_history: История должностей
           online_conferences:
             show:
               questions: Заданные вопросы
