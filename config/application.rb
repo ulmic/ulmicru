@@ -28,6 +28,7 @@ module Ulmicru
       g.stylesheets false
       g.javascripts false
       g.helper false
+      g.decorators false
     end
     config.time_zone = 'Moscow'
   end

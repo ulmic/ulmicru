@@ -30,6 +30,7 @@ ru:
       delivery/contact_email: Электронная почта
       tag: Тег
       oauth/app: Приложение
+      test_paper: Тест
     attributes:
       default: &default
         created_at: Дата создания
