@@ -47,9 +47,6 @@ class UserDecorator < ApplicationDecorator
     nil
   end
 
-  def notificable_email
-    (object.present? && object.corporate_email.present?) ? object.corporate_email : object.email
-  end
 
   private
 

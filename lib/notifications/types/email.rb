@@ -2,24 +2,23 @@ module Notifications
   module Types
     class Email
       def self.to_send(params)
-        decorated_user = params[:user].decorate
         case params[:object].class.name
         when 'News'
-          NewsMailer.delay.send(params[:theme], params[:object], decorated_user)
+          NewsMailer.delay.send(params[:theme], params[:object], params[:user])
         when 'Questionary'
           if QuestionaryMailer.respond_to? params[:theme]
-            QuestionaryMailer.delay.send(params[:theme], params[:object], decorated_user)
+            QuestionaryMailer.delay.send(params[:theme], params[:object], params[:user])
           else
-            UserMailer.delay.send(params[:theme], params[:object], decorated_user)
+            UserMailer.delay.send(params[:theme], params[:object], params[:user])
           end
         when 'Feedback'
-          FeedbackMailer.delay.send(params[:theme], params[:object], decorated_user)
+          FeedbackMailer.delay.send(params[:theme], params[:object], params[:user])
         when 'ActivityLines::Corporative::OnlineConference::Question'
-          ActivityLines::Corporative::OnlineConference::QuestionMailer.delay.send(params[:theme], params[:object], decorated_user)
+          ActivityLines::Corporative::OnlineConference::QuestionMailer.delay.send(params[:theme], params[:object], params[:user])
         when 'ActivityLines::Corporative::Confession'
-          ActivityLines::Corporative::ConfessionMailer.delay.send(params[:theme], params[:object], decorated_user)
+          ActivityLines::Corporative::ConfessionMailer.delay.send(params[:theme], params[:object], params[:user])
         else
-          UserMailer.delay.send(params[:theme], params[:object], decorated_user)
+          UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end
       end
     end
