@@ -8,6 +8,7 @@ ru:
         unviewed: Непросмотренные
         current: Текущий
         past: Прошедший
+        future: Будущий
       events: &default_events
         confirm: Подтвердить
         remove: Удалить
@@ -182,3 +183,7 @@ ru:
             <<: *default
           events:
             <<: *default_events
+      test_paper:
+        state:
+          states:
+            <<: *default

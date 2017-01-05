@@ -42,7 +42,7 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'configus'
 gem 'foursquare2', github: 'nitinstp23/foursquare2', branch: :gemspec_fix
 gem 'validates'
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '4.7.0.1'
 gem 'sidekiq'
 gem 'foundation-rails', '5.5.2.1'
 gem "autoprefixer-rails"
