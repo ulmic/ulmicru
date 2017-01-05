@@ -48,7 +48,7 @@ class UserDecorator < ApplicationDecorator
   end
 
   def notificable_email
-    object.corporate_email.present? ? object.corporate_email : object.email
+    corporate_email.present? ? corporate_email : email
   end
 
   private
