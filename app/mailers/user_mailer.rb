@@ -8,13 +8,13 @@ class UserMailer < ApplicationMailer
   def after_create(object, user)
     @user = user
     @image_src = src_with_host '/logo.png'
-    mail from: sender_name, to: @user.notificable_email, subject: subject(object.class, :after_create)
+    mail from: sender_name, to: @user.corporate_email.present? ? user.corporate_email : user.email, subject: subject(object.class, :after_create)
   end
 
   def remind_password(object, user)
     @user = user
     @image_src = src_with_host '/logo.png'
-    mail from: sender_name, to: @user.notificable_email, subject: subject(object.class, :remind_password)
+    mail from: sender_name, to: @user.corporate_email.present? ? user.corporate_email : user.email, subject: subject(object.class, :remind_password)
   end
 
   def just_message(user, subject, message, link = nil, image = nil, subscription_token = nil)
@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
     @link = link
     @image = src_with_host image
     @subscription_token = subscription_token
-    mail from: sender_name, to: user.notificable_email, subject: subject
+    mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: subject
   end
 
   private
