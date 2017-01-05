@@ -6,5 +6,8 @@ FactoryGirl.define do
     record_type { 'confession' }
     record_id { 2016 }
     state { TestPaper.state_machines[:state].states.map(&:name).first.to_s }
+    after :create do 
+      create 'test_paper/question'
+    end
   end
 end

@@ -18,6 +18,11 @@ class Web::Admin::TestPapersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get show' do
+    get :show, id: @test_paper
+    assert_response :success, @response.body
+  end
+
   test 'should get index with search' do
     get :index, search: @test_paper.title
     assert_response :success, @response.body

@@ -16,6 +16,7 @@
         %td= test_paper.id
         %td= link_to test_paper.title, admin_test_paper_path(test_paper)
         %td= test_paper.full_duration
+        %td= test_paper.record_type
         - if searching?
           %td= test_paper.human_state_name
         %td.actions

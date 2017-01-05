@@ -15,7 +15,7 @@
       = f.input :title, as: :string
       = f.input :begin_date, as: :date_picker
       = f.input :end_date, as: :date_picker
-      = f.input :record_type, as: :string, input_html: { value: :confession }
-      = f.input :record_id, as: :string
+      = f.input :record_type, as: :string, input_html: { value: :confession }, as: :hidden
+      = f.input :record_id, as: :string, input_html: { value: 2016 }, as: :hidden
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'

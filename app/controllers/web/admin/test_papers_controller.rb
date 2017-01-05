@@ -8,6 +8,10 @@ class Web::Admin::TestPapersController < Web::Admin::ApplicationController
     @test_papers = test_papers.page(params[:page]).decorate
   end
 
+  def show
+    @test_paper = TestPaper.find(params[:id]).decorate
+  end
+
   def new
     @test_paper_form = TestPaperForm.new_with_model
   end

@@ -1,4 +1,6 @@
 class TestPaper < ActiveRecord::Base
+  has_many :questions
+
   extend Enumerize
   enumerize :record_type, in: [ :confession ]
 

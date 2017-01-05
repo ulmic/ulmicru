@@ -9,6 +9,10 @@ class TestPaperDecorator < ApplicationDecorator
     end
   end
 
+  def show_attributes
+    [:title, :full_duration]
+  end
+
   def self.collections
     [ :current, :past, :future, :removed ]
   end
