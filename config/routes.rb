@@ -74,6 +74,7 @@ Rails.application.routes.draw do
       resources :redirect_rules, except: :show
       resources :images, except: :show
       resources :tags, except: :show
+      resources :test_papers
       resources :trash, only: [] do
         collection do
           get 'index/:type' => 'trash#index', as: :type

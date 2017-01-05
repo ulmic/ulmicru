@@ -9,4 +9,6 @@ FactoryGirl.define do
   factory :petition, parent: :confession do
     year 2016
   end
+
+  factory 'activity_lines/corporative/confession', parent: :confession
 end
