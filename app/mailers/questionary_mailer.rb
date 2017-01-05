@@ -4,6 +4,6 @@ class QuestionaryMailer < ApplicationMailer
   def create(questionary, user)
     @user = user
     @questionary = questionary
-    mail from: sender_name, to: user.email, subject: subject(questionary.class, :create, :admin)
+    mail from: sender_name, to: user.notificable_email, subject: subject(questionary.class, :create, :admin)
   end
 end

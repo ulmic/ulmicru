@@ -5,14 +5,14 @@ class ActivityLines::Corporative::OnlineConference::QuestionMailer < Application
     @user = user
     @question = question
     @subject = subject(question.class, :confirm)
-    mail from: sender_name, to: user.email, subject: @subject
+    mail from: sender_name, to: user.notificable_email, subject: @subject
   end
 
   def answer(question, user)
     @user = user
     @question = question
     @subject = subject(question.class, :answer)
-    mail from: sender_name, to: user.email, subject: @subject
+    mail from: sender_name, to: user.notificable_email, subject: @subject
   end
 
   def text_update(question, user)
@@ -20,6 +20,6 @@ class ActivityLines::Corporative::OnlineConference::QuestionMailer < Application
     @question = question
     @logged_actions = question.logged_actions
     @subject = subject(question.class, :text_update)
-    mail from: sender_name, to: user.email, subject: @subject
+    mail from: sender_name, to: user.notificable_email, subject: @subject
   end
 end

@@ -47,6 +47,10 @@ class UserDecorator < ApplicationDecorator
     nil
   end
 
+  def notificable_email
+    object.corporate_email.present? ? object.corporate_email : object.email
+  end
+
   private
 
   def ticket_or_question

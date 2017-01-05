@@ -25,7 +25,8 @@
     "sass-loader": "^3.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.1",
-    "bounce.js": "latest"
+    "bounce.js": "latest",
+    "chart.js": "latest"
   },
   "scripts": {
     "build": "webpack -p --config webpack/production.config.js",
