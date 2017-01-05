@@ -5,6 +5,6 @@ class FeedbackMailer < ApplicationMailer
     @user = user
     @feedback = feedback.decorate
     @subject = subject(feedback.class, :finish)
-    mail from: sender_name, to: user.email, subject: @subject
+    mail from: sender_name, to: user.notificable_email, subject: @subject
   end
 end
