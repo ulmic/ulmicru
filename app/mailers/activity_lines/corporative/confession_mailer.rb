@@ -5,20 +5,20 @@ class ActivityLines::Corporative::ConfessionMailer < ApplicationMailer
     @user = user
     @member = confession.member.decorate
     @subject = subject(confession.class, :create)
-    mail from: sender_name, to: user.notificable_email, subject: @subject
+    mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: @subject
   end
 
   def confirm(confession, user)
     @user = user
     @confession = confession
     @subject = subject(confession.class, :confirm)
-    mail from: sender_name, to: user.notificable_email, subject: @subject
+    mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: @subject
   end
 
   def nominated(confession, user)
     @user = user
     @confession = confession
     @subject = subject(confession.class, :nominated)
-    mail from: sender_name, to: user.notificable_email, subject: @subject
+    mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: @subject
   end
 end
