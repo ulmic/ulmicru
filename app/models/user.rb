@@ -98,4 +98,8 @@ class User < ActiveRecord::Base
   def has_permission_to?(action, type)
     Organization::Permissions.send(type)[action].map(&:id).include? self.id
   end
+
+  def notificable_email
+    corporate_email.present? ? corporate_email : email
+  end
 end
