@@ -32,6 +32,9 @@ class StandaloneCommentsForm extends React.Component {
       dataType: 'JSON',
       success: (function() {
         this.setState({ text: '', formDisplay: 'hide', loading: false })
+        setTimeout(() => {
+          this.setState({ formDisplay: 'show' })
+        }, 2000)
       }).bind(component),
       error: (function() {
         this.setState({ loading: false })
