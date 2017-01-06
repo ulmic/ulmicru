@@ -1,5 +1,5 @@
 module AvatarManagment
-  def default_avatar(target = false, debug = false)
+  def default_avatar(target = false)
     @sex_detector ||= SexDetector.detector
     sex = @sex_detector.detect first_name
     image_url = if type == 'Member'
@@ -15,7 +15,6 @@ module AvatarManagment
                     'default-woman-icon.png'
                   end
                 end
-    binding.pry if debug
-    (target == :image_url) ? image_url : ActionController::Base.helpers.asset_path(image_url).gsub('/assets/')
+    (target == :image_url) ? image_url : ActionController::Base.helpers.asset_path(image_url)
   end
 end
