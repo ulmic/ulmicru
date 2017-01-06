@@ -3,4 +3,9 @@ class TestPaper::Question < ActiveRecord::Base
 
   extend Enumerize
   enumerize :question_type, in: [ :text, :some_variants, :one_variant, :date, :member, :number, :position ]
+
+  state_machine :state, initial: :active do
+    state :active
+    state :removed
+  end
 end
