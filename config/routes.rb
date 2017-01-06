@@ -110,6 +110,9 @@ Rails.application.routes.draw do
       namespace :oauth do
         resources :apps
       end
+      namespace :test_paper do
+        resources :questions, except: [ :index, :show ]
+      end
     end
     namespace :users do
       resources :account, only: :update
