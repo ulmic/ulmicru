@@ -15,5 +15,6 @@ before_script:
   - npm install
 before_install:
   - gem install bundler
+  - npm install -g npm@'3.10.10'
 services:
   - redis-server
