@@ -25,6 +25,7 @@
 #= require web/members
 #= require web/events
 #= require web/welcome
+#= require web/news
 #= require feedback
 
 window.vertical_align = ($element) ->

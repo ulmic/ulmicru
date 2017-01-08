@@ -1,5 +1,5 @@
 $ ->
-  $('article.news-info p.text img').each ->
+  $('article.news-info img').each ->
     image = this
     $('<img/>').attr('src', $(this).attr('src')).load ->
       pic_real_width = this.width
