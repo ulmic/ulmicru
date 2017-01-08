@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('article.news-info p.text img').each ->
+    image = this
+    $('<img/>').attr('src', $(this).attr('src')).load ->
+      pic_real_width = this.width
+      pic_real_height = this.height
+      dimension = pic_real_width / pic_real_height
+      $(image).height $(image).width() / dimension
