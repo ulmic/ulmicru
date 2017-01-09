@@ -72,4 +72,4 @@
     = render 'web/admin/default/logged_actions', logged_actions: item.as_record_logged_actions
 .row
   .col-md-12
-    = render 'web/admin/default/logged_actions', logged_actions: item.logged_actions
+    = render 'web/admin/default/logged_actions', logged_actions: item.logged_actions.reverse
