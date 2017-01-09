@@ -21,8 +21,10 @@ class ActiveSupport::TestCase
   include Concerns::TechinalPagesManagment
   ScopesRailsIncluding.initialize_scopes
 
-  raise "You should run test with bin/test file" unless ENV['DB']
-  if ENV['DB'] == 'empty'
+  unless ENV['TRAVIS']
+    raise "You should run test with bin/test file" unless ENV['DB']
+  end
+  if ENV['DB'] == 'empty' && ENV['TRAVIS']
     load "#{Rails.root}/db/seeds.rb"
   end
 
