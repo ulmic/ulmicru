@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'colorize'
+
+# Run tconsole with empty db bin/test
+#
+# Run tconsole with prod_db bin/test prod
+
+if ARGV.include? 'prod'
+  system "dropdb ulmic_test --if-exists && createdb ulmic_test && pg_restore -d ulmic_test tmp/test.dump"
+  system 'DB=prod bundle exec tconsole' 
+else
+  system 'DB=empty bundle exec tconsole' 
+end
