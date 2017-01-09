@@ -7,8 +7,7 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
   def index
     if params[:items].present?
       items_class = params[:items].to_s
-      permitted_users_id = Organization::Permissions.send(items_class.gsub('/', '_'))[:review].map(&:id)
-      if permitted_users_id.include? current_user.id
+      if permitted_to? :review, items_class.gsub('/', '_')
         @unviewed = items_class.classify.constantize.need_to_review.page(params[:page]).decorate
         @tag = Tag.new
       else

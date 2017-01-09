@@ -1,5 +1,5 @@
 class Web::Admin::ApplicationController < Web::ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_permitted_user!
   before_filter :check_declared_scopes, only: :index
   before_filter :collections_counts, only: :index
   before_action :save_object, only: [ :update, :destroy ]

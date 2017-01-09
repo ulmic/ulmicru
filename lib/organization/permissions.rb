@@ -13,7 +13,10 @@ module Organization
       end
 
       def questionary
-        { review: (corporative_lead + deputy_corporative_lead + User.tech_admins).uniq }
+        { 
+          review: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq,
+          show: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq
+        }
       end
 
       def event
