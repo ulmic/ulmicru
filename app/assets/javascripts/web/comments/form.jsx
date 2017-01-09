@@ -45,7 +45,6 @@ class CommentsForm extends React.Component {
               </div>
               <input type="submit" name="commit" value={I18n.t('helpers.submit')} className="button" />
             </form>
-            <i className="fa-spinner fa fa-spin"/>
           </div>
         </div>
       </div>

@@ -20,7 +20,14 @@ class ActiveSupport::TestCase
   include ModelsConcern
   include Concerns::TechinalPagesManagment
   ScopesRailsIncluding.initialize_scopes
-  load "#{Rails.root}/db/seeds.rb"
+
+  unless ENV['TRAVIS']
+    raise "You should run test with bin/test file" unless ENV['DB']
+  end
+  if ENV['DB'] == 'empty' && ENV['TRAVIS']
+    load "#{Rails.root}/db/seeds.rb"
+  end
+
 
   def load_fixture(filename)
     template = ERB.new(File.read(File.dirname(__FILE__) + '/fixtures/#{filename}'), nil, '%')
