@@ -39,4 +39,8 @@ class ArticleDecorator < ApplicationDecorator
       end
     end
   end
+
+  def author_name
+    user.decorate.short_name
+  end
 end
