@@ -11,6 +11,10 @@ class LoggedAction < ActiveRecord::Base
       user: [ :first_name, :patronymic, :last_name, :ticket ]
     }
 
+  def of_record(record)
+    LoggedAction.where record_id: record.id, record_type: record_type.class
+  end
+
   def parsed_params
     # FIXME more elegant solution
     eval params if params.present?

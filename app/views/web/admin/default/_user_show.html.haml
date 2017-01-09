@@ -67,3 +67,9 @@
             %td= registration.role_text
             - if logged_action.present?
               %td= logged_action.user.decorate.short_name
+.row
+  .col-md-12
+    = render 'web/admin/default/logged_actions', logged_actions: item.as_record_logged_actions
+.row
+  .col-md-12
+    = render 'web/admin/default/logged_actions', logged_actions: item.logged_actions

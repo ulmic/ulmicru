@@ -98,4 +98,8 @@ class User < ActiveRecord::Base
   def has_permission_to?(action, type)
     Organization::Permissions.send(type)[action].map(&:id).include? self.id
   end
+
+  def as_record_logged_actions
+    LoggedAction.where record_id: id, record_type: self.class
+  end
 end
