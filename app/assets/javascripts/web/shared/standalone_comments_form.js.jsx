@@ -38,7 +38,7 @@ class StandaloneCommentsForm extends React.Component {
       }).bind(component),
       error: (function() {
         this.setState({ loading: false })
-        alert('error')
+        alert('Невозможно отправить пустой комментарий')
       }).bind(component)
     })
   }
