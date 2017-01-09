@@ -21,20 +21,14 @@ module PositionList
               if p.is_a? String
                 collection.each do |instance|
                   full_name = "#{p.mb_chars.capitalize.to_s} #{instance.decorate.full_title(:genitive)}"
-                  unless non_existent.include? full_name
-                    full_name = exceptions[full_name] if exceptions[full_name]
-                    positions_list << full_name
-                  end
+                  positions_list << (exceptions[full_name] || full_name) unless non_existent.include? full_name
                 end
               elsif p.is_a? Hash
                 deputy_position_names = p[:deputy]
                 deputy_position_names.each do |name|
                   collection.each do |instance|
                     full_name = "Заместитель #{genitive(name)} #{instance.decorate.full_title(:genitive)}"
-                    unless non_existent.include? full_name
-                      full_name = exceptions[full_name] if exceptions[full_name]
-                      positions_list << full_name
-                    end
+                    positions_list << (exceptions[full_name] || full_name) unless non_existent.include? full_name
                   end
                 end
               end
