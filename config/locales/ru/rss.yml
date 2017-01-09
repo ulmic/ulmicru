@@ -1,4 +1,10 @@
 ru:
+  layouts:
+    rss:
+      yandex:
+        application:
+          title: Молодёжный инициативный центр
+          description: Новости Молодёжного инициативного центра 
   rss:
     news:
       index:

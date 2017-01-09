@@ -24,7 +24,7 @@ class ActiveSupport::TestCase
   unless ENV['TRAVIS']
     raise "You should run test with bin/test file" unless ENV['DB']
   end
-  if ENV['DB'] == 'empty' && ENV['TRAVIS']
+  if ENV['DB'] == 'empty' || ENV['TRAVIS']
     load "#{Rails.root}/db/seeds.rb"
   end
 
