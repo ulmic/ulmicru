@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 module Concerns
   module AuthManagment
+    include PermissionsConcern
+
     def sign_in(user)
       session[:user_id] = user.id
     end
@@ -19,6 +21,14 @@ module Concerns
 
     def authenticate_admin!
       redirect_to not_found_page_path unless signed_as_admin?
+    end
+
+    def authenticate_permitted_user!
+      unless signed_as_admin?
+        if self.class.name.include?('Welcome') || !permitted_to?(action_name, to_param(model_class.name))
+          redirect_to not_found_page_path
+        end
+      end
     end
 
     def authenticate_user!

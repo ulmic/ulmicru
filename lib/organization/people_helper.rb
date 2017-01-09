@@ -21,7 +21,11 @@ module Organization
     end
 
     def vice_chairmen
-      @vice_chairmen ||= Member.where(id: Position.current_positions.where(title: 'Заместитель председателя').map(&:id))
+      @vice_chairmen ||= Member.where(id: Position.current_positions.where(title: 'Заместитель председателя').map(&:member_id))
+    end
+
+    def corporative_curators
+      @corporative_curators ||= User.where(id: Position.current_positions.where('title LIKE \'Куратор корпоративных проектов%\'').map(&:member_id))
     end
   end
 end
