@@ -13,7 +13,7 @@ class Web::Admin::LoggedActionsControllerTest < ActionController::TestCase
   end
 
   test 'should get index with search' do
-    get :index, search: LoggedAction.first.record.id
+    get :index, search: LoggedAction.last.record.id
     assert_response :success, @response.body
   end
 

@@ -5,7 +5,6 @@ FactoryGirl.define do
     email
     patronymic { generate :human_name }
     motto { generate :string }
-    ticket { generate :integer }
     mobile_phone { generate :phone }
     birth_date { generate :datetime }
     home_adress { generate :string }
