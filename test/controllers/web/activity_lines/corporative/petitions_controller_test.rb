@@ -2,7 +2,9 @@ require 'test_helper'
 
 class Web::ActivityLines::Corporative::PetitionsControllerTest < ActionController::TestCase
   setup do
-    create :member, :corporate_head
+    if ENV['DB'] == 'empty'
+      create :member, :corporate_head
+    end
   end
 
   test 'should get index' do

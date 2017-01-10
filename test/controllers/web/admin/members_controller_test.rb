@@ -5,7 +5,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @member = create :member
-    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'avatar', 'birth_date']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'avatar', 'birth_date', 'user_id']
   end
 
   test 'should get index' do
@@ -36,13 +36,14 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
 
   test 'should create member' do
     attributes = attributes_for :member
+    attributes[:ticket] = Member.where.not(ticket: nil).order(:ticket).last.ticket + 1
     attributes[:positions_attributes] ||= {}
     attributes[:positions_attributes]['0'] = attributes_for :position
     post :create, member: attributes
     assert_redirected_to admin_members_path
     member = Member.last
     member.attributes.keys.except(*@exceptions_attributes).each do |key|
-      assert_equal attributes[key.to_sym], member.send(key), key
+      assert_equal attributes[key.to_sym].to_s, member.send(key).to_s, key
     end
   end
 

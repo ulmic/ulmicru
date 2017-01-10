@@ -22,14 +22,16 @@ class Web::Admin::UnviewedControllerTest < ActionController::TestCase
   end
 
   test 'should get index without instances' do
-    @types.each do |type|
-      type.to_s.camelize.constantize.destroy_all
-    end
-    get :index
-    if @member.role.tech_admin?
-      assert_response :success, @response.body
-    else
-      assert_response :redirect, @response.body
+    unless ENV['DB'] == 'prod'
+      @types.each do |type|
+        type.to_s.camelize.constantize.delete_all
+      end
+      get :index
+      if @member.role.tech_admin?
+        assert_response :success, @response.body
+      else
+        assert_response :redirect, @response.body
+      end
     end
   end
 end
