@@ -2,6 +2,7 @@ class ApplicationDecorator < Draper::Decorator
   include Rails.application.routes.url_helpers
   include ActionView::Helpers
   include RussianCases
+  include Kabal
 
   # FIXME add to more_html_tags including to draper
   include HTMLTagsHelpers
