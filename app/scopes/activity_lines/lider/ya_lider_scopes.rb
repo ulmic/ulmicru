@@ -5,7 +5,7 @@ module ActivityLines::Lider::YaLiderScopes
   include StateMachine::Scopes
 
   included do
-    scope :current, -> { where contest_year: (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year) }
-    scope :past, -> { where 'contest_year < ?', (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year) }
+    scope :current, -> { active.where contest_year: (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year) }
+    scope :past, -> { active.where 'contest_year < ?', (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year) }
   end
 end
