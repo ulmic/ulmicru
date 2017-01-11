@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
                            dependent: :destroy
   has_many :logged_actions
   has_many :subscriptions, as: :receiver, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_and_belongs_to_many :teams
 
   validates :email, email: true,
@@ -22,7 +23,6 @@ class User < ActiveRecord::Base
                          allow_blank: true
   validates :last_name, human_name: true,
                          allow_blank: true
-  has_many :comments, dependent: :destroy
 
   extend Enumerize
   enumerize :role, in: [ :user, :admin, :author, :tech_admin ], default: :user
