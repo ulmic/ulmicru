@@ -36,7 +36,6 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
 
   test 'should create member' do
     attributes = attributes_for :member
-    attributes[:ticket] = Member.where.not(ticket: nil).order(:ticket).last.ticket + 1
     attributes[:positions_attributes] ||= {}
     attributes[:positions_attributes]['0'] = attributes_for :position
     post :create, member: attributes
@@ -64,7 +63,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     assert_redirected_to admin_member_path @member
     @member.reload
     @member.attributes.keys.except(*@exceptions_attributes).each do |key|
-      assert_equal attributes[key.to_sym], @member.send(key), key
+      assert_equal attributes[key.to_sym].to_s, @member.send(key).to_s, key
     end
   end
 
