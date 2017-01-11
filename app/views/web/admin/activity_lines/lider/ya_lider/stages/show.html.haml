@@ -11,3 +11,8 @@
       %tr
         %td
           = participant.full_name
+        %td
+          = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_participant_path(participant), class: 'btn btn-warning btn-sm'
+          = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_participant_path(participant), method: :delete, class: 'btn btn-danger btn-sm'
+  - if @stage.is_the_first?
+    = link_to t('helpers.links.add'), new_admin_activity_lines_lider_ya_lider_participant_path(activity_lines_lider_ya_lider_particpant: { contest_id: @stage.contest_id }), class: 'btn btn-success'

@@ -1,5 +1,6 @@
 class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
   belongs_to :user
+  belongs_to :contest, class_name: 'ActivityLines::Lider::YaLider'
 
   state_machine :state, initial: :unviewed do
     state :unviewed
@@ -8,6 +9,10 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
     state :lost
     state :removed
     state :declined
+
+    event :confirm do
+      transition all => :active
+    end
 
     event :remove do
       transition all => :removed
