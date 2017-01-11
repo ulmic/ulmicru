@@ -7,11 +7,12 @@
   %h4
     = t('activerecord.attributes.activity_lines/lider/ya_lider/stage.participants')
   %table.table
-    - @stage.participants.each do |participant|
+    - @stage.current_participants.each do |participant|
       %tr
         %td
           = participant.full_name
         %td
+          = link_to fa_icon('arrow-right'), admin_activity_lines_lider_ya_lider_participations_path(activity_lines_lider_ya_lider_participation: { stage_id: @stage.next_stage.id, participant_id: participant.id }), method: :post, class: 'btn btn-success btn-sm'
           = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_participant_path(participant), class: 'btn btn-warning btn-sm'
           = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_participant_path(participant), method: :delete, class: 'btn btn-danger btn-sm'
   - if @stage.is_the_first?

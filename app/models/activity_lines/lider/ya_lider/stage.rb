@@ -17,4 +17,14 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
       transition all => :active
     end
   end
+
+  def next_stage
+    contest.stages.where(number: number + 1).first
+  end
+
+  def current_participants
+    participants.map do |participant|
+      participant unless participant.participations.where(stage_id: next_stage.id).any?
+    end.compact.map &:decorate
+  end
 end

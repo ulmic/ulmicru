@@ -8,7 +8,7 @@ class Web::Admin::ActivityLines::Lider::YaLider::ParticipationsController < Web:
   def create
     @participation_form = ::ActivityLines::Lider::YaLider::ParticipationForm.new_with_model
     if @participation_form.submit params[:activity_lines_lider_ya_lider_participation]
-      redirect_to admin_activity_lines_lider_ya_lider_path @participation_form.model.ya_lider
+      redirect_to admin_activity_lines_lider_ya_lider_stage_path @participation_form.model.stage
     else
       choose_users
       render action: :new
