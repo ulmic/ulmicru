@@ -26,6 +26,12 @@ class UserMailer < ApplicationMailer
     mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: subject
   end
 
+  def fail_participant_api_create(object, user)
+    @user = object
+    @subject = subject(object.class, :fail_participant_api_create)
+    mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: @subject
+  end
+
   private
 
   def src_with_host(src)
