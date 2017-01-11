@@ -1,5 +1,5 @@
 class ActivityLines::Lider::YaLider < ActiveRecord::Base
-  has_many :stages, class_name: 'ActivityLines::Lider::YaLider::Stage'
+  has_many :stages, foreign_key: :contest_id, class_name: 'ActivityLines::Lider::YaLider::Stage'
 
   validates :contest_number, presence: true, uniqueness: true
   validates :contest_year, presence: true, uniqueness: true
@@ -19,4 +19,8 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:contest_year, :contest_number]
+
+  def first_stage
+    stages.where(number: 1).first
+  end
 end

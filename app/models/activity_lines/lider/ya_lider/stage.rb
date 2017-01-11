@@ -1,5 +1,7 @@
 class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
-  belongs_to :ya_lider, class_name: 'ActivityLines::Lider::YaLider'
+  belongs_to :contest, class_name: 'ActivityLines::Lider::YaLider'
+  has_many :participations, class_name: 'ActivityLines::Lider::YaLider::Participation'
+  has_many :participants, through: :participations
 
   validates :number, presence: true, uniqueness: { scope: :ya_lider_id }
 
@@ -14,5 +16,15 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
     event :restore do
       transition all => :active
     end
+  end
+
+  def next_stage
+    contest.stages.where(number: number + 1).first
+  end
+
+  def current_participants
+    participants.map do |participant|
+      participant unless participant.participations.where(stage_id: next_stage.id).any?
+    end.compact.map &:decorate
   end
 end

@@ -75,5 +75,4 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
   def member_form(member)
     member.unavailable? ? ::Admin::Member::UnavailableMemberForm : MemberForm
   end
-
 end

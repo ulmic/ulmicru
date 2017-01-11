@@ -1,4 +1,8 @@
 class Web::Admin::ActivityLines::Lider::YaLider::StagesController < Web::Admin::ActivityLines::ApplicationController
+  def show
+    @stage = ActivityLines::Lider::YaLider::Stage.find(params[:id]).decorate
+  end
+
   def new
     @stage_form = ::ActivityLines::Lider::YaLider::StageForm.new_with_model
   end

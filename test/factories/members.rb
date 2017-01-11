@@ -15,7 +15,7 @@ FactoryGirl.define do
     password_confirmation { password }
     municipality { Member.municipality.values.first } 
     locality { Member.locality.values.first }
-    state { Member.state_machines[:state].states.map(&:name).sample }
+    state { Member.state_machines[:state].states.map(&:name).except(:unavailable).sample }
     member_state { Member.state_machines[:member_state].states.map(&:name).sample }
     role 'user'
     type 'Member'
