@@ -10,5 +10,6 @@ if ARGV.include? 'prod'
   system "dropdb ulmic_test --if-exists && createdb ulmic_test && pg_restore -d ulmic_test tmp/test.dump"
   system 'DB=prod bundle exec tconsole' 
 else
+  system 'RAILS_ENV=test rake db:drop db:create db:migrate'
   system 'DB=empty bundle exec tconsole' 
 end
