@@ -269,6 +269,7 @@ ru:
         title: Название
         begin_date: Дата начала
         end_date: Дата окончания
+        participants: Участники этапа
     errors:
       models:
         member:

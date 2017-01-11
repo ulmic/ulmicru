@@ -1,5 +1,13 @@
 - title @stage.full_title
-.panel-info
-  .panel-heading
-    %h4
-      = @stage.full_title
+.page-heading
+  %h1
+    = @stage.full_title
+%hr
+.row
+  %h4
+    = t('activerecord.attributes.activity_lines/lider/ya_lider/stage.participants')
+  %table.table
+    - @stage.participants.each do |participant|
+      %tr
+        %td
+          = participant.full_name
