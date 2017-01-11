@@ -13,7 +13,7 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
   end
 
   def show
-    @ya_lider = ::ActivityLines::Lider::YaLider.find(params[:id]).decorate
+    @ya_lider = ::ActivityLines::Lider::YaLider.includes(:tokens).where(id: params[:id]).first.decorate
   end
 
   def create
