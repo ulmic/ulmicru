@@ -50,7 +50,7 @@ class Web::ApplicationController < ApplicationController
   end
 
   def notification_count
-    if signed_in? && current_user.admin?
+    if signed_in?
       @notification_count = Concerns::NotificatableItems.items(current_user.id).map do |collection_type|
         collection_type.to_s.camelize.constantize.need_to_review.count
       end.sum
