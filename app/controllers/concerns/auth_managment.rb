@@ -25,7 +25,9 @@ module Concerns
 
     def authenticate_permitted_user!
       unless signed_as_admin?
-        if self.class.name.include?('Welcome') || !permitted_to?(action_name, to_param(model_class.name))
+        if self.class.name.include?('Unviewed') && Concerns::NotificatableItems.items(current_user.id).any?
+          return
+        elsif self.class.name.include?('Welcome') || !permitted_to?(action_name, to_param(model_class.name))
           redirect_to not_found_page_path
         end
       end
