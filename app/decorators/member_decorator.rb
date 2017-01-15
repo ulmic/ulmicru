@@ -168,6 +168,10 @@ class MemberDecorator < UserDecorator
     end
   end
 
+  def contact_list_email_link
+    object.corporate_email.present? ? default_email_link(:corporate_email) : default_email_link(:email)
+  end
+
   private
 
   def attribute_visible?(accesses, attribute)
