@@ -13,12 +13,13 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
   end
 
   def show
-    @ya_lider = ::ActivityLines::Lider::YaLider.find(params[:id]).decorate
+    @ya_lider = ::ActivityLines::Lider::YaLider.includes(:tokens).where(id: params[:id]).first.decorate
   end
 
   def create
     @ya_lider_form = ::ActivityLines::Lider::YaLiderForm.new_with_model
     if @ya_lider_form.submit params[:activity_lines_lider_ya_lider]
+      Token.create! record_type: 'ActivityLines::Lider::YaLider', record_id: @ya_lider_form.model.id 
       redirect_to admin_activity_lines_lider_ya_liders_path
     else
       render action: :new

@@ -20,7 +20,7 @@ module Organization
       include Organization::Teams
 
       def teams
-        [ presidium, area_headers ] + ::Team::Departament.presented + ::Team::Primary.presented
+        [ presidium, area_headers ] + ::Team::Departament.active + ::Team::Primary.presented
       end
     end
   end
