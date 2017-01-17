@@ -60,6 +60,16 @@
         = admin_menu_item Article, admin_articles_path
         = admin_menu_item Category, admin_categories_path
         = admin_menu_item Letter, admin_letters_path, :envelope
+      - if current_user.role.user?
+        - menu_item_collection.each do |item|
+          - if item.is_a? Hash
+            = dropdown t(".#{item.keys.first}") do
+              - item.values.first.each do |dropdown_item|
+                - if permitted_to? :index, dropdown_item
+                  - model_name = dropdown_item.to_s.camelize.constantize 
+                  = admin_menu_item model_name, admin_index_path_of_model(model_name), model_icon(dropdown_item)
+          - else
+            = admin_menu_item dropdown_item.constantize
     - if current_user.role.in? ['admin', 'tech_admin']
       %ul.nav.navbar-nav.navbar-right
         = admin_menu_item '', admin_path, :home
