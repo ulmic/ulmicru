@@ -29,7 +29,9 @@ class Web::Admin::UnviewedController < Web::Admin::ApplicationController
         redirect_to admin_unviewed_index_path items: any_items_key
       end
     else
-      redirect_to admin_path
+      unless current_user.role.user?
+        redirect_to admin_path
+      end
     end
   end
 
