@@ -15,7 +15,8 @@ module Organization
       def questionary
         { 
           review: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq,
-          show: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq
+          show: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq,
+          index: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq
         }
       end
 

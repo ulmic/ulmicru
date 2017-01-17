@@ -64,8 +64,12 @@ module Web::Admin::ApplicationHelper
     "#{model_class}Decorator".constantize.collections
   end
 
-  def admin_index_path_of_model(model_class, tab)
-    send("admin_#{to_path(model_class).pluralize(:en)}#{model_class == News ? '_index' : ''}_path", scope: tab)
+  def admin_index_path_of_model(model_class, tab = nil)
+    if tab
+      send("admin_#{to_path(model_class).pluralize(:en)}#{model_class == News ? '_index' : ''}_path", scope: tab)
+    else
+      send("admin_#{to_path(model_class).pluralize(:en)}#{model_class == News ? '_index' : ''}_path")
+    end
   end
 
   def admin_record_path(instance)
