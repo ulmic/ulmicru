@@ -21,6 +21,11 @@
                 = link_to admin_path do
                   .inner
                     Админка
+            - if current_user.role.user? && permitted_to_anything_in_admin_menu?
+              %li
+                = link_to admin_unviewed_index_path do
+                  .inner
+                    Админка
             - if current_user.is_user? && current_user.unviewed? && !current_user.email.present?
               %li
                 = link_to account_path do
