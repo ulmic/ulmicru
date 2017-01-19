@@ -1,6 +1,6 @@
 class Api::ActivityLines::Lider::YaLider::ApplicationController < Api::ApplicationController
-  before_filter :check_ya_lider_token
   before_filter :authenticate
+  before_filter :check_ya_lider_token
 
   private
 

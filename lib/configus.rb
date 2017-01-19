@@ -99,6 +99,11 @@ Configus.build Rails.env do
   env :development, parent: :staging do
     host 'localhost:3000'
     full_host 'http://localhost:3000'
+    it_projects do
+      ul_lider do
+        url 'http://localhost:3001'
+      end
+    end
   end
   env :test, parent: :development
 end

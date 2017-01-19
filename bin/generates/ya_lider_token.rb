@@ -5,4 +5,5 @@ if current_ya_lider.tokens.any?
 else
   Token.create! record_id: current_ya_lider.id, record_type: 'ActivityLines::Lider::YaLider', 
     content: SecureHelper.generate_token
+  puts "#{Token.last.content}"
 end

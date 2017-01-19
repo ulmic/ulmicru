@@ -42,8 +42,6 @@ class Member < User
   enumerize :locality, in: Localities.list, default: Localities.list.first
   enumerize :school, in: Schools.list
 
-  mount_uploader :avatar, AvatarUploader
-
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed

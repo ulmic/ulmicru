@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   validates :last_name, human_name: true,
                          allow_blank: true
 
+  mount_uploader :avatar, AvatarUploader
+
   extend Enumerize
   enumerize :role, in: [ :user, :admin, :author, :tech_admin ], default: :user
 
