@@ -11,7 +11,7 @@ module Web::Admin::MenuHelper
     menu_item_collection.map do |item|
       if item.is_a? Hash
         item.values.first.map do |type|
-          permitted_to? :review, type
+          permitted_to?(:review, type) || permitted_to?(:index, type)
         end
       end
     end.flatten.include? true
