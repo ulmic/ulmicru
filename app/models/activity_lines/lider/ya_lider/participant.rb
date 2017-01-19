@@ -4,7 +4,7 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
   has_many :participations, class_name: 'ActivityLines::Lider::YaLider::Participation'
   has_many :fields, class_name: 'ActivityLines::Lider::YaLider::ParticipantField'
 
-  state_machine :state, initial: :unviewed do
+  state_machine :state, initial: :active do
     state :unviewed
     state :active
     state :won
