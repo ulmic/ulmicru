@@ -27,5 +27,9 @@ module Organization
     def corporative_curators
       @corporative_curators ||= User.where(id: Position.current_positions.where('title LIKE \'Куратор корпоративных проектов%\'').map(&:member_id))
     end
+
+    def departaments_headers
+      @departaments_headers ||= User.where(id: Position.current_positions.where('title LIKE \'Руководитель местного отделения%\'').map(&:member_id))
+    end
   end
 end
