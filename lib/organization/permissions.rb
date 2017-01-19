@@ -89,6 +89,10 @@ module Organization
           update: departaments_headers
         }
       end
+
+      def welcome
+        { see: departaments_headers }
+      end
     end
   end
 end
