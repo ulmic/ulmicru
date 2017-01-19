@@ -16,6 +16,7 @@
             = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_stage_path(stage), class: 'btn btn-sm btn-warning'
             = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_stage_path(stage), method: :delete, class: 'btn btn-sm btn-danger'
     = link_to t('helpers.links.new'), new_admin_activity_lines_lider_ya_lider_stage_path(activity_lines_lider_ya_lider_stage: { ya_lider_id: @ya_lider.id }), class: 'btn btn-success'
+%hr
 .row
   .col-md-6
     %b

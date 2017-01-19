@@ -4,7 +4,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:contest_number)
+      %th= model_class.human_attribute_name(:full_title)
       %th= model_class.human_attribute_name(:contest_year)
       - if searching?
         %th= model_class.human_attribute_name(:state)
@@ -14,7 +14,8 @@
       %tr{ class: state_color(ya_lider) }
         %td{ width: '67px' }
           = link_to ya_lider.id, admin_activity_lines_lider_ya_lider_path(ya_lider)
-        %td= ya_lider.contest_number
+        %td
+          = link_to ya_lider.full_title, admin_activity_lines_lider_ya_lider_path(ya_lider)
         %td= ya_lider.contest_year
         - if searching?
           %td= ya_lider.human_state_name

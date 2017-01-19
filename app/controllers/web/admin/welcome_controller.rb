@@ -4,17 +4,19 @@ class Web::Admin::WelcomeController < Web::Admin::ApplicationController
   before_filter :redirect_to_unviewed
 
   def index
-    @report = {
-      users_count: User.count,
-      event_registrations_count: Event::Registration.count,
-      uniq_users_event_registrations_count: Event::Registration.all.map(&:user).uniq.count,
-      uniq_logged_users_for_month_count: LoggedAction.where(action_type: :sign_in).
-        where('created_at > ?', DateTime.now - 1.month).map(&:user).uniq.count,
-      new_users_count: User.where('created_at > ?', DateTime.now - 1.month).count,
-      news_views: News.all.map(&:views).sum,
-      email_sended: Delivery::Campaign.done.map(&:contacts).flatten.count,
-      email_sended_this_month: Delivery::Campaign.done.where('created_at > ?', DateTime.now - 1.month).map(&:contacts).flatten.count
-    }
+    @report = if signed_as_admin? 
+      {
+        users_count: User.count,
+        event_registrations_count: Event::Registration.count,
+        uniq_users_event_registrations_count: Event::Registration.all.map(&:user).uniq.count,
+        uniq_logged_users_for_month_count: LoggedAction.where(action_type: :sign_in).
+          where('created_at > ?', DateTime.now - 1.month).map(&:user).uniq.count,
+        new_users_count: User.where('created_at > ?', DateTime.now - 1.month).count,
+        news_views: News.all.map(&:views).sum,
+        email_sended: Delivery::Campaign.done.map(&:contacts).flatten.count,
+        email_sended_this_month: Delivery::Campaign.done.where('created_at > ?', DateTime.now - 1.month).map(&:contacts).flatten.count
+      }
+              end
   end
 
   private
