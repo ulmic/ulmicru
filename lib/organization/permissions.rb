@@ -79,6 +79,16 @@ module Organization
       def activity_lines_lider_ya_lider
         { show: (lider_lead + User.tech_admins).uniq }
       end
+
+      def letter
+        {
+          index: departaments_headers,
+          new: departaments_headers,
+          create: departaments_headers,
+          edit: departaments_headers,
+          update: departaments_headers
+        }
+      end
     end
   end
 end

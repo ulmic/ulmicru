@@ -1,10 +1,10 @@
 module Web::Admin::MenuHelper
   def menu_item_collection
-    [ :event, :news, { people: [ :questionary ] }]
+    [ :event, :news, { people: [ :questionary ] }, activity: [ :letter ]]
   end
 
   def model_icon(model_name)
-    { questionary: :user, event: :calendar, news: 'list-alt' }[model_name]
+    { questionary: :user, event: :calendar, news: 'list-alt', letter: :envelope }[model_name]
   end
 
   def permitted_to_anything_in_admin_menu?
