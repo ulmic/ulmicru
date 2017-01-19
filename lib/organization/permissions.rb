@@ -7,14 +7,17 @@ module Organization
       def news
         { 
           review: (press_center_lead + departaments_curators + User.tech_admins).uniq,
-          index: departaments_headers
+          index: departaments_headers,
+          new: departaments_headers,
+          create: departaments_headers,
+          edit: departaments_headers,
+          update: departaments_headers
         }
       end
 
       def member
         { 
-          review: User.tech_admins,
-          index: departaments_headers
+          review: User.tech_admins
         }
       end
 
@@ -22,14 +25,18 @@ module Organization
         { 
           review: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq,
           show: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq,
-          index: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators + departaments_headers).uniq
+          index: (corporative_lead + deputy_corporative_lead + User.tech_admins + corporative_curators).uniq
         }
       end
 
       def event
         { 
           review: (departaments_curators + User.tech_admins).uniq,
-          index: departaments_headers
+          index: departaments_headers,
+          new: departaments_headers,
+          create: departaments_headers,
+          edit: departaments_headers,
+          update: departaments_headers
         }
       end
 
