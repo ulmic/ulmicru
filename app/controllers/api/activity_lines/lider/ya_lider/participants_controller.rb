@@ -1,4 +1,6 @@
 class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::ActivityLines::Lider::YaLider::ApplicationController
+  skip_before_filter :verify_authenticity_token, only: :create
+
   def create
     user = User.confirmed.where(email: params[:user][:email]).first
     if user

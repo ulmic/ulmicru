@@ -175,6 +175,13 @@ Rails.application.routes.draw do
       resources :users, only: :show
     end
     resources :yofications, only: [ :create, :update ]
+    namespace :activity_lines do
+      namespace :lider do
+        namespace :ya_lider do
+          resources :participants, only: :create
+        end
+      end
+    end
   end
   namespace :rss do
     resources :news, only: :index
