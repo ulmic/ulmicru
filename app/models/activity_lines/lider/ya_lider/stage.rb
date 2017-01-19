@@ -23,7 +23,7 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
   end
 
   def current_participants
-    participants.map do |participant|
+    participants.active.map do |participant|
       participant unless participant.participations.where(stage_id: next_stage.id).any?
     end.compact.map &:decorate
   end
