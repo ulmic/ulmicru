@@ -5,11 +5,20 @@ module Organization
       include Organization::Teams
 
       def news
-        { review: (press_center_lead + departaments_curators + User.tech_admins).uniq }
+        { 
+          review: (press_center_lead + departaments_curators + User.tech_admins).uniq,
+          index: departaments_headers,
+          new: departaments_headers,
+          create: departaments_headers,
+          edit: departaments_headers,
+          update: departaments_headers
+        }
       end
 
       def member
-        { review: User.tech_admins }
+        { 
+          review: User.tech_admins
+        }
       end
 
       def questionary
@@ -21,15 +30,26 @@ module Organization
       end
 
       def event
-        { review: (departaments_curators + User.tech_admins).uniq }
+        { 
+          review: (departaments_curators + User.tech_admins).uniq,
+          index: departaments_headers,
+          new: departaments_headers,
+          create: departaments_headers,
+          edit: departaments_headers,
+          update: departaments_headers
+        }
       end
 
       def feedback
-        { review: User.tech_admins }
+        { 
+          review: User.tech_admins
+        }
       end
 
       def comment
-        { review: (press_center_lead + departaments_curators + corporative_lead + deputy_corporative_lead + User.tech_admins).uniq }
+        { 
+          review: (press_center_lead + departaments_curators + corporative_lead + deputy_corporative_lead + User.tech_admins).uniq
+        }
       end
 
       def article
