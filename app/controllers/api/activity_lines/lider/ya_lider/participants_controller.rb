@@ -30,6 +30,14 @@ class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::Activity
     params[:activity_lines_lider_ya_lider_participant] = {}
     params[:activity_lines_lider_ya_lider_participant][:user_id] = user.id
     params[:activity_lines_lider_ya_lider_participant][:contest_id] = ::ActivityLines::Lider::YaLider.current.first.id
+    params[:activity_lines_lider_ya_lider_participant][:fields_attributes] = {}
+    params[:user][:fields].each do |index, obj|
+      params[:activity_lines_lider_ya_lider_participant][:fields_attributes][index] = {
+        value: obj[:value],
+        title: obj[:title],
+        participant_id: obj[:user_id]
+      }
+    end
     participant_form = ::ActivityLines::Lider::YaLider::ParticipantForm.new_with_model
     if participant_form.submit params[:activity_lines_lider_ya_lider_participant]
       first_stage = participant_form.model.contest.first_stage
