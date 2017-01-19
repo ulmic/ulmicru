@@ -24,7 +24,7 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
 
   def current_participants
     participants.active.map do |participant|
-      participant unless participant.participations.where(stage_id: next_stage.id).any?
+      participant unless participant.participations.active.where(stage_id: next_stage.id).any?
     end.compact.map &:decorate
   end
 end
