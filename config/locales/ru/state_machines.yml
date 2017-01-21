@@ -20,6 +20,12 @@ ru:
             <<: *default
           events:
             <<: *default_events
+      place:
+        state:
+          states:
+            <<: *default
+          events:
+            <<: *default_events
       user:
         state:
           states:

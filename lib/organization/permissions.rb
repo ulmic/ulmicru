@@ -93,6 +93,17 @@ module Organization
       def welcome
         { see: departaments_headers }
       end
+
+      def place
+        { 
+          index: departaments_headers,
+          new: departaments_headers,
+          create: departaments_headers,
+          edit: departaments_headers,
+          update: departaments_headers,
+          review: User.tech_admins
+        }
+      end
     end
   end
 end
