@@ -1,4 +1,8 @@
 $ ->
+  $('form#new_place').on 'ajax:success', ->
+    $('#placeForm').modal('hide')
+  $('form#new_place').on 'ajax:error', ->
+    alert 'error'
   list_option = (value, label) ->
     "<option value = #{value}>#{label}</option>"
 
