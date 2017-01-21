@@ -23,4 +23,5 @@ ActiveSupport::Inflector.inflections(:ru) do |inflect|
   inflect.plural /мо$/i, 'ма'
   inflect.plural /лог действия$/i, 'Логи действий'
   inflect.plural /этап конкурса "я-лидер!"$/i, 'Этапы конкурса "Я-лидер!"'
+  inflect.plural /сто$/i, 'ста'
 end

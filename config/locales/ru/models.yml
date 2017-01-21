@@ -31,6 +31,7 @@ ru:
       tag: Тег
       oauth/app: Приложение
       test_paper: Тест
+      place: Место
     attributes:
       default: &default
         created_at: Дата создания
@@ -270,6 +271,10 @@ ru:
         begin_date: Дата начала
         end_date: Дата окончания
         participants: Участники этапа
+      place:
+        title: Название
+        description: Описание
+        coordinates: Координаты
     errors:
       models:
         member:

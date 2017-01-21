@@ -1,6 +1,6 @@
 module Web::Admin::MenuHelper
   def menu_item_collection
-    [ :event, :news, { people: [ :questionary ] }, activity: [ :letter ]]
+    [ :event, :news, { people: [ :questionary ] }, activity: [ :letter ], content: [ :place ]]
   end
 
   def model_icon(model_name)

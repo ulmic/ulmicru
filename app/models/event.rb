@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   has_many :tags, as: :target, dependent: :destroy
   has_many :logged_actions, as: :record
   has_one :online_conference, class_name: 'ActivityLines::Corporative::OnlineConference'
+  has_and_belongs_to_many :places
 
   mount_uploader :main_photo, PhotoUploader
 
