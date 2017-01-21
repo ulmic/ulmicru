@@ -21,16 +21,36 @@ class PlaceForm extends React.Component {
             </div>
             <div className='modal-body'>
               <div className='form'>
-                <form noValidate="noValidate" className="simple_form new_place" id="new_place" action="/api/admin/places" acceptCharset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />  <div className="input text optional place_title"><textarea className="text optional" placeholder="locale" name="place[title]" id="place_title">
-</textarea></div>
-                  <div className="input text optional place_description"><textarea className="text optional" placeholder="locale" name="place[description]" id="place_description">
-</textarea></div>
-                  <div className="input text optional place_latitude"><label className="text optional" htmlFor="place_latitude">Latitude</label><textarea className="text optional" name="place[latitude]" id="place_latitude">
-</textarea></div>
-                  <div className="input text optional place_longitude"><label className="text optional" htmlFor="place_longitude">Longitude</label><textarea className="text optional" name="place[longitude]" id="place_longitude">
-</textarea></div>
-                  <div className="input text optional place_url"><label className="text optional" htmlFor="place_url">Url</label><textarea className="text optional" name="place[url]" id="place_url">
-</textarea></div>
+                <form noValidate="noValidate" className="simple_form new_place" id="new_place" action="/api/admin/places" acceptCharset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />  
+                  <div className="input text optional place_title">
+                    <textarea className="text optional" placeholder="locale" name="place[title]" id="place_title">
+                    </textarea>
+                  </div>
+                  <div className="input text optional place_description">
+                    <textarea className="text optional" placeholder="locale" name="place[description]" id="place_description">
+                    </textarea>
+                  </div>
+                  <div className="input text optional place_latitude">
+                    <label className="text optional" htmlFor="place_latitude">
+                      Latitude
+                    </label>
+                    <textarea className="text optional" name="place[latitude]" id="place_latitude">
+                    </textarea>
+                  </div>
+                  <div className="input text optional place_longitude">
+                    <label className="text optional" htmlFor="place_longitude">
+                      Longitude
+                    </label>
+                    <textarea className="text optional" name="place[longitude]" id="place_longitude">
+                    </textarea>
+                  </div>
+                  <div className="input text optional place_url">
+                    <label className="text optional" htmlFor="place_url">
+                      Url
+                    </label>
+                    <textarea className="text optional" name="place[url]" id="place_url">
+                    </textarea>
+                  </div>
                   <input type="submit" name="commit" value="Добавить место" className="button" />
                   <a className="btn btn-default see_coordinates" href="#">Найти координаты</a>
                 </form>
