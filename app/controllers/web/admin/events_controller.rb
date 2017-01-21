@@ -2,6 +2,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
   before_filter :choose_teams, only: [ :new, :edit ]
   before_filter :choose_users, only: [ :new, :edit ]
   before_filter :choose_members, only: [ :new, :edit ]
+  before_filter :init_place, only: [ :new, :edit ]
 
   def index
     if params[:search]
@@ -32,6 +33,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
       choose_teams
       choose_users
       choose_members
+      init_place
       render action: :new
     end
   end
@@ -45,6 +47,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
       choose_teams
       choose_users
       choose_members
+      init_place
       render action: :edit
     end
   end
@@ -60,5 +63,9 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
   def set_event_to_online_conference
     online_conference = ::ActivityLines::Corporative::OnlineConference.where(title: @event_form.model.decorate.online_conference_title).first
     online_conference.update_attributes! event_id: @event_form.id
+  end
+
+  def init_place
+    @place = PlaceForm.new_with_model
   end
 end
