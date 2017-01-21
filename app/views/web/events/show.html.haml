@@ -12,22 +12,23 @@
         = @event.title
       .small-8.columns{ data: { equalizer: { watch:  '' } } }
         .when-and-where
-          .labels
-            .when
+          .when
+            .labels
               .mic-label-black
                 = "#{t('.when')}:"
-            .where
-              .mic-label-black
-                = "#{t('.where')}:"
-          .texts
-            .when
+            .texts
               .event-label-text
                 = @event.full_date_duration
-            .where
+          .where
+            .labels
+              .mic-label-black
+                = "#{t('.where')}:"
+            .texts
               .event-label-text
                 - @event.places.decorate.each do |place|
                   = place.service_icon
                   = link_to place.title, place.url
+                  %br
         .event-lead
           != strip_tags @event.lead
         .event-more-info

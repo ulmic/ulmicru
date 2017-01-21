@@ -1,10 +1,16 @@
 $ ->
-  $('form#new_place').on 'ajax:success', ->
+  $('form#new_place').on 'ajax:success', (data) ->
     $('#placeForm').modal('hide')
+    option = new Option(data.title, data.id)
+    option.selected = true
+    $('#event_places').append option
+    $('#event_places').trigger 'change'
   $('form#new_place').on 'ajax:error', ->
     alert 'error'
 
-  $('#event_places').select2({
+  $('#event_place_ids').select2({
+    multiple: true
+    minimumInputLength: 2
     ajax: {
       url: Routes.api_admin_places_path()
       data: (term, page) ->
@@ -14,7 +20,6 @@ $ ->
         }
       dataType: 'JSON'
       delay: 250
-      minimumInputLength: 2
       processResults: (data) ->
         tag_results = []
         $(data).each ->

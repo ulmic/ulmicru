@@ -12,7 +12,7 @@ class Api::Admin::PlacesController < Api::Admin::ApplicationController
   def create
     @place = PlaceForm.new_with_model
     if @place.submit params[:place]
-      head :ok
+      render json: { id: @place.model.id, title: @place.model.title }
     else
       head :bad_request
     end
