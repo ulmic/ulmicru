@@ -5,7 +5,8 @@ class PlaceForm extends React.Component {
     super(props)
   }
   render() {
-    return <div className='popup' id='place_form'>
+    let display = this.props.display
+    return <div className='popup' id='place_form' style={{display}}>
         <div className='close'>
           <div className='btn'>
             X
