@@ -35,8 +35,10 @@ class PlaceForm extends React.Component {
               <div className='form'>
                 <form noValidate="noValidate" className="simple_form new_place" id="new_place" action="/api/admin/places" acceptCharset="UTF-8" data-remote="true" method="post">
                   <input name="utf8" type="hidden" value="&#x2713;" />  
-                  {input("title")}
-                  {input("description")}
+                  <div className="alert alert-dismissible alert-info">
+                    <i className="fa fa-info-circle"></i>
+                    {I18n.t('hints.admin.places.form.url')}
+                  </div>
                   {input("url")}
                   <input type="submit" name="commit" value="Добавить место" className="btn btn-success" />
                 </form>
