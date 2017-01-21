@@ -37,9 +37,6 @@ class PlaceForm extends React.Component {
                   <input name="utf8" type="hidden" value="&#x2713;" />  
                   {input("title")}
                   {input("description")}
-                  {input("location")}
-                  {input("latitude")}
-                  {input("longitude")}
                   {input("url")}
                   <input type="submit" name="commit" value="Добавить место" className="btn btn-success" />
                 </form>
