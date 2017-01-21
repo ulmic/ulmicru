@@ -7,7 +7,7 @@ Event.find_each.with_index do |event, index|
   else
     @client ||= Places::FoursquareClient.new
     venue = @client.venue_by_id event.place
-    place.create! title: venue[:name], description: venue[:description],  foursquare_uid: event.place,
+    Place.create! title: venue[:name], description: venue[:description],  foursquare_uid: event.place,
       location: venue[:location], url: venue[:canonicalUrl]
   end
   print "#{index} of #{count}\r"
