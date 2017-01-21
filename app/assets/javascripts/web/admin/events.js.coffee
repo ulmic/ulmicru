@@ -3,6 +3,27 @@ $ ->
     $('#placeForm').modal('hide')
   $('form#new_place').on 'ajax:error', ->
     alert 'error'
+
+  $('#event_places').select2({
+    ajax: {
+      url: Routes.api_admin_places_path()
+      data: (term, page) ->
+        {
+          q: term,
+          page: page
+        }
+      dataType: 'JSON'
+      delay: 250
+      minimumInputLength: 2
+      processResults: (data) ->
+        tag_results = []
+        $(data).each ->
+          tag_results.push { id: this.id, text: this.title }
+        {
+          results: tag_results
+        }
+    }
+  })
   list_option = (value, label) ->
     "<option value = #{value}>#{label}</option>"
 

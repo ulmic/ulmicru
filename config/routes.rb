@@ -155,11 +155,7 @@ Rails.application.routes.draw do
       resources :registrations, only: [ :create, :destroy, :update ]
     end
     namespace :admin do
-      resources :places, only: [:create] do
-        collection do
-          get ':place' => 'places#index', as: :index
-        end
-      end
+      resources :places, only: [:create, :index]
       resources :members, only: :index
       resources :events, only: :index
       resources :activity_lines, only: :index

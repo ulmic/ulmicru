@@ -41,7 +41,7 @@
           = f.input :state, as: :hidden, input_html: { value: :updated }
         - else
           = f.input :state, as: :hidden, input_html: { value: :unviewed }
-      = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }
+      = f.input :places, as: :select
       = hint :event, :places, place: :admin
       = link_to t('.add_place'), '#', data: { target: '#placeForm', toggle: :modal }, class: 'btn btn-success'
       %hr
