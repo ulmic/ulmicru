@@ -44,6 +44,9 @@ class PlaceForm extends React.Component {
                   {input("url")}
                   <input type="submit" name="commit" value="Добавить место" className="btn btn-success" />
                 </form>
+                <a href="https://foursquare.com" className='btn btn-info' target='_blank'>
+                  <i className='fa fa-foursquare'></i>
+                </a>
                 <a href="https://maps.google.com" className='btn btn-info' target='_blank'>
                   <i className='fa fa-google'></i>
                 </a>
@@ -51,9 +54,6 @@ class PlaceForm extends React.Component {
                   <b>
                     Я
                   </b>
-                </a>
-                <a href="https://foursquare.com" className='btn btn-info' target='_blank'>
-                  <i className='fa fa-foursquare'></i>
                 </a>
               </div>
             </div>
