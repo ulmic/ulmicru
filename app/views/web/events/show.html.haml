@@ -25,10 +25,9 @@
                 = @event.full_date_duration
             .where
               .event-label-text
-                %i.fa.fa-foursquare
-                -# FIXME 4sq stub
-                - unless Rails.env.development?
-                  = @event.place_link_to_4sq
+                - @event.places.decorate.each do |place|
+                  = place.service_icon
+                  = link_to place.title, place.url
         .event-lead
           != strip_tags @event.lead
         .event-more-info
