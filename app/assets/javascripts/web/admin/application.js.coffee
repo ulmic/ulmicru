@@ -109,4 +109,5 @@ $ ->
       ), 300)
     setTimeout init_datetimepickers, 1000
     return
+  $('[data-toggle="popover"]').popover()
   return
