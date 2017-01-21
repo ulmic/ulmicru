@@ -5,23 +5,23 @@ class PlaceForm extends React.Component {
     super(props)
   }
   render() {
-    return <div class='popup' id='place_form'>
-        <div class='close'>
-          <div class='btn'>
+    return <div className='popup' id='place_form'>
+        <div className='close'>
+          <div className='btn'>
             X
           </div>
         </div>
-        <div class='top'>
+        <div className='top'>
           <h2>
             Создать место на Foursquare
           </h2>
         </div>
-        <div class='form'>
-          <form novalidate="novalidate" class="simple_form new_place" id="new_place" action="/api/admin/places" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />  <div class="input text optional place_title"><textarea class="text optional" placeholder="locale" name="place[title]" id="place_title">
+        <div className='form'>
+          <form noValidate="noValidate" className="simple_form new_place" id="new_place" action="/api/admin/places" acceptCharset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />  <div className="input text optional place_title"><textarea className="text optional" placeholder="locale" name="place[title]" id="place_title">
 </textarea></div>
-            <div class="input text optional place_description"><textarea class="text optional" placeholder="locale" name="place[description]" id="place_description">
+            <div className="input text optional place_description"><textarea className="text optional" placeholder="locale" name="place[description]" id="place_description">
 </textarea></div>
-            <div class="input select optional place_state"><select class="select optional select2" data-prompt="Субъект Российской Федерации" name="place[state]" id="place_state"><option value=""></option>
+            <div className="input select optional place_state"><select className="select optional select2" data-prompt="Субъект Российской Федерации" name="place[state]" id="place_state"><option value=""></option>
             <option value="Алтайский край">Алтайский край</option>
             <option value="Амурская область">Амурская область</option>
             <option value="Архангельская область">Архангельская область</option>
@@ -107,14 +107,14 @@ class PlaceForm extends React.Component {
             <option value="Чукотский автономный округ">Чукотский автономный округ</option>
             <option value="Ямало-Ненецкий автономный округ">Ямало-Ненецкий автономный округ</option>
             <option value="Ярославская область">Ярославская область</option></select></div>
-            <div class="input text optional place_latitude"><label class="text optional" for="place_latitude">Latitude</label><textarea class="text optional" name="place[latitude]" id="place_latitude">
+            <div className="input text optional place_latitude"><label className="text optional" htmlFor="place_latitude">Latitude</label><textarea className="text optional" name="place[latitude]" id="place_latitude">
 </textarea></div>
-            <div class="input text optional place_longitude"><label class="text optional" for="place_longitude">Longitude</label><textarea class="text optional" name="place[longitude]" id="place_longitude">
+            <div className="input text optional place_longitude"><label className="text optional" htmlFor="place_longitude">Longitude</label><textarea className="text optional" name="place[longitude]" id="place_longitude">
 </textarea></div>
-            <div class="input text optional place_url"><label class="text optional" for="place_url">Url</label><textarea class="text optional" name="place[url]" id="place_url">
+            <div className="input text optional place_url"><label className="text optional" htmlFor="place_url">Url</label><textarea className="text optional" name="place[url]" id="place_url">
 </textarea></div>
-            <input type="submit" name="commit" value="Добавить место" class="button" />
-            <a class="btn btn-default see_coordinates" href="#">Найти координаты</a>
+            <input type="submit" name="commit" value="Добавить место" className="button" />
+            <a className="btn btn-default see_coordinates" href="#">Найти координаты</a>
           </form>
         </div>
       </div>
