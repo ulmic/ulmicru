@@ -1,0 +1,27 @@
+= paginate places, theme: 'twitter-bootstrap-3'
+- model_class = Place
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:foursquare_uid)
+      %th= model_class.human_attribute_name(:coordinates)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - places.each do |place|
+      %tr.link{ class: state_color(place), data: { href: edit_admin_place_path(place) } }
+        %td= place.id
+        %td= place.title
+        %td= place.description
+        %td= place.foursquare_uid
+        %td= place.coordinates
+        - if searching?
+          %td= place.human_state_name
+        %td.actions
+          = link_to fa_icon(:pencil), edit_admin_place_path(place), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove), admin_place_path(place), method: :delete, class: 'btn btn-xs btn-danger' 
+= paginate places, theme: 'twitter-bootstrap-3'

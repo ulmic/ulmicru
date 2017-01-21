@@ -31,6 +31,7 @@ ru:
       tag: Тег
       oauth/app: Приложение
       test_paper: Тест
+      place: Место
     attributes:
       default: &default
         created_at: Дата создания

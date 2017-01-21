@@ -1,6 +1,6 @@
 module Places
   # FIXME make gem activerecord tableless with support of simple_form
-  class Place
+  class FoursquarePlace
     include ActiveModel::Validations
     include ActiveModel::Conversion
     extend ActiveModel::Naming
