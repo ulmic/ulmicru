@@ -1,6 +1,9 @@
 class Place < ActiveRecord::Base
   has_and_belongs_to_many :events
 
+  validates :title, uniqueness: true
+  validates :url, uniqueness: true
+
   state_machine :state, initial: :unviewed do
     state :active
     state :unviewed

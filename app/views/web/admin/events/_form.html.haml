@@ -44,7 +44,6 @@
       = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }
       = hint :event, :places, place: :admin
       = link_to t('.add_place'), '#', data: { target: '#placeForm', toggle: :modal }, class: 'btn btn-success'
-      = render 'web/admin/events/shared/place_form'
       %hr
       = f.input :organizer_type, collection: organizer_types
       = f.input :organizer_id, as: :select, input_html: { data: { collection: teams_and_members_hash(@teams, @members), selected_id: @event_form.model.organizer_id }, class: :select2 }
@@ -63,3 +62,4 @@
         = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_events_path, class: 'btn btn-default'
+= render 'web/admin/events/shared/place_form'

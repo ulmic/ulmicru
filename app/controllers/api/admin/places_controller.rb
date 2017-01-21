@@ -3,7 +3,7 @@ class Api::Admin::PlacesController < Api::Admin::ApplicationController
   before_filter :authenticate_permitted_create_place!
 
   def create
-    @place = Place.new_with_model
+    @place = PlaceForm.new_with_model
     if @place.submit params[:place]
       head :ok
     else
