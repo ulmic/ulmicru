@@ -98,7 +98,7 @@ module Organization
         { 
           index: departaments_headers,
           new: departaments_headers,
-          create: departaments_headers,
+          create: (departaments_headers + User.tech_admins + User.admins + User.authors).uniq,
           edit: departaments_headers,
           update: departaments_headers,
           review: User.tech_admins

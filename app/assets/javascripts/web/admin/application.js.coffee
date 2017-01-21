@@ -11,8 +11,6 @@
 #= require tabs
 #= require localities
 #= require ckeditor/init
-#= require web/admin/popup
-#= require web/admin/places
 #= require select2
 #= require jasny-bootstrap
 #= require jasny_file_uploader
@@ -109,4 +107,5 @@ $ ->
       ), 300)
     setTimeout init_datetimepickers, 1000
     return
+  $('[data-toggle="popover"]').popover()
   return

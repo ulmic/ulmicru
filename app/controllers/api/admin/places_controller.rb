@@ -1,25 +1,29 @@
 class Api::Admin::PlacesController < Api::Admin::ApplicationController
-  include Places
+  skip_before_filter :authenticate_admin!
+  before_filter :authenticate_permitted_create_place!
 
-  # FIXME refactor this SHIT!
   def index
-    @client ||= Places::FoursquareClient.new
-    venues = @client.search_venues_by_name(params[:place])[:venues]
-    venues.sort_by! { |v| v[:stats][:checkinsCount] }
-    venues.reverse!
-    info = []
-    venues.each do |v|
-      info << { id: v.id, name: v.name, city: v.location.city }
+    if params[:q].present?
+      places = Place.active.search_everywhere params[:q][:term]
+      render json: places.to_json(only: [:id, :title])
     end
-    render json: info
   end
 
   def create
-    @place = Places::Place.new params[:places_place]
-    if @place.save
-      render json: @place.response
+    @place = PlaceForm.new_with_model
+    if @place.submit params[:place]
+      render json: { id: @place.model.id, title: @place.model.title }
     else
       head :bad_request
+    end
+  end
+
+  private
+
+  def authenticate_permitted_create_place!
+    unless permitted_to? :create, :place
+      head :not_acceptable
+      return
     end
   end
 end

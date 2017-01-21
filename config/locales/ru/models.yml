@@ -275,6 +275,10 @@ ru:
         title: Название
         description: Описание
         coordinates: Координаты
+        location: Место нахождения
+        latitude: Широта
+        longitude: Долгота
+        url: URL
     errors:
       models:
         member:
