@@ -39,9 +39,22 @@ class PlaceForm extends React.Component {
                     <i className="fa fa-info-circle"></i>
                     {I18n.t('hints.admin.places.form.url')}
                   </div>
+                  {input("title")}
+                  {input("description")}
                   {input("url")}
                   <input type="submit" name="commit" value="Добавить место" className="btn btn-success" />
                 </form>
+                <a href="https://maps.google.com" className='btn btn-info' target='_blank'>
+                  <i className='fa fa-google'></i>
+                </a>
+                <a href="https://maps.yandex.ru" className='btn btn-info' target='_blank'>
+                  <b>
+                    Я
+                  </b>
+                </a>
+                <a href="https://foursquare.com" className='btn btn-info' target='_blank'>
+                  <i className='fa fa-foursquare'></i>
+                </a>
               </div>
             </div>
             <div className='modal-footer'>
