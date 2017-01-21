@@ -41,9 +41,6 @@
           = f.input :state, as: :hidden, input_html: { value: :updated }
         - else
           = f.input :state, as: :hidden, input_html: { value: :unviewed }
-      %hr
-      = hint :event, :place, place: :admin
-      %br
       = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }
       = f.input :organizer_type, collection: organizer_types
       = f.input :organizer_id, as: :select, input_html: { data: { collection: teams_and_members_hash(@teams, @members), selected_id: @event_form.model.organizer_id }, class: :select2 }
