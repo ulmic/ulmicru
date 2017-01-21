@@ -1,5 +1,5 @@
 count = Event.count
-Event.find_each.with_index do |event, index|
+Event.where.not(place: '').find_each.with_index do |event, index|
   place = Place.where(foursquare_uid: event.place).first
   if place.present?
     event.places << place
