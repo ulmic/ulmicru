@@ -11,6 +11,9 @@ $ ->
   $team_input = $('.team_input')
   $team_input.hide()
 
+  $project_input = $('.project_input')
+  $project_input.hide()
+
   show_or_hide_municipality_input = ($element) ->
     if $element.val() in ['Team::Departament', 'Team::Primary']
       $municipality_input.slideDown()
@@ -26,7 +29,7 @@ $ ->
     return
 
   show_or_hide_title_input = ($element) ->
-    if $element.val() in ['Team::Administration', 'Team::Subdivision', 'Team::Committee']
+    if $element.val() in ['Team::Administration', 'Team::Subdivision']
       $title_input.slideDown()
     else if $element.val() != undefined
       $title_input.slideUp()
@@ -38,6 +41,12 @@ $ ->
     else if $element.val() != undefined
       $team_input.slideUp()
 
+  show_or_hide_project_input = ($element) ->
+    if $element.val() == 'Team::Committee'
+      $project_input.slideDown()
+    else if $element.val() != undefined
+      $project_input.slideUp()
+
   init_hidden_inputs = ($input) ->
     unless $input == undefined
       $input.change ->
@@ -45,11 +54,13 @@ $ ->
         show_or_hide_school_input $input
         show_or_hide_title_input $input
         show_or_hide_team_input $input
+        show_or_hide_project_input $input
         return
       show_or_hide_municipality_input $input
       show_or_hide_school_input $input
       show_or_hide_title_input $input
       show_or_hide_team_input $input
+      show_or_hide_project_input $input
     return
 
   init_hidden_inputs $('.team_departament_type select')
