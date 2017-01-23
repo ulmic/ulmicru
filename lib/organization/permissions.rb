@@ -104,6 +104,20 @@ module Organization
           review: User.tech_admins
         }
       end
+
+      def activity_lines_lider_ya_lider
+        {
+          index: (lider_lead + User.tech_admins),
+          show: (lider_lead + User.tech_admins),
+          new: (lider_lead + User.tech_admins),
+          create: (lider_lead + User.tech_admins),
+          edit: (lider_lead + User.tech_admins),
+          update: (lider_lead + User.tech_admins)
+        }
+      end
+
+      def activity_lines_lider_ya_lider_stage
+      end
     end
   end
 end

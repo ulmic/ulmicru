@@ -7,6 +7,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
   before_filter :choose_departaments, only: [ :new, :edit ]
   before_filter :choose_teammates, only: [ :new, :edit ]
+  before_filter :choose_projects, only: [ :new, :edit ]
 
   def index
     if params[:search]
@@ -31,6 +32,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
       choose_members
       choose_departaments
       choose_teammates
+      choose_projects
       @categories = Category.presented.decorate
       render action: :new
     end
@@ -50,6 +52,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
       choose_members
       choose_departaments
       choose_teammates
+      choose_projects
       render action: :edit
     end
   end
@@ -61,6 +64,10 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
   end
 
   private
+
+  def choose_projects
+    @projects = ActivityLines::Lider::YaLider.active.decorate
+  end
 
   def choose_departaments
     @departaments = TeamDecorator.decorate_collection Team::Departament.active

@@ -13,6 +13,12 @@ class TeamDecorator < ApplicationDecorator
       "#{type_case ? send(type_case, team_type) : team_type} в #{instrumental(object.municipality)}"
     elsif object.is_primary?
       "#{type_case ? send(type_case, team_type) : team_type} в #{object.school}"
+    elsif object.is_committee?
+      if object.project
+        "#{type_case ? send(type_case, team_type) : team_type} #{object.project.decorate.title}"
+      else
+        'Исправь это!!'
+      end
     else
       type_case ? send(type_case, title) : title
     end

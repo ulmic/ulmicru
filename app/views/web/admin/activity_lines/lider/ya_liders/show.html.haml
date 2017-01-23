@@ -1,8 +1,7 @@
 - title @ya_lider.full_title
-.panel-info
-  .panel-heading
-    %h4
-      = @ya_lider.full_title
+.page-header
+  %h2
+    = @ya_lider.full_title
 .row
   .col-md-6
     %h5
@@ -16,6 +15,16 @@
             = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_stage_path(stage), class: 'btn btn-sm btn-warning'
             = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_stage_path(stage), method: :delete, class: 'btn btn-sm btn-danger'
     = link_to t('helpers.links.new'), new_admin_activity_lines_lider_ya_lider_stage_path(activity_lines_lider_ya_lider_stage: { ya_lider_id: @ya_lider.id }), class: 'btn btn-success'
+  .col-md-6
+    %h5
+      = @ya_lider.committee.decorate.full_title
+    %table.table.table-condensed.table-hover
+      - @ya_lider.committee.members.decorate.each do |member|
+        %tr
+          %td
+            = image_tag member.small_avatar_url
+          %td
+            = link_to member.short_name
 %hr
 .row
   .col-md-6
