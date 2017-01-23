@@ -1,5 +1,6 @@
 class Team::Committee < Team
   belongs_to :project, polymorphic: true
 
-  validates :title, presence: true
+  extend Enumerize
+  enumerize :project_type, in: [ 'ActivityLines::Lider::YaLider' ]
 end

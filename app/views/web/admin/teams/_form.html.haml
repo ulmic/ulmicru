@@ -21,6 +21,7 @@
       .team_input
         = f.input :team_id, as: :select, collection: teams_hash(@departaments), input_html: { class: :select2 }
       .project_input
+        = f.input :project_type, as: :hidden, input_html: { value: 'ActivityLines::Lider::YaLider' }
         = f.input :project_id, as: :select, collection: projects_hash(@projects)
       = f.input :description, as: :text
       = f.input :state_event, as: :state_event
