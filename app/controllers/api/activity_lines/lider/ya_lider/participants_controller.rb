@@ -2,6 +2,7 @@ class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::Activity
   skip_before_filter :verify_authenticity_token, only: :create
 
   def create
+    params[:user] = JSON.parse params[:_json]
     user = User.confirmed.where(email: params[:user][:email]).first
     if user
       user_form = UserForm.new user
