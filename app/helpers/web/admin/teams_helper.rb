@@ -1,11 +1,9 @@
 module Web::Admin::TeamsHelper
   def team_types
     team_types = t('activerecord.attributes.team.types')
-    types = {}
-    team_types.each do |key, value|
-      types[value] = "Team::#{key.to_s.capitalize}"
+    team_types.reduce({}) do |types, value|
+      types.merge! value[1] => "Team::#{value[0].to_s.capitalize}"
     end
-    types
   end
 
   def team_types_name(type)
@@ -13,10 +11,14 @@ module Web::Admin::TeamsHelper
   end
 
   def teams_hash(teams)
-    teams_hash = {}
-    teams.each do |team|
-      teams_hash[team.full_title] = team.id
+    teams.reduce({}) do |teams_hash, team|
+      teams_hash.merge! team.full_title => team.id
     end
-    teams_hash
+  end
+
+  def projects_hash(projects)
+    projects.reduce({}) do |hash, project|
+      hash.merge! project.title => project.id
+    end
   end
 end
