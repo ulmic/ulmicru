@@ -104,6 +104,15 @@ module Organization
           review: User.tech_admins
         }
       end
+
+      def activity_lines_lider_ya_lider
+        {
+
+        }
+      end
+
+      def activity_lines_lider_ya_lider_stage
+      end
     end
   end
 end

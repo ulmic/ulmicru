@@ -1,6 +1,7 @@
 class ActivityLines::Lider::YaLider < ActiveRecord::Base
   has_many :stages, foreign_key: :contest_id, class_name: 'ActivityLines::Lider::YaLider::Stage'
   has_many :tokens, as: :record, dependent: :destroy
+  has_one :committee, as: :project, class_name: 'Team::Committee'
 
   validates :contest_number, presence: true, uniqueness: { scope: :state }
   validates :contest_year, presence: true, uniqueness: { scope: :state }
