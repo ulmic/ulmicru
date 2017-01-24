@@ -11,7 +11,7 @@ module Organization
     end
 
     def current_ya_lider_committee
-      @current_ya_lider_committee ||= ActivityLines::Lider::YaLider.current.first&.committee
+      @current_ya_lider_committee ||= ActivityLines::Lider::YaLider.current.first&.committee&.members
     end
 
     def team_positions(team)
