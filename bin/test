@@ -7,6 +7,7 @@ require 'colorize'
 # Run tconsole with prod_db bin/test prod
 
 if ARGV.include? 'prod'
+  puts "Restoring database...".green
   system "dropdb ulmic_test --if-exists && createdb ulmic_test && pg_restore -d ulmic_test tmp/test.dump"
   system 'DB=prod bundle exec tconsole' 
 else
