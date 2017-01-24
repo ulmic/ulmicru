@@ -107,16 +107,46 @@ module Organization
 
       def activity_lines_lider_ya_lider
         {
-          index: (lider_lead + User.tech_admins),
-          show: (lider_lead + User.tech_admins),
-          new: (lider_lead + User.tech_admins),
-          create: (lider_lead + User.tech_admins),
-          edit: (lider_lead + User.tech_admins),
-          update: (lider_lead + User.tech_admins)
+          index: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          show: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee&.members + User.tech_admins.uniq)
         }
       end
 
       def activity_lines_lider_ya_lider_stage
+        {
+          index: (lider_lead + User.tech_admins).uniq,
+          show: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq
+        }
+      end
+
+      def activity_lines_lider_ya_lider_participation
+        {
+          index: (lider_lead + User.tech_admins).uniq,
+          show: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq
+        }
+      end
+
+      def activity_lines_lider_ya_lider_participant
+        {
+          index: (lider_lead + User.tech_admins),
+          show: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee&.members + User.tech_admins).uniq
+        }
       end
     end
   end
