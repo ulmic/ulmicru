@@ -1,11 +1,19 @@
 - title @stage.full_title
-.page-heading
+.page-header
   %h1
     = @stage.full_title
-%hr
+.row
+  - if @stage.is_the_first?
+    = link_to t('helpers.links.add'), new_admin_activity_lines_lider_ya_lider_participant_path(activity_lines_lider_ya_lider_particpant: { contest_id: @stage.contest_id }), class: 'btn btn-success'
+  = link_to t('helpers.links.back'), admin_activity_lines_lider_ya_lider_path(@stage.contest), class: 'btn btn-default'
 .row
   %h4
     = t('activerecord.attributes.activity_lines/lider/ya_lider/stage.participants')
-  = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: Kaminari.paginate_array(@stage.current_participants).page(params[:page])
+    |
+    = @current_participants.count
+    = Russian.p @current_participants.count, 'человек', 'человека', 'человек'
+  = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: Kaminari.paginate_array(@current_participants).page(params[:page])
+.row
   - if @stage.is_the_first?
     = link_to t('helpers.links.add'), new_admin_activity_lines_lider_ya_lider_participant_path(activity_lines_lider_ya_lider_particpant: { contest_id: @stage.contest_id }), class: 'btn btn-success'
+  = link_to t('helpers.links.back'), admin_activity_lines_lider_ya_lider_path(@stage.contest), class: 'btn btn-default'
