@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :ya_lider_stage, class: 'ActivityLines::Lider::YaLider::Stage' do
     number { generate :integer }
-    ya_lider_id do 
+    contest_id do 
       yal = ActivityLines::Lider::YaLider.last
       yal.present? ? yal.id : create(:ya_lider).id
     end

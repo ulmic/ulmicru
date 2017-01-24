@@ -33,20 +33,16 @@ class Web::MembersControllerTest < ActionController::TestCase
   end
 
   test 'should get show' do
-    create :event
-    member = create :member
-    registration = create :event_registration
-    registration.user_id = member.id
-    registration.save
-    tag = create :tag
-    tag.record_id = Article.last.id
-    tag.record_type = 'Article'
-    tag.save
-    member.member_state = 'confirmed'
-    member.save
-    create :news
-    create :tag, :new_target
-    get :show, ticket: member.ticket
+    @member.confirm
+    get :show, ticket: @member.ticket
     assert_response :success, @response.body
+  end
+
+  test 'should get show for 100 members' do
+    tickets = Member.presented.map(&:ticket).compact.shuffle!.first 100
+    tickets.each do |ticket|
+      get :show, ticket: ticket
+      assert_response :success, ticket
+    end
   end
 end
