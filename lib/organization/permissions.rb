@@ -7,11 +7,11 @@ module Organization
       def news
         { 
           review: (press_center_lead + departaments_curators + User.tech_admins).uniq,
-          index: departaments_headers,
-          new: departaments_headers,
-          create: departaments_headers,
-          edit: departaments_headers,
-          update: departaments_headers
+          index: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          new: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          create: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          edit: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          update: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq
         }
       end
 
@@ -32,11 +32,11 @@ module Organization
       def event
         { 
           review: (departaments_curators + User.tech_admins).uniq,
-          index: departaments_headers,
-          new: departaments_headers,
-          create: departaments_headers,
-          edit: departaments_headers,
-          update: departaments_headers
+          index: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          new: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          create: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          edit: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          update: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq
         }
       end
 
@@ -91,7 +91,7 @@ module Organization
       end
 
       def welcome
-        { see: departaments_headers }
+        { see: (departaments_headers + current_ya_lider_committee).uniq }
       end
 
       def place
@@ -107,16 +107,46 @@ module Organization
 
       def activity_lines_lider_ya_lider
         {
-          index: (lider_lead + User.tech_admins),
-          show: (lider_lead + User.tech_admins),
-          new: (lider_lead + User.tech_admins),
-          create: (lider_lead + User.tech_admins),
-          edit: (lider_lead + User.tech_admins),
-          update: (lider_lead + User.tech_admins)
+          index: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          show: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee + User.tech_admins.uniq)
         }
       end
 
       def activity_lines_lider_ya_lider_stage
+        {
+          index: (lider_lead + User.tech_admins).uniq,
+          show: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq
+        }
+      end
+
+      def activity_lines_lider_ya_lider_participation
+        {
+          index: (lider_lead + User.tech_admins).uniq,
+          show: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq
+        }
+      end
+
+      def activity_lines_lider_ya_lider_participant
+        {
+          index: (lider_lead + User.tech_admins),
+          show: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          new: (lider_lead + User.tech_admins).uniq,
+          create: (lider_lead + User.tech_admins).uniq,
+          edit: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          update: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq
+        }
       end
     end
   end
