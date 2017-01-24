@@ -1,6 +1,7 @@
 class Web::Admin::ActivityLines::Lider::YaLider::StagesController < Web::Admin::ActivityLines::ApplicationController
   def show
     @stage = ActivityLines::Lider::YaLider::Stage.find(params[:id]).decorate
+    @current_participants = @stage.current_participants
   end
 
   def new
