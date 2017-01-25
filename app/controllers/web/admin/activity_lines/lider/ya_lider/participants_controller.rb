@@ -3,6 +3,11 @@ class Web::Admin::ActivityLines::Lider::YaLider::ParticipantsController < Web::A
 
   def show
     @participant = ::ActivityLines::Lider::YaLider::Participant.find(params[:id]).decorate
+    @stage = if params[:stage]
+               @participant.contest.stages.where(number: params[:stage]).first.decorate
+             else
+               @participant.contest.stages.order(:number).first.decorate
+             end
   end
 
   def new
