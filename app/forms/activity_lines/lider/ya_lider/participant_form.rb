@@ -5,7 +5,7 @@ class ActivityLines::Lider::YaLider::ParticipantForm < ApplicationReform
   validates :user_id, presence: true
 
   collection :fields, populate_if_empty: ::ActivityLines::Lider::YaLider::ParticipantField do
-    properties :value, :participant_id, :title
+    properties :value, :participant_id, :title, :field_type
 
     validates :value, presence: true
     validates :title, presence: true
