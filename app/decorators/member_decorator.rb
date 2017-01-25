@@ -166,12 +166,4 @@ class MemberDecorator < UserDecorator
     attr_access = accesses.find_by_member_attribute attribute
     attr_access.access.visible? if attr_access
   end
-
-  def default_email_link(attribute)
-    h.content_tag :a, href: "mail:#{object.send(attribute)}" do
-      h.concat fa_icon :envelope
-      h.concat ' '
-      h.concat object.email
-    end
-  end
 end
