@@ -1,6 +1,10 @@
 class Web::Admin::ActivityLines::Lider::YaLider::ParticipantsController < Web::Admin::ActivityLines::Lider::YaLider::ApplicationController
   before_filter :choose_users, only: [ :new, :edit ]
 
+  def show
+    @participant = ::ActivityLines::Lider::YaLider::Participant.find(params[:id]).decorate
+  end
+
   def new
     @participant_form = ::ActivityLines::Lider::YaLider::ParticipantForm.new_with_model
   end

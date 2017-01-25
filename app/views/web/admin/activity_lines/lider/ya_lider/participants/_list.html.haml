@@ -3,7 +3,7 @@
 %table.table.table-striped.table-condensed.table-hover
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:avatar)
       %th= model_class.human_attribute_name(:full_name)
       - if searching?
         %th= model_class.human_attribute_name(:state)
@@ -12,8 +12,12 @@
     - activity_lines_lider_ya_lider_participants.each do |participant|
       %tr.link{ data: { href: admin_activity_lines_lider_ya_lider_participant_path(participant) }, class: state_color(participant) }
         %td{ width: '67px' }
-          = participant.id
-        %td= participant.full_name
+          = image_tag participant.small_avatar
+        %td
+          = participant.full_name
+          - if participant.is_member?
+            = image_tag 'apps/logo-mic-square-small.png', style: 'width: 35px; height: 35px'
+            = link_to fa_icon(:share), member_path(participant.user.ticket)
         - if searching?
           %td= participant.human_state_name
         %td.actions
