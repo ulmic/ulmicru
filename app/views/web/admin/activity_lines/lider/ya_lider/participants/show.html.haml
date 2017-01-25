@@ -14,7 +14,7 @@
 .panel-body
   .row
     .col-md-4
-      = image_tag @participant.user.profile_avatar, style: 'width: 100%'
+      = image_tag @participant.user.avatar.profile, style: 'width: 100%'
     .col-md-8
       %table.table.table-striped.table-condensed
         - @participant.contest_attributes.each do |attribute|
