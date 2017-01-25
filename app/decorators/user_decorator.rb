@@ -67,6 +67,14 @@ class UserDecorator < ApplicationDecorator
     default_email_link :email
   end
 
+  def default_email_link(attribute)
+    h.content_tag :a, href: "mail:#{object.send(attribute)}" do
+      h.concat fa_icon :envelope
+      h.concat ' '
+      h.concat object.email
+    end
+  end
+
   private
 
   def ticket_or_question
