@@ -23,6 +23,16 @@
               = t("activerecord.attributes.user.#{attribute}")
             %td
               = @participant.user.send attribute
+        %tr
+          %td
+            = t("enumerize.activity_lines/lider/ya_lider/participant_field.title.esse")
+          %td
+            - if @participant.esse.present?
+              = link_to fa_icon(:download), @participant.esse.value, class: 'btn btn-'
+            - else
+              Не синхронизировалось Эссе! Обратитесь к администратору сайта
+              = link_to fa_icon(:exclamation), new_admin_activity_lines_lider_ya_lider_participant_field_path(activity_lines_lider_ya_lider_participant_field: { field_type: :file, title: :esse, participant_id: @participant.id }), class: 'btn btn-danger'
+
   .row
     .col-md-12
       %table.table.table-striped.table-condensed

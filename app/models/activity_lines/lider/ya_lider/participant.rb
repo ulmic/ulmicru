@@ -24,4 +24,8 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
       transition removed: :active
     end
   end
+
+  def esse
+    fields.where(title: :esse).first
+  end
 end
