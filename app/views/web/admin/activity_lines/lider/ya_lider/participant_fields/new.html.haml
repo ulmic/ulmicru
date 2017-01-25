@@ -1,0 +1,6 @@
+= simple_form_for @participant_field_form, url: { controller: 'web/admin/activity_lines/lider/ya_lider/participant_fields', action: :create } do |f|
+  = f.input :title, as: :hidden, input_html: { value: @participant_field_form.title || params[:activity_lines_lider_ya_lider_participant_field][:title] }
+  = f.input :participant_id, as: :hidden, input_html: { value: @participant_field_form.participant_id || params[:activity_lines_lider_ya_lider_participant_field][:participant_id] }
+  = f.input :field_type, as: :hidden, input_html: { value: @participant_field_form.field_type || params[:activity_lines_lider_ya_lider_participant_field][:field_type] }
+  = f.input :value, as: :string
+  = f.button :submit, class: 'btn btn-success', value: t('helpers.links.save')
