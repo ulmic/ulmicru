@@ -2,4 +2,16 @@
 .panel-info
   .panel-heading
     %h4
+      - if @participant.is_member?
+        = image_tag 'apps/logo-mic-square-small.png', style: 'width: 35px; height: 35px'
+        = link_to fa_icon(:share), member_path(@participant.user.ticket)
       = @participant.full_name
+      |
+      = @participant.user.age
+      = Russian.p(@participant.user.age, 'год', 'года', 'лет')
+      |
+      = @participant.user.municipality
+.panel-body
+  .row
+    .col-md-4
+      = image_tag @participant.user.decorate.profile_avatar

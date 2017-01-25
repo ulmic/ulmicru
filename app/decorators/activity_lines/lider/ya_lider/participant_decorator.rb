@@ -1,6 +1,8 @@
 class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   delegate_all
 
+  decorates_association :user
+
   def full_name
     object.user.decorate.short_name
   end
