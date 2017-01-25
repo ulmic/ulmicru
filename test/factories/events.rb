@@ -7,9 +7,9 @@ FactoryGirl.define do
     begin_date { DateTime.now }
     end_date { DateTime.now + 1.day }
     activity_line_id { create(:activity_line).id }
-    place '4e3faf5ac65b4ec275ff0a3b'
     organizer_type 'Team'
     organizer_id { create(:team).id }
     state { Event.state_machines[:state].states.map(&:name).first.to_s }
+    place_ids { create_list(:place, 5); Place.last(5).map(&:id) }
   end
 end

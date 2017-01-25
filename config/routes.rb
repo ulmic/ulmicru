@@ -98,7 +98,7 @@ Rails.application.routes.draw do
           resources :ya_liders
           namespace :ya_lider do
             resources :stages, except: [ :index ]
-            resources :participants, except: [ :index, :show ]
+            resources :participants, except: [ :index ]
             resources :participations, except: [ :index, :show, :new, :edit ]
           end
         end

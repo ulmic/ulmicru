@@ -20,6 +20,17 @@ FactoryGirl.define do
   factory :administration, parent: :team, class: 'Team::Administration' do
     type 'Team::Administration'
   end
+  factory :committee, parent: :team, class: 'Team::Committee' do
+    type 'Team::Committee'
+    project_type { Team::Committee.project_type.values.sample }
+    project_id do 
+      if project_type.constantize.last.present?
+        project_type.constantize.last.id
+      else
+        create(project_type.underscore).id
+      end
+    end
+  end
   factory :team_with_teammates, parent: :team do
     users { create_list :user, 5 }
   end

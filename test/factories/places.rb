@@ -5,6 +5,7 @@ FactoryGirl.define do
     foursquare_uid { generate :string }
     latitude { generate :string }
     longitude { generate :string }
+    url
     state { Place.state_machines[:state].states.map(&:name).first.to_s }
   end
 end

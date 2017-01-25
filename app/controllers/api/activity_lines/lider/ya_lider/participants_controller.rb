@@ -36,7 +36,8 @@ class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::Activity
       params[:activity_lines_lider_ya_lider_participant][:fields_attributes][index] = {
         value: obj[:value],
         title: obj[:title],
-        participant_id: obj[:user_id]
+        participant_id: obj[:user_id],
+        field_type: obj[:field_type]
       }
     end
     participant_form = ::ActivityLines::Lider::YaLider::ParticipantForm.new_with_model

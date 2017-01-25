@@ -1,5 +1,34 @@
-- title @ya_lider.full_title
+- title @participant.full_name
 .panel-info
   .panel-heading
     %h4
-      = @ya_lider.full_title
+      - if @participant.is_member?
+        = image_tag 'apps/logo-mic-square-small.png', style: 'width: 35px; height: 35px'
+        = link_to fa_icon(:share), member_path(@participant.user.ticket)
+      = @participant.full_name
+      |
+      = @participant.user.age
+      = Russian.p(@participant.user.age, 'год', 'года', 'лет')
+      |
+      = @participant.user.municipality
+.panel-body
+  .row
+    .col-md-4
+      = image_tag @participant.user.profile_avatar, style: 'width: 100%'
+    .col-md-8
+      %table.table.table-striped.table-condensed
+        - @participant.contest_attributes.each do |attribute|
+          %tr
+            %td
+              = t("activerecord.attributes.user.#{attribute}")
+            %td
+              = @participant.user.send attribute
+  .row
+    .col-md-12
+      %table.table.table-striped.table-condensed
+        - @participant.fields.each do |field|
+          %tr
+            %td
+              = t("enumerize.activity_lines/lider/ya_lider/participant_field.title.#{field.title}")
+            %td
+              = field.value
