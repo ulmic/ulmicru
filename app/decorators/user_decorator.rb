@@ -55,6 +55,18 @@ class UserDecorator < ApplicationDecorator
     DateTime.now.year - birth_date.year - (birth_date.to_date.change(year: DateTime.now.year) > DateTime.now ? 1 : 0)
   end
 
+  def mobile_phone_link
+    h.content_tag :a, href: "tel:#{object.mobile_phone}" do
+      h.concat fa_icon :phone
+      h.concat ' '
+      h.concat object.mobile_phone
+    end
+  end
+
+  def email_link
+    default_email_link :email
+  end
+
   private
 
   def ticket_or_question

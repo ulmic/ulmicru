@@ -14,4 +14,8 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   def is_member?
     user.is_member? && user.member_confirmed?
   end
+
+  def contest_attributes
+    [ :email_link, :locality, :school, :mobile_phone_link ]
+  end
 end

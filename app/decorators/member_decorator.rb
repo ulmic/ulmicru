@@ -135,18 +135,6 @@ class MemberDecorator < UserDecorator
     end
   end
 
-  def mobile_phone_link
-    h.content_tag :a, href: "tel:#{object.mobile_phone}" do
-      h.concat fa_icon :phone
-      h.concat ' '
-      h.concat object.mobile_phone
-    end
-  end
-
-  def email_link
-    default_email_link :email
-  end
-
   def corporate_email_link
     default_email_link :corporate_email
   end
