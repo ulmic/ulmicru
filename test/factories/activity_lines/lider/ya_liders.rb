@@ -14,4 +14,10 @@ FactoryGirl.define do
       create :token, record_type: 'ActivityLines::Lider::YaLider'
     end
   end
+
+  factory :ya_lider_with_stages, parent: :ya_lider do
+    after :create do
+      create :ya_lider_stage, number: 1
+    end
+  end
 end
