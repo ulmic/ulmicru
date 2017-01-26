@@ -3,7 +3,7 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
   has_many :participations, class_name: 'ActivityLines::Lider::YaLider::Participation'
   has_many :participants, through: :participations
 
-  validates :number, presence: true, uniqueness: { scope: :ya_lider_id }
+  validates :number, presence: true, uniqueness: { scope: :contest_id }
 
   state_machine :state, initial: :active do
     state :active
