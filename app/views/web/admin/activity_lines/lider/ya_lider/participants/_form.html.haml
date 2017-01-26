@@ -17,6 +17,6 @@
         = fa_icon :plus
         = t('.create_user')
       = f.input :state_event, as: :state_event
-      = f.input :contest_id, as: :hidden, input_html: { value: (@participant_form.model.contest_id || params[:activity_lines_lider_ya_lider_particpant][:contest_id]) }
+      = f.input :contest_id, as: :hidden, input_html: { value: (@participant_form.model.contest_id || params[:activity_lines_lider_ya_lider_participant][:contest_id]) }
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       -#= link_to t('helpers.links.back'), admin_activity_lines_lider_ya_lider_path(ya_lider_id), class: 'btn btn-default'
