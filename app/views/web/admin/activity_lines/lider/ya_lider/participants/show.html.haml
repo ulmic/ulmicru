@@ -28,7 +28,7 @@
             = t("enumerize.activity_lines/lider/ya_lider/participant_field.title.esse")
           %td
             - if @participant.esse.present?
-              = link_to fa_icon(:download), "#{configus.it_projects.ul_lider.rul}#{@participant.esse.value}", class: 'btn btn-success'
+              = link_to fa_icon(:download), "#{configus.it_projects.ul_lider.url}#{@participant.esse.value}", class: 'btn btn-success'
             - else
               Не синхронизировалось Эссе! Обратитесь к администратору сайта
               = link_to fa_icon(:exclamation), new_admin_activity_lines_lider_ya_lider_participant_field_path(activity_lines_lider_ya_lider_participant_field: { field_type: :file, title: :esse, participant_id: @participant.id }), class: 'btn btn-danger'
