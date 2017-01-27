@@ -4,7 +4,7 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   decorates_association :user
 
   def full_name
-    object.user.decorate.short_name
+    "#{object.user.first_name} #{object.user.patronymic} #{object.user.last_name}"
   end
 
   def small_avatar
