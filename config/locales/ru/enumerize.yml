@@ -31,6 +31,10 @@ ru:
         out_ulmic_honors: 'Расскажите о достижениях кандидата вне МИЦ (победы в значимых конкурсах, должности, размещения на досках почёта и т.д.)'
         hobby: 'Чем увлекается (хобби, любимые занятия) кандидат в свободное время?'
         note_text: 'Текст для размещения в корпоративной тетради (независимо от номинации)'
+    activity_lines/corporative/merit:
+      nomination:
+        first_degree: Почётный член МИЦ
+        second_degree: II степени
     activity_lines/lider/ya_lider/participant_field:
       title:
         reason: Что побудило тебя к участию в конкурсе?

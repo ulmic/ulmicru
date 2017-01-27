@@ -65,6 +65,9 @@ ru:
           online_conferences:
             show:
               questions: Заданные вопросы
+          merits:
+            index:
+              title: Номинанты премии «За заслуги перед МИЦ»
         lider:
           ya_lider:
             participants:

@@ -1,0 +1,67 @@
+- current_title = "#{@confession.short_name} | #{enumerize_locales_value(@confession, :nomination)}"
+- title current_title
+.panel-info
+  .panel-heading
+    %h4
+      = image_tag @confession.member.avatar.small, style: 'width: 50px; height: 50px'
+      = current_title
+      |
+      = t('activerecord.attributes.vote.member_rating')
+      = fa_icon 'thumbs-up'
+      = @confession.member_likes
+      = '/'
+      = fa_icon 'thumbs-down'
+      = @confession.member_dislikes
+      |
+      = t('activerecord.attributes.vote.user_rating')
+      = fa_icon 'thumbs-up'
+      = @confession.user_likes
+      = '/'
+      = fa_icon 'thumbs-down'
+      = @confession.user_dislikes
+  .panel-body
+    %table.table.table-bordered.table-striped
+      - @arguments.each do |argument|
+        %tr
+          %td
+            = image_tag argument.member.avatar.small, style: 'width: 50px; height: 50px'
+            %br
+            = argument.member.short_name
+          %td= enumerize_locales_value argument, :argument_type
+          %td= argument.text
+          %td
+            = link_to fa_icon(:remove), admin_activity_lines_corporative_argument_path(argument), method: :delete, class: 'btn btn-danger'
+  .panel-body
+    %table.table.table-bordered.table-striped
+      - @comments.each do |comment|
+        %tr
+          %td
+            = image_tag comment.user.element_avatar, style: 'width: 50px; height: 50px'
+            = comment.user.short_name
+          %td= comment.text
+          %td=l comment.created_at, format: '%d %B %Y %H:%M'
+  .panel-body
+    .row-fluid
+      .col-md-6
+        %h4
+          = t('.event_attendings')
+        %table.table.attributes-tabl
+          - @member.registrations.each do |registration, logged_action|
+            %tr
+              %td
+                = registration.event.title
+                = link_to event_path(registration.event) do
+                  %span.glyphicon.glyphicon-share
+              %td= registration.role_text
+              - if logged_action.present?
+                %td= logged_action.user.decorate.short_name
+      .col-md-6
+        %h4
+          = t('.positions_history')
+        %table.table.attributes-table
+          - @member.positions.decorate.each do |position|
+            %tr
+              %td= position.full_title
+              %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
+              %td= position.end_date_datetime
+  #wrapping_chart

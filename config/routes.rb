@@ -93,6 +93,7 @@ Rails.application.routes.draw do
           namespace :online_conference do
             resources :questions, except: :show
           end
+          resources :merits, except: :show
         end
         namespace :lider do
           resources :ya_liders

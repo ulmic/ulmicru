@@ -19,6 +19,7 @@ ru:
       activity_lines/corporative/confession: Премия Признание
       activity_lines/corporative/online_conference: Онлайн-конференция
       activity_lines/corporative/online_conference/question: Вопросы на онлайн-конференцию
+      activity_lines/corporative/merit: Премия за заслуги перед МИЦ
       activity_lines/lider/ya_lider: Конкурс "Я-лидер!"
       activity_lines/lider/ya_lider/stage: Этап конкурса "Я-лидер!"
       activity_lines/lider/ya_lider/participant: Участник конкурса "Я-лидер!"
@@ -229,6 +230,10 @@ ru:
         answer_link: Ссылка на ответ
         user: Автор
         answer_timestamp: Время ответа в видео
+      activity_lines/corporative/merit:
+        user_id: Пользователь
+        user: Пользователь
+        year: Год вручения
       vote:
         rating: Рейтинг
         member_rating: Рейтинг членов МИЦ

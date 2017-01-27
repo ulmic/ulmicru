@@ -61,6 +61,14 @@ Configus.build Rails.env do
         confession do
           article_id 25
         end
+        merit do
+          first_degree do
+            article_id 2
+          end
+          second_degree do
+            article_id 7
+          end
+        end
       end
     end
     people do
