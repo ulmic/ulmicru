@@ -15,5 +15,5 @@ if ENV['USER_ID'].present? && ENV['MEMBER_ID'].present?
   puts "Destroy old user...".green
   user.destroy
 else
-  raise 'You should add arguments: USER_ID= and MEMBER_ID'.red
+  raise 'You should add arguments: USER_ID and MEMBER_ID. Like this USER_ID=1 MEMBER_ID=2 rails run bin/data_fixes/user_to_member.rb'.red
 end
