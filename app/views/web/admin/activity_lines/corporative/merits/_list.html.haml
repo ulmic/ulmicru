@@ -6,7 +6,6 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:user)
       %th= model_class.human_attribute_name(:year)
-      %th= model_class.human_attribute_name(:nomination)
       - if searching?
         %th= model_class.human_attribute_name(:state)
       %th=t 'helpers.links.actions'
@@ -17,7 +16,6 @@
           = link_to merit.id, admin_activity_lines_corporative_merit_path(merit)
         %td= link_to merit.user.short_name, admin_activity_lines_corporative_merit_path(merit)
         %td= merit.year
-        %td= enumerize_locales_value merit, :nomination
         - if searching?
           %td= merit.human_state_name
         %td.actions

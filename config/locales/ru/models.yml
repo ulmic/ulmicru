@@ -230,6 +230,10 @@ ru:
         answer_link: Ссылка на ответ
         user: Автор
         answer_timestamp: Время ответа в видео
+      activity_lines/corporative/merit:
+        user_id: Пользователь
+        user: Пользователь
+        year: Год вручения
       vote:
         rating: Рейтинг
         member_rating: Рейтинг членов МИЦ

@@ -4,6 +4,6 @@ class ActivityLines::Corporative::MeritDecorator < ApplicationDecorator
   decorates_association :user
 
   def self.collections
-    [ :active, :removed ]
+    [ :honorary_members, :second_degree ]
   end
 end
