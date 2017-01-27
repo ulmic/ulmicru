@@ -1,0 +1,26 @@
+= paginate activity_lines_corporative_merits, theme: 'twitter-bootstrap-3'
+- model_class = ActivityLines::Corporative::Merit
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:year)
+      %th= model_class.human_attribute_name(:nomination)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - activity_lines_corporative_merits.each do |merit|
+      %tr{ class: state_color(merit) }
+        %td{ width: '67px' }
+          = link_to merit.id, admin_activity_lines_corporative_merit_path(merit)
+        %td= link_to merit.user.short_name, admin_activity_lines_corporative_merit_path(merit)
+        %td= merit.year
+        %td= enumerize_locales_value merit, :nomination
+        - if searching?
+          %td= merit.human_state_name
+        %td.actions
+          = link_to fa_icon(:pencil), edit_admin_activity_lines_corporative_merit_path(merit), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove), admin_activity_lines_corporative_merit_path(merit), method: :delete, class: 'btn btn-xs btn-danger'
+= paginate activity_lines_corporative_merits, theme: 'twitter-bootstrap-3'
