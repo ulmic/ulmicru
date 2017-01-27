@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions, as: :receiver, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :teams
+  has_many :merits, class_name: 'ActivityLines::Corporative::Merit'
 
   validates :email, email: true,
                     allow_blank: true

@@ -14,4 +14,20 @@ module Web::ImagesHelper
   def debut_white_image
     'organization/activity_lines/corporative/confession/debut_of_the_year_white.png'
   end
+
+  def merit_first_degree_image
+    'organization/activity_lines/corporative/merit/first_degree.png'
+  end
+
+  def merit_second_degree_image
+    'organization/activity_lines/corporative/merit/second_degree.png'
+  end
+
+  def merit_first_degree_white_image
+    'organization/activity_lines/corporative/merit/first_degree_white.png'
+  end
+
+  def merit_second_degree_white_image
+    'organization/activity_lines/corporative/merit/second_degree_white.png'
+  end
 end

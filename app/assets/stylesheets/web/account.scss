@@ -141,16 +141,28 @@
       height: 110px;
       margin-top: 20px;
       .user-confession {
+        img {
+          background: #ffa911;
+          &:hover {
+            background-color: #ffc90B;
+          }
+        }
+      }
+      .user-merit {
+        img {
+          background: #708090;
+          &:hover {
+            background-color: #778899;
+          }
+        }
+      }
+      .user-confession, .user-merit {
         width: 100px;
         float: left;
         margin-right: 10px;
         cursor: pointer;
         img {
           width: 100%;
-          background: #ffa911;
-          &:hover {
-            background-color: #ffc90B;
-          }
         }
         .text {
           margin-top: 2px;
