@@ -9,7 +9,7 @@ if ENV['USER_ID'].present? && ENV['MEMBER_ID'].present?
   end
   user.subscriptions.each { |s| s.update_attributes! receiver_id: member.id }
   puts "Updating attributes...".green
-  [:password_digest, :role, :state, :token, :email].each do |attribute|
+  [:password_digest, :role, :state, :token].each do |attribute|
     member.update_attributes! attribute => user.send(attribute)
   end
   puts "Destroy old user...".green
