@@ -5,6 +5,8 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
 
   validates :number, presence: true, uniqueness: { scope: :contest_id }
 
+  include DurationManagment
+
   state_machine :state, initial: :active do
     state :active
     state :removed

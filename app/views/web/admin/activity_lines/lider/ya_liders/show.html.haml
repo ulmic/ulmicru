@@ -2,37 +2,48 @@
 .page-header
   %h2
     = @ya_lider.full_title
-.row
-  .col-md-6
-    %h5
-      = t('activerecord.models.activity_lines/lider/ya_lider/stage').pluralize(:ru)
-    %table.table
-      - @ya_lider.stages.each do |stage|
-        %tr
-          %td
-            = link_to stage.title, admin_activity_lines_lider_ya_lider_stage_path(stage)
-          %td
-            = stage.current_participants.count
-            = Russian.p stage.current_participants.count, 'участник', 'участника', 'участников'
-          %td
-            = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_stage_path(stage), class: 'btn btn-sm btn-warning'
-            = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_stage_path(stage), method: :delete, class: 'btn btn-sm btn-danger'
-    = link_to t('helpers.links.new'), new_admin_activity_lines_lider_ya_lider_stage_path(activity_lines_lider_ya_lider_stage: { ya_lider_id: @ya_lider.id }), class: 'btn btn-success'
-  .col-md-6
-    %h5
-      = @ya_lider.committee.decorate.full_title
-    = text_hint t('.this_people_have_access_to_ya_lider'), place: :admin
-    %table.table.table-condensed.table-hover
-      - @ya_lider.committee.members.decorate.each do |member|
-        %tr
-          %td
-            = image_tag member.small_avatar_url
-          %td
-            = link_to member.short_name
-%hr
-.row
-  .col-md-6
-    %b
-      Токен для связи с сайтом Я-лидер!
-    %br
-    = @ya_lider.tokens.first.content
+.tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    %li{ class: (:active if (params[:tab] == 'current_participants' || params[:tab].nil?)) }
+      = link_to t('.current_participants'), admin_activity_lines_lider_ya_lider_path(tab: :current_participants)
+    %li{ class: (:active if params[:tab] == 'info') }
+      = link_to t('.info'), admin_activity_lines_lider_ya_lider_path(tab: :info)
+  %div
+    - case params[:tab]
+    - when 'current_participants', nil
+      = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants
+    - when 'info'
+      .row
+        .col-md-6
+          %h5
+            = t('activerecord.models.activity_lines/lider/ya_lider/stage').pluralize(:ru)
+          %table.table
+            - @ya_lider.stages.each do |stage|
+              %tr
+                %td
+                  = link_to stage.title, admin_activity_lines_lider_ya_lider_stage_path(stage)
+                %td
+                  = stage.current_participants.count
+                  = Russian.p stage.current_participants.count, 'участник', 'участника', 'участников'
+                %td
+                  = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_stage_path(stage), class: 'btn btn-sm btn-warning'
+                  = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_stage_path(stage), method: :delete, class: 'btn btn-sm btn-danger'
+          = link_to t('helpers.links.new'), new_admin_activity_lines_lider_ya_lider_stage_path(activity_lines_lider_ya_lider_stage: { ya_lider_id: @ya_lider.id }), class: 'btn btn-success'
+        .col-md-6
+          %h5
+            = @ya_lider.committee.decorate.full_title
+          = text_hint t('.this_people_have_access_to_ya_lider'), place: :admin
+          %table.table.table-condensed.table-hover
+            - @ya_lider.committee.members.decorate.each do |member|
+              %tr
+                %td
+                  = image_tag member.small_avatar_url
+                %td
+                  = link_to member.short_name
+      %hr
+      .row
+        .col-md-6
+          %b
+            Токен для связи с сайтом Я-лидер!
+          %br
+          = @ya_lider.tokens.first.content

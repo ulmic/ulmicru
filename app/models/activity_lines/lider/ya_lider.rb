@@ -25,4 +25,14 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
   def first_stage
     stages.where(number: 1).first
   end
+
+  def last_stage
+    stages.order(:number).last
+  end
+
+  def current_stage
+    stages.map do |stage|
+      stage if stage.during?
+    end.compact.first
+  end
 end
