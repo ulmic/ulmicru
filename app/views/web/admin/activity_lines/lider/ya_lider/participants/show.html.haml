@@ -22,7 +22,7 @@
             %td
               = t("activerecord.attributes.user.#{attribute}")
             %td
-              = @participant.user.send attribute
+              = @participant.user.show_attribute attribute
         %tr
           %td
             = t("enumerize.activity_lines/lider/ya_lider/participant_field.title.esse")

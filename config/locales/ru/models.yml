@@ -52,6 +52,7 @@ ru:
         mobile_phone: Мобильный телефон
         mobile_phone_link: Мобильный телефон
         email_link: Email
+        birth_date: Дата рождения
       member_default: &member_default
         avatar: Аватар
         avatar_small_img: Аватар
@@ -61,7 +62,6 @@ ru:
         social_links: Профили в соц. сетях
         place: Место проживания
         motto: Девиз по жизни
-        birth_date: Дата рождения
         home_adress: Домашний адрес
         municipality: Муниципальное образование
         state: Статус на сайте
