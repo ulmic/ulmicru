@@ -24,7 +24,7 @@ class Web::Admin::ActivityLines::Lider::YaLider::StagesController < Web::Admin::
   def update
     @stage_form = ::ActivityLines::Lider::YaLider::StageForm.find_with_model params[:id]
     if @stage_form.submit params[:activity_lines_lider_ya_lider_stage]
-      redirect_to admin_activity_lines_lider_ya_lider_path @stage_form.model.ya_lider
+      redirect_to admin_activity_lines_lider_ya_lider_path @stage_form.model.contest
     else
       render action: :edit
     end
