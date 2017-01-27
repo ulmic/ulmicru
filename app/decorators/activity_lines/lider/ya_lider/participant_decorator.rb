@@ -16,6 +16,6 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   end
 
   def contest_attributes
-    [ :email_link, :locality, :school, :mobile_phone_link ]
+    [ :email_link, :locality, :school, :mobile_phone_link, :birth_date ]
   end
 end
