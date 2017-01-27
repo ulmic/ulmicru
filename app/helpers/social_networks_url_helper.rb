@@ -16,4 +16,8 @@ module SocialNetworksUrlHelper
   def social_network_icon(provider, size, colored = false)
     "icon-#{provider} #{size}-icon #{colored}"
   end
+
+  def social_network_fa_icon(provider)
+    fa_icon provider == 'vkontakte' ? :vk : provider
+  end
 end
