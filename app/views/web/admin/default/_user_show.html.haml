@@ -29,6 +29,13 @@
         %tr
           %td= item.show_human_attribute_name attribute
           %td= item.show_attribute attribute
+    %h3
+      = t('.authentications')
+    %table.table.attributes-table
+      - item.authentications.each do |auth|
+        %tr
+          %td= social_network_fa_icon auth.provider
+          %td=l auth.created_at, format: '%d %B %Y'
   .col-lg-9
     %table.table.attributes-table
       - item.real_attributes.each do |attribute|

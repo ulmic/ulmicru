@@ -3,6 +3,7 @@ class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::Activity
 
   def create
     params[:user] = JSON.parse params[:_json]
+    params[:user][:birth_date] = DateTime.strptime params[:user][:birth_date], '%s'
     user = User.confirmed.where(email: params[:user][:email]).first
     if user
       user_form = UserForm.new user
