@@ -19,6 +19,18 @@ class Web::Admin::ActivityLines::Lider::YaLidersControllerTest < ActionControlle
     assert_response :success, @response.body
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      ActivityLines::Lider::YaLiderDecorator.collections.each do |collection|
+        pages = ActivityLines::Lider::YaLider.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
+
   test 'should get index with search' do
     get :index, search: @ya_lider.contest_year
     assert_response :success, @response.body

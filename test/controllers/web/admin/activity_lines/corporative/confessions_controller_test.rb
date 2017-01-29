@@ -13,6 +13,18 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     assert_response :success, @response.body
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      ActivityLines::Corporative::ConfessionDecorator.collections.each do |collection|
+        pages = ActivityLines::Corporative::Confession.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
+
   test 'should get show' do
     4.times { create :argument }
     get :show, id: @confession

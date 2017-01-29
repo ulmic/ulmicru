@@ -24,6 +24,18 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      TeamDecorator.collections.each do |collection|
+        pages = Team.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
+
   test 'should get new' do
     get :new
     assert_response :success, @response.body

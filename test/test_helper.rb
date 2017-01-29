@@ -28,7 +28,6 @@ class ActiveSupport::TestCase
     load "#{Rails.root}/db/seeds.rb"
   end
 
-
   def load_fixture(filename)
     template = ERB.new(File.read(File.dirname(__FILE__) + '/fixtures/#{filename}'), nil, '%')
     template.result

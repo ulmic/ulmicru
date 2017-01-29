@@ -23,6 +23,17 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesControllerTest < 
     assert_response :success, @response.body
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      ActivityLines::Corporative::OnlineConferenceDecorator.collections.each do |collection|
+        pages = ActivityLines::Corporative::OnlineConference.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
   test 'should get index without instances' do
     ::ActivityLines::Corporative::OnlineConference.destroy_all
     get :index
