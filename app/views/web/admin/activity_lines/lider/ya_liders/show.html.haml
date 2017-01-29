@@ -11,7 +11,10 @@
   %div
     - case params[:tab]
     - when 'current_participants', nil
-      = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants
+      - if @current_participants.present?
+        = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants
+      - else
+        = text_hint(t('.you_have_not_add_any_stage'), place: :admin)
     - when 'info'
       .row
         .col-md-6

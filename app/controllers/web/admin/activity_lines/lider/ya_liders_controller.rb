@@ -14,7 +14,9 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
 
   def show
     @ya_lider = ::ActivityLines::Lider::YaLider.includes(:tokens).where(id: params[:id]).first.decorate
-    @current_participants = ActivityLines::Lider::YaLider::ParticipantDecorator.decorate_collection @ya_lider.current_stage.participants.active.page params[:page]
+    @current_participants = if @ya_lider.current_stage.present?
+      ActivityLines::Lider::YaLider::ParticipantDecorator.decorate_collection @ya_lider.current_stage.participants.active.page params[:page]
+    end
   end
 
   def create
