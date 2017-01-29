@@ -9,6 +9,26 @@ class Web::Admin::ActivityLines::Lider::YaLider::ParticipantsControllerTest < Ac
     @exceptions_attributes = ['id', 'created_at', 'updated_at', 'begin_date', 'end_date']
   end
 
+  test 'should get index' do
+    get :index
+    assert_response :success
+  end
+
+  test 'should get index with search' do
+    get :index, search: @participant.contest_id
+    assert_response :success
+  end
+
+  test 'should get index with contest_id' do
+    get :index, contest_id: @participant.contest_id
+    assert_response :success
+  end
+
+  test 'should get index with contest_id and search' do
+    get :index, contest_id: @participant.contest_id, search: @participant.user.first_name
+    assert_response :success
+  end
+
   test 'should get new' do
     get :new, activity_lines_lider_ya_lider_participant: { contest_id: ActivityLines::Lider::YaLider.last.id }
     assert_response :success, @response.body
@@ -21,7 +41,7 @@ class Web::Admin::ActivityLines::Lider::YaLider::ParticipantsControllerTest < Ac
     post :create, activity_lines_lider_ya_lider_participant: attributes
     participant = ActivityLines::Lider::YaLider::Participant.last
     assert_response :redirect, @response.body
-    assert_redirected_to admin_activity_lines_lider_ya_liders_path
+    assert_redirected_to admin_activity_lines_lider_ya_lider_stage_path participant.contest.first_stage.id
     participant.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], participant.send(key), key
     end

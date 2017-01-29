@@ -1,6 +1,20 @@
 class Web::Admin::ActivityLines::Lider::YaLider::ParticipantsController < Web::Admin::ActivityLines::Lider::YaLider::ApplicationController
   before_filter :choose_users, only: [ :new, :edit ]
 
+  def index
+    participants = if params[:contest_id].present?
+                     ActivityLines::Lider::YaLider.find(params[:contest_id]).participants 
+                   else
+                     ::ActivityLines::Lider::YaLider::Participant.all
+                   end
+    if params[:search]
+      participants = participants.search_everywhere params[:search]
+    else
+      participants = participants.send params[:scope]
+    end
+    @participants = participants.page(params[:page]).decorate
+  end
+
   def show
     @participant = ::ActivityLines::Lider::YaLider::Participant.find(params[:id]).decorate
     @stage = if params[:stage]
