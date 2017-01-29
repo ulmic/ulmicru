@@ -14,7 +14,17 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
 
   def show
     @ya_lider = ::ActivityLines::Lider::YaLider.includes(:tokens).where(id: params[:id]).first.decorate
-    @current_participants = ActivityLines::Lider::YaLider::ParticipantDecorator.decorate_collection @ya_lider.current_stage.participants.active.page params[:page]
+    current_participants = if @ya_lider.current_stage.present?
+                             if params[:search].present?
+                               ::ActivityLines::Lider::YaLider::Participant.where(
+                                 id: (@ya_lider.current_stage.participants.search_everywhere(params[:search]).map(&:id) &
+                                      @ya_lider.current_stage.current_participants.map(&:id)))
+                             else
+                               @ya_lider.current_stage.participants
+                             end
+                           end
+     @current_participants = ::ActivityLines::Lider::YaLider::ParticipantDecorator.decorate_collection(
+       Kaminari.paginate_array(current_participants).page(params[:page])) if current_participants.present?
   end
 
   def create

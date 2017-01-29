@@ -3,6 +3,10 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
 
   decorates_association :user
 
+  def self.collections
+    [:active, :won, :lost, :declined]
+  end
+
   def full_name
     "#{object.user.first_name} #{object.user.patronymic} #{object.user.last_name}"
   end

@@ -54,10 +54,10 @@ ru:
         mobile_phone_link: Мобильный телефон
         email_link: Email
         birth_date: Дата рождения
-      member_default: &member_default
-        avatar: Аватар
-        avatar_small_img: Аватар
         full_name: "Ф.И.О."
+        avatar: Аватар
+      member_default: &member_default
+        avatar_small_img: Аватар
         short_name: Имя
         short_name_link: Имя
         social_links: Профили в соц. сетях
@@ -277,6 +277,9 @@ ru:
         begin_date: Дата начала
         end_date: Дата окончания
         participants: Участники этапа
+      activity_lines/lider/ya_lider/participant:
+        <<: *default
+        <<: *user_default
       place:
         title: Название
         description: Описание
