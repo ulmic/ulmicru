@@ -1,11 +1,13 @@
 - if member.confirmed?
   .mic-userpic-circle.link{ data: { href: member_path(member.ticket) }, style: "background-image: url(#{member.avatar})" }
-    .silver_icon
-      = image_tag 'organization/silver_icon.png'
+    - if member.is_honorable?
+      .silver_icon
+        = image_tag 'organization/silver_icon.png'
 - else
   .mic-userpic-circle{ style: "background-image: url(#{member.element_avatar})" }
-    .silver_icon
-      = image_tag 'organization/silver_icon.png'
+    - if member.is_honorable?
+      .silver_icon
+        = image_tag 'organization/silver_icon.png'
 .name
   - if member.confirmed?
     %a.text{ href: member_path(member.ticket) }
