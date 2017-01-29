@@ -23,6 +23,18 @@ class Web::Admin::PlacesControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      PlaceDecorator.collections.each do |collection|
+        pages = Place.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
+
   test 'should get index without instances' do
     Place.delete_all
     get :index

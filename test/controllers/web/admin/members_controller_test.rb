@@ -24,6 +24,18 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      MemberDecorator.collections.each do |collection|
+        pages = Member.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
+
   test 'should get show' do
     get :show, id: @member
     assert_response :success, @response.body

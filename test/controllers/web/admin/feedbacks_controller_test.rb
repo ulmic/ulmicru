@@ -18,6 +18,18 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      FeedbackDecorator.collections.each do |collection|
+        pages = Feedback.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
+
   test 'should get index without instances' do
     Feedback.destroy_all
     get :index

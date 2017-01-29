@@ -19,6 +19,18 @@ class Web::Admin::ActivityLines::Lider::YaLider::ParticipantsControllerTest < Ac
     assert_response :success
   end
 
+  test 'should get index all pages and tabs' do
+    if ENV['DB'] == 'prod'
+      ActivityLines::Lider::YaLider::ParticipantDecorator.collections.each do |collection|
+        pages = ActivityLines::Lider::YaLider::Participant.send(collection).count / 25
+        (pages + 2).times do |page|
+          get :index, page: page
+          assert_response :success
+        end
+      end
+    end
+  end
+
   test 'should get index with contest_id' do
     get :index, contest_id: @participant.contest_id
     assert_response :success
