@@ -1,7 +1,14 @@
 class Web::Admin::ActivityLines::Lider::YaLider::StagesController < Web::Admin::ActivityLines::ApplicationController
   def show
-    @stage = ActivityLines::Lider::YaLider::Stage.find(params[:id]).decorate
-    @current_participants = @stage.current_participants
+    stage = ActivityLines::Lider::YaLider::Stage.find(params[:id])
+    @stage = stage.decorate
+    participants = if params[:search].present?
+                     ::ActivityLines::Lider::YaLider::Participant.where(
+                       id: (stage.participants.search_everywhere(params[:search]).map(&:id) & stage.current_participants.map(&:id))).decorate
+                   else
+                     stage.current_participants
+                   end
+    @current_participants = Kaminari.paginate_array(participants).page params[:page]
   end
 
   def new
