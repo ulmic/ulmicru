@@ -131,6 +131,10 @@ class Member < User
     Organization::Permissions.send(type)[action].map(&:id).include? self.id
   end
 
+  def is_honorable?
+    merits.where(nomination: :first_degree).any?
+  end
+
   private
 
   def remove_empty_positions

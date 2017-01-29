@@ -13,4 +13,11 @@ class Web::WelcomeControllerTest < ActionController::TestCase
     get :index
     assert_response :success, @response.body
   end
+
+  test 'should get index 100 times' do
+    100.times do
+      get :index
+      assert_response :success, @response.body
+    end
+  end
 end
