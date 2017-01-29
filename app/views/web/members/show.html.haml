@@ -53,7 +53,7 @@
                 = image_tag send("#{confession.nomination}_image")
                 .text
                   = confession.year
-            - @member.merits.active.each do |merit|
+            - @member.merits.active.order(:year).each do |merit|
               .user-merit.link{ title: t("tooltip.web.members.show.#{merit.nomination}", name: @member.first_name, gender: gender, year: merit.year), data: { tooltip: true, href: article_path(configus.activity_lines.corporative.merit.send(merit.nomination).article_id) } }
                 = image_tag send("merit_#{merit.nomination}_image")
                 .text
