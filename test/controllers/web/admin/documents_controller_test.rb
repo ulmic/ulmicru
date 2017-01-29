@@ -20,12 +20,10 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
 
   test 'should get index all pages and tabs' do
     if ENV['DB'] == 'prod'
-      DocumentDecorator.collections.each do |collection|
-        pages = Document.send(collection).count / 25
-        (pages + 2).times do |page|
-          get :index, page: page
-          assert_response :success
-        end
+      pages = Document.count / 25
+      (pages + 2).times do |page|
+        get :index, page: page
+        assert_response :success
       end
     end
   end
