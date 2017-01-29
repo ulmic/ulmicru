@@ -42,7 +42,7 @@
               .big-icon
                 = link_to fa_icon(:envelope), "mailto:#{@member.corporate_email}"
       %hr.orange
-      - if @member.confessions.confirmed.any?
+      - if @member.confessions.confirmed.any? || @member.merits.active.any?
         .honors
           %h2
             = t('.honors_in_mic')
