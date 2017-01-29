@@ -33,9 +33,11 @@ class Web::MembersControllerTest < ActionController::TestCase
   end
 
   test 'should get show' do
-    @member.confirm
-    get :show, ticket: @member.ticket
-    assert_response :success, @response.body
+    unless Member.presented.count > 100
+      @member.confirm
+      get :show, ticket: @member.ticket
+      assert_response :success, @response.body
+    end
   end
 
   test 'should get show for 100 members' do
