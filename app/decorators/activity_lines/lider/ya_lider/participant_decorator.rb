@@ -4,7 +4,9 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   decorates_association :user
 
   def name
-    object.user.decorate.short_name
+    if object.present?
+      object.user.decorate.short_name
+    end
   end
 
   def self.collections
