@@ -77,8 +77,14 @@ module Web::Admin::ApplicationHelper
   end
 
   def record_title(instance)
-    unless instance&.action_type.in? [ 'sign_in', 'sign_out' ]
-      [t("activerecord.models.#{instance.record_type&.underscore}"), decorator_class(instance.record_type).decorate(instance.record).name].join ': '
+    if instance.record.present?
+      unless instance&.action_type.in? [ 'sign_in', 'sign_out' ]
+        [t("activerecord.models.#{instance.record_type&.underscore}"), decorator_class(instance.record_type).decorate(instance.record).name].join ': '
+      end
+    else
+      unless instance&.action_type.in? [ 'sign_in', 'sign_out' ]
+        'Удалённая запись'
+      end
     end
   end
 end
