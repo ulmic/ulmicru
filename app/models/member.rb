@@ -107,6 +107,10 @@ class Member < User
     confessions.where(nomination: nomination, state: :confirmed).any?
   end
 
+  def has_merit?(nomination)
+    merits.where(nomination: nomination, state: :active).any?
+  end
+
   include GenderHelper
 
   #FIXME try fix active form
