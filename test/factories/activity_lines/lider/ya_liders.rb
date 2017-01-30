@@ -9,6 +9,7 @@ FactoryGirl.define do
     end
     contest_year { generate :integer }
     state { ActivityLines::Lider::YaLider.state_machines[:state].states.map(&:name).first.to_s }
+    provision { generate :string }
     after :create do
       create :committee, project_type: 'ActivityLines::Lider::YaLider'
       create :token, record_type: 'ActivityLines::Lider::YaLider'
