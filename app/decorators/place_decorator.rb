@@ -2,7 +2,7 @@ class PlaceDecorator < ApplicationDecorator
   delegate_all
 
   def self.collections
-    [:active, :removed]
+    [:unviewed, :active, :removed]
   end
 
   def coordinates

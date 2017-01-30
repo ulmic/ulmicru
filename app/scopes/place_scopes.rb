@@ -6,5 +6,6 @@ module PlaceScopes
 
   included do
     scope :presented, -> { where.not state: :removed }
+    scope :need_to_review, -> { unviewed }
   end
 end
