@@ -23,6 +23,7 @@ class Web::Admin::LoggedActionsControllerTest < ActionController::TestCase
       (pages + 2).times do |page|
         get :index, page: page
         assert_response :success
+        print "Page #{page} of #{pages}\r"
       end
     end
   end

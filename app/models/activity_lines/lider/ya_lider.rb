@@ -6,6 +6,7 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
 
   validates :contest_number, presence: true, uniqueness: { scope: :state }
   validates :contest_year, presence: true, uniqueness: { scope: :state }
+  validates :provision, presence: true
 
   state_machine :state, initial: :active do
     state :active
