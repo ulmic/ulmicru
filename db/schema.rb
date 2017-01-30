@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127173736) do
+ActiveRecord::Schema.define(version: 20170130170701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 20170127173736) do
   create_table "activity_lines_lider_ya_lider_participations", force: :cascade do |t|
     t.integer  "participant_id"
     t.integer  "stage_id"
-    t.text     "state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.text     "state"
   end
 
   create_table "activity_lines_lider_ya_lider_stages", force: :cascade do |t|
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20170127173736) do
     t.text     "state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.text     "provision"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -508,9 +509,6 @@ ActiveRecord::Schema.define(version: 20170127173736) do
     t.integer "team_id"
     t.integer "user_id"
   end
-
-  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
-  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "test_paper_questions", force: :cascade do |t|
     t.text     "text"
