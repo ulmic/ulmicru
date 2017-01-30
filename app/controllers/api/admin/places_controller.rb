@@ -4,7 +4,7 @@ class Api::Admin::PlacesController < Api::Admin::ApplicationController
 
   def index
     if params[:q].present?
-      places = Place.active.search_everywhere params[:q][:term]
+      places = Place.presented.search_everywhere params[:q][:term]
       render json: places.to_json(only: [:id, :title])
     end
   end
