@@ -25,6 +25,7 @@ class Web::Admin::ActivityLines::Corporative::MeritsControllerTest < ActionContr
         (pages + 2).times do |page|
           get :index, page: page
           assert_response :success
+          print "Page #{page} of #{pages} of #{collection}\r"
         end
       end
     end

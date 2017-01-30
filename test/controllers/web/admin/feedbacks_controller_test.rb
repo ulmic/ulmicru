@@ -25,6 +25,7 @@ class Web::Admin::FeedbacksControllerTest < ActionController::TestCase
         (pages + 2).times do |page|
           get :index, page: page
           assert_response :success
+          print "Page #{page} of #{pages} of #{collection}\r"
         end
       end
     end
