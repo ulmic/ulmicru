@@ -70,7 +70,7 @@
               .comments-views
                 %span.icon-eye
                 %span.view-text
-                  = @news.views
+                  = @news.page_views.count
                 -#%span.icon-comment.fa.fa-comment
                 -#%span.comment-text
                   5
@@ -132,7 +132,7 @@
                 = render_element 'mic_one_news2', img_src:  news.photo.event_main_page_version, |
                                                   link: news_path(news), |
                                                   date: news.publish_date, |
-                                                  views: news.views, |
+                                                  views: news.page_views.count, |
                                                   text: news.title
   %aside.news-sidebar
     - if @next_news.present?
@@ -151,7 +151,7 @@
               = render_element 'mic_one_news', img_src: news.photo.event_main_page_version, |
                                                link: news_path(news), |
                                                title: news.title, |
-                                               views: news.views, |
+                                               views: news.page_views.count, |
                                                date: news.publish_date
             - if index != (@last_news.size - 1)
               %hr
@@ -165,7 +165,7 @@
                   = render_element 'mic_one_news', img_src: news.photo, |
                                                    link: news_path(news), |
                                                    title: news.title, |
-                                                   views: news.views, |
+                                                   views: news.page_views.count, |
                                                    date: news.publish_date
                 - if index != (@topic_news.size - 1)
                   %hr
