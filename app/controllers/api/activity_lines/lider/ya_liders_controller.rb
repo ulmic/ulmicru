@@ -1,8 +1,10 @@
 class Api::ActivityLines::Lider::YaLidersController < Api::ActivityLines::Lider::ApplicationController
+  before_filter :ul_lider_access_control_origin
+
   def show
-    record = Token.where(content: params[:token]).first&.record
-    if record&.is_a? ::ActivityLines::Lider::YaLider
-      render json: record.attributes.to_json
+    contest = ActivityLines::Lider::YaLider.find params[:id]
+    if contest.present?
+      render json: contest.attributes.to_json
     else
       head :bad_request
     end
