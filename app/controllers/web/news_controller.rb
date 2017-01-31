@@ -11,7 +11,7 @@ class Web::NewsController < Web::ApplicationController
       redirect_to not_found_page_path
       return
     end
-    @news.increase_views
+    View.create! user_id: current_user&.id, record_id: @news.id, record_type: 'News'
     topic_news_tags = @news.tags
     topic_news = []
     topic_news_tags.each do |tag|

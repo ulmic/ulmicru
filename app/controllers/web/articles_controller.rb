@@ -7,7 +7,7 @@ class Web::ArticlesController < Web::ApplicationController
       authenticate_member!
       return
     end
-    @article.increase_views
+    View.create! user_id: current_user&.id, record_id: @article.id, record_type: 'Article'
     @topic_articles = Article.broadcasted.same_articles(@article).last 3
     @strings = @article.tags.active.string
     @not_strings = @article.tags.active.events + @article.tags.active.activity_lines + @article.tags.active.teams
