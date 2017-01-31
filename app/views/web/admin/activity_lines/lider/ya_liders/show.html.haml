@@ -8,6 +8,8 @@
       = link_to t('.current_participants'), admin_activity_lines_lider_ya_lider_path(tab: :current_participants)
     %li{ class: (:active if params[:tab] == 'info') }
       = link_to t('.info'), admin_activity_lines_lider_ya_lider_path(tab: :info)
+    %li{ class: (:active if params[:tab] == 'provision') }
+      = link_to t('.provision'), admin_activity_lines_lider_ya_lider_path(tab: :provision)
   %div
     - case params[:tab]
     - when 'current_participants', nil
@@ -55,3 +57,6 @@
             Токен для связи с сайтом Я-лидер!
           %br
           = @ya_lider.tokens.first.content
+    - when 'provision'
+      %br
+      != @ya_lider.provision
