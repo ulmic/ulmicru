@@ -75,6 +75,7 @@ ru:
         departament: Местное отделение
         departament_title: Местное отделение
         corporate_email: Корпоративная почта
+        contact_list_email_link: Электронная почта
       user:
         <<: *user_default
         type: Тип

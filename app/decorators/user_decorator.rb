@@ -71,7 +71,7 @@ class UserDecorator < ApplicationDecorator
     h.content_tag :a, href: "mail:#{object.send(attribute)}" do
       h.concat fa_icon :envelope
       h.concat ' '
-      h.concat object.email
+      h.concat object.send(attribute)
     end
   end
 
