@@ -6,6 +6,7 @@ class News < ActiveRecord::Base
                       dependent: :destroy
   has_many :logged_actions, as: :record
   has_and_belongs_to_many :attachments, class_name: 'Document'
+  has_many :page_views, class_name: 'View', as: :record
 
   mount_uploader :photo,    PhotoUploader
   validates :title,         presence: true
@@ -22,8 +23,6 @@ class News < ActiveRecord::Base
   def is_not_published?
     not is_published?
   end
-
-  include Concerns::ViewsManagment
 
   class << self
     include NearRecords

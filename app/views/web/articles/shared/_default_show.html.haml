@@ -15,7 +15,7 @@
         .left
           %span.icon-eye
           %span.view-text
-            = @article.views
+            = @article.page_views.count
         .icons.right
           = render 'layouts/web/shared/social_sharing', counter: true
       .news-comments

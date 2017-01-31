@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :attachments, class_name: 'Document'
   has_many :comments, as: :record,
                       dependent: :destroy
+  has_many :page_views, class_name: 'View', as: :record
 
   validates :title,       presence: true
   validates :category_id, presence: true
@@ -34,7 +35,6 @@ class Article < ActiveRecord::Base
   enumerize :publicity, in: [ :visible, :access_on_link ], default: :visible
   enumerize :access, in: [ :all, :members ], default: :all
 
-  include Concerns::ViewsManagment
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :view]
 end
