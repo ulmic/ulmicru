@@ -59,4 +59,8 @@
           = @ya_lider.tokens.first.content
     - when 'provision'
       %br
-      != @ya_lider.provision
+      .row
+        .col-md-11
+          != @ya_lider.provision
+        .col-md-1
+          = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_path(@ya_lider), class: 'btn btn-warning'

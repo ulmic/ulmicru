@@ -271,6 +271,7 @@ ru:
       activity_lines/lider/ya_lider:
         contest_year: Год проведения конкурса
         contest_number: Номер конкурса
+        provision: Положение конкурса
       activity_lines/lider/ya_lider/stage:
         number: Номер этапа
         title: Название
