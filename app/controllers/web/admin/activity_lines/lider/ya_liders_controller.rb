@@ -20,7 +20,7 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
                                  id: (@ya_lider.current_stage.participants.search_everywhere(params[:search]).map(&:id) &
                                       @ya_lider.current_stage.current_participants.map(&:id)))
                              else
-                               @ya_lider.current_stage.participants
+                               @ya_lider.current_stage.participants.active
                              end
                            end
      @current_participants = ::ActivityLines::Lider::YaLider::ParticipantDecorator.decorate_collection(
