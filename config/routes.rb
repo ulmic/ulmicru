@@ -176,11 +176,7 @@ Rails.application.routes.draw do
     resources :yofications, only: [ :create, :update ]
     namespace :activity_lines do
       namespace :lider do
-        resources :ya_liders, only: [] do
-          collection do
-            get ':token' => 'ya_liders#show' 
-          end
-        end
+        resources :ya_liders, only: [ :show ]
         namespace :ya_lider do
           resources :participants, only: :create
         end
