@@ -16,6 +16,15 @@ class Web::NewsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get show all news' do
+    if ENV['DB'] == 'prod'
+      News.find_each do |news|
+        get :show, id: news.id
+        assert_response :success
+      end
+    end
+  end
+
   test 'should get show of unpublished news' do
     @news.published_at = DateTime.now + 1.week
     @news.save

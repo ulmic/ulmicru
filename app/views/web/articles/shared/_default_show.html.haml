@@ -30,7 +30,7 @@
             .mic-article
               = render_element 'mic_article', link: article_path(article), |
                                               title: article.title, |
-                                              views: article.views, |
+                                              views: article.page_views.count, |
                                               comments: article.comments.count
     %h3
       = t('.popular_articles')
@@ -40,5 +40,5 @@
           .mic-article
             = render_element 'mic_article', link: article_path(article), |
                                             title: article.title, |
-                                            views: article.views, |
+                                            views: article.page_views.count, |
                                             comments: article.comments.count
