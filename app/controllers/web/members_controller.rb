@@ -43,8 +43,8 @@ class Web::MembersController < Web::ApplicationController
     @children = MemberDecorator.decorate_collection member.children.shuffle
     @parent = MemberDecorator.decorate member.parent
     @registrations = ::Event::RegistrationDecorator.decorate_collection member.registrations.date_order
-    @news = NewsDecorator.decorate_collection member.tags.active.news.map &:record
-    @articles = member.tags.active.articles.map(&:record).uniq
+    @news = News.order(published_at: :desc).where(id: member.tags.active.news.map(&:record_id)).decorate
+    @articles = Article.order(created_at: :desc).where(id: member.tags.active.articles.map(&:record_id).uniq)
     @teams = member.teams.active.visible.decorate
   end
 end
