@@ -22,3 +22,7 @@
       = f.association :attachments
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_articles_path, class: 'btn btn-default'
+
+.row
+  .col-md-12
+    = render 'web/admin/default/logged_actions', logged_actions: @article_form.model.logged_actions.reverse

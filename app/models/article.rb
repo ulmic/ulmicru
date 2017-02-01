@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   has_many :comments, as: :record,
                       dependent: :destroy
   has_many :page_views, class_name: 'View', as: :record
+  has_many :logged_actions, as: :record
 
   validates :title,       presence: true
   validates :category_id, presence: true
