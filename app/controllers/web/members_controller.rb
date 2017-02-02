@@ -46,5 +46,6 @@ class Web::MembersController < Web::ApplicationController
     @news = News.order(published_at: :desc).where(id: member.tags.active.news.map(&:record_id)).decorate
     @articles = Article.order(created_at: :desc).where(id: member.tags.active.articles.map(&:record_id).uniq)
     @teams = member.teams.active.visible.decorate
+    View.create! user_id: current_user&.id, record_id: @member.id, record_type: 'Member'
   end
 end

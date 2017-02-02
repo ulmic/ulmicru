@@ -80,6 +80,8 @@ ru:
         <<: *user_default
         type: Тип
         sign_in_count: Количество авторизаций
+        views_count: Количество просмотров страницы
+        views_by_members: Количество просмотров страницы от членов организации
         types:
           user: Пользователь
           member: Член МИЦ

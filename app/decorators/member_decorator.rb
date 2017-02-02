@@ -121,7 +121,9 @@ class MemberDecorator < UserDecorator
   end
 
   def sites_attributes
-    [:id, :role, :state, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }] 
+    [:id, :role, :state, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }, 
+      { views_count: -> { object.views.count } },
+      { views_by_members: -> { object.views.where(user_id: Member.just_members.map(&:id)).count } }] 
   end
 
   def self.collections

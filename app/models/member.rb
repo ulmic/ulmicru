@@ -17,7 +17,7 @@ class Member < User
   has_many :authored_articles, -> { visible.broadcasted }, foreign_key: :user_id, class_name: 'Article'
   has_many :confessions, class_name: 'ActivityLines::Corporative::Confession',
                          dependent: :destroy
-
+  has_many :views, as: :record, foreign_key: :record_id, class_name: 'View'
 
   validates :email, uniqueness: true
   validates :first_name, human_name: true,
