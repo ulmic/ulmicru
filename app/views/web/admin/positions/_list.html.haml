@@ -15,7 +15,7 @@
     - positions.each do |position|
       %tr
         %td= position.id
-        %td= position.member.short_name
+        %td= link_to position.member.short_name, show_path(position.member)
         %td= link_to position.title, edit_admin_member_path(position.member)
         %td= (l(position.begin_date, format: '%d.%m.%Y') if position.begin_date)
         %td= position.end_date_datetime

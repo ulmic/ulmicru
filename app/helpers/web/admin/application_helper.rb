@@ -76,6 +76,10 @@ module Web::Admin::ApplicationHelper
     instance.record_type ? send("admin_#{instance.record_type.underscore.gsub('/', '_')}_path", instance.record_id) : '#'
   end
 
+  def show_path(instance)
+    send "admin_#{instance.model_name.name.underscore}_path", instance.id
+  end
+
   def record_title(instance)
     if instance.record.present?
       unless instance&.action_type.in? [ 'sign_in', 'sign_out' ]
