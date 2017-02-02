@@ -14,9 +14,15 @@ class Web::Admin::ActivityLines::Lider::YaLidersControllerTest < ActionControlle
   end
 
   test 'should get show' do
-    4.times { create :argument }
     get :show, id: @ya_lider
     assert_response :success, @response.body
+  end
+
+  test 'should get show all tabs' do
+    [:info, :provision, :current_participants].each do |tab|
+      get :show, id: @ya_lider, tab: tab
+      assert_response :success, @response.body
+    end
   end
 
   test 'should get index all pages and tabs' do

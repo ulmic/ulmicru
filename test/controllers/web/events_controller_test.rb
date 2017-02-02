@@ -24,7 +24,7 @@ class Web::EventsControllerTest < ActionController::TestCase
 
   test 'should get show all events' do
     if ENV['DB'] == 'prod'
-      Event.find_each do |events|
+      Event.find_each do |event|
         get :show, id: event.id
         assert_response :success
       end
