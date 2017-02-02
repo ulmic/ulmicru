@@ -7,7 +7,7 @@ class Api::ActivityLines::Lider::YaLidersControllerTest < ActionController::Test
   end
 
   test 'should get show' do
-    get :show, token: Token.last.content
+    get :show, id: @ya_lider.id
     assert_response :success
     body = JSON.parse response.body
     assert_equal @ya_lider.provision, body['provision']

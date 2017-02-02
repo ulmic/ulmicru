@@ -4,17 +4,4 @@ class ActivityLines::Lider::YaLider::Participation < ActiveRecord::Base
 
   validates :participant_id, uniqueness: { scope: :stage },
                              presence: true
-
-  state_machine :state, initial: :active do
-    state :active
-    state :removed
-
-    event :restore do
-      transition all => :active
-    end
-
-    event :remove do
-      transition all => :removed
-    end
-  end
 end

@@ -123,7 +123,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bcrypt (3.1.10)
+    bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -492,7 +492,7 @@ DEPENDENCIES
   authority
   autoprefixer-rails
   awesome_print
-  bcrypt (~> 3.1.7)
+  bcrypt (~> 3.1.11)
   better_errors
   bootstrap-kaminari-views
   bootstrap-sass
@@ -572,4 +572,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.1
+   1.14.3

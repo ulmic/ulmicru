@@ -1,4 +1,3 @@
-#= require chart.js/dist/Chart.js
 object = $('#wrapping_chart')
 data = {
   labels: ["January", "February", "March", "April", "May", "June", "July"],
