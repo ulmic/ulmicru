@@ -3,6 +3,7 @@ class CreateActivityLinesLiderYaLiderParticipations < ActiveRecord::Migration
     create_table :activity_lines_lider_ya_lider_participations do |t|
       t.integer :participant_id
       t.integer :stage_id
+      t.text :state
 
       t.timestamps null: false
     end

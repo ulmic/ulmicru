@@ -59,14 +59,14 @@
       %h3
         Местные отделения
       - departaments.each do |departament|
-        .small-3.columns.team.link{ data: { href: team_path(departament) } }
+        -#.small-3.columns.team.link{ data: { href: team_path(departament) } }
           %h4
             = departament.full_title
     .row.teams
       %h3
         Структурные подразделения
       - subdivisions.each do |subdivision|
-        .small-3.columns.team.link{ data: { href: team_path(subdivision) } }
+        -#.small-3.columns.team.link{ data: { href: team_path(subdivision) } }
           %h4
             = subdivision.full_title
   = render 'web/articles/shared/tags'
