@@ -234,7 +234,7 @@ ActiveRecord::Schema.define(version: 20170131111732) do
     t.text     "last_name"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.text     "state",      default: "subscribed"
+    t.text     "state",      default: "active"
   end
 
   create_table "documents", force: :cascade do |t|
