@@ -24,9 +24,11 @@ class Web::EventsControllerTest < ActionController::TestCase
 
   test 'should get show all events' do
     if ENV['DB'] == 'prod'
-      Event.find_each do |event|
+      count = Event.count
+      Event.find_each.with_index do |event, index|
         get :show, id: event.id
-        assert_response :success
+        assert_response :success, event.id
+        print "#{index} of #{count}\r"
       end
     end
   end

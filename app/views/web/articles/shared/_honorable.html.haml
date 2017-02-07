@@ -3,10 +3,11 @@
   %h1
     Почётный члены Молодёжного инициативного центра
   .honorables_people
-    .row-fluid
-      - honorables.each do |honorable|
-        .small-12.medium-6.large-3.columns
+    - honorables.each do |honorable|
+      .row
+        .small-6.meduim-3.large-3.columns
           = render 'layouts/web/elements/mic_member_2',
             link: member_path(honorable.user.ticket),
             img_src: honorable.user.avatar.medium.url,
             name: honorable.user.decorate.short_name
+      %hr

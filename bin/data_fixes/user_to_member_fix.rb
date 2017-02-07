@@ -12,6 +12,8 @@ if ENV['USER_ID'].present? && ENV['MEMBER_ID'].present?
   [:password_digest, :role, :state, :token].each do |attribute|
     member.update_attributes! attribute => user.send(attribute)
   end
+  puts "News migration...".green
+  News.where(user_id: user.id).update_all user_id: member.id
   puts "Destroy old user...".green
   user.destroy
 else

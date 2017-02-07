@@ -70,6 +70,7 @@ gem 'responders', '~> 2.0'
 gem 'kabal', '>= 1.3'
 gem 'youtube_rails', github: 'luizpicolo/youtube_rails'
 gem 'unicorn-rails'
+gem 'xls_exporter', github: 'kalashnikovisme/xls-exporter'
 
 group :development, :test do
   gem 'byebug'
