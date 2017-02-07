@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20170131111732) do
   create_table "activity_lines_lider_ya_lider_participations", force: :cascade do |t|
     t.integer  "participant_id"
     t.integer  "stage_id"
+    t.text     "state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -232,8 +233,8 @@ ActiveRecord::Schema.define(version: 20170131111732) do
     t.text     "email"
     t.text     "first_name"
     t.text     "last_name"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.text     "state",      default: "active"
   end
 

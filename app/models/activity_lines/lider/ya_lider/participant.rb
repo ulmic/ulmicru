@@ -35,4 +35,8 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
   def esse
     fields.where(title: :esse).first
   end
+
+  def request_field(name)
+    fields.where(title: name).first
+  end
 end

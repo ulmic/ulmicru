@@ -192,6 +192,16 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :xls do
+    namespace :activity_lines do
+      namespace :lider do
+        namespace :ya_lider do
+          resources :participants, only: :index
+        end
+      end
+    end
+  end
+
   scope module: :files do
     resources :images, only: [] do
       collection do
