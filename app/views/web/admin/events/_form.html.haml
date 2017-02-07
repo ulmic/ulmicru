@@ -25,6 +25,7 @@
         = f.input :title, as: :hidden
       - else
         = f.input :title, as: :string
+      = hint :event, :description, place: :admin
       = f.input :description, as: :ckeditor
       = f.label :main_photo
       = link_to fa_icon(:link), new_redirect_rule_by_photo_path(@event_form.main_photo), class: 'btn btn-xs btn-success'
