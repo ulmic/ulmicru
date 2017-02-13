@@ -29,13 +29,6 @@ GIT
       rails (~> 4)
 
 GIT
-  remote: git://github.com/kalashnikovisme/xls-exporter.git
-  revision: d63718b9c5faf7be8d18c2ba55ed5a3241cdb06f
-  specs:
-    xls_exporter (0.1.0)
-      spreadsheet
-
-GIT
   remote: git://github.com/luizpicolo/youtube_rails.git
   revision: 18d102bafaf9f837455b8f7c7726f1b4aad80d79
   specs:
@@ -492,6 +485,8 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    xls_exporter (1.0.0)
+      spreadsheet
 
 PLATFORMS
   ruby
@@ -576,7 +571,7 @@ DEPENDENCIES
   virtus
   web-console (= 2.0.0.beta2)
   webmock
-  xls_exporter!
+  xls_exporter
   youtube_rails!
 
 RUBY VERSION
