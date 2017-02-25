@@ -11,7 +11,19 @@
       %th= model_class.human_attribute_name(:views)
       - if searching?
         %th= model_class.human_attribute_name(:state)
-      %th= model_class.human_attribute_name(:tags)
+      %th
+        = model_class.human_attribute_name(:tags)
+        %span{ data: { toggle: :popover, content: raw(render('web/admin/helps/tags/form')), html: :true, placement: :top, trigger: :focus }, title: t('activerecord.models.tag').pluralize(:ru) }
+          = link_to '#' do
+            = fa_icon('question-circle')
+        %br
+        %span{ data: { toggle: :popover, content: raw(render('web/admin/helps/tags/string')), html: :true, placement: :top, trigger: :focus }, title: t('enumerize.tag.tag_type.string') }
+          = link_to '#' do
+            = fa_icon "#{fa_model_association :string} 2x"
+        - Tag.target_type.values.each do |type|
+          %span{ data: { toggle: :popover, content: raw(render("web/admin/helps/tags/#{type.underscore}")), html: :true, placement: :left, trigger: :focus }, title: t("enumerize.tag.target_type.#{type}") }
+            = link_to '#' do
+              = fa_icon "#{fa_model_association type.underscore} 2x"
       %th=t 'helpers.links.actions'
   %tbody
     - news.each do |news|

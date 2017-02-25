@@ -5,19 +5,19 @@ class TagToolbar extends React.Component {
     return(<div className='btn-toolbar'>
       <div className='btn-group tag-buttons'>
         <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'string', 'none')}>
-          <span className='glyphicon glyphicon-font'></span>
+          <i className='fa fa-tag fa-2x'></i>
         </a>
         <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'link', 'member')}>
-          <span className='glyphicon glyphicon-user'></span>
+          <i className='fa fa-user fa-2x'></i>
         </a>
         <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'link', 'event')}>
-          <span className='glyphicon glyphicon-calendar'></span>
+          <i className='fa fa-calendar fa-2x'></i>
         </a>
         <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'link', 'activity_line')}>
-          <span className='glyphicon glyphicon-flag'></span>
+          <i className='fa fa-flag fa-2x'></i>
         </a>
           <a className="btn btn-xs btn-success" onClick={this.props.toolbarButtonOnClick.bind(null, 'link', 'team')}>
-            <span className='glyphicon glyphicon-bullhorn'></span>
+            <i className='fa fa-bullhorn fa-2x'></i>
           </a>
         </div>
     </div>)
