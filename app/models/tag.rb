@@ -12,7 +12,7 @@ class Tag < ActiveRecord::Base
 
   extend Enumerize
   enumerize :record_type, in: [ 'Article', 'News' ]
-  enumerize :target_type, in: [ 'ActivityLine', 'Event', 'Member', 'Team' ]
+  enumerize :target_type, in: [ 'Member', 'Event', 'ActivityLine', 'Team' ]
   enumerize :tag_type, in: [ :string, :link ]
 
   state_machine :state, initial: :active do

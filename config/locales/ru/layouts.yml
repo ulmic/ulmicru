@@ -1,0 +1,17 @@
+ru:
+  layouts:
+    web:
+      admin:
+        shared:
+          messages:
+            some_errors_was_found: Найдены ошибки при сохранении
+          places:
+            form:
+              title: Создать место на Foursquare
+              see_coordinates: Найти координаты
+              create_place: Добавить место
+        navbar:
+          people: Люди
+          activity: Деятельность
+          content: Контент
+          delivery: Рассылки
