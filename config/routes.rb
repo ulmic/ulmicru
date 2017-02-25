@@ -178,7 +178,7 @@ Rails.application.routes.draw do
       namespace :lider do
         resources :ya_liders, only: [ :show ]
         namespace :ya_lider do
-          resources :participants, only: :create
+          resources :participants, only: [ :create, :index ]
         end
       end
     end

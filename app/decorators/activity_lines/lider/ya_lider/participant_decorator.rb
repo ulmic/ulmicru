@@ -20,6 +20,10 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   def small_avatar
     object.user.avatar.small
   end
+  
+  def small_avatar_url
+    object.user.avatar.small.url
+  end
 
   def is_member?
     user.is_member? && user.member_confirmed?
@@ -28,4 +32,6 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   def contest_attributes
     [ :email_link, :locality, :school, :mobile_phone_link, :birth_date ]
   end
+
+  delegate :municipality, to: :user
 end
