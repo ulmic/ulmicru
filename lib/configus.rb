@@ -70,6 +70,11 @@ Configus.build Rails.env do
           end
         end
       end
+      lider do
+        ya_lider do
+          current_contest_number 15
+        end
+      end
     end
     people do
       headers do

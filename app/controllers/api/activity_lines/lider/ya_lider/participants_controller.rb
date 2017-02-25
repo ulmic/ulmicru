@@ -2,9 +2,10 @@ class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::Activity
   skip_before_filter :verify_authenticity_token, only: :create
   skip_before_filter :check_ya_lider_token, only: :index
   skip_before_filter :authenticate, only: :index
+  before_filter :ul_lider_access_control_origin
 
   def index
-    @participants = ::ActivityLines::Lider::YaLider::Participant.send(params[:scope]).decorate
+    @participants = ::ActivityLines::Lider::YaLider.current_contest.stage(params[:stage]).participants.active.decorate
     render json: @participants.decorated_to_json(only: [:name, :small_avatar_url, :municipality])
   end
 
