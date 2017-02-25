@@ -41,7 +41,7 @@ class Web::MembersControllerTest < ActionController::TestCase
   end
 
   test 'should get show for 100 members' do
-    tickets = Member.presented.map(&:ticket).compact.shuffle!.first 100
+    tickets = Member.presented.map(&:ticket).compact
     tickets.each do |ticket|
       get :show, ticket: ticket
       assert_response :success, ticket
