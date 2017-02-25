@@ -1,5 +1,11 @@
 class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::ActivityLines::Lider::YaLider::ApplicationController
   skip_before_filter :verify_authenticity_token, only: :create
+  skip_before_filter :check_ya_lider_token, only: :index
+
+  def index
+    @participants = ::ActivityLines::Lider::YaLider::Participant.send(params[:scope]).decorate
+    render json: @participants.decorated_to_json(only: [:name, :small_avatar_url, :municipality])
+  end
 
   def create
     params[:user] = JSON.parse params[:_json]
