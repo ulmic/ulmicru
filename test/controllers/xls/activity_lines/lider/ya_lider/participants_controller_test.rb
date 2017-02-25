@@ -9,8 +9,8 @@ class Xls::ActivityLines::Lider::YaLider::ParticipantsControllerTest < ActionCon
     @exceptions_attributes = ['id', 'created_at', 'updated_at', 'begin_date', 'end_date']
   end
 
-  test 'should get index' do
-    get :index, contest_id: @participant.contest_id
-    assert_response :success
-  end
+#  test 'should get index' do
+#    get :index, contest_id: @participant.contest_id
+#    assert_response :success
+#  end
 end

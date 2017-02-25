@@ -1,6 +1,7 @@
 class Api::ActivityLines::Lider::YaLider::ParticipantsController < Api::ActivityLines::Lider::YaLider::ApplicationController
   skip_before_filter :verify_authenticity_token, only: :create
   skip_before_filter :check_ya_lider_token, only: :index
+  skip_before_filter :authenticate, only: :index
 
   def index
     @participants = ::ActivityLines::Lider::YaLider::Participant.send(params[:scope]).decorate
