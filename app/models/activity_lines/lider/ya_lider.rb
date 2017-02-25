@@ -32,9 +32,17 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
     stages.order(:number).last
   end
 
+  def stage(number)
+    stages.where(number: number).first
+  end
+
   def current_stage
     stages.map do |stage|
       stage if stage.during?
     end.compact.first
+  end
+
+  def self.current_contest
+    where(contest_number: configus.activity_lines.lider.ya_lider.current_contest_number).first
   end
 end
