@@ -6,7 +6,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
 
   before_filter :choose_members, only: [ :new, :edit ]
   before_filter :choose_departaments, only: [ :new, :edit ]
-  before_filter :choose_teammates, only: [ :new, :edit ]
+  before_filter :choose_users, only: [ :new, :edit ]
   before_filter :choose_projects, only: [ :new, :edit ]
 
   def index
@@ -31,7 +31,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     else
       choose_members
       choose_departaments
-      choose_teammates
+      choose_users
       choose_projects
       @categories = Category.presented.decorate
       render action: :new
@@ -51,7 +51,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
     else
       choose_members
       choose_departaments
-      choose_teammates
+      choose_users
       choose_projects
       render action: :edit
     end

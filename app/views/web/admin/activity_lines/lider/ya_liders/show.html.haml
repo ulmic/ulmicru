@@ -47,7 +47,7 @@
             - @ya_lider.committee.members.decorate.each do |member|
               %tr
                 %td
-                  = image_tag member.small_avatar_url
+                  %img{ src: member.small_avatar_url, width: '100px' }
                 %td
                   = link_to member.short_name
       %hr
