@@ -27,6 +27,6 @@
       = f.input :state_event, as: :state_event
       = f.input :publicity
       = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }
-      = f.association :users, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, input_html: { class: :select2 }, collection: @teammates
+      = f.association :users, label_method: lambda { |member| "#{member.ticket} | #{member.first_name} #{member.last_name}" }, input_html: { class: :select2 }, collection: @users
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_teams_path, class: 'btn btn-default'
