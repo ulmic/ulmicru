@@ -36,7 +36,7 @@ class Web::Admin::ActivityLines::Corporative::MeritsController <
   def update
     @merit_form = ::ActivityLines::Corporative::MeritForm.find_with_model params[:id]
     if @merit_form.submit params[:activity_lines_corporative_merit]
-      redirect_to admin_activity_lines_corporative_merit_path @merit_form.model
+      redirect_to admin_activity_lines_corporative_merits_path
     else
       choose_users
       render action: :edit
