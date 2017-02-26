@@ -14,7 +14,7 @@
       %tr{ class: state_color(merit) }
         %td{ width: '67px' }
           = link_to merit.id, admin_activity_lines_corporative_merit_path(merit)
-        %td= link_to merit.user.short_name, admin_activity_lines_corporative_merit_path(merit)
+        %td= link_to merit.user.short_name, edit_admin_activity_lines_corporative_merit_path(merit)
         %td= merit.year
         - if searching?
           %td= merit.human_state_name
