@@ -1,4 +1,4 @@
-- honorables = ActivityLines::Corporative::Merit.honorary_members
+- honorables = ActivityLines::Corporative::Merit.order(:year).honorary_members
 .honorables.row
   %h1
     Почётный члены Молодёжного инициативного центра
