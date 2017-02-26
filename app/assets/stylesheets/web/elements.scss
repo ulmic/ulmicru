@@ -178,7 +178,7 @@ hr.orange {
     }
 }
 
-.mic-member-2 {
+.mic-member-2, .honorable-mic-member {
   @extend %mic-element;
   a {
     z-index: 0;
@@ -188,6 +188,24 @@ hr.orange {
     height: auto;
     z-index: 0;
   }
+}
+.honorable-mic-member {
+  .info {
+    margin-top: -80px;
+    .name, .year {
+      margin-bottom: -12px;
+      span {
+        font-size: 18pt;
+        width: 100%;
+        height: 50px;
+        color: white;
+        z-index: 88;
+        background-image: url(image-path('elements/dark_background.png'));
+      }
+    }
+  }
+}
+.mic-member-2 {
   .info {
     margin-top: -35px;
     .name {
@@ -201,6 +219,8 @@ hr.orange {
     }
   }
 }
+
+
 
 .mic-one-news {
 	@extend %mic-element;
