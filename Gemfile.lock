@@ -487,6 +487,7 @@ GEM
       hashdiff
     xls_exporter (1.0.0)
       spreadsheet
+    youtube_addy (1.0.4)
 
 PLATFORMS
   ruby
@@ -572,6 +573,7 @@ DEPENDENCIES
   web-console (= 2.0.0.beta2)
   webmock
   xls_exporter
+  youtube_addy
   youtube_rails!
 
 RUBY VERSION

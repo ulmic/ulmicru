@@ -17,6 +17,11 @@ Configus.build Rails.env do
       end
     end
     it_projects do
+      ulmicru do
+        google_analytics do
+          uid 'UA-21756849-1'
+        end
+      end
       ul_lider do
         full_name 'organization.projects.ul_lider'
         url 'http://ul-lider.ru'
@@ -31,6 +36,20 @@ Configus.build Rails.env do
         short_name "IT Way'#{DateTime.now.strftime('%y')}"
         url 'http://it-way.pro'
         ico 'organization/activity_lines/it/it_way.png'
+        google_analytics do
+          uid 'UA-77805512-1'
+        end
+        social_links do
+          vk 'http://vk.com/it_way'
+          twitter 'http://twitter.com/developerslogs'
+        end
+        links do
+          lider 'http://ul-lider.ru'
+          informat 'http://ulmic.ru/events/143'
+          iamvolunteer 'http://ulmic-volunteers-school.herokuapp.com'
+          aam 'http://ulmic.ru/events/69'
+          ulmic 'http://ulmic.ru'
+        end
       end
       karamzin do
         full_name 'organization.projects.karamzin.full_name'

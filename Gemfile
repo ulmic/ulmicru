@@ -71,6 +71,7 @@ gem 'kabal', '>= 1.3'
 gem 'youtube_rails', github: 'luizpicolo/youtube_rails'
 gem 'unicorn-rails'
 gem 'xls_exporter'
+gem 'youtube_addy'
 
 group :development, :test do
   gem 'byebug'
