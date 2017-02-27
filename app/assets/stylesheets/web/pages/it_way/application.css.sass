@@ -1,0 +1,172 @@
+/*
+ *= require select2
+ *= require select2-bootstrap
+ */
+
+@import 'bootstrap-sprockets'
+@import 'bootstrap'
+
+@font-face
+  font-family: 'mic'
+  src: font-url('PFBeauSansPro-Light.ttf')
+
+@font-face
+  font-family: 'mic-bold'
+  src: font-url('PFSquareSansPro-Medium.ttf')
+
+body
+  font-family: mic
+  width: 100%
+
+h1, h2, h3, h4, h5, h6
+  text-transform: uppercase
+  font-family: mic
+  font-weight: 900
+
+.navbar-brand
+  display: none
+
+ul.nav.navbar-nav
+  li.dropdown
+    ul.dropdown-menu
+      li
+        a
+          color: black
+.social
+  a
+    img
+      height: 100px
+
+.copyright
+  a
+    color: #333 !important
+
+section
+  padding-top: 0px
+
+a.btn.btn-branded
+  border: 1px solid rgb(242, 111, 33)
+  border-radius: 3px
+  &:hover
+    border-color: #333
+
+
+.link
+  cursor: pointer
+
+@keyframes social-vk-right
+  from
+    right: 0px
+  to
+    right: 300px
+
+@-webkit-keyframes social-vk-right
+  from
+    right: 0px
+  to
+    right: 300px
+
+@keyframes social-twitter-right
+  from
+    right: 0px
+  to
+    right: 146px
+
+@-webkit-keyframes social-twitter-right
+  from
+    right: 0px
+  to
+    right: 146px
+
+.mainpage-social
+  z-index: 100
+  position: fixed
+  top: 40%
+  right: -4px
+  width: 4.5em
+  height: 4.5em
+
+  .social-icon
+    &.vk
+      &:hover
+        animation: social-vk-right 1s 1 normal forwards
+        -webkit-animation: social-vk-right 1s 1 normal forwards
+      width: 370px
+      background-color: #45668e
+      .icon
+        display: inline-flex
+        padding: 0 5px
+      .label
+        font-size: 25px
+        background-color: white
+        margin: auto 20px
+    &.twitter
+      &:hover
+        animation: social-twitter-right 1s 1 normal forwards
+        -webkit-animation: social-twitter-right 1s 1 normal forwards
+        right: 146px
+      width: 216px
+      background-color: #55acee
+      .icon
+        display: inline-flex
+        padding: 0 5px
+      .label
+        font-size: 25px
+        background-color: #55acee
+        margin: auto 20px
+    a
+      text-decoration: none
+      color: white
+    position: relative
+    display: block
+    border: none !important
+    text-align: center
+    cursor: pointer
+.bg-primary
+  &.services, &.price
+    background-color: #00c6f7
+  .text-primary
+    color: #00c6f7
+
+footer
+  padding-bottom: 0 !important
+
+.famous
+  border-radius: 50%
+  width: 100%
+
+.navbar-brand
+  img
+    height: 35px
+    margin-top: 7px
+
+.row
+  &.plaha
+    margin-left: 2.5%
+    margin-right: 2.5%
+  &.header
+    padding-bottom: 20px
+    margin-left: 2.5%
+    margin-right: 2.5%
+
+section
+  &#about
+    padding-top: 20px
+
+@media (max-width: 768px)
+  .mainpage-social
+    display: none
+
+@media (max-width: 420px)
+  .header
+    padding-top: 15px
+    h1
+      font-size: 25px !important
+  .programming, .design, .steel, .career_guidance
+    h1
+      font-size: 25px !important
+
+.alert
+  a
+    text-decoration: underline
+    color: white
