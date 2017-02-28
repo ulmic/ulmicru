@@ -63,7 +63,7 @@ class Web::Admin::ActivityLines::Corporative::MeritsControllerTest < ActionContr
     attributes = attributes_for :activity_lines_corporative_merit
     patch :update, activity_lines_corporative_merit: attributes, id: @merit
     assert_response :redirect, @response.body
-    assert_redirected_to admin_activity_lines_corporative_merit_path @merit
+    assert_redirected_to admin_activity_lines_corporative_merits_path
     @merit.reload
     @merit.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], @merit.send(key), key
