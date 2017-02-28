@@ -1,11 +1,10 @@
 %html
   %head
-    = render 'layouts/web/shared/head'
+    = render 'layouts/web/activity_lines/lider/shared/head'
   %body
-    = render 'layouts/web/shared/navbar'
+    = render 'layouts/web/activity_lines/lider/shared/navbar'
     = yield :top_social_buttons
     .container
-      = bootstrap_flash
       #content
         %h2= yield :header
         = yield
