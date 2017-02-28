@@ -15,8 +15,10 @@ class ApplicationController < ActionController::Base
   private
 
   def redirect_to_another_main_page
-    if request.host != configus.host.split(':')[0] && request.path != main_page_of(request.host)
-      redirect_to main_page_of request.host
+    unless Rails.env.test?
+      if request.host != configus.host.split(':')[0] && request.path != main_page_of(request.host)
+        redirect_to main_page_of request.host
+      end
     end
   end
 

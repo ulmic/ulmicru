@@ -50,6 +50,9 @@ Rails.application.routes.draw do
           resources :questions, only: :create
         end
       end
+      namespace :lider do
+        resources :ya_liders, only: :show
+      end
     end
     namespace :admin do
       resources :users, except: :show
