@@ -4,11 +4,11 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{ href: root_path }
+    %a.navbar-brand{ href: main_page_of(request.host) }
       = image_tag 'organization/activity_lines/lider/ya-lider-black.png', class: 'navbar-header-image'
       %span
-        = t('application.attributes.name')
+        = @contest.short_name
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
       = menu_item '/pages/provision' do
-        = t('contest.definition')
+        = @contest.model.class.human_attribute_name(:provision)

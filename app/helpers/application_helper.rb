@@ -2,6 +2,7 @@ module ApplicationHelper
   include Concerns::AuthManagment
   include ActionView::Helpers
   include DatesHelper
+  include Concerns::ItProjectsConcern
 
   def title(page_title = default_title, area = :default)
     if area != :default
