@@ -1,0 +1,10 @@
+%title
+  = yield :title
+= yield :meta
+%meta(charset='utf-8')
+%meta(http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1')
+%meta(name='viewport' content='width=device-width, initial-scale=1.0')
+= favicon_link_tag 'favicon.ico'
+= javascript_include_tag 'web/activity_lines/lider/application'
+= stylesheet_link_tag 'web/activity_lines/lider/application'
+= csrf_meta_tags

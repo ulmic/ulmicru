@@ -1,0 +1,157 @@
+@import 'bootstrap-sprockets'
+@import 'bootstrap'
+
+$persic_color: #fac416
+$contest_color: #ffae00
+
+body
+  color: black
+
+h1, h2, h3, h4, h5, h6
+  color: black
+
+.link
+  cursor: pointer
+
+@font-face
+  font-family: bold_mic_font
+  src: font-url('PFSquareSansPro-Medium.ttf')
+
+@font-face
+  font-family: mic_font
+  src: font-url('PFBeauSansPro-Light.ttf')
+
+body
+  font-family: mic_font
+
+footer
+  a
+    color: $contest_color
+    &:hover
+      color: $contest_color
+  .logo
+    float: left
+    img
+      width: 100%
+  img.store_logo
+    width: 100%
+  .col-md-1,
+  .col-md-2,
+  .col-md-3,
+  .col-md-4,
+  .col-md-5,
+  .col-md-6,
+  .col-md-7,
+  .col-md-8,
+  .col-md-9,
+  .col-md-10,
+  .col-md-11,
+  .col-md-12
+    margin-bottom: 10px
+
+.boolean
+  input[type="checkbox"]
+    margin: 10px
+    width: 18px
+    height: 18px
+  label
+    &:not(.control-label)
+      margin-bottom: -25px
+
+.pluso-more
+  display: none !important
+.pluso-wrap
+  div
+    background-color: $contest_color !important
+.navbar
+  background-color: linear-gradient(#fecb01, #ffae00)
+  background: linear-gradient(to bottom, #fecb01 0%, #ffae00 100%)
+  border-radius: 0px
+  box-shadow: none
+.navbar-default
+  .navbar-nav
+    li
+      a
+        color: black
+    .active
+      a,
+      a:hover
+        background-color: #E7AF00
+.navbar-brand
+  width: 189px
+  img
+    float: left
+    margin-top: -15px
+    height: 50px
+    margin-right: 5px
+  span
+    padding-top: 30px
+    height: 100%
+    color: black
+.navbar-header-image
+  height: 60px
+  margin-top: 2px
+.nav-tabs
+  li.active
+    a
+      box-shadow: none
+      &:hover
+        box-shadow: none
+      &:focus
+        border: none
+.body
+  ul
+    &.fr-tag
+      padding-left: 55%
+.notification
+  background-color: white
+  padding-top: 2px
+  padding-bottom: 2px
+  padding-right: 2px
+  padding-left: 2px
+@media (max-width: 992px)
+  footer
+    img.store_logo
+      width: 100%
+    .logo
+      img
+        height: 100%
+        width: auto
+    .col-md-1,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12
+      width: 49%
+      height: 185px
+      float: left
+.btn
+  background-image: linear-gradient($persic_color, $contest_color)
+  border: 1px solid #facb01
+  color: black
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1)
+  box-shadow: none
+  &:hover
+    color: black
+    border-color: $contest_color
+    background-color: $persic_color
+  &.btn-very-lg
+    font-size: 15pt
+.body
+  ul
+    &.fr-tag
+      padding-left: 25px
+.top_social_buttons
+  float: right
+  margin-top: -17px
+  margin-right: -5px
+
+input.numeric
+  border-bottom: 1px solid #666
