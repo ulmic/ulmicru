@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def redirect_to_another_main_page
+    binding.pry
+  end
+
   def get_categories
     @categories_tree = Category.get_tree
   end
