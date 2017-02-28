@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_another_main_page
     unless Rails.env.test?
-      if request.host.include? 'it-way.pro' && request.path != main_page_of(request.host)
+      if request.host.include?('it-way.pro') && request.path != main_page_of(request.host)
         redirect_to main_page_of request.host
       end
     end
