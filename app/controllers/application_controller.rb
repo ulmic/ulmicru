@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def redirect_to_another_main_page
-    unless request.host == configus.host.split(':')[0]
+    if request.host == 'it-way.pro'
       redirect_to main_page_of request.host
     end
   end
