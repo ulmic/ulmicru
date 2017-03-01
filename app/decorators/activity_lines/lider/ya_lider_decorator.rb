@@ -9,6 +9,10 @@ class ActivityLines::Lider::YaLiderDecorator < ApplicationDecorator
     full_title
   end
 
+  def short_name
+    'Я-лидер!'
+  end
+
   alias title full_title
 
   def self.collections

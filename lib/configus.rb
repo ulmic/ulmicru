@@ -26,6 +26,9 @@ Configus.build Rails.env do
         full_name 'organization.projects.ul_lider'
         url 'http://ul-lider.ru'
         ico 'organization/activity_lines/lider/ya-lider.png'
+        chrome_extension do
+          url 'https://chrome.google.com/webstore/detail/%D1%8F-%D0%BB%D0%B8%D0%B4%D0%B5%D1%80/lehbmnengpcoaledhaodhjcmibleffmd/'
+        end
       end
       international_volunteer_school do
         full_name 'organization.projects.international_volunteer_school'
@@ -114,6 +117,10 @@ Configus.build Rails.env do
     end
     documents do
       confession_position 4
+    end
+    sites do
+      ulnc 'http://ulnc.ru'
+      ministry_of_edu 'http://mo73.ru/'
     end
   end
 
