@@ -7,11 +7,11 @@ module Organization
       def news
         { 
           review: (press_center_lead + departaments_curators + User.tech_admins).uniq,
-          index: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          new: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          create: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          edit: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          update: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq
+          index: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          new: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          create: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          edit: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          update: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq
         }
       end
 
@@ -32,11 +32,11 @@ module Organization
       def event
         { 
           review: (departaments_curators + User.tech_admins).uniq,
-          index: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          new: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          create: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          edit: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq,
-          update: (departaments_headers + User.tech_admins + current_ya_lider_committee).uniq
+          index: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          new: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          create: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          edit: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          update: (departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq
         }
       end
 
@@ -82,25 +82,25 @@ module Organization
 
       def letter
         {
-          index: departaments_headers,
-          new: departaments_headers,
-          create: departaments_headers,
-          edit: departaments_headers,
-          update: departaments_headers
+          index: departaments_headers + primaries_headers,
+          new: departaments_headers + primaries_headers,
+          create: departaments_headers + primaries_headers,
+          edit: departaments_headers + primaries_headers,
+          update: departaments_headers + primaries_headers
         }
       end
 
       def welcome
-        { see: (departaments_headers + current_ya_lider_committee).uniq }
+        { see: (departaments_headers + primaries_headers + current_ya_lider_committee).uniq }
       end
 
       def place
         { 
-          index: departaments_headers,
-          new: departaments_headers,
-          create: (departaments_headers + User.tech_admins + User.admins + User.authors).uniq,
-          edit: departaments_headers,
-          update: departaments_headers,
+          index: departaments_headers + primaries_headers,
+          new: departaments_headers + primaries_headers,
+          create: (departaments_headers + primaries_headers + User.tech_admins + User.admins + User.authors).uniq,
+          edit: departaments_headers + primaries_headers,
+          update: departaments_headers + primaries_headers,
           review: User.tech_admins
         }
       end
