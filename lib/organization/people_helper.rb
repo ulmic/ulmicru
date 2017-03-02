@@ -31,5 +31,9 @@ module Organization
     def departaments_headers
       @departaments_headers ||= User.where(id: Position.current_positions.where('title LIKE \'Руководитель местного отделения%\'').map(&:member_id))
     end
+
+    def primaries_headers
+      @primaries_headers ||= User.where(id: Position.current_positions.where('title LIKE \'Руководитель первичной организации%\'').map(&:member_id))
+    end
   end
 end
