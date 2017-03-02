@@ -1,4 +1,6 @@
 class Api::Admin::TagsController < Api::Admin::ApplicationController
+  skip_before_filter :authenticate_admin!
+
   def index
     if params[:record_id].present?
       @tags = Tag.active.where(record_id: params[:record_id], record_type: params[:record_type].capitalize)

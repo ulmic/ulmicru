@@ -1,5 +1,6 @@
 class Api::Admin::MembersController < Api::Admin::ApplicationController
   AVAILABLE_CONDITIONS = [ 'without_debut', 'without_number_one' ]
+  skip_before_filter :authenticate_admin!
 
   def index
     if params[:q].present?
