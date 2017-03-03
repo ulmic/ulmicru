@@ -52,6 +52,9 @@ Rails.application.routes.draw do
       end
       namespace :lider do
         resources :ya_liders, only: :show
+        namespace :ya_lider do
+          resources :stages, only: :show
+        end
       end
     end
     namespace :admin do
