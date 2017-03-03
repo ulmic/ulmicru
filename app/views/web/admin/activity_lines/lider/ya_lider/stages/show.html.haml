@@ -9,7 +9,7 @@
     = link_to t('helpers.links.back'), admin_activity_lines_lider_ya_lider_path(@stage.contest), class: 'btn btn-default'
   = render 'web/admin/default/search', model_class: ActivityLines::Lider::YaLider::Participant
 .row
-  = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants
+  = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants, for_partial: :stage_show
 .row
   - if @stage.is_the_first?
     = link_to t('helpers.links.add'), new_admin_activity_lines_lider_ya_lider_participant_path(activity_lines_lider_ya_lider_particpant: { contest_id: @stage.contest_id }), class: 'btn btn-success'
