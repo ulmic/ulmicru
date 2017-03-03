@@ -1,0 +1,19 @@
+%footer
+  %br
+    .row
+      .col-md-1.logo
+        = link_to "http://ulmic.ru" do
+          = image_tag 'apps/logo-mic-square.png'
+      .col-md-4
+        &copy
+        = copyright_notice_year_range 2013
+        = t('organization.short_name')
+        %br
+        = link_to 'http://ulmic.ru', 'http://ulmic.ru', target: '_blank'
+        %br
+        = link_to t('application.developers'), 'https://github.com/ulmic', target: '_blank'
+        %br
+        = link_to t('application.github_link'), 'https://github.com/ulmic/ul-lider', target: '_blank'
+      .col-md-3.col-md-offset-3
+        = link_to configus.it_projects.ul_lider.chrome_extension.url, target: "_blank" do
+          = image_tag 'activity_lines/lider/ya_lider/availale_in_chrome_web_store.png', class: :store_logo

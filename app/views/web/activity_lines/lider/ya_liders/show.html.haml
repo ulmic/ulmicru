@@ -52,11 +52,11 @@
       Организаторы конкурса
     Организаторами XIV конкурса «Я-лидер» выступают:
     %br
-    = link_to t('contest.organization_short_title'), configus.host, target: '_blank'
+    = link_to t('organization.title'), configus.host, target: '_blank'
     %br
-    = link_to t('contest.partners.new_civilization_short_title'), configus.sites.ulnc, target: '_blank'
+    = link_to t('ul_lider.contest.partners.new_civilization_short_title'), configus.sites.ulnc, target: '_blank'
     %br
-    = link_to t('contest.partners.ministry_of_education'), configus.sites.ministry_of_edu, target: '_blank'
+    = link_to t('ul_lider.contest.partners.ministry_of_education'), configus.sites.ministry_of_edu, target: '_blank'
 .row.plaha
   .col-md-6.text.left
     .title
@@ -78,7 +78,7 @@
 .row
   .social_buttons
     %span
-      = t('.share_us')
+      = t('helpers.share_us')
     %br
     = render 'web/activity_lines/lider/ya_liders/shared/social_buttons'
 
