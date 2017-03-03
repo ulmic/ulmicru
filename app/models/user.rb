@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :teams
   has_many :merits, class_name: 'ActivityLines::Corporative::Merit'
+  has_many :ya_lider_participations, class_name: 'ActivityLines::Lider::YaLider::Participation'
 
   validates :email, email: true,
                     allow_blank: true

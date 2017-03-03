@@ -159,6 +159,10 @@ ru:
             form:
               ask_your_question: Задайте свой вопрос
               anonym: Анонимно?
+      lider:
+        ya_liders:
+          show:
+            participants: Участники конкурса
     sessions:
       new:
         title: Авторизация
