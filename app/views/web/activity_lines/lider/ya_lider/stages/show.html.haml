@@ -1,0 +1,6 @@
+- title @stage.full_title
+.page-header
+  %h1
+    = @stage.full_title
+.row
+  = render 'web/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants, for_partial: :stage_show

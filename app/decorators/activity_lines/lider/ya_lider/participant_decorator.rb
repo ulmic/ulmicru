@@ -34,4 +34,5 @@ class ActivityLines::Lider::YaLider::ParticipantDecorator < ApplicationDecorator
   end
 
   delegate :municipality, to: :user
+  delegate :short_name, to: :user
 end
