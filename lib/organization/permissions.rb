@@ -149,8 +149,8 @@ module Organization
         {
           index: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
           show: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
-          new: (lider_lead + User.tech_admins).uniq,
-          create: (lider_lead + User.tech_admins).uniq,
+          new: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
+          create: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
           edit: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq,
           update: (lider_lead + current_ya_lider_committee + User.tech_admins.uniq)
         }
