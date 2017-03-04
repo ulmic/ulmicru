@@ -6,6 +6,8 @@
     .large-12.columns
       %h1
         Премель и команда
+      %h6
+        Информация о действенных практиках получения помощи с другой стороны
       %hr
   .sidebar_button
     = fa_icon 'bars 2x'
@@ -103,7 +105,7 @@
   .row
     .large-12.columns
       - Page.where(id: [10, 11, 12, 13, 14, 15]).each do |page|
-        = link_to page_page_path(page), class: 'page_link' do
+        = link_to page_page_path(page.slug), class: 'page_link' do
           .large-4.columns
             %div{ id: "page_#{page.id}" }
               %span
