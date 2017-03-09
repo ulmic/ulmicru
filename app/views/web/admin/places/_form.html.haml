@@ -16,5 +16,6 @@
       = f.input :foursquare_uid, as: :string
       = f.input :latitude, as: :string
       = f.input :longitude, as: :string
+      = f.input :url, as: :string
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'
