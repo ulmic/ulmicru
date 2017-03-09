@@ -6,19 +6,17 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:description)
-      %th= model_class.human_attribute_name(:foursquare_uid)
-      %th= model_class.human_attribute_name(:coordinates)
+      %th= model_class.human_attribute_name(:url)
       - if searching?
         %th= model_class.human_attribute_name(:state)
       %th= t 'helpers.links.actions'
   %tbody
     - places.each do |place|
-      %tr.link{ class: state_color(place), data: { href: edit_admin_place_path(place) } }
+      %tr{ class: state_color(place) }
         %td= place.id
-        %td= place.title
+        %td= link_to place.title, edit_admin_place_path(place)
         %td= place.description
-        %td= place.foursquare_uid
-        %td= place.coordinates
+        %td= link_to "#{place.url.first(50)}...", place.url, class: :blank
         - if searching?
           %td= place.human_state_name
         %td.actions
