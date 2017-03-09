@@ -21,12 +21,16 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
   end
 
   def next_stage
-    contest.stages.where(number: number + 1).first
+    @next_stage ||= contest.stages.where(number: number + 1).first
   end
 
   def current_participants
-    participants.active.map do |participant|
-      participant unless participant.participations.active.where(stage_id: next_stage.id).any?
-    end.compact.map &:decorate
+    if next_stage.present?
+      @participants ||= participants.active.map do |participant|
+        participant unless participant.participations.active.where(stage_id: next_stage.id).any?
+      end.compact.map(&:decorate)
+    else
+      []
+    end
   end
 end
