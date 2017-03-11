@@ -13,6 +13,8 @@ module Web::Admin::MenuHelper
         item.values.first.map do |type|
           permitted_to?(:review, type) || permitted_to?(:index, type)
         end
+      else
+        permitted_to?(:review, item) || permitted_to?(:index, item)
       end
     end.flatten.include? true
   end
