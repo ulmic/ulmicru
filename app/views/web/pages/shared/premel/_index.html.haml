@@ -104,11 +104,16 @@
           Все 8 лет я учила всех вокруг бесплатно и была наказана - получила инсульт. Теперь хочу предложить всем, кто хочет воспользоваться этими практиками, оплатить их получение. Пусть это будет вашей мотивацией для использования опыта на практике. Цена не соизмерима с полученными знаниями. 500 рублей.
   .row
     .large-12.columns
-      - Page.where(id: [10, 11, 12, 13, 14, 15]).each do |page|
+      - Page.where(id: [10, 11, 12, 13, 14]).each do |page|
         = link_to page_page_path(page.slug), class: 'page_link' do
           .large-4.columns
             %div{ id: "page_#{page.id}" }
               %span
                 = page.title
+      = link_to '/pages/family_tree.pdf', class: 'page_link' do
+        .large-4.columns
+          %div{ id: :page_15 }
+            %span
+              Генеалогическое древо
 .background-div
 .blackout
