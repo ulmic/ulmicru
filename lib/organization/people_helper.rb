@@ -20,6 +20,10 @@ module Organization
       Position.current_positions.where(title: 'Куратор местных отделений').map &:member
     end
 
+    def chairman
+      @chairman ||= Member.where(id: Position.current_positions.where(title: 'Председатель').map(&:member_id))
+    end
+
     def vice_chairmen
       @vice_chairmen ||= Member.where(id: Position.current_positions.where(title: 'Заместитель председателя').map(&:member_id))
     end
