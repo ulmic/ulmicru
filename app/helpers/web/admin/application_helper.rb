@@ -91,4 +91,10 @@ module Web::Admin::ApplicationHelper
       end
     end
   end
+
+  def events_hash(events)
+    events.reduce({}) do |events_hash, event|
+      events_hash.merge! event.title => event.id
+    end
+  end
 end
