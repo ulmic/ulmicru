@@ -91,7 +91,7 @@ module Organization
       end
 
       def welcome
-        { see: (departaments_headers + primaries_headers + current_ya_lider_committee).uniq }
+        { see: (departaments_headers + deputy_departaments_headers + primaries_headers + current_ya_lider_committee).uniq }
       end
 
       def place
