@@ -1,8 +1,10 @@
 $ ->
-  $('#event-lead-more-info').on 'click', ->
-    $(this).find('.hide-all').toggleClass 'hide'
-    $(this).find('.show-all').toggleClass 'hide'
-    $('.more-lead-info').toggleClass 'viewed'
+  $('#event-lead-more-info').on 'click', (e) ->
+    e.preventDefault()
+    if $('.more-lead-info').is(':visible')
+      $('.more-lead-info').slideUp()
+    else
+      $('.more-lead-info').slideDown()
     $('.event-container').toggleClass 'more-info-viewed'
 
   $ $ask_question = $('.ask-question')

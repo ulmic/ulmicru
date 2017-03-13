@@ -68,22 +68,22 @@
             = t('helpers.share')
           %br
           = render 'layouts/web/shared/social_sharing', counter: false
-.more-lead-info.container
-  .row.large-collapse
+.row.more-lead-info.container{ style: 'display: none' }
+  .large-collapse
     .small-8.columns
-      .more-lead-info-content
+      .more-lead-info-content#description
         != @event.description
 - if @event.is_online_conference?
-  .event-content.container
+  .row.event-content.container
     .row
       .small-9.columns
         .youtube_video
           != YouTubeRails.youtube_embed_url(@event.online_conference.video_link, 420, 315, ssl: true)
-  .event-content.container.ask-question
+  .row.event-content.container.ask-question
     .row
       .small-6.columns
         = render 'web/activity_lines/corporative/online_conferences/questions/form'
-  .event-content.container
+  .row.event-content.container
     .questions-container
       - if params[:notice].present?
         .panel
@@ -112,7 +112,7 @@
             .small-9.columns.end
               = fa_icon 'question-circle'
               = question.text
-.event-content.container
+.row.event-content.container
   .participans-container
     %h3.title
       = t('.attenders')
