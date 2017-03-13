@@ -1,4 +1,6 @@
 class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::ActivityLines::ApplicationController
+  before_filter :choose_events, only: [ :new,  :edit ]
+
   def index
     if params[:search]
       ya_liders = ActivityLines::Lider::YaLider.search_everywhere params[:search]
@@ -33,6 +35,7 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
       Token.create! record_type: 'ActivityLines::Lider::YaLider', record_id: @ya_lider_form.model.id 
       redirect_to admin_activity_lines_lider_ya_liders_path
     else
+      choose_events
       render action: :new
     end
   end
@@ -46,6 +49,8 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
     if @ya_lider_form.submit params[:activity_lines_lider_ya_lider]
       redirect_to edit_admin_activity_lines_lider_ya_lider_path @ya_lider_form.model
     else
+      choose_events
+      render action: :new
       render action: :edit
     end
   end
@@ -54,5 +59,11 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
     @ya_lider = ::ActivityLines::Lider::YaLider.find params[:id]
     @ya_lider.remove
     redirect_to admin_activity_lines_lider_ya_liders_path
+  end
+
+  private
+
+  def choose_events
+    @events = Event.presented
   end
 end

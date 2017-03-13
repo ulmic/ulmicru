@@ -155,29 +155,17 @@ $slopy-height: 140px;
 .more-lead-info {
   margin-left: $event-lead-margin;
   background-color: #fff;
-
-  // TODO need autoprefixer
-  transition: transform 0.3s ease-out;
-  transform-origin: 0 0;
-  transform: translateY( -118px ) rotateX( -90deg ) rotateY(-5.6deg);
 }
 .more-lead-info-content {
-  max-height: 0px;
-  transition: max-height 0.3s ease-out;
   margin-top: 20px;
   font-size: rem-calc(18);
   color: #333;
+  float: left;
   a {
     color: #fc9727;
     &:hover {
       color: #333;
     }
-  }
-}
-.more-lead-info.viewed {
-  transform: translateY( -60px ) rotateX( 0deg ) rotateY(0deg);
-  .more-lead-info-content {
-    max-height: 3000px;
   }
 }
 

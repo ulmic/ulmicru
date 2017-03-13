@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227112316) do
+ActiveRecord::Schema.define(version: 20170311205919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,14 @@ ActiveRecord::Schema.define(version: 20170227112316) do
     t.integer  "event_id"
   end
 
+  create_table "activity_lines_lider_events_ya_liders", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "activity_lines_lider_ya_lider_id"
+    t.text     "association_type"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
   create_table "activity_lines_lider_ya_lider_participant_fields", force: :cascade do |t|
     t.integer  "participant_id"
     t.text     "title"
@@ -121,6 +129,7 @@ ActiveRecord::Schema.define(version: 20170227112316) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.text     "provision"
+    t.integer  "fair_idea_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -277,6 +286,12 @@ ActiveRecord::Schema.define(version: 20170227112316) do
     t.integer  "activity_line_id"
     t.integer  "organizer_id"
     t.text     "organizer_type"
+  end
+
+  create_table "events_activity_lines_lider_ya_liders_tables", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "activity_lines_lider_ya_lider_id"
+    t.text    "association_type"
   end
 
   create_table "events_places", force: :cascade do |t|
