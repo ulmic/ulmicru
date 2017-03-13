@@ -46,4 +46,8 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
   def self.current_contest
     where(contest_number: configus.activity_lines.lider.ya_lider.current_contest_number).first
   end
+
+  def fair_idea
+    events.where(association_type: :fair_idea).first.event
+  end
 end
