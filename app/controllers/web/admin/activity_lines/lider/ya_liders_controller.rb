@@ -64,6 +64,6 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
   private
 
   def choose_events
-    @events = Event.presented
+    @events = Event.presented.reverse
   end
 end

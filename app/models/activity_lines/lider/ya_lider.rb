@@ -3,7 +3,7 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
   has_many :tokens, as: :record, dependent: :destroy
   has_one :committee, as: :project, class_name: 'Team::Committee'
   has_many :participants, class_name: 'ActivityLines::Lider::YaLider::Participant', foreign_key: :contest_id
-  has_and_belongs_to_many :events, through: :activity_lines_lider_events_ya_liders
+  has_many :events, class_name: '::ActivityLines::Lider::EventsYaLider'
 
   validates :contest_number, presence: true, uniqueness: { scope: :state }
   validates :contest_year, presence: true, uniqueness: { scope: :state }

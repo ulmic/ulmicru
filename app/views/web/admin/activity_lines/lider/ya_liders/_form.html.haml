@@ -15,6 +15,8 @@
       = f.input :contest_number, as: :string
       = f.input :state_event, as: :state_event
       = f.input :provision, as: :ckeditor
-      = f.input :fair_idea_id, as: :select, collection: events_hash(@events), input_html: { class: :select2 }
+      = f.label :fair_idea
+      = f.simple_fields_for :activity_lines_lider_events_ya_liders do |ff|
+        = ff.input :event_id, as: :select, collection: events_hash(@events), input_html: { class: :select2 }, label: false
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_activity_lines_lider_ya_liders_path, class: 'btn btn-default'
