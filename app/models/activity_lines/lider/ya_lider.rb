@@ -3,7 +3,7 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
   has_many :tokens, as: :record, dependent: :destroy
   has_one :committee, as: :project, class_name: 'Team::Committee'
   has_many :participants, class_name: 'ActivityLines::Lider::YaLider::Participant', foreign_key: :contest_id
-  has_and_belongs_to_many :events, through: :activity_lines_lider_events_ya_liders
+  has_many :events, class_name: '::ActivityLines::Lider::EventsYaLider'
 
   validates :contest_number, presence: true, uniqueness: { scope: :state }
   validates :contest_year, presence: true, uniqueness: { scope: :state }
@@ -45,5 +45,9 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
 
   def self.current_contest
     where(contest_number: configus.activity_lines.lider.ya_lider.current_contest_number).first
+  end
+
+  def fair_idea
+    events.where(association_type: :fair_idea).first.event
   end
 end

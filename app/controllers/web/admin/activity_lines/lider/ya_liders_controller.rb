@@ -12,6 +12,7 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
 
   def new
     @ya_lider_form = ::ActivityLines::Lider::YaLiderForm.new_with_model
+    @ya_lider_form.build_fair_idea!
   end
 
   def show
@@ -42,6 +43,7 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
 
   def edit
     @ya_lider_form = ::ActivityLines::Lider::YaLiderForm.find_with_model params[:id]
+    @ya_lider_form.build_fair_idea!
   end
 
   def update
@@ -64,6 +66,6 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
   private
 
   def choose_events
-    @events = Event.presented
+    @events = Event.presented.reverse
   end
 end
