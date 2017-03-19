@@ -2,6 +2,7 @@
 .page-header
   %h2
     = @ya_lider.full_title
+    = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_path(@ya_lider), class: 'btn btn-warning'
 .tabs
   %ul.nav.nav-tabs{ role: :tablist }
     %li{ class: (:active if (params[:tab] == 'current_participants' || params[:tab].nil?)) }
