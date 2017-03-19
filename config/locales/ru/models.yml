@@ -297,6 +297,8 @@ ru:
       protocol:
         title: Название
         team_id: Команда
+        team: Команда
+        document: Документ
         scan: Скан
         file: Файл
     errors:
