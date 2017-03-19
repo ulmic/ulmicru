@@ -3,8 +3,12 @@ import React from 'react'
 class Label extends React.Component {
   constructor(props) {
     super(props)
+    let checked = false
+    if (this.props.checked != undefined) {
+      checked = this.props.checked 
+    }
     this.state = {
-      checked: false
+      checked: checked
     }
     this.request = this.request.bind(this)
   }

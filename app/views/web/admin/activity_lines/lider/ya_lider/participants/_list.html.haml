@@ -30,7 +30,7 @@
           - if defined?(options)
             - if options.include? :fair_idea
               - if participant.contest.fair_idea.present?
-                = react_component 'Label', url: api_admin_event_registrations_path, data: { event_registration: { user_id: participant.user.id, event_id: participant.contest.fair_idea.id } }, text: t('activerecord.attributes.activity_lines/lider/ya_lider.fair_idea'), method: :post, color: :success
+                = react_component 'Label', url: api_admin_event_registrations_path, data: { event_registration: { user_id: participant.user.id, event_id: participant.contest.fair_idea.id } }, text: t('activerecord.attributes.activity_lines/lider/ya_lider.fair_idea'), method: :post, color: :success, checked: participant.is_participant_of_fair_idea?
         %td.actions
           - if defined?(options)
             - if options.include? :stage_show
