@@ -48,6 +48,6 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
   end
 
   def fair_idea
-    events.where(association_type: :fair_idea).first.event
+    events.where(association_type: :fair_idea).first&.event
   end
 end
