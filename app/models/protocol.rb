@@ -22,6 +22,6 @@ class Protocol < ActiveRecord::Base
 
   # NOTE we don't need document association
   def document
-    ::Document.find document_id
+    ::Document.find document_id if document_id.present?
   end
 end

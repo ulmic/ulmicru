@@ -12,11 +12,13 @@
       %th= t 'helpers.links.actions'
   %tbody
     - protocols.each do |protocol|
-      %tr{ class: state_color(protocol) }
+      %tr{ class: protocol_color(protocol) }
         %td= protocol.id
         %td= protocol.title
-        %td= protocol.team.title
-        %td= link_to protocol.document.title, protocol.document.file.url
+        %td= protocol.team&.title
+        %td
+          - if protocol.document_id.present?
+            = link_to protocol.document&.title, protocol.document&.file&.url
         - if searching?
           %td= protocol.human_state_name
         %td.actions
