@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313212317) do
+ActiveRecord::Schema.define(version: 20170319164245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -455,6 +455,17 @@ ActiveRecord::Schema.define(version: 20170313212317) do
     t.text     "for_now"
     t.text     "state"
     t.text     "status",     default: "confirmed"
+  end
+
+  create_table "protocols", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "team_id"
+    t.integer  "document_id"
+    t.text     "scan"
+    t.text     "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "number"
   end
 
   create_table "redirect_rules", force: :cascade do |t|
