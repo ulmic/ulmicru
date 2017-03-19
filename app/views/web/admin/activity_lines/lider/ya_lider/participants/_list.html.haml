@@ -9,13 +9,16 @@
       - if searching?
         %th= model_class.human_attribute_name(:state)
       %th=t 'helpers.links.actions'
+      %th
   %tbody
     - activity_lines_lider_ya_lider_participants.each do |participant|
-      %tr.link{ data: { href: admin_activity_lines_lider_ya_lider_participant_path(participant) }, class: state_color(participant) }
+      %tr{ class: state_color(participant) }
         %td{ width: '67px' }
-          = image_tag participant.small_avatar
+          = link_to admin_activity_lines_lider_ya_lider_participant_path(participant) do
+            = image_tag participant.small_avatar
         %td
-          = participant.full_name
+          = link_to admin_activity_lines_lider_ya_lider_participant_path(participant) do
+            = participant.full_name
           - if participant.is_member?
             = image_tag 'apps/logo-mic-square-small.png', style: 'width: 35px; height: 35px'
             = link_to fa_icon(:share), member_path(participant.user.ticket)
@@ -24,8 +27,13 @@
         - if searching?
           %td= participant.human_state_name
         %td.actions
-          - if defined?(for_partial)
-            - if for_partial == :stage_show
+          - if defined?(options)
+            - if options.include? :fair_idea
+              - if participant.contest.fair_idea.present?
+                = react_component 'Label', url: api_admin_event_registrations_path, data: { event_registration: { user_id: participant.user.id, event_id: participant.contest.fair_idea.id } }, text: t('activerecord.attributes.activity_lines/lider/ya_lider.fair_idea'), method: :post, color: :success, checked: participant.is_participant_of_fair_idea?
+        %td.actions
+          - if defined?(options)
+            - if options.include? :stage_show
               = link_to fa_icon('arrow-right'), admin_activity_lines_lider_ya_lider_participations_path(activity_lines_lider_ya_lider_participation: { stage_id: @stage.next_stage.id, participant_id: participant.id }), method: :post, class: 'btn btn-success btn-sm'
           = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_participant_path(participant), class: 'btn btn-warning btn-xs'
           = link_to fa_icon(:remove), admin_activity_lines_lider_ya_lider_participant_path(participant), method: :delete, class: 'btn btn-xs btn-danger' 

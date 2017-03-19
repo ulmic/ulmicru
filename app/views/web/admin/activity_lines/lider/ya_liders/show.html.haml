@@ -2,6 +2,7 @@
 .page-header
   %h2
     = @ya_lider.full_title
+    = link_to fa_icon(:pencil), edit_admin_activity_lines_lider_ya_lider_path(@ya_lider), class: 'btn btn-warning'
 .tabs
   %ul.nav.nav-tabs{ role: :tablist }
     %li{ class: (:active if (params[:tab] == 'current_participants' || params[:tab].nil?)) }
@@ -43,6 +44,10 @@
             %hr
             %h5
               = @ya_lider.fair_idea.title
+              \-
+              = @ya_lider.fair_idea.registrations.count
+              участников
+              = link_to fa_icon(:share), event_path(@ya_lider.fair_idea), class: 'btn btn-sm btn-success'
               = link_to fa_icon(:pencil), edit_admin_event_path(@ya_lider.fair_idea.id), class: 'btn btn-sm btn-warning'
         .col-md-6
           %h5

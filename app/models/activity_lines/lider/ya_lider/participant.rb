@@ -39,4 +39,8 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
   def request_field(name)
     fields.where(title: name).first
   end
+
+  def is_participant_of_fair_idea?
+    contest.fair_idea.registrations.map(&:user_id).include? user_id
+  end
 end
