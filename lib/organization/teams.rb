@@ -14,6 +14,10 @@ module Organization
       @current_ya_lider_committee ||= ActivityLines::Lider::YaLider.current.first&.committee&.members || []
     end
 
+    def krk
+      @krk ||= Team.find_by_title 'Контрольно-ревизионная комиссия'
+    end
+
     def team_positions(team)
       positions_structure ||= YAML.load_file("#{Rails.root}/lib/yaml/positions.yml").with_indifferent_access
       team_positions = positions_structure[:positions][:team].map do |position|

@@ -19,13 +19,17 @@ module ApplicationHelper
     t('.title')
   end
 
-  def admin_menu_item(name, url, icon = nil)
+  def admin_menu_item(name, url, icon = nil, number = nil)
     title = name.is_a?(Class) ? name.model_name.human.pluralize(:ru) : name
     if icon
       menu_item url do
         concat icon_element icon
         concat ' '
         concat title
+        if number
+          concat ' '
+          concat(content_tag(:span, number.to_s, class: 'badge danger'))
+        end
       end
     else
       menu_item title, url

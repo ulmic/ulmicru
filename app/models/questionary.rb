@@ -9,6 +9,7 @@ class Questionary < Member
     state :confirmed
     state :declined
     state :removed
+    state :updated
 
     event :confirm do
       transition all => :confirmed

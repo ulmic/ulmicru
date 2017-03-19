@@ -23,6 +23,6 @@ module MemberScopes
     scope :without_number_one, -> {
       where.not(id: with_number_one) + Member.without_confessions - Member.cannot_get_confession
     }
-    scope :need_to_review, -> { where(member_state: :unviewed, type: 'Member').where.not(state: :unavailable).order('id ASC') }
+    scope :need_to_review, -> { where(type: 'Member').where("member_state = 'unviewed' OR state = 'unviewed' OR state = 'updated'").order('id ASC') }
   end
 end
