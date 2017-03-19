@@ -48,6 +48,7 @@ class Member < User
     state :declined
     state :removed
     state :unavailable
+    state :updated
 
     event :confirm do
       transition all => :confirmed

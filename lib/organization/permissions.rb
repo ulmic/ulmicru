@@ -148,6 +148,10 @@ module Organization
           update: (lider_lead + current_ya_lider_committee + User.tech_admins).uniq
         }
       end
+
+      def protocol
+        { index: (departaments_curators + krk.users + presidium.users).uniq }
+      end
     end
   end
 end
