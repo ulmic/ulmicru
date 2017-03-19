@@ -32,7 +32,7 @@ module Organization
       def event
         { 
           review: (departaments_curators + User.tech_admins).uniq,
-          index: (departaments_headers + deputy_departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
+          index: (krk.users + departaments_headers + deputy_departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
           new: (departaments_headers + deputy_departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
           create: (departaments_headers + deputy_departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
           edit: (departaments_headers + deputy_departaments_headers + primaries_headers + User.tech_admins + current_ya_lider_committee).uniq,
@@ -91,7 +91,7 @@ module Organization
       end
 
       def welcome
-        { see: (departaments_headers + deputy_departaments_headers + primaries_headers + current_ya_lider_committee).uniq }
+        { see: (krk.users + departaments_headers + deputy_departaments_headers + primaries_headers + current_ya_lider_committee).uniq }
       end
 
       def place
@@ -150,7 +150,14 @@ module Organization
       end
 
       def protocol
-        { index: (departaments_curators + krk.users + presidium.users).uniq }
+        {
+          index: (departaments_curators + krk.users + presidium.users).uniq,
+          show: (departaments_curators + krk.users + presidium.users).uniq,
+          new: (departaments_curators + krk.users + presidium.users).uniq,
+          create: (departaments_curators + krk.users + presidium.users).uniq,
+          edit: (departaments_curators + krk.users + presidium.users).uniq,
+          update: (departaments_curators + krk.users + presidium.users).uniq
+        }
       end
     end
   end
