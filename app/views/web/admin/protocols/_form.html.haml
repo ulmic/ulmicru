@@ -11,15 +11,14 @@
     = simple_form_for [:admin, @protocol_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'
-      = f.input :title
-      = f.association :team
+      = f.input :title, as: :string
+      = f.input :team_id, as: :select, collection: teams_hash(@teams)
       %br
       = f.label :scan
       .preview
         = image_tag @protocol_form.model.scan if @protocol_form.model.scan.present?
       = f.input :scan, as: :file, label: false, input_html: { style: 'display: none' }
       = f.input :scan, label: false, as: :jasny_file_preview_upload
-      = f.simple_fields_for :document do |fd|
-        = fd.input :file
+      = f.input :document, as: :file
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_redirect_rules_path, class: 'btn btn-default'

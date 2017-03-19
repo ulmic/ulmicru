@@ -198,3 +198,7 @@ ru:
         state:
           states:
             <<: *default
+      protocol:
+        state:
+          states:
+            <<: *default

@@ -294,6 +294,11 @@ ru:
         latitude: Широта
         longitude: Долгота
         url: URL
+      protocol:
+        title: Название
+        team_id: Команда
+        scan: Скан
+        file: Файл
     errors:
       models:
         member:
