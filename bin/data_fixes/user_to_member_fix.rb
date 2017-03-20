@@ -2,7 +2,7 @@ if ENV['USER_ID'].present? && ENV['MEMBER_ID'].present?
   user = User.find ENV['USER_ID']
   member = Member.find ENV['MEMBER_ID']
   puts "Updating associations...".green
-  [:authentications, :article, :registrations, :logged_actions, :comments, :ya_lider_participations].each do |association|
+  [:authentications, :article, :registrations, :logged_actions, :comments, :ya_lider_participants].each do |association|
     user.send(association).each do |obj|
       obj.update_attributes! user_id: member.id
     end
