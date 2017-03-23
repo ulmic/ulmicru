@@ -48,7 +48,7 @@ class Delivery::Campaign < ActiveRecord::Base
   end
 
   def fill_receivers!
-    (contacts.map(&:id) | receivers.map(&:user_id)).each do |user_id|
+    (contacts.map(&:id) - receivers.map(&:user_id)).each do |user_id|
       ::Delivery::Receiver.create! user_id: user_id, campaign_id: id
     end
   end

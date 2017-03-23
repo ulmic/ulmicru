@@ -29,6 +29,7 @@ ru:
       delivery/campaign: Кампания
       delivery/audience: Целевая аудитория
       delivery/contact_email: Электронная почта
+      delivery/receiver: Получатель
       tag: Тег
       oauth/app: Приложение
       test_paper: Тест
