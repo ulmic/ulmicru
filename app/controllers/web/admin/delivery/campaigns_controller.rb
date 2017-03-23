@@ -26,6 +26,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.new_with_model
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
+      ::Admin::FillReceiversJob.perform_later @campaign_form.model
       redirect_to admin_delivery_campaign_path(@campaign_form.model)
     else
       render action: :new
@@ -37,6 +38,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
     @campaign_form = ::Delivery::CampaignForm.find_with_model params[:id]
     @campaign_form.submit params[:delivery_campaign]
     if @campaign_form.save
+      ::Admin::FillReceiversJob.perform_later @campaign_form.model
       redirect_to admin_delivery_campaign_path(@campaign_form.model)
     else
       render action: :edit

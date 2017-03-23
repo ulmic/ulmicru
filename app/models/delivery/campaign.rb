@@ -1,5 +1,6 @@
 class Delivery::Campaign < ActiveRecord::Base
   has_many :audiences, class_name: 'Delivery::Audience'
+  has_many :receivers, class_name: 'Delivery::Receiver'
   belongs_to :creator, class_name: 'Member'
 
   validates :title, presence: true
@@ -46,8 +47,14 @@ class Delivery::Campaign < ActiveRecord::Base
     audiences.any? && audiences.first.audience_type.in?([ 'users', 'contacts_emails' ])
   end
 
+  def fill_receivers!
+    (contacts.map(&:id) | receivers.map(&:user_id)).each do |user_id|
+      ::Delivery::Receiver.create! user_id: user_id, campaign_id: id
+    end
+  end
+
   def contacts
-    audiences.reduce([]) do |arr, audience|
+    @contacts ||= audiences.reduce([]) do |arr, audience|
       arr += audience.contacts
     end.uniq
   end
