@@ -46,3 +46,7 @@
               = audience_path audience
             %td
               = link_to fa_icon(:remove), admin_delivery_audience_path(audience), method: :delete, class: 'btn btn-danger'
+    %h4
+      %b
+        = t('activerecord.models.delivery/receiver').pluralize(:ru)
+      = @campaign.receivers.count
