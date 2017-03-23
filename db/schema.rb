@@ -250,9 +250,9 @@ ActiveRecord::Schema.define(version: 20170323204740) do
   create_table "delivery_receivers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "campaign_id"
-    t.text     "state"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "state",       default: "ready"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "documents", force: :cascade do |t|
