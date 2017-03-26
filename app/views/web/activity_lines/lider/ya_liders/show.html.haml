@@ -17,13 +17,16 @@
       %div
         - @participants.each do |participant|
           = render 'participant_cell', participant: participant
-%hr
-.row
-  .auth_button_row
-    - if signed_in?
-      - if @contest.current_stage.participants.map(&:user_id).include?(current_user.id)
+- if signed_in?
+  - if @contest.current_stage.participants.map(&:user_id).include?(current_user.id)
+    %hr
+    .row
+      .auth_button_row
         = link_to t('.add_event'), '#', class: 'btn btn-branded'
-    - else
+- else
+  %hr
+  .row
+    .auth_button_row
       = link_to t('.i_am_participant'), new_session_path(url: activity_lines_lider_ya_lider_path(@contest.contest_number)), class: 'btn btn-branded'
 .row.for_news
 .row.plaha
