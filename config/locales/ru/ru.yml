@@ -163,6 +163,8 @@ ru:
         ya_liders:
           show:
             participants: Участники конкурса
+            i_am_participant: Я участник конкурса
+            add_event: Анонсировать мероприятие
     sessions:
       new:
         title: Авторизация
