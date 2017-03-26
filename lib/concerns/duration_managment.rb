@@ -19,6 +19,6 @@ module DurationManagment
     end
   end
   def during?
-    begin_date < DateTime.now && end_date > DateTime.now
+    begin_date < DateTime.current && end_date > DateTime.current
   end
 end
