@@ -17,11 +17,10 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_another_main_page
     unless Rails.env.test?
-      PROJECTS.each do |project|
-        if request.host.include?(project) && request.path != main_page_of(request.host)
-          redirect_to main_page_of project
-          break
-        end
+      if request.host.include?('it-way.pro') && request.path != main_page_of(request.host)
+        redirect_to main_page_of project
+      elsif request.host.include?('ul-lider.ru') && request.path != activity_lines_lider_ya_liders_path(15)
+        redirect_to activity_lines_lider_ya_liders(15)
       end
     end
   end
