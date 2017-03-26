@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
   include DatesHelper
 
   private
+  PROJECTS = [ 'it-way.pro', 'ul-lider.ru' ]
 
   def redirect_to_another_main_page
-    PROJECTS = [ 'it-way.pro', 'ul-lider.ru' ]
     unless Rails.env.test?
       PROJECTS.each do |project|
         if request.host.include?(project) && request.path != main_page_of(request.host)
