@@ -30,7 +30,7 @@ class ActivityLines::Lider::YaLider::Stage < ActiveRecord::Base
         participant unless participant.participations.active.where(stage_id: next_stage.id).any?
       end.compact.map(&:decorate)
     else
-      []
+      participants.active.decorate
     end
   end
 end
