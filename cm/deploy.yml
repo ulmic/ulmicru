@@ -83,17 +83,17 @@
       args:
         chdir: "{{ release_path }}"
 
-    - name: Stop sidekiq
-      shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiqctl stop /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid 10"
-      args:
-        chdir: "{{ release_path  }}"
-
     - name: Linking current
       file:
         src={{ release_path }}
         dest={{ app_path }}/current
         state=link
         force=yes
+
+    - name: Stop sidekiq
+      shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiqctl stop /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid 10"
+      args:
+        chdir: "{{ release_path   }}"
 
     - name: Stop unicorn
       shell: "[ -e /srv/ulmicru/shared/tmp/pids/unicorn.pid  ] && kill `cat /srv/ulmicru/shared/tmp/pids/unicorn.pid`"
