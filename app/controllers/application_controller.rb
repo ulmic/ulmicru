@@ -13,14 +13,13 @@ class ApplicationController < ActionController::Base
   include DatesHelper
 
   private
-  PROJECTS = [ 'it-way.pro', 'ul-lider.ru' ]
 
   def redirect_to_another_main_page
     unless Rails.env.test?
-      if request.host.include?('it-way.pro') && request.path != main_page_of(request.host)
-        redirect_to main_page_of project
-      elsif request.host.include?('ul-lider.ru') && request.path != activity_lines_lider_ya_liders_path(15)
-        redirect_to activity_lines_lider_ya_liders(15)
+      if request.host.include?('it-way.pro') && request.path != main_page_of('it-way.pro')
+        redirect_to main_page_of 'it-way.pro'
+      elsif request.host.include?('ul-lider.ru') && request.path != activity_lines_lider_ya_lider_path(15)
+        redirect_to activity_lines_lider_ya_lider_path(15)
       end
     end
   end
