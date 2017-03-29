@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   mount_uploader :main_photo, PhotoUploader
 
   extend Enumerize
-  enumerize :organizer_type, in: [ 'Member', 'Team' ]
+  enumerize :organizer_type, in: [ 'Member', 'Team', 'User' ]
 
   state_machine :state, initial: :unviewed do
     state :unviewed

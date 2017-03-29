@@ -1,22 +1,27 @@
 - case params[:step]
 - when '1'
-  = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action } do |f|
-    = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false
-    = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text
+  = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action, step: 1 } do |f|
+    = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false, required: true
+    = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text, required: true
+    = label :begin_date, t('activerecord.attributes.your_event.begin_date')
+    = f.input :begin_date, as: :datetime_picker, label: false
+    = label :end_date, t('activerecord.attributes.your_event.end_date')
+    = f.input :end_date, as: :datetime_picker, label: false
     = label :main_photo, t('activerecord.attributes.your_event.main_photo')
     .preview
       = image_tag @event_form.model.main_photo if @event_form.model.main_photo.present?
     = f.input :main_photo, as: :file, label: false, input_html: { style: 'display: none' }
     = f.input :main_photo, label: false, as: :jasny_file_preview_upload_foundation
     = label :places, t('activerecord.attributes.your_event.places')
-    = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false
+    = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false, required: true
     %h5
       = t('.event_participants')
     = f.simple_fields_for :registrations do |reg_form|
       = render 'registration_fields', f: reg_form
     = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'button success add_fields'
     = f.input :organizer_type, as: :hidden, input_html: { value: 'User' }
-    = f.input :organizer_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
+    = f.input :organizer_id, as: :hidden, input_html: { value: current_user.id }
+    = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
     = f.input :activity_line_id, as: :hidden, input_html: { value: ActivityLine.lider.id }
     - if @event_form.model.id.present?
       = f.input :state, as: :hidden, input_html: { value: :updated }
