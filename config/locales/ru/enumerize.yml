@@ -16,6 +16,7 @@ ru:
       role:
         participant: Участник
         organizer: Организатор
+        expert: Эксперт
     team:
       publicity:
         hidden: Скрытая

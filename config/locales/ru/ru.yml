@@ -72,6 +72,12 @@ ru:
       join:
         new:
           title: Подача заявки на вступление в Молодёжный инициативный центр
+      activity_lines:
+        lider:
+          ya_lider:
+            events:
+              registration_fields:
+                event_participants: Организаторы и участники вашего мероприятия
     news:
       show:
         previous: предыдущая новость

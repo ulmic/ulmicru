@@ -141,6 +141,7 @@ ru:
         for_now: До настоящего времени
         status: Статус
       your_event:
+        places: Места, в которых будет проводиться мероприятие
         title: Название
         description: Описание
         main_photo: Главное фото

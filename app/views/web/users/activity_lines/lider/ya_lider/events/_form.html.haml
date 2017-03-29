@@ -3,13 +3,18 @@
   = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action } do |f|
     = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false
     = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text
-    = f.input :main_photo
-    = f.association :places, label_method: :title, value_method: :id
+    = label :main_photo, t('activerecord.attributes.your_event.main_photo')
+    .preview
+      = image_tag @event_form.model.main_photo if @event_form.model.main_photo.present?
+    = f.input :main_photo, as: :file, label: false, input_html: { style: 'display: none' }
+    = f.input :main_photo, label: false, as: :jasny_file_preview_upload_foundation
+    = label :places, t('activerecord.attributes.your_event.places')
+    = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false
+    = f.simple_fields_for :registrations do |reg_form|
+      = render 'registration_fields', f: reg_form
     = f.input :organizer_type, as: :hidden, input_html: { value: 'User' }
     = f.input :organizer_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
     = f.input :activity_line_id, as: :hidden, input_html: { value: ActivityLine.lider.id }
-    = f.simple_fields_for :registrations do |erf|
-      = erf.input :user_id, as: :select, collection: users_hash(@users), input_html: { class: :select2 }, label: false
 - when '2'
   = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action } do |f|
     = f.input :participant_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
