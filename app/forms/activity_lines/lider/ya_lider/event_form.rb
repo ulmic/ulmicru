@@ -6,7 +6,6 @@ class ActivityLines::Lider::YaLider::EventForm < ApplicationReform
 
     validates :value, presence: true
     validates :title, presence: true
-    validates :event_id, presence: true
   end
 
   property :event, populate_if_empty: Event do

@@ -21,6 +21,13 @@ class Web::Users::ActivityLines::Lider::YaLider::EventsController < Web::Users::
         choose_users
         render :new, step: 1
       end
+    when '2'
+      @yal_event_form = ::ActivityLines::Lider::YaLider::EventForm.new_with_model
+      if @yal_event_form.submit params[:activity_lines_lider_ya_lider_event]
+        redirect_to new_users_activity_lines_lider_ya_lider_event_path(step: 3, event_id: @yal_event_form.model.id)
+      else
+        render :new, step: 2
+      end
     end
   end
 end
