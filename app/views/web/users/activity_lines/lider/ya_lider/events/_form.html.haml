@@ -10,6 +10,8 @@
     = f.input :main_photo, label: false, as: :jasny_file_preview_upload_foundation
     = label :places, t('activerecord.attributes.your_event.places')
     = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false
+    %h5
+      = t('.event_participants')
     = f.simple_fields_for :registrations do |reg_form|
       = render 'registration_fields', f: reg_form
     = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'button success add_fields'
@@ -20,6 +22,9 @@
       = f.input :state, as: :hidden, input_html: { value: :updated }
     - else
       = f.input :state, as: :hidden, input_html: { value: :unviewed }
+    %hr
+    %br
+    = f.button :submit, t('helpers.links.save'), class: 'button success'
 - when '2'
   = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action } do |f|
     = f.input :participant_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }

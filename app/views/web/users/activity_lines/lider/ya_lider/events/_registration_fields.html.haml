@@ -1,6 +1,4 @@
 .registration_fields.row
-  %h5
-    = t('.event_participants')
   .medium-4.columns
     - if f.object.model.nil? || f.object.model.new_record?
       = f.input :user_id, as: :select, collection: users_cache_hash(@users), input_html: { class: :select2 }, label: false
