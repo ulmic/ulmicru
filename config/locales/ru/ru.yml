@@ -76,6 +76,8 @@ ru:
         lider:
           ya_lider:
             events:
+              form:
+                add_registration: Добавить участника
               registration_fields:
                 event_participants: Организаторы и участники вашего мероприятия
     news:

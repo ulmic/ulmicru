@@ -12,4 +12,4 @@
   .medium-4.columns
     = f.input :role, as: :select, collection: enumerize_locales_hash(Event::Registration, :role), label: false
   .medium-4.columns
-    = link_to_remove_association fa_icon(:remove), f, class: 'button small alert remove-registration', data: { 'wrapper-class' => 'registration_fields' }
+    = link_to_remove_association fa_icon('remove 2x'), f, class: 'button tiny alert remove-registration', data: { 'wrapper-class' => 'registration_fields' }

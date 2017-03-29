@@ -12,9 +12,14 @@
     = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false
     = f.simple_fields_for :registrations do |reg_form|
       = render 'registration_fields', f: reg_form
+    = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'button success add_fields'
     = f.input :organizer_type, as: :hidden, input_html: { value: 'User' }
     = f.input :organizer_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
     = f.input :activity_line_id, as: :hidden, input_html: { value: ActivityLine.lider.id }
+    - if @event_form.model.id.present?
+      = f.input :state, as: :hidden, input_html: { value: :updated }
+    - else
+      = f.input :state, as: :hidden, input_html: { value: :unviewed }
 - when '2'
   = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action } do |f|
     = f.input :participant_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
