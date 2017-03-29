@@ -31,10 +31,13 @@
     %br
     = f.button :submit, t('helpers.links.save'), class: 'button success'
 - when '2'
-  = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action } do |f|
+  = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action, step: 2 } do |f|
     = f.input :participant_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
+    = f.input :event_id, as: :hidden, input_html: { value: params[:event_id] }
+    - titles = ::ActivityLines::Lider::YaLider::EventField.title.values
     = f.simple_fields_for :fields do |ff|
       = ff.input :field_type, as: :hidden, input_html: { value: :text }
-      = ff.input :value
+      = label :value, "* #{t("enumerize.activity_lines/lider/ya_lider/event_field.title.#{titles[ff.index]}")}"
+      = ff.input :value, label: false
       = ff.input :title, as: :hidden, input_html: { value: title }
     = f.button :submit, class: 'btn btn-success'

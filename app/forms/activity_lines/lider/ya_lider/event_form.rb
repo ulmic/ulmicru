@@ -18,8 +18,13 @@ class ActivityLines::Lider::YaLider::EventForm < ApplicationReform
     end
   end
 
-  def build_values!
-    titles = ::ActivityLines::Lider::YaLider::ParticipantField.title.values
+  def build_values!(type)
+    titles = case type
+             when :anounce 
+               [:anticipated_participants_count]
+             when :report
+               ::ActivityLines::Lider::YaLider::ParticipantField.title.values - [ :anticipated_participants_count ]
+             end
     titles.each do |title|
       fields << model.fields.build(title: title)
     end
