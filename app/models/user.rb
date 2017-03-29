@@ -109,6 +109,10 @@ class User < ActiveRecord::Base
   end
 
   def current_ya_lider_participant
-    ::ActivityLines::Lider::YaLider.current_contest.participants.where(user_id: id).first
+    ::ActivityLines::Lider::YaLider.current_contest.current_stage.participants.where(user_id: id).first
+  end
+
+  def is_ya_lider_participant?
+    ::ActivityLines::Lider::YaLider.current_contest.current_stage.participants.map(&:user_id).include? id
   end
 end

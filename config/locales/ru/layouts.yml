@@ -1,6 +1,28 @@
 ru:
   layouts:
     web:
+      shared:
+        errors:
+          some_errors_was_found: Найдены ошибки при сохранении
+        navbar:
+          account: Настройки профиля
+          member_profile: Профиль члена МИЦ
+          your_account_is_not_active: Аккаунт неактивен
+          contact_list: Контакт-лист
+          my_profile: Мой профиль
+          my_teams: Мои команды
+          my_event: Моё мероприятие
+          i_am_ya_lider_participant: Участник конкурса "Я-лидер!"
+        activity_lines:
+          corporative:
+            confession:
+              confessions_of_the_year:
+                debut_of_the_year: Дебют года
+                number_one_of_the_year: Номер один
+      elements:
+        mic_document:
+          attachment: Приложение
+          download: Скачать
       admin:
         shared:
           messages:
@@ -15,3 +37,4 @@ ru:
           activity: Деятельность
           content: Контент
           delivery: Рассылки
+          my_event: Моё мероприятие

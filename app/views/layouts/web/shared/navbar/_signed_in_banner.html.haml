@@ -34,7 +34,7 @@
                   %span.icon
                     = fa_icon :legal
                   %span
-                    = t('.my_teams')
+                    = t('layouts.web.shared.navbar.my_teams')
               %hr
               - @led_teams.each_with_index do |team, index|
                 %li.team{ style: "#{'margin-top: 10px;' if index == 0 }"}
@@ -46,6 +46,32 @@
                         = fa_icon 'eye-slash'
                     %span
                       = team.full_title
+      - if current_user.confirmed? && current_user.is_ya_lider_participant?
+        = link_to '#', data: { dropdown: 'member-dropdown', options: 'align:left;is_hover:true' }, aria: { controls: 'member-dropdown', expanded: false }, class: 'icon-bars min-icon fa-icon' do
+          = fa_icon :bars
+        %ul#member-dropdown.f-dropdown.medium{ 'data-dropdown-content' => true, 'aria-hidden' => "true",  tabindex: "-1"  }
+          %li
+            %h6
+              %span.icon
+                = fa_icon :legal
+              %span
+                = t('layouts.web.shared.navbar.i_am_ya_lider_participant')
+          %hr
+          - if current_user.current_ya_lider_participant.event.present?
+            %li
+              = link_to edit_users_activity_lines_lider_ya_lider_event_path(current_user.current_ya_lider_participant.event.id), title: t('layouts.web.shared.navbar.my_event') do
+                %span.icon{ style: 'font-size: 20px; margin-top: 5px' }
+                  = fa_icon :calendar
+                %span
+                  = t('layouts.web.shared.navbar.my_event')
+          - else
+            %li
+              = link_to new_users_activity_lines_lider_ya_lider_event_path, title: t('layouts.web.shared.navbar.my_event') do
+                %span.icon{ style: 'font-size: 20px; margin-top: 5px' }
+                  = fa_icon :calendar
+                %span
+                  = t('layouts.web.shared.navbar.my_event')
+
       .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
       = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
         .icon-log-out.min-icon.link

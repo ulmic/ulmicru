@@ -35,6 +35,13 @@ Rails.application.routes.draw do
       resources :account, only: :update
       resources :authentications, only: :destroy
       resources :positions, only: [ :create, :update, :destroy ]
+      namespace :activity_lines do
+        namespace :lider do
+          namespace :ya_lider do
+            resources :events, only: [ :new, :create, :edit, :update ]
+          end
+        end
+      end
     end
     namespace :members do
       namespace :corporative do
