@@ -17,12 +17,20 @@ class ActivityLines::Lider::YaLider::EventForm < ApplicationReform
     end
   end
 
+  def anounce_titles
+    [ 'anticipated_participants_count' ]
+  end
+
+  def report_titles
+    ::ActivityLines::Lider::YaLider::EventField.title.values - anounce_titles
+  end
+
   def build_values!(type)
     titles = case type
              when :anounce 
                [:anticipated_participants_count]
              when :report
-               ::ActivityLines::Lider::YaLider::ParticipantField.title.values - [ :anticipated_participants_count ]
+               ::ActivityLines::Lider::YaLider::EventField.title.values - [ 'anticipated_participants_count' ]
              end
     titles.each do |title|
       fields << model.fields.build(title: title)

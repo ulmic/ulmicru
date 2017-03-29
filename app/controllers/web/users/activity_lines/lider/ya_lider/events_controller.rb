@@ -7,6 +7,9 @@ class Web::Users::ActivityLines::Lider::YaLider::EventsController < Web::Users::
     when '2'
       @yal_event_form = ::ActivityLines::Lider::YaLider::EventForm.new_with_model
       @yal_event_form.build_values! :anounce
+    when '3'
+      @yal_event_form = ::ActivityLines::Lider::YaLider::EventForm.find_with_model params[:event_id]
+      @yal_event_form.build_values! :report
     end
   end
 
@@ -28,6 +31,15 @@ class Web::Users::ActivityLines::Lider::YaLider::EventsController < Web::Users::
       else
         render :new, step: 2
       end
+    end
+  end
+
+  def update
+    @yal_event_form = ::ActivityLines::Lider::YaLider::EventForm.find_with_model params[:id]
+    if @yal_event_form.submit params[:activity_lines_lider_ya_lider_event]
+      redirect_to event_path @yal_event_form.model.event_id
+    else
+      render :new, step: 3
     end
   end
 end
