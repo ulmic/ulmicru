@@ -287,7 +287,7 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
-    omniauth-facebook (3.0.0)
+    omniauth-facebook (4.0.0)
       omniauth-oauth2 (~> 1.2)
     omniauth-google-oauth2 (0.2.10)
       addressable (~> 2.3)
@@ -531,7 +531,7 @@ DEPENDENCIES
   mini_magick
   momentjs-rails (>= 2.9)!
   more_html_tags
-  omniauth-facebook
+  omniauth-facebook (= 4.0.0)
   omniauth-google-oauth2
   omniauth-twitter
   omniauth-vkontakte
