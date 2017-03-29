@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326104003) do
+ActiveRecord::Schema.define(version: 20170328205728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,22 @@ ActiveRecord::Schema.define(version: 20170326104003) do
     t.text     "association_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "activity_lines_lider_ya_lider_event_fields", force: :cascade do |t|
+    t.text     "field_type"
+    t.text     "value"
+    t.integer  "event_id"
+    t.text     "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_lines_lider_ya_lider_events", force: :cascade do |t|
+    t.integer  "participant_id"
+    t.integer  "event_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "activity_lines_lider_ya_lider_participant_fields", force: :cascade do |t|

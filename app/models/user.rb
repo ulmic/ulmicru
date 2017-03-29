@@ -107,4 +107,8 @@ class User < ActiveRecord::Base
   def as_record_logged_actions
     LoggedAction.where record_id: id, record_type: self.class
   end
+
+  def current_ya_lider_participant
+    ::ActivityLines::Lider::YaLider.current_contest.participants.where(user_id: id).first
+  end
 end

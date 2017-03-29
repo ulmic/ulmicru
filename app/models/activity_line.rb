@@ -34,4 +34,8 @@ class ActivityLine < ActiveRecord::Base
   include TagsHelper
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title]
+
+  def self.lider
+    where(title: 'Лидер').first
+  end
 end
