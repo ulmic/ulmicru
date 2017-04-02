@@ -8,12 +8,6 @@
     = t('.your_event_will_available_after_review')
   = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: action, step: 1 } do |f|
     = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false, required: true
-    = label :places, t('activerecord.attributes.your_event.places')
-    = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false, required: true
-    %span.label.info
-      = fa_icon 'exclamation-circle'
-      = t('.did_not_find_your_place_please_add_it')
-    = link_to t('.add_place'), '#', class: :button, data: { 'reveal-id' => :placeModal }
     = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text, required: true
     = label :begin_date, t('activerecord.attributes.your_event.begin_date')
     = f.input :begin_date, as: :datetime_picker, label: false
@@ -24,6 +18,12 @@
       = image_tag @event_form.model.main_photo if @event_form.model.main_photo.present?
     = f.input :main_photo, as: :file, label: false, input_html: { style: 'display: none' }
     = f.input :main_photo, label: false, as: :jasny_file_preview_upload_foundation
+    = label :places, t('activerecord.attributes.your_event.places')
+    = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false, required: true
+    %span.label.info
+      = fa_icon 'exclamation-circle'
+      = t('.did_not_find_your_place_please_add_it')
+    = link_to t('.add_place'), '#', class: :button, data: { 'reveal-id' => :placeModal }
     %h5
       = t('.event_participants')
     = f.simple_fields_for :registrations do |reg_form|

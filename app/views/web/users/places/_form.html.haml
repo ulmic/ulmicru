@@ -1,3 +1,4 @@
+= javascript_include_tag 'web/users/places'
 = simple_form_for @place, remote: true, url: { controller: '/api/users/places', action: :create } do |f|
   = f.input :title, as: :string, required: true
   = f.input :description, as: :string, required: true
