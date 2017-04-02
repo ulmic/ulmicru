@@ -144,6 +144,10 @@ class MemberDecorator < UserDecorator
     default_email_link :corporate_email
   end
 
+  def corporate_email
+    object.corporate_email
+  end
+
   include SocialNetworksUrlHelper
 
   def social_links
