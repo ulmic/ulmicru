@@ -23,8 +23,6 @@ module Ulmicru
     config.assets.paths << Rails.root.join("app", "assets", "*.ico")
     config.assets.paths << Rails.root.join("node_modules")
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    config.session_store :cookie_store, key: '_ulmic_session', domain: :all, tld_length: 2
-    config.session_store :active_record_store, key: '_ulmic_session_ar', domain: :all
     config.generators do |g|
       g.template_engine :haml
       g.stylesheets false

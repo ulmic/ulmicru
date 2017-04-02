@@ -36,6 +36,17 @@ class Web::SessionsController < Web::ApplicationController
   private
 
   def redirect_if_signed_in
-    redirect_to account_path if signed_in?
+    if signed_in?
+      if current_user.is_ya_lider_participant?
+        token = Token.where(record_type: 'ActivityLines::Lider::YaLider::Participant', record_id: current_user.current_ya_lider_participant.id).first
+        if params[:url].include?('activity_lines/lider/ya_liders') && token.present?
+          redirect_to "#{params[:url]}?token=#{token.content}"
+        else
+          redirect_to account_path
+        end
+      else
+        redirect_to account_path
+      end
+    end
   end
 end
