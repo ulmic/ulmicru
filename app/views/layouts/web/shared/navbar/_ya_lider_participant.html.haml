@@ -10,7 +10,7 @@
   %hr
   - if current_user.current_ya_lider_participant.event.present?
     %li
-      = link_to edit_users_activity_lines_lider_ya_lider_event_path(current_user.current_ya_lider_participant.event.id), title: t('layouts.web.shared.navbar.my_event') do
+      = link_to new_users_activity_lines_lider_ya_lider_event_path(event_id: current_user.current_ya_lider_participant.event.id, step: 3), title: t('layouts.web.shared.navbar.my_event') do
         %span.icon{ style: 'font-size: 20px; margin-top: 5px' }
           = fa_icon :calendar
         %span
