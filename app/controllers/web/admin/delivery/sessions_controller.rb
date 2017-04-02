@@ -11,7 +11,7 @@ class Web::Admin::Delivery::SessionsController < Web::Admin::Delivery::Applicati
       hash.merge! hash_sub[token.record_id.to_s].to_s => token.content
     end
     ::DeliveryJob.perform_later contacts, campaign.title, campaign.body, campaign.link, campaign.image.url, hash_tokens
-    #campaign.start_mailing
+    campaign.start_mailing
     redirect_to sidekiq_web_path
   end
 
