@@ -4,7 +4,7 @@ class DeliveryJob < ActiveJob::Base
   def perform(contacts, title, text, link, image)
     contacts.each_slice(100) do |combination|
       combination.each do |contact|
-        UserMailer.delay.send :just_message, contact, title, text, link, image, contact.user.subscribe_token.content
+        UserMailer.delay.send :just_message, contact.user.decorate, title, text, link, image, contact.user.subscribe_token.content
         contact.send_email
       end
     end

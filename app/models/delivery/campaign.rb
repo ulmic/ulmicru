@@ -12,7 +12,9 @@ class Delivery::Campaign < ActiveRecord::Base
 
   mount_uploader :image, PhotoUploader
 
-  state_machine :state, initial: :ready do
+  state_machine :state, initial: :not_tested do
+    state :not_tested
+    state :test_failed
     state :ready
     state :during_mailing
     state :removed
@@ -37,6 +39,10 @@ class Delivery::Campaign < ActiveRecord::Base
 
     event :make_done do
       transition all => :done
+    end
+
+    event :fail_test do
+      transition all => :test_failed
     end
   end
 
