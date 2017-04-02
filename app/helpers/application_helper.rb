@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def title(page_title = default_title, area = :default)
     if area != :default
-      title_text = "#{page_title} | #{t(area)} | #{t('application.name')}"
+      title_text = "#{page_title} | #{t("area.#{area}")} | #{t('application.name')}"
     elsif page_title == :app_name
       title_text = t('application.name')
     else

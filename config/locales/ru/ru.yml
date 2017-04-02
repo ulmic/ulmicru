@@ -1,6 +1,9 @@
 ru:
   application:
     name: МИЦ
+  area:
+    admin: Админка
+    ya_lider: Конкурс «Я-лидер!»
   organization:
     full_name: "Ульяновская областная молодёжная общественная организация «Молодёжный инициативный центр»"
     short_name: "УОМОО «МИЦ»"
@@ -79,6 +82,9 @@ ru:
               form:
                 add_registration: Добавить участника
                 event_participants: Организаторы и участники вашего мероприятия
+                your_event_will_available_after_review: Ваше мероприятие будет доступно после подтверждения орг.комитетом конкурса
+                title:
+                  step_1: Создайте анонс своего мероприятия
     news:
       show:
         previous: предыдущая новость

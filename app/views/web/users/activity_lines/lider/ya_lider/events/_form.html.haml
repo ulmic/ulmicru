@@ -1,5 +1,11 @@
 - case params[:step]
 - when '1'
+  - title t('.title.step_1'), :ya_lider
+  %h1
+    = t('.title.step_1')
+  %span.label.info
+    = fa_icon :info
+    = t('.your_event_will_available_after_review')
   = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action, step: 1 } do |f|
     = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false, required: true
     = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text, required: true
