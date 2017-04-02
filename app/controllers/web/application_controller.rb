@@ -72,4 +72,8 @@ class Web::ApplicationController < ApplicationController
   def choose_teammates
     @teammates = User.where.not(type: nil)
   end
+
+  def choose_users
+    @users = User.presented.decorate
+  end
 end

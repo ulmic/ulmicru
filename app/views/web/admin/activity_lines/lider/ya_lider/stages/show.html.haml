@@ -11,6 +11,8 @@
 .row
   - options = if @stage.number == 2
     - [ :stage_show, :fair_idea ]
+  - elsif @stage.number == 3
+    - [ :stage_show, :event ]
   - else
     - [ :stage_show ]
   = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants, options:  options

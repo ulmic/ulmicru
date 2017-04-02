@@ -5,5 +5,5 @@ class Event::Registration < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: [ :event_id ] }
 
   extend Enumerize
-  enumerize :role, in: [ :participant, :organizer ], default: :participant
+  enumerize :role, in: [ :participant, :organizer, :expert ], default: :participant
 end

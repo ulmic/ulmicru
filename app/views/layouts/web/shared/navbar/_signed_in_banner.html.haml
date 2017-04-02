@@ -34,7 +34,7 @@
                   %span.icon
                     = fa_icon :legal
                   %span
-                    = t('.my_teams')
+                    = t('layouts.web.shared.navbar.my_teams')
               %hr
               - @led_teams.each_with_index do |team, index|
                 %li.team{ style: "#{'margin-top: 10px;' if index == 0 }"}
@@ -46,6 +46,8 @@
                         = fa_icon 'eye-slash'
                     %span
                       = team.full_title
+      - if current_user.confirmed? && current_user.is_ya_lider_participant?
+        = render 'layouts/web/shared/navbar/ya_lider_participant'
       .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
       = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
         .icon-log-out.min-icon.link

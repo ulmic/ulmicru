@@ -1,6 +1,9 @@
 ru:
   application:
     name: МИЦ
+  area:
+    admin: Админка
+    ya_lider: Конкурс «Я-лидер!»
   organization:
     full_name: "Ульяновская областная молодёжная общественная организация «Молодёжный инициативный центр»"
     short_name: "УОМОО «МИЦ»"
@@ -21,28 +24,6 @@ ru:
       - :day
       - :month
       - :year
-  layouts:
-    web:
-      shared:
-        errors:
-          some_errors_was_found: Найдены ошибки при сохранении
-        navbar:
-          account: Настройки профиля
-          member_profile: Профиль члена МИЦ
-          your_account_is_not_active: Аккаунт неактивен
-          contact_list: Контакт-лист
-          my_profile: Мой профиль
-          my_teams: Мои команды
-        activity_lines:
-          corporative:
-            confession:
-              confessions_of_the_year:
-                debut_of_the_year: Дебют года
-                number_one_of_the_year: Номер один
-      elements:
-        mic_document:
-          attachment: Приложение
-          download: Скачать
   social_networks:
     vkontakte: ВКонтакте
     facebook: Facebook
@@ -94,6 +75,25 @@ ru:
       join:
         new:
           title: Подача заявки на вступление в Молодёжный инициативный центр
+      activity_lines:
+        lider:
+          ya_lider:
+            participant_events:
+              form:
+                add_registration: Добавить участника
+                event_participants: Организаторы и участники вашего мероприятия
+                your_event_will_available_after_review: Ваше мероприятие будет доступно после подтверждения орг.комитетом конкурса
+                you_fill_this_report_after_your_event: Вы сможете заполнить этот отчёт после окончания вашего мероприятия
+                see_your_event: Посмотрите анонс своего мероприятия
+                did_not_find_your_place_please_add_it: Не нашли места, в котором будет проходить ваше мероприятие? Добавьте в базу данных сайта МИЦ новое
+                add_place: Добавить место
+                title:
+                  step_1: Создайте анонс своего мероприятия
+                  step_2: Укажите предполагаемое число участников вашего мероприятия
+                  step_3: Заполните отчёт о мероприятии
+      places:
+        form:
+          place_hint: Найдите место в одном из предложенных ниже сервисов.<br/>После нахождения вашего места, скопируйте содержимое адресной строки в поле URL
     news:
       show:
         previous: предыдущая новость

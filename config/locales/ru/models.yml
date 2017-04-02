@@ -140,6 +140,20 @@ ru:
         end_date: Дата ухода с должности
         for_now: До настоящего времени
         status: Статус
+      your_event:
+        places: Места, в которых будет проводиться мероприятие
+        title: Название
+        description: Описание
+        main_photo: Главное фото
+        begin_date: Дата и время начала
+        end_date: Дата и время окончания
+        place: Место проведения
+        creator: Создатель
+        duration: Время проведения
+        activity_line: Направление деятельности
+        organizer_type: Тип организатора
+        organizer_id: Организатор
+        activity_line: Направление деятельности
       event:
         title: Название
         description: Описание

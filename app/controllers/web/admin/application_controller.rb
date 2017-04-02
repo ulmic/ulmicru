@@ -15,10 +15,6 @@ class Web::Admin::ApplicationController < Web::ApplicationController
 
   protected
 
-  def choose_users
-    @users = User.presented.decorate
-  end
-
   def check_declared_scopes
     if params[:scope].present?
       if !model_class.scopes.map(&:to_s).include?(params[:scope])

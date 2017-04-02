@@ -1,0 +1,77 @@
+- case params[:step]
+- when '1'
+  - title t('.title.step_1'), :ya_lider
+  %h1
+    = t('.title.step_1')
+  %span.label.info
+    = fa_icon :info
+    = t('.your_event_will_available_after_review')
+  = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: action, step: 1 } do |f|
+    = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false, required: true
+    = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text, required: true
+    = label :begin_date, t('activerecord.attributes.your_event.begin_date')
+    = f.input :begin_date, as: :datetime_picker, label: false
+    = label :end_date, t('activerecord.attributes.your_event.end_date')
+    = f.input :end_date, as: :datetime_picker, label: false
+    = label :main_photo, t('activerecord.attributes.your_event.main_photo')
+    .preview
+      = image_tag @event_form.model.main_photo if @event_form.model.main_photo.present?
+    = f.input :main_photo, as: :file, label: false, input_html: { style: 'display: none' }
+    = f.input :main_photo, label: false, as: :jasny_file_preview_upload_foundation
+    = label :places, t('activerecord.attributes.your_event.places')
+    = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false, required: true
+    %span.label.info
+      = fa_icon 'exclamation-circle'
+      = t('.did_not_find_your_place_please_add_it')
+    = link_to t('.add_place'), '#', class: :button, data: { 'reveal-id' => :placeModal }
+    %h5
+      = t('.event_participants')
+    = f.simple_fields_for :registrations do |reg_form|
+      = render 'registration_fields', f: reg_form
+    = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'button success add_fields'
+    = f.input :organizer_type, as: :hidden, input_html: { value: 'User' }
+    = f.input :organizer_id, as: :hidden, input_html: { value: current_user.id }
+    = f.input :creator_id, as: :hidden, input_html: { value: current_user.id }
+    = f.input :activity_line_id, as: :hidden, input_html: { value: ActivityLine.lider.id }
+    - if @event_form.model.id.present?
+      = f.input :state, as: :hidden, input_html: { value: :updated }
+    - else
+      = f.input :state, as: :hidden, input_html: { value: :unviewed }
+    %hr
+    %br
+    = f.button :submit, t('helpers.links.save'), class: 'button success'
+  #placeModal.reveal-modal{"aria-hidden" => "true", "aria-labelledby" => "firstModalTitle", "data-reveal" => "", role: "dialog"}
+    = render 'web/users/places/form'
+    %a.close-reveal-modal{"aria-label" => "Close"} ×
+- when '2'
+  - title t('.title.step_2'), :ya_lider
+  %h2
+    = t('.title.step_2')
+  = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: action, step: 2 } do |f|
+    = f.input :participant_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
+    = f.input :event_id, as: :hidden, input_html: { value: params[:event_id] }
+    = f.simple_fields_for :fields do |ff|
+      = ff.input :field_type, as: :hidden, input_html: { value: :text }
+      = label :value, "* #{t("enumerize.activity_lines/lider/ya_lider/event_field.title.#{ff.object.title}")}"
+      = ff.input :value, label: false
+      = ff.input :title, as: :hidden, input_html: { value: ff.object.title }
+    = f.button :submit, t('helpers.links.save'), class: 'btn btn-success'
+- when '3'
+  - title t('.title.step_3'), :ya_lider
+  %h2
+    = t('.title.step_3')
+  - if @event.end_date > DateTime.now
+    %span.label.warning
+      = fa_icon('exclamation-circle')
+      = t('.you_fill_this_report_after_your_event')
+    %br
+    = link_to t('.see_your_event'), event_path(@event), class: 'button'
+  - else
+    = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: :update, step: 3, id: @yal_event_form.id } do |f|
+      = f.simple_fields_for :fields do |ff|
+        - if ff.object.title.in?(@yal_event_form.report_titles)
+          = ff.input :field_type, as: :hidden, input_html: { value: :text }
+          = label :value, "* #{t("enumerize.activity_lines/lider/ya_lider/event_field.title.#{ff.object.title}")}"
+          = ff.input :value, label: false, as: :text
+          = ff.input :title, as: :hidden, input_html: { value: ff.object.title }
+      = f.button :submit, t('helpers.links.save'), class: 'btn btn-success'

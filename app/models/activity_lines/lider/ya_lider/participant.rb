@@ -3,6 +3,7 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
   belongs_to :contest, class_name: 'ActivityLines::Lider::YaLider'
   has_many :participations, class_name: 'ActivityLines::Lider::YaLider::Participation'
   has_many :fields, class_name: 'ActivityLines::Lider::YaLider::ParticipantField'
+  has_one :event, class_name: 'ActivityLines::Lider::YaLider::ParticipantEvent'
 
   validates :user_id, presence: true
   validates :contest_id, presence: true
