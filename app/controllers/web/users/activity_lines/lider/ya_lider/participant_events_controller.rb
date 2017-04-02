@@ -3,6 +3,7 @@ class Web::Users::ActivityLines::Lider::YaLider::ParticipantEventsController < W
     case params[:step]
     when '1'
       choose_users
+      build_place
       @event_form = ::EventForm.new_with_model
     when '2'
       @yal_event_form = ::ActivityLines::Lider::YaLider::ParticipantEventForm.new_with_model
@@ -42,5 +43,11 @@ class Web::Users::ActivityLines::Lider::YaLider::ParticipantEventsController < W
     else
       render :new, step: 3
     end
+  end
+
+  private
+
+  def build_place
+    @place = ::PlaceForm.new_with_model
   end
 end

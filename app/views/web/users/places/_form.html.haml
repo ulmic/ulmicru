@@ -1,0 +1,11 @@
+= simple_form_for @place, remote: true, url: { controller: '/api/users/places', action: :create } do |f|
+  = f.input :title, as: :string, required: true
+  = f.input :description, as: :string, required: true
+  %span.label.info
+    != t('.place_hint')
+  = f.input :url, as: :string, required: true
+  = link_to fa_icon(:foursquare), "https://foursquare.com", class: 'button info blank'
+  = link_to fa_icon(:google), "https://maps.google.com", class: 'button info blank'
+  = link_to 'Я', "https://maps.yandex.com", class: 'button info blank'
+  %br
+  = f.submit t('helpers.links.save'), class: 'button success'

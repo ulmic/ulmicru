@@ -165,6 +165,7 @@ Rails.application.routes.draw do
       namespace :account do
         resources :attribute_accesses, only: :create
       end
+      resources :places, only: :create
     end
     namespace :events do
       resources :registrations, only: [ :create, :destroy, :update ]

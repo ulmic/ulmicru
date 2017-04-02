@@ -10,6 +10,10 @@
     = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false, required: true
     = label :places, t('activerecord.attributes.your_event.places')
     = f.association :places, label_method: :title, value_method: :id, input_html: { class: :select2 }, label: false, required: true
+    %span.label.info
+      = fa_icon 'exclamation-circle'
+      = t('.did_not_find_your_place_please_add_it')
+    = link_to t('.add_place'), '#', class: :button, data: { 'reveal-id' => :placeModal }
     = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text, required: true
     = label :begin_date, t('activerecord.attributes.your_event.begin_date')
     = f.input :begin_date, as: :datetime_picker, label: false
@@ -36,6 +40,9 @@
     %hr
     %br
     = f.button :submit, t('helpers.links.save'), class: 'button success'
+  #placeModal.reveal-modal{"aria-hidden" => "true", "aria-labelledby" => "firstModalTitle", "data-reveal" => "", role: "dialog"}
+    = render 'web/users/places/form'
+    %a.close-reveal-modal{"aria-label" => "Close"} ×
 - when '2'
   - title t('.title.step_2'), :ya_lider
   %h2
