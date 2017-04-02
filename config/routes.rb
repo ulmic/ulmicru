@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       namespace :activity_lines do
         namespace :lider do
           namespace :ya_lider do
-            resources :events, only: [ :new, :create, :edit, :update ]
+            resources :participant_events, only: [ :new, :create, :edit, :update ]
           end
         end
       end

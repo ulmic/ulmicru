@@ -6,7 +6,7 @@
   %span.label.info
     = fa_icon :info
     = t('.your_event_will_available_after_review')
-  = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action, step: 1 } do |f|
+  = simple_form_for @event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: action, step: 1 } do |f|
     = f.input :title, placeholder: t('activerecord.attributes.your_event.title'), label: false, required: true
     = f.input :description, placeholder: t('activerecord.attributes.your_event.description'), label: false, as: :text, required: true
     = label :begin_date, t('activerecord.attributes.your_event.begin_date')
@@ -40,7 +40,7 @@
   - title t('.title.step_2'), :ya_lider
   %h2
     = t('.title.step_2')
-  = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action, step: 2 } do |f|
+  = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: action, step: 2 } do |f|
     = f.input :participant_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
     = f.input :event_id, as: :hidden, input_html: { value: params[:event_id] }
     = f.simple_fields_for :fields do |ff|
@@ -60,7 +60,7 @@
     %br
     = link_to t('.see_your_event'), event_path(@event), class: 'button'
   - else
-    = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: :update, step: 3, id: @yal_event_form.id } do |f|
+    = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: :update, step: 3, id: @yal_event_form.id } do |f|
       = f.simple_fields_for :fields do |ff|
         - if ff.object.title.in?(@yal_event_form.report_titles)
           = ff.input :field_type, as: :hidden, input_html: { value: :text }

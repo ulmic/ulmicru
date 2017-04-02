@@ -78,7 +78,7 @@ ru:
       activity_lines:
         lider:
           ya_lider:
-            events:
+            participant_events:
               form:
                 add_registration: Добавить участника
                 event_participants: Организаторы и участники вашего мероприятия

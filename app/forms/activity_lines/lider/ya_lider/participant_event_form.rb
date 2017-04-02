@@ -1,4 +1,4 @@
-class ActivityLines::Lider::YaLider::EventForm < ApplicationReform
+class ActivityLines::Lider::YaLider::ParticipantEventForm < ApplicationReform
   properties :participant_id, :event_id
 
   collection :fields, populate_if_empty: ::ActivityLines::Lider::YaLider::EventField do

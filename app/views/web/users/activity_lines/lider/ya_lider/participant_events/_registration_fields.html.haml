@@ -1,7 +1,8 @@
 .registration_fields.row
   .medium-4.columns
-    - if f.object.is_a?(::Event::Registration)
-      = f.object.user.decorate.select_presentation
+    - if f.index == 0
+      = f.input :user_id, as: :hidden, input_html: { value: current_user.id }, label: false, required: true
+      = current_user.decorate.short_name
     - else
       - if f.object.model.nil? || f.object.model.new_record?
         = f.input :user_id, as: :select, collection: users_cache_hash(@users), input_html: { class: :select2 }, label: false, required: true
