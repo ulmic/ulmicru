@@ -51,15 +51,21 @@ class EventDecorator < ApplicationDecorator
   end
 
   def organizer_link
-    if object.organizer_type == 'Member'
+    organizer_name = if object.organizer_type == 'Member'
       h.content_tag :a, href: member_path(object.organizer.ticket) do
         object.organizer.decorate.short_name
       end
+    elsif object.organizer_type == 'User'
+      object.organizer.decorate.short_name
     elsif object.organizer_type == 'Team'
       #h.content_tag :a, href: team_path(object.organizer_id) do
       object.organizer.decorate.full_title
       #end
     end
+    brackets = if object.organizer_type == 'User' && ::ActivityLines::Lider::YaLider::ParticipantEvent.where(event_id: object.id).any?
+                 "(#{t('activerecord.models.activity_lines/lider/ya_lider/participant')})"
+               end
+    "#{organizer_name}\n#{brackets}"
   end
 
   def online_conference_title
