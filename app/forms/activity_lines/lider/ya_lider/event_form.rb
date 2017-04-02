@@ -8,15 +8,6 @@ class ActivityLines::Lider::YaLider::EventForm < ApplicationReform
     validates :title, presence: true
   end
 
-  property :event, populate_if_empty: Event do
-    properties :title, :description, :main_photo, :place_ids, :creator_id, :begin_date, :end_date, :activity_line_id, 
-               :organizer_type, :organizer_id, required: true
-
-    collection :registrations do
-      properties :user_id, :event_id, :role
-    end
-  end
-
   def anounce_titles
     [ 'anticipated_participants_count' ]
   end

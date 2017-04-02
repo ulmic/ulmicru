@@ -37,6 +37,9 @@
     %br
     = f.button :submit, t('helpers.links.save'), class: 'button success'
 - when '2'
+  - title t('.title.step_2'), :ya_lider
+  %h2
+    = t('.title.step_2')
   = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: action, step: 2 } do |f|
     = f.input :participant_id, as: :hidden, input_html: { value: current_user.current_ya_lider_participant.id }
     = f.input :event_id, as: :hidden, input_html: { value: params[:event_id] }
