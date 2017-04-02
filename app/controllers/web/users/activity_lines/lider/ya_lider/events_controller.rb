@@ -4,6 +4,7 @@ class Web::Users::ActivityLines::Lider::YaLider::EventsController < Web::Users::
     when '1'
       choose_users
       @event_form = ::EventForm.new_with_model
+      @event_form.registrations << ::Event::RegistrationForm.new_with_model(user_id: current_user.id, role: :organizer)
     when '2'
       @yal_event_form = ::ActivityLines::Lider::YaLider::EventForm.new_with_model
       @yal_event_form.build_values! :anounce

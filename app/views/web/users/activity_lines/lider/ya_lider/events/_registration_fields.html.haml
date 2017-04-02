@@ -1,12 +1,15 @@
 .registration_fields.row
   .medium-4.columns
-    - if f.object.model.nil? || f.object.model.new_record?
-      = f.input :user_id, as: :select, collection: users_cache_hash(@users), input_html: { class: :select2 }, label: false, required: true
+    - if f.object.is_a?(::Event::Registration)
+      = f.object.user.decorate.select_presentation
     - else
-      %span.norm-font
-        = f.input :user_id, as: :hidden
-        - if f.object.model.user
-          = f.object.model.user.decorate.select_presentation
+      - if f.object.model.nil? || f.object.model.new_record?
+        = f.input :user_id, as: :select, collection: users_cache_hash(@users), input_html: { class: :select2 }, label: false, required: true
+      - else
+        %span.norm-font
+          = f.input :user_id, as: :hidden
+          - if f.object.model.user
+            = f.object.model.user.decorate.select_presentation
   .medium-4.columns
     = f.input :role, as: :select, collection: enumerize_locales_hash(Event::Registration, :role), label: false
   .medium-4.columns
