@@ -25,6 +25,10 @@ class UserDecorator < ApplicationDecorator
     end
   end
 
+  def corporate_email
+    object.corporate_email
+  end
+
   alias element_avatar profile_avatar
 
   def select_presentation(options = {})
