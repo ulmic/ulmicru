@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
     @link = link
     @image = src_with_host image
     @subscription_token = subscription_token
-    mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: subject
+    mail from: sender_name, to: user.email, subject: subject
   end
 
   def fail_participant_api_create(object, user)
