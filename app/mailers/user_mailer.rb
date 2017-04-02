@@ -17,13 +17,13 @@ class UserMailer < ApplicationMailer
     mail from: sender_name, to: @user.corporate_email.present? ? user.corporate_email : user.email, subject: subject(object.class, :remind_password)
   end
 
-  def just_message(user, subject, message, link = nil, image = nil, subscription_token = nil)
+  def just_message(user, email, subject, message, link = nil, image = nil, subscription_token = nil)
     @user = user
     @message = message
     @link = link
     @image = src_with_host image
     @subscription_token = subscription_token
-    mail from: sender_name, to: user.notificable_email, subject: subject
+    mail from: sender_name, to: email, subject: subject
   end
 
   def fail_participant_api_create(object, user)
