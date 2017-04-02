@@ -65,7 +65,11 @@ class EventDecorator < ApplicationDecorator
     brackets = if object.organizer_type == 'User' && ::ActivityLines::Lider::YaLider::ParticipantEvent.where(event_id: object.id).any?
                  "(#{t('activerecord.models.activity_lines/lider/ya_lider/participant')})"
                end
-    "#{organizer_name}\n#{brackets}"
+    h.content_tag :span do
+      h.concat organizer_name
+      h.concat h.content_tag :br
+      h.concat brackets
+    end
   end
 
   def online_conference_title
