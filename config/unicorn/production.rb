@@ -5,7 +5,7 @@ worker_processes 1
 
 listen app_path + "/shared/.sock", backlog: 64
 
-timeout 15
+timeout 30
 # preload_app true
 
 stderr_path "#{app_path}/current/log/unicorn.stderr.log"
