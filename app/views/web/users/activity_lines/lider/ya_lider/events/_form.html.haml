@@ -50,11 +50,21 @@
       = ff.input :title, as: :hidden, input_html: { value: ff.object.title }
     = f.button :submit, t('helpers.links.save'), class: 'btn btn-success'
 - when '3'
-  = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: :update, step: 3, id: @yal_event_form.id } do |f|
-    = f.simple_fields_for :fields do |ff|
-      - if ff.object.title.in?(@yal_event_form.report_titles)
-        = ff.input :field_type, as: :hidden, input_html: { value: :text }
-        = label :value, "* #{t("enumerize.activity_lines/lider/ya_lider/event_field.title.#{ff.object.title}")}"
-        = ff.input :value, label: false
-        = ff.input :title, as: :hidden, input_html: { value: ff.object.title }
-    = f.button :submit, t('helpers.links.save'), class: 'btn btn-success'
+  - title t('.title.step_3'), :ya_lider
+  %h2
+    = t('.title.step_3')
+  - if @event.end_date > DateTime.now
+    %span.label.warning
+      = fa_icon('exclamation-circle')
+      = t('.you_fill_this_report_after_your_event')
+    %br
+    = link_to t('.see_your_event'), event_path(@event), class: 'button'
+  - else
+    = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/events', action: :update, step: 3, id: @yal_event_form.id } do |f|
+      = f.simple_fields_for :fields do |ff|
+        - if ff.object.title.in?(@yal_event_form.report_titles)
+          = ff.input :field_type, as: :hidden, input_html: { value: :text }
+          = label :value, "* #{t("enumerize.activity_lines/lider/ya_lider/event_field.title.#{ff.object.title}")}"
+          = ff.input :value, label: false, as: :text
+          = ff.input :title, as: :hidden, input_html: { value: ff.object.title }
+      = f.button :submit, t('helpers.links.save'), class: 'btn btn-success'

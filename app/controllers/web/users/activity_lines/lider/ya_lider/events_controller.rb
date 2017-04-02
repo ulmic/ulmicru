@@ -10,6 +10,7 @@ class Web::Users::ActivityLines::Lider::YaLider::EventsController < Web::Users::
     when '3'
       @yal_event_form = ::ActivityLines::Lider::YaLider::EventForm.find_with_model params[:event_id]
       @yal_event_form.build_values! :report
+      @event = ::Event.where(id: @yal_event_form.model.event_id).first
     end
   end
 
