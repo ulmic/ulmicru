@@ -17,7 +17,7 @@
       %div
         - @participants.each do |participant|
           = render 'participant_cell', participant: participant
-.row
+-#.row
   .auth_button_row
     = link_to t('.add_event'), new_users_activity_lines_lider_ya_lider_participant_event_url(step: 1, host: 'https://ulmic.ru/'), class: 'btn btn-branded'
 .row.for_news
