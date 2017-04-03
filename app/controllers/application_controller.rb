@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     unless Rails.env.test?
       if request.host.include?('it-way.pro') && request.path != main_page_of('it-way.pro')
         redirect_to main_page_of 'it-way.pro'
-      elsif request.host.include?('ul-lider.ru') && request.path == ''
+      elsif request.host.include?('ul-lider.ru') && request.path == root_path
         redirect_to activity_lines_lider_ya_lider_path(15), status: :moved_permanently
       end
     end
