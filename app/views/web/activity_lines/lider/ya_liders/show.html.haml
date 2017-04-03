@@ -17,7 +17,7 @@
       %div
         - @participants.each do |participant|
           = render 'participant_cell', participant: participant
-- if signed_in?
+-# if signed_in?
   - if @contest.current_stage.participants.map(&:user_id).include?(current_user.id) && params[:token] == Token.where(record_type: 'ActivityLines::Lider::YaLider::Participant', record_id: current_user.current_ya_lider_participant.id).first&.content
     %hr
     .row
@@ -26,7 +26,7 @@
           = link_to 'Создать отчёт', new_users_activity_lines_lider_ya_lider_participant_event_path(event_id: current_user.current_ya_lider_participant.event.id, step: 3), class: 'btn btn-branded'
         - else
           = link_to t('.add_event'), new_users_activity_lines_lider_ya_lider_participant_event_path(step: 1), class: 'btn btn-branded'
-- else
+-# else
   %hr
   .row
     .auth_button_row
