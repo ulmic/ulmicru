@@ -3,6 +3,7 @@ class Web::Admin::Delivery::AudiencesController < Web::Admin::Delivery::Applicat
     @audience_form = ::Delivery::AudienceForm.new_with_model
     @audience_form.submit params[:delivery_audience]
     if @audience_form.save
+      ::Admin::FillReceiversJob.perform_later @audience_form.model.campaign
       redirect_to admin_delivery_campaign_path(@audience_form.model.campaign)
     else
       render :new
