@@ -9,7 +9,7 @@ Configus.build Rails.env do
     host 'ulmic.ru'
     full_host 'http://ulmic.ru'
     mailer do
-      from 'activ@ulmic.ru'
+      from 'mail@ulmic.ru'
     end
     api do
       foursquare do
