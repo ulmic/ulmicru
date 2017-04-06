@@ -46,7 +46,7 @@
                         = fa_icon 'eye-slash'
                     %span
                       = team.full_title
-      - if current_user.confirmed? && current_user.is_ya_lider_participant?
+      - if current_user.is_ya_lider_participant?
         = render 'layouts/web/shared/navbar/ya_lider_participant'
       .icon-cogwheel.min-icon.link{ data: { href: account_path }, title: t('layouts.web.shared.navbar.account') }
       = link_to session_path(url: request.env['ORIGINAL_FULLPATH']), method: :delete, title: t('helpers.sign_out') do
