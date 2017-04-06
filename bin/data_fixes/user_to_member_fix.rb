@@ -1,4 +1,4 @@
-if ENV['USER_ID'].present? && ENV['MEMBER_ID'].present?
+if ENV['USER_ID'].present? && (ENV['MEMBER_ID'].present? || ENV['TRUE_USER'].present?)
   user = User.find ENV['USER_ID']
   member = ENV['MEMBER_ID'].present? ? Member.find(ENV['MEMBER_ID']) : User.find(ENV['TRUE_USER'])
   puts "Updating associations...".green
