@@ -15,6 +15,11 @@ class Web::Admin::CommentsController < Web::Admin::ApplicationController
     @comment_form = CommentForm.new_with_model
     @comment_form.submit(params[:comment])
     if @comment_form.save
+      if @comment_form.model.comment_type.admin?
+        @comment_form.model.record.logged_actions_associated_users.each do |user|
+          send_notification user, @comment_form.model, :create
+        end
+      end
       redirect_to :back
     else
       render action: :new

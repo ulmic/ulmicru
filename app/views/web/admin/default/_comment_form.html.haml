@@ -1,4 +1,4 @@
-- if object.id.present?
+- if object.id.present? && permitted_to?(:review, record_type)
   .modal.fade#commentForm{ tabindex: '-1', role: :dialog }
     .modal-dialog{ role: :document }
       .modal-content
@@ -15,6 +15,15 @@
             = f.input :state, as: :hidden, input_html: { value: :active }
             = f.input :comment_type, as: :hidden, input_html: { value: :admin }
             = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+            %h4
+              = t('.receivers')
+            %table.table.table-striped
+              - object.logged_actions_associated_users.each do |user|
+                %tr
+                  %td
+                    = user.decorate.short_name
+                  %td
+                    = user.email
           .modal-footer
             = f.button :submit, t('helpers.links.save'), class: 'btn-success'
             %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Закрыть

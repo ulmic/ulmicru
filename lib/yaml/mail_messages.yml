@@ -34,3 +34,6 @@ messages:
   activity_lines/lider/ya_lider/participant:
     fail_api_create:
       subject: 'Не удалось синхронизироваться с сайтом Я-лидер!'
+  comment:
+    create:
+      subject: Добавлен комментарий к записи

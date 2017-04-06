@@ -15,6 +15,10 @@ ru:
           teams: Команды
           contact_list: Контакт-лист
           authentications: Авторизации
+        record_feed:
+          title: Действия с записью
+        comment_form:
+          receivers: Оповещение о комментарии получат
       welcome:
         index:
           title: Админка

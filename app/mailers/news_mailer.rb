@@ -4,6 +4,6 @@ class NewsMailer < ApplicationMailer
   def create(news, user)
     @user = user
     @news = news
-    mail from: sender_name, to: user.corporate_email.present? ? user.corporate_email : user.email, subject: subject(news.class, :create)
+    mail from: sender_name, to: user.email, subject: subject(news.class, :create)
   end
 end
