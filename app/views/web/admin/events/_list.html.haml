@@ -10,6 +10,7 @@
       %th= model_class.human_attribute_name(:places)
       - if searching?
         %th= model_class.human_attribute_name(:state)
+      %th
       %th= t 'helpers.links.actions'
   %tbody
     - events.each do |event|
@@ -35,6 +36,10 @@
             = link_to event.creator.short_name, edit_admin_user_path(event.creator)
         - if searching?
           %td= event.human_state_name
+        %td
+          - if event.is_ya_lider_event?
+            %span.label.label-success
+              = t('activerecord.models.activity_lines/lider/ya_lider')
         %td.actions
           - if current_user.has_permission_to?(:review, :event) && !event.confirmed?
             = link_to admin_event_path(event, event: { state: :confirmed }), method: :patch, class: 'btn btn-success btn-xs' do

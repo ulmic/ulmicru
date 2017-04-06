@@ -47,6 +47,10 @@ class Event < ActiveRecord::Base
     title&.include? I18n.t('activerecord.attributes.activity_lines/corporative/online_conference.event_title')
   end
 
+  def is_ya_lider_event?
+    ::ActivityLines::Lider::YaLider::ParticipantEvent.where(event_id: self.id).any?
+  end
+
   private
 
   def remove_empty_registrations
