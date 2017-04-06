@@ -15,7 +15,7 @@ class Web::Admin::CommentsController < Web::Admin::ApplicationController
     @comment_form = CommentForm.new_with_model
     @comment_form.submit(params[:comment])
     if @comment_form.save
-      redirect_to admin_comments_path
+      redirect_to :back
     else
       render action: :new
     end

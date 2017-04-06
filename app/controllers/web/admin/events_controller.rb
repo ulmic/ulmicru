@@ -3,6 +3,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
   before_filter :choose_users, only: [ :new, :edit ]
   before_filter :choose_members, only: [ :new, :edit ]
   before_filter :init_place, only: [ :new, :edit ]
+  before_filter :build_comment, only: [ :edit ]
 
   def index
     if params[:search]
@@ -48,6 +49,7 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
       choose_users
       choose_members
       init_place
+      build_comment
       render action: :edit
     end
   end

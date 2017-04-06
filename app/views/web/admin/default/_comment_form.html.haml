@@ -1,0 +1,20 @@
+- if object.id.present?
+  .modal.fade#commentForm{ tabindex: '-1', role: :dialog }
+    .modal-dialog{ role: :document }
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4#commentFormLabel.modal-title Добавить комментарий
+        = simple_form_for @comment_form, url: { controller: 'web/admin/comments', action: :create }, input_html: { class: 'form-horizontal' } do |f|
+          .modal-body
+            = hint :comment, :text, place: :admin
+            = f.input :text, label: false
+            = f.input :record_id, as: :hidden, input_html: { value: object.id }
+            = f.input :record_type, as: :hidden, input_html: { value: record_type }
+            = f.input :state, as: :hidden, input_html: { value: :active }
+            = f.input :comment_type, as: :hidden, input_html: { value: :admin }
+            = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+          .modal-footer
+            = f.button :submit, t('helpers.links.save'), class: 'btn-success'
+            %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Закрыть

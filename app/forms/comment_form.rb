@@ -1,5 +1,3 @@
-class CommentForm < ApplicationForm
-  self.main_model = :comment
-
-  attributes :text, :user_id, :parent_id, :record_id, :record_type
+class CommentForm < ApplicationReform
+  properties :text, :user_id, :parent_id, :record_id, :record_type, :comment_type
 end
