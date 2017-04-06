@@ -20,6 +20,8 @@
     = simple_form_for [:admin, @event_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_events_path, class: 'btn btn-default'
+      - if @event_form.id.present?
+        = render 'web/admin/default/comment_form_button'
       - if @event_form.model.is_online_conference?
         = f.input :title, as: :string, disabled: true
         = f.input :title, as: :hidden
@@ -64,4 +66,7 @@
         = link_to_add_association t('.add_registration'), f, :registrations, data: { 'association-insertion-node' => 'this' }, class: 'btn btn-warning add_fields'
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_events_path, class: 'btn btn-default'
+      - if @event_form.id.present?
+        = render 'web/admin/default/comment_form_button'
 = render 'web/admin/events/shared/place_form'
+= render 'web/admin/default/comment_form', record_type: 'Event', object: @event_form

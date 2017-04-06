@@ -108,4 +108,9 @@ $ ->
     setTimeout init_datetimepickers, 1000
     return
   $('[data-toggle="popover"]').popover()
+  $('.slide_down_area_button').click ->
+    if $('.slide_down_area').is(':visible')
+      $('.slide_down_area').slideUp()
+    else
+      $('.slide_down_area').slideDown()
   return

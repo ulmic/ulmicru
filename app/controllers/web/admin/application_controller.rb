@@ -47,4 +47,8 @@ class Web::Admin::ApplicationController < Web::ApplicationController
     end
     record
   end
+
+  def build_comment
+    @comment_form = CommentForm.new_with_model
+  end
 end

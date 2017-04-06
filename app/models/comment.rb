@@ -10,7 +10,8 @@ class Comment < ActiveRecord::Base
                    uniqueness: { scope: [ :user_id, :record_id ] }
 
   extend Enumerize
-  enumerize :record_type, in: [ 'Article', 'News', 'ActivityLines::Corporative::Confession' ]
+  enumerize :record_type, in: [ 'Article', 'News', 'ActivityLines::Corporative::Confession', 'Event' ]
+  enumerize :comment_type, in: [ :user, :admin ]
 
   state_machine :state, initial: :unviewed do
     state :unviewed
