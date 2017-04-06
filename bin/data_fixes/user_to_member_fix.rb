@@ -1,6 +1,6 @@
 if ENV['USER_ID'].present? && ENV['MEMBER_ID'].present?
   user = User.find ENV['USER_ID']
-  member = Member.find ENV['MEMBER_ID']
+  member = ENV['MEMBER_ID'].present? ? Member.find(ENV['MEMBER_ID']) : User.find(ENV['TRUE_USER'])
   puts "Updating associations...".green
   [:authentications, :article, :registrations, :logged_actions, :comments, :ya_lider_participants].each do |association|
     user.send(association).each do |obj|
