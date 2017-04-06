@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  belongs_to :creator, class_name: Member
+  belongs_to :creator, class_name: User
   belongs_to :activity_line
   belongs_to :organizer, polymorphic: true,
                          foreign_key: :organizer_id

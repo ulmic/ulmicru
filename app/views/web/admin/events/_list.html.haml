@@ -26,10 +26,13 @@
             %p
               = link_to place.title, admin_place_path(place)
         %td
-          - if event.creator.is_member?
+          - case event.creator.type
+          - when 'Member'
             = link_to event.creator.short_name, admin_member_path(event.creator)
-          - else
+          - when 'Questionary'
             = link_to event.creator.short_name, admin_questionary_path(event.creator)
+          - else
+            = link_to event.creator.short_name, edit_admin_user_path(event.creator)
         - if searching?
           %td= event.human_state_name
         %td.actions
