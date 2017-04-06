@@ -2,6 +2,7 @@ Configus.build Rails.env do
   env :production do
     social_networks_pages do
       vkontakte 'http://vk.com/ulmic'
+      instagram 'https://www.instagram.com/ulmicru/'
       twitter 'http://twitter.com/ulmicru'
       facebook 'https://www.facebook.com/molcenter'
       google_plus 'https://plus.google.com/b/109518417712111969312/109518417712111969312/posts'
