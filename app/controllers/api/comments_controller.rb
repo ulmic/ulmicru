@@ -7,8 +7,7 @@ class Api::CommentsController < Api::ApplicationController
   def create
     @comment = CommentForm.new_with_model
     params[:comment][:user_id] = current_user.id
-    @comment.submit params[:comment]
-    if @comment.save
+    if @comment.submit params[:comment]
       render json: {
                      id: @comment.id,
                      name: @comment.user.decorate.short_name,
