@@ -74,7 +74,6 @@ gem 'youtube_addy'
 
 group :development, :test do
   gem 'byebug'
-  gem 'foreman'
   gem 'web-console', '2.0.0.beta2'
   gem 'spring', '1.3.4'
   gem 'factory_girl_rails'
@@ -86,8 +85,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'simplecov', require: false
-  gem 'tconsole', github: 'ulmic/tconsole', branch: 'rails4'
-  gem 'coveralls', require: false
+  gem 'simplecov', '>= 0.14.1', require: false
+  gem 'tconsole-rails4'
+  gem 'coveralls', '>= 0.8.20', require: false
   gem 'webmock'
 end
