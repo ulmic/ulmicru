@@ -5,6 +5,7 @@ class News < ActiveRecord::Base
   has_many :comments, as: :record,
                       dependent: :destroy
   has_many :logged_actions, as: :record
+  has_many :admin_comments, -> { where(comment_type: :admin) }, class_name: 'Comment', as: :record
   has_and_belongs_to_many :attachments, class_name: 'Document'
   has_many :page_views, class_name: 'View', as: :record
 
@@ -48,6 +49,7 @@ class News < ActiveRecord::Base
     end
   end
 
+  include Concerns::ActionLoggerManagment
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :lead]
 

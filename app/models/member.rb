@@ -19,6 +19,7 @@ class Member < User
                          dependent: :destroy
   has_many :views, as: :record, foreign_key: :record_id, class_name: 'View'
 
+
   validates :email, uniqueness: true
   validates :first_name, human_name: true,
                          allow_blank: true
@@ -134,6 +135,11 @@ class Member < User
 
   def is_honorable?
     merits.where(nomination: :first_degree).any?
+  end
+
+  #FIXME because STI
+  def admin_comments
+    @admin_comments ||= Comment.where(comment_type: :admin, record_id: self.id, record_type: self.type)
   end
 
   private

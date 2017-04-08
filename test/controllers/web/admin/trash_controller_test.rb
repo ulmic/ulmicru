@@ -45,7 +45,7 @@ class Web::Admin::TrashControllerTest < ActionController::TestCase
       patch :restore, type: type, id: @instances[type].id
       @instances[type].reload
       restored_state = type.in?(restore_active_model) ? :active : :unviewed
-      assert @instances[type].send "#{restored_state}?"
+      assert @instances[type].send "#{restored_state}?", "#{type} #{restored_state}"
       assert_response :redirect, @response.body
     end
   end

@@ -43,6 +43,7 @@ class Web::Admin::ProtocolsControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to admin_protocols_path
     protocol = Protocol.last
+    attributes[:document_id] = Document.last.id
     protocol.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], protocol.send(key), key
     end

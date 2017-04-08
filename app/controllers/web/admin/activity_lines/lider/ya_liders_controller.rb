@@ -52,7 +52,6 @@ class Web::Admin::ActivityLines::Lider::YaLidersController < Web::Admin::Activit
       redirect_to edit_admin_activity_lines_lider_ya_lider_path @ya_lider_form.model
     else
       choose_events
-      render action: :new
       render action: :edit
     end
   end

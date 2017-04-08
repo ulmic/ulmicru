@@ -114,6 +114,7 @@ class User < ActiveRecord::Base
   end
 
   def is_ya_lider_participant?
-    ::ActivityLines::Lider::YaLider.current_contest.current_stage.participants.map(&:user_id).include? id
+    current_contest = ::ActivityLines::Lider::YaLider.current_contest
+    current_contest.current_stage.participants.map(&:user_id).include? id if current_contest.present?
   end
 end

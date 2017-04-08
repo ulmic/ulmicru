@@ -74,3 +74,7 @@ documents.each do |id, document|
   d = Document.last
   d.update_attributes id: id
 end
+
+# Create krk
+puts "Create krk...".green
+Team::Subdivision.create! title: 'Контрольно-ревизионная комиссия', description: 'Контрольно-ревизионная комиссия'

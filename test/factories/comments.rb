@@ -6,5 +6,6 @@ FactoryGirl.define do
     user_id { create(:user).id }
     parent_id { Comment.last ? Comment.last.id : 1 }
     state { Comment.state_machines[:state].states.map(&:name).first.to_s }
+    comment_type { Comment.comment_type.values.sample }
   end
 end

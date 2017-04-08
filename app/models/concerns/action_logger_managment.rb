@@ -12,7 +12,7 @@ module Concerns
     end
 
     def feeds
-      (logged_actions + admin_comments).sort_by { created_at }
+      (logged_actions + admin_comments).sort { |a, b| a.created_at <=> b.created_at }
     end
   end
 end

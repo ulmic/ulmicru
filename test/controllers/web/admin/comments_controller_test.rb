@@ -7,6 +7,7 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     create :news
     @comment = create :comment
     @exceptions_attributes = ['id', 'created_at', 'updated_at']
+    @request.env['HTTP_REFERER'] = root_path
   end
 
   test 'should get index' do
@@ -42,7 +43,6 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     attributes = attributes_for :comment
     post :create, comment: attributes
     assert_response :redirect, @response.body
-    assert_redirected_to admin_comments_path
     comment = Comment.last
     comment.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
       assert_equal attributes[key.to_sym], comment.send(key), key
@@ -58,7 +58,6 @@ class Web::Admin::CommentsControllerTest < ActionController::TestCase
     attributes = attributes_for :comment
     patch :update, comment: attributes, id: @comment
     assert_response :redirect, @response.body
-    assert_redirected_to edit_admin_comment_path @comment
     @comment.reload
     @comment.attributes.keys.except('id', 'created_at', 'updated_at').each do |key|
       assert_equal attributes[key.to_sym], @comment.send(key), key
