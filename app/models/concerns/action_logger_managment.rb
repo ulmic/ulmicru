@@ -18,8 +18,7 @@ module Concerns
     private
 
     def logged_actions_list
-      type == 'Questionary' ? as_record_logged_actions : logged_actions
+      try(:type) && type == 'Questionary' ? as_record_logged_actions : logged_actions
     end
-
   end
 end
