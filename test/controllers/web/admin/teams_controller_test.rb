@@ -49,7 +49,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
     assert_redirected_to admin_teams_path
     team = Team.last
     team.attributes.keys.except(*@exceptions_attributes).each do |key|
-      assert_equal attributes[key.to_sym], team.send(key), key
+      assert_equal attributes[key.to_sym], team.send(key), "Attribute #{key}. Team type #{team.type}"
     end
   end
 

@@ -6,6 +6,7 @@ FactoryGirl.define do
     state { Team.state_machines[:state].states.map(&:name).first.to_s }
     publicity { Team.publicity.values.first }
     type { [ 'Team::Departament', 'Team::Primary', 'Team::Committee', 'Team::Subdivision', 'Team::Administration'].sample }
+    municipality { Team::Departament.municipality.values.sample }
   end
 
   factory :departament, parent: :team, class: 'Team::Departament' do

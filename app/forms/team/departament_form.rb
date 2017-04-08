@@ -1,3 +1,3 @@
-class Team::DepartamentForm < ActiveForm::Base
-  # attributes :name, :email
+class Team::DepartamentForm < ApplicationReform
+  properties :title, :municipality
 end
