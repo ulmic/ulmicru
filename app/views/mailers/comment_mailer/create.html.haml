@@ -5,7 +5,10 @@
 %p
   = @comment.user.decorate.short_name
   добавил комментарий к записи
-  = @comment.record.title
+  - if @comment.record.try(:title)
+    = @comment.record.title
+  - else
+    = @comment.record.decorate.short_name
 %p
   Текст комментария:
   = @comment.text
