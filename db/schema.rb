@@ -628,7 +628,7 @@ ActiveRecord::Schema.define(version: 20170408192632) do
     t.text     "member_state",    default: "unviewed"
     t.datetime "request_date"
     t.text     "corporate_email"
-    t.text     "source"
+    t.text     "source_to_know"
   end
 
   create_table "views", force: :cascade do |t|
