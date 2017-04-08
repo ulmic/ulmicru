@@ -19,8 +19,14 @@ class Web::Users::ActivityLines::Lider::YaLider::ParticipantEventsController < W
     case params[:step]
     when '1'
       @event_form = ::EventForm.new_with_model
+      #FIXME fix params
+      place_events = params[:event][:place_ids] - ['']
+      params[:event][:place_ids] = nil
       @event_form.submit params[:event]
       if @event_form.save
+        place_events.each do |place|
+          @event_form.model.places << Place.find(place)
+        end
         redirect_to new_users_activity_lines_lider_ya_lider_participant_event_path(step: 2, event_id: @event_form.model.id)
       else
         choose_users
