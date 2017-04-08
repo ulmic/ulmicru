@@ -74,7 +74,7 @@ ru:
         title: Регистрация на сайте
       join:
         new:
-          title: Подача заявки на вступление в Молодёжный инициативный центр
+          title: Заявка на вступление в Молодёжный инициативный центр
       activity_lines:
         lider:
           ya_lider:
@@ -214,6 +214,9 @@ ru:
     placeholders:
       web:
         member:
+          default:
+            mobile_phone: Формат номера телефона с +7
+        questionary:
           default:
             mobile_phone: Формат номера телефона с +7
         places:
