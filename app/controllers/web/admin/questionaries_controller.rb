@@ -1,5 +1,6 @@
 class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
   include Concerns::RegistrationWithLogs
+  before_filter :build_comment, only: :show
 
   def index
     if params[:search]

@@ -24,6 +24,7 @@
     %hr
     - if item.is_questionary?
       = render 'web/admin/questionaries/buttons', instance: item.object
+      = render 'web/admin/default/comment_form_button'
     %table.table.attributes-table
       - item.sites_attributes.each do |attribute|
         %tr
@@ -76,7 +77,17 @@
               %td= logged_action.user.decorate.short_name
 .row
   .col-md-12
+    %h3
+      = t('activerecord.models.comment').pluralize(:ru)
+    %table.table.table-striped.table-bordered
+      - item.admin_comments.each do |comment|
+        %tr
+          %td= comment.user.decorate.short_name
+          %td= comment.text
+          %td=l comment.created_at, format: '%d %B %Y'
+.row
+  .col-md-12
     = render 'web/admin/default/logged_actions', logged_actions: item.as_record_logged_actions
 .row
   .col-md-12
-    = render 'web/admin/default/logged_actions', logged_actions: item.logged_actions.reverse
+    = render 'web/admin/default/logged_actions', logged_actions: item.logged_actions
