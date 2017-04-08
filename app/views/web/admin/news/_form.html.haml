@@ -18,6 +18,8 @@
     = simple_form_for [:admin, @news_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_news_index_path, class: 'btn btn-default'
+      - if @news_form.id.present?
+        = render 'web/admin/default/comment_form_button'
       = link_to t('helpers.links.yo'), '#', class: 'btn btn-warning yofication', data: { type: :news, fields: [ :title, :lead, :body ], user_id: current_user.id }
       = f.input :title, as: :string
       = f.input :lead, as: :string
@@ -40,3 +42,6 @@
       = f.association :attachments, input_html: { class: :select2 }
       = f.button :submit, class: 'btn-success', value: t('helpers.links.save')
       = link_to t('helpers.links.back'), admin_news_index_path, class: 'btn btn-default'
+      - if @news_form.id.present?
+        = render 'web/admin/default/comment_form_button'
+= render 'web/admin/default/comment_form', record_type: 'News', object: @news_form

@@ -1,5 +1,6 @@
 class Web::Admin::NewsController < Web::Admin::ApplicationController
   before_filter :choose_members, only: [ :new, :edit ]
+  before_filter :build_comment, only: :edit
 
   def index
     if params[:search]
@@ -44,6 +45,7 @@ class Web::Admin::NewsController < Web::Admin::ApplicationController
         page: collection_page(@news_form.model, current_collection)
     else
       choose_members
+      build_comment
       render action: :edit
     end
   end
