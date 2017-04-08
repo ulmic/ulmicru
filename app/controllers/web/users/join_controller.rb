@@ -3,8 +3,15 @@ class Web::Users::JoinController < Web::Users::ApplicationController
   before_filter :find_charter_article, only: :new
 
   def new
-    questionary = current_user.becomes! Questionary
-    @questionary_form = QuestionaryForm.new questionary
+    case params[:step]
+    when '1'
+      current_user.to_step_1
+      @user = current_user
+    when '2'
+      current_user.to_step_2
+      questionary = current_user.becomes! Questionary
+      @questionary_form = QuestionaryForm.new questionary
+    end
   end
 
   def create
@@ -13,6 +20,7 @@ class Web::Users::JoinController < Web::Users::ApplicationController
     @questionary_form.submit params[:questionary]
     User.find(questionary.id).update type: 'Questionary'
     if @questionary_form.save
+      current_user.finish
       Organization::Permissions.questionary[:review].each do |member|
         send_notification member, @questionary_form.model, :create
       end
