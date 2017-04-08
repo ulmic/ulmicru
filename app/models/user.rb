@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
     end
 
     event :to_step_2 do
-      transition step_2: :step_2
+      transition step_1: :step_2
     end
 
     event :finish do

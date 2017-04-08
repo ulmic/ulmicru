@@ -2,7 +2,7 @@
 class Web::Users::AccountController < Web::Users::ApplicationController
   def index
     case current_user.questionary_state
-    when 'none', 'done'
+    when 'not_existed', 'done'
       @user = current_user
       if @user.is_member?
         @member_form = MemberForm.find_with_model current_user.id

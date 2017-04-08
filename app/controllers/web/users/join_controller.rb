@@ -20,6 +20,7 @@ class Web::Users::JoinController < Web::Users::ApplicationController
     @questionary_form.submit params[:questionary]
     User.find(questionary.id).update type: 'Questionary'
     if @questionary_form.save
+      current_user.finish
       Organization::Permissions.questionary[:review].each do |member|
         send_notification member, @questionary_form.model, :create
       end
