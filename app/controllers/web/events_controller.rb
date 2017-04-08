@@ -5,6 +5,7 @@ class Web::EventsController < Web::ApplicationController
 
   def show
     @event = ::Event.includes(:online_conference).find(params[:id]).decorate
+    View.create! user_id: current_user&.id, record_id: @event.id, record_type: 'Event'
     organizers = @event.registrations.organizers
     attenders = @event.registrations.attenders
     @all_registrations = Event::RegistrationDecorator.decorate_collection(organizers + attenders)
