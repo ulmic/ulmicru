@@ -5,8 +5,10 @@ class Web::Users::JoinController < Web::Users::ApplicationController
   def new
     case params[:step]
     when '1'
+      current_user.to_step_1
       @user = current_user
     when '2'
+      current_user.to_step_2
       questionary = current_user.becomes! Questionary
       @questionary_form = QuestionaryForm.new questionary
     end

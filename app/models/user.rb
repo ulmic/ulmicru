@@ -61,6 +61,25 @@ class User < ActiveRecord::Base
     end
   end
 
+  state_machine :questionary_state, initial: :not_existed do
+    state :not_existed
+    state :step_1
+    state :step_2
+    state :done
+
+    event :to_step_1 do
+      transition not_existed: :step_1
+    end
+
+    event :to_step_2 do
+      transition step_2: :step_2
+    end
+
+    event :finish do
+      transition step_2: :done
+    end
+  end
+
   def is_member?
     model_name == 'Member'
   end
