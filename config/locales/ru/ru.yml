@@ -58,10 +58,7 @@ ru:
           enter_datas_mic_member: Заполнить профиль члена МИЦ
           my_position_in_mic: Занимаемые мною должности
           admin_panel: Панель администратора
-          authentications: Подключённые аккаунты
-          you_can_auth_with_social_networks: 'Вы можете проходить авторизацию, используя свои аккаунты в социальных сетях.'
           your_member_profile_is_unviewed: 'Ваш профиль члена Молодёжного инициативного центра ожидает подтверждения. После подтверждения у вас будет открытый профиль на сайте МИЦ.'
-          enable_in_profile_page: Показывать в профиле
           your_role_is: 'Ваша роль на сайте %{role}.'
           you_have_access_to_admin_panel: У вас есть доступ в Админку.
           we_have_send_you_activation_email: Мы отправили вам письмо с инструкциями по активации Вашего аккаунта.
@@ -75,6 +72,11 @@ ru:
       join:
         new:
           title: Заявка на вступление в Молодёжный инициативный центр
+      shared:
+        authentications:
+          authentications: Подключённые аккаунты
+          you_can_auth_with_social_networks: 'Вы можете проходить авторизацию, используя свои аккаунты в социальных сетях.'
+          enable_in_profile_page: Показывать в профиле
       activity_lines:
         lider:
           ya_lider:

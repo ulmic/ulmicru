@@ -3,8 +3,13 @@ class Web::Users::JoinController < Web::Users::ApplicationController
   before_filter :find_charter_article, only: :new
 
   def new
-    questionary = current_user.becomes! Questionary
-    @questionary_form = QuestionaryForm.new questionary
+    case params[:step]
+    when '1'
+      @user = current_user
+    when '2'
+      questionary = current_user.becomes! Questionary
+      @questionary_form = QuestionaryForm.new questionary
+    end
   end
 
   def create
