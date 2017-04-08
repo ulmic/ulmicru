@@ -31,6 +31,11 @@ ru:
           uniq_users_event_registrations_count: Количество уникальных пользователей, участвоваших в мероприятиях
           email_sended: Всего Email отправлено
           email_sended_this_month: Email отправлено в этом месяце
+          event_views: Всего просмотров мероприятий
+          member_views: Всего просмотров профилей членов МИЦ
+          most_viewed_news: Самая просматриваемая новость
+          most_viewed_event: Самое просматриваемое мероприятие
+          member: Самый просматриваемый профиль члена МИЦ
       unviewed:
         index:
           title: Непросмотренные

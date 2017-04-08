@@ -5,6 +5,15 @@ class Web::Admin::WelcomeController < Web::Admin::ApplicationController
 
   def index
     @report = if signed_as_admin? 
+      most_viewed_news_count = News.joins(:page_views).select('news.*, count(views.id) as vcount').group('news.id').order('vcount DESC').first
+      most_viewed_event_count = Event.joins(:page_views).select('events.*, count(views.id) as vcount').group('events.id').order('vcount DESC').first
+      counts = {}
+      member_id = View.where(record_type: 'Member').map(&:record_id).group_by(&:itself).each do |k, v|
+        counts[k] = v.length
+      end.max_by do |element|
+        element.last.count
+      end
+      member = Member.find member_id[0]
       {
         users_count: User.count,
         event_registrations_count: Event::Registration.count,
@@ -15,7 +24,12 @@ class Web::Admin::WelcomeController < Web::Admin::ApplicationController
         news_views: View.where(record_type: 'News').count,
         article_views: View.where(record_type: 'Article').count,
         email_sended: Delivery::Campaign.done.map(&:contacts).flatten.count,
-        email_sended_this_month: Delivery::Campaign.done.where('created_at > ?', DateTime.now - 1.month).map(&:contacts).flatten.count
+        email_sended_this_month: Delivery::Campaign.done.where('created_at > ?', DateTime.now - 1.month).map(&:contacts).flatten.count,
+        event_views: View.where(record_type: 'Event').count,
+        member_views: View.where(record_type: 'Member').count,
+        most_viewed_news: "#{most_viewed_news_count.title} (#{most_viewed_news_count.page_views.count})",
+        most_viewed_event: "#{most_viewed_event_count.title} (#{most_viewed_event_count.page_views.count})",
+        member: "#{member.decorate.short_name} (#{member_id[1].count})"
       }
               end
   end

@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
   has_many :admin_comments, -> { where(comment_type: :admin) }, class_name: 'Comment', as: :record
   has_one :online_conference, class_name: 'ActivityLines::Corporative::OnlineConference'
   has_and_belongs_to_many :places
+  has_many :page_views, class_name: 'View', as: :record
 
   mount_uploader :main_photo, PhotoUploader
 

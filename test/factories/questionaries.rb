@@ -19,5 +19,7 @@ FactoryGirl.define do
     type 'Questionary'
     municipality { Member.municipality.values.sample }
     locality { Member.locality.values.sample }
+    source_to_know { generate :string }
+    questionary_state { Questionary.state_machines[:questionary_state].states.map(&:name).sample.to_s }
   end
 end
