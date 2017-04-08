@@ -20,6 +20,7 @@ class Web::Admin::CategoriesControllerTest < ActionController::TestCase
 
   test 'should create category' do
     attributes = attributes_for :category
+    attributes[:id] = Category.maximum(:id) + 1
     post :create, category: attributes
     assert_response :redirect, @response.body
     assert_redirected_to admin_categories_path

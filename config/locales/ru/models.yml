@@ -104,6 +104,8 @@ ru:
         <<: *member_default
         member_state: Статус заявки на вступление
         member_state_event: Статус заявки на вступление
+        source_to_know: Как ты узнал о МИЦ?
+        processing_personal_data: Даю согласие на обработку персональных данных
       news:
         title: Заголовок
         body: Контекст

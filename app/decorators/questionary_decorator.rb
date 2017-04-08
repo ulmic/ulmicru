@@ -6,7 +6,7 @@ class QuestionaryDecorator < MemberDecorator
   end
 
   def real_attributes
-    [:email, :corporate_email, :motto, :mobile_phone, :birth_date, :municipality, :locality, :school, :want_to_do, :experience]
+    [:email, :corporate_email, :motto, :mobile_phone, :birth_date, :municipality, :locality, :school, :want_to_do, :experience, :source_to_know]
   end
 
   def sites_attributes
