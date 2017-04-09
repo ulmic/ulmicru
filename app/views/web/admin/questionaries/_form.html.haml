@@ -31,6 +31,7 @@
       = f.input :avatar, label: false, as: :jasny_file_preview_upload
       = f.input :want_to_do
       = f.input :experience
+      = f.input :source_to_know
       = f.input :state_event, as: :state_event
       - if current_user.role.tech_admin?
         = f.input :role
