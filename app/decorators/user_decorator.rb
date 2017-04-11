@@ -42,7 +42,7 @@ class UserDecorator < ApplicationDecorator
   end
 
   def self.collections
-    [ :confirmed, :unviewed, :declined ]
+    [ :confirmed, :unviewed, :declined, :corrupted_email ]
   end
 
   def main_current_position
