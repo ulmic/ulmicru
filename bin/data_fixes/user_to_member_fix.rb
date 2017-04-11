@@ -19,7 +19,9 @@ if ENV['USER_ID'].present? && (ENV['MEMBER_ID'].present? || ENV['TRUE_USER'].pre
   user.subscriptions.each { |s| s.update_attributes! receiver_id: member.id }
   puts "Updating attributes...".green
   [:password_digest, :role, :state, :token].each do |attribute|
-    member.update_attributes! attribute => user.send(attribute)
+    unless user.send(attribute).present?
+      member.update_attributes! attribute => user.send(attribute)
+    end
   end
   puts "News migration...".green
   News.where(user_id: user.id).update_all user_id: member.id

@@ -2,6 +2,14 @@
 .container.mic-form-container.account-form
   %h3.title
     = t('.title')
+  - if @user.corrupted_email?
+    %span.label.alert
+      = t('.you_have_corrupted_email')
+    .row
+      .medium-4.columns
+        = t('.if_email_was_not_delivered')
+      .medium-4.medium-offset-1.columns.end
+        = link_to t('.resent_email_instructions'), resent_email_instructions_api_user_url(@user, :token => @user.token), class: 'button'
   - if @user.is_member? && !@user.unavailable?
     - if @user.member_unviewed?
       %span.label.warning
@@ -38,8 +46,6 @@
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), root_path, class: 'button'
     %br
-    -#- attributes_need_access.each do |attribute|
-      = check_box_tag attribute, '', false, class: 'attribute_access', data: { id: @user.id  }
   - else
     - if @user.unviewed?
       %span.label.warning
@@ -68,7 +74,7 @@
                 = t('.you_are_not_member_mic')
               .medium-4.medium-offset-1.columns.end
                 = link_to t('organization.send_request'), new_join_path(step: 1), class: 'button'
-          - if @user.state == "unviewed"
+          - if @user.state == "unviewed" || @user.state == "corrupted_email"
             .row
               .medium-4.columns
                 = t('.if_email_was_not_delivered')
