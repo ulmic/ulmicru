@@ -29,8 +29,6 @@ class UserDecorator < ApplicationDecorator
     object.corporate_email
   end
 
-  alias element_avatar profile_avatar
-
   def select_presentation(options = {})
     if options[:names] == :official
       "#{ticket_or_question} #{last_name} #{first_name&.first}.#{patronymic&.first}."
@@ -104,6 +102,27 @@ class UserDecorator < ApplicationDecorator
       instance_exec(&attribute.values.first)
     end
   end
+
+  def sites_attributes
+    [:id, :role, :state, { sign_in_count: -> { logged_actions_with(action_type: :sign_in).count } }, 
+      { views_count: -> { View.where(record_id: object.id, record_type: 'Member').count } },
+      { views_by_members: -> { 
+        View.where(record_id: object.id, record_type: 'Member', user_id: Member.just_members.map(&:id)).count
+      } 
+    }] 
+  end
+
+  def real_attributes
+    [:email]
+  end
+
+  def show_human_attribute_name(attribute)
+    attr = attribute.is_a?(Symbol) ? attribute : attribute.keys.first
+    object.class.human_attribute_name attr
+  end
+
+  alias element_avatar profile_avatar
+  alias full_name short_name
 
   private
 

@@ -1,4 +1,6 @@
 class Web::Admin::UsersController < Web::Admin::ApplicationController
+  include Concerns::RegistrationWithLogs
+
   def index
     if params[:search]
       users = User.presented.search params[:search]
@@ -6,6 +8,11 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
       users = User.send params[:scope]
     end
     @users = users.page(params[:page]).decorate
+  end
+
+  def show
+    @user = UserDecorator.decorate User.find(params[:id])
+    get_registrations_with_logs @user.registrations
   end
 
   def new

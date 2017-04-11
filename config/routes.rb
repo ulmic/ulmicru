@@ -65,7 +65,7 @@ Rails.application.routes.draw do
       end
     end
     namespace :admin do
-      resources :users, except: :show
+      resources :users
       resources :members
       resources :unviewed, only: :index
       resources :news
