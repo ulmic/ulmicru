@@ -33,7 +33,7 @@ class Member < User
                            allow_blank: true
   validates :motto, uniqueness: true,
                     allow_blank: true
-  validates :avatar, presence: true, if: Proc.new { state != :unavailable }
+  validates :avatar, presence: true, if: Proc.new { state != "unavailable" && state != "corrupted_email" }
   validates :corporate_email, ulmic_email: true,
                               email: true,
                               uniqueness: true,
