@@ -33,6 +33,7 @@ ru:
             confirmed: Подтверждённые
             declined: Отклонённые
             unavailable: Отсутствуют на сайте
+            corrupted_email: Несуществующий email
           events:
             renew: Сделать непросмотренным
             decline: Отклонить
