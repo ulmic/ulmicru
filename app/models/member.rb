@@ -50,6 +50,7 @@ class Member < User
     state :removed
     state :unavailable
     state :updated
+    state :corrupted_email
 
     event :confirm do
       transition all => :confirmed
@@ -71,6 +72,9 @@ class Member < User
     end
     event :state_renew do
       transition all => :unviewed
+    end
+    event :set_corrupted_email do
+      transition all => :corrupted_email
     end
   end
 

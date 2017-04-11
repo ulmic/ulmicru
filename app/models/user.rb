@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
     state :removed
     state :unavailable
     state :updated
+    state :corrupted_email
 
     event :renew do
       transition all => :unviewed
@@ -58,6 +59,9 @@ class User < ActiveRecord::Base
     end
     event :restore do
       transition :removed => :unviewed
+    end
+    event :set_corrupted_email do
+      transition all => :corrupted_email
     end
   end
 

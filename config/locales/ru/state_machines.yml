@@ -39,6 +39,7 @@ ru:
             remove: Удалить
             avail: Сделать доступным на сайте (только для членов МИЦ)
             unavail: Сделать недоступным на сайте (только для членов МИЦ)
+            set_corrupted_email: Несуществующий email
       member:
         state:
           states:

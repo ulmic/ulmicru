@@ -10,6 +10,7 @@ class Questionary < Member
     state :declined
     state :removed
     state :updated
+    state :corrupted_email
 
     event :confirm do
       transition all => :confirmed
@@ -25,6 +26,10 @@ class Questionary < Member
 
     event :restore do
       transition removed: :unviewed
+    end
+
+    event :set_corrupted_email do
+      transition all => :corrupted_email
     end
   end
 
