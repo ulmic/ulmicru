@@ -6,7 +6,7 @@ module MemberScopes
   included do
     scope :presented, -> { where.not(state: :removed).where.not(member_state: :removed).where.not(member_state: :not_member)
                            .order('ticket ASC') }
-    scope :confirmed, -> { where(member_state: :confirmed).where.not(ticket: nil, state: :unavailable).order('ticket DESC') }
+    scope :confirmed, -> { where(member_state: :confirmed).where.not(ticket: nil, state: :unavailable).where.not(state: :corrupted_email).order('ticket DESC') }
     scope :declined, -> { where(member_state: :declined).where.not(state: :unavailable).order('ticket DESC') }
     scope :removed, -> { where(member_state: :removed).order('ticket DESC') }
     scope :unavailable, -> { where(state: :unavailable).order('ticket ASC') }
