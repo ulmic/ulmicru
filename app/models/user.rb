@@ -82,6 +82,10 @@ class User < ActiveRecord::Base
     event :finish do
       transition step_2: :done
     end
+
+    event :remove_questionary do
+      transition all => :not_existed
+    end
   end
 
   def is_member?
