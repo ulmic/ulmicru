@@ -34,17 +34,6 @@ class Web::Admin::DocumentsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
-  test 'should create document' do
-    attributes = attributes_for :document
-    post :create, document: attributes
-    assert_response :redirect, @response.body
-    assert_redirected_to admin_documents_path
-    document = Document.where(title: attributes[:title]).first
-    document.attributes.keys.except(*@exceptions_attributes).each do |key|
-      assert_equal attributes[key.to_sym], document.send(key), key
-    end
-  end
-
   test 'should get edit' do
     get :edit, id: @document
     assert_response :success, @response.body
