@@ -36,8 +36,10 @@
     %table.table.attributes-table
       - item.authentications.each do |auth|
         %tr
-          %td= social_network_fa_icon auth.provider
-          %td=l auth.created_at, format: '%d %B %Y'
+          %td
+            = link_to social_network_fa_icon(auth.provider), profile_url(auth)
+          %td
+            = link_to l(auth.created_at, format: '%d %B %Y'), profile_url(auth)
   .col-lg-9
     %table.table.attributes-table
       - item.real_attributes.each do |attribute|
