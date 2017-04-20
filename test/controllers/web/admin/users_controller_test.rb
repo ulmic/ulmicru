@@ -57,7 +57,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     attributes[:first_name] = 'Dima'
     patch :update, user: attributes, id: @user
     assert_response :redirect, @response.body
-    assert_redirected_to edit_admin_user_path @user
+    assert_redirected_to admin_users_path
     @user.reload
     @user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
       assert_equal attributes[key.to_sym], @user.send(key), key

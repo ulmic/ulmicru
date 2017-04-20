@@ -7,6 +7,7 @@ class Web::Users::AccountControllerTest < ActionController::TestCase
   end
 
   test 'should get index' do
+    current_user.update_attributes! questionary_state: :not_existed
     get :index
     assert_response :success, @response.body
   end

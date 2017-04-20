@@ -82,6 +82,10 @@ class User < ActiveRecord::Base
     event :finish do
       transition step_2: :done
     end
+
+    event :remove_questionary do
+      transition all => :not_existed
+    end
   end
 
   def is_member?
@@ -138,6 +142,8 @@ class User < ActiveRecord::Base
 
   def is_ya_lider_participant?
     current_contest = ::ActivityLines::Lider::YaLider.current_contest
-    current_contest.current_stage.participants.map(&:user_id).include? id if current_contest.present?
+    if current_contest.present? && current_contest.current_stage.present?
+      current_contest.current_stage.participants.map(&:user_id).include? id
+    end
   end
 end

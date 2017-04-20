@@ -37,7 +37,7 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
     @user_form = UserForm.find_with_model params[:id]
     @user_form.submit(params[:user])
     if @user_form.save
-      redirect_to admin_users_path @user_form.model
+      redirect_to admin_users_path
     else
       render action: :edit
     end

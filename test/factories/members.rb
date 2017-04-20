@@ -24,5 +24,11 @@ FactoryGirl.define do
     trait :corporate_head do
       ticket 238
     end
+
+    trait :with_views do
+      after(:create) do
+        create_list :view, 20
+      end
+    end
   end
 end
