@@ -1,0 +1,23 @@
+%h3
+  = link_to @stage.full_title, admin_activity_lines_lider_ya_lider_stage_path(@stage)
+  |
+  Конкурсное мероприятие
+%br
+.row
+  .col-md-12
+    %table.table.table-striped.table-condensed
+      - if participant.event.present?
+        %h2
+          = participant.event.event.title
+          = link_to fa_icon(:share), event_path(participant.event.event), class: 'btn btn-success'
+        - participant.event.fields.each do |field|
+          %tr
+            %td
+              = t("enumerize.activity_lines/lider/ya_lider/event_field.title.#{field.title}")
+            %td
+              = field.value
+      - else
+        .panel.panel-warning
+          .panel-heading
+            %h4
+              = t('.participant_have_not_anounce_any_event')

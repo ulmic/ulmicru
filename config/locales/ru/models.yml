@@ -23,6 +23,7 @@ ru:
       activity_lines/lider/ya_lider: Конкурс "Я-лидер!"
       activity_lines/lider/ya_lider/stage: Этап конкурса "Я-лидер!"
       activity_lines/lider/ya_lider/participant: Участник конкурса "Я-лидер!"
+      activity_lines/lider/ya_lider/participant_event: Мероприятие участника
       logged_action: Лог действия
       redirect_rule: Редирект
       image: Изображение

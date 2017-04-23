@@ -32,6 +32,11 @@
             - else
               Не синхронизировалось Эссе! Обратитесь к администратору сайта
               = link_to fa_icon(:exclamation), new_admin_activity_lines_lider_ya_lider_participant_field_path(activity_lines_lider_ya_lider_participant_field: { field_type: :file, title: :esse, participant_id: @participant.id }), class: 'btn btn-danger'
+        %tr
+          %td
+            = t('activerecord.models.activity_lines/lider/ya_lider/participant_event')
+          %td
+            = link_to @participant.event.event.title, event_path(@participant.event.event)
   %hr
   .tabs
     %ul.nav.nav-tabs{ role: :tablist }
