@@ -84,6 +84,9 @@ ru:
             participants:
               form:
                 create_user: Создать пользователя
+              shared:
+                stage_3_info:
+                  participant_have_not_anounce_any_event: Участник не анонсировал мероприятия
           ya_liders:
             show:
               this_people_have_access_to_ya_lider: Эти люди имеют доступ в админку сайта МИЦ. Смогут создавать мероприятия, новости, а также видеть и редактировать информацию о конкурсе и участниках
