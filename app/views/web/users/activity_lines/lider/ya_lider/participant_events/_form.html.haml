@@ -69,9 +69,11 @@
   - else
     = simple_form_for @yal_event_form, url: { controller: 'web/users/activity_lines/lider/ya_lider/participant_events', action: :update, step: 3, id: @yal_event_form.id } do |f|
       = f.simple_fields_for :fields do |ff|
+        = ff.input :field_type, as: :hidden, input_html: { value: :text }
+        = ff.input :title, as: :hidden, input_html: { value: ff.object.title }
         - if ff.object.title.in?(@yal_event_form.report_titles)
-          = ff.input :field_type, as: :hidden, input_html: { value: :text }
           = label :value, "* #{t("enumerize.activity_lines/lider/ya_lider/event_field.title.#{ff.object.title}")}"
           = ff.input :value, label: false, as: :text
-          = ff.input :title, as: :hidden, input_html: { value: ff.object.title }
+        - else
+          = ff.input :value, as: :hidden, input_html: { value: ff.object.value }
       = f.button :submit, t('helpers.links.save'), class: 'btn btn-success'
