@@ -47,6 +47,7 @@ class Web::Users::ActivityLines::Lider::YaLider::ParticipantEventsController < W
     if @yal_event_form.submit params[:activity_lines_lider_ya_lider_participant_event]
       redirect_to event_path @yal_event_form.model.event_id
     else
+      @event = ::Event.where(id: @yal_event_form.model.event_id).first
       render :new, step: 3
     end
   end
