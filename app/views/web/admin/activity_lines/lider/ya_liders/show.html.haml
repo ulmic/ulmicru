@@ -17,6 +17,7 @@
       - if @current_participants.present?
         .row
           .col-md-6
+            = link_to t('.add_participant'), new_admin_activity_lines_lider_ya_lider_participant_path(activity_lines_lider_ya_lider_particpant: { contest_id: @ya_lider.id })
           = render 'web/admin/default/search', model_class: ActivityLines::Lider::YaLider::Participant
         .row
           = render 'web/admin/activity_lines/lider/ya_lider/participants/list', activity_lines_lider_ya_lider_participants: @current_participants
