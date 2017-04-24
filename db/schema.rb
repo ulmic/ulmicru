@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408211136) do
+ActiveRecord::Schema.define(version: 20170424202422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -633,6 +633,7 @@ ActiveRecord::Schema.define(version: 20170408211136) do
     t.text     "corporate_email"
     t.text     "source_to_know"
     t.text     "questionary_state", default: "not_existed"
+    t.text     "email_state",       default: "active"
   end
 
   create_table "views", force: :cascade do |t|

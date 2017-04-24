@@ -16,6 +16,7 @@
       = f.input :email, as: :string, required: true
       = f.input :password, as: :string
       = f.input :state_event, as: :state_event
+      = f.input :email_state_event, as: :state_event
       - if current_user.role.tech_admin?
         = f.input :role
       = f.hint t('hints.admin.user.role')
