@@ -5,7 +5,7 @@
     = @campaign.title
     - if @campaign.audiences.any?
       - if @campaign.ready?
-        = link_to fa_icon(:eye), rails_email_preview.rep_email_path('user_mailer_preview-just_message', email: @campaign.contacts.first.email, first_name: @campaign.contacts.first.first_name, last_name: @campaign.contacts.first.last_name, link: @campaign.link, subject: @campaign.title, message: @campaign.body, image: @campaign.image), class: 'btn btn-primary'
+        = link_to fa_icon(:eye), rails_email_preview.rep_email_path('user_mailer_preview-just_message', email: (@campaign.contacts.first&.email || "example@ulmic.ru") , first_name: (@campaign.contacts.first&.first_name || "Леопольд"), last_name: (@campaign.contacts.first&.last_name || "Ботов"), link: @campaign.link, subject: @campaign.title, message: @campaign.body, image: @campaign.image), class: 'btn btn-primary'
         = link_to fa_icon(:send), admin_delivery_sessions_path(id: @campaign.id), method: :post, class: 'btn btn-primary'
       - else
         = link_to fa_icon(:bullseye), admin_delivery_campaign_path(delivery_campaign: { state: :ready }), method: :patch, class: 'btn btn-primary'
