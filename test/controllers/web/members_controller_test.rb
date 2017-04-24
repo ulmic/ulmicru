@@ -43,6 +43,7 @@ class Web::MembersControllerTest < ActionController::TestCase
   test 'should get show for 100 members' do
     tickets = Member.presented.map(&:ticket).compact
     tickets.each do |ticket|
+      print "#{ticket}\r"
       get :show, ticket: ticket
       assert_response :success, ticket
     end
