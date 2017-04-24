@@ -23,9 +23,9 @@ if ARGV[0] == 'get_db'
   puts "Restoring #{restore_to} database".green
   system "dropdb ulmic_development --if-exists && createdb ulmic_development && pg_restore -d #{restore_to} /tmp/#{dump}"
   puts "Copy prod db for tests...".yellow
-  system "cp /tmp/#{dump} tmp/test.dump"
+  system "cp -r /tmp/#{dump} tmp/test.dump"
   puts "Copy prod db to backup folder...".yellow
-  system "mkdir ~/backup.ulmic.dbs && cp /tmp/#{dump} ~/backup.ulmic.dbs/#{dump}"
+  system "mkdir ~/backup.ulmic.dbs && cp -r /tmp/#{dump} ~/backup.ulmic.dbs/#{dump}"
 end
 
 if ARGV[0] == 'get_credentials'
