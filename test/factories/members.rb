@@ -20,6 +20,7 @@ FactoryGirl.define do
     role 'user'
     type 'Member'
     questionary_state { User.state_machines[:questionary_state].states.map(&:name).sample.to_s }
+    email_state { User.state_machines[:email_state].states.map(&:name).sample.to_s }
 
     trait :corporate_head do
       ticket 238
