@@ -12,7 +12,9 @@ class Web::ArticlesControllerTest < ActionController::TestCase
 
   test 'should get show all articles' do
     if ENV['DB'] == 'prod'
-      Article.find_each do |article|
+      count = Article.count
+      Article.find_each.with_index do |article, index|
+        print "#{index} of #{count}\r"
         get :show, id: article.id
         assert_response :success
       end

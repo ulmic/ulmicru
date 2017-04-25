@@ -40,12 +40,12 @@ class Web::MembersControllerTest < ActionController::TestCase
     end
   end
 
-  test 'should get show for 100 members' do
+  test 'should get show for all members' do
     tickets = Member.presented.map(&:ticket).compact
-    tickets.each do |ticket|
-      print "#{ticket}\r"
+    tickets.reverse.each_with_index do |ticket, index|
       get :show, ticket: ticket
       assert_response :success, ticket
+      print "#{index} of #{tickets.count}\r"
     end
   end
 end
