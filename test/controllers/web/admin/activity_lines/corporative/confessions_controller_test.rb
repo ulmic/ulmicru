@@ -26,6 +26,15 @@ class Web::Admin::ActivityLines::Corporative::ConfessionsControllerTest < Action
     end
   end
 
+  test 'should get show all' do
+    if ENV['DB'] == 'prod'
+      ActivityLines::Corporative::Confession.find_each do |confession|
+        get :show, id: confession
+        assert_response :success, @response.body
+      end
+    end
+  end
+
   test 'should get show' do
     4.times { create :argument }
     get :show, id: @confession
