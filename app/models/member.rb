@@ -20,20 +20,19 @@ class Member < User
   has_many :views, as: :record, foreign_key: :record_id, class_name: 'View'
 
 
-  #validates :email, uniqueness: true
   validates :first_name, human_name: true,
                          allow_blank: true
   validates :last_name, human_name: true,
                         allow_blank: true
   validates :patronymic, human_name: true,
                          allow_blank: true
-  #validates :ticket, uniqueness: { scope: :state },
-  #                   allow_blank: true
+  validates :ticket, uniqueness: { scope: :state },
+                     allow_blank: true
   validates :mobile_phone, phone: true,
                            allow_blank: true
   validates :motto, uniqueness: true,
                     allow_blank: true
-  #validates :avatar, presence: true, if: Proc.new { state != "unavailable" && state != "corrupted_email" }
+  validates :avatar, presence: true, if: Proc.new { state != "unavailable" && state != "corrupted_email" }
   validates :corporate_email, ulmic_email: true,
                               email: true,
                               uniqueness: true,

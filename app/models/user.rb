@@ -21,7 +21,9 @@ class User < ActiveRecord::Base
   has_many :tokens, as: :record
 
   validates :email, email: true,
-                    allow_blank: true
+                    allow_blank: true,
+                    uniqueness: true,
+                    allow_nil: true
   validates :first_name, human_name: true,
                          allow_blank: true
   validates :last_name, human_name: true,
