@@ -9,7 +9,6 @@ class Web::Admin::ActivityLines::Lider::YaLider::StagesControllerTest < ActionCo
   end
 
   test 'should get new' do
-    4.times { create :argument }
     get :new, activity_lines_lider_ya_lider_stage: { contest_id: ActivityLines::Lider::YaLider.last.id }
     assert_response :success, @response.body
   end

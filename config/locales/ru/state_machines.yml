@@ -34,6 +34,8 @@ ru:
             declined: Отклонённые
             unavailable: Отсутствуют на сайте
             email_corrupted: Несуществующий email
+            admins: Админы
+            authors: Авторы
           events:
             renew: Сделать непросмотренным
             decline: Отклонить

@@ -5,8 +5,14 @@ FactoryGirl.define do
     email
     patronymic { generate :human_name }
     motto { generate :string }
-    ticket { Member.where.not(ticket: nil).any? ? Member.where.not(ticket: nil).order(:ticket).last.ticket + 1 : generate(:integer) }
-    parent_id { Member.last ? Member.last.id : nil }
+    ticket do
+      if Member.where.not(ticket: nil).any?
+        Member.where.not(ticket: nil).order(:ticket).last.ticket + 1
+      else
+        generate(:integer)
+      end
+    end
+    parent_id { Member.just_members.last&.id }
     mobile_phone { generate :phone }
     birth_date { generate :datetime }
     home_adress { generate :string }
