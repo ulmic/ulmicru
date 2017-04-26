@@ -5,7 +5,7 @@ FactoryGirl.define do
       yal.present? ? yal.id : create(:ya_lider).id
     end
     number do
-      ActivityLines::Lider::YaLider::Stage.where(contest_id: contest_id).maximum(:number) + 1
+      (ActivityLines::Lider::YaLider::Stage.where(contest_id: contest_id).maximum(:number) || 0) + 1
     end
     title { generate :string }
     begin_date { generate :date }
