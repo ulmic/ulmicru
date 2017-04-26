@@ -6,7 +6,7 @@ class Web::SessionsController < Web::ApplicationController
   end
 
   def create
-    @user = User.find_by_email params[:user][:email]
+    @user = User.find_by_email params[:user][:email].downcase
     if @user
       if @user.password_digest.present? && @user.authenticate(params[:user][:password]) 
 	if @user.has_access?
