@@ -432,7 +432,7 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.1)
     tins (1.13.2)
-    trap (1.0.0)
+    trap (1.1.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -543,7 +543,7 @@ DEPENDENCIES
   state_machine!
   tconsole-rails4
   therubyracer
-  trap (~> 1)
+  trap (~> 1.1)
   uglifier (>= 1.3.0)
   unicorn-rails
   validates
