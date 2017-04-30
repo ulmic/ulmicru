@@ -71,6 +71,7 @@ gem 'youtube_rails', github: 'luizpicolo/youtube_rails'
 gem 'unicorn-rails'
 gem 'xls_exporter'
 gem 'youtube_addy'
+gem 'roo', '~> 2.7.0'
 
 group :development, :test do
   gem 'byebug'

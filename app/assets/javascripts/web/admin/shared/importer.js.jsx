@@ -27,7 +27,7 @@ class Importer extends React.Component {
                   <input type="file"/>
                 </div>
                 <div className="form-group">
-                  <button className="btn btn-warning">
+                  <button onClick={this.uploadXLS} className="btn btn-warning">
                     {I18n.t('helpers.upload')}
                   </button>
                 </div>
