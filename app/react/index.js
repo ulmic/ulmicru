@@ -12,11 +12,9 @@ import PetitionInputs from '../assets/javascripts/web/members/corporative/petiti
 import Vote from '../assets/javascripts/web/shared/vote'
 import StandaloneCommentsForm from '../assets/javascripts/web/shared/standalone_comments_form'
 import Label from '../assets/javascripts/label'
-import Importer from '../assets/javascripts/web/admin/shared/importer'
 RWR.registerComponent('TagsForm', TagsForm)
 RWR.registerComponent('CommentsField', CommentsField)
 RWR.registerComponent('PetitionInputs', PetitionInputs)
 RWR.registerComponent('Vote', Vote)
 RWR.registerComponent('StandaloneCommentsForm', StandaloneCommentsForm)
 RWR.registerComponent('Label', Label)
-RWR.registerComponent('Importer', Importer)
