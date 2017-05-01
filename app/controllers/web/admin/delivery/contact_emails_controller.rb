@@ -1,6 +1,4 @@
 class Web::Admin::Delivery::ContactEmailsController < Web::Admin::Delivery::ApplicationController
-  skip_after_action :log_action
-
   def index
     if params[:search]
       contact_emails = Delivery::ContactEmail.presented.search params[:search]
@@ -8,14 +6,6 @@ class Web::Admin::Delivery::ContactEmailsController < Web::Admin::Delivery::Appl
       contact_emails = Delivery::ContactEmail.send params[:scope]
     end
     @contact_emails = contact_emails.page(params[:page]).decorate
-  end
-
-  def create
-    collection = ::XlsParser.first_sheet_collection params[:file]
-    collection.each do |item|
-      Delivery::ContactEmail.create first_name: item[0], last_name: item[1], email: item[2]
-    end
-    redirect_to admin_delivery_contact_emails_path
   end
 
   def update

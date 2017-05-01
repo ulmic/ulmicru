@@ -122,7 +122,7 @@ Rails.application.routes.draw do
 	resources :campaigns
         resources :audiences, only: [ :create, :destroy ]
 	resources :sessions, only: [ :create, :destroy ]
-        resources :contact_emails, only: [ :index, :update, :destroy, :create ]
+        resources :contact_emails, only: [ :index, :update, :destroy ]
       end
       namespace :oauth do
         resources :apps
@@ -179,6 +179,9 @@ Rails.application.routes.draw do
       resources :tags, only: [ :create, :destroy, :index ]
       namespace :event do
         resources :registrations, only: :create
+      end
+      namespace :delivery do
+        resources :contact_emails, only: :create
       end
     end
     namespace :members do

@@ -4,6 +4,19 @@ class Importer extends React.Component {
   constructor(props) {
     super(props)
   }
+  uploadXLS(e) {
+    e.preventDefault()
+    $.ajax({
+      url: this.props.url,
+      method: this.props.method,
+      data: {
+        file: $('#importFile').val()
+      },
+      success: function() {
+        alert('success')
+      }
+    })
+  }
   render() {
     return(
       <div className="row-fluid">
@@ -22,14 +35,12 @@ class Importer extends React.Component {
               {I18n.t('web.admin.shared.importer.you_should_use_xls')}
             </div>
             <div className="panel-body">
-              <form className="form-inline">
+              <form className="form-inline" action={this.props.url} method={this.props.method} data-remote="true">
                 <div className="form-group">
-                  <input type="file"/>
+                  <input type="file" id="file" name="file"/>
                 </div>
                 <div className="form-group">
-                  <button onClick={this.uploadXLS} className="btn btn-warning">
-                    {I18n.t('helpers.upload')}
-                  </button>
+                  <input type="submit" className="btn btn-warning" commit={I18n.t('helpers.upload')}/>
                 </div>
               </form>
             </div>
