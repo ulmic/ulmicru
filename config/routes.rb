@@ -177,6 +177,7 @@ Rails.application.routes.draw do
       resources :activity_lines, only: :index
       resources :teams, only: :index
       resources :tags, only: [ :create, :destroy, :index ]
+      resources :documents, only: :create
       namespace :event do
         resources :registrations, only: :create
       end

@@ -103,6 +103,9 @@ ru:
             select_team: Выберите команду
             select_event_registrations: Выберите мероприятие
             add_audience: Добавить
+        contact_emails:
+          list:
+            import_from_file: Импортировать контакты
       helps:
         tags:
           form:
