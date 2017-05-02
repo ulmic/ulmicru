@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.4.0'
 
 gem 'rails', '4.2.1'
 gem 'airbrake', '~> 4.0.0'
@@ -13,7 +13,6 @@ gem 'therubyracer'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'enumerize'
 gem 'authority'
@@ -34,7 +33,7 @@ gem 'js-routes'
 gem 'i18n-js', github: 'fnando/i18n-js'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
-gem 'omniauth-twitter'
+gem 'omniauth-twitter', '~> 1.4'
 gem 'omniauth-facebook', '4.0.0'
 gem 'momentjs-rails', '>= 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'awesome_print'
@@ -43,7 +42,7 @@ gem 'configus'
 gem 'foursquare2', github: 'nitinstp23/foursquare2', branch: :gemspec_fix
 gem 'validates'
 gem 'font-awesome-rails', '4.7.0.1'
-gem 'sidekiq'
+gem 'sidekiq', '4.2.10'
 gem 'foundation-rails', '5.5.2.1'
 gem "autoprefixer-rails"
 gem 'select2-rails'
@@ -71,6 +70,7 @@ gem 'youtube_rails', github: 'luizpicolo/youtube_rails'
 gem 'unicorn-rails'
 gem 'xls_exporter'
 gem 'youtube_addy'
+gem 'json', '~> 1.8.6' 
 
 group :development, :test do
   gem 'byebug'
