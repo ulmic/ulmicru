@@ -72,6 +72,9 @@ gem 'unicorn-rails'
 gem 'xls_exporter'
 gem 'youtube_addy'
 gem 'json', '~> 1.8.6' 
+gem 'sprockets', '>= 3.7.1'
+gem 'builder', '>= 3.2.3'
+gem 'thread_safe', '>= 0.3.6'
 
 group :development, :test do
   gem 'byebug'
