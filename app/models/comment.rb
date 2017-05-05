@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :parent, class: 'Comment'
+  belongs_to :parent, class_name: 'Comment'
   belongs_to :record, polymorphic: true
   has_many :children, foreign_key: :parent_id
 
