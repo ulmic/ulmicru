@@ -22,5 +22,6 @@ FactoryGirl.define do
     source_to_know { generate :string }
     questionary_state { Questionary.state_machines[:questionary_state].states.map(&:name).sample.to_s }
     email_state { User.state_machines[:email_state].states.map(&:name).sample.to_s }
+    school { Member.school.values.sample }
   end
 end

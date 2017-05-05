@@ -6,7 +6,8 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     sign_in admin
     create :member
     @questionary = create :questionary
-    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'birth_date', 'avatar']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'birth_date', 'avatar', 'request_date']
+    @nil_attributes = ['ticket', 'parent_id', 'join_date', 'token', 'corporate_email']
     create :position_corporative_lead
   end
 
@@ -50,8 +51,11 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to admin_questionary_path Questionary.last
     questionary = Questionary.last
-    questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
+    questionary.attributes.keys.except(*@exceptions_attributes, *@nil_attributes).each do |key|
       assert_equal attributes[key.to_sym], questionary.send(key), key
+    end
+    @nil_attributes.each do |attr|
+      assert_nil questionary.send(attr)
     end
   end
 
@@ -66,7 +70,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to admin_questionary_path @questionary
     @questionary.reload
-    @questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
+    @questionary.attributes.keys.except(*@exceptions_attributes, *@nil_attributes).each do |key|
       assert_equal attributes[key.to_sym], @questionary.send(key), key
     end
   end
@@ -78,7 +82,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to edit_admin_member_path @questionary, message: :fill_member_form
     @questionary = Member.find @questionary.id
-    @questionary.attributes.keys.except(*@exceptions_attributes).except('type', 'member_state').each do |key|
+    @questionary.attributes.keys.except(*@exceptions_attributes, *@nil_attributes).except('type', 'member_state').each do |key|
       assert_equal attributes[key.to_sym], @questionary.send(key), key
     end
     assert_equal @questionary.type, 'Member'

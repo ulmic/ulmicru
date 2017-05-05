@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505130348) do
+ActiveRecord::Schema.define(version: 20170505131901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -313,7 +313,6 @@ ActiveRecord::Schema.define(version: 20170505130348) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.text     "state"
-    t.text     "place"
     t.integer  "activity_line_id"
     t.integer  "organizer_id"
     t.text     "organizer_type"
@@ -472,7 +471,6 @@ ActiveRecord::Schema.define(version: 20170505130348) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.text     "state"
-    t.text     "location"
     t.text     "url"
   end
 
@@ -607,7 +605,6 @@ ActiveRecord::Schema.define(version: 20170505130348) do
     t.text     "first_name"
     t.text     "last_name"
     t.text     "patronymic"
-    t.integer  "user_id"
     t.text     "motto"
     t.integer  "ticket"
     t.integer  "parent_id"
