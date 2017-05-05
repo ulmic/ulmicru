@@ -4,5 +4,6 @@ FactoryGirl.define do
     date { generate :datetime }
     video_link 'https://youtu.be/someURL' 
     state { ::ActivityLines::Corporative::OnlineConference.state_machines[:state].states.map(&:name).first.to_s }
+    event_id { Event.last&.id || create(:event).id }
   end
 end

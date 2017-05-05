@@ -18,5 +18,9 @@ FactoryGirl.define do
     trait :charter do
       title 'Устав'
     end
+
+    trait :with_own_view do
+      view 'history'
+    end
   end
 end

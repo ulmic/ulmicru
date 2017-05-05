@@ -43,7 +43,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
   end
 
   test 'should create article' do
-    attributes = attributes_for :article
+    attributes = attributes_for :article, :with_own_view
     attributes[:user_id] = current_user.id
     post :create, article: attributes
     assert_response :redirect, @response.body
@@ -66,7 +66,7 @@ class Web::Admin::ArticlesControllerTest < ActionController::TestCase
   end
 
   test 'should update article by admin' do
-    attributes = attributes_for :article
+    attributes = attributes_for :article, :with_own_view
     put :update, id: @article, article: attributes
     assert_response :redirect
     assert_redirected_to edit_admin_article_path @article

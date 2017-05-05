@@ -52,7 +52,7 @@ class Web::Admin::ActivityLines::Corporative::OnlineConferencesControllerTest < 
     assert_response :redirect, @response.body
     assert_redirected_to new_admin_event_path event: event_attributes
     online_conference = ::ActivityLines::Corporative::OnlineConference.last
-    online_conference.attributes.keys.except(*@exceptions_attributes).each do |key|
+    online_conference.attributes.keys.except(*@exceptions_attributes, 'event_id').each do |key|
       assert_equal attributes[key.to_sym], online_conference.send(key), key
     end
   end

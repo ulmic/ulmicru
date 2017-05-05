@@ -4,7 +4,7 @@ class Web::Admin::TeamsControllerTest < ActionController::TestCase
   setup do
     admin = create :admin
     sign_in admin
-    @exceptions_attributes = ['id', 'created_at', 'updated_at']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'school', 'team_id', 'project_id', 'project_type']
     @team = create :departament
   end
 
