@@ -6,5 +6,6 @@ FactoryGirl.define do
     state { Protocol.state_machines[:state].states.map(&:name).first.to_s }
     record_type 'Position'
     record_id { create(:position).id }
+    number { generate :integer }
   end
 end

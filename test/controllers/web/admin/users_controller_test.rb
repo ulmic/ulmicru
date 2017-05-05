@@ -5,7 +5,10 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @user = create :user
-    @exceptions_attributes = ['id', 'created_at', 'updated_at']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'avatar']
+    @nil_attributes = [:motto, :ticket, :parent_id, :mobile_phone, :birth_date, :home_adress, :municipality,
+                       :locality, :experience, :want_to_do, :type, :join_date, :token, :school, :request_date,
+                       :corporate_email, :source_to_know].map &:to_s
   end
 
   test 'should get new' do
@@ -42,7 +45,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to admin_users_path
     user = User.last
-    user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
+    user.attributes.keys.except(*@exceptions_attributes, *@nil_attributes).each do |key|
       assert_equal attributes[key.to_sym], user.send(key), key
     end
   end
@@ -59,7 +62,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to admin_users_path
     @user.reload
-    @user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
+    @user.attributes.keys.except(*@exceptions_attributes, *@nil_attributes).each do |key|
       assert_equal attributes[key.to_sym], @user.send(key), key
     end
   end

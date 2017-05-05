@@ -60,6 +60,7 @@ class Web::Admin::ProtocolsControllerTest < ActionController::TestCase
     assert_redirected_to admin_protocols_path
     @protocol.reload
     @protocol.attributes.keys.except(*@exceptions_attributes).each do |key|
+      raise key if attributes[key.to_sym].nil?
       assert_equal attributes[key.to_sym], @protocol.send(key), key
     end
   end
