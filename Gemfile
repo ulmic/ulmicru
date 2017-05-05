@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.3.0'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.8'
 gem 'airbrake', '~> 4.0.0'
 gem 'pg'
 gem 'jquery-rails'
@@ -10,7 +10,7 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'haml-rails'
 gem 'enumerize'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '~> 3.2.0'
 gem 'execjs'
 gem 'therubyracer', '~> 0.12.3', platforms: :ruby
@@ -31,7 +31,7 @@ gem 'mini_magick'
 gem 'rmagick', '2.15.3'
 #gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', submodules: true
 gem 'js-routes'
-gem 'i18n-js', github: 'fnando/i18n-js'
+gem 'i18n-js', '~> 3'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
 gem 'omniauth-twitter', '~> 1.4'
@@ -45,7 +45,6 @@ gem 'validates'
 gem 'font-awesome-rails', '4.7.0.1'
 gem 'sidekiq', '4.2.10'
 gem 'foundation-rails', '5.5.2.1'
-gem "autoprefixer-rails"
 gem 'select2-rails'
 gem 'jasny_bootstrap_extension_rails'
 gem 'sinatra', '>= 1.3.0', require: nil
