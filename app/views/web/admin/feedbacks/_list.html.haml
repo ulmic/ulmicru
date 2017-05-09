@@ -14,7 +14,7 @@
       %tr.link{ class: state_color(feedback), data: { href: edit_admin_feedback_path(feedback) } }
         %td= feedback.id
         %td= link_to feedback.url, feedback.url
-        %td= link_to admin_user_path(feedback.user), feedback.user.short_name
+        %td= link_to admin_user_path(feedback.user), feedback.user.short_name if feedback.user.present?
         %td= feedback.text
         %td=l feedback.created_at
         %td.actions
