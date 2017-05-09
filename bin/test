@@ -9,6 +9,7 @@ require 'colorize'
 if ARGV.include? 'prod'
   puts "Restoring database...".green
   system "dropdb ulmic_test --if-exists && createdb ulmic_test && pg_restore -d ulmic_test tmp/test.dump"
+  system 'RAILS_ENV=test rake db:migrate'
   system 'DB=prod bundle exec tconsole' 
 elsif ARGV.include? 'dev'
   puts "Dumping database...".green

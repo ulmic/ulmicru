@@ -60,6 +60,26 @@ class Team < ActiveRecord::Base
 
   alias members users
 
+  #FIXME return to decorator without draper https://trello.com/c/zHYwI7h3/672-draper. Draper is too long
+
+  include RussianCases
+
+  def full_title(type_case = nil)
+    team_type = I18n.t("activerecord.attributes.team.types.#{type.split(':').last.downcase}")
+    if is_departament?
+      "#{type_case ? send(type_case, team_type) : team_type} в #{instrumental(municipality)}"
+    elsif is_primary?
+      "#{type_case ? send(type_case, team_type) : team_type} в #{school}"
+    elsif is_committee?
+      if project
+        "#{type_case ? send(type_case, team_type) : team_type} #{project.decorate.title}"
+      else
+        'Исправь это!!'
+      end
+    else
+      type_case ? send(type_case, title) : title
+    end
+  end
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description, :municipality, :school]
 end

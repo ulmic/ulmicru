@@ -35,6 +35,25 @@ class ActivityLine < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title]
 
+  #FIXME return to decorator without draper https://trello.com/c/zHYwI7h3/672-draper. Draper is too long
+  include RussianCases
+  def full_title(type_case = nil)
+    if activity_type.corporative? || activity_type.event_line?
+      if type_case
+        send type_case, title
+      else
+        title
+      end
+    else
+      type = I18n.t("enumerize.activity_line.activity_type.#{activity_type}")
+      if type_case
+        "#{send(type_case, type)} «#{title}»"
+      else
+        "#{type} «#{title}»"
+      end
+    end
+  end
+
   def self.lider
     where(title: 'Лидер').first
   end

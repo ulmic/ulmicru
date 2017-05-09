@@ -1,7 +1,7 @@
 module RussianCases
   def case_word(word, case_name)
-    cases = load_yml[:cases]
-    word_case = cases[case_name][word.mb_chars.downcase.to_s]
+    @cases ||= load_yml[:cases]
+    word_case = @cases[case_name][word.mb_chars.downcase.to_s]
     return word_case if word_case.present?
     raise "There is not #{case_name} implementation for \"#{word}\""
   end
