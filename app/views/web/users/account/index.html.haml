@@ -2,7 +2,7 @@
 .container.mic-form-container.account-form
   %h3.title
     = t('.title')
-  - if @user.corrupted_email?
+  - if @user.email_corrupted?
     %span.label.alert
       = t('.you_have_corrupted_email')
     .row
