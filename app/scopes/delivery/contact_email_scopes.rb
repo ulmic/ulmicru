@@ -7,5 +7,6 @@ module Delivery::ContactEmailScopes
   included do
     scope :subscribed_to_deliveries, -> { joins(:subscriptions).where 'subscriptions.subscription_type = ?', :deliveries }
     scope :with_email, -> { where.not email: nil }
+    scope :presented, -> { active }
   end
 end
