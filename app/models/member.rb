@@ -93,6 +93,36 @@ class Member < User
     end
   end
 
+  scope :presented, -> do
+    where.not(state: :removed).where.not(member_state: :removed).where.not(member_state: :not_member).order('ticket ASC')
+  end
+  scope :confirmed, -> do
+    where(member_state: :confirmed).where.not(ticket: nil, state: :unavailable).where.not(state: :corrupted_email).order('ticket DESC')
+  end
+  scope :declined, -> { where(member_state: :declined).where.not(state: :unavailable).order('ticket DESC') }
+  scope :removed, -> { where(member_state: :removed).order('ticket DESC') }
+  scope :unavailable, -> { where(state: :unavailable).order('ticket ASC') }
+  scope :tag_available, -> { where.not(state: :removed).where(member_state: :confirmed) }
+  scope :without_confessions, -> do
+    where.not(id: ::ActivityLines::Corporative::Confession.active.map(&:member_id).uniq)
+  end
+  scope :cannot_get_confession, -> { where('join_date > ?', DateTime.now - 3.month) }
+  scope :with_debut, -> do
+    where(id: ::ActivityLines::Corporative::Confession.active.where(nomination: :debut).map(&:member_id))
+  end
+  scope :without_debut, -> do
+    where.not(id: with_debut) + Member.without_confessions - Member.cannot_get_confession
+  end
+  scope :with_number_one, -> do
+    where(id: ::ActivityLines::Corporative::Confession.active.where(nomination: :number_one).map(&:member_id))
+  end
+  scope :without_number_one, -> do
+    where.not(id: with_number_one) + Member.without_confessions - Member.cannot_get_confession
+  end
+  scope :need_to_review, -> do
+    where(type: 'Member').where("member_state = 'unviewed' OR state = 'unviewed' OR state = 'updated'").order('id ASC')
+  end
+
   include TagsHelper
 
   def has_auth_provider?(provider)

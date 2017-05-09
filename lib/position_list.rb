@@ -20,14 +20,14 @@ module PositionList
             positions.each do |p|
               if p.is_a? String
                 collection.each do |instance|
-                  full_name = "#{p.mb_chars.capitalize.to_s} #{instance.decorate.full_title(:genitive)}"
+                  full_name = "#{p.mb_chars.capitalize.to_s} #{instance.full_title(:genitive)}"
                   positions_list << (exceptions[full_name] || full_name) unless non_existent.include? full_name
                 end
               elsif p.is_a? Hash
                 deputy_position_names = p[:deputy]
                 deputy_position_names.each do |name|
                   collection.each do |instance|
-                    full_name = "Заместитель #{genitive(name)} #{instance.decorate.full_title(:genitive)}"
+                    full_name = "Заместитель #{genitive(name)} #{instance.full_title(:genitive)}"
                     positions_list << (exceptions[full_name] || full_name) unless non_existent.include? full_name
                   end
                 end
@@ -35,21 +35,22 @@ module PositionList
             end
           elsif positions.is_a? Hash
             types = positions.keys
-            types.each do |type|
-              type_collection = type.camelize.constantize.active
-              type_collection = type_collection.has_curators if type.camelize.constantize == ActivityLine
-              position_names = positions[type]
-              position_names.each do |position_name|
-                collection.each do |instance|
-                  type_collection.each do |type_instance|
-                    full_name = "#{position_name.mb_chars.capitalize} #{type_instance.decorate.full_title(:genitive)} в #{instance.decorate.full_title(:dative)}"
-                    unless non_existent.include? full_name
-                      positions_list << full_name
+              types.each do |type|
+                type_collection = type.camelize.constantize.active
+                type_collection = type_collection.has_curators if type.camelize.constantize == ActivityLine
+                position_names = positions[type]
+                position_names.each do |position_name|
+                  collection.each do |instance|
+                    type_collection.each do |type_instance|
+                      full_name = []
+                      full_name = "#{position_name.mb_chars.capitalize} #{type_instance.full_title(:genitive)} в #{instance.full_title(:dative)}"
+                      unless non_existent.include? full_name
+                        positions_list << full_name
+                      end
                     end
                   end
                 end
               end
-            end
           end
         end
       end

@@ -6,10 +6,10 @@ class Web::NewsController < Web::ApplicationController
   end
 
   def show
-    @news = News.find(params[:id]).decorate
-    unless @news.is_published?
-      redirect_to not_found_page_path
-      return
+    topic_news = []
+    @news = News.published.find(params[:id]).decorate
+    unless @news.present?
+      redirect_to not_found_page_path and return
     end
     View.create! user_id: current_user&.id, record_id: @news.id, record_type: 'News'
     topic_news_tags = @news.tags
@@ -20,13 +20,13 @@ class Web::NewsController < Web::ApplicationController
     end
     @topic_news = topic_news.last 2
     @last_news = NewsDecorator.decorate_collection News.feed @news.id
-    @members = @news.tags.active.members.map &:target
+    @members = Member.where id: @news.tags.active.members.map(&:target_id)
     @strings = @news.tags.active.string
     @not_strings = @news.tags.active.events + @news.tags.active.activity_lines + @news.tags.active.teams
     @previous_news = News.previous @news.id, on: :published
     @next_news = News.next @news.id, on: :published
     @same_events = ::EventDecorator.decorate_collection same_events
-    @popular_news = NewsDecorator.decorate_collection News.popular.first 6
+    @popular_news = NewsDecorator.decorate_collection News.popular_by_ratings.first 6
     @banner = Banner.active.with_vertical.actual.last
   end
 

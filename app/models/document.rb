@@ -21,4 +21,8 @@ class Document < ActiveRecord::Base
       transition all => :unviewed
     end
   end
+
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not(state: :removed).order('id ASC') }
 end

@@ -17,7 +17,10 @@ class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
     end
   end
 
-  include ActivityLines::Corporative::OnlineConferenceScopes
+  include StateMachine::Scopes
+
+  scope :future, -> { active.where('date > ?', DateTime.now) }
+  scope :past, -> { active.where('date < ?', DateTime.now) }
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :video_link ]

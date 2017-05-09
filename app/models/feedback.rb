@@ -21,4 +21,8 @@ class Feedback < ActiveRecord::Base
       transition all => :declined
     end
   end
+
+  include StateMachine::Scopes
+
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
 end

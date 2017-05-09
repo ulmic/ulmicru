@@ -19,7 +19,6 @@ class ActiveSupport::TestCase
   include Concerns::AuthManagment
   include ModelsConcern
   include Concerns::TechinalPagesManagment
-  ScopesRailsIncluding.initialize_scopes
 
   unless ENV['TRAVIS']
     raise "You should run test with bin/test file" unless ENV['DB']

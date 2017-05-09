@@ -30,4 +30,11 @@ class Position < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include StateMachine::Scopes
+
+  scope :current_positions, -> { confirmed.where for_now: 1 }
+  scope :last_held_position, -> { order('end_date DESC').first }
+  scope :active, -> { where.not state: :removed }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
 end

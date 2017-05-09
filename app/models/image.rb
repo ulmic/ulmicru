@@ -18,6 +18,8 @@ class Image < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :author_name ],
     associated_against: {

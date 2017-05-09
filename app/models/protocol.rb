@@ -18,6 +18,9 @@ class Protocol < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil)).uniq }
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :document_id ],
     associated_against: { team: [ :title ] }

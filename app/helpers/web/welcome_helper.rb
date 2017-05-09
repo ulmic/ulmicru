@@ -11,11 +11,9 @@ module Web::WelcomeHelper
   end
 
   def municipalities_tags(departaments)
-    tags = []
-    departaments.each do |departament|
+    departaments.reduce([]) do |tags, departament|
       tags << [ departament.municipality, 'Team', city_name(departament.municipality) ]
     end
-    tags
   end
 
   private

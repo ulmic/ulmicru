@@ -32,6 +32,16 @@ class Tag < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
+  scope :string, -> { where tag_type: :string }
+  scope :members, -> { where target_type: 'Member' }
+  scope :events, -> { where target_type: 'Event' }
+  scope :activity_lines, -> { where target_type: 'ActivityLine' }
+  scope :teams, -> { where target_type: 'Team' }
+  scope :news, -> { where record_type: 'News' }
+  scope :articles, -> { where record_type: 'Article' }
+  scope :empty, -> { active.where tag_type: :link, target_id: nil }
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :text, :target_id, :record_id ]
 end

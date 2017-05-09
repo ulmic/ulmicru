@@ -9,4 +9,6 @@ class ActivityLines::Lider::YaLider::Participation < ActiveRecord::Base
     state :active
     state :removed
   end
+
+  include StateMachine::Scopes
 end

@@ -22,6 +22,11 @@ class Delivery::ContactEmail < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+  scope :subscribed_to_deliveries, -> { presented.joins(:subscriptions).where 'subscriptions.subscription_type = ?', :deliveries }
+  scope :with_email, -> { presented.where.not email: nil }
+  scope :presented, -> { active }
+
   include PgSearch
   pg_search_scope :search, against: [ :email, :first_name, :last_name ]
 

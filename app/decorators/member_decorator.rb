@@ -45,8 +45,8 @@ class MemberDecorator < UserDecorator
   end
 
   def main_current_position_title
-    if object.positions.current_positions.any?
-      return object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first.decorate.full_title
+    @main_position ||= if object.positions.current_positions.any?
+      object.positions.current_positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first.decorate.full_title
     end
   end
 

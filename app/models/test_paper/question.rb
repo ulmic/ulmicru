@@ -8,4 +8,6 @@ class TestPaper::Question < ActiveRecord::Base
     state :active
     state :removed
   end
+
+  include StateMachine::Scopes
 end

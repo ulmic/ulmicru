@@ -31,9 +31,38 @@ class ActivityLine < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not(state: :removed).order('id ASC')}
+  scope :central_programs, -> { where activity_type: :central_program }
+  scope :local_projects, -> { where activity_type: :local_project }
+  scope :corporative, -> { where activity_type: :corporative }
+  scope :has_curators, -> { where.not(activity_type: :event_line) }
+  scope :ulmic, -> { where organization_type: :ulmic }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+
   include TagsHelper
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title]
+
+  #FIXME return to decorator without draper https://trello.com/c/zHYwI7h3/672-draper. Draper is too long
+  include RussianCases
+  def full_title(type_case = nil)
+    if activity_type.corporative? || activity_type.event_line?
+      if type_case
+        send type_case, title
+      else
+        title
+      end
+    else
+      type = I18n.t("enumerize.activity_line.activity_type.#{activity_type}")
+      if type_case
+        "#{send(type_case, type)} «#{title}»"
+      else
+        "#{type} «#{title}»"
+      end
+    end
+  end
 
   def self.lider
     where(title: 'Лидер').first

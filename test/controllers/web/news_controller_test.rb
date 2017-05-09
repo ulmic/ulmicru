@@ -4,6 +4,7 @@ class Web::NewsControllerTest < ActionController::TestCase
   setup do
     create :member
     @news = create :news, state: :confirmed, published_at: DateTime.now - 1.day
+    @time_quantum = 1.5.seconds
   end
 
   test 'should get index' do
@@ -20,13 +21,19 @@ class Web::NewsControllerTest < ActionController::TestCase
     if ENV['DB'] == 'prod'
       count = News.published.count
       News.published.each_with_index do |news, index|
+        time = Time.now
         get :show, id: news.id
+        duration = Time.now - time
+        assert duration < @time_quantum, "#{duration} secs, News id #{news.id}"
         assert_response :success, news.id
         print "#{index} of #{count}\r"
       end
       count = News.unpublished.count
       News.unpublished.find_each.with_index do |news, index|
+        time = Time.now
         get :show, id: news.id
+        duration = Time.now - time
+        assert duration < @time_quantum, "#{duration} secs, News id #{news.id}"
         assert_response :redirect, news.id
         print "#{index} of #{count}\r"
       end

@@ -8,8 +8,6 @@ $ ->
         }
       }
       method: 'POST'
-      success: ->
-        alert('success')
     }
 
   destroy_subscription = (subscription_type) ->
@@ -21,8 +19,6 @@ $ ->
         }
       }
       method: 'DELETE'
-      success: ->
-        alert('success')
     }
 
   $('select#member_parent_id').select2()

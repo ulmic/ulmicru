@@ -19,6 +19,11 @@ class ActivityLines::Corporative::Merit < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
+  scope :honorary_members, -> { active.where nomination: :first_degree }
+  scope :second_degree, -> { active.where nomination: :second_degree }
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :year, :nomination, :user_id ]
 end

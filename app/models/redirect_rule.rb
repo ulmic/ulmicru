@@ -19,6 +19,8 @@ class RedirectRule < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :old_path, :redirect_to, :status, :reason ]
 end

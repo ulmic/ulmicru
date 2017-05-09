@@ -18,6 +18,11 @@ class Place < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not state: :removed }
+  scope :need_to_review, -> { unviewed }
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description, :longitude, :latitude, :foursquare_uid]
 end

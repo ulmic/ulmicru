@@ -18,6 +18,12 @@ class ActivityLines::Corporative::OnlineConference::Question < ActiveRecord::Bas
     end
   end
 
+  include StateMachine::Scopes
+
+  scope :need_to_review, -> { unviewed }
+  scope :asked, -> { active.where answer_timestamp: nil }
+  scope :answered, -> { active.where.not answer_timestamp: nil }
+
   def is_answered?
     answer_timestamp.present?
   end

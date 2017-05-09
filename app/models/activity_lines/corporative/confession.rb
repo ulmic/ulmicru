@@ -53,6 +53,14 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
+  scope :debut, -> { where nomination: :debut }
+  scope :number_one, -> { where nomination: :number_one }
+  scope :of_the_year, -> (year) { where year: year }
+  scope :need_to_review, -> { unviewed }
+  scope :active, -> { where(state: [:confirmed, :on_vote]) }
+
   include DatesHelper
 
   def user_can_update_petition?(user_id)

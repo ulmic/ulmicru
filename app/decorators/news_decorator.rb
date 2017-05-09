@@ -2,6 +2,7 @@ class NewsDecorator < ApplicationDecorator
   delegate_all
 
   decorates_association :member
+  decorates_association :user
 
   def generate_lead
     @sentences = strip_tags(model.body).split('.')

@@ -25,4 +25,10 @@ class Comment < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not(state: :removed).order('id DESC') }
+  scope :published, -> { where.not(state: :removed).order('created_at ASC') }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
 end

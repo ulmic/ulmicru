@@ -29,6 +29,8 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :user_id, :contest_id ],
     associated_against: { user: [ :first_name, :last_name, :email ] }

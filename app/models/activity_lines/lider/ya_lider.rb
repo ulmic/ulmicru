@@ -22,6 +22,15 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
     end
   end
 
+  include StateMachine::Scopes
+
+  scope :current, -> do
+    active.where contest_year: (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year)
+  end
+  scope :past, -> do
+    active.where 'contest_year < ?', (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year)
+  end
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [:contest_year, :contest_number]
 
