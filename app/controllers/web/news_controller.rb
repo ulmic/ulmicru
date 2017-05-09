@@ -20,7 +20,7 @@ class Web::NewsController < Web::ApplicationController
     end
     @topic_news = topic_news.last 2
     @last_news = NewsDecorator.decorate_collection News.feed @news.id
-    @members = @news.tags.active.members.map &:target
+    @members = Member.where id: @news.tags.active.members.map(&:target_id)
     @strings = @news.tags.active.string
     @not_strings = @news.tags.active.events + @news.tags.active.activity_lines + @news.tags.active.teams
     @previous_news = News.previous @news.id, on: :published
