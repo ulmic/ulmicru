@@ -23,7 +23,7 @@ class Web::Admin::DocumentsController < Web::Admin::ApplicationController
       if import
         collection = ::XlsParser.first_sheet_collection @document_form.model.file
         collection.each do |item|
-          contact_email = Delivery::ContactEmail.new first_name: item[0], last_name: item[1], email: item[2]
+          contact_email = Delivery::ContactEmail.new first_name: item[0], last_name: item[1], email: item[2].downcase
           if contact_email.save
             Subscription.create receiver_type: 'Delivery::ContactEmail', receiver_id: contact_email.id, subscription_type: :deliveries
           end
