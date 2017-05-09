@@ -21,6 +21,6 @@ class Web::Admin::Delivery::ContactEmailsController < Web::Admin::Delivery::Appl
   def destroy
     @contact_email = Delivery::ContactEmail.find params[:id]
     @contact_email.remove
-    redirect_to admin_contact_emails_path
+    redirect_to admin_delivery_contact_emails_path
   end
 end

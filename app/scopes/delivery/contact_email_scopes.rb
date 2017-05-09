@@ -5,8 +5,8 @@ module Delivery::ContactEmailScopes
   include StateMachine::Scopes
 
   included do
-    scope :subscribed_to_deliveries, -> { joins(:subscriptions).where 'subscriptions.subscription_type = ?', :deliveries }
-    scope :with_email, -> { where.not email: nil }
+    scope :subscribed_to_deliveries, -> { presented.joins(:subscriptions).where 'subscriptions.subscription_type = ?', :deliveries }
+    scope :with_email, -> { presented.where.not email: nil }
     scope :presented, -> { active }
   end
 end
