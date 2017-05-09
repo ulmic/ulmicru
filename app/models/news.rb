@@ -1,5 +1,6 @@
 class News < ActiveRecord::Base
   belongs_to :member, foreign_key: :user_id
+  belongs_to :user
   has_many :tags, as: :record,
                   dependent: :destroy
   has_many :comments, as: :record,
