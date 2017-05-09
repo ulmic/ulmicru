@@ -4,4 +4,6 @@ FactoryGirl.define do
     first_name { generate :human_name }
     last_name { generate :human_name }
   end
+
+  factory 'delivery/contact_email', parent: :delivery_contact_email
 end

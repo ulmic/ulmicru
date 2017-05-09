@@ -1,4 +1,30 @@
 $ ->
+  create_subscription = (subscription_type) ->
+    $.ajax {
+      url: Routes.api_users_account_subscriptions_path()
+      data: {
+        subscription: {
+          subscription_type: subscription_type
+        }
+      }
+      method: 'POST'
+      success: ->
+        alert('success')
+    }
+
+  destroy_subscription = (subscription_type) ->
+    $.ajax {
+      url: Routes.api_users_account_subscriptions_path()
+      data: {
+        subscription: {
+          subscription_type: subscription_type
+        }
+      }
+      method: 'DELETE'
+      success: ->
+        alert('success')
+    }
+
   $('select#member_parent_id').select2()
   $('.attribute_access').change ->
     value = 'hidden'
@@ -20,4 +46,9 @@ $ ->
     return
   # FIXME
   #$('.position_fields').last().remove()
+  $('.subscription').click ->
+    if $(this).prop('checked') == true
+      create_subscription $(this).prop('id')
+    else
+      destroy_subscription $(this).prop('id')
   return

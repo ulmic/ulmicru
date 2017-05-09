@@ -164,6 +164,11 @@ Rails.application.routes.draw do
       end
       namespace :account do
         resources :attribute_accesses, only: :create
+        resources :subscriptions, only: [ :create ] do
+          collection do
+            delete :destroy
+          end
+        end
       end
       resources :places, only: [ :create, :index ]
     end

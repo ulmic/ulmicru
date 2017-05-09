@@ -81,6 +81,9 @@
               .medium-4.medium-offset-1.columns.end
                 = link_to t('.resent_email_instructions'), resent_email_instructions_api_user_url(@user, :token => @user.token), class: 'button'
   = render 'web/users/shared/authentications', authentications: @authentications, user: @user
+  %br
+  = render 'web/users/account/deliveries_panel'
+  %hr
   - unless @user.role.user?
     .row-fluid
       %h3

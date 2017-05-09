@@ -67,6 +67,9 @@ ru:
           you_want_to_join_mic: Вы отправили заявку на вступление в Молодёжный инициативный центр
           add_position: Добавить должность
           you_have_corrupted_email: Ваш email не существует. Проверьте его на наличие ошибок, и нажмите кнопку - "Отправить email"
+        deliveries_panel:
+          deliveries: Подписка на email-рассылки
+          you_can_subscribe_to_deliveries: Вы можете подписаться на email-рассылки Молодёжного инициативного центра
       new:
         register: Регистрация
         title: Регистрация на сайте

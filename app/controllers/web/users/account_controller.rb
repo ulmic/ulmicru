@@ -8,6 +8,7 @@ class Web::Users::AccountController < Web::Users::ApplicationController
         @member_form = MemberForm.find_with_model current_user.id
       end
       @authentications = current_user.authentications
+      @subscriptions = current_user.subscriptions
       @teams = Team.active.visible.decorate
     when 'step_1'
       redirect_to new_join_path(step: 1)

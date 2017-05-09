@@ -5,4 +5,5 @@ class Subscription < ActiveRecord::Base
 
   extend Enumerize
   enumerize :subscription_type, in: [ :deliveries ]
+  enumerize :receiver_type, in: [ 'User', 'Delivery::ContactEmail' ]
 end
