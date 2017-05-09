@@ -11,7 +11,7 @@
     = simple_form_for [:admin, @document_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_documents_path, class: 'btn btn-default'
-      = f.input :title, as: :string, input_html: { value: params[:document][:title] }
+      = f.input :title, as: :string, input_html: { value: (params[:document][:title] if params[:document].present?) }
       - if params[:import] == "true"
         = f.hidden_field :import, value: :true
         = hint :document, :file, place: :admin
