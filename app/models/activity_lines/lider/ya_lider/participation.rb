@@ -5,10 +5,10 @@ class ActivityLines::Lider::YaLider::Participation < ActiveRecord::Base
   validates :participant_id, uniqueness: { scope: :stage },
                              presence: true
 
-  include StateMachine::Scopes
-
   state_machine :state, initial: :active do
     state :active
     state :removed
   end
+
+  include StateMachine::Scopes
 end

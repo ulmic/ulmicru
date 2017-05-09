@@ -4,7 +4,7 @@ class Token < ActiveRecord::Base
   after_create :generate_content
 
   include StateMachine::Scopes
-    scope :subscriptions, -> { where record_type: 'Subscription' }
+  scope :subscriptions, -> { where record_type: 'Subscription' }
 
   private
 

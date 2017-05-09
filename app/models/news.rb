@@ -29,6 +29,26 @@ class News < ActiveRecord::Base
     include NearRecords
   end
 
+  state_machine :state, initial: :unviewed do
+    state :unviewed
+    state :confirmed
+    state :main
+    state :removed
+
+    event :confirm do
+      transition all => :confirmed
+    end
+    event :remove do
+      transition all => :removed
+    end
+    event :to_main do
+      transition all => :main
+    end
+    event :restore do
+      transition :removed => :unviewed
+    end
+  end
+
   include StateMachine::Scopes
 
   scope :published, -> {
@@ -54,26 +74,6 @@ class News < ActiveRecord::Base
   scope :presented, -> { where.not(state: :removed) }
   scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
   scope :feed, -> (id) { published.where.not(id: id).first 3 }
-  state_machine :state, initial: :unviewed do
-    state :unviewed
-    state :confirmed
-    state :main
-    state :removed
-
-    event :confirm do
-      transition all => :confirmed
-    end
-    event :remove do
-      transition all => :removed
-    end
-    event :to_main do
-      transition all => :main
-    end
-    event :restore do
-      transition :removed => :unviewed
-    end
-  end
-
   include Concerns::ActionLoggerManagment
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :lead]

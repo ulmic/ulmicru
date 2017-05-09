@@ -10,13 +10,6 @@ class Letter < ActiveRecord::Base
   validates :state, presence: true
   validates :file, presence: true
 
-  include StateMachine::Scopes
-
-  scope :unviewed, -> { where(state: :unviewed).order('number DESC') }
-  scope :sended, -> { where(state: :sended).order('number DESC') }
-  scope :presented, -> { where.not(state: :removed) }
-  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
-
   mount_uploader :file, FileUploader
 
   state_machine :state, initial: :sended do
@@ -32,6 +25,13 @@ class Letter < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include StateMachine::Scopes
+
+  scope :unviewed, -> { where(state: :unviewed).order('number DESC') }
+  scope :sended, -> { where(state: :sended).order('number DESC') }
+  scope :presented, -> { where.not(state: :removed) }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :receiver, :number, :executor_name]

@@ -1,7 +1,6 @@
 class TestPaper::Question < ActiveRecord::Base
   belongs_to :test_paper
 
-  include StateMachine::Scopes
   extend Enumerize
   enumerize :question_type, in: [ :text, :some_variants, :one_variant, :date, :member, :number, :position ]
 
@@ -9,4 +8,6 @@ class TestPaper::Question < ActiveRecord::Base
     state :active
     state :removed
   end
+
+  include StateMachine::Scopes
 end

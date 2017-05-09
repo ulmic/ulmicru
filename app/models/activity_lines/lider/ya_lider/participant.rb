@@ -8,8 +8,6 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
   validates :user_id, presence: true
   validates :contest_id, presence: true
 
-  include StateMachine::Scopes
-
   state_machine :state, initial: :active do
     state :unviewed
     state :active
@@ -30,6 +28,8 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
       transition removed: :active
     end
   end
+
+  include StateMachine::Scopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :user_id, :contest_id ],

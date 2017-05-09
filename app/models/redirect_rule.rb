@@ -6,8 +6,6 @@ class RedirectRule < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [ :moved_temporarily, :moved_permanently ]
 
-  include StateMachine::Scopes
-
   state_machine :state, initial: :active do
     state :active
     state :removed
@@ -20,6 +18,8 @@ class RedirectRule < ActiveRecord::Base
       transition removed: :active
     end
   end
+
+  include StateMachine::Scopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :old_path, :redirect_to, :status, :reason ]

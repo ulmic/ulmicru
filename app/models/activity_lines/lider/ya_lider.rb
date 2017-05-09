@@ -5,11 +5,6 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
   has_many :participants, class_name: 'ActivityLines::Lider::YaLider::Participant', foreign_key: :contest_id
   has_many :events, class_name: '::ActivityLines::Lider::EventsYaLider'
 
-  include StateMachine::Scopes
-
-  scope :current, -> { active.where contest_year: (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year) }
-  scope :past, -> { active.where 'contest_year < ?', (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year) }
-
   validates :contest_number, presence: true, uniqueness: { scope: :state }
   validates :contest_year, presence: true, uniqueness: { scope: :state }
   validates :provision, presence: true
@@ -25,6 +20,15 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
     event :restore do
       transition all => :active
     end
+  end
+
+  include StateMachine::Scopes
+
+  scope :current, -> do
+    active.where contest_year: (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year)
+  end
+  scope :past, -> do
+    active.where 'contest_year < ?', (DateTime.now.month > 8 ? DateTime.now.year + 1 : DateTime.now.year)
   end
 
   include PgSearch

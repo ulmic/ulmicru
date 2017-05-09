@@ -9,14 +9,6 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
 
   accepts_nested_attributes_for :arguments
 
-  include StateMachine::Scopes
-
-  scope :debut, -> { where nomination: :debut }
-  scope :number_one, -> { where nomination: :number_one }
-  scope :of_the_year, -> (year) { where year: year }
-  scope :need_to_review, -> { unviewed }
-  scope :active, -> { where(state: [:confirmed, :on_vote]) }
-
   validates :year, presence: true
   validates :member_id, presence: true
   validates :nomination, presence: true
@@ -60,6 +52,14 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include StateMachine::Scopes
+
+  scope :debut, -> { where nomination: :debut }
+  scope :number_one, -> { where nomination: :number_one }
+  scope :of_the_year, -> (year) { where year: year }
+  scope :need_to_review, -> { unviewed }
+  scope :active, -> { where(state: [:confirmed, :on_vote]) }
 
   include DatesHelper
 

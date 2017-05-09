@@ -9,8 +9,6 @@ class Image < ActiveRecord::Base
   extend Enumerize
   enumerize :image_type, in: [ :photo, :just_image, :logo ]
 
-  include StateMachine::Scopes
-
   state_machine :state, initial: :active do
     state :active
     state :removed
@@ -19,6 +17,8 @@ class Image < ActiveRecord::Base
       transition all => :removed
     end
   end
+
+  include StateMachine::Scopes
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :author_name ],

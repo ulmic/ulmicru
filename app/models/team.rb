@@ -9,13 +9,6 @@ class Team < ActiveRecord::Base
   extend Enumerize
   enumerize :publicity, in: [ :visible, :hidden ], default: :hidden
 
-  include StateMachine::Scopes
-
-  scope :visible, -> { where publicity: :visible }
-  scope :hidden, -> { where publicity: :hidden }
-  scope :presented, -> { where.not(state: :removed) }
-  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
-
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active
@@ -36,6 +29,13 @@ class Team < ActiveRecord::Base
       transition all => :closed
     end
   end
+
+  include StateMachine::Scopes
+
+  scope :visible, -> { where publicity: :visible }
+  scope :hidden, -> { where publicity: :hidden }
+  scope :presented, -> { where.not(state: :removed) }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
 
   include TagsHelper
   include Concerns::ReviewManagment

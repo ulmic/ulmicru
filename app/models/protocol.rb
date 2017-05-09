@@ -5,9 +5,6 @@ class Protocol < ActiveRecord::Base
 
   validates :record_id, uniqueness: { scope: :record_type }
 
-  include StateMachine::Scopes
-  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil)).uniq }
-
   state_machine :state, initial: :active do
     state :active
     state :removed
@@ -20,6 +17,9 @@ class Protocol < ActiveRecord::Base
       transition all => :active
     end
   end
+
+  include StateMachine::Scopes
+  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil)).uniq }
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :document_id ],

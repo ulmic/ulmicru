@@ -15,6 +15,7 @@ class Category < ActiveRecord::Base
   scope :roots, -> { presented.where(parent_id: nil)}
   scope :last_childs, -> { where is_last: true }
   scope :presented, -> { where.not state: :removed}
+
   def self.get_by_parent_id(category_id, all_tree = false)
     Category.where(parent_id: category_id).where.not(state: :removed)
   end

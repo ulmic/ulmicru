@@ -12,14 +12,6 @@ class Article < ActiveRecord::Base
   validates :category_id, presence: true
   validates :user_id,     presence: true
 
-  include StateMachine::Scopes
-  scope :presented, -> { where.not(state: :removed).order('id DESC')}
-  scope :broadcasted, -> { where.not(category_id: Category.find_by_name('Контакты').id).where(state: :confirmed) }
-  scope :same_articles, -> (article) { article.category.articles.where.not(id: article.id) }
-  scope :popular, -> { order('views DESC') }
-  scope :visible, -> { where publicity: :visible }
-  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
-
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
@@ -39,6 +31,14 @@ class Article < ActiveRecord::Base
       transition all => :inactive
     end
   end
+
+  include StateMachine::Scopes
+  scope :presented, -> { where.not(state: :removed).order('id DESC')}
+  scope :broadcasted, -> { where.not(category_id: Category.find_by_name('Контакты').id).where(state: :confirmed) }
+  scope :same_articles, -> (article) { article.category.articles.where.not(id: article.id) }
+  scope :popular, -> { order('views DESC') }
+  scope :visible, -> { where publicity: :visible }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
 
   extend Enumerize
   enumerize :publicity, in: [ :visible, :access_on_link ], default: :visible
