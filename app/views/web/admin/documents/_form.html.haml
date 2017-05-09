@@ -12,8 +12,9 @@
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_documents_path, class: 'btn btn-default'
       = f.input :title, as: :string, input_html: { value: params[:document][:title] }
-      = f.input :file, as: :attachment_preview
       - if params[:import] == "true"
         = f.hidden_field :import, value: :true
+        = hint :document, :file, place: :admin
+      = f.input :file, as: :attachment_preview
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_documents_path, class: 'btn btn-default'
