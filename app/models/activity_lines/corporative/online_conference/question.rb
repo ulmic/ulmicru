@@ -5,6 +5,12 @@ class ActivityLines::Corporative::OnlineConference::Question < ActiveRecord::Bas
 
   validates :text, uniqueness: true
 
+  include StateMachine::Scopes
+
+  scope :need_to_review, -> { unviewed }
+  scope :asked, -> { active.where answer_timestamp: nil }
+  scope :answered, -> { active.where.not answer_timestamp: nil }
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active

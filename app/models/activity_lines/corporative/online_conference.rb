@@ -5,6 +5,11 @@ class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
   validates :title, uniqueness: true, presence: true
   validates :video_link, youtu_dot_be_video_link: true
 
+  include StateMachine::Scopes
+
+  scope :future, -> { active.where('date > ?', DateTime.now) }
+  scope :past, -> { active.where('date < ?', DateTime.now) }
+
   state_machine :state, initial: :active do
     state :active
     state :removed

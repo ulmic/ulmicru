@@ -9,6 +9,8 @@ class Image < ActiveRecord::Base
   extend Enumerize
   enumerize :image_type, in: [ :photo, :just_image, :logo ]
 
+  include StateMachine::Scopes
+
   state_machine :state, initial: :active do
     state :active
     state :removed

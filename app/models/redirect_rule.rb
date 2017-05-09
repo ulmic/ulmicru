@@ -6,6 +6,8 @@ class RedirectRule < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [ :moved_temporarily, :moved_permanently ]
 
+  include StateMachine::Scopes
+
   state_machine :state, initial: :active do
     state :active
     state :removed

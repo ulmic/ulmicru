@@ -7,8 +7,14 @@ class Team < ActiveRecord::Base
   validates :description, presence: true
 
   extend Enumerize
-
   enumerize :publicity, in: [ :visible, :hidden ], default: :hidden
+
+  include StateMachine::Scopes
+
+  scope :visible, -> { where publicity: :visible }
+  scope :hidden, -> { where publicity: :hidden }
+  scope :presented, -> { where.not(state: :removed) }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
 
   state_machine :state, initial: :unviewed do
     state :unviewed

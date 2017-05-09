@@ -4,6 +4,11 @@ class Place < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :url, uniqueness: true
 
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not state: :removed }
+  scope :need_to_review, -> { unviewed }
+
   state_machine :state, initial: :unviewed do
     state :active
     state :unviewed

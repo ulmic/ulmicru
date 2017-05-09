@@ -8,6 +8,12 @@ class Position < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [ :confirmed, :acting ], default: :confirmed
 
+  include StateMachine::Scopes
+
+  scope :current_positions, -> { confirmed.where for_now: 1 }
+  scope :last_held_position, -> { order('end_date DESC').first }
+  scope :active, -> { where.not state: :removed }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
   state_machine :state, initial: :confirmed do
     state :unviewed
     state :confirmed

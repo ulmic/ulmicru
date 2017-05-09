@@ -3,6 +3,8 @@ class Delivery::Campaign < ActiveRecord::Base
   has_many :receivers, class_name: 'Delivery::Receiver'
   belongs_to :creator, class_name: 'Member'
 
+  include StateMachine::Scopes
+
   validates :title, presence: true
   validates :body, presence: true
   validates :image, presence: true

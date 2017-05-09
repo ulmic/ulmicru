@@ -4,6 +4,12 @@ class TestPaper < ActiveRecord::Base
   extend Enumerize
   enumerize :record_type, in: [ :confession ]
 
+  include StateMachine::Scopes
+
+  scope :presented , -> { where.not state: :removed }
+  scope :future, -> { where('begin_date >= ?', DateTime.now).where.not(state: :removed).order('id DESC') }
+  scope :current, -> { where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now).where.not(state: :removed).order('id DESC') }
+  scope :past, -> { where('end_date <= ?', DateTime.now).where.not(state: :removed).order('id DESC') }
   state_machine :state, initial: :active do
     state :active
     state :removed

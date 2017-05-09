@@ -9,6 +9,16 @@ class ActivityLine < ActiveRecord::Base
 
   mount_uploader :logo, PhotoUploader
 
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not(state: :removed).order('id ASC')}
+  scope :central_programs, -> { where activity_type: :central_program }
+  scope :local_projects, -> { where activity_type: :local_project }
+  scope :corporative, -> { where activity_type: :corporative }
+  scope :has_curators, -> { where.not(activity_type: :event_line) }
+  scope :ulmic, -> { where organization_type: :ulmic }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+
   enumerize :activity_type, in: [ :central_program, :local_project, :corporative, :event_line ]
   enumerize :organization_type, in: [ :ulmic, :not_ulmic ]
 

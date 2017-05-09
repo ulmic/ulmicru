@@ -4,6 +4,11 @@ class ActivityLines::Corporative::Merit < ActiveRecord::Base
   extend Enumerize
   enumerize :nomination, in: [ :first_degree, :second_degree ]
 
+  include StateMachine::Scopes
+
+  scope :honorary_members, -> { active.where nomination: :first_degree }
+  scope :second_degree, -> { active.where nomination: :second_degree }
+
   validates :nomination, uniqueness: { scope: :user_id }
 
   state_machine :state, initial: :active do

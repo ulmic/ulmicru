@@ -21,14 +21,6 @@ GIT
       orm_adapter (~> 0.5.0)
 
 GIT
-  remote: git://github.com/kalashnikovisme/scopes_rails.git
-  revision: bc9281cb5346eaab3106e909b1d3ad39bb99c327
-  branch: list_of_scopes
-  specs:
-    scopes_rails (0.0.3)
-      rails (~> 4)
-
-GIT
   remote: git://github.com/luizpicolo/youtube_rails.git
   revision: 18d102bafaf9f837455b8f7c7726f1b4aad80d79
   specs:
@@ -537,7 +529,6 @@ DEPENDENCIES
   russian_sex
   rwr-redux
   sass-rails (~> 5.0)
-  scopes_rails!
   sdoc (~> 0.4.0)
   select2-rails
   sidekiq

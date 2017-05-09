@@ -13,6 +13,12 @@ class Comment < ActiveRecord::Base
   enumerize :record_type, in: [ 'Article', 'News', 'ActivityLines::Corporative::Confession', 'Event', 'Questionary' ]
   enumerize :comment_type, in: [ :user, :admin ]
 
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not(state: :removed).order('id DESC') }
+  scope :published, -> { where.not(state: :removed).order('created_at ASC') }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active

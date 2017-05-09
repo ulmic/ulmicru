@@ -16,6 +16,15 @@ class Event < ActiveRecord::Base
   extend Enumerize
   enumerize :organizer_type, in: [ 'Member', 'Team', 'User' ]
 
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not(state: :removed) }
+  scope :future, -> { where('begin_date >= ?', DateTime.now).where.not(state: :removed).order('id DESC') }
+  scope :current, -> { where('begin_date < ? AND end_date > ?', DateTime.now, DateTime.now).where.not(state: :removed).order('id DESC') }
+  scope :past, -> { where('end_date <= ?', DateTime.now).where.not(state: :removed).order('id DESC') }
+  scope :near_future, -> { where('begin_date <= ?', DateTime.now + 3.month).order('begin_date DESC') }
+  scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :declined

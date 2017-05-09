@@ -10,6 +10,11 @@ class Category < ActiveRecord::Base
   validates :parent_id, presence: false
   validates :is_last,   presence: false
 
+  include StateMachine::Scopes
+
+  scope :roots, -> { presented.where(parent_id: nil)}
+  scope :last_childs, -> { where is_last: true }
+  scope :presented, -> { where.not state: :removed}
   def self.get_by_parent_id(category_id, all_tree = false)
     Category.where(parent_id: category_id).where.not(state: :removed)
   end

@@ -4,6 +4,10 @@ class Document < ActiveRecord::Base
 
   mount_uploader :file, FileUploader
 
+  include StateMachine::Scopes
+
+  scope :presented, -> { where.not(state: :removed).order('id ASC') }
+
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :active

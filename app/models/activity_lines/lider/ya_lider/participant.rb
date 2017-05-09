@@ -8,6 +8,8 @@ class ActivityLines::Lider::YaLider::Participant < ActiveRecord::Base
   validates :user_id, presence: true
   validates :contest_id, presence: true
 
+  include StateMachine::Scopes
+
   state_machine :state, initial: :active do
     state :unviewed
     state :active

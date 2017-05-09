@@ -5,6 +5,9 @@ class Protocol < ActiveRecord::Base
 
   validates :record_id, uniqueness: { scope: :record_type }
 
+  include StateMachine::Scopes
+  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil)).uniq }
+
   state_machine :state, initial: :active do
     state :active
     state :removed
