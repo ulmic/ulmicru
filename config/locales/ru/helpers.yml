@@ -20,11 +20,13 @@ ru:
     share: Поделиться
     share_us: Расскажите о нас
     download: Скачать
+    upload: Загрузить
     search: Найти
     found: Найденные
     remind: Отправить пароль
     submit: Отправить
     link: Ссылка
+    import: Импортировать
     actions:
       update: Редактировать
       create: Создать

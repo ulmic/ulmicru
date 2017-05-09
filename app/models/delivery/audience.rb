@@ -12,10 +12,10 @@ class Delivery::Audience < ActiveRecord::Base
         User.presented.subscribed_to_deliveries.with_email
       when 'members'
         Member.presented.subscribed_to_deliveries.with_email
-      when 'contacts_emails'
-        [User, ContactEmail].reduce([]) do |contacts, type|
+      when 'contact_emails'
+        [User, Delivery::ContactEmail].reduce([]) do |array, type|
           type.presented.subscribed_to_deliveries.with_email.find_each(batch_size: 1000) do |instance|
-            contacts << OpenStruct.new(email: instance.email, first_name: instance.first_name, last_name: instance.last_name)
+            array << OpenStruct.new(email: instance.email, first_name: instance.first_name, last_name: instance.last_name)
           end
         end
       when 'team'

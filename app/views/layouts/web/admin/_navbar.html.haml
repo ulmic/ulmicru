@@ -61,7 +61,7 @@
         = admin_menu_item Feedback, admin_feedbacks_path, :share
         = dropdown t('.delivery') do
           = admin_menu_item Delivery::Campaign, admin_delivery_campaigns_path, :send
-          = admin_menu_item Delivery::ContactEmail, admin_delivery_contact_emails_path, 'hand-pointer-o'
+          = admin_menu_item Delivery::ContactEmail, admin_delivery_contact_emails_path, 'address-book'
       - elsif current_user.role.author?
         = admin_menu_item Event, admin_events_path, :calendar
         = admin_menu_item News, admin_news_index_path, 'list-alt'

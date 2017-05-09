@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class Web::Admin::Delivery::ContactEmailsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    admin = create :admin
+    sign_in admin
+  end
+
+  test 'should get index' do
+    get :index
+    assert_response :success
+  end
 end

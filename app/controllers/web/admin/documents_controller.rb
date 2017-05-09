@@ -16,9 +16,22 @@ class Web::Admin::DocumentsController < Web::Admin::ApplicationController
 
   def create
     @document_form = DocumentForm.new_with_model
+    import = params[:document][:import] == 'true'
+    params[:document].delete :import
     @document_form.submit(params[:document])
     if @document_form.save
-      redirect_to admin_documents_path
+      if import
+        collection = ::XlsParser.first_sheet_collection @document_form.model.file
+        collection.each do |item|
+          contact_email = Delivery::ContactEmail.new first_name: item[0], last_name: item[1], email: item[2]
+          if contact_email.save
+            Subscription.create receiver_type: 'Delivery::ContactEmail', receiver_id: contact_email.id, subscription_type: :deliveries
+          end
+        end
+        redirect_to admin_delivery_contact_emails_path
+      else
+        redirect_to admin_documents_path
+      end
     else
       render action: :new
     end

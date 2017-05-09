@@ -1,5 +1,10 @@
 = paginate delivery_contact_emails, theme: 'twitter-bootstrap-3'
 - model_class = Delivery::ContactEmail
+%br
+= link_to new_admin_document_path(document: { title: "#{t('.import_from_file')}_#{l(DateTime.now, format: "%d.%m.%y")}" }, import: true), class: 'btn btn-success' do
+  = fa_icon :download
+  = t('helpers.import')
+%br
 %table.table.table-condensed.table-hover
   %thead
     %tr
@@ -18,12 +23,6 @@
         - if searching?
           %td= delivery_contact_email.human_state_name
         %td.actions
-          - if delivery_contact_email.subscribed?
-            = link_to admin_delivery_contact_email_path(delivery_contact_email, contact_email: { state: :unsubscribed }), method: :patch, class: 'btn btn-danger btn-xs' do
-              = fa_icon 'hand-pointer-o'
-          - if delivery_contact_email.unsubscribed?
-            = link_to admin_delivery_contact_email_path(delivery_contact_email, contact_email: { state: :subscribed }), method: :patch, class: 'btn btn-success btn-xs' do
-              = fa_icon 'hand-pointer-o'
           = link_to admin_delivery_contact_email_path(delivery_contact_email), method: :delete, class: 'btn btn-xs btn-danger' do
             = fa_icon :remove
 = paginate delivery_contact_emails, theme: 'twitter-bootstrap-3'
