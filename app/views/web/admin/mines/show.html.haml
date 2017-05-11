@@ -1,0 +1,9 @@
+- title
+.tabs
+  %ul.nav.nav-tabs{ role: :tablist }
+    - [ Event, News ].each do |type|
+      %li{ class: ((params[:tab] == type.name.underscore.to_s) ? :active : '') }
+        = link_to admin_mine_path(tab: type.name.underscore) do
+          = t("activerecord.models.#{type.name.underscore}").pluralize(:ru)
+  %div{ id: params[:tab] }
+    = render "web/admin/#{params[:tab].pluralize}/list", params[:tab].pluralize.to_sym => @items

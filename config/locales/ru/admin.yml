@@ -41,6 +41,9 @@ ru:
           most_viewed_event: Самое просматриваемое мероприятие
           member: Самый просматриваемый профиль члена МИЦ
           contact_emails_count: Количество электронных почт для рассылки
+      mines:
+        show:
+          title: Мои записи
       unviewed:
         index:
           title: Непросмотренные

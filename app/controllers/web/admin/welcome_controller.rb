@@ -6,7 +6,7 @@ class Web::Admin::WelcomeController < Web::Admin::ApplicationController
   def index
     @report = if signed_as_admin? 
       most_viewed_news_count = News.joins(:page_views).select('news.*, count(views.id) as vcount').group('news.id').order('vcount DESC').first
-      most_viewed_event_count = Event.joins(:page_views).select('events.*, count(views.id) as vcount').group('events.id').order('vcount DESC').first
+      most_viewed_event_count = ::Event.joins(:page_views).select('events.*, count(views.id) as vcount').group('events.id').order('vcount DESC').first
       counts = {}
       member_id = View.where(record_type: 'Member').map(&:record_id).group_by(&:itself).each do |k, v|
         counts[k] = v.length
@@ -32,7 +32,7 @@ class Web::Admin::WelcomeController < Web::Admin::ApplicationController
         member: "#{member.decorate.short_name} (#{member_id[1].count})",
         contact_emails_count: Delivery::ContactEmail.presented.count
       }
-              end
+    end
   end
 
   private
