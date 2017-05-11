@@ -65,6 +65,11 @@ class Event < ActiveRecord::Base
     ::ActivityLines::Lider::YaLider::ParticipantEvent.where(event_id: self.id).any?
   end
 
+  #FIXME remove with scopes_rails
+  def self.scopes
+    [ :presented, :future, :current, :past, :near_future, :need_to_review, :unviewed, :declined, :confirmed, :removed, :updated ]
+  end
+
   private
 
   def remove_empty_registrations

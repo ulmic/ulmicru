@@ -79,9 +79,9 @@
           - else
             - model_name = item.to_s.camelize.constantize 
             = admin_menu_item model_name, admin_index_path_of_model(model_name), model_icon(item)
-    - if current_user.role.in? ['admin', 'tech_admin']
-      %ul.nav.navbar-nav.navbar-right
-        = admin_menu_item '', admin_mine_path(tab: :event), 'user-circle'
+    %ul.nav.navbar-nav.navbar-right
+      = admin_menu_item '', admin_mine_path(tab: :event), 'user-circle'
+      - if current_user.role.in? ['admin', 'tech_admin']
         = admin_menu_item '', admin_path, :home
         = admin_menu_item @notification_count, admin_unviewed_index_path, 'info-sign'
         = dropdown t('web.admin.trash.title'), :trash do
