@@ -25,4 +25,8 @@ class Place < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description, :longitude, :latitude, :foursquare_uid]
+
+  def self.collections
+    [:unviewed, :active, :removed]
+  end
 end

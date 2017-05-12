@@ -12,8 +12,4 @@ class FeedbackDecorator < ApplicationDecorator
   def date
     I18n.l object.created_at, format: '%d %b'
   end
-
-  def self.collections
-    [ :unviewed, :fixing, :done, :declined ]
-  end
 end

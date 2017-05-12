@@ -173,4 +173,8 @@ class User < ActiveRecord::Base
       current_contest.current_stage.participants.map(&:user_id).include? id
     end
   end
+
+  def self.collections
+    [ :confirmed, :unviewed, :admins, :authors, :declined, :email_corrupted ]
+  end
 end

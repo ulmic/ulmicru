@@ -46,4 +46,8 @@ class Article < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :body, :view]
+
+  def self.collections
+    [ :confirmed, :inactive, :unviewed ]
+  end
 end

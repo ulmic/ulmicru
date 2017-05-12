@@ -8,8 +8,4 @@ class BannerDecorator < ApplicationDecorator
   def small_thumb
     (object.vertical || object.horizontal).small
   end
-
-  def self.collections
-    [ :actual, :active, :unviewed, :removed ]
-  end
 end

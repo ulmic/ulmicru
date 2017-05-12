@@ -27,4 +27,8 @@ class ActivityLines::Corporative::OnlineConference::Question < ActiveRecord::Bas
   def is_answered?
     answer_timestamp.present?
   end
+
+  def self.collections
+    [ :unviewed, :asked, :answered, :removed ]
+  end
 end

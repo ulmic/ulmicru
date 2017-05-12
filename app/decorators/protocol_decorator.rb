@@ -4,8 +4,4 @@ class ProtocolDecorator < ApplicationDecorator
   def name
     object.title
   end
-
-  def self.collections
-    [ :active, :removed ]
-  end
 end

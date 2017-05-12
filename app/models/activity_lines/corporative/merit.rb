@@ -26,4 +26,8 @@ class ActivityLines::Corporative::Merit < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :year, :nomination, :user_id ]
+
+  def self.collections
+    [ :honorary_members, :second_degree ]
+  end
 end

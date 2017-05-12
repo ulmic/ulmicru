@@ -15,10 +15,6 @@ class ArticleDecorator < ApplicationDecorator
 
   alias :lead :short_body
 
-  def self.collections
-    [ :confirmed, :inactive, :unviewed ]
-  end
-
   def publicity_icon
     case object.publicity
     when 'visible'

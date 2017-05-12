@@ -41,10 +41,6 @@ class UserDecorator < ApplicationDecorator
     I18n.t("activerecord.attributes.user.types.#{object.type&.underscore || :user}")
   end
 
-  def self.collections
-    [ :confirmed, :unviewed, :admins, :authors, :declined, :email_corrupted ]
-  end
-
   def main_current_position
     nil
   end

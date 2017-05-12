@@ -25,4 +25,8 @@ class TestPaper < ActiveRecord::Base
   scope :past, -> { where('end_date <= ?', DateTime.now).where.not(state: :removed).order('id DESC') }
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title ]
+
+  def self.collections
+    [ :current, :past, :future, :removed ]
+  end
 end

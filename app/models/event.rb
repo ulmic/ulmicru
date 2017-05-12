@@ -66,8 +66,8 @@ class Event < ActiveRecord::Base
   end
 
   #FIXME remove with scopes_rails
-  def self.scopes
-    [ :presented, :future, :current, :past, :near_future, :need_to_review, :unviewed, :declined, :confirmed, :removed, :updated ]
+  def self.collections
+    [ :future, :current, :past, :unviewed, :declined ]
   end
 
   private

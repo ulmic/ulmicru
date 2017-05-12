@@ -27,8 +27,4 @@ class QuestionaryDecorator < MemberDecorator
       fa_icon 'question-circle 2x'
     end
   end
-
-  def self.collections
-    [ :member_on_the_trial, :member_changes_expectation,  :unviewed, :member_declined, :member_trial_passed ]
-  end
 end

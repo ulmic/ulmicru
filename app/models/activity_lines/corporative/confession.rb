@@ -67,4 +67,8 @@ class ActivityLines::Corporative::Confession < ActiveRecord::Base
     (on_vote? || unviewed?) && user_id == creator_id &&
       submissions_petitions_during?
   end
+
+  def self.collections
+    [ :confirmed, :unviewed, :on_vote, :declined ]
+  end
 end

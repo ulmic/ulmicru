@@ -16,8 +16,4 @@ class LetterDecorator < ApplicationDecorator
   def present_executor
     executor ? executor.decorate.short_name : executor_name
   end
-
-  def self.collections
-    [ :sended, :unviewed ]
-  end
 end

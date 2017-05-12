@@ -75,8 +75,4 @@ class EventDecorator < ApplicationDecorator
   def online_conference_title
     object.title.gsub("#{I18n.t('activerecord.attributes.activity_lines/corporative/online_conference.event_title')} «", '')[0..-2]
   end
-
-  def self.collections
-    [ :future, :current, :past, :unviewed, :declined ]
-  end
 end

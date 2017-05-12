@@ -80,4 +80,8 @@ class Questionary < Member
   include Concerns::ActionLoggerManagment
   include PgSearch
   pg_search_scope :search_everywhere, against: [:email, :first_name, :last_name, :patronymic, :motto, :ticket, :mobile_phone, :home_adress, :municipality, :locality, :experience, :want_to_do, :school ]
+
+  def self.collections
+    [ :member_on_the_trial, :member_changes_expectation,  :unviewed, :member_declined, :member_trial_passed ]
+  end
 end

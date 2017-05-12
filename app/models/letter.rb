@@ -35,4 +35,8 @@ class Letter < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :receiver, :number, :executor_name]
+
+  def self.collections
+    [ :sended, :unviewed ]
+  end
 end

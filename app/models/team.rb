@@ -88,4 +88,8 @@ class Team < ActiveRecord::Base
   end
   include PgSearch
   pg_search_scope :search_everywhere, against: [:title, :description, :municipality, :school]
+
+  def self.collections
+    [ :active, :unviewed, :closed, :removed ]
+  end
 end

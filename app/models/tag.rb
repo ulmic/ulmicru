@@ -44,4 +44,8 @@ class Tag < ActiveRecord::Base
   scope :empty, -> { active.where tag_type: :link, target_id: nil }
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :text, :target_id, :record_id ]
+
+  def self.collections
+    [:empty, :active, :removed]
+  end
 end

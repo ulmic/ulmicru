@@ -1,10 +1,6 @@
 class ImageDecorator < ApplicationDecorator
   delegate_all
 
-  def self.collections
-    [ :active, :removed ]
-  end
-
   def name
     object.file.url
   end
