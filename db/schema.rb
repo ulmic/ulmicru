@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509182902) do
+ActiveRecord::Schema.define(version: 20170512220919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -400,15 +400,6 @@ ActiveRecord::Schema.define(version: 20170509182902) do
     t.text     "state"
     t.text     "lead"
     t.integer  "views",        default: 0
-  end
-
-  create_table "news_ratings", force: :cascade do |t|
-    t.integer  "news_id"
-    t.integer  "rating"
-    t.integer  "views_count"
-    t.integer  "round"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
