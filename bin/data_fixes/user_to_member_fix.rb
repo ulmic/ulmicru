@@ -28,9 +28,13 @@ if ENV['USER_ID'].present? && (ENV['MEMBER_ID'].present? || ENV['TRUE_USER'].pre
   puts "Tags migration...".green
   Tag.where(target_id: user.id, target_type: 'Member').update_all target_id: member.id
   puts "Event organizer_id migrations...".green
-  Event.where(organizer_id: user.id, organizer_type: [ 'User', 'Member' ]).update_attributes! organizer_id: member.id
+  Event.where(organizer_id: user.id, organizer_type: [ 'User', 'Member' ]).map do |e|
+    e.update_attributes! organizer_id: member.id
+  end
   puts "Event creator_id migrations...".green
-  Event.where(creator_id: user.id).update_attributes! creator_id: member.id
+  Event.where(creator_id: user.id).map do |e|
+    e.update_attributes! creator_id: member.id
+  end
   puts "Destroy old user...".green
   user.destroy
 else

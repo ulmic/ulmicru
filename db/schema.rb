@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509182902) do
+ActiveRecord::Schema.define(version: 20170512222114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -402,15 +402,6 @@ ActiveRecord::Schema.define(version: 20170509182902) do
     t.integer  "views",        default: 0
   end
 
-  create_table "news_ratings", force: :cascade do |t|
-    t.integer  "news_id"
-    t.integer  "rating"
-    t.integer  "views_count"
-    t.integer  "round"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
     t.integer  "application_id",    null: false
@@ -630,17 +621,18 @@ ActiveRecord::Schema.define(version: 20170509182902) do
     t.text     "experience"
     t.text     "want_to_do"
     t.string   "type"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.datetime "join_date"
     t.text     "token"
     t.text     "school"
-    t.text     "member_state",      default: "unviewed"
+    t.text     "member_state",        default: "unviewed"
     t.datetime "request_date"
     t.text     "corporate_email"
     t.text     "source_to_know"
-    t.text     "questionary_state", default: "not_existed"
-    t.text     "email_state",       default: "active"
+    t.text     "questionary_state",   default: "not_existed"
+    t.text     "email_state",         default: "active"
+    t.text     "main_position_title"
   end
 
   create_table "views", force: :cascade do |t|
