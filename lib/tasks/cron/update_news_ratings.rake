@@ -4,8 +4,8 @@ namespace :news do
     count = News.count
     News.order(id: :desc).find_each.with_index do |news, index|
       news.update_attributes! views: news.page_views.count
-      print "#{index} of #{count}\r"
+      puts "#{index} of #{count}\r"
     end
-    "News updated!"
+    puts "News updated!"
   end
 end
