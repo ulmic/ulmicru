@@ -29,4 +29,8 @@ class Protocol < ActiveRecord::Base
   def document
     ::Document.find document_id if document_id.present?
   end
+
+  def self.collections
+    [ :active, :removed ]
+  end
 end

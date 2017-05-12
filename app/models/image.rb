@@ -25,4 +25,8 @@ class Image < ActiveRecord::Base
     associated_against: {
       author: [ :first_name, :last_name, :patronymic ]
     }
+
+  def self.collections
+    [ :active, :removed ]
+  end
 end

@@ -14,8 +14,4 @@ class TeamDecorator < ApplicationDecorator
   def name
     title
   end
-
-  def self.collections
-    [ :active, :unviewed, :closed, :removed ]
-  end
 end

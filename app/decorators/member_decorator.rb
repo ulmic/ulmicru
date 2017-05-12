@@ -115,10 +115,6 @@ class MemberDecorator < UserDecorator
     end
   end
 
-  def self.collections
-    [ :confirmed, :unviewed, :declined, :unavailable ]
-  end
-
   def avatar_small_img
     h.content_tag :a, href: member_path(object.ticket) do
       h.content_tag :img, class: :avatar, src: object.avatar.small do

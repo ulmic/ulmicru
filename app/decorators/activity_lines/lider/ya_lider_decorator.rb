@@ -14,8 +14,4 @@ class ActivityLines::Lider::YaLiderDecorator < ApplicationDecorator
   end
 
   alias title full_title
-
-  def self.collections
-    [ :current, :past, :removed ]
-  end
 end

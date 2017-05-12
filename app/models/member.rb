@@ -175,6 +175,10 @@ class Member < User
     @admin_comments ||= Comment.where(comment_type: :admin, record_id: self.id, record_type: self.type)
   end
 
+
+  def self.collections
+    [ :confirmed, :unviewed, :declined, :unavailable ]
+  end
   private
 
   def remove_empty_positions

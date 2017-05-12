@@ -1,10 +1,6 @@
 class PlaceDecorator < ApplicationDecorator
   delegate_all
 
-  def self.collections
-    [:unviewed, :active, :removed]
-  end
-
   def coordinates
     "#{object.latitude} #{object.longitude}"
   end

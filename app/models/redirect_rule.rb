@@ -23,4 +23,8 @@ class RedirectRule < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :old_path, :redirect_to, :status, :reason ]
+
+  def self.collections
+    [ :active ]
+  end
 end

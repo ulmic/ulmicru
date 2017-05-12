@@ -59,4 +59,9 @@ class ActivityLines::Lider::YaLider < ActiveRecord::Base
   def fair_idea
     events.where(association_type: :fair_idea).first&.event
   end
+
+  #FIXME remove with scopes_rails
+  def self.collections
+    [ :current, :past, :removed ]
+  end
 end

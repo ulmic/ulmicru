@@ -31,4 +31,8 @@ class Comment < ActiveRecord::Base
   scope :presented, -> { where.not(state: :removed).order('id DESC') }
   scope :published, -> { where.not(state: :removed).order('created_at ASC') }
   scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+
+  def self.collections
+    [ :unviewed, :active ]
+  end
 end

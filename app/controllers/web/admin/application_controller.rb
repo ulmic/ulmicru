@@ -17,7 +17,7 @@ class Web::Admin::ApplicationController < Web::ApplicationController
 
   def check_declared_scopes
     if params[:scope].present?
-      if !model_class.scopes.map(&:to_s).include?(params[:scope])
+      if !model_class.collections.map(&:to_s).include?(params[:scope])
         redirect_to url_for params.except :scope
       end
     else

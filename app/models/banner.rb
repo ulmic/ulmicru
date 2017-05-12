@@ -52,4 +52,8 @@ class Banner < ActiveRecord::Base
   def one_of_images_presents
     errors.add :images, I18n.t('.must_be_present') unless horizontal.present? || vertical.present?
   end
+
+  def self.collections
+    [ :actual, :active, :unviewed, :removed ]
+  end
 end

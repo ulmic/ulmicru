@@ -24,4 +24,8 @@ class ActivityLines::Corporative::OnlineConference < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :video_link ]
+
+  def self.collections
+    [ :future, :past, :removed ]
+  end
 end

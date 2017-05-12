@@ -67,4 +67,8 @@ class ActivityLine < ActiveRecord::Base
   def self.lider
     where(title: 'Лидер').first
   end
+
+  def self.collections
+    [ :active, :unviewed, :removed, :closed ]
+  end
 end

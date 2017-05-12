@@ -25,4 +25,8 @@ class Feedback < ActiveRecord::Base
   include StateMachine::Scopes
 
   scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+
+  def self.collections
+    [ :unviewed, :fixing, :done, :declined ]
+  end
 end

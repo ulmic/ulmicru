@@ -87,4 +87,8 @@ class News < ActiveRecord::Base
     activity_line_tag = tags.activity_lines.first
     activity_line_tag.target.title if activity_line_tag
   end
+
+  def self.collections
+    [:published, :unpublished, :unviewed, :main]
+  end
 end
