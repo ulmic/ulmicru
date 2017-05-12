@@ -24,7 +24,7 @@ class Web::NewsController < Web::ApplicationController
       @previous_news = News.previous @news.id, on: :published
       @next_news = News.next @news.id, on: :published
       @same_events = ::EventDecorator.decorate_collection same_events
-      @popular_news = NewsDecorator.decorate_collection News.popular_by_ratings.first 6
+      @popular_news = NewsDecorator.decorate_collection News.popular.first 6
       @banner = Banner.active.with_vertical.actual.last
     else
       redirect_to not_found_page_path and return

@@ -64,16 +64,7 @@ class News < ActiveRecord::Base
     order('published_at DESC')
   end
   scope :popular, -> do
-    news = published.where('published_at <= ? AND published_at >= ?', DateTime.now, DateTime.now - 1.month)
-    views_count = news.reduce({}) do |hash, n|
-      hash.merge! n.id => n.page_views.count
-    end.sort_by { |_key, value| value }.reverse
-    views_count.map do |v|
-      News.find(v[0])
-    end
-  end
-  scope :popular_by_ratings, -> do
-    News::Rating.where(round: News::Rating.maximum(:round)).order(:rating).map &:news
+    order(views: :desc).published.where('published_at <= ? AND published_at >= ?', DateTime.now, DateTime.now - 1.month)
   end
   scope :actual, -> { where("published_at > CURRENT_DATE - INTERVAL'6 days'") }
   scope :presented, -> { where.not(state: :removed) }
