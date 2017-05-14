@@ -63,12 +63,13 @@ class Web::WelcomeControllerTest < ActionController::TestCase
     if ENV['DB'] == 'prod'
       admin = create :admin
       sign_in admin
-      100.times do
+      100.times do |i|
         time = Time.now
         get :index
         duration = Time.now - time
         assert duration < @time_quantum, duration
         assert_response :success, @response.body
+        print "#{i} of 100\r"
       end
     end
   end
