@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512222114) do
+ActiveRecord::Schema.define(version: 20170514220500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -621,18 +621,18 @@ ActiveRecord::Schema.define(version: 20170512222114) do
     t.text     "experience"
     t.text     "want_to_do"
     t.string   "type"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.datetime "join_date"
     t.text     "token"
     t.text     "school"
-    t.text     "member_state",        default: "unviewed"
+    t.text     "member_state",      default: "unviewed"
     t.datetime "request_date"
     t.text     "corporate_email"
     t.text     "source_to_know"
-    t.text     "questionary_state",   default: "not_existed"
-    t.text     "email_state",         default: "active"
-    t.text     "main_position_title"
+    t.text     "questionary_state", default: "not_existed"
+    t.text     "email_state",       default: "active"
+    t.integer  "main_position_id"
   end
 
   create_table "views", force: :cascade do |t|
