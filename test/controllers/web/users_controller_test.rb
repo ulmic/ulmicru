@@ -30,4 +30,16 @@ class Web::UsersControllerTest < ActionController::TestCase
     assert_equal subscription.id, token.record_id
     assert_equal 'Subscription', token.record_type
   end
+
+  test 'should set gender' do
+    attributes = attributes_for :user, :female
+    post :create, user: attributes
+    user = User.last
+    assert user.gender.female?
+
+    attributes = attributes_for :user, :male
+    post :create, user: attributes
+    user = User.last
+    assert user.gender.male?
+  end
 end

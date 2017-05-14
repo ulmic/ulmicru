@@ -27,6 +27,7 @@ class Web::Admin::UsersController < Web::Admin::ApplicationController
     @user_form = UserForm.new_with_model
     @user_form.submit(params[:user])
     if @user_form.save
+      @user_form.model.set_gender!
       redirect_to admin_users_path
     else
       render action: :new

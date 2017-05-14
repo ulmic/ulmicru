@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
 
   extend Enumerize
   enumerize :role, in: [ :user, :admin, :author, :tech_admin ], default: :user
+  enumerize :gender, in: [ :male, :female ]
 
   include AvatarManagment
   include Concerns::SexManagment
@@ -176,5 +177,9 @@ class User < ActiveRecord::Base
 
   def self.collections
     [ :confirmed, :unviewed, :admins, :authors, :declined, :email_corrupted ]
+  end
+
+  def set_gender!
+    update_attributes gender: GenderHelper.detect_gender(first_name)
   end
 end

@@ -28,6 +28,7 @@ class Web::Admin::QuestionariesController < Web::Admin::ApplicationController
     @questionary_form = QuestionaryForm.new_with_model
     @questionary_form.submit params[:questionary]
     if @questionary_form.save
+      @questionary_form.model.set_gender!
       Organization::Permissions.questionary[:review].each do |member|
         send_notification member, @questionary_form.model, :create
       end
