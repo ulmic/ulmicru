@@ -5,7 +5,7 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @user = create :user
-    @exceptions_attributes = ['id', 'created_at', 'updated_at']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'gender', 'password_digest', 'avatar']
   end
 
   test 'should get new' do
@@ -42,9 +42,10 @@ class Web::Admin::UsersControllerTest < ActionController::TestCase
     assert_response :redirect, @response.body
     assert_redirected_to admin_users_path
     user = User.last
-    user.attributes.keys.except('id', 'created_at', 'updated_at', 'password_digest', 'avatar').each do |key|
+    user.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], user.send(key), key
     end
+    assert_equal GenderHelper.detect_gender(user.first_name).to_s, user.gender
   end
 
   test 'should get edit' do
