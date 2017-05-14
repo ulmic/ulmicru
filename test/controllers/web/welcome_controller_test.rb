@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Web::WelcomeControllerTest < ActionController::TestCase
   setup do
-    @time_quantum = 2.seconds
+    @time_quantum = 1.second
   end
 
   test 'should get index' do

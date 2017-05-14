@@ -91,10 +91,10 @@
                   = member.short_name
               .post
                 %u
-                  = member.main_position_title
-              - if member.position_duration
+                  = member.main_position&.title
+              - if member.main_position&.duration
                 .duration
-                  = member.position_duration
+                  = member.main_position.duration
               .credo
                 = member.motto
               .ticket
