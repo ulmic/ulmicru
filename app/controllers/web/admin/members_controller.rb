@@ -45,6 +45,7 @@ class Web::Admin::MembersController < Web::Admin::ApplicationController
     end
     @member_form.submit params[:member]
     if @member_form.save
+      @member_form.model.set_gender!
       redirect_to admin_members_path
     else
       choose_members

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Web::WelcomeControllerTest < ActionController::TestCase
   setup do
-    @time_quantum = 2.seconds
+    @time_quantum = 1.second
   end
 
   test 'should get index' do
@@ -63,12 +63,13 @@ class Web::WelcomeControllerTest < ActionController::TestCase
     if ENV['DB'] == 'prod'
       admin = create :admin
       sign_in admin
-      100.times do
+      100.times do |i|
         time = Time.now
         get :index
         duration = Time.now - time
         assert duration < @time_quantum, duration
         assert_response :success, @response.body
+        print "#{i} of 100\r"
       end
     end
   end

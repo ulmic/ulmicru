@@ -14,6 +14,7 @@ class Web::UsersController < Web::ApplicationController
 
         sign_in @user_form.model
         initialize_subscriptions @user_form.model
+        @user_form.model.set_gender!
         redirect_to account_path
       else
         render action: :new

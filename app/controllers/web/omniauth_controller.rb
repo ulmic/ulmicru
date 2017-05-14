@@ -36,6 +36,7 @@ class Web::OmniauthController < Web::ApplicationController
       end
       Authentication.create user_id: current_user.id, provider: provider, uid: uid
     end
+    current_user.set_gender!
     redirect_to session[:redirect_url] || account_path
   end
 

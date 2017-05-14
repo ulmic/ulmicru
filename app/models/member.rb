@@ -19,7 +19,6 @@ class Member < User
                          dependent: :destroy
   has_many :views, as: :record, foreign_key: :record_id, class_name: 'View'
 
-
   validates :first_name, human_name: true,
                          allow_blank: true
   validates :last_name, human_name: true,
@@ -175,10 +174,14 @@ class Member < User
     @admin_comments ||= Comment.where(comment_type: :admin, record_id: self.id, record_type: self.type)
   end
 
-
   def self.collections
     [ :confirmed, :unviewed, :declined, :unavailable ]
   end
+
+  def main_position
+    Position.find main_position_id if main_position_id.present?
+  end
+
   private
 
   def remove_empty_positions
