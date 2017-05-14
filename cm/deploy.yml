@@ -107,3 +107,17 @@
       shell: "/usr/local/rvm/bin/rvm ruby-2.3.0 do bundle exec sidekiq -d -P /srv/ulmicru/shared/tmp/pids/sidekiq-0.pid -L /srv/ulmicru/shared/log/sidekiq.log"
       args:
         chdir: "{{ release_path }}"
+
+    - name: News views updating cron task
+      cron:
+        name: "News views updating"
+        minute: 10
+        hour: 4
+        job: "/bin/bash -l -c 'cd /srv/ulmicru/current && RAILS_ENV=production bundle exec rake news:update_views_count'"
+
+    - name: Member main position update task
+      cron:
+        name: "Member main position updating"
+        minute: 10
+        hour: 6
+        job: "/bin/bash -l -c 'cd /srv/ulmicru/current && RAILS_ENV=production bundle exec rake members:update_member_main_position'"
