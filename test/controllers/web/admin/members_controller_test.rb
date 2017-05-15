@@ -5,7 +5,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     admin = create :admin
     sign_in admin
     @member = create :member
-    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'avatar', 'birth_date', 'user_id']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'avatar', 'birth_date', 'user_id', 'gender']
   end
 
   test 'should get index' do
@@ -57,6 +57,7 @@ class Web::Admin::MembersControllerTest < ActionController::TestCase
     member.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym].to_s, member.send(key).to_s, key
     end
+    assert_equal GenderHelper.detect_gender(member.first_name).to_s, member.gender
   end
 
   test 'should get edit' do

@@ -1,3 +1,4 @@
+Subscription.delete_all
 count  = Delivery::ContactEmail.count + User.count
 [Delivery::ContactEmail, User].each do |receivers|
   receivers.find_each.with_index do |receiver, index|

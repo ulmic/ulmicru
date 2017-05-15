@@ -6,7 +6,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     sign_in admin
     create :member
     @questionary = create :questionary
-    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'birth_date', 'avatar']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'password_digest', 'birth_date', 'avatar', 'gender']
     create :position_corporative_lead
   end
 
@@ -53,6 +53,7 @@ class Web::Admin::QuestionariesControllerTest < ActionController::TestCase
     questionary.attributes.keys.except(*@exceptions_attributes).each do |key|
       assert_equal attributes[key.to_sym], questionary.send(key), key
     end
+    assert_equal GenderHelper.detect_gender(questionary.first_name).to_s, questionary.gender
   end
 
   test 'should get edit' do
