@@ -6,7 +6,7 @@ class CheckSubscriptionsTokenTest < ActionController::TestCase
     count = users.count
     users.each_with_index do |user, index|
       print "#{index} of #{count}\r"
-      assert user.subscribe_token
+      assert user.subscribe_token, user.id
     end
   end
 end

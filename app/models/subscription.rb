@@ -17,4 +17,6 @@ class Subscription < ActiveRecord::Base
   scope :news, -> { where record_type: 'News' }
   scope :articles, -> { where record_type: 'Article' }
   scope :empty, -> { active.where tag_type: :link, target_id: nil }
+
+  validates :subscription_type, uniqueness: { scope: [:receiver_id, :receiver_type] }
 end
