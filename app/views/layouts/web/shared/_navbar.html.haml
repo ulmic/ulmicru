@@ -16,12 +16,7 @@
                   .inner
                     = fa_icon 'info-circle'
                     = @notification_count
-            - if current_user.role.author? || (current_user.admin? && @notification_count == 0)
-              %li
-                = link_to admin_path do
-                  .inner
-                    Админка
-            - if current_user.role.user? && permitted_to_anything_in_admin_menu?
+            - if navbar_show_adminka?
               %li
                 = link_to admin_path do
                   .inner
