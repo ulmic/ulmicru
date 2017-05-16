@@ -206,3 +206,7 @@ ru:
         state:
           states:
             <<: *default
+      project:
+        state:
+          states:
+            <<: *default
