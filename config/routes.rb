@@ -89,6 +89,7 @@ Rails.application.routes.draw do
       resources :test_papers
       resources :places
       resources :protocols
+      resources :projects
       resource :mine, only: :show
       resources :trash, only: [] do
         collection do

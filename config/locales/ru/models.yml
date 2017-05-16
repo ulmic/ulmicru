@@ -36,6 +36,7 @@ ru:
       test_paper: Тест
       place: Место
       protocol: Протокол
+      project: Проект
     attributes:
       default: &default
         created_at: Дата создания
