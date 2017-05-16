@@ -12,5 +12,9 @@
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_projects_path, class: 'btn btn-default'
       = f.input :title, as: :string
+      = f.input :url, as: :string
+      = f.input :project_type
+      = f.input :view, as: :string
+      = f.input :state_event, as: :state_event
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_projects_path, class: 'btn btn-default'

@@ -1,0 +1,3 @@
+- if @project.project_type.default? || @project.project_type.not_ulmic_project?
+- else
+  = render "web/projects/#{@project.project_type}/#{@project.view}"

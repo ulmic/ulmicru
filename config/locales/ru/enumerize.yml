@@ -112,3 +112,8 @@ ru:
     subscription:
       subscription_type:
         deliveries: Рассылки о мероприятиях и крупных событиях (не регулярные рассылки о главных событиях МИЦ и партнёров)
+    project:
+      project_type:
+        default: Стандартный проект
+        it_way: IT Way
+        not_ulmic_project: Не проект МИЦ

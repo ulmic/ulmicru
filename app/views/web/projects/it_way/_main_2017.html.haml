@@ -1,0 +1,45 @@
+= javascript_include_tag 'jquery'
+= javascript_include_tag "//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"
+= javascript_include_tag 'web/pages/it_way'
+= stylesheet_link_tag 'web/pages/it_way/application'
+= stylesheet_link_tag 'web/pages/it_way/stylish-portfolio'
+= stylesheet_link_tag 'web/pages/it_way/blocks'
+= stylesheet_link_tag 'web/pages/it_way'
+= render 'layouts/web/shared/services/google_analytics', ga_uid: configus.it_projects.it_way.google_analytics.uid
+%head
+  %title III форум перспектив будущего ИТ-специалиста «IT Way'17»
+%header#top.header{ style: "background-image: url('/assets/pages/it_way/headers/9.jpg')"}
+  .text-vertical-left
+    .row{style: "margin-right: 0px"}
+      .col-md-3
+        = image_tag 'pages/it_way/logo-2017.png', class: :logo
+      .col-md-9
+        .text-vertical-right.title
+          %h1
+            III форум перспектив будущего ИТ-специалиста
+          %h3{ style: 'font-family: mic-bold; color: black' }
+            21 - 26 октября 2017 года
+          %h3{ style: 'font-family: mic-bold; color: black' }
+            Ульяновская область, Димитровград, ДООЦ «Юность»
+          %br
+    .row
+      .col-md-8.col-md-offset-2.text-vertical-center
+        %br
+        %h3{ style: 'font-family: mic-bold; color: black' }
+          Приём заявок будет проходить на этом сайте
+        %h3{ style: 'font-family: mic-bold; color: black' }
+          Подпишитесь на нас, чтобы не пропустить новости III форума перспектив будущего ИТ-специалиста «IT Way'17»
+      .col-md-4.col-md-offset-4{ style: 'text-align: center' }
+        %h1.icons
+          %span.link{ data: { href: configus.it_projects.it_way.social_links.vk } }
+            = fa_icon 'vk 2x'
+          %span.link{ data: { href: configus.it_projects.it_way.social_links.twitter } }
+            = fa_icon 'twitter 2x'
+= render 'web/pages/shared/it_way/it_way_2016'
+= render 'web/pages/shared/it_way/activity_lines'
+= render 'web/pages/shared/it_way/programming'
+= render 'web/pages/shared/it_way/design'
+= render 'web/pages/shared/it_way/steel'
+= render 'web/pages/shared/it_way/career_guidance'
+= render 'web/pages/shared/it_way/portfolio'
+= render 'web/pages/shared/it_way/footer'
