@@ -4,6 +4,7 @@ class Web::MembersControllerTest < ActionController::TestCase
   setup do
     @member = create :member
     sign_in @member
+    @time_quantum = 1.seconds
   end
 
   test 'should not get new unsigned' do
@@ -46,6 +47,21 @@ class Web::MembersControllerTest < ActionController::TestCase
       get :show, ticket: ticket
       assert_response :success, ticket
       print "#{index} of #{tickets.count}\r"
+    end
+  end
+
+  test 'should get show for all members with time' do
+    if ENV['DB'] == 'prod'
+      sign_out
+      tickets = Member.presented.map(&:ticket).compact
+      tickets.reverse.each_with_index do |ticket, index|
+        time = Time.now
+        get :show, ticket: ticket
+        duration = Time.now - time
+        assert_response :success, ticket
+        assert duration < @time_quantum, "#{duration} secs, Member with ticket #{ticket}"
+        #print "#{index} of #{tickets.count}\r"
+      end
     end
   end
 end

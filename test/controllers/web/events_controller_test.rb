@@ -5,7 +5,7 @@ class Web::EventsControllerTest < ActionController::TestCase
     @member = create :member
     @event = create :event, creator: @member
     sign_in @member
-    stub_request(:get, "https://api.foursquare.com/v2/venues/#{@event.place}?client_id=#{OAUTH_KEYS[:foursquare][:client_id]}&client_secret=#{OAUTH_KEYS[:foursquare][:client_secret]}&v=#{configus.api.foursquare.version}").with(headers: {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby gem'}).to_return(status: 200, body: File.new("#{Rails.root}/test/mock/foursquare/place.json"), headers: {})
+    @time_quantum = 1.seconds
   end
 
   test 'should get index' do
@@ -17,7 +17,6 @@ class Web::EventsControllerTest < ActionController::TestCase
     @event.organizer = create :departament
     @event.save
     15.times { create :user; create :event_registration }
-    stub_request(:get, "https://api.foursquare.com/v2/venues/#{@event.place}?client_id=#{OAUTH_KEYS[:foursquare][:client_id]}&client_secret=#{OAUTH_KEYS[:foursquare][:client_secret]}&v=#{configus.api.foursquare.version}").with(headers: {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby gem'}).to_return(status: 200, body: File.new("#{Rails.root}/test/mock/foursquare/place.json"), headers: {})
     get :show, id: @event
     assert_response :success, @response.body
   end
@@ -28,6 +27,21 @@ class Web::EventsControllerTest < ActionController::TestCase
       Event.find_each.with_index do |event, index|
         get :show, id: event.id
         assert_response :success, event.id
+        print "#{index} of #{count}\r"
+      end
+    end
+  end
+
+  test 'should get show all events with time for unsigned user' do
+    if ENV['DB'] == 'prod'
+      sign_out
+      count = Event.count
+      Event.order(id: :desc).find_each.with_index do |event, index|
+        time = Time.now
+        get :show, id: event.id
+        duration = Time.now - time
+        assert_response :success, event.id
+        assert duration < @time_quantum, "#{duration} secs, Event id #{event.id}"
         print "#{index} of #{count}\r"
       end
     end

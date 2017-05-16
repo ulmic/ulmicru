@@ -59,4 +59,10 @@ module Web::ApplicationHelper
       "#{current_year}"
     end
   end
+
+  def navbar_show_adminka?
+    return true if current_user.role.author?
+    return true if current_user.admin? && @notification_count == 0
+    current_user.role.user? && permitted_to_anything_in_admin_menu?
+  end
 end
