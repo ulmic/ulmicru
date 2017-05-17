@@ -15,15 +15,17 @@ class ApplicationController < ActionController::Base
   private
 
   def redirect_to_another_main_page
-    unless Rails.env.test?
-      if request.host.include?('ul-lider.ru') && request.path == root_path
-        redirect_to activity_lines_lider_ya_lider_path(15), status: :moved_permanently
-        return
-      end
-      Project.find_each do |project|
-        if request.host.include?(project.url) && request.path != project_path(project)
-          redirect_to project_path project
+    unless params[:redirect] == 'no'
+      unless Rails.env.test?
+        if request.host.include?('ul-lider.ru') && request.path == root_path
+          redirect_to activity_lines_lider_ya_lider_path(15), status: :moved_permanently
           return
+        end
+        Project.find_each do |project|
+          if request.host.include?(project.url) && request.path != project_path(project)
+            redirect_to project_path project
+            return
+          end
         end
       end
     end
