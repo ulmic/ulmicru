@@ -1,8 +1,10 @@
 language: ruby
 rvm:
   - 2.3.0
-env:
-  - DB=postgres
+services:
+  postgresql
+addons:
+  postgresql: "9.3"
 before_script:
   - psql -c 'create role ulmicru with createdb login;' -U postgres
   - sudo pip install ansible
