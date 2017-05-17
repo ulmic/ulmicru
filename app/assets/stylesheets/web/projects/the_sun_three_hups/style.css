@@ -1,0 +1,2173 @@
+#fountainG{
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);    
+	width:234px;
+	height:28px;
+	margin:auto;
+	position: relative;
+}
+
+.fountainG{
+	position:absolute;
+	top:0;
+	background-color:rgb(0,0,0);
+	width:28px;
+	height:28px;
+	animation-name:bounce_fountainG;
+		-o-animation-name:bounce_fountainG;
+		-ms-animation-name:bounce_fountainG;
+		-webkit-animation-name:bounce_fountainG;
+		-moz-animation-name:bounce_fountainG;
+	animation-duration:1.5s;
+		-o-animation-duration:1.5s;
+		-ms-animation-duration:1.5s;
+		-webkit-animation-duration:1.5s;
+		-moz-animation-duration:1.5s;
+	animation-iteration-count:infinite;
+		-o-animation-iteration-count:infinite;
+		-ms-animation-iteration-count:infinite;
+		-webkit-animation-iteration-count:infinite;
+		-moz-animation-iteration-count:infinite;
+	animation-direction:normal;
+		-o-animation-direction:normal;
+		-ms-animation-direction:normal;
+		-webkit-animation-direction:normal;
+		-moz-animation-direction:normal;
+	transform:scale(.3);
+		-o-transform:scale(.3);
+		-ms-transform:scale(.3);
+		-webkit-transform:scale(.3);
+		-moz-transform:scale(.3);
+	border-radius:19px;
+		-o-border-radius:19px;
+		-ms-border-radius:19px;
+		-webkit-border-radius:19px;
+		-moz-border-radius:19px;
+}
+
+#fountainG_1{
+	left:0;
+	animation-delay:0.6s;
+		-o-animation-delay:0.6s;
+		-ms-animation-delay:0.6s;
+		-webkit-animation-delay:0.6s;
+		-moz-animation-delay:0.6s;
+}
+
+#fountainG_2{
+	left:29px;
+	animation-delay:0.75s;
+		-o-animation-delay:0.75s;
+		-ms-animation-delay:0.75s;
+		-webkit-animation-delay:0.75s;
+		-moz-animation-delay:0.75s;
+}
+
+#fountainG_3{
+	left:58px;
+	animation-delay:0.9s;
+		-o-animation-delay:0.9s;
+		-ms-animation-delay:0.9s;
+		-webkit-animation-delay:0.9s;
+		-moz-animation-delay:0.9s;
+}
+
+#fountainG_4{
+	left:88px;
+	animation-delay:1.05s;
+		-o-animation-delay:1.05s;
+		-ms-animation-delay:1.05s;
+		-webkit-animation-delay:1.05s;
+		-moz-animation-delay:1.05s;
+}
+
+#fountainG_5{
+	left:117px;
+	animation-delay:1.2s;
+		-o-animation-delay:1.2s;
+		-ms-animation-delay:1.2s;
+		-webkit-animation-delay:1.2s;
+		-moz-animation-delay:1.2s;
+}
+
+#fountainG_6{
+	left:146px;
+	animation-delay:1.35s;
+		-o-animation-delay:1.35s;
+		-ms-animation-delay:1.35s;
+		-webkit-animation-delay:1.35s;
+		-moz-animation-delay:1.35s;
+}
+
+#fountainG_7{
+	left:175px;
+	animation-delay:1.5s;
+		-o-animation-delay:1.5s;
+		-ms-animation-delay:1.5s;
+		-webkit-animation-delay:1.5s;
+		-moz-animation-delay:1.5s;
+}
+
+#fountainG_8{
+	left:205px;
+	animation-delay:1.64s;
+		-o-animation-delay:1.64s;
+		-ms-animation-delay:1.64s;
+		-webkit-animation-delay:1.64s;
+		-moz-animation-delay:1.64s;
+}
+
+
+
+@keyframes bounce_fountainG{
+	0%{
+	transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-o-keyframes bounce_fountainG{
+	0%{
+	-o-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-o-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-ms-keyframes bounce_fountainG{
+	0%{
+	-ms-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-ms-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-webkit-keyframes bounce_fountainG{
+	0%{
+	-webkit-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-webkit-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-moz-keyframes bounce_fountainG{
+	0%{
+	-moz-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-moz-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}	
+
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+}
+
+
+/************ BASIC ************/
+
+html, body {width: 100%; height: 100%; margin: 0; padding: 0; background: #000; -webkit-overflow-scrolling: touch;}
+
+body {
+    font-family: Montserrat;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;    
+    color: #ffe27b;
+    overflow: auto;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#featured, #top, #video, #tour, #signup, #news {
+padding: 0px;
+width: 100%;
+}
+
+h1 {
+font-size: 30px;
+letter-spacing: 3px;
+margin: 0 auto;
+text-align: center;
+color: #000;
+}
+
+h2 {
+font-size: 25px;
+letter-spacing: 5px;
+margin: 0 auto;
+text-align: center;
+color: #f5d971;
+font-weight: 400;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+
+/************ MENU ************/
+
+#menu {
+position: fixed;
+width: 100%;
+top: 0px;
+left: 0px;
+z-index: 9998;
+background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+background-size: auto;
+}
+
+.menu-container {
+display: block;
+margin: 0 auto;
+width: 550px;
+float: right;
+}
+
+.menu-container.undergun{
+width: 306px !important;
+}
+.postlaunch {
+    width: 590px;
+}
+
+.menu-splash-container{
+display: block;
+width: 70%;
+height: 64px;
+float: right;
+}
+
+.menu-container a, .menu-splash-container a {
+display: inline-block;
+float: left;
+text-align: right;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.postlaunch a {
+    padding-left: 15px;
+    padding-right: 15px;    
+}
+
+@media (max-width: 1080px) {
+.postlaunch a {
+    padding-left: 12px;
+    padding-right: 12px;    
+}    
+.postlaunch {
+    width: 520px;
+}    
+.postlaunch img {
+    height: 13px !important;
+}
+}
+
+@media (max-width: 1000px) {
+.postlaunch a {
+    padding-left: 10px;
+    padding-right: 10px;    
+}    
+.postlaunch {
+    width: 480px;
+}    
+.postlaunch img {
+    height: 12px !important;
+}
+.social-container {
+    width: 300px !important;
+}
+.social-container a {
+    padding-left: 0px !important;
+}
+.social-container img {
+    height: 20px !important;
+}    
+.killslogo img {
+    margin-left: 10px !important;
+    height: 15px !important;
+    margin-bottom: -2px !important
+}
+
+}
+
+
+@media (max-width: 920px) {
+.postlaunch a {
+    padding-left: 10px;
+    padding-right: 10px;    
+}    
+.postlaunch {
+    width: 470px;
+}    
+.postlaunch img {
+    height: 12px !important;
+}
+.social-container {
+    width: 300px;
+}
+.social-container a {
+    padding-left: 0px;
+}
+}
+
+.menu-splash-container a {
+float: right;
+}
+
+.social-container {
+display: block;
+margin: 0;
+width: 350px;
+float: left;
+}
+
+.social-splash-container {
+display: block;
+width: 30%;
+height: 54px;
+float: left;
+}
+
+.social-container a {
+display: inline-block;
+text-align: left;
+padding-left: 5px;
+padding-right: 5px;
+}
+.social-splash-container a {
+display: inline-block;
+text-align: left;
+padding-left: 20px;
+}
+
+.social-container img {
+height: 25px;
+width: auto;
+margin: 0 auto;
+float: left;
+}
+
+.menu-container img {
+height: 14px;
+width: auto;
+margin: 0 auto;
+padding: 0px;
+}
+
+.menu-splash-container img, .social-splash-container img {
+height: 11px;
+width: auto;
+margin: 0 auto;
+padding: 0px;
+}
+
+.menu-container a, .social-container a {
+padding-top: 18px;
+padding-bottom: 10px;
+}
+
+.menu-splash-container a, .social-splash-container a{
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+.menu-container a {
+padding-top: 20px;
+}
+
+.social-container a.icon {
+padding-top: 15px !important;
+}
+
+.killslogo {
+padding-top: 0px !important;
+margin-bottom: 4px;
+}
+
+.killslogo img {
+height: 15px;
+margin-left: 20px !important;
+}
+
+
+
+
+#bottombar {
+position: absolute;
+width: 100%;
+bottom: 0px;
+height: 20px;
+left: 0px;
+z-index: 9997;
+    background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+    background-size: auto;
+}
+
+.bottombar-container {
+display: block;
+margin: 0 auto;
+width: 600px;
+float: none;
+}
+
+.bottombar-container a {
+display: block;
+text-align: center;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.bottombar-container img {
+height: 16px;
+width: auto;
+margin: 0 auto;
+float: none;
+}
+
+.bottombar-container a {
+padding-top: 16px;
+padding-bottom: 16px;
+}
+
+
+
+
+#row {
+display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;   
+  margin: 0px;
+}
+
+.col {
+ -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;         /* OLD - Firefox 19- */
+  width: 20%;               /* For old syntax, otherwise collapses. */
+  -webkit-flex: 1;          /* Chrome */
+  -ms-flex: 1;              /* IE 10 */
+  flex: 1;         
+	text-align: center;
+}
+
+
+
+/************ TOP SECTION ************/
+
+#featured {
+  position: relative;
+  height: 100%;
+  height: 100vh;
+  width: 100%;
+  width: 100vw;
+  background: #000;
+}
+
+#top {
+  position: relative;
+  height: 100%;
+  height: 100vh;
+  width: 100%;
+  width: 100vw;
+    background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+    background-size: auto;
+}
+
+.leatherbg {
+    background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat !important;
+    background-size: auto;    
+}
+
+.content {
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  color: #fff;
+  
+}
+
+.content span {
+    position: relative;
+    top: 43%;
+    transform: translateY(-50%);
+}
+
+.title-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    margin: 0 auto;
+    display: block;
+    transform: translateY(-50%);
+    float: none;
+    z-index: 999;
+}
+
+.title img {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.martini-wrap {
+    position: absolute;
+    right: 3%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.martini {
+    position: relative;
+    height: 50%;
+    height: 50vh;
+    width: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    float: right;
+}
+
+
+
+.volcano-wrap {
+    position: absolute;
+    left: 3%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.volcano {
+    position: relative;
+    height: 50%;
+    height: 50vh;
+    width: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+}
+
+
+.blink_me {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1500ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1500ms;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1500ms;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+.announcement-container {
+display: block;
+height: 100%;
+height: 100vh;
+}
+
+.announcement {
+position: relative;
+top: 50%;
+-ms-transform: translateY(-50%);
+-moz-transform: translateY(-50%);
+-webkit-transform: translateY(-50%);
+transform: translateY(-50%);  
+display: block;
+margin: 0 auto;  
+width: 100%;    
+}
+
+.announcement img {
+width: 70%;
+max-width: 800px;    
+display: block;
+margin: 0 auto;      
+}
+
+@media (max-width: 480px) {
+.announcement img {
+width: 100%;
+}
+}
+
+.button-container {
+display: block;
+width: 500px;
+margin: 30px auto 0 auto;
+}
+
+.button {
+display: inline-block;
+margin: 0 10px;
+text-align: center;
+font-size: 15px;
+line-height: 25px;
+padding: 10px 20px;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: rgba(0,0,0,0.8);
+background: url(/wp2016/wp-content/themes/thekills2016/img/buttonbg.png) no-repeat 50% 50%;
+background-size: cover;
+}
+
+.button.two{
+background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) no-repeat 50% 50% !important;
+color: #f5d971 !important;
+}
+
+.bigbutton {
+width: 500px;
+margin: 0 auto;
+padding: 20px 0;
+font-size: 20px;
+}
+
+@media (max-width: 500px) {
+.bigbutton {
+font-size: 20px !important;
+line-height: 20px !important;
+padding: 20px !important;
+}
+}
+
+.button:hover {
+color: rgba(0,0,0,1);
+text-decoration: none !important;    
+}
+
+.retail-container {
+display: block;
+width: 280px;
+margin: 15px auto 0 auto;
+color: #ddb959;
+}
+
+.retail-container img {
+height: 12px;
+width: auto;
+padding: 0 10px;
+display: inline-block;
+text-align: center;
+}
+
+.anchor-container {
+width: 100%;
+position: absolute;
+bottom: 20px;
+}
+
+.anchor-container img {
+position: relative;
+right: 0px;
+left: 0px;
+display: block;
+height: 90px;
+width: auto;
+margin: 0 auto;
+}
+
+
+.download-container {
+width: 100%;
+position: relative;
+padding-top: 40px;
+padding-bottom: 150px;
+}
+
+.download-container img {
+position: relative;
+right: 0px;
+left: 0px;
+display: block;
+height: 20px;
+width: auto;
+margin: 0 auto;
+}
+
+.glow, a.bwg_load_btn_0.bwg_load_btn {
+	-webkit-transition: 200ms;
+	-moz-transition: 200ms;
+	-o-transition: 200ms;
+	transition: 200ms;
+	outline: 0 none;
+}
+
+.glow:hover, .glow:focus, a.bwg_load_btn_0.bwg_load_btn:hover, a.bwg_load_btn_0.bwg_load_btn:focus {
+	box-shadow: -1px 1px 18px rgba(255,226,123,0.7), 1px -1px 18px rgba(255,226,123, 0.7);
+}
+
+.glowtext {
+	-webkit-transition: 200ms;
+	-moz-transition: 200ms;
+	-o-transition: 200ms;
+	transition: 200ms;
+	outline: 0 none;
+}
+
+.glowtext:hover, .glowtext:focus {
+	box-shadow: -1px 1px 8px rgba(255,226,123,0.7), 1px -1px 8px rgba(255,226,123, 0.7);
+}
+
+
+/************ TOUR ************/
+
+
+#tour {
+    height: auto;
+    width: 100%;
+    background: url(http://dominorecords.s3.amazonaws.com/thekills/goldfoil-1920.jpg) no-repeat 50% 50% !important;
+    background-size: cover !important;
+    min-height: 0px !important;
+    height: auto !important;
+    padding: 0px 0px 150px 0;
+}
+
+@media (max-width: 1440px) {   
+#tour {
+    background: url(http://dominorecords.s3.amazonaws.com/thekills/goldfoil-1440.jpg) no-repeat 50% 50% !important;background-size: cover !important;
+}
+}
+
+
+#tour .container {
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+}
+
+
+p span {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    margin: 0 auto;
+    display: block;
+}
+
+.heading-tour {
+margin: 0 auto; display: block; width: 260px; height: auto;padding-top: 150px;padding-bottom: 10px;
+}
+
+.track {
+font-size: 20px;
+line-height: 30px;
+text-align: center;
+letter-spacing: 4px;
+text-transform: uppercase;
+font-weight: 400;
+margin-top: 30px;
+}
+
+.nivo-lightbox-overlay {
+background:rgba(0,0,0,1) !important;
+}
+    
+.nivo-lightbox-wrap {
+top: 0px !important;
+left: 0px !important;
+right: 0px !important;
+bottom: 0px !important;
+}
+
+
+
+/************ VIDEO ************/
+
+#video {
+height: auto;
+
+}
+#video.gun{
+    background: url(http://www.thekills.tv/wp2016/wp-content/themes/thekills2016/img/goldfoil-landscapebg.jpg) no-repeat 50% 50% !important;
+    background-size: cover !important;
+    padding: 30px 0px 30px 0px;
+}
+#videos {
+position: relative;
+height: 100%;
+height: 100vh;
+width: 100%;
+padding: 0;
+margin: 0;
+}
+
+.fve-video-wrapper {
+margin: 0 0 -20px 0 !important;
+}
+
+#featured .fve-video-wrapper {
+margin: 0 !important;    
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+.embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 120px);
+}
+
+
+div.captionarea {width: 80%; position: absolute; top: 38%;text-align: center;left: 10%; right: 0;}
+.royalSlider h4, .royalSlider h3 {font-size: 40px !important; color: #f5d971  !important; float: none;text-align:center;margin: 0 auto !important;text-transform: uppercase;letter-spacing: 4px;}
+
+@media (min-width: 960px) {
+
+#new-royalslider-1, #new-royalslider-6, #new-royalslider-4, .rsVideoContainer {
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: 0 !important;
+    bottom: 0px; /* height of thumbs (if not required set to 0) */
+    height: 100% !important;
+    height: 100vh !important;
+    width: 100% !important;    
+}
+}
+
+@media (max-width: 800px) {
+#new-royalslider-1 {
+    z-index: 10;
+    margin-top: 80px;
+}
+}
+
+@media (max-width: 800px) {
+#videos {
+height: auto;    
+}
+div.captionarea {width: 80%; position: absolute; top: auto; bottom: 18%;text-align: center;left: 10%; right: 0;}
+.royalSlider h4, .royalSlider h3 {font-size: 20px !important; line-height: 20px; color: #f5d971  !important; float: none;text-align:center;   
+}
+}
+
+
+
+/************ SPOTIFY ************/
+
+
+#stream {
+    height: auto;
+    width: 100%;
+    background: url(http://www.thekills.tv/wp2016/wp-content/themes/thekills2016/img/goldfoil-landscapebg.jpg) no-repeat 50% 50% !important;
+    background-size: cover !important;
+    min-height: 0px !important;
+    padding: 100px 0;
+}
+
+/************ UNDER THE GUN ************/
+
+#utg {
+     height: auto;
+    width: 100%;
+    background: url(http://www.thekills.tv/wp2016/wp-content/themes/thekills2016/img/goldfoil-landscapebg.jpg) no-repeat 50% 50% !important;
+    background-size: cover !important;
+    min-height: 0px !important;
+    padding: 100px 0;
+}
+
+.heading-utg {
+margin: 0 auto; display: block; width: 700px; height: auto;
+}
+
+/************ PHOTOS ************/
+
+
+#photos {
+    height: auto;
+    width: 100%;
+ background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+    min-height: 0px !important;
+    padding: 100px 0;
+}
+
+#sb_instagram{
+margin: 50px auto !important;
+}
+#photos p span {
+    color: #222 !important;
+    opacity: 0.8 !important
+}
+
+.centerme {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);        
+    transform: translateY(-50%);    
+}
+
+.heading-stream {
+margin: 0 auto; display: block; width: 360px; height: auto;
+}
+
+.spotifycontainer {
+    margin: 50px auto;
+}
+
+.spotifycontainer iframe {
+    border: 20px solid #000;    
+}
+
+@media (min-width: 801px) and (max-height: 700px) {
+.spotifycontainer {
+    margin: 50px auto;
+}    
+
+}
+
+@media (max-width: 800px) {
+#stream {
+    height: auto;
+    padding: 80px 0;
+    background: url(http://dominorecords.s3.amazonaws.com/thekills/goldfoil-1440.jpg) no-repeat 50% 50% !important;background-size: cover !important;
+}
+#utg {
+    height: auto;
+    padding: 80px 0;
+    background: url(http://dominorecords.s3.amazonaws.com/thekills/goldfoil-1440.jpg) no-repeat 50% 50% !important;background-size: cover !important;
+}
+
+.centerme {
+    position: relative;
+     top: auto;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;        
+    transform: none;    
+}    
+.heading-stream {
+margin: 0 auto; display: block; width: 70%; height: auto;
+}  
+.heading-utg{
+margin: 0 auto; display: block; width: 70%; height: auto;
+}  
+
+.spotifycontainer iframe {
+    border: none;
+}    
+}
+
+
+
+/************ SIGNUP ************/
+
+
+#signup {
+  position: relative;
+  height: 100%;
+  height: calc(100vh - 20px);
+  width: 100%;
+  width: 100vw;
+    background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+    background-size: auto;
+    margin-bottom: -30px;
+}
+
+.signup-container {
+position: relative;
+top: 50%;
+-ms-transform: translateY(-50%);
+-moz-transform: translateY(-50%);
+-webkit-transform: translateY(-50%);
+transform: translateY(-50%);
+width: 800px;
+display: block;
+margin: 0 auto;
+}
+
+#signupform {
+margin: 30px auto 0 auto;
+font-family: Montserrat;
+font-weight: 700;
+width: 550px;
+}
+
+#signupform input {
+    width: 70%;
+    padding: 20px 10px;
+    font-size: 16px;
+    display: block;
+    background: transparent;
+    border: 0;
+    margin: 0 auto;
+    border: 2px solid #FFE27E;
+    font-family: Montserrat;
+    font-weight: 700;
+    color: #FFE27E;
+}
+
+#signupform input::-webkit-input-placeholder {
+color: #FFE27E !important;
+}
+ 
+#signupform  input:-moz-placeholder { /* Firefox 18- */
+color: #FFE27E !important;  
+}
+ 
+#signupform  input::-moz-placeholder {  /* Firefox 19+ */
+color: #FFE27E !important;  
+}
+ 
+#signupform input:-ms-input-placeholder {  
+color: #FFE27E !important;  
+}
+
+#signupform button {
+display: block;
+margin: 10px auto 0 auto;
+text-align: center;
+font-size: 15px;
+line-height: 25px;
+padding: 10px 35px;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: rgba(0,0,0,0.8);
+background: url(/wp2016/wp-content/themes/thekills2016/img/buttonbg.png) no-repeat 50% 50%;
+background-size: cover;
+border: 0px;
+    font-family: Montserrat;
+    font-weight: 700;
+}
+
+#signupform button:hover, #signupform button:focus {
+cursor: pointer !important;    
+} 
+
+
+
+/************ NEWS ************/
+
+#news {
+width: 100%;
+height: auto;
+background: #000;
+color: #fff;
+padding: 50px 0px 100px 0;
+background: url('/wp2016/wp-content/themes/thekills2016/img/leather-top.png') no-repeat top center;
+background-size: 100%;
+background-color: #000;
+font-weight: 400;
+}
+
+.news-container {
+width: 90%;
+display: block;
+margin: 0 auto;
+}
+
+.news-container img, .newsitem img {
+    max-width: 100%;
+    height: auto;
+}
+
+.news-archive-container {
+width: 90%;
+display: block;
+margin: 0 auto;
+padding: 150px 0;
+}
+
+.heading-news {
+margin: 0 auto; display: block; width: 230px; height: auto;padding-top: 40px;padding-bottom: 10px;
+}
+
+.heading-newsarchive {
+margin: 0 auto; display: block; width: 460px; height: auto;padding-top: 20px;padding-bottom: 50px;
+}
+
+#news #container a {
+color: #ffe27d;
+}
+
+
+#news #container {
+  float: none;
+  width: 65%;
+  position: relative;
+  background: rgba(255,255,255,0.1);
+  margin: 30px auto 30px auto;
+  border-top: 0px solid rgba(255,255,255,1);
+  padding: 50px;
+}
+
+    
+#news #container p {
+    margin: 15px 0;
+}
+
+#news iframe {
+max-width: 100%;
+}
+
+
+#news h2 {font-weight: 700 !important; font-size: 30px;line-height: 30px;text-transform: uppercase;letter-spacing: 3px;}
+#news p {font-weight: 400;font-size: 14px;text-align: left;line-height: 23px;color: #ffe27d}
+#news a {font-weight: 700}
+#news a:hover {text-decoration: underline}
+#news ul, #news ul li, #news ol, #news ol li {font-weight: 400; font-size:15px;line-height: 20px;}
+#news ul li {
+background: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  list-style: none;
+  text-align: left;
+  list-style-type: none;
+  }
+  
+  
+#news ul {
+  display: block;
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  }
+  
+#news img {
+display: block;
+margin: 0 auto;
+}  
+  
+#news span.date {display: block; margin: 0 auto;font-weight: 400;font-size: 0.8em;text-transform:uppercase;padding-bottom: 20px;text-align: center !important}
+
+#news ol {
+margin-top: 30px;
+}
+
+.padding20 {
+display: none;
+}
+
+a.loadmorebutton:hover {background-color: #000;color: #fff;}
+
+.newsarchive {
+font-size: 15px;
+line-height: 30px;
+text-align: center !important;
+letter-spacing: 2px;
+text-transform: uppercase;
+font-weight: 400;
+margin-top: 0px;
+}
+
+.newsitem {
+height: auto;
+background: #000;
+color: #fff;
+padding: 150px 0;
+background: url('/wp2016/wp-content/themes/thekills2016/img/leather-top.png') no-repeat top center;
+background-size: 100%;
+background-color: #000;
+font-weight: 400;
+width: 100%;    
+margin: 0 auto;
+display: block;
+}
+
+.newsitem img {
+display: block;
+margin: 0 auto;
+}
+
+
+.newsitem-container {
+width: 700px;
+display: block;
+margin: 0 auto;
+}
+
+.news-pagination {
+width: 500px;
+display: block;
+margin: 0 auto;
+}
+
+.news-pagination button {
+display: inline-block;
+}
+
+.center {
+text-align: center !important;
+margin-top: 30px;
+}
+
+@media (max-width: 800px) {
+.newsitem-container {
+    width: 90%;    
+}
+}
+
+.newsitem h3 {
+font-size: 25px;
+letter-spacing: 5px;
+margin: 0 auto;
+text-align: center;
+color: #f5d971;
+font-weight: 400;
+text-transform: uppercase;
+}
+
+span.date {
+padding-top: 3px;
+font-size: 15px;
+letter-spacing: 1px;
+margin: 0 auto;
+text-align: center;
+color: #f5d971;
+font-weight: 400;
+text-transform: uppercase;
+display: block;
+margin: 0 auto 40px auto;
+}
+
+.newsitem p {
+color: #f5d971;
+font-weight: 400;
+font-size: 15px;
+line-height: 23px;
+margin: 15px 0;    
+}
+
+.newsitem a {
+color: #f5d971;
+}
+
+
+
+
+/** ADVANCED RECENT POSTS PLUGIN HACKS **/
+
+.grid-layout {
+padding: 2rem !important;    
+box-sizing: border-box;
+}
+
+.grid-layout .lptw-post-date, .grid-layout .content-dark {
+font-size: 0.8em !important;
+color: #ffe27e !important;  
+}
+
+.grid-layout .lptw-post-date {
+padding: 0px !important;
+margin: 0.25rem 0 0.1em 0 !important;
+}
+
+.grid-layout a {
+color: #ffe27e !important;    
+}
+
+.grid-layout a:hover {
+text-decoration: none !important;
+}
+
+.grid-element-dark {
+background: transparent !important;    
+}
+
+.grid-layout .lptw-post-title {
+margin: 0 0 10px 0 !important;
+font-weight: 400 !important;    
+font-size: 1.6em !important;    
+padding: 0px !important;    
+letter-spacing: 2px !important;    
+text-transform: uppercase !important;    
+}
+
+.grid-layout .lptw-post-title
+
+.grid-layout .post-excerpt {
+font-size: 0.9em !important;
+line-height: 1.5em !important;
+}
+
+.lptw-grid-element img {
+width: 100% !important;    
+}
+
+
+/** "AJAX LOAD MORE" PLUGIN HACKS **/
+
+button.alm-load-more-btn, .ajax-load-more-wrap.white button.alm-load-more-btn {
+text-transform: uppercase; display: block; margin: 0 auto;  font-size: 1em; letter-spacing: 0px;text-align: center;float: none;    -webkit-transition: all 0.2s ease  !important; -moz-transition: all 0.2s ease  !important; -o-transition: all 0.2s ease !important; transition: background-color all 0.2s ease !important;text-decoration: none;
+border: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+display: inline-block;
+margin: 0 10px;
+text-align: center;
+font-size: 15px;
+line-height: 25px;
+padding: 10px 20px;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: rgba(0,0,0,1);
+background: url(/wp2016/wp-content/themes/thekills2016/img/buttonbg.png) no-repeat 50% 50%;
+background-size: cover;  
+  }
+
+.ajax-load-more-wrap.white button.alm-load-more-btn {
+border: 0px !important;
+color: rgba(0,0,0,1) !important;
+padding: 10px 25px !important;
+outline: none !important
+}
+
+.alm-btn-wrap {
+    text-align: center;
+    overflow: hidden;
+    display: none !important;
+}
+
+
+
+
+/************ BANDSINTOWN HACKS ************/
+
+tr.bit-header, a.bit-track-artist-header, tr.bit-header td, th.bit-description-links, th.bit-date, th.bit-venue, th.bit-location, th.bit-artist-event-link, th.bit-tickets {
+display: none !important;
+border-top: none !important;
+border-bottom: none !important;
+}
+
+.bit-widget-container {height: auto !important; width: 100% !important;margin: 0px auto 0px auto !important;font-family:Montserrat,helvetica,sans-serif!important; font-size:1.1em!important; color: #222!important;text-transform: uppercase !important; letter-spacing: 0px !important;padding-right: 20px;}
+
+.bit-widget-container a, #tour a {color: #222 !important;}
+
+.bit-widget-container::-webkit-scrollbar {
+      width:  15px;
+  }
+
+.bit-widget-container::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,1);
+  }
+
+.bit-widget-container::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.1);
+  }
+
+  // For Internet Explorer
+  .bit-widget-container {
+    scrollbar-face-color: rgba(0,0,0,1);
+    scrollbar-track-color: rgba(0,0,0,0.1);
+  }
+    
+    
+table.bit-events {margin-top: 50px;}
+.bit-events, .bit-events-narrow {overflow: hidden!important}
+.bit-events th, .bit-events td {width: auto!important;text-align: left!important; vertical-align:top!important;}
+.bit-events td {min-height: 40px !important; background:none!important; height: auto !important;}
+.bit-events-narrow td {width:auto!important; height:57px!important; background:none!important;padding:4px!important;vertical-align:middle!important;}
+
+#bit-events td.bit-artist-event-link { text-align: right!important; }
+#bit-events td.bit-artist-event-link a { float: right!important;}
+#bit-events td.bit-actions a, #bit-events td.bit-rsvp a { float: right!important; }
+#bit-events td.bit-rsvp {display: none !important;}
+#bit-events td.bit-comment { width: 21px!important; padding-left: 8px!important; padding-right: 8px!important; }
+#bit-events td .bit-uiButton { display:inline-block!important; padding: 1px 6px!important; height: 16px!important; line-height: 2em !important!important; cursor: pointer!important; font-family: Montserrat,helvetica,arial,sans-serif !important}
+#bit-events td .bit-uiButton:active{background: transparent important;border-bottom-color:transparent!important;box-shadow:none!important;-moz-box-shadow:none !important)}
+#bit-events td .bit-uiButtonSpecial{background-image:url("http://d38hmgjgf0kofx.cloudfront.net/images/facebook/silver-blue-bg.png")!important; background-repeat:no-repeat!important;background-position:0px -96px!important;background-color:#69a74e!important;border-color:#3b6e22 #3b6e22 #2c5115!important;}
+#bit-events td .bit-uiButtonSpecial:active{background: transparent !important;border-bottom-color:transparent!important;}
+#bit-events td .bit-uiButton a, .bit-uiButton a:hover { text-decoration: none!important; display: inline-block!important; }
+#bit-events td .bit-uiButtonSpecial a { color: #FFFFFF!important; }
+#bit-events td .bit-uiButtonDefault a { color: #333333 !important; }
+#bit-events td.bit-comment a.bit-comment { background: transparent url('http://d38hmgjgf0kofx.cloudfront.net/images/facebook/comments_icon.gif') 0px 0px no-repeat!important; width: 15px!important; height: 16px!important; display: inline-block!important; margin-top: 2px!important; float: right!important; }
+#bit-events td.bit-comment a:hover, #bit-events td.bit-comment a.bit-comment-open { background-position: 0px -16px!important; }
+#bit-events td.bit-location {font-weight:normal!important;}
+#bit-events td.bit-description, #bit-events th.bit-description {font-size: 1.3em!important; left: 8px 4px!important; }
+#bit-events td.bit-description-links, #bit-events th.bit-description-links {padding-left: 8px!important; width: 6px!important;}
+#bit-events td.bit-description-links {display: none !important;}
+#bit-events .bit-hidden {display:none!important;}
+#bit-events .bit-bottom td {padding-left:8px!important;height:36px!important;}
+#bit-events .bit-bottom td.concerts-by-bandsintown {text-align:right!important;}
+#bit-events .bit-bottom a { vertical-align: middle!important; border: none!important; display: inline-block!important; }
+#bit-events table a { text-align: left!important; float: left!important; width:auto!important; font-weight: 700 !important;}
+#bit-events table a:hover { -webkit-transition: none!important; -moz-transition: none!important; -o-transition: none!important; transition: none!important; }
+#bit-events td.bit-description a { float: none!important; }
+#bit-events a.bit-event-description-link { text-decoration: none!important; margin: 0!important; padding: 0!important; display: inline-block!important; height: 9px!important; width: 9px!important; line-height: 9px!important; font-size: 9px!important; text-align: center!important; vertical-align: middle!important; border: none!important;}
+.bit-events tr.bit-dashed-border td.bit-description-links, .bit-events tr.bit-dashed-border td.bit-date, .bit-events-narrow tr.bit-dashed-border td { border-top: 0px solid transparent!important;}
+#bit-events td.bit-concert a { float: none!important; }
+tr.bit-header th, tr.bit-header-narrow { line-height: 26px!important; }
+#bit-events tr.bit-header a, #bit-events tr.bit-header-narrow a { float: none!important; font-weight: normal!important; }
+#bit-events tr.bit-header-narrow th { text-align: left!important; padding: 4px!important;}
+#bit-events .bit-header-links { margin-right: 15px!important; }
+#bit-events .bit-share-text { float:right!important; }
+#bit-events .bit-share-links { float: right!important; }
+#bit-events .bit-share-links a { display: inline-block!important; width: 26px!important; height: 26px!important; vertical-align: middle!important; }
+#bit-events .bit-fb-share { background: transparent url('http://d38hmgjgf0kofx.cloudfront.net/images/facebook/icons/fb_share.gif') top left no-repeat!important; margin-left: 4px!important; display: inline-block!important; width: 26px!important; height:26px!important; vertical-align: middle!important;}
+#bit-events .bit-twitter-share { background: transparent url('http://d38hmgjgf0kofx.cloudfront.net/images/facebook/icons/twitter_share.gif') top left no-repeat!important; display: inline-block!important; width: 26px!important; height:26px!important; vertical-align: middle!important;}
+.bit-header-overflow-fix { height: 26px!important; overflow: hidden!important; }
+#bit-events iframe { border: none!important; }
+#bit-events .comments-title, #bit-events .description-title { color: #323232!important; font-size: 11px!important; font-weight: bold!important; margin: 0px 0px 4px 0px!important;}
+#bit-events .bit-event-details { color: #000000!important; }
+#bit-events .bit-details-title { background-color: #ffffff!important; font-weight: bold!important; padding: 4px 8px 0px 20px!important; color: #0e0e0e!important; font-size: 11px!important; }
+#bit-events .bit-details-title a { float: right!important; color: #8296cc!important; text-decoration: none!important; }
+#bit-events .bit-details-title a:hover { color: #ffffff!important; text-decoration: none!important; }
+#bit-events .bit-details-text { background-color: #ffffff!important; margin-bottom: 1px!important; padding: 5px 8px 5px 20px!important; color: #1A1A1A!important; }
+#bit-events .bit-details-comments { background: transparent!important; padding: 0px!important; margin: 0px!important; }
+#bit-events .bit-details-text a { color: #3857a0!important; float: none!important; }
+#bit-events a.bit-fb-event-link { font-weight: bold!important; display: block!important; text-decoration: none!important; margin: 4px 0px!important; }
+#bit-events tr td.bit-details { padding: 0px!important; }
+#bit-events .venue, #bit-events .location, #bit-events .lineup { display: block!important; clear: left!important; font-size: smaller!important; line-height: 100%!important; width: 100% !important;}
+#bit-events .venue, #bit-events .location, #bit-events .lineup a {font-size: 1em !important; width: 100% !important;}
+#bit-events .location { font-weight: bold }
+#bit-events a.bit-track-artist-header .bit-invert { display: none!important;}
+#bit-events tr[data-bit-event-id] td { cursor: pointer!important; }
+.bit-events tr td {padding: 20px 25px 20px 0 !important; line-height: 1em !important;}
+.bit-events tr td.bit-date {padding-right: 50px !important; width: 45px!important; text-align: center !important;}
+.bit-events tr td.bit-date a {vertical-align: top !important; text-align: center !important;}
+#bit-widget-dialog-container { position: fixed!important; width: 100%!important; height: 100%!important; margin: auto!important; }
+#bit-widget-dialog { color: #333333!important; direction: ltr!important; font-family: Montserrat,arial,sans-serif!important; font-size: 11px!important; text-align: left!important; }
+#bit-widget-dialog label { color: #666666!important; cursor: pointer!important; font-weight: bold!important; vertical-align: middle!important; }
+body#bit-widget-dialog { margin: 0px!important; padding: 0px!important; }
+#bit-widget-dialog-loading .loading { height: 32px!important; width: 100%!important; background: transparent url('http://d38hmgjgf0kofx.cloudfront.net/images/facebook/ajax-loader-large.gif') no-repeat scroll center center!important; }
+#bit-widget-dialog .pop_content{direction:ltr}
+#bit-widget-dialog {height:0!important;left:0!important;overflow:visible!important;outline:none!important;position:absolute!important;top:0!important;width:100%!important;z-index:250}
+#bit-widget-dialog .generic_dialog_popup{height:0!important;overflow:visible!important;position:relative!important;width:520px!important;margin:auto}
+#bit-widget-dialog .pop_content h2.dialog_title{background:#6d84b4!important;border:0px solid #3b5998!important;border-bottom:none!important;color:#fff!important;font-size: 14px!important;font-weight:bold!important;margin:0!important;}
+#bit-widget-dialog .pop_content h2 span{display:block!important;padding:5px 10px}
+#bit-widget-dialog .pop_content .dialog_content{background:#fff!important;border:0px solid #555!important;border-top-width:0}
+#bit-widget-dialog .pop_content .dialog_body{padding:10px!important;border-bottom:0px solid #ccc}
+#bit-widget-dialog .pop_content .dialog_buttons{background:#f2f2f2!important;padding:8px 10px 8px 10px!important;position:relative!important;text-align:right}
+#bit-widget-dialog .pop_container_advanced{border-radius:8px!important;-webkit-border-radius:8px!important;-moz-border-radius:8px!important;padding:10px}
+#bit-widget-dialog .uiButton,#bit-widget-dialog .uiButtonSuppressed:active,#bit-widget-dialog .uiButtonSuppressed:focus,#bit-widget-dialog .uiButtonSuppressed:hover{background:#eee url('http://d38hmgjgf0kofx.cloudfront.net/images/facebook/silver-blue-bg.png') repeat 0 0!important;border:0px solid #999!important;border-bottom-color:#888!important;box-shadow:0 1px 0 rgba(0, 0, 0, .1)!important;-moz-box-shadow:0 1px 0 rgba(0, 0, 0, .1)!important;cursor:pointer!important;display:-moz-inline-box!important;display:inline-block!important;font-size:11px!important;font-weight:bold!important;line-height:normal !important!important;padding:2px 6px!important;text-align:center!important;text-decoration:none!important;vertical-align:top!important;white-space:nowrap}
+#bit-widget-dialog .uiButtonConfirm{background-color:#5b74a8!important;background-position:0 -48px!important;border-color:#29447e #29447e #1a356e}
+#bit-widget-dialog .uiButton:active,#bit-widget-dialog .uiButtonDepressed{background:#ddd!important;border-bottom-color:#999!important;box-shadow:0 1px 0 rgba(0, 0, 0, .05)!important;-moz-box-shadow:0 1px 0 rgba(0, 0, 0, .05)}
+#bit-widget-dialog .uiButton .uiButtonText,#bit-widget-dialog .uiButton input{background:none!important;border:0!important;color:#333!important;cursor:pointer!important;display:-moz-inline-box!important;display:inline-block!important;font-family:Montserrat, 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif!important;font-size:11px!important;font-weight:bold!important;margin:0!important;outline:none!important;padding:1px 0 2px!important;white-space:nowrap}
+#bit-widget-dialog .uiButtonLarge,#bit-widget-dialog .uiButtonLarge .uiButtonText,#bit-widget-dialog .uiButtonLarge input{font-size:13px}
+#bit-widget-dialog .uiButtonSpecial .uiButtonText,#bit-widget-dialog .uiButtonSpecial input,#bit-widget-dialog .uiButtonSpecial.uiButtonDisabled .uiButtonText,#bit-widget-dialog .uiButtonSpecial.uiButtonDisabled input,#bit-widget-dialog .uiButtonConfirm .uiButtonText, #bit-widget-dialog .uiButtonConfirm input, #bit-widget-dialog .uiButtonConfirm.uiButtonDisabled .uiButtonText, #bit-widget-dialog .uiButtonConfirm.uiButtonDisabled input { color: #FFFFFF!important; }
+#bit-widget-dialog .uiButtonConfirm:active{background:#4f6aa3!important;border-bottom-color:#29447e}
+#bit-widget-dialog .popup-border-outer { z-index: 1!important; background: none!important; position: relative!important; }
+#bit-widget-dialog .popup-border-inner { background-color: #525252!important; -moz-opacity: 0.7!important; opacity: 0.7!important; position: absolute!important; top: 0!important; left: 0!important; width: 100%!important; height: 100%!important; z-index: 1!important; padding: 0!important; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70)!important; }
+#bit-widget-dialog .popup-content { position: relative!important; z-index: 2!important; }
+#bit-widget-dialog h2 { padding: 0px!important; }
+#bit-widget-dialog .clear { clear: both!important; }
+* html #bit-widget-dialog .popup-border-inner  { display: none!important; }
+* html #rsvp-dialog-container { position: absolute!important; }
+#bit-events[data-bit-widget-id='1431547831943'] { width:100%!important;}
+#bit-events[data-bit-widget-id='1431547831943'] {}
+#bit-events[data-bit-widget-id='1431547831943'] .bit-events, .bit-events-narrow { width:100%!important;}
+#bit-events[data-bit-widget-id='1431547831943'] .bit-events td { border-top: none!important;}
+#bit-events[data-bit-widget-id='1431547831943'] .bit-events-narrow td { border-top: none!important;}
+#bit-events[data-bit-widget-id='1431547831943'] td{}
+#bit-events[data-bit-widget-id='1431547831943'] th{}
+#bit-events[data-bit-widget-id='1431547831943'] td{}
+#bit-events[data-bit-widget-id='1431547831943'] th{}
+#bit-events[data-bit-widget-id='1431547831943'] a{}
+#bit-events[data-bit-widget-id='1431547831943'] .bit-events tr.bit-dashed-border td { border-top: none !important;}
+#bit-events[data-bit-widget-id='1431547831943'] .bit-events-narrow tr.bit-dashed-border td.bit-description { border-top: none important;}
+#bit-events[data-bit-widget-id='1431547831943'] table { border-bottom: 1px solid #E9E9E9!important;}
+#bit-events[data-bit-widget-id='1431547831943'] a.bit-track-artist-header {border-top:  none!important; border-bottom: none !important; }
+.bit-events tr td.bit-date a {vertical-align: top !important; text-align: center !important;}
+#bit-events td.bit-tickets {max-width: 140px !important}
+#bit-events td.bit-concert a.bit-buy-tix, #bit-events td.bit-concert a, #bit-events td.bit-tickets a  {color: #ffe27b !important; font-size: 0.8em !important; background: #222 !important; padding: 15px 40px !important; text-align: center !important;border: 2px solid #222;	-webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;}
+#bit-events td.bit-concert a.bit-buy-tix, #bit-events td.bit-concert a:hover , #bit-events td.bit-tickets a:hover {color: #222 !important; background: #ffe27b !important;}
+#bit-events[data-bit-widget-id='1425621096080'] .bit-events td {border-top: none !important;}
+#bit-events[data-bit-widget-id='1425621096080'] {border: none !important;}
+#bit-events[data-bit-widget-id='1425621096080'] a.bit-track-artist-header {border: none !important;border-top: none !important; border-bottom: none !important;}
+#bit-events a .bit-notify {color: #222 !important;}
+#bit-events a.bit-track-artist-header .bit-invert {padding: 10px 20px !important;}
+#bit-events a.bit-track-artist-header, #bit-events[data-bit-widget-id='1425672439346'] a.bit-track-artist-header {border-top: none !important; border-bottom: none !important;padding-bottom: 20px !important;}
+.no-dates {display: none !important}
+
+.bit-header-narrow{
+display: none !important;
+}
+table.bit-events-narrow{
+background-color: rgba(0,0,0,0.4);
+margin-top: 40px !important;
+padding: 10px 0px 40px 0px !important;
+}
+.bit-events-narrow td{
+padding: 20px 0px 20px 0px!important
+}
+.bit-events-narrow tr td.bit-date{
+width: 80px !important;
+padding: 0px 0px 0px 20px !important;
+}
+td.bit-concert{
+padding-right: 20px !important;
+}
+#bit-events .venue, #bit-events .location, #bit-events .lineup{
+margin-bottom: 10px;
+}
+#bit-events table.bit-events-narrow td.bit-concert .location{
+margin-bottom: 30px;
+}
+#bit-events table.bit-events-narrow td.bit-concert .venue a, #bit-events table.bit-events-narrow td.bit-concert .location a{
+padding: 0px !important;
+background-color: transparent !important;
+}
+
+ #bit-events table.bit-events-narrow a.bit-tickets a {
+color: #ffe27b !important; 
+font-size: 0.8em !important; 
+background: #222 !important; 
+padding: 15px 40px !important; 
+text-align: center !important;
+border: 2px solid #222;	
+}
+@media (max-width: 800px) {
+#showtomobile {display: block}
+#showtodesktop, #menu {display: none}    
+}
+
+@media (min-width: 801px) {
+#showtomobile, .menu-collapsed, .menu-expanded {display: none}
+#showtodesktop {display: block}    
+#mobilemenu {display: none}    
+}
+
+
+
+/************ MOBILE ************/
+
+@media (max-width: 800px) {    
+
+#featured, #top, #video, #tour, #signup, #news {
+padding: 0px;
+margin: 0px;
+}    
+    
+/* MOBILE MENU */
+    
+
+.menu-collapsed {
+  transition: all .25s;
+  -webkit-transition: all .25s;    
+  position: fixed;
+  top: 30px;
+  left: 23px;
+  height: 36px;
+  width: 36px;
+  z-index: 11;
+  cursor: pointer;
+}
+.menu-collapsed ul {
+  transition: all .05s;
+  -webkit-transition: all .05s;        
+  position: fixed;
+  left: -9000px;
+  list-style: none;    
+}
+
+.bar, .bar::before, .bar::after {
+    box-shadow:  0px 0px 2px rgba(0,0,0,0.5);
+}
+
+.bar {
+  position: fixed;
+  height: 5px;
+  width: 30px;
+  background-color: #ffe27d;
+}
+.bar:before {
+  transition: all .25s;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -8px;
+  height: 5px;
+  width: 30px;
+  background-color: #ffe27d;    
+}
+.bar:after {
+  transition: all .25s;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  height: 5px;
+  width: 30px;
+  background-color: #ffe27d;         
+}
+
+.menu-expanded {
+  transition: all .25s;
+  text-align: center;
+  line-height: calc(15vh);
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+  top: 0;
+  left: 0;
+  background: url(http://dominorecords.s3.amazonaws.com/thekills/goldfoil-menu.jpg) no-repeat 50% 50% !important;
+  background-size: cover !important;   
+}
+
+.postlaunchmobile {
+  line-height: calc(11vh);    
+}
+    
+.menu-expanded .bar {
+  top: 30px;
+  left: 23px;    
+}
+
+.menu-expanded ul {
+  transition: all .05s;
+  position: relative;
+  left: 0;
+  z-index: 2;
+}
+    
+.menu-expanded img {
+    height: 25px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+    
+.menu-expanded a {
+  text-decoration: none;
+  text-transform: uppercase;    
+  color: #000;
+  font-size: 2em;
+  letter-spacing: 3px;
+  padding: 5px;  
+    transition: all .5s ease;    
+-webkit-transition: all .5s ease;
+font-weight: normal; 
+    
+}
+.menu-expanded a:hover {
+  font-size: 2.3em;
+    letter-spacing: 3px;
+
+}
+.menu-expanded .bar {
+  background-color: transparent;
+  transition: all .25s;
+    color: #000;
+    box-shadow: none;
+}
+.menu-expanded .bar:before {
+  transition: all .25s;
+  content: "";
+  transform: rotate(45deg);
+  top: -0px;
+    background-color: #000;
+}
+.menu-expanded .bar:after {
+  transition: all .25s;
+  content: "";
+  transform: rotate(-45deg);
+  top: 0px;
+   background-color: #000
+}
+
+.icons {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    min-width: auto;
+}
+    
+.icons a, .icons img {
+    display: inline-block;
+}
+
+.icons img {
+    height: 30px;
+    width: auto;
+    margin: 10px;
+}
+
+.mobileimage {
+    width: 70%;
+    max-width: 500px;
+    padding-bottom: 20px;
+    display: block;
+    margin: 0 auto;
+}
+    
+
+/* Landscape */
+@media only screen 
+  and (max-device-width: 640px)
+  and (orientation: landscape) {
+.menu-expanded img {
+    height: 15px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.icons img {
+    height: 20px;
+    width: auto;
+    margin: 10px;
+}    
+      
+.menu-expanded {
+  transition: all .25s;
+  text-align: center;
+  line-height: calc(7vh);
+}
+      
+}    
+    
+
+        
+    
+    
+/* MOBILE TOP SECTION */    
+  
+  
+#featured {
+height: auto;
+box-sizing: border-box;  
+background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+background-size: 30%;     
+}  
+
+    
+#top {
+height: auto;
+box-sizing: border-box;    
+background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+background-size: 30%;  
+}
+
+.featured-heading {    
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto 30px auto;
+    font-weight: normal !important;
+    letter-spacing: 2px; 
+}    
+    
+.top-mobile {
+width: 100%;
+padding-top: 60px;
+}
+    
+.top-mobile img {
+width: 100%;
+height: auto;
+}
+
+.anchor-container {
+width: 100%;
+position: relative;
+bottom: auto;
+}
+
+.anchor-container img {
+position: relative;
+right: 0px;
+left: 0px;
+display: block;
+height: 130px;
+width: auto;
+margin: 0 auto;
+}
+    
+.doing-it-to-death-mobile {
+width: 100%;
+height: auto;
+margin: 20px auto;
+}
+    
+.button-container {
+display: block;
+width: 100%;
+margin: 30px auto 40px auto;
+}
+
+.button {
+display: block;
+margin: 10px auto;
+text-align: center;
+font-size: 15px;
+line-height: 25px;
+padding: 10px 0;
+width: 80%;    
+letter-spacing: 1px;
+text-transform: uppercase;
+color: rgba(0,0,0,0.8);
+background: url(/wp2016/wp-content/themes/thekills2016/img/buttonbg.png) no-repeat 50% 50%;
+background-size: cover;
+}
+
+.button:hover {
+color: rgba(0,0,0,1);
+}
+    
+    
+/* MOBILE NEWS SECTION */        
+    
+#news {
+padding: 0px 0px 50px 0px;
+background: url(/wp2016/wp-content/themes/thekills2016/img/leathertile.jpg) repeat;
+background-size: 30%;        
+}
+    
+#news #container {
+  width: 100%;
+  padding: 50px 20px;
+  box-sizing: border-box;
+text-align: center;
+}
+
+#news img {
+width: 60%;
+height: auto;
+display: block;
+margin: 0 auto;
+}   
+    
+#news h2 {
+    font-size: 35px;
+    line-height: 30px;
+}
+    
+.heading-news {
+margin: 0 auto; display: block; width: 90%; height: auto;padding-top: 40px;padding-bottom: 10px;
+}    
+    
+button#load-more.alm-load-more-btn.more {
+display: block !important;  
+}
+    
+
+.download-container {
+width: 100%;
+position: relative;
+padding-top: 40px;
+padding-bottom: 150px;
+}
+
+.download-container img {
+position: relative;
+right: 0px;
+left: 0px;
+display: block;
+height: 20px;
+width: auto;
+margin: 0 auto;
+}    
+
+    
+    
+/* MOBILE TOUR SECTION */      
+
+#tour {
+padding: 50px 0;
+}
+    
+#tour .container {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+.heading-tour {
+margin: 0 auto; display: block; width: 90%; height: auto;padding-top: 80px;padding-bottom: 10px;
+}        
+    
+.track {
+font-size: 18px;
+line-height: 30px;
+text-align: center;
+letter-spacing: 4px;
+text-transform: uppercase;
+font-weight: 400;
+margin-top: 30px;
+}    
+    
+#powered {
+display: none !important;    
+}
+    
+/* SIGN UP MOBILE */
+    
+#signup {
+height: auto;  
+margin-bottom: -30px;
+}
+    
+h2 {
+padding: 0px 10px;    
+font-size: 20px;
+}
+    
+.signup-container {
+position: relative;
+padding: 50px 0;    
+-ms-transform: none;
+-moz-transform: none;
+-webkit-transform: none;
+transform: none;
+width: 100%;
+display: block;
+margin: 0 auto;
+}
+
+#signupform {
+margin: 30px auto 0 auto;
+font-family: Montserrat;
+font-weight: 700;
+width: 100%;
+}
+
+#signupform input {
+width: 90%;    
+padding: 20px;
+font-size: 16px;
+display: block;
+background: rgba(255,255,255,0.2);
+border: 0;
+margin: 0 auto;
+color: #ffe27d;
+    font-family: Montserrat;
+    font-weight: 700;
+}
+
+#signupform button {
+display: block;
+margin: 10px auto 0 auto;
+text-align: center;
+font-size: 15px;
+line-height: 25px;
+padding: 17px 0;
+width: 90%;    
+letter-spacing: 1px;
+text-transform: uppercase;
+color: rgba(0,0,0,0.8);
+background: url(/wp2016/wp-content/themes/thekills2016/img/buttonbg.png) no-repeat 50% 50%;
+background-size: cover;
+border: 0px;
+    font-family: Montserrat;
+    font-weight: 700;
+}
+
+#signupform button:hover, #signupform button:focus {
+cursor: pointer !important;    
+}     
+    
+    
+}
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.utg-video{
+position: relative;
+top: 0;
+left: 0;
+}
+
+.utg-video-homepage{
+padding-bottom: 50px;
+}
+
+#under{
+}
+
+img.under{
+	width: 90%;
+	max-width: 650px !important;
+	height: auto;
+	margin: 120px 0 80px 0;
+}
+.under-container {
+	width: 90%;
+	max-width: 800px !important;
+	margin: 0 auto;
+	padding-bottom: 100px;
+  	color: #fd8d85;
+	font-size: 16px;
+	line-height: 1.4em;
+	font-weight: normal;
+	text-align: center;
+	overflow: Hidden;
+	}
+.underimg{
+	width: 280px;
+	float: left;
+margin-right: 40px;
+	}
+
+.underimg img{
+	width: 100%;
+}
+
+.undertext{
+	width: 480px;
+	float: left;
+	margin-top: 40px;
+}
+@media (max-width: 790px) {
+	.underimg{
+		width: 100%;
+		overflow: hidden;
+	}
+	.underimg img{
+		width: 300px;
+		margin: 0 auto;
+	}
+	.undertext{
+		width: 90%;
+		margin-left: 5%;
+margin-top: 40px;
+	}
+}
+a.bwg_load_btn_0.bwg_load_btn {
+    	text-transform: uppercase;
+	font-family: Montserrat !important;    
+	background: url(/wp2016/wp-content/themes/thekills2016/img/buttonbg.png) no-repeat 50% 50% !important;
+    	background-size: cover !important;
+}
+#bwg_container1_0 #bwg_container2_0 .tablenav-pages_0 {
+ 	margin-top: 50px !important;
+}
+
+.photo-text{
+	width: 90%;
+	max-width: 700px !important;
+	margin: 60px auto;
+  	color: #000;
+	font-size: 18px;
+	line-height: 1.4em;
+	font-weight: normal;
+	text-align: center;
+	overflow: Hidden;
+	}
+.photo-text.utger{
+margin: 60px auto 30px auto !important;
+font-size: 16px !important;
+}
+.photo-text.gold{
+color: #f5d971;
+}
+.photo-text.gold a{
+color: #FAFAFA;
+text-decoration: none;
+}
+.photo-text.gold a:hover{
+color: #f5d971;
+}
+
+.photo-text p{
+margin-bottom:30px;
+}
+.photo-text .p:nth-child(2) {
+margin-bottom: 0px !important;
+}
