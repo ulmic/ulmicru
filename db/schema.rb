@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514222414) do
+ActiveRecord::Schema.define(version: 20170516222514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20170514222414) do
   create_table "activity_lines_lider_ya_lider_participations", force: :cascade do |t|
     t.integer  "participant_id"
     t.integer  "stage_id"
+    t.text     "state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.text     "state"
   end
 
   create_table "activity_lines_lider_ya_lider_stages", force: :cascade do |t|
@@ -274,9 +274,9 @@ ActiveRecord::Schema.define(version: 20170514222414) do
   create_table "delivery_receivers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "campaign_id"
-    t.text     "state"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "state",       default: "ready"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.text     "user_type"
   end
 
@@ -490,6 +490,17 @@ ActiveRecord::Schema.define(version: 20170514222414) do
     t.text     "status",     default: "confirmed"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.text     "title"
+    t.text     "url"
+    t.text     "project_type"
+    t.json     "properties"
+    t.text     "view"
+    t.text     "state"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "protocols", force: :cascade do |t|
     t.text     "title"
     t.integer  "team_id"
@@ -571,6 +582,9 @@ ActiveRecord::Schema.define(version: 20170514222414) do
     t.integer "team_id"
     t.integer "user_id"
   end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "test_paper_questions", force: :cascade do |t|
     t.text     "text"

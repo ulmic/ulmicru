@@ -1,0 +1,36 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top.navbar-expanded
+  .container
+    .navbar-header
+      %button.navbar-toggle{ data: { target: '#bs-example-navbar-collapse-1', toggle: :collapse },  type: 'button' }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{ href: '#page-top' }
+        = image_tag 'logo.png', class: 'img-responsive', alt: ''
+    -##bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li.hidden
+          %a{href: '#page-top'}
+        %li.dropdown
+          %a.dropdown-toggle{ data: { hover: :dropdown, toggle: :dropdown }, href: '#' }
+            Кнопка 1
+          %ul.dropdown-menu{ role: :menu }
+            %li
+              %a{ href: '#' }
+                Первая позиция меню
+            %li
+              %a{ href: '#' }
+                Вторая позиция меню
+        %li
+          %a{href: '#'}
+            Кнопка 2
+        %li
+          %a{href: '#'}
+            Кнопка 3
+        %li
+          %a{href: '#'}
+            Кнопка 4
+        %li
+          %a{href: '#'}
+            Кнопка 5

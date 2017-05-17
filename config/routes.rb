@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
+    resources :projects, only: :show
     resources :remind_password, only: [ :new, :create ] do
       collection do
         get :edit
@@ -89,6 +90,7 @@ Rails.application.routes.draw do
       resources :test_papers
       resources :places
       resources :protocols
+      resources :projects
       resource :mine, only: :show
       resources :trash, only: [] do
         collection do

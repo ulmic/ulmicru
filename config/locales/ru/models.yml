@@ -36,6 +36,7 @@ ru:
       test_paper: Тест
       place: Место
       protocol: Протокол
+      project: Проект
     attributes:
       default: &default
         created_at: Дата создания
@@ -319,6 +320,11 @@ ru:
         document: Документ
         scan: Скан
         file: Файл
+      project:
+        title: Название
+        url: Адрес сайта
+        project_type: Тип проекта
+        view: Вьюха (обратите к разработчикам сайта)
     errors:
       models:
         member:

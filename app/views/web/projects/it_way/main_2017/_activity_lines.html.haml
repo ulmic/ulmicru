@@ -1,0 +1,47 @@
+%section#services.services.bg-primary
+  .container
+    .row.text-center
+      .col-lg-10.col-lg-offset-1
+        %h2 Направления на IT Way'17
+        %hr.small/
+        .row
+          .col-md-4.col-sm-6
+            .service-item
+              %span.fa-stack.fa-4x
+                %i.fa.fa-circle.fa-stack-2x
+                %i.fa.fa-code.fa-stack-1x.text-primary
+              %h4
+                %strong Программирование
+              %p
+                Хочешь научиться программировать, но не знаешь с чего начать? Подай заявку
+              = link_to 'Узнать больше', '#', class: 'btn btn-light scroll', data: { id: :programming } 
+          .col-md-4.col-sm-6
+            .service-item
+              %span.fa-stack.fa-4x
+                %i.fa.fa-circle.fa-stack-2x
+                %i.fa.fa-paint-brush.fa-stack-1x.text-primary
+              %h4
+                %strong Дизайн
+              %p 
+                Тебе нравится ИТ, но писать код - это совсем не твоё? На IT Way ты научишься основам дизайна
+              = link_to 'Узнать больше', '#', class: 'btn btn-light scroll', data: { id: :design }
+          .col-md-4.col-sm-6
+            .service-item
+              %span.fa-stack.fa-4x
+                %i.fa.fa-circle.fa-stack-2x
+                %i.fa.fa-gears.fa-stack-1x.text-primary
+              %h4
+                %strong Железо
+              %p Неравнодушен к микросхемам и хочешь собирать новые устройства? Тогда тебе сюда
+              = link_to 'Узнать больше', '#', class: 'btn btn-light scroll', data: { id: :steel }
+        .row
+          .col-md-12
+            .service-item
+              %span.fa-stack.fa-4x
+                %i.fa.fa-circle.fa-stack-2x
+                %i.fa.fa-mortar-board.fa-stack-1x.text-primary
+              %h4
+                %strong Профориентация
+              %p
+                Поможем правильно определиться с выбором профессии и расскажем о преимуществах ИТ-сферы
+              = link_to 'Узнать больше', '#', class: 'btn btn-light scroll', data: { id: :career_guidance } 
