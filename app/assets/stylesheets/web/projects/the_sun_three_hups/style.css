@@ -1538,7 +1538,6 @@ body#bit-widget-dialog { margin: 0px!important; padding: 0px!important; }
 #bit-widget-dialog .uiButtonSpecial .uiButtonText,#bit-widget-dialog .uiButtonSpecial input,#bit-widget-dialog .uiButtonSpecial.uiButtonDisabled .uiButtonText,#bit-widget-dialog .uiButtonSpecial.uiButtonDisabled input,#bit-widget-dialog .uiButtonConfirm .uiButtonText, #bit-widget-dialog .uiButtonConfirm input, #bit-widget-dialog .uiButtonConfirm.uiButtonDisabled .uiButtonText, #bit-widget-dialog .uiButtonConfirm.uiButtonDisabled input { color: #FFFFFF!important; }
 #bit-widget-dialog .uiButtonConfirm:active{background:#4f6aa3!important;border-bottom-color:#29447e}
 #bit-widget-dialog .popup-border-outer { z-index: 1!important; background: none!important; position: relative!important; }
-#bit-widget-dialog .popup-border-inner { background-color: #525252!important; -moz-opacity: 0.7!important; opacity: 0.7!important; position: absolute!important; top: 0!important; left: 0!important; width: 100%!important; height: 100%!important; z-index: 1!important; padding: 0!important; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70)!important; }
 #bit-widget-dialog .popup-content { position: relative!important; z-index: 2!important; }
 #bit-widget-dialog h2 { padding: 0px!important; }
 #bit-widget-dialog .clear { clear: both!important; }
