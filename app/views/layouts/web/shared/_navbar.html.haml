@@ -57,7 +57,7 @@
                       = @first_category.name
                     - @first_category.articles.visible.confirmed.each do |article|
                       = link_to article.title, article_path(article)
-                - if @about_site_category.present?
+                -# if @about_site_category.present?
                   .category-column
                     .menu-title
                       = @about_site_category.name
@@ -68,6 +68,13 @@
                     .menu-title
                       = @corporative_category.name
                     - @corporative_category.articles.visible.confirmed.each do |article|
+                      = link_to article.title, article_path(article)
+                - if @report_category.present?
+                  .category-column
+                    .menu-title
+                      = @report_category.name
+                    - [132, 133, 135, 134].each do |id|
+                      - article = Article.find(id)
                       = link_to article.title, article_path(article)
           %li{ style: 'margin-right: 15px' }
             - if signed_in? && current_user.state == 'confirmed'
