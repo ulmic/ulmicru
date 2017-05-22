@@ -37,4 +37,5 @@ class Position < ActiveRecord::Base
   scope :last_held_position, -> { order('end_date DESC').first }
   scope :active, -> { where.not state: :removed }
   scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+  scope :old_positions, -> { confirmed.where('end_date < ?', DateTime.now) }
 end

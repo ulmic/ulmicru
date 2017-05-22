@@ -72,6 +72,14 @@ class ActivityLine < ActiveRecord::Base
     [ :active, :unviewed, :removed, :closed ]
   end
 
+  def leader_title
+    exceptions = PositionList.load_positions_yml[:exceptions]
+    non_existent = PositionList.load_positions_yml[:non_existent]
+
+    full_name = "Руководитель #{full_title(:genitive)}"
+    exceptions[full_name] || full_name unless non_existent.include? full_name
+  end
+
   def positions
     exceptions = PositionList.load_positions_yml[:exceptions]
     non_existent = PositionList.load_positions_yml[:non_existent]

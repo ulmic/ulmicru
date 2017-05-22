@@ -41,3 +41,14 @@
                                          title: news.title, |
                                          date: news.publish_date, |
                                          views: news.views
+%hr
+.row
+  %h3
+    = t('.history')
+  - if @old_leaders.any?
+    .medium-6.columns
+      %h4
+        = t('.old_leaders')
+      - @old_leaders.each do |leader|
+        %li.small-2.columns
+          = render 'web/members/shared/mic_userpic_circle', member: leader.decorate
