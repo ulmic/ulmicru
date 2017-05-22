@@ -56,6 +56,10 @@
     .medium-6.columns
       %h4
         = t('.old_leaders')
-      - @old_leaders.each do |leader|
-        .small-2.columns
-          = render 'web/members/shared/mic_userpic_circle', member: leader.decorate
+      - @old_leaders.each_with_index do |leader, index|
+        - if index == @old_leaders.count - 1
+          .small-2.columns.end
+            = render 'web/members/shared/mic_userpic_circle', member: leader.decorate
+        - else
+          .small-2.columns
+            = render 'web/members/shared/mic_userpic_circle', member: leader.decorate
