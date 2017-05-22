@@ -1,0 +1,12 @@
+= stylesheet_link_tag 'web/articles/contacts'
+- title @activity_line.full_title
+%br
+.row
+  %h1.title
+    = @activity_line.full_title
+  %hr
+  %br
+  .medium-6.columns
+    != @activity_line.description
+  .medium-6.columns
+    = render 'web/articles/shared/contacts/member_card', user: @activity_line.member, position: ''
