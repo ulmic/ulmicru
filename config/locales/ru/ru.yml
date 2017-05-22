@@ -157,6 +157,12 @@ ru:
         edit:
           title: Редактировать должность
     activity_lines:
+      show:
+        lead: 'Руководитель %{activity_type}'
+        future_events: Ближайшие мероприятия
+        last_news: Последние новости
+        history: История
+        old_leaders: Прежние руководители
       corporative:
         petitions:
           index:

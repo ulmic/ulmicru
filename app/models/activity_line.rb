@@ -71,4 +71,31 @@ class ActivityLine < ActiveRecord::Base
   def self.collections
     [ :active, :unviewed, :removed, :closed ]
   end
+
+  def leader_title
+    exceptions = PositionList.load_positions_yml[:exceptions]
+    non_existent = PositionList.load_positions_yml[:non_existent]
+
+    full_name = "Руководитель #{full_title(:genitive)}"
+    exceptions[full_name] || full_name unless non_existent.include? full_name
+  end
+
+  def positions
+    exceptions = PositionList.load_positions_yml[:exceptions]
+    non_existent = PositionList.load_positions_yml[:non_existent]
+    list = []
+    PositionList.load_positions_yml[:positions][:activity_line].each do |item|
+      if item.is_a? String
+        full_name = "#{item.mb_chars.capitalize.to_s} #{full_title(:genitive)}"
+        list << (exceptions[full_name] || full_name) unless non_existent.include? full_name
+      elsif item.is_a? Hash
+        deputy_position_names = item[:deputy]
+        deputy_position_names.each do |name|
+          full_name = "Заместитель #{genitive(name)} #{full_title(:genitive)}"
+          list << (exceptions[full_name] || full_name) unless non_existent.include? full_name
+        end
+      end
+    end
+    list
+  end
 end
