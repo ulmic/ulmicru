@@ -1,0 +1,5 @@
+%ul.list-inline.users_mini_avatars
+  - feeds.each do |f|
+    %li
+      = link_to show_path(f.user) do
+        = image_tag f.user.avatar&.small
