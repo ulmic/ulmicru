@@ -229,6 +229,8 @@ ru:
         note: Примечание
         file: Файл
         state: Статус
+      activity_line:
+        found_date: Дата основания
       activity_lines/corporative/confession:
         member_id: Член МИЦ
         member: Член МИЦ

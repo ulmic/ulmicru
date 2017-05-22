@@ -1,9 +1,12 @@
 = stylesheet_link_tag 'web/articles/contacts'
+
+= stylesheet_link_tag 'web/activity_lines'
 - title @activity_line.full_title
 - genitive_activity_type = genitive(enumerize_locales_value(@activity_line, :activity_type))
 %br
 .row
   %h1.title
+    = image_tag @activity_line.logo, class: :small
     = @activity_line.full_title
   %hr
   %br
@@ -45,10 +48,15 @@
 .row
   %h3
     = t('.history')
+  .medium-6.columns
+    %h4
+      = t('activerecord.attributes.activity_line.found_date')
+      \:
+      =l @activity_line.found_date, format: '%d.%m.%Yг.'
   - if @old_leaders.any?
     .medium-6.columns
       %h4
         = t('.old_leaders')
       - @old_leaders.each do |leader|
-        %li.small-2.columns
+        .small-2.columns
           = render 'web/members/shared/mic_userpic_circle', member: leader.decorate
