@@ -157,6 +157,8 @@ ru:
         edit:
           title: Редактировать должность
     activity_lines:
+      show:
+        lead: 'Руководитель %{activity_type}'
       corporative:
         petitions:
           index:

@@ -9,4 +9,6 @@
   .medium-6.columns
     != @activity_line.description
   .medium-6.columns
+    %h3
+      = t('.lead', activity_type: genitive(enumerize_locales_value(@activity_line, :activity_type)))
     = render 'web/articles/shared/contacts/member_card', user: @activity_line.member, position: ''
