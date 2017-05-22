@@ -1,5 +1,6 @@
 %h3
   = t('.title')
+= render 'web/admin/default/comment_form_button'
 %table.table.table-bordered.table-striped
   - feeds.each do |l|
     %tr
@@ -13,3 +14,4 @@
           = l.text
       %td
         = I18n.l l.created_at
+= render 'web/admin/default/comment_form_button'
