@@ -9,6 +9,7 @@
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:published_at)
       %th= model_class.human_attribute_name(:views)
+      %th= t('activerecord.models.user').pluralize(:ru)
       - if searching?
         %th= model_class.human_attribute_name(:state)
       %th
@@ -37,7 +38,9 @@
           = link_to news.title, edit_admin_news_path(news)
         %td= news.lead
         %td=l news.published_at
-        %td= news.views
+        %td= news.page_views.count
+        %td{ style: 'width: 300px' }
+          = render 'web/admin/default/record_feed_users_list', feeds: news.feeds
         - if searching?
           %td= news.human_state_name
         %td{ style: 'width: 200px' }
