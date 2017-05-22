@@ -1,16 +1,15 @@
-- if current_user.admin?
-  %h3
-    = t('.title')
-  %table.table.table-bordered.table-striped
-    - feeds.each do |l|
-      %tr
-        %td
-          = l.user.decorate.short_name
-        %td
-          - if l.class.name == 'LoggedAction'
-            = enumerize_locales_value l, :action_type
-          - if l.is_a? Comment
-            = fa_icon :pencil
-            = l.text
-        %td
-          = I18n.l l.created_at
+%h3
+  = t('.title')
+%table.table.table-bordered.table-striped
+  - feeds.each do |l|
+    %tr
+      %td
+        = l.user.decorate.short_name
+      %td
+        - if l.class.name == 'LoggedAction'
+          = enumerize_locales_value l, :action_type
+        - if l.is_a? Comment
+          = fa_icon :pencil
+          = l.text
+      %td
+        = I18n.l l.created_at
