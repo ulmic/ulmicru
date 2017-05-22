@@ -1,6 +1,7 @@
 %h3
   = t('.title')
-= render 'web/admin/default/comment_form_button'
+  = render 'web/admin/default/comment_form_button'
+= hint :feed, :default, place: :admin
 %table.table.table-bordered.table-striped
   - feeds.each do |l|
     %tr
