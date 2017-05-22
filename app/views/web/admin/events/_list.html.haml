@@ -26,7 +26,7 @@
           - event.places.each do |place|
             %p
               = link_to place.title, admin_place_path(place)
-        %td
+        %td{ style: 'width: 300px' }
           = render 'web/admin/default/record_feed_users_list', feeds: event.feeds
         - if searching?
           %td= event.human_state_name
