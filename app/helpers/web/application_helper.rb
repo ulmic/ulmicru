@@ -22,12 +22,12 @@ module Web::ApplicationHelper
     javascript_include_tag link if Ulmicru::Application.assets.find_asset link
   end
 
-  def hint(model_name, attribute_name, place:)
+  def hint(model_name, attribute_name, place:, **args)
     case place
     when :admin
-      text_hint t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}"), place: place
+      text_hint t("hints.admin.#{model_name.to_s.underscore}.#{attribute_name}", args), place: place
     when :face
-      text_hint t("hints.#{model_name.to_s.underscore}.#{attribute_name}"), place: place
+      text_hint t("hints.#{model_name.to_s.underscore}.#{attribute_name}", args), place: place
     end
   end
 

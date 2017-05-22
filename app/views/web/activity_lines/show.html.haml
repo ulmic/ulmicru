@@ -1,5 +1,6 @@
 = stylesheet_link_tag 'web/articles/contacts'
 - title @activity_line.full_title
+- genitive_activity_type = genitive(enumerize_locales_value(@activity_line, :activity_type))
 %br
 .row
   %h1.title
@@ -10,5 +11,28 @@
     != @activity_line.description
   .medium-6.columns
     %h3
-      = t('.lead', activity_type: genitive(enumerize_locales_value(@activity_line, :activity_type)))
+      = t('.lead', activity_type: genitive_activity_type)
     = render 'web/articles/shared/contacts/member_card', user: @activity_line.member, position: ''
+.row
+  %h3
+    = t('.future_events')
+  - if @future_events.any?
+    .events
+      %ul{ style: 'list-style: none' }
+        - @future_events.first(3).each do |event|
+          %li.mic-event.small-4.columns
+            = render_element "mic_event", img_src: event.main_photo.event_main_page_version, |
+                                          link: event_path(event), |
+                                          category: event.activity_line.title, |
+                                          date: event.full_date_duration, |
+                                          title: event.title, |
+                                          text: strip_tags(event.lead).html_safe
+  - else  
+    = hint(:event, :suggest, place: :face, activity_type: genitive_activity_type, activity_line_title: @activity_line.title)
+.row
+  %hr
+  %ul.tabs
+    %li.tab-title
+      = link_to '#events' do
+        = fa_icon :calendar
+        = t('activerecord.models.event').pluralize(:ru)

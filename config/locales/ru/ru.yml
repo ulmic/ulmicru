@@ -159,6 +159,7 @@ ru:
     activity_lines:
       show:
         lead: 'Руководитель %{activity_type}'
+        future_events: Ближайшие мероприятия
       corporative:
         petitions:
           index:
