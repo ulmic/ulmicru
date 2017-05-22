@@ -160,6 +160,7 @@ ru:
       show:
         lead: 'Руководитель %{activity_type}'
         future_events: Ближайшие мероприятия
+        last_news: Последние новости
       corporative:
         petitions:
           index:
