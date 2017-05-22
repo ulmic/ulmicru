@@ -58,8 +58,8 @@
         = t('.old_leaders')
       - @old_leaders.each_with_index do |leader, index|
         - if index == @old_leaders.count - 1
-          .small-2.columns.end
+          .small-2.columns.end{ style: 'width: 150px' }
             = render 'web/members/shared/mic_userpic_circle', member: leader.decorate
         - else
-          .small-2.columns
+          .small-2.columns{ style: 'width: 150px' }
             = render 'web/members/shared/mic_userpic_circle', member: leader.decorate
