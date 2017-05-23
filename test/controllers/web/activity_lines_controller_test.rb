@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Web::ActivityLinesControllerTest < ActionController::TestCase
   setup do
-    @activity_line = create :activity_line
+    @activity_line = create :activity_line, activity_type: :central_program, organization_type: :ulmic, state: :active
   end
 
   test 'should get show' do
