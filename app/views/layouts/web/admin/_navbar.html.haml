@@ -59,7 +59,7 @@
           - if current_user.role.tech_admin?
             = admin_menu_item LoggedAction, admin_logged_actions_path
             = admin_menu_item Image, admin_images_path
-        = admin_menu_item Feedback, admin_feedbacks_path, :share
+        = admin_menu_item Feedback, admin_feedbacks_path, :share, Feedback.fixing.count
         = dropdown t('.delivery') do
           = admin_menu_item Delivery::Campaign, admin_delivery_campaigns_path, :send
           = admin_menu_item Delivery::ContactEmail, admin_delivery_contact_emails_path, 'address-book'
