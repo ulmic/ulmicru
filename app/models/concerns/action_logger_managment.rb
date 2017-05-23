@@ -5,7 +5,7 @@ module Concerns
     end
 
     def logged_actions_associated_users
-      @users ||= User.where id: logged_actions_list.map(&:user_id)
+      @users ||= User.where id: feeds.map(&:user_id)
       @users = @users + [User.find(creator_id)] if self.try(:creator_id)
       @users = @users + [User.find(user_id)] if self.try(:user_id)
       @users = @users.uniq
