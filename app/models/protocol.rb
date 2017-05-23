@@ -3,7 +3,9 @@ class Protocol < ActiveRecord::Base
 
   belongs_to :team
 
-  validates :record_id, uniqueness: { scope: :record_type }
+  validates :record_id, uniqueness: { scope: :record_type },
+                        allow_blank: true,
+                        allow_nil: true
 
   state_machine :state, initial: :active do
     state :active

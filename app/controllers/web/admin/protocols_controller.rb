@@ -3,9 +3,9 @@ class Web::Admin::ProtocolsController < Web::Admin::ApplicationController
 
   def index
     if params[:search]
-      protocols = Protocol.active.search_everywhere params[:search]
+      protocols = Protocol.order(created_at: :desc).active.search_everywhere params[:search]
     else
-      protocols = Protocol.send params[:scope]
+      protocols = Protocol.order(created_at: :desc).send params[:scope]
     end
     @protocols = protocols.page(params[:page]).decorate
   end

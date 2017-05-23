@@ -323,6 +323,10 @@ ru:
         document: Документ
         scan: Скан
         file: Файл
+        summons: Повестка
+        begin_date: Дата и время начала
+        end_date: Дата и время конца 
+        invited: Приглашённые участники
       project:
         title: Название
         url: Адрес сайта
