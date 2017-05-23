@@ -11,7 +11,7 @@ class Tag < ActiveRecord::Base
                    unless: Proc.new { |t| t.text.blank? }
 
   extend Enumerize
-  enumerize :record_type, in: [ 'Article', 'News' ]
+  enumerize :record_type, in: [ 'Article', 'News', 'Video' ]
   enumerize :target_type, in: [ 'Member', 'Event', 'ActivityLine', 'Team' ]
   enumerize :tag_type, in: [ :string, :link ]
 

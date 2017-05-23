@@ -91,6 +91,7 @@ Rails.application.routes.draw do
       resources :places
       resources :protocols
       resources :projects
+      resources :videos
       resource :mine, only: :show
       resources :trash, only: [] do
         collection do
