@@ -41,7 +41,9 @@ class Tag < ActiveRecord::Base
   scope :teams, -> { where target_type: 'Team' }
   scope :news, -> { where record_type: 'News' }
   scope :articles, -> { where record_type: 'Article' }
+  scope :videos, -> { where record_type: 'Video' }
   scope :empty, -> { active.where tag_type: :link, target_id: nil }
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :text, :target_id, :record_id ]
 

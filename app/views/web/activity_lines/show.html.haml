@@ -15,6 +15,8 @@
     %h3
       = t('.lead', activity_type: genitive_activity_type)
     = render 'web/articles/shared/contacts/member_card', user: @activity_line.member, position: ''
+    %br
+    = render 'web/videos/show', video: @video
 .row
   %h3
     = t('.future_events')
