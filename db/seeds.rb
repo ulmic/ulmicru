@@ -80,8 +80,7 @@ puts "Create krk...".green
 Team::Subdivision.create! title: 'Контрольно-ревизионная комиссия', description: 'Контрольно-ревизионная комиссия'
 
 puts "It's temporally. Remove after removing Reports from main menu".red
-Category.find(18).destroy
-Category.create! id: 18, name: 'Отчёты'
+Category.find_or_create_by! id: 18, name: 'Отчёты'
 ( 132..136 ).each do |id|
   Article.find_or_create_by! id: id, title: 'Article 1', category_id: 18, user_id: 1
 end

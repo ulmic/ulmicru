@@ -37,6 +37,7 @@ ru:
       place: Место
       protocol: Протокол
       project: Проект
+      video: Видео
     attributes:
       default: &default
         created_at: Дата создания

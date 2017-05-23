@@ -1,0 +1,29 @@
+= paginate videos, theme: 'twitter-bootstrap-3'
+- model_class = Video
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %td= model_class.human_attribute_name(:link)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= model_class.human_attribute_name(:tags)
+      %th=t 'helpers.links.actions'
+  %tbody
+    - videos.each do |video|
+      %tr{ class: state_color(video) }
+        %td{ width: '67px' }
+          = link_to video.id, edit_admin_video_path(video)
+          = link_to video_path(video) do
+            %span.glyphicon.glyphicon-share
+        %td= link_to video.title, edit_admin_video_path(video)
+        %td= link_to video.link, video.link
+        - if searching?
+          %td= video.human_state_name
+        %td{ style: 'width: 200px' }
+          = react_component 'TagsForm', record: video, record_type: 'video', tags: TagCollectionDecorator.new(video.tags.active).with_just_text
+        %td.actions
+          = link_to fa_icon(:pencil), edit_admin_video_path(video), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove),admin_video_path(video), method: :delete, class: 'btn btn-xs btn-danger'
+= paginate videos, theme: 'twitter-bootstrap-3'

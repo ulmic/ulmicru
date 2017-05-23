@@ -11,7 +11,7 @@ class Tag < ActiveRecord::Base
                    unless: Proc.new { |t| t.text.blank? }
 
   extend Enumerize
-  enumerize :record_type, in: [ 'Article', 'News' ]
+  enumerize :record_type, in: [ 'Article', 'News', 'Video' ]
   enumerize :target_type, in: [ 'Member', 'Event', 'ActivityLine', 'Team' ]
   enumerize :tag_type, in: [ :string, :link ]
 
@@ -41,7 +41,9 @@ class Tag < ActiveRecord::Base
   scope :teams, -> { where target_type: 'Team' }
   scope :news, -> { where record_type: 'News' }
   scope :articles, -> { where record_type: 'Article' }
+  scope :videos, -> { where record_type: 'Video' }
   scope :empty, -> { active.where tag_type: :link, target_id: nil }
+
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :text, :target_id, :record_id ]
 

@@ -210,3 +210,7 @@ ru:
         state:
           states:
             <<: *default
+      video:
+        state:
+          states:
+            <<: *default
