@@ -31,6 +31,10 @@ class Event < ActiveRecord::Base
       transition all => :removed
     end
 
+    event :decline do
+      transition all => :declined
+    end
+
     event :restore do
       transition all => :unviewed
     end
