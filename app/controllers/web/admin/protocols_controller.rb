@@ -10,6 +10,10 @@ class Web::Admin::ProtocolsController < Web::Admin::ApplicationController
     @protocols = protocols.page(params[:page]).decorate
   end
 
+  def show
+    @protocol = Protocol.find(params[:id]).decorate
+  end
+
   def new
     @protocol_form = ProtocolForm.new_with_model
   end

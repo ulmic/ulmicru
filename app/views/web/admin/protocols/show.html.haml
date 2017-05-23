@@ -1,0 +1,62 @@
+- title @protocol.title, :admin
+.page-header
+  %h1
+    = @protocol.title
+    = link_to fa_icon(:pencil), edit_admin_protocol_path(@protocol), class: 'btn btn-warning'
+    = link_to fa_icon(:remove), admin_protocol_path(@protocol), method: :delete, class: 'btn btn-danger' 
+.row
+  .col-md-6
+    %table.table
+      %tr
+        %td
+          = model_class.human_attribute_name(:team)
+        %td
+          = link_to @protocol.team.full_title, edit_admin_team_path(@protocol)
+      %tr
+        %td
+          = model_class.human_attribute_name(:document)
+        %td
+          = link_to fa_icon(:download), admin_document_path(@protocol.document), class: 'btn btn-success'
+      %tr
+        %td
+          = model_class.human_attribute_name(:scan)
+        %td
+          = link_to fa_icon(:download), @protocol.scan.url, class: 'btn btn-primary'
+      %tr
+        %td
+          = model_class.human_attribute_name(:number)
+        %td
+          = @protocol.number
+      %tr
+        %td
+          = model_class.human_attribute_name(:summons)
+        %td
+          = @protocol.summons
+      %tr
+        %td
+          = model_class.human_attribute_name(:begin_date)
+        %td
+          =l @protocol.begin_date, format: '%d.%m.%Y %H:%M'
+      %tr
+        %td
+          = model_class.human_attribute_name(:end_date)
+        %td
+          =l @protocol.end_date, format: '%d.%m.%Y %H:%M'
+      %tr
+        %td
+          = model_class.human_attribute_name(:invited)
+        %td
+          = @protocol.invited
+      %tr
+        %td
+          = model_class.human_attribute_name(:state)
+        %td
+          = @protocol.state
+  .col-md-6
+    %h3
+      = t('activerecord.models.protocol/attender').pluralize(:ru)
+    %table.table
+      - @protocol.attenders.each do |attender|
+        %tr
+          %td
+            = link_to attender.member.decorate.short_name, admin_member_path(attender.member)

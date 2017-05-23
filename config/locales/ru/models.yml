@@ -36,6 +36,7 @@ ru:
       test_paper: Тест
       place: Место
       protocol: Протокол
+      protocol/attender: Присутствующий
       project: Проект
       video: Видео
     attributes:
