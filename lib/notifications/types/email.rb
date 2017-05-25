@@ -19,6 +19,8 @@ module Notifications
           ActivityLines::Corporative::ConfessionMailer.delay.send(params[:theme], params[:object], params[:user])
         when 'Comment'
           CommentMailer.delay.send(params[:theme], params[:object], params[:user])
+        when 'Event'
+          EventMailer.delay.send(params[:theme], params[:object], params[:user])
         else
           UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end
