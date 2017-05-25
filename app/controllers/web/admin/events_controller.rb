@@ -43,6 +43,9 @@ class Web::Admin::EventsController < Web::Admin::ApplicationController
     @event_form = EventForm.find_with_model params[:id]
     @event_form.submit(params[:event])
     if @event_form.save
+      @event_form.model.logged_actions_associated_users.each do |user|
+        send_notification user, @event_form.model, :update
+      end
       redirect_to edit_admin_event_path @event_form.model
     else
       choose_teams
