@@ -37,3 +37,6 @@ messages:
   comment:
     create:
       subject: Добавлен комментарий к записи
+  event:
+    update:
+      subject: Мероприятие обновлено
