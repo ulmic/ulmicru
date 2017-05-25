@@ -63,3 +63,5 @@
         %tr
           %td
             = link_to attender.member.decorate.short_name, admin_member_path(attender.member)
+          %td
+            = link_to fa_icon(:remove), admin_protocol_attender_path(attender), class: 'btn btn-danger', method: :delete

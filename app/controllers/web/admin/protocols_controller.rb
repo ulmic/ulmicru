@@ -1,6 +1,5 @@
 class Web::Admin::ProtocolsController < Web::Admin::ApplicationController
   before_filter :choose_teams, only: [ :new, :edit ]
-  before_filter :choose_members, only: [ :show ]
 
   def index
     if params[:search]
@@ -12,8 +11,9 @@ class Web::Admin::ProtocolsController < Web::Admin::ApplicationController
   end
 
   def show
-    @protocol = Protocol.find(params[:id]).decorate
+    @protocol = ::Protocol.find(params[:id]).decorate
     @attender_form = Protocol::AttenderForm.new_with_model
+    @members = Member.just_members.presented.decorate
   end
 
   def new

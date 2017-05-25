@@ -8,4 +8,10 @@ class Web::Admin::Protocol::AttendersController < Web::Admin::ApplicationControl
       render :new
     end
   end
+
+  def destroy
+    attender = Protocol::Attender.find params[:id]
+    attender.destroy
+    redirect_to admin_protocol_path attender.protocol
+  end
 end
