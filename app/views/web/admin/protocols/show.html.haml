@@ -12,11 +12,12 @@
           = model_class.human_attribute_name(:team)
         %td
           = link_to @protocol.team.full_title, edit_admin_team_path(@protocol)
-      %tr
-        %td
-          = model_class.human_attribute_name(:document)
-        %td
-          = link_to fa_icon(:download), admin_document_path(@protocol.document), class: 'btn btn-success'
+      - if @protocol.document.present?
+        %tr
+          %td
+            = model_class.human_attribute_name(:document)
+          %td
+            = link_to fa_icon(:download), admin_document_path(@protocol.document), class: 'btn btn-success'
       %tr
         %td
           = model_class.human_attribute_name(:scan)
@@ -55,6 +56,8 @@
   .col-md-6
     %h3
       = t('activerecord.models.protocol/attender').pluralize(:ru)
+    %hr
+    = render 'web/admin/protocol/attenders/form'
     %table.table
       - @protocol.attenders.each do |attender|
         %tr

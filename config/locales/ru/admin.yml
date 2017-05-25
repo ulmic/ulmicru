@@ -110,6 +110,10 @@ ru:
         contact_emails:
           list:
             import_from_file: Импортировать контакты
+      protocol:
+        attenders:
+          form:
+            add_attender: Добавить присутствующего члена МИЦ
       helps:
         tags:
           form:
