@@ -136,6 +136,7 @@ Rails.application.routes.draw do
       end
       namespace :protocol do
         resources :attenders, only: [ :create, :destroy ]
+        resources :absents, only: [ :create, :destroy ]
       end
     end
     namespace :users do

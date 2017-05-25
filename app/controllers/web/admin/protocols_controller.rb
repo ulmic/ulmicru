@@ -13,6 +13,7 @@ class Web::Admin::ProtocolsController < Web::Admin::ApplicationController
   def show
     @protocol = ::Protocol.find(params[:id]).decorate
     @attender_form = Protocol::AttenderForm.new_with_model
+    @absent_form = Protocol::AbsentForm.new_with_model
     @members = Member.just_members.presented.decorate
   end
 

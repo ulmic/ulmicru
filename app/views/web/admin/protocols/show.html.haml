@@ -65,3 +65,14 @@
             = link_to attender.member.decorate.short_name, admin_member_path(attender.member)
           %td
             = link_to fa_icon(:remove), admin_protocol_attender_path(attender), class: 'btn btn-danger', method: :delete
+    %h3
+      = t('activerecord.models.protocol/absent').pluralize(:ru)
+    %hr
+    = render 'web/admin/protocol/absents/form'
+    %table.table
+      - @protocol.absents.each do |absent|
+        %tr
+          %td
+            = link_to absent.member.decorate.short_name, admin_member_path(absent.member)
+          %td
+            = link_to fa_icon(:remove), admin_protocol_absent_path(absent), class: 'btn btn-danger', method: :delete

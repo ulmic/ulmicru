@@ -1,0 +1,6 @@
+%h6
+  = t('.add_absent')
+= simple_form_for [:admin, @absent_form], input_html: { class: 'form-horizontal' } do |f|
+  = f.input :member_id, as: :select, collection: members_hash(@members), input_html: { class: :select2 }, label: false
+  = f.input :protocol_id, as: :hidden, input_html: { value: @protocol.id }
+  = f.button :submit, t('helpers.links.save'), class: 'btn-success'

@@ -3,6 +3,7 @@ class Protocol < ActiveRecord::Base
 
   belongs_to :team
   has_many :attenders, class_name: 'Protocol::Attender'
+  has_many :absents, class_name: 'Protocol::Absent'
 
   validates :record_id, uniqueness: { scope: :record_type },
                         allow_blank: true,
