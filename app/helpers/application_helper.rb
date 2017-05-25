@@ -26,7 +26,7 @@ module ApplicationHelper
         concat icon_element icon
         concat ' '
         concat title
-        if number
+        if number && number != 0
           concat ' '
           concat(content_tag(:span, number.to_s, class: 'badge danger'))
         end
