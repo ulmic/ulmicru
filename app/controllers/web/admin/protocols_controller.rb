@@ -11,7 +11,10 @@ class Web::Admin::ProtocolsController < Web::Admin::ApplicationController
   end
 
   def show
-    @protocol = Protocol.find(params[:id]).decorate
+    @protocol = ::Protocol.find(params[:id]).decorate
+    @attender_form = Protocol::AttenderForm.new_with_model
+    @absent_form = Protocol::AbsentForm.new_with_model
+    @members = Member.just_members.presented.decorate
   end
 
   def new
@@ -27,6 +30,7 @@ class Web::Admin::ProtocolsController < Web::Admin::ApplicationController
     params[:protocol][:document_id] = Document.create!(file: params[:protocol][:document], title: params[:protocol][:title]).id
     @protocol_form = ProtocolForm.new_with_model
     if @protocol_form.submit params[:protocol]
+      @protocol_form.update_attributes! number: ((@protocol_form.team.protocols.maximum(:number) || 0) + 1) 
       redirect_to admin_protocols_path
     else
       choose_teams

@@ -3,6 +3,7 @@ class Team < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :events, as: :organizer,
                     foreign_key: :organizer_id
+  has_many :protocols
 
   validates :description, presence: true
 

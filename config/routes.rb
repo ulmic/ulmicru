@@ -134,6 +134,10 @@ Rails.application.routes.draw do
       namespace :test_paper do
         resources :questions, except: [ :index, :show ]
       end
+      namespace :protocol do
+        resources :attenders, only: [ :create, :destroy ]
+        resources :absents, only: [ :create, :destroy ]
+      end
     end
     namespace :users do
       resources :account, only: :update

@@ -37,6 +37,7 @@ ru:
       place: Место
       protocol: Протокол
       protocol/attender: Присутствующий
+      protocol/absent: Отсутствующий
       project: Проект
       video: Видео
     attributes:
