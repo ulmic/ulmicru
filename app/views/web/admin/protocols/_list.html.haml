@@ -14,7 +14,7 @@
     - protocols.each do |protocol|
       %tr{ class: protocol_color(protocol) }
         %td= protocol.id
-        %td= protocol.title
+        %td= link_to protocol.title, admin_protocol_path(protocol)
         %td= protocol.team&.title
         %td
           - if protocol.document_id.present?

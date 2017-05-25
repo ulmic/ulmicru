@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523123427) do
+ActiveRecord::Schema.define(version: 20170523195708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -501,6 +501,20 @@ ActiveRecord::Schema.define(version: 20170523123427) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "protocol_absents", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "protocol_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "protocol_attenders", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "protocol_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "protocols", force: :cascade do |t|
     t.text     "title"
     t.integer  "team_id"
@@ -512,6 +526,10 @@ ActiveRecord::Schema.define(version: 20170523123427) do
     t.integer  "number"
     t.integer  "record_id"
     t.text     "record_type"
+    t.text     "summons"
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.text     "invited"
   end
 
   create_table "redirect_rules", force: :cascade do |t|
