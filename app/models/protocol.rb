@@ -31,7 +31,7 @@ class Protocol < ActiveRecord::Base
     joins('LEFT JOIN protocol_absents ON protocols.id = protocol_absents.protocol_id')
     .where('protocol_absents.protocol_id IS NULL')
   end
-  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil) + without_attenders + without_absents).uniq } 
+  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil) + without_attenders).uniq } 
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :document_id ],
