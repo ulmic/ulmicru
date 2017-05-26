@@ -30,9 +30,11 @@
           = @protocol.number
       %tr
         %td
-          = model_class.human_attribute_name(:summons)
+          %span
+            = model_class.human_attribute_name(:summons)
         %td
-          = @protocol.summons
+          %span
+            = @protocol.summons_with_new_line
       %tr
         %td
           = model_class.human_attribute_name(:begin_date)
@@ -47,7 +49,7 @@
         %td
           = model_class.human_attribute_name(:invited)
         %td
-          = @protocol.invited
+          = @protocol.invited_with_new_line
       %tr
         %td
           = model_class.human_attribute_name(:state)

@@ -23,7 +23,15 @@ class Protocol < ActiveRecord::Base
   end
 
   include StateMachine::Scopes
-  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil)).uniq }
+  scope :without_attenders, -> do
+    joins('LEFT JOIN protocol_attenders ON protocols.id = protocol_attenders.protocol_id')
+    .where('protocol_attenders.protocol_id IS NULL')
+  end
+  scope :without_absents, -> do
+    joins('LEFT JOIN protocol_absents ON protocols.id = protocol_absents.protocol_id')
+    .where('protocol_absents.protocol_id IS NULL')
+  end
+  scope :not_filled, -> { (where(document_id: nil) + where(scan: nil) + without_attenders).uniq } 
 
   include PgSearch
   pg_search_scope :search_everywhere, against: [ :title, :document_id ],

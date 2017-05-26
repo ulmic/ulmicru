@@ -4,8 +4,8 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:team)
+      %th= model_class.human_attribute_name(:number)
       %th= model_class.human_attribute_name(:document)
       - if searching?
         %th= model_class.human_attribute_name(:state)
@@ -13,9 +13,9 @@
   %tbody
     - protocols.each do |protocol|
       %tr{ class: protocol_color(protocol) }
-        %td= protocol.id
-        %td= link_to protocol.title, admin_protocol_path(protocol)
+        %td= link_to protocol.id, admin_protocol_path(protocol)
         %td= protocol.team&.title
+        %td= protocol.number
         %td
           - if protocol.document_id.present?
             = link_to protocol.document&.title, protocol.document&.file&.url

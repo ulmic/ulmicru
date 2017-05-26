@@ -11,7 +11,6 @@
     = simple_form_for [:admin, @protocol_form], input_html: { class: 'form-horizontal' } do |f|
       = f.button :submit, t('helpers.links.save'), class: 'btn-success'
       = link_to t('helpers.links.back'), admin_protocols_path, class: 'btn btn-default'
-      = f.input :title, as: :string
       = f.input :team_id, as: :select, collection: teams_hash(@teams), input_html: { class: :select2 }
       %br
       = f.label :scan
