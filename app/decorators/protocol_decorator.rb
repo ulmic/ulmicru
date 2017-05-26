@@ -4,4 +4,8 @@ class ProtocolDecorator < ApplicationDecorator
   def name
     object.title
   end
+
+  def title
+    "#{object.team.decorate.full_title} | #{object.number}"
+  end
 end

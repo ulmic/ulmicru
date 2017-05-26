@@ -319,7 +319,7 @@ ru:
         longitude: Долгота
         url: URL
       protocol:
-        title: Название
+        number: Заседание №
         team_id: Команда
         team: Команда
         document: Документ
