@@ -16,6 +16,16 @@
     - if @video.present?
       %br
       = render 'web/videos/show', video: @video
+    %h3
+      = t('.last_news')
+    %ul.news.small-block-grid-2
+      - @last_news.each do |news|
+        %li.mic-one-news
+          = render_element 'mic_one_news', img_src: news.photo, |
+                                           link: news_path(news), |
+                                           title: news.title, |
+                                           date: news.publish_date, |
+                                           views: news.views
 .row
   %h3
     = t('.future_events')
@@ -32,18 +42,6 @@
                                           text: strip_tags(event.lead).html_safe
   - else  
     = hint(:event, :suggest, place: :face, activity_type: genitive_activity_type, activity_line_title: @activity_line.title)
-%hr
-.row
-  %h3
-    = t('.last_news')
-  %ul.news.small-block-grid-4
-    - @last_news.each do |news|
-      %li.mic-one-news
-        = render_element 'mic_one_news', img_src: news.photo, |
-                                         link: news_path(news), |
-                                         title: news.title, |
-                                         date: news.publish_date, |
-                                         views: news.views
 %hr
 .row
   %h3
