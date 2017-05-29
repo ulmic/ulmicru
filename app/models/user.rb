@@ -148,8 +148,7 @@ class User < ActiveRecord::Base
     self.token = SecureHelper.generate_token
   end
 
-  def subscribe_token(subscription = nil)
-    subscription ||= :deliveries
+  def subscribe_token(subscription = :deliveries)
     subscriptions.where(subscription_type: subscription).first.token
   end
 
