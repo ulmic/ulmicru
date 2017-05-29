@@ -2,7 +2,8 @@ class Delivery::Receiver < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :user, polymorphic: true
 
-  state_machine :state, initial: :ready do
+  state_machine :state, initial: :added do
+    state :added
     state :ready
     state :sent
 
@@ -10,4 +11,7 @@ class Delivery::Receiver < ActiveRecord::Base
       transition all => :sent
     end
   end
+
+  include StateMachine::Scopes
+
 end
