@@ -3,7 +3,7 @@
 .page-header
   %h1
     = @campaign.title
-    - if @campaign.audiences.any?
+    - if @campaign.audiences.any? && @campaign.receivers.any?
       - if @campaign.ready?
         = link_to fa_icon(:eye), rails_email_preview.rep_email_path('user_mailer_preview-just_message', email: (@campaign.receivers.first.user.email || "example@ulmic.ru") , first_name: (@campaign.receivers.first.user.first_name || "Леопольд"), last_name: (@campaign.receivers.first.user.last_name || "Ботов"), link: @campaign.link, subject: @campaign.title, message: @campaign.body, image: @campaign.image), class: 'btn btn-primary'
         = link_to fa_icon(:send), admin_delivery_sessions_path(id: @campaign.id), method: :post, class: 'btn btn-primary'

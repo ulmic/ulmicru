@@ -125,5 +125,5 @@
     - name: Send delivery task
       cron:
         name: "Send delivery task"
-        minute: *
-        job: "/bin/bash -l -c 'cd /srv/ulmicru/current && RAILS_ENV=production bundle exec rake delivery:send'
+        minute: "*"
+        job: "/bin/bash -l -c 'cd /srv/ulmicru/current && RAILS_ENV=production bundle exec rake delivery:send'"
