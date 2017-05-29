@@ -17,7 +17,10 @@
       %br
       = render 'web/videos/show', video: @video
     %h3
-      = t('.last_news')
+      - if @activity_line.activity_type.corporative?
+        = t('.last_news')
+      - else
+        = t('.last_news_of', activity_type: genitive_activity_type.split(' ').last)
     %ul.news.small-block-grid-2
       - @last_news.each do |news|
         %li.mic-one-news
