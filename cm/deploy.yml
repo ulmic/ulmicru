@@ -121,3 +121,9 @@
         minute: 10
         hour: 6
         job: "/bin/bash -l -c 'cd /srv/ulmicru/current && RAILS_ENV=production bundle exec rake members:update_member_main_position'"
+
+    - name: Send delivery task
+      cron:
+        name: "Send delivery task"
+        minute: *
+        job: "/bin/bash -l -c 'cd /srv/ulmicru/current && RAILS_ENV=production bundle exec rake delivery:send'
