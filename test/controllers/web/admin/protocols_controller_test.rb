@@ -5,7 +5,7 @@ class Web::Admin::ProtocolsControllerTest < ActionController::TestCase
     @protocol = create :protocol
     admin = create :admin
     sign_in admin
-    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'scan', 'document_id']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'scan', 'document_id', 'number']
   end
 
   test 'should get new' do
