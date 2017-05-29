@@ -12,7 +12,7 @@
         = user.decorate.main_position_title
     .small-8.columns.end.right
       %i.fa.fa-at
-      = mail_to user.email
+      = mail_to (user.corporate_email.present? ? user.corporate_email : user.email)
       %br
       %i.fa.fa-phone
       = tel_tag user.mobile_phone
