@@ -26,11 +26,6 @@ class Web::Admin::ProtocolsControllerTest < ActionController::TestCase
     end
   end
 
-  test 'should get index with search' do
-    get :index, search: @protocol.title
-    assert_response :success, @response.body
-  end
-
   test 'should get index without instances' do
     Protocol.destroy_all
     get :index

@@ -8,11 +8,6 @@ class Web::EventsControllerTest < ActionController::TestCase
     @time_quantum = 1.seconds
   end
 
-  test 'should get index' do
-    get :index
-    assert_response :success, @response.body
-  end
-
   test 'should get show' do
     @event.organizer = create :departament
     @event.save

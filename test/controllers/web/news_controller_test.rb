@@ -7,11 +7,6 @@ class Web::NewsControllerTest < ActionController::TestCase
     @time_quantum = 1.5.seconds
   end
 
-  test 'should get index' do
-    get :index
-    assert_response :success, @response.body
-  end
-
   test 'should get show' do
     get :show, id: @news
     assert_response :success, @response.body

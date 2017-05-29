@@ -24,7 +24,9 @@ class Web::Admin::UnviewedControllerTest < ActionController::TestCase
   test 'should get index without instances' do
     unless ENV['DB'] == 'prod'
       @types.each do |type|
-        type.to_s.camelize.constantize.delete_all
+        unless type == :team
+          type.to_s.camelize.constantize.delete_all
+        end
       end
       get :index
       if @member.role.tech_admin?
