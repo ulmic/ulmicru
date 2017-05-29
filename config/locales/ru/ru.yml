@@ -159,7 +159,8 @@ ru:
     activity_lines:
       show:
         future_events: Ближайшие мероприятия
-        last_news: Последние новости
+        last_news_of: 'Последние новости %{activity_type}'
+        last_news: 'Последние новости'
         history: История
         old_leaders: Прежние руководители
       corporative:
