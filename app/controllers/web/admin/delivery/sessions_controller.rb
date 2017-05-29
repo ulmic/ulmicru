@@ -3,7 +3,7 @@ class Web::Admin::Delivery::SessionsController < Web::Admin::Delivery::Applicati
     campaign = ::Delivery::Campaign.find(params[:id]).decorate
     campaign.receivers.update_all state: :ready
     campaign.start_mailing
-    redirect_to admin_campaign_path campaign
+    redirect_to admin_delivery_campaign_path campaign
   end
 
   def destroy

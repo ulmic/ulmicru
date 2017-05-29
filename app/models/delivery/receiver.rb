@@ -11,4 +11,7 @@ class Delivery::Receiver < ActiveRecord::Base
       transition all => :sent
     end
   end
+
+  include StateMachine::Scopes
+
 end

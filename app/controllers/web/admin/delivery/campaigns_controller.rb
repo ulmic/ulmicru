@@ -17,7 +17,7 @@ class Web::Admin::Delivery::CampaignsController < Web::Admin::Delivery::Applicat
   end
 
   def show
-    @campaign = ::Delivery::Campaign.includes(:audiences).find(params[:id]).decorate
+    @campaign = ::Delivery::Campaign.includes(:audiences, :receivers).find(params[:id]).decorate
     @audience_form = ::Delivery::AudienceForm.new_with_model
   end
 
