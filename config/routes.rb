@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resource :session, only: [:new, :create, :destroy]
-    resources :news, only: [ :index, :show ]
+    resources :news, only: [ :show ]
     resources :users, only: [ :new, :create ]
     resources :members, only: [ :new, :create ]
-    resources :events, only: [ :show, :index ]
+    resources :events, only: [ :show ]
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
