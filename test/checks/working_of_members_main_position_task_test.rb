@@ -5,7 +5,7 @@ class WorkingOfMembersMainPositionTaskTest < ActionController::TestCase
     if ENV['DB'] == 'prod'
       count = Member.confirmed.count
       Member.confirmed.find_each.with_index do |member, index|
-        assert (Time.zone.now - member.updated_at) < 1.day, member.id
+        assert_equal member.main_position&.title, member.decorate.main_position_title, member.id
         print "#{index} of #{count}\r"
       end
     end
