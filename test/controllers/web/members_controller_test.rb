@@ -60,7 +60,7 @@ class Web::MembersControllerTest < ActionController::TestCase
         duration = Time.now - time
         assert_response :success, ticket
         assert duration < @time_quantum, "#{duration} secs, Member with ticket #{ticket}"
-        #print "#{index} of #{tickets.count}\r"
+        print "#{index} of #{tickets.count}\r"
       end
     end
   end

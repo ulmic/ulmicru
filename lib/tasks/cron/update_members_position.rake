@@ -3,8 +3,10 @@ namespace :members do
   task update_member_main_position: :environment do
     count = Member.confirmed.count
     Member.confirmed.find_each.with_index do |member, index|
-      main_position_id = member.decorate.main_current_position&.id
-      member.update_attributes! main_position_id: main_position_id
+      main_position = member.positions.to_a.sort_by! { |p| PositionList.list.index(p.title) }.first
+      if main_position
+        member.update_attributes! main_position_id: main_position.id
+      end
       print "#{index} of #{count}\r"
     end
     puts "Members updated!"

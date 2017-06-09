@@ -7,17 +7,12 @@ class Web::NewsControllerTest < ActionController::TestCase
     @time_quantum = 1.5.seconds
   end
 
-  test 'should get index' do
-    get :index
-    assert_response :success, @response.body
-  end
-
   test 'should get show' do
     get :show, id: @news
     assert_response :success, @response.body
   end
 
-  test 'should get show all news' do
+  test 'should get show all news with time' do
     if ENV['DB'] == 'prod'
       count = News.published.count
       News.published.each_with_index do |news, index|
@@ -25,7 +20,6 @@ class Web::NewsControllerTest < ActionController::TestCase
         get :show, id: news.id
         duration = Time.now - time
         assert duration < @time_quantum, "#{duration} secs, News id #{news.id}"
-        assert_response :success, news.id
         print "#{index} of #{count}\r"
       end
       count = News.unpublished.count
@@ -34,6 +28,22 @@ class Web::NewsControllerTest < ActionController::TestCase
         get :show, id: news.id
         duration = Time.now - time
         assert duration < @time_quantum, "#{duration} secs, News id #{news.id}"
+        print "#{index} of #{count}\r"
+      end
+    end
+  end
+
+  test 'should get show all news' do
+    if ENV['DB'] == 'prod'
+      count = News.published.count
+      News.published.each_with_index do |news, index|
+        get :show, id: news.id
+        assert_response :success, news.id
+        print "#{index} of #{count}\r"
+      end
+      count = News.unpublished.count
+      News.unpublished.find_each.with_index do |news, index|
+        get :show, id: news.id
         assert_response :redirect, news.id
         print "#{index} of #{count}\r"
       end

@@ -5,7 +5,7 @@ class Web::Admin::ProtocolsControllerTest < ActionController::TestCase
     @protocol = create :protocol
     admin = create :admin
     sign_in admin
-    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'scan', 'document_id']
+    @exceptions_attributes = ['id', 'created_at', 'updated_at', 'scan', 'document_id', 'number']
   end
 
   test 'should get new' do
@@ -24,11 +24,6 @@ class Web::Admin::ProtocolsControllerTest < ActionController::TestCase
         end
       end
     end
-  end
-
-  test 'should get index with search' do
-    get :index, search: @protocol.title
-    assert_response :success, @response.body
   end
 
   test 'should get index without instances' do

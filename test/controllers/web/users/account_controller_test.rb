@@ -12,6 +12,19 @@ class Web::Users::AccountControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test 'should get index for all users' do
+    if ENV['DB'] == 'prod'
+      count = User.count
+      User.find_each.with_index do |user, index|
+        sign_out
+        sign_in user
+        get :index
+        assert_response :success, user.id
+        print "#{index} of #{count}\r"
+      end
+    end
+  end
+
   test 'should patch update with user' do
     attributes = attributes_for :user
     patch :update, user: attributes, id: @member

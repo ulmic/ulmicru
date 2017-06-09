@@ -181,4 +181,8 @@ class User < ActiveRecord::Base
   def set_gender!
     update_attributes gender: GenderHelper.detect_gender(first_name)
   end
+
+  def user_type
+    'User'
+  end
 end
