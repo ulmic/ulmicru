@@ -57,7 +57,7 @@ class Delivery::Campaign < ActiveRecord::Base
 
   def fill_receivers!
     [User, Delivery::ContactEmail].each do |type|
-      (contacts.select { |c| c.user_type == type }.map(&:id) - receivers.select { |r| r.user_type == type.to_s }.map(&:user_id)).each do |user_id|
+      (contacts.select { |c| c.user_type == type.to_s }.map(&:id) - receivers.select { |r| r.user_type == type.to_s }.map(&:user_id)).each do |user_id|
         ::Delivery::Receiver.create! user_id: user_id, campaign_id: id, user_type: type
       end
     end
