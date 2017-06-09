@@ -63,6 +63,10 @@ class Delivery::Campaign < ActiveRecord::Base
     end
   end
 
+  def remove_receivers!
+    Delivery::Receiver.where(user_id: (receivers.map(&:user_id) - contacts.map(&:id))).delete_all
+  end
+
   def contacts
     @contacts ||= audiences.reduce([]) do |arr, audience|
       arr += audience.contacts
