@@ -69,13 +69,11 @@
                       = @corporative_category.name
                     - @corporative_category.articles.visible.confirmed.each do |article|
                       = link_to article.title, article_path(article)
-                - if @report_category.present?
-                  .category-column
-                    .menu-title
-                      = @report_category.name
-                    - [132, 133, 135, 134].each do |id|
-                      - article = Article.find(id)
-                      = link_to article.title, article_path(article)
+                .category-column
+                  .menu-title
+                    = t('activerecord.models.activity_line').pluralize(:ru)
+                  - @activity_lines.each do |activity_line|
+                    = link_to activity_line.title, activity_line_path(activity_line)
           %li{ style: 'margin-right: 15px' }
             - if signed_in? && current_user.state == 'confirmed'
               = link_to '#', data: { 'reveal-id' => 'feedbackModal' } do
