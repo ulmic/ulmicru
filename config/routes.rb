@@ -156,6 +156,7 @@ Rails.application.routes.draw do
     resources :events, only: :index
     resources :feedbacks, only: :create
     resources :comments, only: [ :create, :destroy, :index ]
+    resources :clicks, only: :create
     resources :users, only: [] do
       member do
         get :confirm
