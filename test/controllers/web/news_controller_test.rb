@@ -12,18 +12,20 @@ class Web::NewsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
-  test 'should get show all news with time' do
-    if ENV['DB'] == 'prod'
-      count = News.published.count
-      News.published.each_with_index do |news, index|
+  if ENV['DB'] == 'prod'
+    count = News.published.count
+    News.published.each_with_index do |news, index|
+      test "should get show all published news with time #{news.id}" do
         time = Time.now
         get :show, id: news.id
         duration = Time.now - time
         assert duration < @time_quantum, "#{duration} secs, News id #{news.id}"
         print "#{index} of #{count}\r"
       end
-      count = News.unpublished.count
-      News.unpublished.find_each.with_index do |news, index|
+    end
+    count = News.unpublished.count
+    News.unpublished.find_each.with_index do |news, index|
+      test "should get show all unpublished news with time #{news.id}" do
         time = Time.now
         get :show, id: news.id
         duration = Time.now - time
@@ -33,16 +35,18 @@ class Web::NewsControllerTest < ActionController::TestCase
     end
   end
 
-  test 'should get show all news' do
-    if ENV['DB'] == 'prod'
-      count = News.published.count
-      News.published.each_with_index do |news, index|
+  if ENV['DB'] == 'prod'
+    count = News.published.count
+    News.published.each_with_index do |news, index|
+      test "should get show all published news #{news.id}" do
         get :show, id: news.id
         assert_response :success, news.id
         print "#{index} of #{count}\r"
       end
-      count = News.unpublished.count
-      News.unpublished.find_each.with_index do |news, index|
+    end
+    count = News.unpublished.count
+    News.unpublished.find_each.with_index do |news, index|
+      test "should get show all unpublished news #{news.id}" do
         get :show, id: news.id
         assert_response :redirect, news.id
         print "#{index} of #{count}\r"

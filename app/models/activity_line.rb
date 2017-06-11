@@ -40,6 +40,7 @@ class ActivityLine < ActiveRecord::Base
   scope :has_curators, -> { where.not(activity_type: :event_line) }
   scope :ulmic, -> { where organization_type: :ulmic }
   scope :need_to_review, -> { where 'state = \'unviewed\' OR state = \'updated\'' }
+  scope :official, -> { active.where(organization_type: :ulmic, activity_type: [:central_program, :local_project]).order(activity_type: :asc) }
 
   include TagsHelper
   include PgSearch

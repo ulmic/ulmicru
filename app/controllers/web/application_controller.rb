@@ -34,10 +34,10 @@ class Web::ApplicationController < ApplicationController
     @first_category = Category.includes(:articles).find configus.categories.who_we_are
     @about_site_category = Category.includes(:articles).find configus.categories.site_mic
     @corporative_category = Category.includes(:articles).find configus.categories.corporative_projects
-    @report_category = Category.includes(:articles).find 18
     if signed_in?
       @korporative_category = Category.find configus.categories.corporative_projects
     end
+    @activity_lines = ActivityLine.official.decorate
     @feedback = FeedbackForm.new_with_model
     @rss_article_id = 19
   end
