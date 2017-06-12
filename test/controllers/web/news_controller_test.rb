@@ -12,10 +12,10 @@ class Web::NewsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
-  if ENV['DB'] == 'prod'
-    count = News.published.count
-    News.published.each_with_index do |news, index|
-      test "should get show all published news with time #{news.id}" do
+  test 'should get show all published news with time' do
+    if ENV['DB'] == 'prod'
+      count = News.published.count
+      News.published.each_with_index do |news, index|
         time = Time.now
         get :show, id: news.id
         duration = Time.now - time
@@ -23,9 +23,12 @@ class Web::NewsControllerTest < ActionController::TestCase
         print "#{index} of #{count}\r"
       end
     end
-    count = News.unpublished.count
-    News.unpublished.find_each.with_index do |news, index|
-      test "should get show all unpublished news with time #{news.id}" do
+  end
+
+  test 'should get show all unpublished news with time' do
+    if ENV['DB'] == 'prod'
+      count = News.unpublished.count
+      News.unpublished.find_each.with_index do |news, index|
         time = Time.now
         get :show, id: news.id
         duration = Time.now - time
