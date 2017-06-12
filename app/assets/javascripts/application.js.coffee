@@ -75,13 +75,18 @@ $ ->
   init_clicks_recording = ->
     $('a.record').click ->
       id = $(this).attr('id')
+      className = "#{$(this).attr('class').replace(/ /g, '.')}"
+      if id == undefined
+        selector = className
+      else
+        selector = "#{className}##{id}"
       href = $(this).attr('href')
       $.ajax {
         url: Routes.api_clicks_path()
         method: 'POST'
         data: {
           click: {
-            html_id: id
+            html_id: selector
             url: href
             page_url: window.location.href
           }
