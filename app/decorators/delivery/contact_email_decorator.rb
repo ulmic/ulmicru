@@ -8,4 +8,6 @@ class Delivery::ContactEmailDecorator < ApplicationDecorator
   def self.collections
     [ :subscribed_to_deliveries, :active ]
   end
+
+  alias name short_name
 end

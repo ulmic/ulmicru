@@ -2,7 +2,7 @@ class ProtocolDecorator < ApplicationDecorator
   delegate_all
 
   def name
-    object.title
+    object.summons
   end
 
   def title
