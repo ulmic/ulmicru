@@ -30,7 +30,8 @@ class Web::Admin::WelcomeController < Web::Admin::ApplicationController
         most_viewed_news: "#{most_viewed_news_count.title} (#{most_viewed_news_count.page_views.count})",
         most_viewed_event: "#{most_viewed_event_count.title} (#{most_viewed_event_count.page_views.count})",
         member: "#{member.decorate.short_name} (#{member_id[1].count})",
-        contact_emails_count: Delivery::ContactEmail.presented.count
+        contact_emails_count: Delivery::ContactEmail.presented.count,
+        clicks_count: Click.count
       }
     end
   end
