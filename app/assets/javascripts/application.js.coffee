@@ -72,11 +72,35 @@ $ ->
       else
         $password_input.prop('type', 'password')
 
+  init_clicks_recording = ->
+    $('a.record').click ->
+      id = $(this).attr('id')
+      className = "#{$(this).attr('class').replace(/ /g, '.')}"
+      if id == undefined
+        selector = className
+      else
+        selector = "#{className}##{id}"
+      href = $(this).attr('href')
+      $.ajax {
+        url: Routes.api_clicks_path()
+        method: 'POST'
+        data: {
+          click: {
+            html_id: selector
+            url: href
+            page_url: window.location.href
+          }
+        }
+      }
+
+  $('a').addClass 'record'
+
   init_select2()
   init_link_class()
   init_blank_adding()
   init_tabs()
   init_eye_password_button()
+  init_clicks_recording()
 
   $('a.add_fields').click ->
     setTimeout init_datetimepickers, 500
