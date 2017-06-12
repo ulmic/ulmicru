@@ -258,8 +258,6 @@ $ ->
     load_events()
     e.preventDefault()
     return
-
-  $('a').addClass 'record'
   return
 
 $(window).on 'load', ->

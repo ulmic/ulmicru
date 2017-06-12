@@ -93,6 +93,8 @@ $ ->
         }
       }
 
+  $('a').addClass 'record'
+
   init_select2()
   init_link_class()
   init_blank_adding()
