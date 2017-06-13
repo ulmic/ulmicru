@@ -192,6 +192,7 @@ Rails.application.routes.draw do
       resources :teams, only: :index
       resources :tags, only: [ :create, :destroy, :index ]
       resources :documents, only: :create
+      resources :projects, only: :index
       namespace :event do
         resources :registrations, only: :create
       end

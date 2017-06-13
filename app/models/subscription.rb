@@ -1,10 +1,11 @@
 class Subscription < ActiveRecord::Base
   belongs_to :receiver, polymorphic: true
+  belongs_to :project
 
   has_one :token, as: :record, dependent: :destroy
 
   extend Enumerize
-  enumerize :subscription_type, in: [ :deliveries ]
+  enumerize :subscription_type, in: [ :deliveries, :project ]
   enumerize :receiver_type, in: [ 'User', 'Delivery::ContactEmail' ]
 
   include StateMachine::Scopes
@@ -17,6 +18,7 @@ class Subscription < ActiveRecord::Base
   scope :news, -> { where record_type: 'News' }
   scope :articles, -> { where record_type: 'Article' }
   scope :empty, -> { active.where tag_type: :link, target_id: nil }
+  scope :project, -> (project_id) { where subscription_type: :project, project_id: project_id }
 
   validates :subscription_type, uniqueness: { scope: [:receiver_id, :receiver_type] }
 end

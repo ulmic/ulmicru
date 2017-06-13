@@ -14,11 +14,12 @@ $ ->
 
   $audience_type_input.change ->
     value = $(this).val()
-    if value == 'event_registrations' || value == 'team'
+    if value == 'event_registrations' || value == 'team' || value == 'project'
       $audience_select2.show()
       $submit_button.prop 'disabled', true
       url = Routes.api_admin_events_path() if value == 'event_registrations'
       url = Routes.api_admin_teams_path() if value == 'team'
+      url = Routes.api_admin_projects_path() if value == 'project'
       $audience_select2.select2
         ajax:
           url: url
