@@ -1,10 +1,11 @@
 class Delivery::Audience < ActiveRecord::Base
   extend Enumerize
   belongs_to :campaign, class_name: 'Delivery::Campaign'
+  belongs_to :project
 
   validates :audience_type, presence: true
 
-  enumerize :audience_type, in: [ :team, :users, :contact_emails, :event_registrations, :members ], default: :users
+  enumerize :audience_type, in: [ :team, :users, :contact_emails, :event_registrations, :members, :project ], default: :users
 
   def contacts
     @contacts ||= case audience_type
@@ -30,6 +31,8 @@ class Delivery::Audience < ActiveRecord::Base
       when 'event_registrations'
         event = Event.find audience_id
         User.presented.subscribed_to_deliveries.with_email.where id: event.registrations.map(&:user_id)
+      when 'project'
+        User.with_email.presented.where id: Subscription.project(audience_id).map(&:user_id)
       end
   end
 end

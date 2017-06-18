@@ -70,6 +70,7 @@ ru:
         team: На команду
         event_registrations: Участников мероприятия
         members: Члены организации
+        project: По проекту
     logged_action:
       action_type:
         update: Обновил

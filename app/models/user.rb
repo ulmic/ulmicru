@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :registrations, class_name: 'Event::Registration',
                            foreign_key: :user_id,
                            dependent: :destroy
-  has_many :logged_actions
+  has_many :logged_actions, dependent: :destroy
   has_many :subscriptions, as: :receiver, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :teams

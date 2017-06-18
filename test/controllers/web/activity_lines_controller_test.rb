@@ -13,10 +13,10 @@ class Web::ActivityLinesControllerTest < ActionController::TestCase
   test 'should get show all activity_lines' do
     if ENV['DB'] == 'prod'
       count = ActivityLine.count
-      ActivityLine.find_each.with_index do |activity_line, index|
+      ActivityLine.active.ulmic.not_event_line.find_each.with_index do |activity_line, index|
         print "#{index} of #{count}\r"
         get :show, id: activity_line.id
-        assert_response :success
+        assert_response :success, activity_line.title
       end
     end
   end

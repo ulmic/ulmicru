@@ -6,7 +6,11 @@ class LoggedActionDecorator < ApplicationDecorator
   end
 
   def user_short_name
-    object.user.decorate.short_name
+    if object.user.nil?
+      raise object.id.inspect
+    else
+      object.user.decorate.short_name
+    end
   end
 
   def updated_params

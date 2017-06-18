@@ -19,7 +19,7 @@ class Web::Admin::LoggedActionsControllerTest < ActionController::TestCase
 
   test 'should get index all pages and tabs' do
     if ENV['DB'] == 'prod'
-      pages = LoggedAction.count / 25
+      pages = LoggedAction.count / 100
       (pages + 2).times do |page|
         get :index, page: page
         assert_response :success
