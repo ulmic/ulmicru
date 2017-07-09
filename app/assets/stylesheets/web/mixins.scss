@@ -16,3 +16,31 @@
     display: inline-block;
     background: image-url('header-icons.png');
 }
+@mixin clearfix {
+  content: '';
+  width: 100%;
+  display: block;
+  clear: both;
+}
+@mixin inline-top {
+  display: inline-block;
+  vertical-align: top;
+}
+@mixin inline-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+@mixin lightgray-border {
+  content: '';
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: lighten($c-black, 30%);
+}
+@mixin  container {
+  max-width: $container-width;
+  width: 100%;
+  margin: 0 auto;
+}

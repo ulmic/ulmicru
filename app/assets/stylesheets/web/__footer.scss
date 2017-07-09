@@ -1,0 +1,294 @@
+// Убрано в стили футера до согласования общих изменений на сайте. После заливки футера и публикации новости о том, что сайт будет немного колбасить - перенести в общие стили
+
+.footer {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $f-mic;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.1875rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  h5 {
+    font-size: 1.0625rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.footer {
+  background: $c-black;
+  flex: 0 0 auto;
+  color: $c-white;
+  font-family: $f-base;
+  font-size: 0.9rem;
+  border-top: 3px solid $c-orange-light;
+  width: 100%;
+  @include bp(max-width, $bp-small) {
+    font-size: 1.2rem;
+  }
+
+  &-container {
+    text-align: center;
+    @include container;
+    > * {
+      text-align: left;
+    }
+  }
+  &-menu {
+    padding: $padding-trim;
+    color: $c-white;
+    width: calc(70% - 33px);
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    @include bp(max-width, $bp-large) {
+      width: calc(100% - 30px);
+    }
+    &:after {
+      @include bp(max-width, $bp-large) {
+        @include lightgray-border;
+        bottom: 0;
+      }
+    }
+    &__container {
+      width: calc(33% - 31px);
+      padding: 0 $padding-trim;
+      @include inline-top();
+      @include bp(max-width, $bp-small) {
+        width: calc(100% - 32px);
+        margin-bottom: $padding-trim;
+      }
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      @include bp(max-width, $bp-small) {
+
+      }
+    }
+    li {
+      font-size: 0.9rem;
+      @include  bp(max-width, $bp-small) {
+        font-size: 1.2rem;
+      }
+    }
+    a {
+      color: $c-white;
+      font-weight: 300;
+      position: relative;
+      display: inline-block;
+      border-left: 3px solid $c-white;
+      padding-left: 10px;
+      line-height: 0.8rem;
+      margin-bottom: 0.2rem;
+      &:hover {
+        text-decoration: none;
+        border-color: $c-orange;
+      }
+      @include bp(max-width, $bp-small) {
+        line-height: 1.1em;
+        margin-bottom: 0.275rem;
+      }
+    }
+    h6 {
+      @include bp(max-width, $bp-small) {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  &-newsletter {
+    padding: $padding-trim;
+    width: calc(30% - 32px);
+    @include inline-top;
+    @include bp(max-width, $bp-large) {
+      width: calc(100% - 30px);
+      max-width: 599px;
+      margin: 0 auto;
+    }
+    &__title {
+      margin: 0 0 $padding-trim 0;
+      color: $c-white;
+      font-weight: 300;
+      @include bp(max-width, $bp-large) {
+        padding-left: $padding-trim;
+        width: calc(50% - 17px);
+        @include inline-middle;
+        margin: 0;
+      }
+      @include bp(max-width, $bp-small) {
+        margin-bottom: $padding-trim;
+        padding: 0;
+        width: 100%;
+      }
+    }
+    &__form {
+      @include bp(max-width, $bp-large) {
+        padding-right: $padding-trim;
+        width: calc(50% - 17px);
+        @include inline-middle;
+      }
+      @include bp(max-width, $bp-small) {
+        padding: 0;
+        width: 100%;
+      }
+      input[type='email'] {
+        color: lighten($c-black, 10%);
+        border: 0;
+        font-size: 0.9rem;
+        width: calc(100% - 146px);
+        margin-right: 5px;
+        height: 30px;
+        padding: 0 8px;
+        @include inline-top;
+        &:focus {
+          box-shadow: none;
+        }
+        @include bp(max-width, $bp-small) {
+          font-size: 1.2rem;
+          height: 40px;
+          width: calc(100% - 156px);
+        }
+        @include bp(max-width, $bp-xsmall) {
+          width: calc(100% - 16px);
+          margin: 0 0 $padding-trim;
+        }
+      }
+      .button {
+        color: $c-white;
+        background: $c-orange-light;
+        border: none;
+        margin: 0;
+        width: 120px;
+        padding: 0 6px;
+        line-height: 30px;
+        @include inline-top;
+        cursor: pointer;
+        @include bp(max-width, $bp-small) {
+          font-size: 1.2rem;
+          line-height: 40px;
+          width: 130px;
+        }
+        @include bp(max-width, $bp-xsmall) {
+          width: 100%;
+        }
+        &:focus, &:active {
+          outline: none;
+        }
+        &:hover {
+          background: darken($c-orange-light, 10%);
+        }
+      }
+    }
+  }
+  &-bottom {
+    padding: $padding-trim 0;
+    position: relative;
+    &:before {
+      @include lightgray-border;
+      top: 0;
+    }
+    &:after {
+      @include clearfix;
+    }
+    &__copyright {
+      line-height: 33px;
+      font-family: $f-mic;
+      float: left;
+      padding: 0 $padding-trim;
+      @include bp(max-width, $bp-small) {
+        float: none;
+        text-align: center;
+      }
+    }
+    &__social {
+      text-align: right;
+      float: right;
+      padding: 0 $padding-trim;
+      @include bp(max-width, $bp-small) {
+        float: none;
+        margin-bottom: $padding-trim;
+        text-align: center;
+      }
+      a {
+        display: inline-block;
+      }
+      .fa {
+        font-size: 1.3rem;
+        width: 1.9rem;
+        line-height: 1.9rem;
+        text-align: center;
+        margin: 0 0.1em;
+        color: $c-black;
+        background: $c-white;
+        border: 1px solid transparent;
+        &:hover {
+          color: $c-white;
+        }
+        &-vk:hover {
+          background: $social-brand-tumblr;
+        }
+        &-instagram:hover {
+          background: $social-brand-instagram;
+        }
+        &-twitter:hover {
+          background: $social-brand-twitter;
+        }
+        &-youtube:hover {
+          background: $social-brand-youtube;
+        }
+        &-facebook-official:hover {
+          background: $social-brand-facebook;
+        }
+        &-google-plus-official:hover {
+          background: $social-brand-google-plus;
+        }
+        &-rss:hover {
+          background: $c-orange-light;
+        }
+      }
+    }
+  }
+}

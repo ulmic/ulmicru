@@ -88,3 +88,17 @@
     font-weight: bold;
     font-style: normal;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=cyrillic');
+
+@font-face {
+    font-family: FontAwesome;
+    src: font-url('fontawesome/fontawesome-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import '../../fonts/fontawesome/fontawesome.css';
+
+$f-mic: mic, 'Open Sans', Arial, sans-serif;
+$f-base: 'Roboto', sans-serif;

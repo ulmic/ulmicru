@@ -18,6 +18,21 @@
 @import '__variables';
 @import '__fonts';
 @import "icons";
+@import '__footer';
+
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
 
 h1,h2,h3,h4,h5,h6 {
   font-family: 'mic-bold';
@@ -27,7 +42,7 @@ h3,h4,h5 {
 }
 body {
   font-family: 'mic';
-  color: $c-gray;
+  color: #333333;
 }
 body#noresponsive {
   min-width: 1100px;
@@ -54,81 +69,6 @@ body#noresponsive {
   clear: both;
   height: 0;
   content: '';
-}
-
-
-.footer {
-  border-top: 3px solid $c-orange-light;
-  height: rem-calc(230);
-  width: 100%;
-  float: left;
-  background: $c-black;
-  color: $c-white;
-  font-family: mic;
-  a {
-    color: $c-white;
-    &:hover {
-      color: $c-orange;
-    }
-  }
-  .menu, .social {
-    margin-top: rem-calc(40);
-  }
-  .menu {
-    width: 50%;
-    margin-left: 4%;
-    &-item {
-      display: inline-block;
-      margin-left: 5%;
-    }
-  }
-  .social {
-    margin-right: 8%;
-    .icons {
-      & > a {
-        display: inline-block;
-        margin: 0 3% 0 0;
-        vertical-align: middle;
-        padding: 0;
-      }
-    }
-    .icon {
-      width: 27px;
-      height: 28px;
-      display: inline-block;
-      background: image-url('footer-icons.png');
-      background-size: 205px;
-    }
-    .icon-instagram {
-      background: image-url('footer-icons2.png');
-      background-position: 29px;
-      width: 29px;
-      height: 27px;
-    }
-    .icon-mail {
-      background-position: 0 27px;
-    }
-    .icon-phone {
-      background-position: 27px 27px;
-    }
-    .contacts {
-      margin-top: rem-calc(20);
-      .mail, .phone {
-        display: inline-block;
-        min-width: 175px;
-        & > span {
-          white-space: nowrap;
-        }
-      }
-      .mail {
-        padding-right: 13%;
-      }
-    }
-    .icon {
-      vertical-align: middle;
-    }
-  }
-
 }
 
 ul {
