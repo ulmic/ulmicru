@@ -14,40 +14,12 @@
 //= require select2
 //= require jasny-bootstrap
 
-@import "foundation/functions";
+@import '__fonts';
 @import "icons";
 
 
 $orange: #f45c10;
 
-@font-face {
-  font-family: 'mic-bold';
-  src: font-url('PFSquareSansPro-Medium.ttf');
-}
-@font-face {
-  font-family: 'mic-square-thin';
-  src: font-url('PFSquareSansPro-Thin.ttf');
-}
-@font-face {
-  font-family: 'mic-square-reg';
-  src: font-url('PFSquareSansPro-Regular.ttf');
-}
-@font-face {
-  font-family: 'mic-square-light-italic';
-  src: font-url('PFSquareSansPro-LightItalic.ttf');
-}
-@font-face {
-  font-family: 'mic';
-  src: font-url('PFBeauSansPro-Light.ttf');
-}
-@font-face {
-  font-family: 'mic-beau-sebold';
-  src: font-url('PFBeauSansPro-SeBold.ttf');
-}
-@font-face {
-  font-family: 'mic-beau-reg';
-  src: font-url('PFBeauSansPro-Reg.ttf');
-}
 h1,h2,h3,h4,h5,h6 {
   font-family: 'mic-bold';
 }
