@@ -1,0 +1,9 @@
+%ul.small-block-grid-4#event-list
+  - @events.each do |event|
+    %li.mic-event
+      = render_element "mic_event", img_src: event.main_photo.event_main_page_version, |
+                                    link: event_path(event), |
+                                    category: event.activity_line.title, |
+                                    date: event.full_date_duration, |
+                                    title: event.title, |
+                                    text: strip_tags(event.lead).html_safe

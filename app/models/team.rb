@@ -61,6 +61,10 @@ class Team < ActiveRecord::Base
     model_name == 'Team::Committee'
   end
 
+  def is_another_team?
+    model_name == 'Team::AnotherTeam'
+  end
+
   def is_presidium?
     title == 'Президиум'
   end
