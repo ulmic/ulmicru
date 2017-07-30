@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :news, only: [ :show ]
     resources :users, only: [ :new, :create ]
     resources :members, only: [ :new, :create ]
-    resources :events, only: [ :show ]
+    resources :events, only: [ :show, :index ]
     resources :activity_lines, only: [:show]
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
