@@ -49,6 +49,7 @@ ru:
         news: Новости
         all_news: ВСЕ НОВОСТИ
         events: Мероприятия
+        view_all_events: Посмотреть все остальные
     users:
       account:
         index:

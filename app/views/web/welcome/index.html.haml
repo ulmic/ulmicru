@@ -71,8 +71,10 @@
         - not_ulmic_events = @not_ulmic_events&.map do |title, events|
           - { title: title, html: render('web/welcome/events', events: events, with_activity_line: false) }
         = react_component('EventsTabs', eventTabs: not_ulmic_events.present? ? [mic_events] + not_ulmic_events : [mic_events])
-    .more-events{ style: 'cursor: pointer' }
-      %i.fa.fa-caret-down.fa-5x
+    .more-events.link{ data: { href: events_path } }
+      %h2
+        = fa_icon :calendar
+        = t('.view_all_events')
   .humans
     %ul.small-block-grid-7
       - @members.each do |member|
