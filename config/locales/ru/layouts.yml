@@ -19,6 +19,17 @@ ru:
               confessions_of_the_year:
                 debut_of_the_year: Дебют года
                 number_one_of_the_year: Номер один
+        footer:
+          about_us: О нас
+          plan: План работы
+          let_us_begin: С чего начать?
+          join_us: Вступить в МИЦ
+          to_partners: Партнёрам
+          subscribe_our_delivery: Подпишитесь на нашу рассылку и получайте новости в числе первых!
+          your_email: Ваш email
+          subscribe: Подписаться
+          we_sent_you_confirm_email: Мы отправили на ваш адрес электронной почты письмо с подтверждением
+          there_an_error: Допущена ошибка. Email уже присутствует в базе или введён некорректно.
       elements:
         mic_document:
           attachment: Приложение

@@ -5,6 +5,7 @@ $button_hover_color: rgba(226, 112, 0, 0.71);
 $orange: #f45c10;
 
 .welcome {
+  flex: 1 0 auto;
   h3,h4,h5 {
     text-transform: uppercase;
     color: #f45c10;

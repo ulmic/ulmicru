@@ -1,8 +1,11 @@
+require 'copyright_mafa'
+
 module ApplicationHelper
   include Concerns::AuthManagment
   include ActionView::Helpers
   include DatesHelper
   include Concerns::ItProjectsConcern
+  include CopyrightMafa
 
   def title(page_title = default_title, area = :default)
     if area != :default
