@@ -67,9 +67,9 @@
       %h4.rotate
         = t('.events')
       .container-big
-        - mic_events = { title: 'МИЦ', html: render('web/welcome/events', events: @mic_events, with_activity_line: true) }
+        - mic_events = { title: 'МИЦ', html: render('web/events/shared/list', events: @mic_events) }
         - not_ulmic_events = @not_ulmic_events&.map do |title, events|
-          - { title: title, html: render('web/welcome/events', events: events, with_activity_line: false) }
+          - { title: title, html: render('web/events/shared/list', events: events) }
         = react_component('EventsTabs', eventTabs: not_ulmic_events.present? ? [mic_events] + not_ulmic_events : [mic_events])
     .more-events.link{ data: { href: events_path } }
       %h2

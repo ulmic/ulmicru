@@ -49,7 +49,7 @@ ru:
         news: Новости
         all_news: ВСЕ НОВОСТИ
         events: Мероприятия
-        view_all_events: Посмотреть все остальные
+        view_all_events: Посмотреть все мероприятия
     users:
       account:
         index:
@@ -122,6 +122,8 @@ ru:
           team:
             there_is_no_any_member_with_current_position: Ни один из членов команды не заполнил данные о должности...
     events:
+      index:
+        title: 'Мероприятия'
       show:
         where: 'Где'
         when: 'Когда'
