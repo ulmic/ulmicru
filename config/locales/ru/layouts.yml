@@ -29,6 +29,7 @@ ru:
           your_email: Ваш email
           subscribe: Подписаться
           we_sent_you_confirm_email: Мы отправили на ваш адрес электронной почты письмо с подтверждением
+          there_an_error: Допущена ошибка. Email уже присутствует в базе или введён некорректно.
       elements:
         mic_document:
           attachment: Приложение

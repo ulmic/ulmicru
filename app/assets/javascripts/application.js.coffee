@@ -124,7 +124,8 @@ $ ->
         $('.footer .footer-newsletter form').slideUp()
         $('#success_subscribed').slideDown()
       error: ->
-        alert 'error'
+        alert I18n.t('layouts.web.shared.footer.there_an_error')
+        $input.prop 'disabled', ''
     }
   return
   
