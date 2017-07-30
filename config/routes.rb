@@ -218,6 +218,9 @@ Rails.application.routes.draw do
         end
       end
     end
+    namespace :delivery do
+      resources :contact_emails, only: :create
+    end
   end
   namespace :rss do
     resources :news, only: :index

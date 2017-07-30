@@ -35,12 +35,15 @@
             = link_to @requisites.title, article_path(@requisites)
           %li
             = link_to @contacts.title, article_path(@contacts)
-    %section.footer-newsletter
-      %p.footer-newsletter__title
-        = t('.subscribe_our_delivery')
-      %form
-        %input{type: 'email', placeholder: 'Ваш email'}
-        %button.button{type: 'submit'} Подписаться
+    - unless signed_in?
+      %section.footer-newsletter
+        %p.footer-newsletter__title
+          = t('.subscribe_our_delivery')
+        = simple_form_for @contact_email, url: { controller: 'api/delivery/contact_emails', action: :create } do |f|
+          = f.input :email, placeholder: t('.your_email'), as: :email, label: false
+          = f.button :submit, t('.subscribe')
+        %p#success_subscribed{ style: 'display: none' }
+          = t('.we_sent_you_confirm_email')
     %section.footer-bottom
       .footer-bottom__social
         = link_to fa_icon('vk 2x'), configus.social_networks_pages.vkontakte
@@ -50,4 +53,6 @@
         = link_to fa_icon('facebook 2x'), configus.social_networks_pages.facebook
         = link_to fa_icon('google 2x'), configus.social_networks_pages.google_plus
         = link_to fa_icon('rss 2x'), article_path(@rss_article_id)
-      .footer-bottom__copyright 2007-2017, © УОМОО МИЦ
+      .footer-bottom__copyright
+        = copyright(2007)
+        © УОМОО МИЦ

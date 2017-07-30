@@ -26,6 +26,9 @@ ru:
           join_us: Вступить в МИЦ
           to_partners: Партнёрам
           subscribe_our_delivery: Подпишитесь на нашу рассылку и получайте новости в числе первых!
+          your_email: Ваш email
+          subscribe: Подписаться
+          we_sent_you_confirm_email: Мы отправили на ваш адрес электронной почты письмо с подтверждением
       elements:
         mic_document:
           attachment: Приложение

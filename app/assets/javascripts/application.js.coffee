@@ -105,4 +105,26 @@ $ ->
   $('a.add_fields').click ->
     setTimeout init_datetimepickers, 500
     setTimeout init_select2, 500
+
+  # FIXME WHY!! ERROR!!!
+  $('.footer .footer-newsletter form').on 'submit', (e) ->
+    e.preventDefault()
+    $input = $(this).children('input')
+    $input.prop 'disabled', 'disabled'
+    $.ajax {
+      url: Routes.api_delivery_contact_emails_path()
+      method: 'POST'
+      data: {
+        delivery_contact_email: {
+          email: $('.footer .footer-newsletter form input[type="email"]').val()
+        }
+      }
+      success: ->
+        $input.prop 'disabled', ''
+        $('.footer .footer-newsletter form').slideUp()
+        $('#success_subscribed').slideDown()
+      error: ->
+        alert 'error'
+    }
   return
+  

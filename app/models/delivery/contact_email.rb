@@ -6,8 +6,8 @@ class Delivery::ContactEmail < ActiveRecord::Base
 		    email: true,
 		    uniqueness: true
   validate :email_application_uniqueness
-  validates :first_name, human_name: true
-  validates :last_name, human_name: true
+  validates :first_name, human_name: true, allow_blank: true
+  validates :last_name, human_name: true, allow_blank: true
 
   state_machine :state, initial: :active do
     state :active

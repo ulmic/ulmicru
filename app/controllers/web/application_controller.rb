@@ -44,6 +44,7 @@ class Web::ApplicationController < ApplicationController
     @open_departament = Article.find 76
     @requisites = Article.find 15
     @contacts = Article.find 16
+    @contact_email = Delivery::ContactEmailForm.new_with_model
   end
 
   def load_members_menu
