@@ -208,6 +208,7 @@ ru:
           administration: Административные органы
           primary: Первичная организация
           committee: Орг.комитет
+          another_team: Команда партнёр
       event:
         registration:
           role: Роль
