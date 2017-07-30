@@ -221,6 +221,9 @@ ru:
           this_is_mr_and_mrs_mic_2015: 'А это Алим Бахтияров и Юлия Крашенинникова. Победители корпоративного конкурса "Мистер и Мисс МИЦ 2015"'
         confession_submissions_petitions_ends:
           title: "Приём ходатайств на премию «Признание» %{current_confession_year} года закончен"
+        email_confirmed:
+          your_email_confirmed: Ваш email подтверждён. Теперь вы будете получать рассылку сайта МИЦ
+          title: Email подтверждён
     comments:
       form:
         add_comment: Добавить комментарий

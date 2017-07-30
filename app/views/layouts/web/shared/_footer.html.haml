@@ -1,38 +1,58 @@
-.footer.row-fluid
-  .left.menu
-    -#.menu-item
-      %a{ href: "#" }
-        Миц - это ...
-    -#.menu-item
-      %a{ href: "#" }
-        Партнёры
-    .menu-item
-      = link_to t('helpers.contacts'), article_path(configus.articles.contacts)
-    .menu-item
-      = link_to t(configus.it_projects.ul_lider.full_name), configus.it_projects.ul_lider.url, class: 'blank'
-    .menu-item
-      = link_to t(configus.it_projects.international_volunteer_school.full_name), configus.it_projects.international_volunteer_school.url, class: 'blank'
-    .menu-item
-      = link_to t(configus.it_projects.it_way.full_name), configus.it_projects.it_way.url, class: 'blank'
-    .menu-item
-      = link_to t(configus.it_projects.karamzin.short_name), configus.it_projects.karamzin.url, class: 'blank'
-
-
-  .right.social
-    .icons
-      = link_to fa_icon('vk 2x'), configus.social_networks_pages.vkontakte
-      = link_to fa_icon('instagram 2x'), configus.social_networks_pages.instagram
-      = link_to fa_icon('twitter 2x'), configus.social_networks_pages.twitter
-      = link_to fa_icon('youtube 2x'), configus.social_networks_pages.youtube
-      = link_to fa_icon('facebook 2x'), configus.social_networks_pages.facebook
-      = link_to fa_icon('google 2x'), configus.social_networks_pages.google_plus
-      = link_to fa_icon('rss 2x'), article_path(@rss_article_id)
-    .contacts.row
-      .small-6.columns.email
-        %a.mail{ href: "mailto:activ@ulmic.ru" }
-          %span.icon.icon-mail
-          %span activ@ulmic.ru
-      .small-6.columns
-        %a.phone{ href: "tel:+78422714410" }
-          %span.icon.icon-phone
-          %span +7&nbsp;(8422)&nbsp;71-44-10
+.footer
+  .footer-container
+    %section.footer-menu
+      .footer-menu__container
+        %h6
+          = t('.about_us')
+        %ul
+          %li
+            = link_to @who_we_are.title, article_path(@who_we_are)
+          -#%li
+            = link_to t('.plan'), article_path(@who_we_are)
+          -#%li
+            %a{href='#', title='Отделения'} Отделения
+          -#%li
+            %a{href='#', title='Корпоратив'} Корпоратив
+          -#%li
+            %a{href='#', title='Медиа'} Медиа
+      .footer-menu__container
+        %h6
+          = t('.let_us_begin')
+        %ul
+          %li
+            = link_to t('.join_us'), new_join_path
+          %li
+            = link_to @open_departament.title, article_path(@open_departament)
+          -#%li
+            %a {href='#', title='Открыть первичку'} Открыть первичку
+      .footer-menu__container
+        %h6
+          = t('.to_partners')
+        %ul
+          -#%li
+            %a {href='#', title='Сотрудничать с МИЦ'} Сотрудничать с МИЦ
+          %li
+            = link_to @requisites.title, article_path(@requisites)
+          %li
+            = link_to @contacts.title, article_path(@contacts)
+    - unless signed_in?
+      %section.footer-newsletter
+        %p.footer-newsletter__title
+          = t('.subscribe_our_delivery')
+        = simple_form_for @contact_email, url: { controller: 'api/delivery/contact_emails', action: :create } do |f|
+          = f.input :email, placeholder: t('.your_email'), as: :email, label: false
+          = f.button :submit, t('.subscribe')
+        %p#success_subscribed{ style: 'display: none' }
+          = t('.we_sent_you_confirm_email')
+    %section.footer-bottom
+      .footer-bottom__social
+        = link_to fa_icon('vk 2x'), configus.social_networks_pages.vkontakte
+        = link_to fa_icon('instagram 2x'), configus.social_networks_pages.instagram
+        = link_to fa_icon('twitter 2x'), configus.social_networks_pages.twitter
+        = link_to fa_icon('youtube 2x'), configus.social_networks_pages.youtube
+        = link_to fa_icon('facebook 2x'), configus.social_networks_pages.facebook
+        = link_to fa_icon('google-plus 2x'), configus.social_networks_pages.google_plus
+        = link_to fa_icon('rss 2x'), article_path(@rss_article_id)
+      .footer-bottom__copyright
+        = copyright(2007)
+        © УОМОО МИЦ

@@ -64,3 +64,4 @@ cm/roles
 /app/assets/stylesheets/react_bundle.css
 *.rdb
 npm-debug.log
+.idea
