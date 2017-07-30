@@ -40,6 +40,7 @@ class Web::ApplicationController < ApplicationController
     @activity_lines = ActivityLine.official.decorate
     @feedback = FeedbackForm.new_with_model
     @rss_article_id = 19
+    @who_are_we = Article.find 11
   end
 
   def load_members_menu

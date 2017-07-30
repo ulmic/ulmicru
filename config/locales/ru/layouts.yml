@@ -19,6 +19,8 @@ ru:
               confessions_of_the_year:
                 debut_of_the_year: Дебют года
                 number_one_of_the_year: Номер один
+        footer:
+          plan: План работы
       elements:
         mic_document:
           attachment: Приложение

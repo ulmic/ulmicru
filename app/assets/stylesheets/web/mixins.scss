@@ -39,7 +39,7 @@
   transform: translateX(-50%);
   background: lighten($c-black, 30%);
 }
-@mixin  container {
+@mixin container {
   max-width: $container-width;
   width: 100%;
   margin: 0 auto;

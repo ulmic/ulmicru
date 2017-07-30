@@ -5,10 +5,10 @@
         %h6 О нас
         %ul
           %li
-            %a{href='#', title='Кто мы такие?'} Кто мы такие?
-          %li
-            %a{href='#', title='План работы'} План работы
-          %li
+            = link_to @who_we_are.title, article_path(@who_we_are)
+          -#%li
+            = link_to t('.plan'), article_path(@who_we_are)
+          -#%li
             %a{href='#', title='Отделения'} Отделения
           %li
             %a{href='#', title='Корпоратив'} Корпоратив
