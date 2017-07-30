@@ -21,6 +21,13 @@ Rails.application.routes.draw do
     resources :articles, only: [ :index, :show ]
     resources :tags, only: [ :index, :show ]
     resources :projects, only: :show
+    namespace :delivery do
+      resources :contact_emails, only: [] do
+        collection do
+          patch :update
+        end
+      end
+    end
     resources :remind_password, only: [ :new, :create ] do
       collection do
         get :edit

@@ -10,11 +10,16 @@ class Delivery::ContactEmail < ActiveRecord::Base
   validates :last_name, human_name: true, allow_blank: true
 
   state_machine :state, initial: :active do
+    state :not_active
     state :active
     state :removed
 
     event :restore do
       transition all => :active
+    end
+
+    event :confirm do
+      transition not_active: :active
     end
 
     event :remove do
