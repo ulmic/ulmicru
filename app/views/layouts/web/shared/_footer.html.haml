@@ -2,7 +2,8 @@
   .footer-container
     %section.footer-menu
       .footer-menu__container
-        %h6 О нас
+        %h6
+          = t('.about_us')
         %ul
           %li
             = link_to @who_we_are.title, article_path(@who_we_are)
@@ -38,8 +39,8 @@
       %p.footer-newsletter__title
         = t('.subscribe_our_delivery')
       %form
-        %input{type='email', placeholder='Ваш email'}
-        %button.button{type='submit'} Подписаться
+        %input{type: 'email', placeholder: 'Ваш email'}
+        %button.button{type: 'submit'} Подписаться
     %section.footer-bottom
       .footer-bottom__social
         = link_to fa_icon('vk 2x'), configus.social_networks_pages.vkontakte

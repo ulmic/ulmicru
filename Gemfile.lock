@@ -146,6 +146,7 @@ GEM
     concurrent-ruby (1.0.0)
     configus (0.0.5)
     connection_pool (2.2.0)
+    copyright_mafa (0.1.0)
     coveralls (0.8.20)
       json (>= 1.8, < 3)
       simplecov (~> 0.14.1)
@@ -481,6 +482,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   colorize (= 0.6.0)
   configus
+  copyright_mafa
   coveralls (>= 0.8.20)
   draper
   enumerize
