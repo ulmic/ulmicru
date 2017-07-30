@@ -42,7 +42,7 @@ $ ->
       $team_input.slideUp()
 
   show_or_hide_project_input = ($element) ->
-    if $element.val() == 'Team::Committee'
+    if $element.val() in [ 'Team::Committee', 'Team::AnotherTeam' ]
       $project_input.slideDown()
     else if $element.val() != undefined
       $project_input.slideUp()

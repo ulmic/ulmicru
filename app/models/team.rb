@@ -61,6 +61,14 @@ class Team < ActiveRecord::Base
     model_name == 'Team::Committee'
   end
 
+  def is_ulmic_team?
+    model_name.in? [ 'Team::Departament', 'Team::Primary', 'Team::Committee', 'Team::Administration', 'Team::Subdivision' ]
+  end
+
+  def is_another_team?
+    model_name == 'Team::AnotherTeam'
+  end
+
   def is_presidium?
     title == 'Президиум'
   end
@@ -83,6 +91,8 @@ class Team < ActiveRecord::Base
       else
         'Исправь это!!'
       end
+    elsif is_another_team?
+      project.title
     else
       type_case ? send(type_case, title) : title
     end
