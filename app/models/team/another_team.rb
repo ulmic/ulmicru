@@ -1,3 +1,3 @@
 class Team::AnotherTeam < Team
-  validates :title, presence: true
+  belongs_to :project
 end

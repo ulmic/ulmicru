@@ -91,6 +91,8 @@ class Team < ActiveRecord::Base
       else
         'Исправь это!!'
       end
+    elsif is_another_team?
+      project.title
     else
       type_case ? send(type_case, title) : title
     end

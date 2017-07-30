@@ -9,7 +9,7 @@ class Web::WelcomeController < Web::ApplicationController
     end.compact.first 8
     @not_mic_events = Team::AnotherTeam.active.reduce({}) do |hash, team|
       if team.events.confirmed.any?
-        hash.merge! team.title => team.events.confirmed.first(8)
+        hash.merge! team.project.title => team.events.confirmed.first(8)
       end
     end
     @banner = Banner.with_horizontal.active.actual.last

@@ -66,7 +66,7 @@ class Web::Admin::TeamsController < Web::Admin::ApplicationController
   private
 
   def choose_projects
-    @projects = ActivityLines::Lider::YaLider.active.decorate
+    @projects = ActivityLines::Lider::YaLider.active.decorate + Project.active
   end
 
   def choose_departaments
