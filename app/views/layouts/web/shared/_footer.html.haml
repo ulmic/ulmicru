@@ -35,7 +35,7 @@
             = link_to @requisites.title, article_path(@requisites)
           %li
             = link_to @contacts.title, article_path(@contacts)
-    - unless signed_in?
+    -# unless signed_in?
       %section.footer-newsletter
         %p.footer-newsletter__title
           = t('.subscribe_our_delivery')
