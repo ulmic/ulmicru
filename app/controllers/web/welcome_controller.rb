@@ -7,9 +7,9 @@ class Web::WelcomeController < Web::ApplicationController
     @mic_events = events.map do |event|
       event if event.organizer_type != 'Team' || event.organizer.is_ulmic_team?
     end.compact.first 8
-    @not_mic_events = Team::AnotherTeam.active.reduce({}) do |hash, team|
+    @not_ulmic_events = Team::AnotherTeam.active.reduce({}) do |hash, team|
       if team.events.confirmed.any?
-        hash.merge! team.project.title => team.events.confirmed.first(8)
+        hash.merge! team.project.title => team.events.confirmed.first(8).map(&:decorate)
       end
     end
     @banner = Banner.with_horizontal.active.actual.last
