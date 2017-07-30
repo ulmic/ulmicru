@@ -6,26 +6,30 @@ class EventsTabs extends React.Component {
     super(props)
   }
   render() {
+    let tabList = []
+    this.props.eventTabs.forEach((tab) => {
+      tabList.push(
+        <Tab className="tab-title">
+          <a>
+            {tab.title}
+          </a>
+        </Tab>
+      )
+    }) 
+    let tabPanels = []
+    this.props.eventTabs.forEach((tab) => {
+      tabPanels.push(
+        <TabPanel>
+          <div dangerouslySetInnerHTML={{ __html: tab.html }} />
+        </TabPanel>
+      )
+    })
     return(
       <Tabs selectedTabClassName="active">
         <TabList className="tabs" data-tab="data-tab">
-          <Tab className="tab-title">
-            <a href="#">
-              First
-            </a>
-          </Tab>
-          <Tab className="tab-title">
-            <a href="#">
-              Second
-            </a>
-          </Tab>
+          {tabList}
         </TabList>
-        <TabPanel>
-          <div dangerouslySetInnerHTML={{ __html: this.props.eventTab  }} />
-        </TabPanel>
-        <TabPanel>
-          GBLH
-        </TabPanel>
+        {tabPanels}
       </Tabs>
     )
   }

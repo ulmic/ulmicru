@@ -67,8 +67,10 @@
       %h4.rotate
         = t('.events')
       .container-big
-        - eventTab = render('web/welcome/event')
-        = react_component('EventsTabs', eventTab: eventTab)
+        - mic_events = { title: 'МИЦ', html: render('web/welcome/events', events: @mic_events) }
+        - not_ulmic_events = @not_ulmic_events&.map do |title, events|
+          - { title: title, html: render('web/welcome/events', events: events) }
+        = react_component('EventsTabs', eventTabs: not_ulmic_events.present? ? [mic_events] + not_ulmic_events : [mic_events])
     .more-events{ style: 'cursor: pointer' }
       %i.fa.fa-caret-down.fa-5x
   .humans

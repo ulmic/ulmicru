@@ -61,6 +61,10 @@ class Team < ActiveRecord::Base
     model_name == 'Team::Committee'
   end
 
+  def is_ulmic_team?
+    model_name.in? [ 'Team::Departament', 'Team::Primary', 'Team::Committee', 'Team::Administration', 'Team::Subdivision' ]
+  end
+
   def is_another_team?
     model_name == 'Team::AnotherTeam'
   end
