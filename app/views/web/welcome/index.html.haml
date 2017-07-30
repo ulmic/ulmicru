@@ -67,17 +67,14 @@
       %h4.rotate
         = t('.events')
       .container-big
-        %ul.small-block-grid-4#event-list
-          - @events.each do |event|
-            %li.mic-event
-              = render_element "mic_event", img_src: event.main_photo.event_main_page_version, |
-                                            link: event_path(event), |
-                                            category: event.activity_line.title, |
-                                            date: event.full_date_duration, |
-                                            title: event.title, |
-                                            text: strip_tags(event.lead).html_safe
-    .more-events{ style: 'cursor: pointer' }
-      %i.fa.fa-caret-down.fa-5x
+        - mic_events = { title: 'МИЦ', html: render('web/events/shared/list', events: @mic_events) }
+        - not_ulmic_events = @not_ulmic_events&.map do |title, events|
+          - { title: title, html: render('web/events/shared/list', events: events) }
+        = react_component('EventsTabs', eventTabs: not_ulmic_events.present? ? [mic_events] + not_ulmic_events : [mic_events])
+    .more-events.link{ data: { href: events_path } }
+      %h2
+        = fa_icon :calendar
+        = t('.view_all_events')
   .humans
     %ul.small-block-grid-7
       - @members.each do |member|

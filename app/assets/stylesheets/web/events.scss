@@ -5,6 +5,8 @@
 $left-header-margin: 10px;
 $event-lead-margin: 2rem;
 $slopy-height: 140px;
+$button_hover_color: rgba(226, 112, 0, 0.71);
+
 .event-container {
   padding-top: 24px;
   padding-bottom: $slopy-height;
@@ -200,5 +202,17 @@ $slopy-height: 140px;
     width: 35%;
     margin-left: 65%;
     padding-top: 65%;
+  }
+}
+.more-events {
+  height: 76px;
+  text-align: center;
+  background-color: #ececec;
+  &:hover {
+    opacity: 0.5;
+    background-color: $button_hover_color;
+    i, h2 {
+      color: white;
+    }
   }
 }

@@ -1,6 +1,6 @@
 class Web::EventsController < Web::ApplicationController
   def index
-    @events = Event.all
+    @events = ::EventDecorator.decorate_collection ::Event.includes(:activity_line, :organizer).confirmed.near_future.first 24
   end
 
   def show

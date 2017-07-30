@@ -2,7 +2,7 @@ module Web::Admin::TeamsHelper
   def team_types
     team_types = t('activerecord.attributes.team.types')
     team_types.reduce({}) do |types, value|
-      types.merge! value[1] => "Team::#{value[0].to_s.capitalize}"
+      types.merge! value[1] => "Team::#{value[0].to_s.camelize}"
     end
   end
 

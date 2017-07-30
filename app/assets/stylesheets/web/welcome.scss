@@ -140,19 +140,13 @@ $orange: #f45c10;
       height: 76px;
       text-align: center;
       background-color: #ececec;
+      padding-top: 11px;
       &:hover {
         opacity: 0.5;
         background-color: $button_hover_color;
-        i {
+        i, h2 {
           color: white;
         }
-      }
-      span.spin {
-        position: absolute;
-        width: 32px;
-        height: 32px;
-        background-size: 100% 100%;
-        background-image: image-url('spinner.gif');
       }
     }
   }
