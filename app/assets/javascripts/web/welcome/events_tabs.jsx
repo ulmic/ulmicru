@@ -7,12 +7,24 @@ class EventsTabs extends React.Component {
   }
   render() {
     return(
-      <Tabs>
-        <TabList>
-          <Tab>First</Tab>
+      <Tabs selectedTabClassName="active">
+        <TabList className="tabs" data-tab="data-tab">
+          <Tab className="tab-title">
+            <a href="#">
+              First
+            </a>
+          </Tab>
+          <Tab className="tab-title">
+            <a href="#">
+              Second
+            </a>
+          </Tab>
         </TabList>
         <TabPanel>
           <div dangerouslySetInnerHTML={{ __html: this.props.eventTab  }} />
+        </TabPanel>
+        <TabPanel>
+          GBLH
         </TabPanel>
       </Tabs>
     )
