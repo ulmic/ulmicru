@@ -10,41 +10,43 @@
             = link_to t('.plan'), article_path(@who_we_are)
           -#%li
             %a{href='#', title='Отделения'} Отделения
-          %li
+          -#%li
             %a{href='#', title='Корпоратив'} Корпоратив
-          %li
+          -#%li
             %a{href='#', title='Медиа'} Медиа
       .footer-menu__container
-        %h6 С чего начать
+        %h6
+          = t('.let_us_begin')
         %ul
           %li
-            %a{href='#',title='Вступить в МИЦ'} Вступить в МИЦ
+            = link_to t('.join_us'), new_join_path
           %li
-            %a{href='#', title='Открыть отделение'} Открыть отделение
-          %li
+            = link_to @open_departament.title, article_path(@open_departament)
+          -#%li
             %a {href='#', title='Открыть первичку'} Открыть первичку
       .footer-menu__container
-        %h6 Партнерам
+        %h6
+          = t('.to_partners')
         %ul
-          %li
+          -#%li
             %a {href='#', title='Сотрудничать с МИЦ'} Сотрудничать с МИЦ
           %li
-            %a {href='#', title='Реквизиты'} Реквизиты
+            = link_to @requisites.title, article_path(@requisites)
           %li
-            %a {href='#', title='Контакты'} Контакты
+            = link_to @contacts.title, article_path(@contacts)
     %section.footer-newsletter
-      %p.footer-newsletter__title Подпишитесь на нашу рассылку и получайте новости в числе первых!
+      %p.footer-newsletter__title
+        = t('.subscribe_our_delivery')
       %form
         %input{type='email', placeholder='Ваш email'}
         %button.button{type='submit'} Подписаться
     %section.footer-bottom
       .footer-bottom__social
-        //TODO: привести ссылки в вид, понимаемый haml. Как они должны выглядеть в html - ниже
-        //<a href="http://vk.com/ulmic"><i class="fa fa-vk" aria-hidden="true"></i></a>
-        //<a href="https://www.instagram.com/ulmicru/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-        //<a href="http://twitter.com/ulmicru"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        //<a href="https://www.youtube.com/user/ulmic73"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-        //<a href="https://www.facebook.com/molcenter"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-        //<a href="https://plus.google.com/b/109518417712111969312/109518417712111969312/posts"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a>
-        //<a href="https://ulmic.ru/articles/19"><i class="fa fa-rss" aria-hidden="true"></i></a>
+        = link_to fa_icon('vk 2x'), configus.social_networks_pages.vkontakte
+        = link_to fa_icon('instagram 2x'), configus.social_networks_pages.instagram
+        = link_to fa_icon('twitter 2x'), configus.social_networks_pages.twitter
+        = link_to fa_icon('youtube 2x'), configus.social_networks_pages.youtube
+        = link_to fa_icon('facebook 2x'), configus.social_networks_pages.facebook
+        = link_to fa_icon('google 2x'), configus.social_networks_pages.google_plus
+        = link_to fa_icon('rss 2x'), article_path(@rss_article_id)
       .footer-bottom__copyright 2007-2017, © УОМОО МИЦ
