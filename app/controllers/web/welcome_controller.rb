@@ -9,6 +9,7 @@ class Web::WelcomeController < Web::ApplicationController
     end.compact.first 8
     @not_ulmic_events = Team::AnotherTeam.active.reduce({}) do |hash, team|
       if team.events.confirmed.any?
+        hash ||= {}
         hash.merge! team.project.title => team.events.confirmed.first(8).map(&:decorate)
       end
     end
