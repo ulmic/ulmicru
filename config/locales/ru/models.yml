@@ -335,6 +335,7 @@ ru:
         url: Адрес сайта
         project_type: Тип проекта
         view: Вьюха (обратите к разработчикам сайта)
+        version: Год
     errors:
       models:
         member:
