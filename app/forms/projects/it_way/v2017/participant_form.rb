@@ -1,18 +1,48 @@
-class Projects::ItWay::V2017::ParticipantForm < Reform::Form
-  properties :title, 
-             :first_name, 
-             :last_name, 
-             :patronymic, 
-             :activity_line, 
-             :email, 
-             :phone, 
-             :region, 
-             :locality, 
-             :experience, 
-             :reason, 
-             :has_i_note, 
-             :school, 
-             :group, 
-             :birth_date, 
-             :year
+class Projects::ItWay::V2017::ParticipantForm < Projects::ApplicationRecordForm
+  delegate :title, to: :record
+
+  def first_name
+  end
+
+  def last_name
+  end
+
+  def patronymic
+  end
+
+  def activity_line
+  end
+
+  def email
+  end
+
+  def phone
+  end
+
+  def region
+  end
+
+  def locality
+  end
+
+  def experience
+  end
+
+  def reason
+  end
+
+  def has_i_note
+  end
+
+  def school
+  end
+
+  def group
+  end
+
+  def birth_date
+  end
+
+  def year
+  end
 end

@@ -35,6 +35,26 @@
             = fa_icon 'vk 2x'
           %span.link{ data: { href: configus.it_projects.it_way.social_links.twitter } }
             = fa_icon 'twitter 2x'
+%section#request.request
+  .row{style: "margin-right: 0px"}
+    .col-md-offset-2.col-md-8
+      %h2.text-center Заявка
+      = simple_form_for Projects::ItWay::V2017::ParticipantForm.new(Project::Record.new), url: api_projects_records_path, method: :post, remote: true, input_html: { class: 'form-horizontal' } do |f|
+        = f.input :last_name, as: :string
+        = f.input :first_name, as: :string
+        = f.input :patronymic, as: :string
+        = f.input :birth_date, as: :date_picker
+        = f.input :email, as: :string, required: true
+        = f.input :phone, as: :string
+        = f.input :region, collection: RussiaRegions.name_list
+        = f.input :locality, as: :string
+        = f.input :school, as: :string
+        = f.input :group, as: :string
+        = f.input :activity_line
+        = f.input :experience, as: :string
+        = f.input :reason, as: :string
+        = f.input :has_i_note, as: :string
+        = f.button :submit, "ПОДАТЬ ЗАЯВКУ", class: 'text-center btn btn-dark btn-lg'
 = render 'web/projects/it_way/main_2017/it_way_2016'
 = render 'web/projects/it_way/main_2017/activity_lines'
 = render 'web/projects/it_way/main_2017/programming'
