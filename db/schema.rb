@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613070246) do
+ActiveRecord::Schema.define(version: 20170806200320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -499,6 +499,16 @@ ActiveRecord::Schema.define(version: 20170613070246) do
     t.text     "status",     default: "confirmed"
   end
 
+  create_table "project_records", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "project_id"
+    t.integer  "version"
+    t.text     "record_type"
+    t.jsonb    "properties"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.text     "title"
     t.text     "url"
@@ -508,6 +518,7 @@ ActiveRecord::Schema.define(version: 20170613070246) do
     t.text     "state"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "version"
   end
 
   create_table "protocol_absents", force: :cascade do |t|
