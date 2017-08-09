@@ -3,6 +3,7 @@
 # USE bin/prod get_db server_user_name database_name
 
 require 'colorize'
+require 'yaml'
 
 if ARGV[0] == 'get_db'
   if ARGV[1].nil?
@@ -15,12 +16,16 @@ if ARGV[0] == 'get_db'
   restore_to = ARGV[3] || :ulmic_development
   at = Time.now.strftime("%Y-%m-%d--%H-%M")
   dump = "ulmicru--#{at}.dump"
-  puts "Dumping #{ARGV[2]} database".green
-  system "ssh -t #{ARGV[1]}@ulmic.ru 'pg_dump -Fc --no-acl --no-owner -v #{ARGV[2]} > #{dump}'"
+  puts "Dumping production database".green
+  system "scp #{ARGV[1]}@ulmic.ru:/srv/ulmicru/shared/config/database.yml ./"
+  db_config = YAML.load_file('database.yml')
+  db_name = db_config["production"]["database"]
+  system "rm -rf database.yml"
+  system "ssh -t #{ARGV[1]}@ulmic.ru 'pg_dump -Fc --no-acl --no-owner -v #{db_name} > #{dump}'"
   puts "Downloading...".green
   system "scp #{ARGV[1]}@ulmic.ru:#{dump} /tmp/"
-  system "ssh -t #{ARGV[1]}@ulmic.ru 'rm -f #{dump}'"
   puts "Restoring #{restore_to} database".green
+  system "ssh -t #{ARGV[1]}@ulmic.ru 'rm -f #{dump}'"
   system "dropdb ulmic_development --if-exists && createdb ulmic_development && pg_restore -d #{restore_to} /tmp/#{dump}"
   puts "Copy prod db for tests...".yellow
   system "cp -r /tmp/#{dump} tmp/test.dump"
