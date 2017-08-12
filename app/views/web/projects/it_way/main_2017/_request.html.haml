@@ -1,6 +1,6 @@
 %section#request.request
-  .row{style: "margin-right: 0px"}
-    .col-md-offset-2.col-md-8
+  .row
+    .medium-8.medium-centered.columns
       %h2.text-center Заявка
       = simple_form_for Projects::ItWay::V2017::ParticipantForm.new(Project::Record.new), url: api_projects_records_path, method: :post, remote: true, input_html: { class: 'form-horizontal' } do |f|
         = f.input :last_name, as: :string
