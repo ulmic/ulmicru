@@ -1,3 +1,7 @@
+#= require moment
+#= require moment/ru
+#= require bootstrap-datetimepicker
+
 $.extend($.scrollTo.defaults, {
     axis: 'y',
     duration: 2000
@@ -46,4 +50,5 @@ $(document).ready ->
     width_100_percent = width - padding_left - padding_right
     $(this).prop 'width', width_100_percent
     $(this).prop 'height', width_100_percent / 16 * 9
+  $('.datepicker').datetimepicker()
   return
