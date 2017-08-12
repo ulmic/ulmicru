@@ -1,8 +1,8 @@
 %section#request.request
-  .row#form{style: "margin-right: 0px"}
+  .row{style: "margin-right: 0px"}
     .col-md-offset-2.col-md-8
       %h2.text-center Заявка
-      = simple_form_for @user_form, url: api_users_path, method: :post, remote: true, input_html: { class: 'form-horizontal' } do |f|
+      = simple_form_for Projects::ItWay::V2017::ParticipantForm.new(Project::Record.new), url: api_projects_records_path, method: :post, remote: true, input_html: { class: 'form-horizontal' } do |f|
         = f.input :last_name, as: :string
         = f.input :first_name, as: :string
         = f.input :patronymic, as: :string
@@ -14,7 +14,7 @@
         = f.input :school, as: :string
         = f.input :group, as: :string
         = f.input :activity_line
-        = f.input :experience
-        = f.input :reason
-        = f.input :has_i_note
+        = f.input :experience, as: :string
+        = f.input :reason, as: :string
+        = f.input :has_i_note, as: :string
         = f.button :submit, "ПОДАТЬ ЗАЯВКУ", class: 'text-center btn btn-dark btn-lg'
