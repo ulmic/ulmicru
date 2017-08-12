@@ -1,8 +1,11 @@
 class Api::Projects::RecordsController < Api::ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     if form_allowed?
-      record = form_name.new Record.new
-      if record.submit params[:record]
+      record = form_name.constantize.new Project::Record.new, params[:project_record]
+      binding.pry
+      if record.save
         head :ok
       else
         head :bad_request
@@ -20,6 +23,6 @@ class Api::Projects::RecordsController < Api::ApplicationController
   end
 
   def form_name
-    "Projects::#{params[:project_name]}::V#{params[:project_version]}::#{params[:record_type]}Form"
+    "Projects::#{params[:project_name].camelize}::#{params[:project_version].camelize}::#{params[:record_type].camelize}Form"
   end
 end

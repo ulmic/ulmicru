@@ -4,6 +4,11 @@ class Projects::ItWay::V2017::ParticipantForm < Projects::ApplicationRecordForm
   def first_name
   end
 
+  def first_name=(value)
+    properties ||= {}
+    properties.merge! first_name: value
+  end
+
   def last_name
   end
 
