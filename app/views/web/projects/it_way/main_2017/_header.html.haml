@@ -1,9 +1,9 @@
 %header#top.header{ style: "background-image: url('/assets/pages/it_way/headers/9.jpg')"}
   .text-vertical-left
-    .row{style: "margin-right: 0px"}
-      .col-md-3
+    .row-fluid{style: "margin-right: 0px"}
+      .medium-3.columns
         = image_tag 'pages/it_way/logo-2017.png', class: :logo
-      .col-md-9
+      .medium-9.columns
         .text-vertical-right.title
           %h1
             III форум перспектив будущего ИТ-специалиста
@@ -12,14 +12,14 @@
           %h3{ style: 'font-family: mic-bold; color: black' }
             Ульяновская область, Димитровград, ДООЦ «Юность»
           %br
-    .row
-      .col-md-8.col-md-offset-2.text-vertical-center
+    .row-fluid
+      .medium-8.medium-offset-2.columns.text-vertical-center
         %br
         %h3{ style: 'font-family: mic-bold; color: black' }
           Приём заявок будет проходить на этом сайте
         %h3{ style: 'font-family: mic-bold; color: black' }
           Подпишитесь на нас, чтобы не пропустить новости III форума перспектив будущего ИТ-специалиста «IT Way'17»
-      .col-md-4.col-md-offset-4{ style: 'text-align: center' }
+      .medium-4.medium-offset-4{ style: 'text-align: center' }
         %h1.icons
           %span.link{ data: { href: configus.it_projects.it_way.social_links.vk } }
             = fa_icon 'vk 2x'
