@@ -3,14 +3,43 @@
 #= require bootstrap-datetimepicker
 
 init_form = ($form) ->
-  $form.on("ajax:success", (e, data, status, xhr) ->
-    $form.parent().html("<div class='alert alert-success request-sended'> Ваша заявка принята! С вами обязательно свяжется представитель организационного комитета мероприятия, а пока вы можете подписаться на наше сообщество во ВКонтакте <a href='http://vk.com/it_way'>vk.com/it_way</a> и на твиттер <a href='http://twitter.com/developerslogs'>@developerslogs</a>. Также последние новости форума выкладываются на <a href='http://ulmic.ru'>сайт МИЦ</a>. </div>")
-    $form.slideUp()
-    $.scrollTo ".request-sended"
-  ).on "ajax:error", (e, xhr, status, error) ->
-    $form.after("<p class='alert alert-info'><i class='fa fa-info'></i> Проблемы с подачей заявки? Перейдите в наше сообщество во ВКонтакте <a href='http://vk.com/it_way'>vk.com/it_way</a> и напишите сообщение в сообщество. Либо можете отправить письмо на почту <a href='mailto:admin@ulmic.ru'>admin@ulmic.ru</a>.</p>")
-    $form.after("<p class='alert alert-danger'> Произошла ошибка:<br/><br/>" + xhr.responseJSON['errors'] + "</p>")
-    return
+  $form.on 'submit', (e) ->
+    e.preventDefault()
+    $.ajax {
+      url: $form.prop('action')
+      method: 'POST'
+      data: {
+        project_record: {
+          first_name: $('#project_record_first_name').val()
+          last_name: $('#project_record_last_name').val()
+          patronymic: $('#project_record_patronymic').val()
+          birth_date: $('#project_record_birth_date').val()
+          email: $('#project_record_email').val()
+          phone: $('#project_record_phone').val()
+          region: $('#project_record_region').val()
+          locality: $('#project_record_locality').val()
+          school: $('#project_record_school').val()
+          group: $('#project_record_group').val()
+          activity_line: $('#project_record_activity_line').val()
+          experience: $('#project_record_experience').val()
+          reason: $('#project_record_reason').val()
+          has_i_note: $('#project_record_has_i_note').val()
+        }
+      }
+      success: ->
+        alert('success')
+      error: ->
+        alert('error')
+    }
+  #$form.on("ajax:success", (e, data, status, xhr) ->
+  #  e.preventDefault()
+  #  $form.parent().html("<div class='alert alert-success request-sended'> Ваша заявка принята! С вами обязательно свяжется представитель организационного комитета мероприятия, а пока вы можете подписаться на наше сообщество во ВКонтакте <a href='http://vk.com/it_way'>vk.com/it_way</a> и на твиттер <a href='http://twitter.com/developerslogs'>@developerslogs</a>. Также последние новости форума выкладываются на <a href='http://ulmic.ru'>сайт МИЦ</a>. </div>")
+  #  $form.slideUp()
+  #  $.scrollTo ".request-sended"
+  #).on "ajax:error", (e, xhr, status, error) ->
+  #  $form.after("<p class='alert alert-info'><i class='fa fa-info'></i> Проблемы с подачей заявки? Перейдите в наше сообщество во ВКонтакте <a href='http://vk.com/it_way'>vk.com/it_way</a> и напишите сообщение в сообщество. Либо можете отправить письмо на почту <a href='mailto:admin@ulmic.ru'>admin@ulmic.ru</a>.</p>")
+  #  $form.after("<p class='alert alert-danger'> Произошла ошибка:<br/><br/>" + xhr.responseJSON['errors'] + "</p>")
+  #  return
 
 $.extend($.scrollTo.defaults, {
     axis: 'y',

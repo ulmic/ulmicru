@@ -2,6 +2,7 @@ class Api::Projects::RecordsController < Api::ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
+    binding.pry
     if form_allowed?
       record = form_name.constantize.new Project::Record.new, params[:project_record]
       if record.save
