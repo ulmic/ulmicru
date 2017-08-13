@@ -3,7 +3,7 @@
   %head
     %meta{charset: 'utf-8'}
     %meta{content: 'width=1100', name: 'viewport'}
-    %title= content_for?(:title) ? yield(:title) : 'foundation-rails'
+    %title= content_for?(:title) ? yield(:title) : 'МИЦ'
     = stylesheet_link_tag    'application'
     = stylesheet_link_tag    'web/application'
     = javascript_include_tag 'vendor/modernizr'
@@ -15,7 +15,7 @@
     = render 'layouts/web/shared/services/google_analytics', ga_uid: configus.it_projects.ulmicru.google_analytics.uid
     - if current_page?(root_path)
       %meta{ name: 'google-site-verification',  content: 'VZvtE4uwPMyaVsgwcWFzF0Vwycj_bo3xaPNSlSWi5cM' }
-  %body#noresponsive
+  %body
     %div
     = render 'layouts/web/shared/navbar'
 

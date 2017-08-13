@@ -27,7 +27,8 @@
     "webpack": "^1.12.1",
     "bounce.js": "latest",
     "chart.js": "latest",
-    "react-tabs": "latest"
+    "react-tabs": "latest",
+    "jquery-validation": "latest"
   },
   "scripts": {
     "build": "webpack -p --config webpack/production.config.js",

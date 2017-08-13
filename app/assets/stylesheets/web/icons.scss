@@ -1,11 +1,7 @@
 // нужно сюда ещё иконки из хедера и футера
 @import "pictonic";
 @import "font-awesome";
-
-$twitter-color: #55acee;
-$facebook-color: #3b5998;
-$vkontakte-color: #45668e;
-$google-color: #db4437;
+@import "colors"
 
 .big-icon {
   font-size: 46px;

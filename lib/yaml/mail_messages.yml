@@ -43,3 +43,6 @@ messages:
   delivery/contact_email:
     create:
       subject: Подтверждение подписки на рассылки сайта МИЦ
+  project/record:
+    create:
+      subject: Поступила новая заявка на участие в IT Way

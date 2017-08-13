@@ -1,0 +1,18 @@
+%p
+  Привет, 
+  = @user.first_name
+  \!
+%p
+  На IT Way
+  = @record.version
+  подана новая заявка на участие.
+  Контактные данные заявки
+  = @record.properties[:last_name]
+  = @record.properties[:first_name]
+  = mail_to @record.properties[:email]
+  = tel_tag @record.properties[:phone]
+%p
+  Обязательно отметь заявку, как подтверждённую после прозвона.
+%p
+  %b
+    Спасибо! Твой МИЦ.
