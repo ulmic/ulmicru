@@ -15,6 +15,8 @@ class Projects::ItWay::V2017::ParticipantForm < Projects::ApplicationRecordForm
                 :birth_date,
                 :year
 
+  ACTIVITY_LINES = [ :programming, :design, :steel ]
+
   def title
     "#{record.properties["last_name"]} #{record.properties["first_name"]} #{record.properties["patronymic"]}"
   end

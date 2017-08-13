@@ -346,6 +346,10 @@ ru:
           experience: Опишите свой опыт
           reason: Почему вы хотите участвовать?
           has_i_note: Есть у вас ноутбук и можете ли вы взять его с собой?
+          activity_lines:
+            steel: Железо
+            programming: Программирование
+            design: Дизайн
     errors:
       models:
         member:
