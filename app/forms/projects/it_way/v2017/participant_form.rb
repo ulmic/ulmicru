@@ -1,53 +1,33 @@
 class Projects::ItWay::V2017::ParticipantForm < Projects::ApplicationRecordForm
-  delegate :title, to: :record
-
-  def first_name
+  def title
+    "#{record.properties["last_name"]} #{record.properties["first_name"]} #{record.properties["patronymic"]}"
   end
 
-  def first_name=(value)
-    properties ||= {}
-    properties.merge! first_name: value
+  def project_id
+    1
   end
 
-  def last_name
+  def version
+    2017
   end
 
-  def patronymic
+  def record_type
+    :participant
   end
 
-  def activity_line
-  end
-
-  def email
-  end
-
-  def phone
-  end
-
-  def region
-  end
-
-  def locality
-  end
-
-  def experience
-  end
-
-  def reason
-  end
-
-  def has_i_note
-  end
-
-  def school
-  end
-
-  def group
-  end
-
-  def birth_date
-  end
-
-  def year
-  end
+  attr_accessor :first_name,
+                :last_name,
+                :patronymic,
+                :activity_line,
+                :email,
+                :phone,
+                :region,
+                :locality,
+                :experience,
+                :reason,
+                :has_i_note,
+                :school,
+                :group,
+                :birth_date,
+                :year
 end

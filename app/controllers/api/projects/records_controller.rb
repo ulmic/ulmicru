@@ -4,7 +4,6 @@ class Api::Projects::RecordsController < Api::ApplicationController
   def create
     if form_allowed?
       record = form_name.constantize.new Project::Record.new, params[:project_record]
-      binding.pry
       if record.save
         head :ok
       else
