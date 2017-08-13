@@ -2,6 +2,8 @@ class Project < ActiveRecord::Base
   extend Enumerize
   enumerize :project_type, in: [ :default, :it_way, :not_ulmic_project ], default: :default
 
+  has_many :teams, as: :project
+
   validates :url, presence: true
 
   state_machine :state, initial: :active do

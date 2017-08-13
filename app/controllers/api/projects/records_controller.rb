@@ -5,6 +5,9 @@ class Api::Projects::RecordsController < Api::ApplicationController
     if form_allowed?
       record = form_name.constantize.new Project::Record.new, params[:project_record]
       if record.save
+        record.record.project.teams.map(&:users).flatten.uniq.each do |user|
+          send_notification user, record.record, :create
+        end
         head :ok
       else
         head :bad_request
