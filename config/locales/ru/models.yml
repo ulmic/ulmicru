@@ -336,6 +336,16 @@ ru:
         project_type: Тип проекта
         view: Вьюха (обратите к разработчикам сайта)
         version: Год
+      forms:
+        projects/it_way/v2017/participant_form:
+          <<: *user_default
+          phone: Мобильный телефон
+          region: Регион
+          group: Класс
+          activity_line: Направление на IT Way
+          experience: Опишите свой опыт
+          reason: Почему вы хотите участвовать?
+          has_i_note: Есть у вас ноутбук и можете ли вы взять его с собой?
     errors:
       models:
         member:

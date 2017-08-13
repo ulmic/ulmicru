@@ -1,7 +1,26 @@
+/*
+  Foundation patching
+  */
+
+//= require foundation
+//= require jasny-bootstrap
+
+@import "../colors"
 @import 'font-awesome'
+@import "../__fonts"
+@import 'bootstrap-datetimepicker'
+
+.row.text-center
+  margin-left: 0
+  max-width: 100%
+  width: 100%
 
 *
-  font-family: mic
+  font-family: mic-beau-reg
+h3
+  font-family: mic-beau-reg
+h4
+  color: white
 .btn-dark
   background-color: rgba(0,0,0,1)
 .header
@@ -79,6 +98,8 @@
 
 aside.callout
   margin-bottom: 10px
+  h1
+    color: white
   &.programming
     background-image: image-url('pages/it_way/programming.png') !important
   &.design
@@ -94,10 +115,14 @@ aside.callout
       font-family: mic-bold !important
 
 h1.icons
+  .vkontakte
+    color: $vkontakte-color
+  .twitter
+    color: $twitter-color
   span
     margin-right: 15px
     &:hover
-      opacity: 0.7
+      opacity: 0.8
 
 #it_way_2016
   text-align: center

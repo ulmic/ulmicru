@@ -228,6 +228,9 @@ Rails.application.routes.draw do
     namespace :delivery do
       resources :contact_emails, only: :create
     end
+    namespace :projects do
+      resources :records, only: :create
+    end
   end
   namespace :rss do
     resources :news, only: :index
