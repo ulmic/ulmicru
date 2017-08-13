@@ -25,7 +25,7 @@
         = f.label :group, form_attribute_locale(form, :group)
         = f.input :group, as: :string, label: false, required: true, input_html: { required: true }
         = f.label :activity_line, form_attribute_locale(form, :activity_line)
-        = f.input :activity_line, label: false, required: true, input_html: { required: true }
+        = f.input :activity_line, as: :select, label: false, required: true, input_html: { required: true }, collection: it_way_activity_lines(Projects::ItWay::V2017::ParticipantForm::ACTIVITY_LINES)
         = f.label :experience, form_attribute_locale(form, :experience)
         = f.input :experience, as: :string, label: false, required: true, input_html: { required: true }
         = f.label :reason, form_attribute_locale(form, :reason)
