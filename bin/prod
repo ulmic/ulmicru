@@ -9,11 +9,7 @@ if ARGV[0] == 'get_db'
   if ARGV[1].nil?
     puts "You should add username on server".red
   end
-  if ARGV[2].nil?
-    puts "You should add database name on server".red
-    exit
-  end
-  restore_to = ARGV[3] || :ulmic_development
+  restore_to = ARGV[2] || :ulmic_development
   at = Time.now.strftime("%Y-%m-%d--%H-%M")
   dump = "ulmicru--#{at}.dump"
   puts "Dumping production database".green
