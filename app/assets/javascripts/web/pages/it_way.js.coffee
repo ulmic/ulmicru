@@ -3,6 +3,7 @@
 #= require bootstrap-datetimepicker
 
 init_form = ($form) ->
+  $form.hide()
   $form.on 'submit', (e) ->
     e.preventDefault()
     $.ajax {
@@ -54,7 +55,6 @@ $(document).ready ->
     $(this).children('img.white').show()
     $(this).children('img.gray').hide()
     return
-  # $('form').hide()
   $('a.form_show').click (e) ->
     e.preventDefault()
     id = $(@).data('target')
