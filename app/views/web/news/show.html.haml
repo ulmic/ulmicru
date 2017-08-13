@@ -20,7 +20,7 @@
         - @same_events.each do |event|
           .mic-event2
             = render_element 'mic_event2', img_src:  event.main_photo.event_main_page_version, |
-                                           category: event.activity_line.title, |
+                                           category: (event.activity_line&.title || event.organizer.project.title), |
                                            link: event_path(event), |
                                            date: event.full_date_duration, |
                                            text: event.title
