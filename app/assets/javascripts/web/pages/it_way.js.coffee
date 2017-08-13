@@ -1,9 +1,11 @@
 #= require moment
 #= require moment/ru
 #= require bootstrap-datetimepicker
+#= require jquery-validation/dist/jquery.validate
 
 init_form = ($form) ->
   $form.hide()
+  $form.validate()
   $form.on 'submit', (e) ->
     e.preventDefault()
     $.ajax {
