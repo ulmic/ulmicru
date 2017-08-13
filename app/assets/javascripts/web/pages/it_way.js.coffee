@@ -2,6 +2,7 @@
 #= require moment/ru
 #= require bootstrap-datetimepicker
 #= require jquery-validation/dist/jquery.validate
+#= require jquery-validation/dist/localization/messages_ru
 
 init_form = ($form) ->
   $form.hide()
