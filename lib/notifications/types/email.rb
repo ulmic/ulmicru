@@ -21,6 +21,8 @@ module Notifications
           CommentMailer.delay.send(params[:theme], params[:object], params[:user])
         when 'Event'
           EventMailer.delay.send(params[:theme], params[:object], params[:user])
+        when 'Project::Record'
+          Project::RecordMailer.delay.send(params[:theme], params[:object], params[:user])
         else
           UserMailer.delay.send(params[:theme], params[:object], params[:user])
         end
