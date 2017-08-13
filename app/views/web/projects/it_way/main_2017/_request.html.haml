@@ -2,7 +2,7 @@
   .row
     .medium-8.medium-centered.columns
       - form = Projects::ItWay::V2017::ParticipantForm
-      = simple_form_for form.new(Project::Record.new), url: api_projects_records_path(project_name: :it_way, project_version: :v_2017, record_type: :participant, redirect_to: project_path(@project.id)), method: :post do |f|
+      = simple_form_for form.new(Project::Record.new), url: api_projects_records_url(project_name: :it_way, project_version: :v_2017, record_type: :participant, redirect_to: project_path(@project.id)), method: :post do |f|
         %h2.text-center Заявка
         = f.label :last_name, form_attribute_locale(form, :last_name)
         = f.input :last_name, as: :string, label: false, required: true, input_html: { required: true }
