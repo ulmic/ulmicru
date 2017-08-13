@@ -1,4 +1,4 @@
-class Projects::ApplicationRecordForm < Project::Record
+class Projects::ApplicationRecordForm < SimpleDelegator
   attr_reader :record
 
   attr_accessor :project_id, :version, :title, :record_type
