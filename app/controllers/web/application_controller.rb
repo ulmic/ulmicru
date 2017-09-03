@@ -40,9 +40,9 @@ class Web::ApplicationController < ApplicationController
     @activity_lines = ActivityLine.official.decorate
     @feedback = FeedbackForm.new_with_model
     @rss_article_id = 19
-    @who_we_are = Article.find 11
-    @open_departament = Article.find 76
-    @requisites = Article.find 15
+    @who_we_are = Article.find configus.articles.who_we_are
+    @open_departament = Article.find configus.articles.open_departament
+    @requisites = Article.find configus.articles.requisites
     @contacts = Article.find 16
     @contact_email = ::Delivery::ContactEmailForm.new_with_model
   end

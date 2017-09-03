@@ -116,6 +116,9 @@ Configus.build Rails.env do
       contact_list 78
       charter 20
       confession 25
+      who_we_are 11
+      open_departament 76
+      requisites 15
     end
     documents do
       confession_position 4
