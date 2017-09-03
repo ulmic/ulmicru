@@ -1,0 +1,21 @@
+= paginate records, theme: 'twitter-bootstrap-3'
+- model_class = Project::Record
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      - if searching?
+        %th= model_class.human_attribute_name(:state)
+      %th= t 'helpers.links.actions'
+  %tbody
+    - records.each do |record|
+      %tr
+        %td= record.id
+        %td= record.title
+        - if searching?
+          %td= record.human_state_name
+        %td.actions
+          = link_to fa_icon(:pencil), edit_admin_project_record_path(record), class: 'btn btn-warning btn-xs'
+          = link_to fa_icon(:remove), admin_project_record_path(record), method: :delete, class: 'btn btn-xs btn-danger' 
+= paginate records, theme: 'twitter-bootstrap-3'
