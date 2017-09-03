@@ -2,8 +2,6 @@ class Questionary < Member
   validates :experience, presence: true
   validates :want_to_do, presence: true
 
-  mount_uploader :avatar, AvatarUploader
-
   state_machine :state, initial: :unviewed do
     state :unviewed
     state :confirmed
