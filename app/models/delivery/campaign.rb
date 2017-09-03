@@ -72,4 +72,8 @@ class Delivery::Campaign < ActiveRecord::Base
       arr += audience.contacts
     end.uniq
   end
+
+  def self.collections
+    [ :ready, :done, :removed, :during_mailing, :declined ]
+  end
 end
