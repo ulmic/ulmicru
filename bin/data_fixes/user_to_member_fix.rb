@@ -1,6 +1,10 @@
 if ENV['USER_ID'].present? && (ENV['MEMBER_ID'].present? || ENV['TRUE_USER'].present?)
   user = User.find ENV['USER_ID']
-  member = ENV['MEMBER_ID'].present? ? Member.find(ENV['MEMBER_ID']) : User.find(ENV['TRUE_USER'])
+  member = if ENV['MEMBER_ID'].present?
+             Member.find_by(id: ENV['MEMBER_ID']) || Questionary.find(ENV['MEMBER_ID'])
+           else
+             User.find(ENV['TRUE_USER'])
+           end
   puts "Updating associations...".green
   [:authentications, :article, :registrations, :logged_actions, :comments, :ya_lider_participants].each do |association|
     user.send(association).each do |obj|
@@ -16,7 +20,11 @@ if ENV['USER_ID'].present? && (ENV['MEMBER_ID'].present? || ENV['TRUE_USER'].pre
       end
     end
   end
-  user.subscriptions.each { |s| s.update_attributes! receiver_id: member.id }
+  user.subscriptions.each do |s|
+    if member.subscriptions.where(subscription_type: s.subscription_type).empty?
+      s.update_attributes! receiver_id: member.id
+    end
+  end
   puts "Updating attributes...".green
   [:birth_date, :mobile_phone, :patronymic, :motto, :ticket, :parent_id, :municipality, :locality, :school, :password_digest, :role, :state, :token].each do |attribute|
     if user.send(attribute).present?
