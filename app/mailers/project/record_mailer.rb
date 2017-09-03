@@ -4,6 +4,6 @@ class Project::RecordMailer < ApplicationMailer
   def create(record, user)
     @user = user
     @record = record
-    mail from: sender_name, to: user.email, subject: (subject(record.class, :create) + record.version)
+    mail from: sender_name, to: user.email, subject: (subject(record.class, :create) + record.version.to_s)
   end
 end
