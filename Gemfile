@@ -70,6 +70,7 @@ gem 'xls_exporter'
 gem 'youtube_addy'
 gem 'roo', '~> 2.7.0'
 gem 'copyright_mafa'
+gem 'colorize', '0.6.0'
 
 group :development, :test do
   gem 'byebug'
@@ -77,7 +78,6 @@ group :development, :test do
   gem 'spring', '1.3.4'
   gem 'factory_girl_rails'
   gem 'quiet_assets'
-  gem 'colorize', '0.6.0'
   gem 'better_errors'
   gem 'railroady'
   gem 'pry'

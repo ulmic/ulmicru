@@ -26,7 +26,8 @@ if ARGV[0] == 'get_db'
   puts "Copy prod db for tests...".yellow
   system "cp -r /tmp/#{dump} tmp/test.dump"
   puts "Copy prod db to backup folder...".yellow
-  system "mkdir ~/backup.ulmic.dbs && cp -r /tmp/#{dump} ~/backup.ulmic.dbs/#{dump}"
+  system "mkdir ~/backup.ulmic.dbs"
+  system "cp -r /tmp/#{dump} ~/backup.ulmic.dbs/#{dump}"
 end
 
 if ARGV[0] == 'get_credentials'
