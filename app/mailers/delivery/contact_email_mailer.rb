@@ -1,4 +1,4 @@
-class ContactEmailMailer < ApplicationMailer
+class Delivery::ContactEmailMailer < ApplicationMailer
   default template_path: "mailers/#{self.name.underscore}"
 
   def create(contact_email)
