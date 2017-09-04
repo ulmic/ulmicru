@@ -8,6 +8,7 @@ class Api::Projects::RecordsController < Api::ApplicationController
         record.record.project.teams.map(&:users).flatten.uniq.each do |user|
           send_notification user, record.record, :create
         end
+        send_notification record.record, record.record, :confirm
         head :ok
       else
         head :bad_request
