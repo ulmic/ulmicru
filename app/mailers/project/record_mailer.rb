@@ -10,6 +10,6 @@ class Project::RecordMailer < ApplicationMailer
   def confirm(user_as_record, user)
     @user = user
     @user_as_record = user_as_record
-    mail from: sender_name, to: user.properties[:email], subject: subject(user_as_record.class, :confirm)
+    mail from: sender_name, to: user.properties['email'], subject: subject(user_as_record.class, :confirm)
   end
 end
