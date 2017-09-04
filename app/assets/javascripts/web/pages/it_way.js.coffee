@@ -80,4 +80,6 @@ $(document).ready ->
     $(this).prop 'width', width_100_percent
     $(this).prop 'height', width_100_percent / 16 * 9
   $('.datepicker').datetimepicker()
+  $('.link').click ->
+    location.href = $(this).data('href')
   return

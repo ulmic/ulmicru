@@ -47,6 +47,8 @@ Configus.build Rails.env do
         social_links do
           vk 'http://vk.com/it_way'
           twitter 'http://twitter.com/developerslogs'
+          instagram 'http://instagram.com/it_way'
+          telegram 'http://t.me/it_way_chat'
         end
         links do
           lider 'http://ul-lider.ru'
