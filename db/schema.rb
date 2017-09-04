@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20170806200320) do
   create_table "activity_lines_lider_ya_lider_participations", force: :cascade do |t|
     t.integer  "participant_id"
     t.integer  "stage_id"
-    t.text     "state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.text     "state"
   end
 
   create_table "activity_lines_lider_ya_lider_stages", force: :cascade do |t|
@@ -283,9 +283,9 @@ ActiveRecord::Schema.define(version: 20170806200320) do
   create_table "delivery_receivers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "campaign_id"
-    t.text     "state",       default: "ready"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.text     "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.text     "user_type"
   end
 
@@ -620,9 +620,6 @@ ActiveRecord::Schema.define(version: 20170806200320) do
     t.integer "team_id"
     t.integer "user_id"
   end
-
-  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
-  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "test_paper_questions", force: :cascade do |t|
     t.text     "text"
