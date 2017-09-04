@@ -46,3 +46,5 @@ messages:
   project/record:
     create:
       subject: Поступила новая заявка на участие в IT Way
+    confirm:
+      subject: Ваша заявка на участие в III форуме перспектив будущего ИТ-специалиста "IT Way'17" принята

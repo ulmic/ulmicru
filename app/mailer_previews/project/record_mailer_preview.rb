@@ -6,4 +6,9 @@ class Project::RecordMailerPreview
     record = Project::Record.new properties: { last_name: 'Botov', first_name: 'Leopold', email: 'example@email.com', phone: '+79603727201' }
     Project::RecordMailer.create record, user
   end
+
+  def confirm
+    record = Project::Record.new properties: { last_name: 'Botov', first_name: 'Leopold', email: 'example@email.com', phone: '+79603727201' }
+    Project::RecordMailer.confirm record, record
+  end
 end
