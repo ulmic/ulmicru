@@ -31,7 +31,7 @@ init_form = ($form) ->
         }
       }
       success: ->
-        $form.parent().html("<div class='alert alert-success request-sended'> Ваша заявка принята! С вами обязательно свяжется представитель организационного комитета мероприятия, а пока вы можете подписаться на наше сообщество во ВКонтакте <a href='http://vk.com/it_way'>vk.com/it_way</a> и на твиттер <a href='http://twitter.com/developerslogs'>@developerslogs</a>. Также последние новости форума выкладываются на <a href='http://ulmic.ru'>сайт МИЦ</a>. </div>")
+        $form.parent().html("<div class='alert alert-success request-sended'> Ваша заявка принята! С вами обязательно свяжется представитель организационного комитета мероприятия, а пока вы можете подписаться на наше сообщество во ВКонтакте <a href='http://vk.com/it_way'>vk.com/it_way</a> и на твиттер <a href='http://twitter.com/developerslogs'>@developerslogs</a>.Ты можешь добавиться в <a href='http://t.me/it_way_chat'>наш telegram-чат</a> и задать все интересующие вопросы.<br/>Также последние новости форума выкладываются на <a href='http://ulmic.ru'>сайт МИЦ</a>. Мы выслали тебе на почту информационное письмо, в котором продублировали все данные.</div>")
         $form.slideUp()
         $.scrollTo ".request-sended"
       error: ->
