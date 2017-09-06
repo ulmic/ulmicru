@@ -104,6 +104,8 @@ ru:
               provision: Положение конкурса
       delivery:
         campaigns:
+          show:
+            receivers_count_filling_not_instantly: Количество получателей заполняется не сразу
           form:
             select_team: Выберите команду
             select_event_registrations: Выберите мероприятие
