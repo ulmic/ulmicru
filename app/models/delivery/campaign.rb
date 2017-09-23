@@ -74,6 +74,6 @@ class Delivery::Campaign < ActiveRecord::Base
   end
 
   def self.collections
-    [ :ready, :done, :removed, :during_mailing, :declined ]
+    [ :ready, :done, :removed, :during_mailing, :declined, :not_tested ]
   end
 end

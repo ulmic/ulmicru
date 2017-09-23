@@ -168,6 +168,7 @@ ru:
             declined: Отменены
             done: Выполнены
             during_mailing: В процессе рассылки
+            not_tested: Не протестированы
       delivery/contact_email:
         state:
           states:
