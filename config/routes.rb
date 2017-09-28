@@ -128,6 +128,9 @@ Rails.application.routes.draw do
             resources :participations, except: [ :index, :show, :new, :edit ]
           end
         end
+        namespace :it do
+          resources :it_ways
+        end
       end
       namespace :delivery do
 	resources :campaigns

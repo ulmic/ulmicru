@@ -47,6 +47,11 @@
             %a{ href: admin_activity_lines_lider_ya_liders_path }
               = image_tag 'organization/activity_lines/lider/ya-lider.png', class: 'my-glyphicon lider'
               = ActivityLines::Lider::YaLider.model_name.human
+          %li.dropdown-header
+            ИТ
+          %li
+            = link_to admin_activity_lines_it_it_ways_path do
+              IT Way
         = dropdown t('.content') do
           = admin_menu_item Article, admin_articles_path
           = admin_menu_item Category, admin_categories_path
