@@ -16,6 +16,10 @@
         Email
       %th
         Телефон
+      %th
+        Направление
+      %th
+        Есть ли с собой ноутбук?
     %tbody
       %tr
         %td
@@ -25,6 +29,11 @@
           = mail_to @record.properties['email']
         %td
           = tel_tag @record.properties['phone']
+        %td
+          = @record.properties['activity_line']
+        %td
+          = @record.properties['has_i_note']
+
 %p
   Твоя задача связаться с участником, чтобы он подтвердил своё участие.
 %p
