@@ -21,5 +21,6 @@
 
     = yield
 
-    = render 'layouts/web/shared/footer'
+    - unless current_page?(article_path(25))
+      = render 'layouts/web/shared/footer'
     = render 'layouts/web/shared/feedback_modal'
