@@ -75,7 +75,7 @@ Configus.build Rails.env do
         corporative do
           confession do
             begining_submissions_petitions '06/12/2017'.to_datetime
-            ending_submissions_petitions '10/01/2018'.to_datetime
+            ending_submissions_petitions '11/01/2018'.to_datetime
             begining_voting '11/01/2018'.to_datetime
             ending_voting '17/01/2018'.to_datetime
           end
