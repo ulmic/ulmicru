@@ -16,3 +16,6 @@ $ ->
       $('#targetIdStore').data 'targetId', value
       $('#comment_record_id').val value
       $('.avatar_on_modal').prop 'src', $(this).children().children().children('img').first().prop 'src'
+
+  if $('.confessions').length > 0
+    $('.footer').css('margin-top', '400px')
