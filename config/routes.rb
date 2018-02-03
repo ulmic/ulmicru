@@ -162,6 +162,13 @@ Rails.application.routes.draw do
     end
   end
   namespace :api do
+    namespace :export do
+      resources :users, only: :index
+      resources :news, only: :index
+      resources :events, only: :index
+      resources :documents, only: :index
+      resources :activity_lines, only: :index
+    end
     resources :news, only: :index
     resources :events, only: :index
     resources :feedbacks, only: :create
