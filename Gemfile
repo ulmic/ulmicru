@@ -71,6 +71,7 @@ gem 'youtube_addy'
 gem 'roo', '~> 2.7.0'
 gem 'copyright_mafa'
 gem 'colorize', '0.6.0'
+gem 'active_model_serializers', '0.10.5' # 0.10.6 breaks the returned json, need to investigate
 
 group :development, :test do
   gem 'byebug'
