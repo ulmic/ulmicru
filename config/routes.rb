@@ -168,6 +168,8 @@ Rails.application.routes.draw do
       resources :events, only: :index
       resources :documents, only: :index
       resources :activity_lines, only: :index
+      resources :articles, only: :index
+      resources :teams, only: :index
     end
     resources :news, only: :index
     resources :events, only: :index
