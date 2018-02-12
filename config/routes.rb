@@ -170,6 +170,12 @@ Rails.application.routes.draw do
       resources :activity_lines, only: :index
       resources :articles, only: :index
       resources :teams, only: :index
+      namespace :activity_lines do
+        namespace :corporative do
+          resources :online_conferences, only: :index
+          resources :confessions, only: :index
+        end
+      end
     end
     resources :news, only: :index
     resources :events, only: :index

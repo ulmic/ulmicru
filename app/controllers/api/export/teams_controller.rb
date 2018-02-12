@@ -3,6 +3,7 @@ class Api::Export::TeamsController < Api::Export::ApplicationController
     teams = Team.all
     render json: teams,
            each_serializer: TeamPresenter,
+           includes: [ :users ],
            status: :ok
   end
 end
