@@ -50,6 +50,13 @@ GIT
   specs:
     state_machine (1.2.0)
 
+GIT
+  remote: git://github.com/uchiru/xls-exporter.git
+  revision: d63718b9c5faf7be8d18c2ba55ed5a3241cdb06f
+  specs:
+    xls_exporter (0.1.0)
+      spreadsheet
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -359,7 +366,7 @@ GEM
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
-    ruby-ole (1.2.12)
+    ruby-ole (1.2.12.1)
     ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
     rubyzip (1.2.1)
@@ -399,7 +406,7 @@ GEM
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
     slop (3.6.0)
-    spreadsheet (1.1.4)
+    spreadsheet (1.1.5)
       ruby-ole (>= 1.0)
     spring (1.3.4)
     sprockets (3.6.0)
@@ -456,8 +463,6 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    xls_exporter (1.0.0)
-      spreadsheet
     youtube_addy (1.0.4)
 
 PLATFORMS
@@ -542,7 +547,7 @@ DEPENDENCIES
   virtus
   web-console (= 2.0.0.beta2)
   webmock
-  xls_exporter
+  xls_exporter!
   youtube_addy
   youtube_rails!
 
