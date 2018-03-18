@@ -171,6 +171,7 @@ Rails.application.routes.draw do
       resources :articles, only: :index
       resources :teams, only: :index
       resources :tags, only: :index
+      resources :places, only: :index
       namespace :activity_lines do
         namespace :corporative do
           resources :online_conferences, only: :index

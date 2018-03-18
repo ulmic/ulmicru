@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :organizer, polymorphic: true,
                          foreign_key: :organizer_id
   has_many :registrations, class_name: 'Event::Registration'
+  has_many :users, through: :registrations
   has_many :tags, as: :target, dependent: :destroy
   has_many :logged_actions, as: :record
   has_many :admin_comments, -> { where(comment_type: :admin) }, class_name: 'Comment', as: :record

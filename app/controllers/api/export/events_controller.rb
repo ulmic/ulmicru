@@ -3,7 +3,7 @@ class Api::Export::EventsController < Api::Export::ApplicationController
     events = Event.all
     render json: events,
            each_serializer: EventPresenter,
-           includes: [ :places, :registrations ],
+           included: [ :places, :users ],
            status: :ok
   end
 end

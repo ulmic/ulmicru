@@ -16,7 +16,7 @@
 #= require jasny_file_uploader
 #= require placeholders
 #= require react_integration
-#= reuqire yofication
+#= require yofication
 
 $.extend String.prototype, camelize: ->
   @replace /(?:^|[-_])(\w)/g, (_, c) ->
