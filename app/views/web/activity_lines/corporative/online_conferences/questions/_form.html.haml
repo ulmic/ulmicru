@@ -1,8 +1,0 @@
-= simple_form_for @question_form, url: { controller: 'web/activity_lines/corporative/online_conferences/questions', action: :create } do |f|
-  = t('.ask_your_question')
-  = f.input :text, as: :string, label: false
-  - if signed_in?
-    = t('.anonym')
-    = f.input :user_id, as: :boolean, label: false
-  = f.input :online_conference_id, as: :hidden, input_html: { value: @event.online_conference.id }
-  = f.button :submit, t('helpers.links.send')

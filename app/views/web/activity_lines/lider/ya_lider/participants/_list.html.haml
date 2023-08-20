@@ -1,9 +1,0 @@
-- model_class = ActivityLines::Lider::YaLider::Participant
-%table.table.table-striped.table-condensed.table-hover
-  %tbody
-    - activity_lines_lider_ya_lider_participants.each do |participant|
-      %tr.link{ data: { href: admin_activity_lines_lider_ya_lider_participant_path(participant) }, class: state_color(participant) }
-        %td{ width: '67px' }
-          = image_tag participant.small_avatar
-        %td
-          = participant.short_name

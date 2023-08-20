@@ -1,6 +1,0 @@
-.news.articles.container-big
-  %h1.title
-    = @article.title
-  .row.contacts-people
-    - Organization::ContactList.list.each do |team|
-      = render 'web/articles/shared/contact_list/team', team: team

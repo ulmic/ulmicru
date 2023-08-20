@@ -1,5 +1,0 @@
-[develop]
-localhost ansible_connection=local
-
-[production]
-ulmic.ru ansible_user=ulmic
